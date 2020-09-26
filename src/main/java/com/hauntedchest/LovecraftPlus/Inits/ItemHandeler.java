@@ -1,6 +1,7 @@
 package com.hauntedchest.LovecraftPlus.Inits;
 
 import com.hauntedchest.LovecraftPlus.Items.ItemBase;
+import com.hauntedchest.LovecraftPlus.Items.MysteriousAmulet;
 import com.hauntedchest.LovecraftPlus.LovecraftPlusMod;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -22,4 +23,5 @@ public class ItemHandeler {
     }
 
     public static final RegistryObject<Item> HAUNTED_INGOT = ITEMS.register("haunted_ingot", ItemBase::new);
+    public static final RegistryObject<Item> MYSTERIOUS_AMULET = ITEMS.register("mysterious_amulet", () -> new MysteriousAmulet(new Item.Properties().group(LovecraftPlusMod.ITEMTAB).maxStackSize(2)));
 }
