@@ -1,5 +1,6 @@
 package com.hauntedchest.LovecraftPlus;
 
+import com.hauntedchest.LovecraftPlus.Inits.BlockHandeler;
 import com.hauntedchest.LovecraftPlus.Inits.ItemHandeler;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -24,6 +25,7 @@ public class LovecraftPlusMod
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 
         ItemHandeler.init();
+        BlockHandeler.init();
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -39,6 +41,12 @@ public class LovecraftPlusMod
         @Override
         public ItemStack createIcon(){
             return new ItemStack(ItemHandeler.HAUNTED_INGOT.get());
+        }
+    };
+    public static final ItemGroup BLOCKTAB = new ItemGroup("blockTab"){
+        @Override
+        public ItemStack createIcon(){
+            return new ItemStack(BlockHandeler.HUMMING_STONE.get());
         }
     };
 }

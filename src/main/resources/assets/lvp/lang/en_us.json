@@ -1,4 +1,6 @@
 {
 "itemGroup.itemTab": "Lovecraft Materials",
-  "item.lvp.haunted_ingot": "Haunted Ingot"
+  "itemGroup.blockTab": "Lovecraft Blocks",
+  "item.lvp.haunted_ingot": "Haunted Ingot",
+  "block.lvp.humming_stone": "Humming Stone"
 }
