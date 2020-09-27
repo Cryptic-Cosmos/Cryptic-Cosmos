@@ -28,7 +28,6 @@ public class LovecraftPlusMod
         ItemHandeler.init();
         BlockHandeler.init();
         BiomeHandeler.init();
-        FeatureHandeler.init();
 
         MinecraftForge.EVENT_BUS.register(this);
     }
