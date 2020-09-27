@@ -46,7 +46,7 @@ public class LovecraftPlusMod
     public static final ItemGroup BLOCKTAB = new ItemGroup("blockTab"){
         @Override
         public ItemStack createIcon(){
-            return new ItemStack(BlockHandeler.HUMMING_STONE.get());
+            return new ItemStack(BlockHandeler.DREAMING_SOULS.get());
         }
     };
 }

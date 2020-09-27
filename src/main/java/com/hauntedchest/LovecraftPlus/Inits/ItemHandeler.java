@@ -23,4 +23,5 @@ public class ItemHandeler {
 
     //Block Items
     public static final RegistryObject<Item> HUMMING_STONE_ITEM = ITEMS.register("humming_stone", () -> new BlockItemBase(BlockHandeler.HUMMING_STONE.get()));
+    public static final RegistryObject<Item> DREAMING_SOULS_ITEM = ITEMS.register("dreaming_souls", () -> new BlockItemBase(BlockHandeler.DREAMING_SOULS.get()));
 }

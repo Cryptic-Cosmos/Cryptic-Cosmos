@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "yxy",
+    "xzx",
+    "yxy"
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "lvp:haunted_ingot"
+    },
+    "y":
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    "z":
+    {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "result":
+  {
+    "item": "lvp:dreaming_souls",
+    "count": 1
+  }
+}
