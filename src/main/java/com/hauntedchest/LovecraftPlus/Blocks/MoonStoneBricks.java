@@ -5,10 +5,10 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 
-public class MoonBlock extends Block {
-    public MoonBlock() {
+public class MoonStoneBricks extends Block {
+    public MoonStoneBricks() {
         super(Properties.create(Material.ROCK)
-                .hardnessAndResistance(2.0f, 6)
+                .hardnessAndResistance(4.0f, 15)
                 .sound(SoundType.STONE)
                 .harvestLevel(2)
                 .harvestTool(ToolType.PICKAXE)

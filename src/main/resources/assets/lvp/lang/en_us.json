@@ -1,9 +1,12 @@
 {
-"itemGroup.itemTab": "Lovecraft Materials",
+  "itemGroup.itemTab": "Lovecraft Materials",
   "itemGroup.blockTab": "Lovecraft Blocks",
   "item.lvp.haunted_ingot": "Haunted Ingot",
   "block.lvp.humming_stone": "Humming Stone",
   "block.lvp.moon_block": "Moon Surface Block",
-  "block.lvp.moon_holes_block": "Moon Stone",
+  "block.lvp.moonstone": "Moonstone",
+  "block.lvp.smooth_moonstone": "Smooth Moonstone",
+  "block.lvp.moonstone_bricks": "Moonstone Bricks",
+  "block.lvp.moonstone_brick_slab": "Moonstone Brick Slab",
   "block.lvp.dreaming_souls": "Dreaming Souls"
 }
