@@ -9,7 +9,7 @@ public class MoonBlock extends Block {
     public MoonBlock() {
         super(Properties.create(Material.ROCK)
                 .hardnessAndResistance(2.0f, 10)
-                .sound(SoundType.NETHER_WART)
+                .sound(SoundType.STONE)
                 .harvestLevel(2)
                 .harvestTool(ToolType.PICKAXE)
         );
