@@ -1,0 +1,15 @@
+{
+  "has_raids": true,
+  "logical_height": 256,
+  "infiniburn": "minecraft:inifiniburn_end",
+  "ambient_light": 0,
+  "piglin_safe": false,
+  "bed_works": false,
+  "respawn_anchor_works": true,
+  "ultrawarm": false,
+  "natural": false,
+  "shrunk": true,
+  "fixed_time": 6000,
+  "has_skylight": false,
+  "has_ceiling": false
+}

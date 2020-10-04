@@ -3,7 +3,6 @@ package com.hauntedchest.LovecraftPlus.Inits;
 import com.hauntedchest.LovecraftPlus.Blocks.*;
 import com.hauntedchest.LovecraftPlus.LovecraftPlusMod;
 import net.minecraft.block.Block;
-import net.minecraft.block.SlabBlock;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -24,7 +23,5 @@ public class BlockHandeler {
     public static final RegistryObject<Block> MOONSTONE_BRICKS = BLOCKS.register("moonstone_bricks", MoonStoneBricks::new);
     public static final RegistryObject<Block> MOONSTONE = BLOCKS.register("moonstone", MoonHolesBlock::new);
     public static final RegistryObject<Block> SMOOTH_MOONSTONE = BLOCKS.register("smooth_moonstone", MoonStoneBricks::new);
-    public static final RegistryObject<Block> SMOOTH_MOONSTONE_SLABS = BLOCKS.register("smooth_moonstone_slabs",
-            () -> new SlabBlock(Block.Properties.from(BlockHandeler.SMOOTH_MOONSTONE.get())));
 
 }
