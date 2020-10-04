@@ -2,8 +2,6 @@ package com.hauntedchest.LovecraftPlus.Inits;
 
 import com.hauntedchest.LovecraftPlus.Blocks.DreamingSouls;
 import com.hauntedchest.LovecraftPlus.Blocks.HummingStone;
-import com.hauntedchest.LovecraftPlus.Blocks.MoonInsides;
-import com.hauntedchest.LovecraftPlus.Blocks.MoonRocks;
 import com.hauntedchest.LovecraftPlus.LovecraftPlusMod;
 import net.minecraft.block.Block;
 import net.minecraftforge.fml.RegistryObject;
@@ -21,6 +19,5 @@ public class BlockHandeler {
     //Blocks
     public static final RegistryObject<Block> HUMMING_STONE = BLOCKS.register("humming_stone", HummingStone::new);
     public static final RegistryObject<Block> DREAMING_SOULS = BLOCKS.register("dreaming_souls", DreamingSouls::new);
-    public static final RegistryObject<Block> MOON_ROCKS = BLOCKS.register("moon_rocks", MoonRocks::new);
-    public static final RegistryObject<Block> MOON_INSIDES = BLOCKS.register("moon_insides", MoonInsides::new);
+
 }

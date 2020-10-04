@@ -1,5 +1,6 @@
 package com.hauntedchest.LovecraftPlus;
 
+import com.hauntedchest.LovecraftPlus.Inits.BiomeHandeler;
 import com.hauntedchest.LovecraftPlus.Inits.BlockHandeler;
 import com.hauntedchest.LovecraftPlus.Inits.ItemHandeler;
 import net.minecraft.item.ItemGroup;
