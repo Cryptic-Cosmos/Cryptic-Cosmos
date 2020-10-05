@@ -2,9 +2,11 @@ package com.hauntedchest.LovecraftPlus;
 
 import com.hauntedchest.LovecraftPlus.Inits.BlockHandeler;
 import com.hauntedchest.LovecraftPlus.Inits.ItemHandeler;
+import com.hauntedchest.LovecraftPlus.Inits.ModBiomes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -21,13 +23,15 @@ public class LovecraftPlusMod
     public static final String MOD_ID = "lvp";
 
     public LovecraftPlusMod() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        modEventBus.addListener(this::setup);
+        modEventBus.addListener(this::doClientStuff);
 
         ItemHandeler.init();
         BlockHandeler.init();
 
         MinecraftForge.EVENT_BUS.register(this);
+        ModBiomes.BIOMES.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
