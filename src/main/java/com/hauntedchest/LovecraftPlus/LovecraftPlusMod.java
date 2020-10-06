@@ -3,11 +3,11 @@ package com.hauntedchest.LovecraftPlus;
 import com.hauntedchest.LovecraftPlus.Inits.BlockHandeler;
 import com.hauntedchest.LovecraftPlus.Inits.ItemHandeler;
 import com.hauntedchest.LovecraftPlus.Inits.ModBiomes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -20,6 +20,7 @@ import org.apache.logging.log4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("lovecraftplus")
+@Mod.EventBusSubscriber(modid = LovecraftPlusMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class LovecraftPlusMod
 {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -42,8 +43,9 @@ public class LovecraftPlusMod
     }
 
     @SubscribeEvent
-    public static void clientSetup(FMLClientSetupEvent event) {
-        RenderTypeLookup.setRenderLayer(BlockHandeler.THORN_LEAVES.get(), RenderType.getCutoutMipped());
+    public static void onRegisterBiomes(final RegistryEvent.Register<Biome> event) {
+        ModBiomes.registerBiomes();
+        LOGGER.debug("registered biomes!");
 
     }
 

@@ -31,9 +31,14 @@ public class ItemHandeler {
     public static final RegistryObject<Item> SMOOTH_MOONSTONE_ITEM = ITEMS.register("smooth_moonstone", () -> new BlockItemBase(BlockHandeler.SMOOTH_MOONSTONE.get()));
     public static final RegistryObject<Item> MOONSTONE_ITEM = ITEMS.register("moonstone", () -> new BlockItemBase(BlockHandeler.MOONSTONE.get()));
 
-    //Tree Block Items
+    //Wood Block Items
+
+    //Thorn Wood Items
     public static final RegistryObject<Item> THORN_LOG_ITEM = ITEMS.register("thorn_log", () -> new BlockItemBase(BlockHandeler.THORN_LOG.get()));
     public static final RegistryObject<Item> THORN_PLANKS_ITEM = ITEMS.register("thorn_planks", () -> new BlockItemBase(BlockHandeler.THORN_PLANKS.get()));
     public static final RegistryObject<Item> THORN_SAPLING_ITEM = ITEMS.register("thorn_sapling", () -> new BlockItemBase(BlockHandeler.THORN_SAPLING.get()));
     public static final RegistryObject<Item> THORN_LEAVES_ITEM = ITEMS.register("thorn_leaves", () -> new BlockItemBase(BlockHandeler.THORN_LEAVES.get()));
+    public static final RegistryObject<Item> THORN_DOOR_ITEM = ITEMS.register("thorn_door", () -> new BlockItemBase(BlockHandeler.THORN_DOOR.get()));
+
+
 }

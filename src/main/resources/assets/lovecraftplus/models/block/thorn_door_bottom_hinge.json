@@ -1,0 +1,8 @@
+
+{
+  "parent": "block/door_bottom_rh",
+  "textures": {
+    "bottom": "lovecraftplus:blocks/thorn_door_bottom",
+    "top": "lovecraftplus:blocks/thorn_door_top"
+  }
+}

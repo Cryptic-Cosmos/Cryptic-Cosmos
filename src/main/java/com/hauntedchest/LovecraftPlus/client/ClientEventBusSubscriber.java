@@ -15,6 +15,8 @@ public class ClientEventBusSubscriber {
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event) {
         RenderTypeLookup.setRenderLayer(BlockHandeler.THORN_LEAVES.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockHandeler.THORN_SAPLING.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockHandeler.THORN_DOOR.get(), RenderType.getCutout());
 
     }
 }

@@ -20,10 +20,11 @@ public class ModBiomes {
 
     public static void registerBiomes()
     {
-        registerBiome(THORN_JUNGLE.get(), Type.PLAINS, Type.DRY, Type.HOT, Type.DEAD, Type.OVERWORLD, Type.SPOOKY);
+        registerBiome(THORN_JUNGLE.get(), Type.JUNGLE, Type.LUSH, Type.OVERWORLD, Type.SPOOKY);
     }
     private static void registerBiome(Biome biome, Type... types)
     {
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(biome, 100));
         BiomeDictionary.addTypes(biome, types);
         BiomeManager.addSpawnBiome(biome);
     }

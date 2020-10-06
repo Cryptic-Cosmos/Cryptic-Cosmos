@@ -26,11 +26,15 @@ public class BlockHandeler {
     public static final RegistryObject<Block> MOONSTONE = BLOCKS.register("moonstone", MoonHolesBlock::new);
     public static final RegistryObject<Block> SMOOTH_MOONSTONE = BLOCKS.register("smooth_moonstone", MoonStoneBricks::new);
 
-    //Tree Blocks
+    //Wood Blocks
+
+    //Thorn Wood
     public static final RegistryObject<Block> THORN_LOG = BLOCKS.register("thorn_log",() -> new LogBlock(MaterialColor.WOOD,Block.Properties.from(Blocks.JUNGLE_LOG)));
     public static final RegistryObject<Block> THORN_PLANKS = BLOCKS.register("thorn_planks",() -> new Block(Block.Properties.from(Blocks.JUNGLE_PLANKS)));
     public static final RegistryObject<Block> THORN_SAPLING = BLOCKS.register("thorn_sapling",
             () -> new ThornSapling(ThornTree::new, Block.Properties.from(Blocks.JUNGLE_SAPLING)));
     public static final RegistryObject<Block> THORN_LEAVES = BLOCKS.register("thorn_leaves",  ModLeaves::new);
+    public static final RegistryObject<Block> THORN_DOOR = BLOCKS.register("thorn_door", () -> new ThornDoor(Block.Properties.from(Blocks.JUNGLE_DOOR)));
+
 
 }
