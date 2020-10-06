@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "lovecraftplus:thorn_logs"
+    }
+  ],
+  "result": {
+    "item": "lovecraftplus:thorn_planks",
+    "count": 4
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "lvp:smooth_moonstone"
-  },
-  "result": "lvp:moonstone_bricks",
-  "count": 1
-}

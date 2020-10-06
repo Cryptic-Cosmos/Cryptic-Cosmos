@@ -20,6 +20,7 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 public class ThornSapling extends BushBlock implements IGrowable {
+
     public static final IntegerProperty STAGE = BlockStateProperties.STAGE_0_1;
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
     private final Supplier<Tree> tree;
@@ -48,11 +49,11 @@ public class ThornSapling extends BushBlock implements IGrowable {
 
     public void grow(ServerWorld serverWorld, BlockPos pos, BlockState state, Random rand) {
         if (state.get(STAGE) == 0) {
-            serverWorld.setBlockState(pos, state.func_235896_a_(STAGE), 4);
+            serverWorld.setBlockState(pos, state.cycle(STAGE), 4);
         } else {
             if (!ForgeEventFactory.saplingGrowTree(serverWorld, rand, pos))
                 return;
-            this.tree.get().func_230339_a_(serverWorld, serverWorld.getChunkProvider().getChunkGenerator(), pos, state,
+            this.tree.get().place(serverWorld, serverWorld.getChunkProvider().getChunkGenerator(), pos, state,
                     rand);
         }
     }

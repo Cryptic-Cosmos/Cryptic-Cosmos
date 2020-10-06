@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "lvp:moonstone"
-  },
-  "result": "lvp:smooth_moonstone",
-  "experience": 0.5,
-  "cookingtime": 200
-}

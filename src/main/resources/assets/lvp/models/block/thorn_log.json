@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "lvp:block/thorn_log_top",
-    "side": "lvp:block/thorn_log"
-  }
-}
