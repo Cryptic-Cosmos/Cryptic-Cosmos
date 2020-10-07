@@ -1,3 +1,4 @@
+This is th Lovecraft Plus mod, please follow the steps below if you are a modder.
 -------------------------------------------
 Source installation information for modders
 -------------------------------------------
