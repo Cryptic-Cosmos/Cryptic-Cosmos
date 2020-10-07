@@ -4,6 +4,7 @@ import com.hauntedchest.LovecraftPlus.Blocks.*;
 import com.hauntedchest.LovecraftPlus.LovecraftPlusMod;
 import com.hauntedchest.LovecraftPlus.world.feature.ThornTree;
 import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -33,7 +34,7 @@ public class BlockHandeler {
     public static final RegistryObject<Block> THORN_PLANKS = BLOCKS.register("thorn_planks",() -> new Block(Block.Properties.from(Blocks.JUNGLE_PLANKS)));
     public static final RegistryObject<Block> THORN_SAPLING = BLOCKS.register("thorn_sapling",
             () -> new ThornSapling(ThornTree::new, Block.Properties.from(Blocks.JUNGLE_SAPLING)));
-    public static final RegistryObject<Block> THORN_LEAVES = BLOCKS.register("thorn_leaves",  ModLeaves::new);
+    public static final RegistryObject<Block> THORN_LEAVES = BLOCKS.register("thorn_leaves",() -> new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).notSolid()));
     public static final RegistryObject<Block> THORN_DOOR = BLOCKS.register("thorn_door", () -> new ThornDoor(Block.Properties.from(Blocks.JUNGLE_DOOR)));
 
 
