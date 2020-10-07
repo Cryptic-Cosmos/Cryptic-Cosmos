@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "lovecraftplus:blocks/molten_lava_sponge"
+  }
+}

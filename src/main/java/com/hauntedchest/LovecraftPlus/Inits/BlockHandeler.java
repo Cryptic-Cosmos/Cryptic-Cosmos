@@ -37,5 +37,9 @@ public class BlockHandeler {
     public static final RegistryObject<Block> THORN_LEAVES = BLOCKS.register("thorn_leaves",() -> new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).notSolid()));
     public static final RegistryObject<Block> THORN_DOOR = BLOCKS.register("thorn_door", () -> new ThornDoor(Block.Properties.from(Blocks.JUNGLE_DOOR)));
 
+    //Other Blocks
+    public static final RegistryObject<Block> LAVA_SPONGE = BLOCKS.register("lava_sponge",() -> new LavaSponge(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.6F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> MOLTEN_LAVA_SPONGE = BLOCKS.register("molten_lava_sponge", () -> new MoltenLavaSponge(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.6F).sound(SoundType.STONE)));
+
 
 }
