@@ -43,6 +43,8 @@ public class ItemHandeler {
     public static final RegistryObject<Item> LAVA_SPONGE_ITEM = ITEMS.register("lava_sponge", () -> new BlockItemBase(BlockHandeler.LAVA_SPONGE.get()));
     public static final RegistryObject<Item> MOLTEN_LAVA_SPONGE_ITEM = ITEMS.register("molten_lava_sponge", () -> new BlockItemBase(BlockHandeler.MOLTEN_LAVA_SPONGE.get()));
 
+    //Sea Lanterns
+
 
 
 
