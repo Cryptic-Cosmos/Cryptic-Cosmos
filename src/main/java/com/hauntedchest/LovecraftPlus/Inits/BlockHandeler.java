@@ -26,6 +26,7 @@ public class BlockHandeler {
     public static final RegistryObject<Block> MOONSTONE_BRICKS = BLOCKS.register("moonstone_bricks", MoonStoneBricks::new);
     public static final RegistryObject<Block> MOONSTONE = BLOCKS.register("moonstone", MoonHolesBlock::new);
     public static final RegistryObject<Block> SMOOTH_MOONSTONE = BLOCKS.register("smooth_moonstone", MoonStoneBricks::new);
+    public static final RegistryObject<Block> ADMANTITE_ORE = BLOCKS.register("admantite_ore", AdmantiteOre::new);
 
     //Wood Blocks
 

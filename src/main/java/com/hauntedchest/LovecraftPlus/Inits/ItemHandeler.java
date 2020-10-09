@@ -21,6 +21,7 @@ public class ItemHandeler {
     //Items
     public static final RegistryObject<Item> HAUNTED_INGOT = ITEMS.register("haunted_ingot", ItemBase::new);
     public static final RegistryObject<Item> NECRONOMICON = ITEMS.register("necronomicon", ItemBase::new);
+    public static final RegistryObject<Item> ADMANTITE_INGOT = ITEMS.register("admantite_ingot", ItemBase::new);
 
     //Dimension Block Items
     public static final RegistryObject<Item> HUMMING_STONE_ITEM = ITEMS.register("humming_stone", () -> new BlockItemBase(BlockHandeler.HUMMING_STONE.get()));
@@ -31,6 +32,7 @@ public class ItemHandeler {
     public static final RegistryObject<Item> MOONSTONE_BRICKS_ITEM = ITEMS.register("moonstone_bricks", () -> new BlockItemBase(BlockHandeler.MOONSTONE_BRICKS.get()));
     public static final RegistryObject<Item> SMOOTH_MOONSTONE_ITEM = ITEMS.register("smooth_moonstone", () -> new BlockItemBase(BlockHandeler.SMOOTH_MOONSTONE.get()));
     public static final RegistryObject<Item> MOONSTONE_ITEM = ITEMS.register("moonstone", () -> new BlockItemBase(BlockHandeler.MOONSTONE.get()));
+    public static final RegistryObject<Item> ADMANTITE_ORE_ITEM = ITEMS.register("admantite_ore", () -> new BlockItemBase(BlockHandeler.ADMANTITE_ORE.get()));
 
     //Wood Block Items
     public static final RegistryObject<Item> THORN_LOG_ITEM = ITEMS.register("thorn_log", () -> new BlockItemBase(BlockHandeler.THORN_LOG.get()));

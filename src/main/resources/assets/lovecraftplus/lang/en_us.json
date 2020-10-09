@@ -16,6 +16,8 @@
   "biome.lovecraftplus.thorn_jungle": "Thorn Jungle",
   "block.lovecraftplus.thorn_door": "Thorn Door",
   "item.lovecraftplus.necronomicon": "Necronomicon",
-  "block.lovecraftplus.lava_sponge": "Lava Spunge",
-  "block.lovecraftplus.molten_lava_sponge": "Molten Lava Spunge"
+  "item.lovecraftplus.admantite_ingot": "Admantite Ingot",
+  "block.lovecraftplus.lava_sponge": "Lava Sponge",
+  "block.lovecraftplus.molten_lava_sponge": "Molten Lava Sponge",
+  "block.lovecraftplus.admantite_ore": "Admantite Ore"
 }

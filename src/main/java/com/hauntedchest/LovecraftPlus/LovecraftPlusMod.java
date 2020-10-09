@@ -1,10 +1,12 @@
 package com.hauntedchest.LovecraftPlus;
 
 import com.hauntedchest.LovecraftPlus.Inits.BlockHandeler;
+import com.hauntedchest.LovecraftPlus.Inits.DimensionHandeler;
 import com.hauntedchest.LovecraftPlus.Inits.ItemHandeler;
 import com.hauntedchest.LovecraftPlus.Inits.ModBiomes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -23,8 +25,9 @@ import org.apache.logging.log4j.Logger;
 @Mod.EventBusSubscriber(modid = LovecraftPlusMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class LovecraftPlusMod
 {
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "lovecraftplus";
+    public static final ResourceLocation MOON_DIM_TYPE = new ResourceLocation(MOD_ID, "moon");
 
     public LovecraftPlusMod() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -36,6 +39,7 @@ public class LovecraftPlusMod
 
         MinecraftForge.EVENT_BUS.register(this);
         ModBiomes.BIOMES.register(modEventBus);
+        DimensionHandeler.MOD_DIMENSIONS.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -48,6 +52,7 @@ public class LovecraftPlusMod
         LOGGER.debug("registered biomes!");
 
     }
+
 
     private void doClientStuff(final FMLClientSetupEvent event) {
 
