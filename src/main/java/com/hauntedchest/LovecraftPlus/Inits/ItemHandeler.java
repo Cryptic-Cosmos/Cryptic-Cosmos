@@ -30,6 +30,7 @@ public class ItemHandeler {
     //Moon Block Items
     public static final RegistryObject<Item> MOON_BLOCK_ITEM = ITEMS.register("moon_block", () -> new BlockItemBase(BlockHandeler.MOON_BLOCK.get()));
     public static final RegistryObject<Item> MOONSTONE_BRICKS_ITEM = ITEMS.register("moonstone_bricks", () -> new BlockItemBase(BlockHandeler.MOONSTONE_BRICKS.get()));
+    public static final RegistryObject<Item> MOONSTONE_BRICK_SLABS_ITEM = ITEMS.register("moonstone_brick_slabs", () -> new BlockItemBase(BlockHandeler.MOONSTONE_BRICK_SLABS.get()));
     public static final RegistryObject<Item> SMOOTH_MOONSTONE_ITEM = ITEMS.register("smooth_moonstone", () -> new BlockItemBase(BlockHandeler.SMOOTH_MOONSTONE.get()));
     public static final RegistryObject<Item> MOONSTONE_ITEM = ITEMS.register("moonstone", () -> new BlockItemBase(BlockHandeler.MOONSTONE.get()));
     public static final RegistryObject<Item> ADMANTITE_ORE_ITEM = ITEMS.register("admantite_ore", () -> new BlockItemBase(BlockHandeler.ADMANTITE_ORE.get()));
