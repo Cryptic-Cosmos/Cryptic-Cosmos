@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/leaves",
   "textures": {
-    "all": "lovecraftplus:blocks/thorn_leaves"
+    "all": "lovecraftplus:block/thorn_leaves"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "lovecraftplus:blocks/smooth_moonstone"
+    "all": "lovecraftplus:block/smooth_moonstone"
   }
 }

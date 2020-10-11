@@ -1,6 +1,7 @@
 {
   "replace" : false,
   "values":  [
-    "lovecraftplus:thorn_log"
+    "lovecraftplus:thorn_log",
+    "lovecraftplus:moon_log"
   ]
 }

@@ -40,6 +40,10 @@ public class ItemHandeler {
     public static final RegistryObject<Item> THORN_SAPLING_ITEM = ITEMS.register("thorn_sapling", () -> new BlockItemBase(BlockHandeler.THORN_SAPLING.get()));
     public static final RegistryObject<Item> THORN_LEAVES_ITEM = ITEMS.register("thorn_leaves", () -> new BlockItemBase(BlockHandeler.THORN_LEAVES.get()));
     public static final RegistryObject<Item> THORN_DOOR_ITEM = ITEMS.register("thorn_door", () -> new BlockItemBase(BlockHandeler.THORN_DOOR.get()));
+    public static final RegistryObject<Item> MOON_LOG_ITEM = ITEMS.register("moon_log", () -> new BlockItemBase(BlockHandeler.MOON_LOG.get()));
+    public static final RegistryObject<Item> MOON_PLANKS_ITEM = ITEMS.register("moon_planks", () -> new BlockItemBase(BlockHandeler.MOON_PLANKS.get()));
+    public static final RegistryObject<Item> MOON_SAPLING_ITEM = ITEMS.register("moon_sapling", () -> new BlockItemBase(BlockHandeler.MOON_SAPLING.get()));
+    public static final RegistryObject<Item> MOON_LEAVES_ITEM = ITEMS.register("moon_leaves", () -> new BlockItemBase(BlockHandeler.MOON_LEAVES.get()));
 
     //Other Block Items
     public static final RegistryObject<Item> LAVA_SPONGE_ITEM = ITEMS.register("lava_sponge", () -> new BlockItemBase(BlockHandeler.LAVA_SPONGE.get()));

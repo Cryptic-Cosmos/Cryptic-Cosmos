@@ -4,6 +4,10 @@ import com.hauntedchest.LovecraftPlus.Inits.BlockHandeler;
 import net.minecraft.world.gen.GenerationSettings;
 
 public class MoonGenSettings extends GenerationSettings {
+    private final int field_202212_j = 4;
+    private final int field_202213_k = 4;
+    private final int field_202214_l = -1;
+    private final int field_202215_m = 63;
 
     public MoonGenSettings(){
         this.defaultBlock = BlockHandeler.MOONSTONE.get().getDefaultState();

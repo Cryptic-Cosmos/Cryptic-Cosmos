@@ -16,7 +16,7 @@ public class MoonMountainsBiome extends Biome {
     public MoonMountainsBiome(Builder biomeBuilder) {
         super((new Builder()).surfaceBuilder(SurfaceBuilder.MOUNTAIN, MPEBBLES_MSTONE_MSTONE_CONFIG).precipitation(RainType.RAIN).category(Category.EXTREME_HILLS).depth(0.125F).scale(0.05F).temperature(0F).downfall(0.4F).waterColor(16777205).waterFogColor(16777205).parent((String)null));
         addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.COW, 8, 4, 4));
+        addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.ENDERMAN, 10, 1, 4));
         DefaultBiomeFeatures.addCarvers(this);
-        DefaultBiomeFeatures.addLakes(this);
     }
 }

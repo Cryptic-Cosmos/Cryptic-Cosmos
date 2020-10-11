@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "lovecraftplus:blocks/admantite_ore"
+    "all": "lovecraftplus:block/admantite_ore"
   }
 }
