@@ -25,14 +25,17 @@ public class BlockHandeler {
     //Moon Blocks
     public static final RegistryObject<Block> MOON_BLOCK = BLOCKS.register("moon_block", MoonBlock::new);
     public static final RegistryObject<Block> MOONSTONE_BRICKS = BLOCKS.register("moonstone_bricks", MoonStoneBricks::new);
-    public static final RegistryObject<Block> MOONSTONE_BRICK_SLABS = BLOCKS.register("moonstone_brick_slabs", () -> new SlabBlock(Block.Properties.from(Blocks.BRICK_SLAB)));
+    public static final RegistryObject<Block> MOONSTONE_BRICK_SLAB = BLOCKS.register("moonstone_brick_slab", () -> new SlabBlock(Block.Properties.from(Blocks.BRICK_SLAB)));
     public static final RegistryObject<Block> MOONSTONE = BLOCKS.register("moonstone", MoonHolesBlock::new);
+    public static final RegistryObject<Block> MOONSTONE_SLAB = BLOCKS.register("moonstone_slab", () -> new SlabBlock(Block.Properties.from(Blocks.STONE_SLAB)));
     public static final RegistryObject<Block> SMOOTH_MOONSTONE = BLOCKS.register("smooth_moonstone", MoonStoneBricks::new);
+    public static final RegistryObject<Block> SMOOTH_MOONSTONE_SLAB = BLOCKS.register("smooth_moonstone_slab", () -> new SlabBlock(Block.Properties.from(Blocks.SMOOTH_STONE_SLAB)));
     public static final RegistryObject<Block> ADMANTITE_ORE = BLOCKS.register("admantite_ore", AdmantiteOre::new);
 
     //Thorn Wood
     public static final RegistryObject<Block> THORN_LOG = BLOCKS.register("thorn_log",() -> new LogBlock(MaterialColor.WOOD,Block.Properties.from(Blocks.JUNGLE_LOG)));
     public static final RegistryObject<Block> THORN_PLANKS = BLOCKS.register("thorn_planks",() -> new Block(Block.Properties.from(Blocks.JUNGLE_PLANKS)));
+    public static final RegistryObject<Block> THORN_SLAB = BLOCKS.register("thorn_slab", () -> new SlabBlock(Block.Properties.from(Blocks.JUNGLE_SLAB)));
     public static final RegistryObject<Block> THORN_SAPLING = BLOCKS.register("thorn_sapling",
             () -> new ThornSapling(ThornTree::new, Block.Properties.from(Blocks.JUNGLE_SAPLING)));
     public static final RegistryObject<Block> THORN_LEAVES = BLOCKS.register("thorn_leaves",() -> new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).notSolid()));
