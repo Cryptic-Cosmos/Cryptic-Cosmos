@@ -29,7 +29,7 @@ logoFile="examplemod.png" #optional
 # A text field displayed in the mod UI
 credits="This mod goes to my discord community and the people who helped in the project" #optional
 # A text field displayed in the mod UI
-authors="Me(Haunted Chest), and Adri2" #optional
+authors="Haunted Chest, Adri2 & PutoPug" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
 This is a long form description of the mod. You can write whatever you want here
