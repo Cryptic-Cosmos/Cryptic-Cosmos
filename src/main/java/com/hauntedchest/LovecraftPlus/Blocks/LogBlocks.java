@@ -7,7 +7,7 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.common.ToolType;
 
 public class LogBlocks extends LogBlock {
-    public LogBlocks() {
+    public LogBlocks(Properties properties) {
         super(MaterialColor.WOOD, Properties.create(Material.WOOD)
                         .hardnessAndResistance(1.0F, 1.0F)
                         .sound(SoundType.WOOD)
