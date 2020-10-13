@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "end": "lovecraftplus:blocks/thorn_log_top",
-    "side": "lovecraftplus:blocks/thorn_log"
+    "end": "lovecraftplus:block/thorn_log_top",
+    "side": "lovecraftplus:block/thorn_log"
   }
 }

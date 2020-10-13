@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "lovecraftplus:blocks/dreaming_souls"
+    "all": "lovecraftplus:block/dreaming_souls"
   }
 }

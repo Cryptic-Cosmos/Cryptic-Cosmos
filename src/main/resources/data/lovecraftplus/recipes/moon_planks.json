@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "lovecraftplus:moon_log"
+    }
+  ],
+  "result": {
+    "item": "lovecraftplus:moon_planks",
+    "count": 4
+  }
+}

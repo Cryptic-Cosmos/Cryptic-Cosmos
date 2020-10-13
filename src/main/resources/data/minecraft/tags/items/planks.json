@@ -1,6 +1,7 @@
 {
   "replace" : false,
   "values":  [
-    "lovecraftplus:thorn_planks"
+    "lovecraftplus:thorn_planks",
+    "lovecraftplus:moon_planks"
   ]
 }

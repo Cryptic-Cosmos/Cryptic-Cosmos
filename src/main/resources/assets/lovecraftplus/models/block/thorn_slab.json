@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "lovecraftplus:block/thorn_planks",
+    "top": "lovecraftplus:block/thorn_planks",
+    "side": "lovecraftplus:block/thorn_planks"
+  }
+}

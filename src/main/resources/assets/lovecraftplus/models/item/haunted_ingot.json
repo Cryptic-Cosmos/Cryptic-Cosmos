@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "lovecraftplus:items/haunted_ingot"
+    "layer0": "lovecraftplus:item/haunted_ingot"
   }
 }

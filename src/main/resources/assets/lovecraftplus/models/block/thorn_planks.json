@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "lovecraftplus:blocks/thorn_planks"
+    "all": "lovecraftplus:block/thorn_planks"
   }
 }

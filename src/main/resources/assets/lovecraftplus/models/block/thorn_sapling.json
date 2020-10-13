@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "lovecraftplus:blocks/thorn_sapling"
+    "cross": "lovecraftplus:block/thorn_sapling"
   }
 }

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y":    { "model": "lovecraftplus:block/moon_log" },
+    "axis=z":     { "model": "lovecraftplus:block/moon_log", "x": 90 },
+    "axis=x":     { "model": "lovecraftplus:block/moon_log", "x": 90, "y": 90 }
+  }
+}

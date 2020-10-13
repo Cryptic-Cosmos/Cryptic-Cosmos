@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "lovecraftplus:blocks/humming_stone"
+    "all": "lovecraftplus:block/humming_stone"
   }
 }
