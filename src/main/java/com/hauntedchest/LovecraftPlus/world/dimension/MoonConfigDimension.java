@@ -23,7 +23,7 @@ public class MoonConfigDimension extends Dimension {
 
     @Override
     public ChunkGenerator<?> createChunkGenerator() {
-        return new MoonChunkGenerator(world, new MoonBiomeProvider(), new MoonGenSettings());
+        return new MoonChunkGenerator(world, new MoonBiomeProvider(new MoonBiomeProviderSettings(world.getWorldInfo())), new MoonGenSettings());
     }
 
     @Nullable

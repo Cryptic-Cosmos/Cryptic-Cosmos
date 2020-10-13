@@ -1,9 +1,6 @@
 package com.hauntedchest.LovecraftPlus;
 
-import com.hauntedchest.LovecraftPlus.Inits.BlockHandeler;
-import com.hauntedchest.LovecraftPlus.Inits.DimensionHandeler;
-import com.hauntedchest.LovecraftPlus.Inits.ItemHandeler;
-import com.hauntedchest.LovecraftPlus.Inits.ModBiomes;
+import com.hauntedchest.LovecraftPlus.Inits.*;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -39,6 +36,7 @@ public class LovecraftPlusMod
 
         MinecraftForge.EVENT_BUS.register(this);
         ModBiomes.BIOMES.register(modEventBus);
+        MoonModBiomes.BIOMES.register(modEventBus);
         DimensionHandeler.MOD_DIMENSIONS.register(modEventBus);
     }
 
