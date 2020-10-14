@@ -16,17 +16,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
 public class LogBlocks extends LogBlock {
-    public LogBlocks(Properties builder) {
-
-
+    public LogBlocks(Properties properties) {
         super(MaterialColor.WOOD, Properties.create(Material.WOOD)
-                        .hardnessAndResistance(1.0F, 1.0F)
-                        .sound(SoundType.WOOD)
-                        .harvestLevel(0)
-                        .harvestTool(ToolType.AXE)
-        );
-
-
+                .hardnessAndResistance(1.0F, 1.0F)
+                .sound(SoundType.WOOD)
+                .harvestLevel(0)
+                .harvestTool(ToolType.AXE));
     }
     protected static final VoxelShape collision_shape = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 18.0D, 17.0D, 18.0D);
     @Override
