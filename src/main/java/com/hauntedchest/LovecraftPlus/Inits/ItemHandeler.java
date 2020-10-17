@@ -21,6 +21,8 @@ public class ItemHandeler {
     //Items
     public static final RegistryObject<Item> HAUNTED_INGOT = ITEMS.register("haunted_ingot", ItemBase::new);
     public static final RegistryObject<Item> NECRONOMICON = ITEMS.register("necronomicon", ItemBase::new);
+    public static final RegistryObject<Item> PAGE_NECRO = ITEMS.register("page_necro", ItemBase::new);
+    public static final RegistryObject<Item> BUNDLE_NECRO = ITEMS.register("bundle_necro", ItemBase::new);
     public static final RegistryObject<Item> ADMANTITE_INGOT = ITEMS.register("admantite_ingot", ItemBase::new);
 
     //Dimension Block Items
