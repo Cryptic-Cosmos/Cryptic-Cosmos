@@ -23,7 +23,7 @@ public class LogBlocks extends LogBlock {
                 .harvestLevel(0)
                 .harvestTool(ToolType.AXE));
     }
-    protected static final VoxelShape collision_shape = Block.makeCuboidShape(1D, 0D, 1D, 17D, 18D, 17D);
+    protected static final VoxelShape collision_shape = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 18.0D, 17.0D, 18.0D);
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
         entityIn.attackEntityFrom(DamageSource.CACTUS, 2.0F);
