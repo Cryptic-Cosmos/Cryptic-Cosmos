@@ -7,6 +7,7 @@ import com.hauntedchest.LovecraftPlus.world.feature.ThornTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -33,8 +34,8 @@ public class BlockHandeler {
     public static final RegistryObject<Block> ADMANTITE_ORE = BLOCKS.register("admantite_ore", AdmantiteOre::new);
 
     //Thorn Wood
-    public static final RegistryObject<Block> THORN_LOG = BLOCKS.register("thorn_log",() -> new LogBlock(MaterialColor.WOOD,Block.Properties.from(Blocks.JUNGLE_LOG)));
-    public static final RegistryObject<Block> THORN_PLANKS = BLOCKS.register("thorn_planks",() -> new Block(Block.Properties.from(Blocks.JUNGLE_PLANKS)));
+    public static final RegistryObject<Block> THORN_LOG = BLOCKS.register("thorn_log",() -> new LogBlocks(Block.Properties.create(Material.WOOD).hardnessAndResistance(1.0F, 1.0F).sound(SoundType.WOOD).harvestLevel(0).harvestTool(ToolType.AXE)));
+    public static final RegistryObject<Block> THORN_PLANKS = BLOCKS.register("thorn_planks",() -> new LogBlocks(Block.Properties.create(Material.WOOD).hardnessAndResistance(1.0F, 1.0F).sound(SoundType.WOOD).harvestLevel(0).harvestTool(ToolType.AXE)));
     public static final RegistryObject<Block> THORN_SLAB = BLOCKS.register("thorn_slab", () -> new SlabBlock(Block.Properties.from(Blocks.JUNGLE_SLAB)));
     public static final RegistryObject<Block> THORN_SAPLING = BLOCKS.register("thorn_sapling",
             () -> new ThornSapling(ThornTree::new, Block.Properties.from(Blocks.JUNGLE_SAPLING)));

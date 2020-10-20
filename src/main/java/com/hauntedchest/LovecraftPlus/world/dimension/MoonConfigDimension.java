@@ -13,6 +13,8 @@ import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 
@@ -73,23 +75,20 @@ public class MoonConfigDimension extends Dimension {
             }
         }
     }
+    @Nullable
+    @OnlyIn(Dist.CLIENT)
+    public float[] calcSunriseSunsetColors(float celestialAngle, float partialTicks) {
+        return null;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public boolean isSkyColored() {
+        return false;
+    }
 
     @Override
     public float calculateCelestialAngle(long worldTime, float partialTicks) {
-        int j = 6000;
-        float f1 = (j + partialTicks) / 24000.0f - 0.25f;
-        if (f1 < 0.0f) {
-            f1 += 1.0f;
-        }
-
-        if (f1 > 1.0f) {
-            f1 -= 1.0f;
-        }
-
-        float f2 = f1;
-        f1 = 1.0f - (float) ((Math.cos(f1 * Math.PI) + 1.0d) / 2.0d);
-        f1 = f2 + (f1 - f2) / 3.0f;
-        return f1;
+        return 0.0F;
     }
 
     @Override
