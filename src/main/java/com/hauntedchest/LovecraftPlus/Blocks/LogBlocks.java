@@ -23,13 +23,15 @@ public class LogBlocks extends LogBlock {
                 .harvestLevel(0)
                 .harvestTool(ToolType.AXE));
     }
+
     protected static final VoxelShape collision_shape = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 18.0D, 17.0D, 18.0D);
+
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
         entityIn.attackEntityFrom(DamageSource.CACTUS, 2.0F);
     }
+
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return collision_shape;
     }
-
 }
