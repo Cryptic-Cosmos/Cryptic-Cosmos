@@ -38,6 +38,7 @@ public class LovecraftPlusMod
         ModBiomes.BIOMES.register(modEventBus);
         MoonModBiomes.BIOMES.register(modEventBus);
         DimensionHandeler.MOD_DIMENSIONS.register(modEventBus);
+        FeatureInit.FEATURE.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
