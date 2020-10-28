@@ -17,6 +17,12 @@ public class StructureGen {
             if (biome == MoonModBiomes.MOON_PLAINS.get()) {
                 biome.addStructure(FeatureInit.MOON_PILLAR.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
             }
+            if (biome == MoonModBiomes.MOON_MOUNTAINS.get()) {
+                biome.addStructure(FeatureInit.MOON_PILLAR.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+            }
+            if (biome == MoonModBiomes.MOON_FOREST.get()) {
+                biome.addStructure(FeatureInit.MOON_PILLAR.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+            }
 
             biome.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES,
                     FeatureInit.MOON_PILLAR.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG)
