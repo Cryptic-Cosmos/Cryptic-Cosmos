@@ -25,20 +25,28 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-
 public class MoonPillarPieces {
-
     private static final ResourceLocation PART_1 = new ResourceLocation(LovecraftPlusMod.MOD_ID, "moon_pillar");
+    // private static final ResourceLocation PART_2 = new
+    // ResourceLocation(TutorialMod.MOD_ID, "house2");
 
-    private static final Map<ResourceLocation, BlockPos> OFFSET = ImmutableMap.of(PART_1, new BlockPos(0,1,0));
+    private static final Map<ResourceLocation, BlockPos> OFFSET = ImmutableMap.of(PART_1,
+            new BlockPos(0, 1, 0)/* , PART_2, new BlockPos(0, 1, 0) */);
 
-    public static void start(TemplateManager manager, BlockPos pos, Rotation rot, List<StructurePiece> pieces, Random rand){
+    public static void start(TemplateManager manager, BlockPos pos, Rotation rot, List<StructurePiece> pieces,
+                             Random rand) {
         int x = pos.getX();
         int z = pos.getZ();
 
-        BlockPos rotationOffset = new BlockPos(0,0,0).rotate(rot);
-        BlockPos blockPos = rotationOffset.add(x,pos.getY(),z);
-        pieces.add(new MoonPillarPieces.Piece(manager, PART_1, blockPos,rot));
+        BlockPos rotationOffset = new BlockPos(0, 0, 0).rotate(rot);
+        BlockPos blockpos = rotationOffset.add(x, pos.getY(), z);
+        pieces.add(new MoonPillarPieces.Piece(manager, PART_1, blockpos, rot));
+
+        /*
+         * BlockPos rotationOffset = new BlockPos(-10, 0, 0).rotate(rot); BlockPos
+         * blockpos = rotationOffset.add(x, pos.getY(), z); pieces.add(new
+         * HousePieces.Piece(manager, PART_2, blockpos, rot));
+         */
     }
 
     public static class Piece extends TemplateStructurePiece {
@@ -47,7 +55,7 @@ public class MoonPillarPieces {
 
         public Piece(TemplateManager templateManagerIn, ResourceLocation resourceLocationIn, BlockPos pos,
                      Rotation rotationIn) {
-            super(FeatureInit.MOON_PILLAR_PIECE, 0);
+            super(FeatureInit.MPP, 0);
             this.resourceLocation = resourceLocationIn;
             BlockPos blockpos = MoonPillarPieces.OFFSET.get(resourceLocation);
             this.templatePosition = pos.add(blockpos.getX(), blockpos.getY(), blockpos.getZ());
@@ -56,7 +64,7 @@ public class MoonPillarPieces {
         }
 
         public Piece(TemplateManager templateManagerIn, CompoundNBT tagCompound) {
-            super(FeatureInit.MOON_PILLAR_PIECE, tagCompound);
+            super(FeatureInit.MPP, tagCompound);
             this.resourceLocation = new ResourceLocation(tagCompound.getString("Template"));
             this.rotation = Rotation.valueOf(tagCompound.getString("Rot"));
             this.setupPiece(templateManagerIn);
@@ -80,7 +88,7 @@ public class MoonPillarPieces {
         protected void handleDataMarker(String function, BlockPos pos, IWorld worldIn, Random rand,
                                         MutableBoundingBox sbb) {
             if ("chest".equals(function)) {
-                worldIn.setBlockState(pos, Blocks.BLUE_SHULKER_BOX.getDefaultState(), 2);
+                worldIn.setBlockState(pos, Blocks.CHEST.getDefaultState(), 2);
                 TileEntity tileentity = worldIn.getTileEntity(pos);
                 if (tileentity instanceof ChestTileEntity) {
                     // here you can set any loot tables for the chests

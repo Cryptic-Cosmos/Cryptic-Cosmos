@@ -20,12 +20,12 @@ import java.util.Locale;
 public class FeatureInit {
     public static final DeferredRegister<Feature<?>> FEATURE = new DeferredRegister<Feature<?>>(ForgeRegistries.FEATURES, LovecraftPlusMod.MOD_ID);
 
-    public static IStructurePieceType MOON_PILLAR_PIECE = MoonPillarPieces.Piece::new;
+    public static IStructurePieceType MPP = MoonPillarPieces.Piece::new;
 
-    public static final RegistryObject<MoonPillarStructure> MOON_PILLAR = FEATURE.register("moon_pillar", () -> new MoonPillarStructure(NoFeatureConfig::deserialize));
+    public static final RegistryObject<MoonPillarStructure> MOON_PILLAR = FEATURE.register("moon_pillar",() -> new MoonPillarStructure(NoFeatureConfig::deserialize));
 
     @SubscribeEvent
-    public static void registerStructurePieces(RegistryEvent.Register<Feature<?>> event){
-        Registry.register(Registry.STRUCTURE_PIECE, "MOON_PILLAR".toLowerCase(Locale.ROOT), MOON_PILLAR_PIECE);
+    public static void registerStructurePieces(RegistryEvent.Register<Feature<?>> event) {
+        Registry.register(Registry.STRUCTURE_PIECE, "MOON_PILLAR".toLowerCase(Locale.ROOT), MPP);
     }
 }

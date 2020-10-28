@@ -1,6 +1,7 @@
 package com.hauntedchest.LovecraftPlus;
 
 import com.hauntedchest.LovecraftPlus.Inits.*;
+import com.hauntedchest.LovecraftPlus.world.gen.StructureGen;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -9,10 +10,13 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,8 +24,7 @@ import org.apache.logging.log4j.Logger;
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("lovecraftplus")
 @Mod.EventBusSubscriber(modid = LovecraftPlusMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class LovecraftPlusMod
-{
+public class LovecraftPlusMod {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "lovecraftplus";
     public static final ResourceLocation MOON_DIM_TYPE = new ResourceLocation(MOD_ID, "moon");
@@ -30,6 +33,7 @@ public class LovecraftPlusMod
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::doClientStuff);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
         ItemHandeler.init();
         BlockHandeler.init();
@@ -42,6 +46,10 @@ public class LovecraftPlusMod
     }
 
     private void setup(final FMLCommonSetupEvent event) {
+        DeferredWorkQueue.runLater(StructureGen::generateStructures);
+    }
+
+    private void doClientStuff(final FMLClientSetupEvent event) {
 
     }
 
@@ -51,21 +59,31 @@ public class LovecraftPlusMod
         LOGGER.debug("registered biomes!");
 
     }
-
-
-    private void doClientStuff(final FMLClientSetupEvent event) {
-
-    }
-    public static final ItemGroup ITEMTAB = new ItemGroup("itemTab"){
+    public static final ItemGroup ITEMTAB = new ItemGroup("itemTab") {
         @Override
-        public ItemStack createIcon(){
+        public ItemStack createIcon() {
             return new ItemStack(ItemHandeler.HAUNTED_INGOT.get());
         }
     };
-    public static final ItemGroup BLOCKTAB = new ItemGroup("blockTab"){
+    public static final ItemGroup BLOCKTAB = new ItemGroup("blockTab") {
         @Override
-        public ItemStack createIcon(){
+        public ItemStack createIcon() {
             return new ItemStack(BlockHandeler.DREAMING_SOULS.get());
         }
     };
+
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class RegistryEvents {
+
+
+        public static <T extends IForgeRegistryEntry<T>> T register(IForgeRegistry<T> registry, T entry, String registryKey) {
+            entry.setRegistryName(new ResourceLocation(LovecraftPlusMod.MOD_ID, registryKey));
+            registry.register(entry);
+            return entry;
+
+        }
+
+
+
+    }
 }

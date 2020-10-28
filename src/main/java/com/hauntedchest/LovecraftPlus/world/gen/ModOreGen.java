@@ -27,6 +27,9 @@ public class ModOreGen {
 
 
             } else {
+                /*if(biome.getCategory() == MoonModBiomes.MOON_PLAINS.get().getCategory()){
+                    genOre(biome, 3, 8, 2, 22, BlockHandeler.MOONSTONE_CONFIG, BlockHandeler.ADMANTITE_ORE.get().getDefaultState(),7);
+                }*/
                 genOre(biome, 7, 8, 2, 22, OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockHandeler.HUMMING_STONE.get().getDefaultState(),7);
             }
         }
