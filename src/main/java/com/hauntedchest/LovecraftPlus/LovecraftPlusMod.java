@@ -34,6 +34,7 @@ public class LovecraftPlusMod {
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::doClientStuff);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        ModEntityTypes.ENTITY_TYPES.register(modEventBus);
 
         ItemHandeler.init();
         BlockHandeler.init();
