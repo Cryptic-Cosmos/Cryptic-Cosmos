@@ -15,8 +15,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -72,19 +70,5 @@ public class LovecraftPlusMod {
             return new ItemStack(BlockHandeler.DREAMING_SOULS.get());
         }
     };
-
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-
-
-        public static <T extends IForgeRegistryEntry<T>> T register(IForgeRegistry<T> registry, T entry, String registryKey) {
-            entry.setRegistryName(new ResourceLocation(LovecraftPlusMod.MOD_ID, registryKey));
-            registry.register(entry);
-            return entry;
-
-        }
-
-
-
-    }
+    
 }
