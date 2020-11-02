@@ -1,4 +1,4 @@
-package com.hauntedchest.LovecraftPlus.Entities;
+package com.hauntedchest.LovecraftPlus.entities;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -11,7 +11,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 
 public class MoonBeastEntity extends MonsterEntity {
-    protected static final IAttribute SPAWN_REINFORCEMENTS_CHANCE = (new RangedAttribute((IAttribute)null, "moon_beast.spawnReinforcements", 0.0D, 0.0D, 1.0D)).setDescription("Spawn Reinforcements Chance");
+    protected static final IAttribute SPAWN_REINFORCEMENTS_CHANCE = (new RangedAttribute(null, "moon_beast.spawnReinforcements", 0.0D, 0.0D, 1.0D)).setDescription("Spawn Reinforcements Chance");
 
     public MoonBeastEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
         super(type, worldIn);

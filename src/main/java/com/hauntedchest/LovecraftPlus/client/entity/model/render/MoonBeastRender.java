@@ -1,8 +1,8 @@
 package com.hauntedchest.LovecraftPlus.client.entity.model.render;
 
-import com.hauntedchest.LovecraftPlus.Entities.MoonBeastEntity;
 import com.hauntedchest.LovecraftPlus.LovecraftPlusMod;
 import com.hauntedchest.LovecraftPlus.client.entity.model.MoonBeastModel;
+import com.hauntedchest.LovecraftPlus.entities.MoonBeastEntity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;

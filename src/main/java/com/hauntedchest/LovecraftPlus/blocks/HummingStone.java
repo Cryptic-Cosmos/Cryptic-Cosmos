@@ -1,4 +1,4 @@
-package com.hauntedchest.LovecraftPlus.Blocks;
+package com.hauntedchest.LovecraftPlus.blocks;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.OreBlock;
@@ -8,7 +8,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
 import net.minecraftforge.common.ToolType;
 
-public class HummingStone extends OreBlock{
+import javax.annotation.Nonnull;
+
+public class HummingStone extends OreBlock {
     public HummingStone() {
         super(Properties.create(Material.ROCK)
                 .hardnessAndResistance(6.0f, 34)
@@ -19,7 +21,7 @@ public class HummingStone extends OreBlock{
     }
 
     @Override
-    public int getExpDrop(BlockState state, IWorldReader reader, BlockPos pos, int fortune, int silktouch) {
+    public int getExpDrop(@Nonnull BlockState state, @Nonnull IWorldReader reader, @Nonnull BlockPos pos, int fortune, int silktouch) {
         return 3;
     }
 }

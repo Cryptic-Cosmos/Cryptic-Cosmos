@@ -1,7 +1,7 @@
 package com.hauntedchest.LovecraftPlus.world.biomes;
 
 import com.google.common.collect.ImmutableList;
-import com.hauntedchest.LovecraftPlus.Inits.BlockHandeler;
+import com.hauntedchest.LovecraftPlus.registries.BlockHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
@@ -25,18 +25,17 @@ import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 public class ThornJungleBiome extends Biome {
     private static final BlockState WATER = Blocks.WATER.getDefaultState();
     private static final BlockState JUNGLE_LEAVES = Blocks.JUNGLE_LEAVES.getDefaultState();
-    private static final BlockState THORN_LOG = BlockHandeler.THORN_LOG.get().getDefaultState();
+    public static final TreeFeatureConfig JUNGLE_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(JUNGLE_LOG), new SimpleBlockStateProvider(JUNGLE_LEAVES), new AcaciaFoliagePlacer(2, 0))).baseHeight(6).setSapling((net.minecraftforge.common.IPlantable) BlockHandler.THORN_SAPLING.get()).build();
     private static final BlockState JUNGLE_LOG = Blocks.JUNGLE_LOG.getDefaultState();
-    private static final BlockState THORN_LEAVES = BlockHandeler.THORN_LEAVES.get().getDefaultState();
-    public static final TreeFeatureConfig FANCY_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(THORN_LOG), new SimpleBlockStateProvider(THORN_LEAVES), new BlobFoliagePlacer(0, 0))).setSapling((net.minecraftforge.common.IPlantable)Blocks.OAK_SAPLING).build();
-    public static final TreeFeatureConfig THORN_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(THORN_LOG), new SimpleBlockStateProvider(THORN_LEAVES), new AcaciaFoliagePlacer(2, 0))).baseHeight(5).heightRandA(2).heightRandB(2).trunkHeight(0).ignoreVines().setSapling((net.minecraftforge.common.IPlantable)BlockHandeler.THORN_SAPLING.get()).build();
-    public static final TreeFeatureConfig JUNGLE_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(JUNGLE_LOG), new SimpleBlockStateProvider(JUNGLE_LEAVES), new AcaciaFoliagePlacer(2,0))).baseHeight(6).setSapling((net.minecraftforge.common.IPlantable)BlockHandeler.THORN_SAPLING.get()).build();
-    public static final BaseTreeFeatureConfig JUNGLE_GROUND_BUSH_CONFIG = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(THORN_LOG), new SimpleBlockStateProvider(THORN_LEAVES))).baseHeight(4).setSapling((net.minecraftforge.common.IPlantable)BlockHandeler.THORN_SAPLING.get()).build();
-    public static final HugeTreeFeatureConfig MEGA_JUNGLE_TREE_CONFIG = (new HugeTreeFeatureConfig.Builder(new SimpleBlockStateProvider(THORN_LOG), new SimpleBlockStateProvider(THORN_LEAVES))).baseHeight(10).heightInterval(20).decorators(ImmutableList.of(new TrunkVineTreeDecorator(), new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable)BlockHandeler.THORN_SAPLING.get()).build();
+    private static final BlockState THORN_LOG = BlockHandler.THORN_LOG.get().getDefaultState();
+    private static final BlockState THORN_LEAVES = BlockHandler.THORN_LEAVES.get().getDefaultState();
+    public static final TreeFeatureConfig FANCY_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(THORN_LOG), new SimpleBlockStateProvider(THORN_LEAVES), new BlobFoliagePlacer(0, 0))).setSapling((net.minecraftforge.common.IPlantable) Blocks.OAK_SAPLING).build();
+    public static final TreeFeatureConfig THORN_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(THORN_LOG), new SimpleBlockStateProvider(THORN_LEAVES), new AcaciaFoliagePlacer(2, 0))).baseHeight(5).heightRandA(2).heightRandB(2).trunkHeight(0).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) BlockHandler.THORN_SAPLING.get()).build();
+    public static final BaseTreeFeatureConfig JUNGLE_GROUND_BUSH_CONFIG = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(THORN_LOG), new SimpleBlockStateProvider(THORN_LEAVES))).baseHeight(4).setSapling((net.minecraftforge.common.IPlantable) BlockHandler.THORN_SAPLING.get()).build();
+    public static final HugeTreeFeatureConfig MEGA_JUNGLE_TREE_CONFIG = (new HugeTreeFeatureConfig.Builder(new SimpleBlockStateProvider(THORN_LOG), new SimpleBlockStateProvider(THORN_LEAVES))).baseHeight(10).heightInterval(20).decorators(ImmutableList.of(new TrunkVineTreeDecorator(), new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) BlockHandler.THORN_SAPLING.get()).build();
 
     public ThornJungleBiome(Builder biomeBuilder) {
-       super(biomeBuilder);
-
+        super(biomeBuilder);
 
 
         DefaultBiomeFeatures.addCarvers(this);
@@ -61,7 +60,7 @@ public class ThornJungleBiome extends Biome {
         //Spawning Entities
         addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.BEE, 1, 1, 2));
         //Mineshaft
-        addFeature(GenerationStage.Decoration.UNDERGROUND_STRUCTURES, Feature.MINESHAFT.withConfiguration(new MineshaftConfig((double)0.004F, MineshaftStructure.Type.NORMAL)).withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
+        addFeature(GenerationStage.Decoration.UNDERGROUND_STRUCTURES, Feature.MINESHAFT.withConfiguration(new MineshaftConfig(0.004F, MineshaftStructure.Type.NORMAL)).withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
 
 
         //Lakes

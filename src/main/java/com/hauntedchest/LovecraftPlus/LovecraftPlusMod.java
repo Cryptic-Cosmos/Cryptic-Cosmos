@@ -1,90 +1,72 @@
 package com.hauntedchest.LovecraftPlus;
 
-import com.hauntedchest.LovecraftPlus.Inits.*;
+import com.hauntedchest.LovecraftPlus.registries.*;
 import com.hauntedchest.LovecraftPlus.world.gen.StructureGen;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-// The value here should match an entry in the META-INF/mods.toml file
-@Mod("lovecraftplus")
-@Mod.EventBusSubscriber(modid = LovecraftPlusMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod(LovecraftPlusMod.MOD_ID)
 public class LovecraftPlusMod {
     public static final Logger LOGGER = LogManager.getLogger();
+
+    // The value here should match an entry in the META-INF/mods.toml file
     public static final String MOD_ID = "lovecraftplus";
-    public static final ResourceLocation MOON_DIM_TYPE = new ResourceLocation(MOD_ID, "moon");
+
+    public static final ItemGroup ITEM_TAB = new ItemGroup("itemTab") {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(ItemHandler.HAUNTED_INGOT.get());
+        }
+    };
+
+    public static final ItemGroup BLOCK_TAB = new ItemGroup("blockTab") {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(BlockHandler.DREAMING_SOULS.get());
+        }
+    };
+
+    public static final Item.Properties ITEM_TAB_PROP = new Item.Properties().group(ITEM_TAB);
+    public static final Item.Properties BLOCK_TAB_PROP = new Item.Properties().group(BLOCK_TAB);
 
     public LovecraftPlusMod() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        modEventBus.addListener(this::setup);
-        modEventBus.addListener(this::doClientStuff);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        ModEntityTypes.ENTITY_TYPES.register(modEventBus);
 
-        ItemHandeler.init();
-        BlockHandeler.init();
+        modEventBus.addListener(this::setup);
+        modEventBus.addGenericListener(Biome.class, this::onRegisterBiomes);
+        modEventBus.addGenericListener(Feature.class, FeatureHandler::registerStructurePieces);
 
         MinecraftForge.EVENT_BUS.register(this);
-        ModBiomes.BIOMES.register(modEventBus);
-        MoonModBiomes.BIOMES.register(modEventBus);
-        DimensionHandeler.MOD_DIMENSIONS.register(modEventBus);
-        FeatureInit.FEATURE.register(modEventBus);
+
+        EntityTypeHandler.ENTITY_TYPES.register(modEventBus);
+        ItemHandler.ITEMS.register(modEventBus);
+        BlockHandler.BLOCKS.register(modEventBus);
+        BiomeHandler.BIOMES.register(modEventBus);
+        MoonBiomeHandler.BIOMES.register(modEventBus);
+        DimensionHandler.MOD_DIMENSIONS.register(modEventBus);
+        FeatureHandler.FEATURE.register(modEventBus);
+    }
+
+    public void onRegisterBiomes(final RegistryEvent.Register<Biome> event) {
+        BiomeHandler.registerBiomes();
+        MoonBiomeHandler.registerBiomes();
+        LOGGER.debug("registered biomes!");
     }
 
     private void setup(final FMLCommonSetupEvent event) {
         DeferredWorkQueue.runLater(StructureGen::generateStructures);
-    }
-
-    private void doClientStuff(final FMLClientSetupEvent event) {
-
-    }
-
-    @SubscribeEvent
-    public static void onRegisterBiomes(final RegistryEvent.Register<Biome> event) {
-        ModBiomes.registerBiomes();
-        LOGGER.debug("registered biomes!");
-
-    }
-    public static final ItemGroup ITEMTAB = new ItemGroup("itemTab") {
-        @Override
-        public ItemStack createIcon() {
-            return new ItemStack(ItemHandeler.HAUNTED_INGOT.get());
-        }
-    };
-    public static final ItemGroup BLOCKTAB = new ItemGroup("blockTab") {
-        @Override
-        public ItemStack createIcon() {
-            return new ItemStack(BlockHandeler.DREAMING_SOULS.get());
-        }
-    };
-
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-
-
-        public static <T extends IForgeRegistryEntry<T>> T register(IForgeRegistry<T> registry, T entry, String registryKey) {
-            entry.setRegistryName(new ResourceLocation(LovecraftPlusMod.MOD_ID, registryKey));
-            registry.register(entry);
-            return entry;
-
-        }
-
-
-
     }
 }

@@ -1,8 +1,8 @@
 package com.hauntedchest.LovecraftPlus.world.feature.structures;
 
 import com.google.common.collect.ImmutableMap;
-import com.hauntedchest.LovecraftPlus.Inits.FeatureInit;
 import com.hauntedchest.LovecraftPlus.LovecraftPlusMod;
+import com.hauntedchest.LovecraftPlus.registries.FeatureHandler;
 import net.minecraft.block.Blocks;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ChestTileEntity;
@@ -50,12 +50,12 @@ public class MoonPillarPieces {
     }
 
     public static class Piece extends TemplateStructurePiece {
-        private ResourceLocation resourceLocation;
-        private Rotation rotation;
+        private final ResourceLocation resourceLocation;
+        private final Rotation rotation;
 
         public Piece(TemplateManager templateManagerIn, ResourceLocation resourceLocationIn, BlockPos pos,
                      Rotation rotationIn) {
-            super(FeatureInit.MPP, 0);
+            super(FeatureHandler.MOON_PILLAR_PIECE, 0);
             this.resourceLocation = resourceLocationIn;
             BlockPos blockpos = MoonPillarPieces.OFFSET.get(resourceLocation);
             this.templatePosition = pos.add(blockpos.getX(), blockpos.getY(), blockpos.getZ());
@@ -64,7 +64,7 @@ public class MoonPillarPieces {
         }
 
         public Piece(TemplateManager templateManagerIn, CompoundNBT tagCompound) {
-            super(FeatureInit.MPP, tagCompound);
+            super(FeatureHandler.MOON_PILLAR_PIECE, tagCompound);
             this.resourceLocation = new ResourceLocation(tagCompound.getString("Template"));
             this.rotation = Rotation.valueOf(tagCompound.getString("Rot"));
             this.setupPiece(templateManagerIn);

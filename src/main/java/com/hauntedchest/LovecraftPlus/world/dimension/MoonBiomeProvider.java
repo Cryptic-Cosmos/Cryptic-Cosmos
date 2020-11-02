@@ -1,6 +1,6 @@
 package com.hauntedchest.LovecraftPlus.world.dimension;
 
-import com.hauntedchest.LovecraftPlus.Inits.MoonModBiomes;
+import com.hauntedchest.LovecraftPlus.registries.MoonBiomeHandler;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraftforge.fml.RegistryObject;
@@ -13,14 +13,14 @@ import java.util.Set;
 public class MoonBiomeProvider extends BiomeProvider {
     private static final Set<Biome> biomeList = new HashSet<>();
 
-    private MoonGenerator biomeNoise;
+    private final MoonGenerator biomeNoise;
     double biomeSize = 32.0d;
 
     public MoonBiomeProvider(MoonBiomeProviderSettings genSettings) {
         super(biomeList);
         this.biomeNoise = new MoonGenerator();
         this.biomeNoise.setSeed((int) genSettings.getSeed());
-        MoonModBiomes.BIOMES.getEntries().stream().map(RegistryObject::get).forEach(biomeList::add);
+        MoonBiomeHandler.BIOMES.getEntries().stream().map(RegistryObject::get).forEach(biomeList::add);
     }
 
 

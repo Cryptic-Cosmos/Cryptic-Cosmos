@@ -1,9 +1,9 @@
 package com.hauntedchest.LovecraftPlus.client;
 
-import com.hauntedchest.LovecraftPlus.Inits.BlockHandeler;
-import com.hauntedchest.LovecraftPlus.Inits.ModEntityTypes;
 import com.hauntedchest.LovecraftPlus.LovecraftPlusMod;
 import com.hauntedchest.LovecraftPlus.client.entity.model.render.MoonBeastRender;
+import com.hauntedchest.LovecraftPlus.registries.BlockHandler;
+import com.hauntedchest.LovecraftPlus.registries.EntityTypeHandler;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;
@@ -17,11 +17,11 @@ public class ClientEventBusSubscriber {
 
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event) {
-        RenderTypeLookup.setRenderLayer(BlockHandeler.THORN_LEAVES.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BlockHandeler.THORN_SAPLING.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BlockHandeler.MOON_SAPLING.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BlockHandeler.THORN_DOOR.get(), RenderType.getCutout());
-        RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.MOON_BEAST.get(), MoonBeastRender::new);
+        RenderTypeLookup.setRenderLayer(BlockHandler.THORN_LEAVES.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockHandler.THORN_SAPLING.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockHandler.MOON_SAPLING.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockHandler.THORN_DOOR.get(), RenderType.getCutout());
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypeHandler.MOON_BEAST.get(), MoonBeastRender::new);
 
     }
 }

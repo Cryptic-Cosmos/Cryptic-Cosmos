@@ -3,7 +3,7 @@ package com.hauntedchest.LovecraftPlus.client.entity.model;// Made with Blockben
 // Paste this class into your mod and generate all required imports
 
 
-import com.hauntedchest.LovecraftPlus.Entities.MoonBeastEntity;
+import com.hauntedchest.LovecraftPlus.entities.MoonBeastEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.EntityModel;

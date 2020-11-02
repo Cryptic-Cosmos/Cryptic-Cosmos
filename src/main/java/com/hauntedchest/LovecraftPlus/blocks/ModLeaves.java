@@ -1,4 +1,4 @@
-package com.hauntedchest.LovecraftPlus.Blocks;
+package com.hauntedchest.LovecraftPlus.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -15,4 +15,4 @@ public class ModLeaves extends Block {
                 .harvestLevel(0)
                 .harvestTool(ToolType.AXE));
     }
-};
+}

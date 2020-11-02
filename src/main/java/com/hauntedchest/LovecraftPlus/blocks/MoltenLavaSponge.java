@@ -1,4 +1,4 @@
-package com.hauntedchest.LovecraftPlus.Blocks;
+package com.hauntedchest.LovecraftPlus.blocks;
 
 import com.google.common.collect.Lists;
 import net.minecraft.block.*;
@@ -23,12 +23,10 @@ public class MoltenLavaSponge extends Block {
         super(properties);
     }
 
-
-
     /**
      * Called periodically clientside on blocks near the player to show effects (like furnace fire particles). Note that
-     * this method is unrelated to {@link randomTick} and {@link #needsRandomTick}, and will always be called regardless
-     * of whether the block can receive random update ticks
+     * this method is unrelated to {@link Block#randomTick}, and will always be called regardless of whether the block
+     * can receive random update ticks
      */
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
@@ -37,9 +35,9 @@ public class MoltenLavaSponge extends Block {
             BlockPos blockpos = pos.offset(direction);
             BlockState blockstate = worldIn.getBlockState(blockpos);
             if (!stateIn.isSolid() || !blockstate.isSolidSide(worldIn, blockpos, direction.getOpposite())) {
-                double d0 = (double)pos.getX();
-                double d1 = (double)pos.getY();
-                double d2 = (double)pos.getZ();
+                double d0 = pos.getX();
+                double d1 = pos.getY();
+                double d2 = pos.getZ();
                 if (direction == Direction.DOWN) {
                     d1 = d1 - 0.05D;
                     d0 += rand.nextDouble();

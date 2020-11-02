@@ -1,6 +1,6 @@
 package com.hauntedchest.LovecraftPlus.world.dimension;
 
-import com.hauntedchest.LovecraftPlus.Inits.BlockHandeler;
+import com.hauntedchest.LovecraftPlus.registries.BlockHandler;
 import net.minecraft.world.gen.GenerationSettings;
 
 public class MoonGenSettings extends GenerationSettings {
@@ -10,7 +10,7 @@ public class MoonGenSettings extends GenerationSettings {
     private final int field_202215_m = 63;
 
     public MoonGenSettings(){
-        this.defaultBlock = BlockHandeler.MOONSTONE.get().getDefaultState();
+        this.defaultBlock = BlockHandler.MOONSTONE.get().getDefaultState();
     }
 
     public int getBiomeSize() {
