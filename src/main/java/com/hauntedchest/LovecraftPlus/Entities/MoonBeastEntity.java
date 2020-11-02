@@ -49,7 +49,7 @@ public class MoonBeastEntity extends MonsterEntity {
         return super.getExperiencePoints(player);
     }
 
-    
+
 
     /*static class MoveHelperController extends MovementController {
         private float yRot;
