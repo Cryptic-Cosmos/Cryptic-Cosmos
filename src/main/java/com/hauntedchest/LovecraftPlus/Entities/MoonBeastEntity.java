@@ -1,20 +1,13 @@
 package com.hauntedchest.LovecraftPlus.Entities;
 
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.EndermanEntity;
 import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 public class MoonBeastEntity extends MonsterEntity {
@@ -56,48 +49,7 @@ public class MoonBeastEntity extends MonsterEntity {
         return super.getExperiencePoints(player);
     }
 
-    public boolean attackEntityFrom(DamageSource source, float amount) {
-        if (super.attackEntityFrom(source, amount)) {
-            LivingEntity livingentity = this.getAttackTarget();
-            if (livingentity == null && source.getTrueSource() instanceof LivingEntity) {
-                livingentity = (LivingEntity)source.getTrueSource();
-            }
-
-            int i = MathHelper.floor(this.getPosX());
-            int j = MathHelper.floor(this.getPosY());
-            int k = MathHelper.floor(this.getPosZ());
-
-            net.minecraftforge.event.entity.living.ZombieEvent.SummonAidEvent event = net.minecraftforge.event.ForgeEventFactory.fireZombieSummonAid(this, world, i, j, k, livingentity, this.getAttribute(SPAWN_REINFORCEMENTS_CHANCE).getValue());
-            if (event.getResult() == net.minecraftforge.eventbus.api.Event.Result.DENY) return true;
-            if (event.getResult() == net.minecraftforge.eventbus.api.Event.Result.ALLOW  ||
-                    livingentity != null && this.world.getDifficulty() == Difficulty.HARD && (double)this.rand.nextFloat() < this.getAttribute(SPAWN_REINFORCEMENTS_CHANCE).getValue() && this.world.getGameRules().getBoolean(GameRules.DO_MOB_SPAWNING)) {
-                ZombieEntity zombieentity = event.getCustomSummonedAid() != null && event.getResult() == net.minecraftforge.eventbus.api.Event.Result.ALLOW ? event.getCustomSummonedAid() : EntityType.ZOMBIE.create(this.world);
-
-                for(int l = 0; l < 50; ++l) {
-                    int i1 = i + MathHelper.nextInt(this.rand, 7, 40) * MathHelper.nextInt(this.rand, -1, 1);
-                    int j1 = j + MathHelper.nextInt(this.rand, 7, 40) * MathHelper.nextInt(this.rand, -1, 1);
-                    int k1 = k + MathHelper.nextInt(this.rand, 7, 40) * MathHelper.nextInt(this.rand, -1, 1);
-                    BlockPos blockpos = new BlockPos(i1, j1 - 1, k1);
-                    if (this.world.getBlockState(blockpos).isTopSolid(this.world, blockpos, zombieentity) && this.world.getLight(new BlockPos(i1, j1, k1)) < 10) {
-                        zombieentity.setPosition((double)i1, (double)j1, (double)k1);
-                        if (!this.world.isPlayerWithin((double)i1, (double)j1, (double)k1, 7.0D) && this.world.checkNoEntityCollision(zombieentity) && this.world.hasNoCollisions(zombieentity) && !this.world.containsAnyLiquid(zombieentity.getBoundingBox())) {
-                            this.world.addEntity(zombieentity);
-                            if (livingentity != null)
-                                zombieentity.setAttackTarget(livingentity);
-                            zombieentity.onInitialSpawn(this.world, this.world.getDifficultyForLocation(new BlockPos(zombieentity)), SpawnReason.REINFORCEMENT, (ILivingEntityData)null, (CompoundNBT)null);
-                            this.getAttribute(SPAWN_REINFORCEMENTS_CHANCE).applyModifier(new AttributeModifier("Moon Beast reinforcement caller charge", (double)-0.05F, AttributeModifier.Operation.ADDITION));
-                            zombieentity.getAttribute(SPAWN_REINFORCEMENTS_CHANCE).applyModifier(new AttributeModifier("Moon Beast reinforcement callee charge", (double)-0.05F, AttributeModifier.Operation.ADDITION));
-                            break;
-                        }
-                    }
-                }
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
+    
 
     /*static class MoveHelperController extends MovementController {
         private float yRot;
