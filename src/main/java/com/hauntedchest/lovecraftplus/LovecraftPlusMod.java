@@ -1,6 +1,7 @@
-package com.hauntedchest.LovecraftPlus;
+package com.hauntedchest.lovecraftplus;
 
 import com.hauntedchest.lovecraftplus.client.entity.model.render.MoonBeastRender;
+import com.hauntedchest.lovecraftplus.registries.*;
 import com.hauntedchest.lovecraftplus.world.gen.StructureGen;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -32,14 +33,14 @@ public class LovecraftPlusMod {
     public static final ItemGroup ITEM_TAB = new ItemGroup("itemTab") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(com.hauntedchest.lovecraftplus.registries.ItemHandler.HAUNTED_INGOT.get());
+            return new ItemStack(ItemHandler.HAUNTED_INGOT.get());
         }
     };
 
     public static final ItemGroup BLOCK_TAB = new ItemGroup("blockTab") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(com.hauntedchest.lovecraftplus.registries.BlockHandler.DREAMING_SOULS.get());
+            return new ItemStack(BlockHandler.DREAMING_SOULS.get());
         }
     };
 
@@ -51,23 +52,23 @@ public class LovecraftPlusMod {
 
         MinecraftForge.EVENT_BUS.register(this);
 
-        com.hauntedchest.lovecraftplus.registries.EntityTypeHandler.ENTITY_TYPES.register(modEventBus);
-        com.hauntedchest.lovecraftplus.registries.BlockHandler.BLOCKS.register(modEventBus);
-        com.hauntedchest.lovecraftplus.registries.ItemHandler.ITEMS.register(modEventBus);
-        com.hauntedchest.lovecraftplus.registries.BiomeHandler.BIOMES.register(modEventBus);
-        com.hauntedchest.lovecraftplus.registries.MoonBiomeHandler.BIOMES.register(modEventBus);
-        com.hauntedchest.lovecraftplus.registries.DimensionHandler.MOD_DIMENSIONS.register(modEventBus);
-        com.hauntedchest.lovecraftplus.registries.FeatureHandler.FEATURE.register(modEventBus);
+        EntityTypeHandler.ENTITY_TYPES.register(modEventBus);
+        BlockHandler.BLOCKS.register(modEventBus);
+        ItemHandler.ITEMS.register(modEventBus);
+        BiomeHandler.BIOMES.register(modEventBus);
+        MoonBiomeHandler.BIOMES.register(modEventBus);
+        DimensionHandler.MOD_DIMENSIONS.register(modEventBus);
+        FeatureHandler.FEATURE.register(modEventBus);
 
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::doClientStuff);
         modEventBus.addGenericListener(Biome.class, this::onRegisterBiomes);
-        modEventBus.addGenericListener(Feature.class, com.hauntedchest.lovecraftplus.registries.FeatureHandler::registerStructurePieces);
+        modEventBus.addGenericListener(Feature.class, FeatureHandler::registerStructurePieces);
     }
 
     public void onRegisterBiomes(final RegistryEvent.Register<Biome> event) {
-        com.hauntedchest.lovecraftplus.registries.BiomeHandler.registerBiomes();
-        com.hauntedchest.lovecraftplus.registries.MoonBiomeHandler.registerBiomes();
+        BiomeHandler.registerBiomes();
+        MoonBiomeHandler.registerBiomes();
         LOGGER.debug("registered biomes!");
     }
 
@@ -77,12 +78,12 @@ public class LovecraftPlusMod {
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        RenderTypeLookup.setRenderLayer(com.hauntedchest.lovecraftplus.registries.BlockHandler.THORN_LEAVES.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(com.hauntedchest.lovecraftplus.registries.BlockHandler.THORN_SAPLING.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(com.hauntedchest.lovecraftplus.registries.BlockHandler.MOON_SAPLING.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(com.hauntedchest.lovecraftplus.registries.BlockHandler.THORN_DOOR.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockHandler.THORN_LEAVES.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockHandler.THORN_SAPLING.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockHandler.MOON_SAPLING.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockHandler.THORN_DOOR.get(), RenderType.getCutout());
         RenderingRegistry.registerEntityRenderingHandler(
-                com.hauntedchest.lovecraftplus.registries.EntityTypeHandler.MOON_BEAST.get(),
+                EntityTypeHandler.MOON_BEAST.get(),
                 MoonBeastRender::new);
 
     }
