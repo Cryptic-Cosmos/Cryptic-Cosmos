@@ -25,12 +25,12 @@ public class MoonModBiomes {
     public static final RegistryObject<Biome> MOON_MOUNTAINS = BIOMES.register("moon_mountains", () -> new MoonMountainsBiome(new Biome.Builder().scale(1f).temperature(0f).waterColor(16777205).waterFogColor(16777205).surfaceBuilder(SurfaceBuilder.MOUNTAIN, new SurfaceBuilderConfig(BlockHandeler.MOON_BLOCK.get().getDefaultState(), BlockHandeler.MOONSTONE.get().getDefaultState(), BlockHandeler.MOON_BLOCK.get().getDefaultState())).category(Biome.Category.EXTREME_HILLS).downfall(0.0001f).depth(0.125f).parent(null).precipitation(Biome.RainType.RAIN)));
     public static final RegistryObject<Biome> MOON_FOREST = BIOMES.register("moon_forest", () -> new MoonForestBiome(new Biome.Builder().scale(1f).temperature(0f).waterColor(16777205).waterFogColor(16777205).surfaceBuilder(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(BlockHandeler.MOON_BLOCK.get().getDefaultState(), BlockHandeler.MOONSTONE.get().getDefaultState(), BlockHandeler.MOON_BLOCK.get().getDefaultState())).category(Biome.Category.FOREST).downfall(0.0001f).depth(0.125f).parent(null).precipitation(Biome.RainType.RAIN)));
 
-
-    private static void registerBiomes(Biome biome, BiomeDictionary.Type... types){
+    public static void registerBiomes() {
         registerBiome(MOON_PLAINS.get(), Type.PLAINS, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
         registerBiome(MOON_MOUNTAINS.get(), Type.MOUNTAIN, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
         registerBiome(MOON_FOREST.get(), Type.FOREST, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
     }
+
 
     private static void registerBiome(Biome biome, Type... types)
     {

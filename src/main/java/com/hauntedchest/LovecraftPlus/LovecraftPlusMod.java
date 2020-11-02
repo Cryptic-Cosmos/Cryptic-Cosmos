@@ -56,8 +56,10 @@ public class LovecraftPlusMod {
     public static void onRegisterBiomes(final RegistryEvent.Register<Biome> event) {
         ModBiomes.registerBiomes();
         LOGGER.debug("registered biomes!");
+        MoonModBiomes.registerBiomes();
 
     }
+
     public static final ItemGroup ITEMTAB = new ItemGroup("itemTab") {
         @Override
         public ItemStack createIcon() {
@@ -70,5 +72,5 @@ public class LovecraftPlusMod {
             return new ItemStack(BlockHandeler.DREAMING_SOULS.get());
         }
     };
-    
+
 }
