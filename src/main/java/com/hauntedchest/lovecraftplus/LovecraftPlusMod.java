@@ -30,14 +30,14 @@ public class LovecraftPlusMod {
     // The value here should match an entry in the META-INF/mods.toml file
     public static final String MOD_ID = "lovecraftplus";
 
-    public static final ItemGroup ITEM_TAB = new ItemGroup("itemTab") {
+    public static final ItemGroup ITEM_TAB = new ItemGroup("item_tab") {
         @Override
         public ItemStack createIcon() {
             return new ItemStack(ItemHandler.HAUNTED_INGOT.get());
         }
     };
 
-    public static final ItemGroup BLOCK_TAB = new ItemGroup("blockTab") {
+    public static final ItemGroup BLOCK_TAB = new ItemGroup("block_tab") {
         @Override
         public ItemStack createIcon() {
             return new ItemStack(BlockHandler.DREAMING_SOULS.get());

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lovecraftplus:admantite_ingot"
+    ]
+  },
+  "criteria": {
+    "has_admantite_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lovecraftplus:admantite_ore"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lovecraftplus:admantite_ingot"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_admantite_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

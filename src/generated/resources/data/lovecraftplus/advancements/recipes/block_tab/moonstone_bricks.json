@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lovecraftplus:moonstone_bricks"
+    ]
+  },
+  "criteria": {
+    "has_smooth_moonstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "lovecraftplus:smooth_moonstone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lovecraftplus:moonstone_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_smooth_moonstone",
+      "has_the_recipe"
+    ]
+  ]
+}

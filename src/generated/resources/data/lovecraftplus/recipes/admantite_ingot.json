@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "lovecraftplus:admantite_ore"
   },
-  "result": "lovecraftplus:admantite_ore",
-  "experience": 2.50,
+  "result": "lovecraftplus:admantite_ingot",
+  "experience": 2.5,
   "cookingtime": 800
 }

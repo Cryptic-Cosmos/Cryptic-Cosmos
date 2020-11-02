@@ -1,29 +1,22 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     "yxy",
     "xzx",
     "yxy"
   ],
-  "key":
-  {
-    "x":
-    {
+  "key": {
+    "x": {
       "item": "lovecraftplus:haunted_ingot"
     },
-    "y":
-    {
+    "y": {
       "item": "minecraft:glowstone_dust"
     },
-    "z":
-    {
+    "z": {
       "item": "minecraft:obsidian"
     }
   },
-  "result":
-  {
-    "item": "lovecraftplus:dreaming_souls",
-    "count": 1
+  "result": {
+    "item": "lovecraftplus:dreaming_souls"
   }
 }
