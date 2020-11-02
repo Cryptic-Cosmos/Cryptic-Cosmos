@@ -15,8 +15,11 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
+@SuppressWarnings("NullableProblems")
 public class LogBlocks extends LogBlock {
-    public LogBlocks(Properties properties) {
+    protected static final VoxelShape collision_shape = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 18.0D, 17.0D, 18.0D);
+
+    public LogBlocks() {
         super(MaterialColor.WOOD, Properties.create(Material.WOOD)
                 .hardnessAndResistance(1.0F, 1.0F)
                 .sound(SoundType.WOOD)
@@ -24,13 +27,13 @@ public class LogBlocks extends LogBlock {
                 .harvestTool(ToolType.AXE));
     }
 
-    protected static final VoxelShape collision_shape = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 18.0D, 17.0D, 18.0D);
-
+    @SuppressWarnings("deprecation")
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
         entityIn.attackEntityFrom(DamageSource.CACTUS, 2.0F);
     }
 
+    @SuppressWarnings("deprecation")
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return collision_shape;
     }

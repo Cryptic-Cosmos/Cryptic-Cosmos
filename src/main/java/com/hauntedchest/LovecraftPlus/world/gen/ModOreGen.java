@@ -21,24 +21,21 @@ public class ModOreGen {
     @SubscribeEvent
     public static void generateOres(FMLLoadCompleteEvent event){
         for (Biome biome: ForgeRegistries.BIOMES) {
-            if (biome.getCategory() == Biome.Category.NETHER){
-
-            }else if (biome.getCategory() == Biome.Category.THEEND){
-
-
-            } else {
-                /*if(biome.getCategory() == MoonBiomeHandler.MOON_PLAINS.get().getCategory()){
-                    genOre(biome, 3, 8, 2, 22, BlockHandler.MOONSTONE_CONFIG, BlockHandler.ADMANTITE_ORE.get().getDefaultState(),7);
-                }*/
-                genOre(biome, 7, 8, 2, 22, OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockHandler.HUMMING_STONE.get().getDefaultState(), 7);
-            }
+            genOre(biome,
+                    7,
+                    8,
+                    2,
+                    22,
+                    OreFeatureConfig.FillerBlockType.NATURAL_STONE,
+                    BlockHandler.HUMMING_STONE.get().getDefaultState(),
+                    7);
         }
     }
 
     public static void genOre(Biome biome, int count, int bottomOffset, int topOffset, int max, OreFeatureConfig.FillerBlockType filler, BlockState defaultBlockState, int size) {
         CountRangeConfig range = new CountRangeConfig(count,bottomOffset,topOffset,max);
-        OreFeatureConfig feature = new OreFeatureConfig(filler,defaultBlockState,size);
-        ConfiguredPlacement config = Placement.COUNT_RANGE.configure(range);
+        OreFeatureConfig feature = new OreFeatureConfig(filler, defaultBlockState, size);
+        ConfiguredPlacement<?> config = Placement.COUNT_RANGE.configure(range);
         biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(feature).withPlacement(config));
     }
 }

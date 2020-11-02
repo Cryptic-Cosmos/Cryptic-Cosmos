@@ -10,7 +10,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class EntityTypeHandler {
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = new DeferredRegister<>(ForgeRegistries.ENTITIES, LovecraftPlusMod.MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
+            DeferredRegister.create(ForgeRegistries.ENTITIES, LovecraftPlusMod.MOD_ID);
 
     public static final RegistryObject<EntityType<MoonBeastEntity>> MOON_BEAST =
             ENTITY_TYPES.register("moon_beast",

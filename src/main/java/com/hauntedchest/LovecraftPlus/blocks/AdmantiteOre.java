@@ -13,8 +13,5 @@ public class AdmantiteOre extends OreBlock {
                 .harvestLevel(2)
                 .harvestTool(ToolType.PICKAXE)
         );
-
-
     }
-
 }

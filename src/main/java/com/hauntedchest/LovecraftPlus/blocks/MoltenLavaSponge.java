@@ -18,6 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.Queue;
 import java.util.Random;
 
+@SuppressWarnings("NullableProblems")
 public class MoltenLavaSponge extends Block {
     public MoltenLavaSponge(Block.Properties properties) {
         super(properties);
@@ -28,6 +29,7 @@ public class MoltenLavaSponge extends Block {
      * this method is unrelated to {@link Block#randomTick}, and will always be called regardless of whether the block
      * can receive random update ticks
      */
+    @SuppressWarnings("deprecation")
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         Direction direction = Direction.random(rand);
@@ -65,12 +67,15 @@ public class MoltenLavaSponge extends Block {
             }
         }
     }
+
+    @SuppressWarnings("deprecation")
     public void onBlockAdded(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
         if (oldState.getBlock() != state.getBlock()) {
             this.tryAbsorb(worldIn, pos);
         }
     }
 
+    @SuppressWarnings("deprecation")
     public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         this.tryAbsorb(worldIn, pos);
         super.neighborChanged(state, worldIn, pos, blockIn, fromPos, isMoving);
@@ -113,7 +118,7 @@ public class MoltenLavaSponge extends Block {
                             queue.add(new Tuple<>(blockpos1, j + 1));
                         }
                     } else if (material == Material.OCEAN_PLANT || material == Material.SEA_GRASS) {
-                        TileEntity tileentity = blockstate.getBlock().hasTileEntity() ? worldIn.getTileEntity(blockpos1) : null;
+                        TileEntity tileentity = blockstate.getBlock().hasTileEntity(blockstate) ? worldIn.getTileEntity(blockpos1) : null;
                         spawnDrops(blockstate, worldIn, blockpos1, tileentity);
                         worldIn.setBlockState(blockpos1, Blocks.AIR.getDefaultState(), 3);
                         ++i;

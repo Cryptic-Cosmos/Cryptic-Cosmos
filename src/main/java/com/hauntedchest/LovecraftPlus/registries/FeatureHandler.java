@@ -16,7 +16,7 @@ import java.util.Locale;
 
 public class FeatureHandler {
     public static final DeferredRegister<Feature<?>> FEATURE =
-            new DeferredRegister<>(ForgeRegistries.FEATURES, LovecraftPlusMod.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.FEATURES, LovecraftPlusMod.MOD_ID);
     public static final RegistryObject<MoonPillarStructure> MOON_PILLAR =
             FEATURE.register("moon_pillar",
                     () -> new MoonPillarStructure(NoFeatureConfig::deserialize));

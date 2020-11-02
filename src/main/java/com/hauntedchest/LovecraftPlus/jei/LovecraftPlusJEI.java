@@ -1,15 +1,15 @@
 package com.hauntedchest.LovecraftPlus.jei;
 
-/*
-Author: PutoPug
-*/
-
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.*;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * @author PutoPug
+ */
+@SuppressWarnings("NullableProblems")
 @JeiPlugin
 public class LovecraftPlusJEI implements IModPlugin {
     @Override

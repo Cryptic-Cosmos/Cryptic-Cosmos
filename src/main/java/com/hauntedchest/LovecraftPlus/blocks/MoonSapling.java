@@ -19,6 +19,7 @@ import net.minecraftforge.event.ForgeEventFactory;
 import java.util.Random;
 import java.util.function.Supplier;
 
+@SuppressWarnings("NullableProblems")
 public class MoonSapling extends BushBlock implements IGrowable {
 
     public static final IntegerProperty STAGE = BlockStateProperties.STAGE_0_1;
@@ -30,6 +31,7 @@ public class MoonSapling extends BushBlock implements IGrowable {
         this.tree = treeIn;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE;

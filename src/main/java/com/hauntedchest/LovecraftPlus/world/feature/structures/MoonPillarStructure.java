@@ -16,6 +16,7 @@ import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.StructureStart;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 import java.util.function.Function;
 
@@ -26,14 +27,16 @@ public class MoonPillarStructure extends Structure<NoFeatureConfig> {
 
     // canBeGenerated
     @Override
-    public boolean canBeGenerated(BiomeManager manager, ChunkGenerator<?> generator, Random rand, int chunkX,
-                                  int chunkZ, Biome biome) {
+    public boolean canBeGenerated(@Nonnull BiomeManager manager,
+                                  @Nonnull ChunkGenerator<?> generator,
+                                  @Nonnull Random rand,
+                                  int chunkX,
+                                  int chunkZ,
+                                  @Nonnull Biome biome) {
         ChunkPos pos = this.getStartPositionForPosition(generator, rand, chunkX, chunkZ, 0, 0);
 
         if (chunkX == pos.x && chunkZ == pos.z) {
-            if (generator.hasStructure(biome, this)) {
-                return true;
-            }
+            return generator.hasStructure(biome, this);
         }
 
         return false;
@@ -46,18 +49,21 @@ public class MoonPillarStructure extends Structure<NoFeatureConfig> {
     }
 
     @Override
-    public IStartFactory getStartFactory() {
+    public @Nonnull
+    IStartFactory getStartFactory() {
         return MoonPillarStructure.Start::new;
     }
 
     @Override
-    public String getStructureName() {
+    public @Nonnull
+    String getStructureName() {
         return LovecraftPlusMod.MOD_ID + ":moon_pillar";
     }
 
     @Override
-    protected ChunkPos getStartPositionForPosition(ChunkGenerator<?> generator, Random rand, int x, int z, int offsetX,
-                                                   int offsetZ) {
+    protected @Nonnull
+    ChunkPos getStartPositionForPosition(ChunkGenerator<?> generator, Random rand, int x, int z, int offsetX,
+                                         int offsetZ) {
         int maxDistance = 10;
         int minDistance = 3;
 
@@ -90,16 +96,16 @@ public class MoonPillarStructure extends Structure<NoFeatureConfig> {
         }
 
         @Override
-        public void init(ChunkGenerator<?> generator, TemplateManager templateManagerIn, int chunkX, int chunkZ,
-                         Biome biomeIn) {
+        public void init(ChunkGenerator<?> generator, @Nonnull TemplateManager templateManagerIn, int chunkX, int chunkZ,
+                         @Nonnull Biome biomeIn) {
             Rotation rotation = Rotation.values()[this.rand.nextInt(Rotation.values().length)];
 
             int x = (chunkX << 4) + 7;
             int z = (chunkX << 4) + 7;
-            int y = generator.func_222531_c(x, z, Heightmap.Type.WORLD_SURFACE_WG);
+            int y = generator.getHeight(x, z, Heightmap.Type.WORLD_SURFACE_WG);
             BlockPos pos = new BlockPos(x, y, z);
 
-            MoonPillarPieces.start(templateManagerIn, pos, rotation, this.components, this.rand);
+            MoonPillarPieces.start(templateManagerIn, pos, rotation, this.components);
 
             this.recalculateStructureSize();
 

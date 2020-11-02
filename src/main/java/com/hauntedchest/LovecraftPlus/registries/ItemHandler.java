@@ -9,7 +9,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 @SuppressWarnings("unused")
 public class ItemHandler {
-    public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, LovecraftPlusMod.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS =
+            DeferredRegister.create(ForgeRegistries.ITEMS, LovecraftPlusMod.MOD_ID);
 
     //Items
     public static final RegistryObject<Item> HAUNTED_INGOT = ITEMS.register("haunted_ingot",

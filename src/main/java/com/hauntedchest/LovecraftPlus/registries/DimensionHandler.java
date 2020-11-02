@@ -9,7 +9,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class DimensionHandler {
-    public static final DeferredRegister<ModDimension> MOD_DIMENSIONS = new DeferredRegister<>(ForgeRegistries.MOD_DIMENSIONS, LovecraftPlusMod.MOD_ID);
+    public static final DeferredRegister<ModDimension> MOD_DIMENSIONS =
+            DeferredRegister.create(ForgeRegistries.MOD_DIMENSIONS, LovecraftPlusMod.MOD_ID);
 
     public static final ResourceLocation MOON_DIM_TYPE = new ResourceLocation(LovecraftPlusMod.MOD_ID, "moon");
 

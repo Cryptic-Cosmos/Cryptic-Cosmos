@@ -7,7 +7,6 @@ import com.hauntedchest.LovecraftPlus.world.feature.ThornTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -15,7 +14,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import static net.minecraft.block.Block.Properties;
 
 public class BlockHandler {
-    public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, LovecraftPlusMod.MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LovecraftPlusMod.MOD_ID);
     //Portal Blocks
     public static final RegistryObject<Block> HUMMING_STONE =
             BLOCKS.register("humming_stone", HummingStone::new);
@@ -53,19 +52,10 @@ public class BlockHandler {
 
     //Thorn Wood
     public static final RegistryObject<Block> THORN_LOG =
-            BLOCKS.register("thorn_log",
-                    () -> new LogBlocks(Properties.create(Material.WOOD)
-                            .hardnessAndResistance(1.0F, 1.0F)
-                            .sound(SoundType.WOOD)
-                            .harvestLevel(0)
-                            .harvestTool(ToolType.AXE)));
+            BLOCKS.register("thorn_log", LogBlocks::new);
 
     public static final RegistryObject<Block> THORN_PLANKS =
-            BLOCKS.register("thorn_planks",
-                    () -> new LogBlocks(Properties.create(Material.WOOD)
-                            .hardnessAndResistance(1.0F, 1.0F)
-                            .sound(SoundType.WOOD).harvestLevel(0)
-                            .harvestTool(ToolType.AXE)));
+            BLOCKS.register("thorn_planks", LogBlocks::new);
 
     public static final RegistryObject<Block> THORN_SLAB =
             BLOCKS.register("thorn_slab",

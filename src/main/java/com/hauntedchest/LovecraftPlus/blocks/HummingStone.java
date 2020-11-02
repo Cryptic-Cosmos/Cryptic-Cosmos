@@ -8,8 +8,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
 import net.minecraftforge.common.ToolType;
 
-import javax.annotation.Nonnull;
-
+@SuppressWarnings("NullableProblems")
 public class HummingStone extends OreBlock {
     public HummingStone() {
         super(Properties.create(Material.ROCK)
@@ -21,7 +20,7 @@ public class HummingStone extends OreBlock {
     }
 
     @Override
-    public int getExpDrop(@Nonnull BlockState state, @Nonnull IWorldReader reader, @Nonnull BlockPos pos, int fortune, int silktouch) {
+    public int getExpDrop(BlockState state, IWorldReader reader, BlockPos pos, int fortune, int silktouch) {
         return 3;
     }
 }

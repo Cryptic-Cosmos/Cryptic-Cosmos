@@ -16,6 +16,7 @@ import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class MoonConfigDimension extends Dimension {
@@ -24,7 +25,8 @@ public class MoonConfigDimension extends Dimension {
     }
 
     @Override
-    public ChunkGenerator<?> createChunkGenerator() {
+    public @Nonnull
+    ChunkGenerator<?> createChunkGenerator() {
         return new MoonChunkGenerator(world, new MoonBiomeProvider(new MoonBiomeProviderSettings(world.getWorldInfo())), new MoonGenSettings());
     }
 
@@ -46,8 +48,8 @@ public class MoonConfigDimension extends Dimension {
     @Nullable
     @Override
     public BlockPos findSpawn(int posX, int posZ, boolean checkValid) {
-        BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(posX, 0, posZ);
-        Biome biome = this.world.getBiome(blockpos$mutable);
+        BlockPos.Mutable mutableBlockPos = new BlockPos.Mutable(posX, 0, posZ);
+        Biome biome = this.world.getBiome(mutableBlockPos);
         BlockState blockstate = biome.getSurfaceBuilderConfig().getTop();
         if (checkValid && !blockstate.getBlock().isIn(BlockTags.VALID_SPAWN)) {
             return null;
@@ -60,14 +62,14 @@ public class MoonConfigDimension extends Dimension {
                 return null;
             } else {
                 for(int j = i + 1; j >= 0; --j) {
-                    blockpos$mutable.setPos(posX, j, posZ);
-                    BlockState blockstate1 = this.world.getBlockState(blockpos$mutable);
+                    mutableBlockPos.setPos(posX, j, posZ);
+                    BlockState blockstate1 = this.world.getBlockState(mutableBlockPos);
                     if (!blockstate1.getFluidState().isEmpty()) {
                         break;
                     }
 
                     if (blockstate1.equals(blockstate)) {
-                        return blockpos$mutable.up().toImmutable();
+                        return mutableBlockPos.up().toImmutable();
                     }
                 }
 
@@ -75,6 +77,7 @@ public class MoonConfigDimension extends Dimension {
             }
         }
     }
+
     @Nullable
     @OnlyIn(Dist.CLIENT)
     public float[] calcSunriseSunsetColors(float celestialAngle, float partialTicks) {
@@ -97,7 +100,8 @@ public class MoonConfigDimension extends Dimension {
     }
 
     @Override
-    public Vec3d getFogColor(float celestialAngle, float partialTicks) {
+    public @Nonnull
+    Vec3d getFogColor(float celestialAngle, float partialTicks) {
         return Vec3d.ZERO;
     }
 
