@@ -50,18 +50,18 @@ public class LovecraftPlusMod {
     public LovecraftPlusMod() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-
         MinecraftForge.EVENT_BUS.register(this);
 
         EntityTypeHandler.ENTITY_TYPES.register(modEventBus);
-        ItemHandler.ITEMS.register(modEventBus);
         BlockHandler.BLOCKS.register(modEventBus);
+        ItemHandler.ITEMS.register(modEventBus);
         BiomeHandler.BIOMES.register(modEventBus);
         MoonBiomeHandler.BIOMES.register(modEventBus);
         DimensionHandler.MOD_DIMENSIONS.register(modEventBus);
         FeatureHandler.FEATURE.register(modEventBus);
 
         modEventBus.addListener(this::setup);
+        modEventBus.addListener(this::doClientStuff);
         modEventBus.addGenericListener(Biome.class, this::onRegisterBiomes);
         modEventBus.addGenericListener(Feature.class, FeatureHandler::registerStructurePieces);
     }
@@ -72,6 +72,7 @@ public class LovecraftPlusMod {
         LOGGER.debug("registered biomes!");
     }
 
+    @SuppressWarnings("deprecation")
     private void setup(final FMLCommonSetupEvent event) {
         DeferredWorkQueue.runLater(StructureGen::generateStructures);
     }
