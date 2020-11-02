@@ -1,9 +1,7 @@
 package com.hauntedchest.lovecraftplus.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BushBlock;
-import net.minecraft.block.IGrowable;
+import com.hauntedchest.lovecraftplus.registries.BlockHandler;
+import net.minecraft.block.*;
 import net.minecraft.block.trees.Tree;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
@@ -47,6 +45,18 @@ public class MoonSapling extends BushBlock implements IGrowable {
         if (worldIn.getLight(pos.up()) >= 9 && rand.nextInt(7) == 0) {
             this.grow(worldIn, pos, state, rand);
         }
+    }
+
+    @Override
+    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        Block block = state.getBlock();
+        return block == Blocks.GRASS_BLOCK ||
+               block == Blocks.DIRT ||
+               block == Blocks.COARSE_DIRT ||
+               block == Blocks.PODZOL ||
+               block == Blocks.FARMLAND ||
+               block == BlockHandler.MOONSTONE.get() ||
+               block == BlockHandler.MOON_BLOCK.get();
     }
 
     public void grow(ServerWorld serverWorld, BlockPos pos, BlockState state, Random rand) {
