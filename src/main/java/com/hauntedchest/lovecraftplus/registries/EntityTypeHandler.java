@@ -17,7 +17,7 @@ public class EntityTypeHandler {
             ENTITY_TYPES.register("moon_beast",
                     () -> EntityType.Builder
                             .create(MoonBeastEntity::new, EntityClassification.MONSTER)
-                            .size(3f, 4.2f)
+                            .size(3f, 2.5f)
                             .build(new ResourceLocation(LovecraftPlusMod.MOD_ID, "moon_beast")
                                     .toString()));
 }
