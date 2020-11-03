@@ -33,14 +33,14 @@ public class LovecraftPlusMod {
     public static final ItemGroup ITEM_TAB = new ItemGroup("item_tab") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(ItemHandler.HAUNTED_INGOT.get());
+            return new ItemStack(ItemHandler.HUMMING_INGOT.get());
         }
     };
 
     public static final ItemGroup BLOCK_TAB = new ItemGroup("block_tab") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(BlockHandler.DREAMING_SOULS.get());
+            return new ItemStack(BlockHandler.HUMMING_OBSIDIAN.get());
         }
     };
 

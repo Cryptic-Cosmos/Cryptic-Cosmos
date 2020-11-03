@@ -23,10 +23,10 @@ public class RecipesGenerator extends RecipeProvider {
                 .patternLine("yxy")
                 .patternLine("xzx")
                 .patternLine("yxy")
-                .key('x', ItemHandler.HAUNTED_INGOT.get())
+                .key('x', ItemHandler.HUMMING_INGOT.get())
                 .key('y', Items.GLOWSTONE_DUST)
                 .key('z', Items.OBSIDIAN)
-                .addCriterion("has_haunted_ingot", this.hasItem(ItemHandler.HAUNTED_INGOT.get()))
+                .addCriterion("has_humming_ingot", this.hasItem(ItemHandler.HUMMING_INGOT.get()))
                 .build(consumer, ItemHandler.DREAMING_SOULS_ITEM.getId());
 
         // Moon planks
@@ -64,11 +64,11 @@ public class RecipesGenerator extends RecipeProvider {
         // Haunted ingot
         CookingRecipeBuilder.smeltingRecipe(
                 Ingredient.fromItems(ItemHandler.HUMMING_STONE_ITEM.get()),
-                ItemHandler.HAUNTED_INGOT.get(),
+                ItemHandler.HUMMING_INGOT.get(),
                 0.75f,
                 400)
                 .addCriterion("has_humming_stone", this.hasItem(ItemHandler.HUMMING_STONE_ITEM.get()))
-                .build(consumer, ItemHandler.HAUNTED_INGOT.getId());
+                .build(consumer, ItemHandler.HUMMING_INGOT.getId());
 
         // Lava sponge
         CookingRecipeBuilder.smeltingRecipe(

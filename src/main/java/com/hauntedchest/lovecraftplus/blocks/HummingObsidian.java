@@ -5,12 +5,12 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 
-public class MoonBlock extends Block {
-    public MoonBlock() {
+public class HummingObsidian extends Block {
+    public HummingObsidian() {
         super(Properties.create(Material.ROCK)
-                .hardnessAndResistance(2.0f, 6)
+                .hardnessAndResistance(50.0F, 1200.0F)
                 .sound(SoundType.STONE)
-                .harvestLevel(2)
+                .harvestLevel(3)
                 .harvestTool(ToolType.PICKAXE)
         );
     }

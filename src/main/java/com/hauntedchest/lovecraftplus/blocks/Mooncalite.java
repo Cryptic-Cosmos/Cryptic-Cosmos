@@ -5,12 +5,12 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 
-public class DreamingSouls extends Block {
-    public DreamingSouls() {
+public class Mooncalite extends Block {
+    public Mooncalite() {
         super(Properties.create(Material.ROCK)
-                .hardnessAndResistance(50.0F, 1200.0F)
+                .hardnessAndResistance(2.0f, 6)
                 .sound(SoundType.STONE)
-                .harvestLevel(3)
+                .harvestLevel(2)
                 .harvestTool(ToolType.PICKAXE)
         );
     }

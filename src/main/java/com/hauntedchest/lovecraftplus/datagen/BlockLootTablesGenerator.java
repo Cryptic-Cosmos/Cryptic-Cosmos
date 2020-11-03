@@ -38,7 +38,7 @@ public class BlockLootTablesGenerator extends LootTableProvider {
     private void addLootTables(BlockLootTablesGenerator loot) {
         loot.dropSelf(BlockHandler.ADMANTITE_ORE.get());
 
-        loot.dropSelf(BlockHandler.DREAMING_SOULS.get());
+        loot.dropSelf(BlockHandler.HUMMING_OBSIDIAN.get());
 
         loot.dropSelf(BlockHandler.HUMMING_STONE.get());
 
@@ -46,7 +46,7 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockHandler.MOLTEN_LAVA_SPONGE.get());
 
-        loot.dropSelf(BlockHandler.MOON_BLOCK.get());
+        loot.dropSelf(BlockHandler.MOONCALITE.get());
 
         loot.addLoot(BlockHandler.MOON_LEAVES.get(),
                 BlockLootTables.droppingWithChancesSticksAndApples(BlockHandler.MOON_LEAVES.get(),

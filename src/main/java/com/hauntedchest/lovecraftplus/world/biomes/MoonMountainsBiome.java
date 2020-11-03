@@ -1,7 +1,6 @@
 package com.hauntedchest.lovecraftplus.world.biomes;
 
 import com.hauntedchest.lovecraftplus.registries.BlockHandler;
-import com.hauntedchest.lovecraftplus.registries.EntityTypeHandler;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -18,9 +17,9 @@ public class MoonMountainsBiome extends Biome {
                 .waterFogColor(0xfffff5)
                 .surfaceBuilder(SurfaceBuilder.DEFAULT,
                         new SurfaceBuilderConfig(
-                                BlockHandler.MOON_BLOCK.get().getDefaultState(),
+                                BlockHandler.MOONCALITE.get().getDefaultState(),
                                 BlockHandler.MOONSTONE.get().getDefaultState(),
-                                BlockHandler.MOON_BLOCK.get().getDefaultState()
+                                BlockHandler.MOONCALITE.get().getDefaultState()
                         ))
                 .category(Biome.Category.EXTREME_HILLS)
                 .downfall(0.0001f)

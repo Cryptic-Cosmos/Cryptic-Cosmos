@@ -19,12 +19,12 @@ public class BlockHandler {
     public static final RegistryObject<Block> HUMMING_STONE =
             BLOCKS.register("humming_stone", HummingStone::new);
 
-    public static final RegistryObject<Block> DREAMING_SOULS =
-            BLOCKS.register("dreaming_souls", DreamingSouls::new);
+    public static final RegistryObject<Block> HUMMING_OBSIDIAN =
+            BLOCKS.register("humming_obsidian", HummingObsidian::new);
 
     //Moon Blocks
-    public static final RegistryObject<Block> MOON_BLOCK =
-            BLOCKS.register("moon_block", MoonBlock::new);
+    public static final RegistryObject<Block> MOONCALITE =
+            BLOCKS.register("mooncalite", Mooncalite::new);
 
     public static final RegistryObject<Block> MOONSTONE_BRICKS =
             BLOCKS.register("moonstone_bricks", MoonStoneBricks::new);

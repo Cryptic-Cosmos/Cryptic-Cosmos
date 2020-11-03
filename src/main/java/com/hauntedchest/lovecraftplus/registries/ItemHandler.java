@@ -13,7 +13,7 @@ public class ItemHandler {
             DeferredRegister.create(ForgeRegistries.ITEMS, LovecraftPlusMod.MOD_ID);
 
     //Items
-    public static final RegistryObject<Item> HAUNTED_INGOT = ITEMS.register("haunted_ingot",
+    public static final RegistryObject<Item> HUMMING_INGOT = ITEMS.register("humming_ingot",
             () -> new Item(LovecraftPlusMod.ITEM_TAB_PROP));
 
     public static final RegistryObject<Item> NECRONOMICON = ITEMS.register("necronomicon",
@@ -33,11 +33,11 @@ public class ItemHandler {
             () -> new BlockItem(BlockHandler.HUMMING_STONE.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
 
     public static final RegistryObject<Item> DREAMING_SOULS_ITEM = ITEMS.register("dreaming_souls",
-            () -> new BlockItem(BlockHandler.DREAMING_SOULS.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
+            () -> new BlockItem(BlockHandler.HUMMING_OBSIDIAN.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
 
     //Moon Block Items
     public static final RegistryObject<Item> MOON_BLOCK_ITEM = ITEMS.register("moon_block",
-            () -> new BlockItem(BlockHandler.MOON_BLOCK.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
+            () -> new BlockItem(BlockHandler.MOONCALITE.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
 
     public static final RegistryObject<Item> MOONSTONE_BRICKS_ITEM = ITEMS.register("moonstone_bricks",
             () -> new BlockItem(BlockHandler.MOONSTONE_BRICKS.get(), LovecraftPlusMod.BLOCK_TAB_PROP));

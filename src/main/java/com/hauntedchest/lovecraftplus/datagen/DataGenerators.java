@@ -12,6 +12,10 @@ public class DataGenerators {
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
 
+        if (event.includeClient()) {
+            generator.addProvider(new Lang.English(generator));
+        }
+
         if (event.includeServer()) {
             generator.addProvider(new RecipesGenerator(generator));
             generator.addProvider(new BlockLootTablesGenerator(generator));

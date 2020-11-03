@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "lovecraftplus:haunted_ingot"
+      "lovecraftplus:humming_ingot"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "lovecraftplus:haunted_ingot"
+        "recipe": "lovecraftplus:humming_ingot"
       }
     }
   },
