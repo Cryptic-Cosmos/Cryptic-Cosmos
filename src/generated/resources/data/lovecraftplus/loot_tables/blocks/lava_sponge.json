@@ -8,6 +8,11 @@
           "type": "minecraft:item",
           "name": "lovecraftplus:lava_sponge"
         }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
       ]
     }
   ]

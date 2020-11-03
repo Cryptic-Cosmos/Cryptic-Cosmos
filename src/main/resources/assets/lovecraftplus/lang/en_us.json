@@ -1,6 +1,6 @@
 {
-  "itemGroup.itemTab": "Lovecraft Materials",
-  "itemGroup.blockTab": "Lovecraft Blocks",
+  "itemGroup.item_tab": "Lovecraft Materials",
+  "itemGroup.block_tab": "Lovecraft Blocks",
   "item.lovecraftplus.haunted_ingot": "Humming Ingot",
   "block.lovecraftplus.humming_stone": "Humming Stone",
   "block.lovecraftplus.moon_block": "Mooncalite",
