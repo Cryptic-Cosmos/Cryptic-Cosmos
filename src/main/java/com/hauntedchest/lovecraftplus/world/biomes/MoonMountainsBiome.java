@@ -1,6 +1,7 @@
 package com.hauntedchest.lovecraftplus.world.biomes;
 
 import com.hauntedchest.lovecraftplus.registries.BlockHandler;
+import com.hauntedchest.lovecraftplus.registries.EntityTypeHandler;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -32,6 +33,8 @@ public class MoonMountainsBiome extends Biome {
 
         addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(
                 EntityType.ENDERMAN, 10, 1, 4));
+
+
 
         DefaultBiomeFeatures.addCarvers(this);
     }

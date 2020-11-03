@@ -1,6 +1,7 @@
 package com.hauntedchest.lovecraftplus.world.biomes;
 
 import com.hauntedchest.lovecraftplus.registries.BlockHandler;
+import com.hauntedchest.lovecraftplus.registries.EntityTypeHandler;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;

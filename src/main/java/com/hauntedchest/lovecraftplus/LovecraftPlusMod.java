@@ -52,9 +52,10 @@ public class LovecraftPlusMod {
 
         MinecraftForge.EVENT_BUS.register(this);
 
-        EntityTypeHandler.ENTITY_TYPES.register(modEventBus);
+
         BlockHandler.BLOCKS.register(modEventBus);
         ItemHandler.ITEMS.register(modEventBus);
+        EntityTypeHandler.ENTITY_TYPES.register(modEventBus);
         BiomeHandler.BIOMES.register(modEventBus);
         MoonBiomeHandler.BIOMES.register(modEventBus);
         DimensionHandler.MOD_DIMENSIONS.register(modEventBus);

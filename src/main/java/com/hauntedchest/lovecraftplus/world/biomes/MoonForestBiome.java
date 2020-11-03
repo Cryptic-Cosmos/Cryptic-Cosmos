@@ -2,6 +2,7 @@ package com.hauntedchest.lovecraftplus.world.biomes;
 
 import com.google.common.collect.ImmutableList;
 import com.hauntedchest.lovecraftplus.registries.BlockHandler;
+import com.hauntedchest.lovecraftplus.registries.EntityTypeHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -56,6 +57,7 @@ public class MoonForestBiome extends Biome {
 
         addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(
                 EntityType.ENDERMAN, 10, 1, 4));
+
 
         DefaultBiomeFeatures.addCarvers(this);
 
