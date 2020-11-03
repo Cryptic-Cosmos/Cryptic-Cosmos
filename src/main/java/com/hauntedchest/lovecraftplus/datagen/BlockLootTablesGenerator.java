@@ -36,8 +36,6 @@ public class BlockLootTablesGenerator extends LootTableProvider {
     }
 
     private void addLootTables(BlockLootTablesGenerator loot) {
-        loot.dropSelf(BlockHandler.ADMANTITE_ORE.get());
-
         loot.dropSelf(BlockHandler.HUMMING_OBSIDIAN.get());
 
         loot.dropSelf(BlockHandler.HUMMING_STONE.get());

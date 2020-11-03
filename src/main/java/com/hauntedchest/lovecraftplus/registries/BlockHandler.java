@@ -47,8 +47,6 @@ public class BlockHandler {
             BLOCKS.register("smooth_moonstone_slab",
                     () -> new SlabBlock(Properties.from(Blocks.SMOOTH_STONE_SLAB)));
 
-    public static final RegistryObject<Block> ADMANTITE_ORE =
-            BLOCKS.register("admantite_ore", AdmantiteOre::new);
 
     //Thorn Wood
     public static final RegistryObject<Block> THORN_LOG =

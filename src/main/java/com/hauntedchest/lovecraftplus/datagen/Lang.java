@@ -52,7 +52,6 @@ public abstract class Lang extends LanguageProvider {
             add(BlockHandler.THORN_DOOR.get(), "Thorn Door");
             add(BlockHandler.LAVA_SPONGE.get(), "Lava Sponge");
             add(BlockHandler.MOLTEN_LAVA_SPONGE.get(), "Molten Lava Sponge");
-            add(BlockHandler.ADMANTITE_ORE.get(), "Admantite Ore");
 
             // Biomes
             add(BiomeHandler.THORN_JUNGLE.get(), "Thorn Jungle");

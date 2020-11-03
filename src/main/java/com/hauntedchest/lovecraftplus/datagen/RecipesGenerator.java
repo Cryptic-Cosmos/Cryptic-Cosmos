@@ -19,7 +19,7 @@ public class RecipesGenerator extends RecipeProvider {
     @Override
     public void registerRecipes(Consumer<IFinishedRecipe> consumer) {
         // Dreaming souls
-        ShapedRecipeBuilder.shapedRecipe(ItemHandler.DREAMING_SOULS_ITEM.get(), 1)
+        ShapedRecipeBuilder.shapedRecipe(ItemHandler.HUMMING_OBSIDIAN_ITEM.get(), 1)
                 .patternLine("yxy")
                 .patternLine("xzx")
                 .patternLine("yxy")
@@ -27,7 +27,7 @@ public class RecipesGenerator extends RecipeProvider {
                 .key('y', Items.GLOWSTONE_DUST)
                 .key('z', Items.OBSIDIAN)
                 .addCriterion("has_humming_ingot", this.hasItem(ItemHandler.HUMMING_INGOT.get()))
-                .build(consumer, ItemHandler.DREAMING_SOULS_ITEM.getId());
+                .build(consumer, ItemHandler.HUMMING_OBSIDIAN_ITEM.getId());
 
         // Moon planks
         ShapelessRecipeBuilder.shapelessRecipe(ItemHandler.MOON_PLANKS_ITEM.get(), 4)
@@ -43,14 +43,6 @@ public class RecipesGenerator extends RecipeProvider {
                 .addCriterion("has_thorn_log", this.hasItem(ItemHandler.THORN_LOG_ITEM.get()))
                 .build(consumer, ItemHandler.THORN_PLANKS_ITEM.getId());
 
-        // Admantite ingot
-        CookingRecipeBuilder.smeltingRecipe(
-                Ingredient.fromItems(ItemHandler.ADMANTITE_ORE_ITEM.get()),
-                ItemHandler.ADMANTITE_INGOT.get(),
-                2.5f,
-                800)
-                .addCriterion("has_admantite_ore", this.hasItem(ItemHandler.ADMANTITE_ORE_ITEM.get()))
-                .build(consumer, ItemHandler.ADMANTITE_INGOT.getId());
 
         // Smooth moonstone
         CookingRecipeBuilder.smeltingRecipe(
