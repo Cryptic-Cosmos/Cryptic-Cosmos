@@ -32,6 +32,8 @@ public class MoonPlainsBiome extends Biome {
         addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(
                 EntityType.ENDERMAN, 10, 1, 4));
 
-        DefaultBiomeFeatures.addCarvers(this);
+        DefaultBiomeFeatures.addStoneVariants(this);
+        DefaultBiomeFeatures.addTaigaRocks(this);
+        DefaultBiomeFeatures.addDeadBushes(this);
     }
 }
