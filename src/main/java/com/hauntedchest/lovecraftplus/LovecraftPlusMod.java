@@ -1,10 +1,12 @@
 package com.hauntedchest.lovecraftplus;
 
 import com.hauntedchest.lovecraftplus.client.entity.model.render.MoonBeastRender;
+import com.hauntedchest.lovecraftplus.items.CustomSpawnEggItem;
 import com.hauntedchest.lovecraftplus.registries.*;
 import com.hauntedchest.lovecraftplus.world.gen.StructureGen;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -52,7 +54,6 @@ public class LovecraftPlusMod {
 
         MinecraftForge.EVENT_BUS.register(this);
 
-
         BlockHandler.BLOCKS.register(modEventBus);
         ItemHandler.ITEMS.register(modEventBus);
         EntityTypeHandler.ENTITY_TYPES.register(modEventBus);
@@ -65,6 +66,7 @@ public class LovecraftPlusMod {
         modEventBus.addListener(this::doClientStuff);
         modEventBus.addGenericListener(Biome.class, this::onRegisterBiomes);
         modEventBus.addGenericListener(Feature.class, FeatureHandler::registerStructurePieces);
+        modEventBus.addGenericListener(EntityType.class, this::onRegisterEntities);
     }
 
     public void onRegisterBiomes(final RegistryEvent.Register<Biome> event) {
@@ -86,6 +88,9 @@ public class LovecraftPlusMod {
         RenderingRegistry.registerEntityRenderingHandler(
                 EntityTypeHandler.MOON_BEAST.get(),
                 MoonBeastRender::new);
+    }
 
+    private void onRegisterEntities(RegistryEvent.Register<EntityType<?>> event) {
+        CustomSpawnEggItem.initSpawnEggs();
     }
 }

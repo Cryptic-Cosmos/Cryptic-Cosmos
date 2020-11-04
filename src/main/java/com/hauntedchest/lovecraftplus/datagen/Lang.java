@@ -3,6 +3,7 @@ package com.hauntedchest.lovecraftplus.datagen;
 import com.hauntedchest.lovecraftplus.LovecraftPlusMod;
 import com.hauntedchest.lovecraftplus.registries.BiomeHandler;
 import com.hauntedchest.lovecraftplus.registries.BlockHandler;
+import com.hauntedchest.lovecraftplus.registries.EntityTypeHandler;
 import com.hauntedchest.lovecraftplus.registries.ItemHandler;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -28,7 +29,7 @@ public abstract class Lang extends LanguageProvider {
             add(ItemHandler.NECRONOMICON.get(), "Necronomicon");
             add(ItemHandler.PAGE_NECRONOMICON.get(), "Undecipherable Page");
             add(ItemHandler.BUNDLE_NECRONOMICON.get(), "Corrupted Bundle of Knowledge");
-            add(ItemHandler.ADMANTITE_INGOT.get(), "Admantite Ingot");
+            add(ItemHandler.MOON_BEAST_SPAWN_EGG.get(), "Moon Beast Spawn Egg");
 
             // Blocks
             add(BlockHandler.HUMMING_STONE.get(), "Humming Stone");
@@ -52,6 +53,8 @@ public abstract class Lang extends LanguageProvider {
             add(BlockHandler.THORN_DOOR.get(), "Thorn Door");
             add(BlockHandler.LAVA_SPONGE.get(), "Lava Sponge");
             add(BlockHandler.MOLTEN_LAVA_SPONGE.get(), "Molten Lava Sponge");
+
+            add(EntityTypeHandler.MOON_BEAST.get(), "Moon Beast");
 
             // Biomes
             add(BiomeHandler.THORN_JUNGLE.get(), "Thorn Jungle");

@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "lovecraftplus:admantite_ore"
-  },
-  "result": "lovecraftplus:admantite_ingot",
-  "experience": 2.5,
-  "cookingtime": 800
-}

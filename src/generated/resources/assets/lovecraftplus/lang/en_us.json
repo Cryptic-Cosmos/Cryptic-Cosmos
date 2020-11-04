@@ -1,6 +1,5 @@
 {
   "biome.lovecraftplus.thorn_jungle": "Thorn Jungle",
-  "block.lovecraftplus.admantite_ore": "Admantite Ore",
   "block.lovecraftplus.humming_obsidian": "Humming Obsidian",
   "block.lovecraftplus.humming_stone": "Humming Stone",
   "block.lovecraftplus.lava_sponge": "Lava Sponge",
@@ -22,9 +21,10 @@
   "block.lovecraftplus.thorn_planks": "Thorn Planks",
   "block.lovecraftplus.thorn_sapling": "Thorn Sapling",
   "block.lovecraftplus.thorn_slab": "Thorn Slab",
-  "item.lovecraftplus.admantite_ingot": "Admantite Ingot",
+  "entity.lovecraftplus.moon_beast": "Moon Beast",
   "item.lovecraftplus.bundle_necro": "Corrupted Bundle of Knowledge",
   "item.lovecraftplus.humming_ingot": "Humming Ingot",
+  "item.lovecraftplus.moon_beast_spawn_egg": "Moon Beast Spawn Egg",
   "item.lovecraftplus.necronomicon": "Necronomicon",
   "item.lovecraftplus.page_necro": "Undecipherable Page",
   "itemGroup.block_tab": "Lovecraft Blocks",

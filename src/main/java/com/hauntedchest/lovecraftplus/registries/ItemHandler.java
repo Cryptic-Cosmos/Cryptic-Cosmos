@@ -1,6 +1,7 @@
 package com.hauntedchest.lovecraftplus.registries;
 
 import com.hauntedchest.lovecraftplus.LovecraftPlusMod;
+import com.hauntedchest.lovecraftplus.items.CustomSpawnEggItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
@@ -25,8 +26,11 @@ public class ItemHandler {
     public static final RegistryObject<Item> BUNDLE_NECRONOMICON = ITEMS.register("bundle_necro",
             () -> new Item(LovecraftPlusMod.ITEM_TAB_PROP));
 
-    public static final RegistryObject<Item> ADMANTITE_INGOT = ITEMS.register("admantite_ingot",
-            () -> new Item(LovecraftPlusMod.ITEM_TAB_PROP));
+    public static final RegistryObject<Item> MOON_BEAST_SPAWN_EGG = ITEMS.register("moon_beast_spawn_egg",
+            () -> new CustomSpawnEggItem(EntityTypeHandler.MOON_BEAST::get,
+                    0x8000000,
+                    0x353839,
+                    LovecraftPlusMod.ITEM_TAB_PROP));
 
     //Dimension Block Items
     public static final RegistryObject<Item> HUMMING_STONE_ITEM = ITEMS.register("humming_stone",
