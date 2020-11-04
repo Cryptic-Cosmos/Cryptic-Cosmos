@@ -21,6 +21,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
+@SuppressWarnings("NullableProblems")
 public class MoonFrogEntity extends AnimalEntity {
     private static final DataParameter<Boolean> FROM_BUCKET = EntityDataManager.createKey(AbstractFishEntity.class, DataSerializers.BOOLEAN);
 
@@ -69,7 +70,7 @@ public class MoonFrogEntity extends AnimalEntity {
     protected void registerAttributes() {
         super.registerAttributes();
         this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue((double)0.2F);
+        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2F);
     }
 
     @Override

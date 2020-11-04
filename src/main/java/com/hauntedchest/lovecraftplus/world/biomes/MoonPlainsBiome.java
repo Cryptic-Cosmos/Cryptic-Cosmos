@@ -2,12 +2,12 @@ package com.hauntedchest.lovecraftplus.world.biomes;
 
 import com.hauntedchest.lovecraftplus.registries.BlockHandler;
 import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
+@SuppressWarnings("NullableProblems")
 public class MoonPlainsBiome extends Biome {
     public MoonPlainsBiome() {
         super(new Builder()
@@ -26,14 +26,13 @@ public class MoonPlainsBiome extends Biome {
                 .parent(null)
                 .precipitation(Biome.RainType.RAIN));
 
-        addSpawn(EntityClassification.CREATURE, new SpawnListEntry(
-                EntityType.COW, 8, 4, 4));
-
-        addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(
-                EntityType.ENDERMAN, 10, 1, 4));
-
         DefaultBiomeFeatures.addStoneVariants(this);
         DefaultBiomeFeatures.addTaigaRocks(this);
         DefaultBiomeFeatures.addDeadBushes(this);
+    }
+
+    @Override
+    public void addSpawn(EntityClassification type, SpawnListEntry spawnListEntry) {
+        super.addSpawn(type, spawnListEntry);
     }
 }

@@ -16,10 +16,10 @@ public class MoonBiomeHandler {
     public static final DeferredRegister<Biome> BIOMES =
             DeferredRegister.create(ForgeRegistries.BIOMES, LovecraftPlusMod.MOD_ID);
 
-    public static final RegistryObject<Biome> MOON_PLAINS = BIOMES.register("moon_plains",
+    public static final RegistryObject<MoonPlainsBiome> MOON_PLAINS = BIOMES.register("moon_plains",
             MoonPlainsBiome::new);
 
-    public static final RegistryObject<Biome> MOON_MOUNTAINS = BIOMES.register("moon_mountains",
+    public static final RegistryObject<MoonMountainsBiome> MOON_MOUNTAINS = BIOMES.register("moon_mountains",
             MoonMountainsBiome::new);
 
     public static final RegistryObject<Biome> MOON_FOREST = BIOMES.register("moon_forest",

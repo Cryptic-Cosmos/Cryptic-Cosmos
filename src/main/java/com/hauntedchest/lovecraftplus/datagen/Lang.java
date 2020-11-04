@@ -54,7 +54,9 @@ public abstract class Lang extends LanguageProvider {
             add(BlockHandler.LAVA_SPONGE.get(), "Lava Sponge");
             add(BlockHandler.MOLTEN_LAVA_SPONGE.get(), "Molten Lava Sponge");
 
+            // Entities
             add(EntityTypeHandler.MOON_BEAST.get(), "Moon Beast");
+            add(EntityTypeHandler.MOON_FROG.get(), "Moon Frog");
 
             // Biomes
             add(BiomeHandler.THORN_JUNGLE.get(), "Thorn Jungle");
