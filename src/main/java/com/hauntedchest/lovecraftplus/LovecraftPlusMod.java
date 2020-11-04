@@ -107,17 +107,10 @@ public class LovecraftPlusMod {
         RenderingRegistry.registerEntityRenderingHandler(
                 EntityTypeHandler.MOON_BEAST.get(),
                 MoonBeastRender::new);
-<<<<<<< HEAD
-        RenderingRegistry.registerEntityRenderingHandler(
-                EntityTypeHandler.MOON_FROG.get(),
-                MoonFrogRender::new);
-
-=======
 
         RenderingRegistry.registerEntityRenderingHandler(
                 EntityTypeHandler.MOON_FROG.get(),
                 MoonFrogRender::new);
->>>>>>> 59736619e0a852e1ca98d569c65c7667e038256a
     }
 
     private void onRegisterEntities(RegistryEvent.Register<EntityType<?>> event) {
