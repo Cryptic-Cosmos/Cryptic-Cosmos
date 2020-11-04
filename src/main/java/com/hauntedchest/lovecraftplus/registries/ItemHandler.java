@@ -28,8 +28,14 @@ public class ItemHandler {
 
     public static final RegistryObject<Item> MOON_BEAST_SPAWN_EGG = ITEMS.register("moon_beast_spawn_egg",
             () -> new CustomSpawnEggItem(EntityTypeHandler.MOON_BEAST::get,
-                    0x8000000,
-                    0x353839,
+                    0x616a65,
+                    0x800000,
+                    LovecraftPlusMod.ITEM_TAB_PROP));
+
+    public static final RegistryObject<Item> MOON_FROG_SPAWN_EGG = ITEMS.register("moon_frog_spawn_egg",
+            () -> new CustomSpawnEggItem(EntityTypeHandler.MOON_FROG::get,
+                    0x003dff,
+                    0x1a1a1b,
                     LovecraftPlusMod.ITEM_TAB_PROP));
 
     //Dimension Block Items
