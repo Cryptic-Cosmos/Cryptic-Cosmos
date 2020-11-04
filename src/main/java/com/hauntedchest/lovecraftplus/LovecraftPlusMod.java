@@ -1,15 +1,13 @@
 package com.hauntedchest.lovecraftplus;
 
 import com.hauntedchest.lovecraftplus.client.entity.model.render.MoonBeastRender;
-<<<<<<< Updated upstream
-import com.hauntedchest.lovecraftplus.items.CustomSpawnEggItem;
-=======
 import com.hauntedchest.lovecraftplus.client.entity.model.render.MoonFrogRender;
->>>>>>> Stashed changes
+import com.hauntedchest.lovecraftplus.items.CustomSpawnEggItem;
 import com.hauntedchest.lovecraftplus.registries.*;
 import com.hauntedchest.lovecraftplus.world.gen.StructureGen;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -27,6 +25,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import static net.minecraft.world.biome.Biome.SpawnListEntry;
 
 
 @Mod(LovecraftPlusMod.MOD_ID)
@@ -81,7 +81,21 @@ public class LovecraftPlusMod {
 
     @SuppressWarnings("deprecation")
     private void setup(final FMLCommonSetupEvent event) {
-        DeferredWorkQueue.runLater(StructureGen::generateStructures);
+        DeferredWorkQueue.runLater(() -> {
+            StructureGen.generateStructures();
+
+            MoonBiomeHandler.MOON_MOUNTAINS.get().addSpawn(EntityClassification.MONSTER, new SpawnListEntry(
+                    EntityTypeHandler.MOON_BEAST.get(), 8, 1, 2));
+
+            MoonBiomeHandler.MOON_MOUNTAINS.get().addSpawn(EntityClassification.MONSTER, new SpawnListEntry(
+                    EntityType.ENDERMAN, 4, 1, 4));
+
+            MoonBiomeHandler.MOON_PLAINS.get().addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(
+                    EntityType.ENDERMAN, 4, 1, 4));
+
+            MoonBiomeHandler.MOON_PLAINS.get().addSpawn(EntityClassification.CREATURE, new SpawnListEntry(
+                    EntityTypeHandler.MOON_BEAST.get(), 8, 1, 2));
+        });
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -89,16 +103,15 @@ public class LovecraftPlusMod {
         RenderTypeLookup.setRenderLayer(BlockHandler.THORN_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockHandler.MOON_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockHandler.THORN_DOOR.get(), RenderType.getCutout());
+
         RenderingRegistry.registerEntityRenderingHandler(
                 EntityTypeHandler.MOON_BEAST.get(),
                 MoonBeastRender::new);
-<<<<<<< Updated upstream
-    }
-=======
+
         RenderingRegistry.registerEntityRenderingHandler(
                 EntityTypeHandler.MOON_FROG.get(),
                 MoonFrogRender::new);
->>>>>>> Stashed changes
+    }
 
     private void onRegisterEntities(RegistryEvent.Register<EntityType<?>> event) {
         CustomSpawnEggItem.initSpawnEggs();
