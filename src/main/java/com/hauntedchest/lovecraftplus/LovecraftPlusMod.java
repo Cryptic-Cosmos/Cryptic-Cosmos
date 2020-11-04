@@ -1,7 +1,11 @@
 package com.hauntedchest.lovecraftplus;
 
 import com.hauntedchest.lovecraftplus.client.entity.model.render.MoonBeastRender;
+<<<<<<< Updated upstream
 import com.hauntedchest.lovecraftplus.items.CustomSpawnEggItem;
+=======
+import com.hauntedchest.lovecraftplus.client.entity.model.render.MoonFrogRender;
+>>>>>>> Stashed changes
 import com.hauntedchest.lovecraftplus.registries.*;
 import com.hauntedchest.lovecraftplus.world.gen.StructureGen;
 import net.minecraft.client.renderer.RenderType;
@@ -88,7 +92,13 @@ public class LovecraftPlusMod {
         RenderingRegistry.registerEntityRenderingHandler(
                 EntityTypeHandler.MOON_BEAST.get(),
                 MoonBeastRender::new);
+<<<<<<< Updated upstream
     }
+=======
+        RenderingRegistry.registerEntityRenderingHandler(
+                EntityTypeHandler.MOON_FROG.get(),
+                MoonFrogRender::new);
+>>>>>>> Stashed changes
 
     private void onRegisterEntities(RegistryEvent.Register<EntityType<?>> event) {
         CustomSpawnEggItem.initSpawnEggs();
