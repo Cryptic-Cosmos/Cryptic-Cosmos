@@ -19,6 +19,7 @@ public class DataGenerators {
         if (event.includeServer()) {
             generator.addProvider(new RecipesGenerator(generator));
             generator.addProvider(new BlockLootTablesGenerator(generator));
+            generator.addProvider(new EntityLootTablesGenerator(generator));
         }
     }
 }

@@ -28,6 +28,7 @@ public abstract class Lang extends LanguageProvider {
             add(ItemHandler.HUMMING_INGOT.get(), "Humming Ingot");
             add(ItemHandler.NECRONOMICON.get(), "Necronomicon");
             add(ItemHandler.PAGE_NECRONOMICON.get(), "Undecipherable Page");
+            add(ItemHandler.CRATERED_BONE.get(), "Cratered Bone");
             add(ItemHandler.BUNDLE_NECRONOMICON.get(), "Corrupted Bundle of Knowledge");
             add(ItemHandler.MOON_BEAST_SPAWN_EGG.get(), "Moon Beast Spawn Egg");
 

@@ -1,17 +1,19 @@
 package com.hauntedchest.lovecraftplus.entities;
 
+import com.hauntedchest.lovecraftplus.registries.ItemHandler;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.EndermanEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
 public class MoonBeastEntity extends MonsterEntity {
-    // protected static final IAttribute SPAWN_REINFORCEMENTS_CHANCE = (new RangedAttribute(null, "moon_beast.spawnReinforcements", 0.0D, 0.0D, 1.0D)).setDescription("Spawn Reinforcements Chance");
+    private static final Ingredient TEMPT_ITEMS = Ingredient.fromItems(ItemHandler.CRATERED_BONE.get());
 
     public MoonBeastEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
         super(type, worldIn);
@@ -22,6 +24,7 @@ public class MoonBeastEntity extends MonsterEntity {
         super.registerGoals();
         this.goalSelector.addGoal(8, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(6, new TemptGoal(this, 1f, TEMPT_ITEMS, false));
         this.applyEntityAI();
     }
 

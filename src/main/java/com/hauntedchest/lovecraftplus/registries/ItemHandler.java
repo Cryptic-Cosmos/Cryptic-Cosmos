@@ -26,6 +26,9 @@ public class ItemHandler {
     public static final RegistryObject<Item> BUNDLE_NECRONOMICON = ITEMS.register("bundle_necro",
             () -> new Item(LovecraftPlusMod.ITEM_TAB_PROP));
 
+    public static final RegistryObject<Item> CRATERED_BONE = ITEMS.register("cratered_bone",
+            () -> new Item(LovecraftPlusMod.ITEM_TAB_PROP));
+
     public static final RegistryObject<Item> MOON_BEAST_SPAWN_EGG = ITEMS.register("moon_beast_spawn_egg",
             () -> new CustomSpawnEggItem(EntityTypeHandler.MOON_BEAST::get,
                     0x616a65,
