@@ -3,13 +3,13 @@ package com.hauntedchest.lovecraftplus.client.entity.model;// Made with Blockben
 // Paste this class into your mod and generate all required imports
 
 
-import com.hauntedchest.lovecraftplus.entities.MoonBeastEntity;
+import com.hauntedchest.lovecraftplus.entities.MoonFrogEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 
-public class MoonFrogModel<T extends MoonBeastEntity> extends EntityModel<T> {
+public class MoonFrogModel<T extends MoonFrogEntity> extends EntityModel<T> {
 	private final ModelRenderer right_leg;
 	private final ModelRenderer middle_finger;
 	private final ModelRenderer right_back;

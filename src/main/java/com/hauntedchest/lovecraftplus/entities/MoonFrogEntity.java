@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 @SuppressWarnings("NullableProblems")
 public class MoonFrogEntity extends AnimalEntity {
 
+
     public MoonFrogEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
         super(type, worldIn);
     }
