@@ -20,6 +20,6 @@ public class MoonFrogModel extends AnimatedGeoModel<MoonFrogEntity> {
 
     @Override
     public ResourceLocation getAnimationFileLocation(MoonFrogEntity moonFrogEntity) {
-        return new ResourceLocation(LovecraftPlusMod.MOD_ID, "animations/frog_move.animation.json");
+        return new ResourceLocation(LovecraftPlusMod.MOD_ID, "animations/frog_move.json");
     }
 }
