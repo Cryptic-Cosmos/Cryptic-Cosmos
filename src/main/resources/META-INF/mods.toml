@@ -1,15 +1,6 @@
-# This is an example mods.toml file. It contains the data relating to the loading mods.
-# There are several mandatory fields (#mandatory), and many more that are optional (#optional).
-# The overall format is standard TOML format, v0.5.0.
-# Note that there are a couple of TOML lists in this file.
-# Find more information on toml format here:  https://github.com/toml-lang/toml
-# The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
 modLoader = "javafml" #mandatory
-# A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion = "[31.2,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
-# The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
-# Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
-license = "All rights reserved"
+loaderVersion = "[31.2,)" 
+license = "GPL version 3 or any later version"
 # A URL to refer people to when problems occur with this mod
 issueTrackerURL = "https://github.com/DenDragon23/LovecraftPlus/issues" #optional
 # A list of mods - how many allowed here is determined by the individual mod loader
@@ -22,20 +13,12 @@ version = "1.15.2-1.0.0-ALPHA" #mandatory
 displayName = "Lovecraft Plus" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 displayURL = "https://github.com/DenDragon23/LovecraftPlus" #optional
-# A file name (in the root of the mod JAR) containing a logo for display
-logoFile = "examplemod.png" #optional
 # A text field displayed in the mod UI
 credits = "This mod goes to my discord community and the people who helped in the project" #optional
 # A text field displayed in the mod UI
 authors = "Haunted Chest, PutoPug, Cheese God, Conzilla and TheOnlyTails" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description = '''
-This is a long form description of the mod. You can write whatever you want here
-
-Have some lorem ipsum.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sagittis luctus odio eu tempus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque volutpat ligula eget lacus auctor sagittis. In hac habitasse platea dictumst. Nunc gravida elit vitae sem vehicula efficitur. Donec mattis ipsum et arcu lobortis, eleifend sagittis sem rutrum. Cras pharetra quam eget posuere fermentum. Sed id tincidunt justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-'''
+description = "This mod takes inspiration from the writer H.P Lovecraft and here we make all sorts of new mobs, and dimensions where these monsters come from."
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.examplemod]] #optional
     # the modid of the dependency
