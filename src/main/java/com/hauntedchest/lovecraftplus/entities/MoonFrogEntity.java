@@ -9,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Lazy;
 import software.bernie.geckolib.core.IAnimatable;
 import software.bernie.geckolib.core.PlayState;
 import software.bernie.geckolib.core.builder.AnimationBuilder;
@@ -22,7 +23,8 @@ import javax.annotation.Nullable;
 @SuppressWarnings("NullableProblems")
 public class MoonFrogEntity extends AnimalEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
-    private final Ingredient BREEDING_ITEM = Ingredient.fromItems(ItemHandler.MOON_SAPLING_ITEM.get());
+    private static final Lazy<Ingredient> BREEDING_ITEM = Lazy.of(() ->
+            Ingredient.fromItems(ItemHandler.MOON_SAPLING_ITEM.get()));
 
     public MoonFrogEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
         super(type, worldIn);
@@ -49,7 +51,7 @@ public class MoonFrogEntity extends AnimalEntity implements IAnimatable {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.0D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, BREEDING_ITEM, false));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, BREEDING_ITEM.get(), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 6.0F));
@@ -76,6 +78,6 @@ public class MoonFrogEntity extends AnimalEntity implements IAnimatable {
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return stack.getItem() == BREEDING_ITEM.getMatchingStacks()[0].getItem();
+        return stack.getItem() == BREEDING_ITEM.get().getMatchingStacks()[0].getItem();
     }
 }
