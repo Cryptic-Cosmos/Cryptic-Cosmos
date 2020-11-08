@@ -32,7 +32,7 @@ public class MoonFrogEntity extends AnimalEntity implements IAnimatable {
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animations/frog_move", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.MoonFrogModel.jump", true));
         return PlayState.CONTINUE;
     }
 
