@@ -20,33 +20,28 @@ import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
 public class MoonFrogEntity extends AnimalEntity implements IAnimatable {
-    private AnimationFactory factory = new AnimationFactory(this);
-
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event)
-    {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.moon_frog.move", true));
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public void registerControllers(AnimationData data)
-    {
-        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
-    }
-
-    @Override
-    public AnimationFactory getFactory()
-    {
-        return this.factory;
-    }
-
+    private final AnimationFactory factory = new AnimationFactory(this);
 
     public MoonFrogEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
         super(type, worldIn);
         this.ignoreFrustumCheck = true;
     }
 
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.moon_frog.move", true));
+        return PlayState.CONTINUE;
+    }
 
+    @Override
+    public void registerControllers(AnimationData data) {
+        data.addAnimationController(new AnimationController<>(
+                this, "controller", 0, this::predicate));
+    }
+
+    @Override
+    public AnimationFactory getFactory() {
+        return this.factory;
+    }
 
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new SwimGoal(this));
@@ -76,5 +71,4 @@ public class MoonFrogEntity extends AnimalEntity implements IAnimatable {
     protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
         return this.isChild() ? sizeIn.height * 0.95F : 1.3F;
     }
-
 }
