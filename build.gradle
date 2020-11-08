@@ -85,6 +85,12 @@ minecraft {
         }
     }
 }
+repositories{
+    maven { url 'https://repo.repsy.io/mvn/gandiber/geckolib' }
+}
+dependencies{
+    compile fg.deobf('software.bernie.geckolib:forge-1.15.2-geckolib:3.0.0-beta.7')
+}
 repositories {
     maven {
         // location of the maven that hosts JEI files

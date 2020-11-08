@@ -8,15 +8,42 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.world.World;
+import software.bernie.geckolib.core.IAnimatable;
+import software.bernie.geckolib.core.PlayState;
+import software.bernie.geckolib.core.builder.AnimationBuilder;
+import software.bernie.geckolib.core.controller.AnimationController;
+import software.bernie.geckolib.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib.core.manager.AnimationData;
+import software.bernie.geckolib.core.manager.AnimationFactory;
 
 import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
-public class MoonFrogEntity extends AnimalEntity {
+public class MoonFrogEntity extends AnimalEntity implements IAnimatable {
+    private AnimationFactory factory = new AnimationFactory(this);
+
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event)
+    {
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.moon_frog.move", true));
+        return PlayState.CONTINUE;
+    }
+
+    @Override
+    public void registerControllers(AnimationData data)
+    {
+        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
+    }
+
+    @Override
+    public AnimationFactory getFactory()
+    {
+        return this.factory;
+    }
 
 
     public MoonFrogEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
         super(type, worldIn);
+        this.ignoreFrustumCheck = true;
     }
 
 
@@ -49,4 +76,5 @@ public class MoonFrogEntity extends AnimalEntity {
     protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
         return this.isChild() ? sizeIn.height * 0.95F : 1.3F;
     }
+
 }
