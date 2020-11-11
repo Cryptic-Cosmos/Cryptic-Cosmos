@@ -3,7 +3,7 @@ package com.hauntedchest.lovecraftplus.client.entity.model.render;
 import com.hauntedchest.lovecraftplus.client.entity.model.MoonFrogModel;
 import com.hauntedchest.lovecraftplus.entities.MoonFrogEntity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import software.bernie.geckolib.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 public class MoonFrogRender extends GeoEntityRenderer<MoonFrogEntity> {
     public MoonFrogRender(EntityRendererManager renderManager)

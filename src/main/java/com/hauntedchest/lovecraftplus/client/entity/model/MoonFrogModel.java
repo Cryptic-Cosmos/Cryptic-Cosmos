@@ -3,7 +3,7 @@ package com.hauntedchest.lovecraftplus.client.entity.model;
 import com.hauntedchest.lovecraftplus.LovecraftPlusMod;
 import com.hauntedchest.lovecraftplus.entities.MoonFrogEntity;
 import net.minecraft.util.ResourceLocation;
-import software.bernie.geckolib.model.AnimatedGeoModel;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class MoonFrogModel extends AnimatedGeoModel<MoonFrogEntity> {
 

@@ -20,6 +20,7 @@ public class DataGenerators {
             generator.addProvider(new RecipesGenerator(generator));
             generator.addProvider(new BlockLootTablesGenerator(generator));
             generator.addProvider(new EntityLootTablesGenerator(generator));
+            generator.addProvider(new StructureLootTablesGenerator(generator));
         }
     }
 }

@@ -4,29 +4,29 @@ import com.hauntedchest.lovecraftplus.registries.EntityTypeHandler;
 import com.hauntedchest.lovecraftplus.registries.ItemHandler;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Lazy;
-import software.bernie.geckolib.core.IAnimatable;
-import software.bernie.geckolib.core.PlayState;
-import software.bernie.geckolib.core.builder.AnimationBuilder;
-import software.bernie.geckolib.core.controller.AnimationController;
-import software.bernie.geckolib.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib.core.manager.AnimationData;
-import software.bernie.geckolib.core.manager.AnimationFactory;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
-public class MoonFrogEntity extends AnimalEntity implements IAnimatable {
+public class MoonFrogEntity extends TameableEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
     private static final Lazy<Ingredient> BREEDING_ITEM = Lazy.of(() ->
             Ingredient.fromItems(ItemHandler.MOON_SAPLING_ITEM.get()));
 
-    public MoonFrogEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
+    public MoonFrogEntity(EntityType<? extends TameableEntity> type, World worldIn) {
         super(type, worldIn);
         this.ignoreFrustumCheck = true;
     }
@@ -78,6 +78,16 @@ public class MoonFrogEntity extends AnimalEntity implements IAnimatable {
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return stack.getItem() == BREEDING_ITEM.get().getMatchingStacks()[0].getItem();
+        return BREEDING_ITEM.get().test(stack);
+    }
+
+    @Override
+    public boolean canDespawn(double distanceToClosestPlayer) {
+        return !this.isTamed() && this.ticksExisted > 2400;
+    }
+
+    @Override
+    protected void setupTamedAI() {
+        this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 0.5f, 10f, 5f, false));
     }
 }
