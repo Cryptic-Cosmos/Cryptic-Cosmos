@@ -25,7 +25,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import software.bernie.geckolib3.GeckoLib;
 
 import static net.minecraft.world.biome.Biome.SpawnListEntry;
 
@@ -56,8 +55,6 @@ public class LovecraftPlusMod {
 
     public LovecraftPlusMod() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        GeckoLib.initialize();
-
         MinecraftForge.EVENT_BUS.register(this);
 
         BlockHandler.BLOCKS.register(modEventBus);
