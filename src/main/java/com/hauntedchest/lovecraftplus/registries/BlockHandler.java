@@ -58,6 +58,12 @@ public class BlockHandler {
                     () -> new StairsBlock(() -> MOONSTONE.get().getDefaultState(),
                             Properties.from(MOONSTONE.get())));
 
+    public static final RegistryObject<Block> MOONSTONE_STAIRS =
+            BLOCKS.register("moonstone_stairs", () ->
+                    new StairsBlock(() -> MOONSTONE.get().getDefaultState(),
+                            Properties.from(MOONSTONE.get())));
+
+
     public static final RegistryObject<Block> MOONSTONE_BRICKS =
             BLOCKS.register("moonstone_bricks", () -> new Block(Properties.create(Material.ROCK)
                     .hardnessAndResistance(4.0f, 15)
@@ -72,6 +78,11 @@ public class BlockHandler {
     public static final RegistryObject<Block> MOONSTONE_BRICK_STAIRS =
             BLOCKS.register("moonstone_brick_stairs",
                     () -> new StairsBlock(() -> MOONSTONE_BRICKS.get().getDefaultState(),
+                            Properties.from(MOONSTONE_BRICKS.get())));
+
+    public static final RegistryObject<Block> MOONSTONE_BRICK_STAIRS =
+            BLOCKS.register("moonstone_brick_stairs", () ->
+                    new StairsBlock(() -> MOONSTONE_BRICKS.get().getDefaultState(),
                             Properties.from(MOONSTONE_BRICKS.get())));
 
     public static final RegistryObject<Block> SMOOTH_MOONSTONE =
