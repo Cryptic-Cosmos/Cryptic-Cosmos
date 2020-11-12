@@ -90,7 +90,7 @@ repositories {
 }
 
 dependencies {
-    implementation fg.deobf('software.bernie.geckolib:forge-1.15.2-geckolib:2.0.0')
+    implementation fg.deobf("software.bernie.geckolib:forge-1.15.2-geckolib:${geckolib_version}")
 }
 
 repositories {
