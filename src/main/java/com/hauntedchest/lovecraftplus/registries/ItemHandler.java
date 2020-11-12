@@ -48,10 +48,22 @@ public class ItemHandler {
     public static final RegistryObject<Item> HUMMING_OBSIDIAN_ITEM = ITEMS.register("humming_obsidian",
             () -> new BlockItem(BlockHandler.HUMMING_OBSIDIAN.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
 
-    //Moon Block Items
+    //Mooncalite items
     public static final RegistryObject<Item> MOONCALITE_ITEM = ITEMS.register("mooncalite",
             () -> new BlockItem(BlockHandler.MOONCALITE.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
 
+    public static final RegistryObject<Item> MOONCALITE_SLAB_ITEM = ITEMS.register("mooncalite_slab",
+            () -> new BlockItem(BlockHandler.MOONCALITE_SLAB.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
+
+    public static final RegistryObject<Item> MOONCALITE_STAIRS_ITEM = ITEMS.register("mooncalite_stairs",
+            () -> new BlockItem(BlockHandler.MOONCALITE_STAIRS.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
+
+    // Moonstone items
+    public static final RegistryObject<Item> MOONSTONE_ITEM = ITEMS.register("moonstone",
+            () -> new BlockItem(BlockHandler.MOONSTONE.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
+
+    public static final RegistryObject<Item> MOONSTONE_SLABS_ITEM = ITEMS.register("moonstone_slab",
+            () -> new BlockItem(BlockHandler.MOONSTONE_SLAB.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
     public static final RegistryObject<Item> MOONSTONE_BRICKS_ITEM = ITEMS.register("moonstone_bricks",
             () -> new BlockItem(BlockHandler.MOONSTONE_BRICKS.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
 
@@ -63,13 +75,6 @@ public class ItemHandler {
 
     public static final RegistryObject<Item> SMOOTH_MOONSTONE_SLABS_ITEM = ITEMS.register("smooth_moonstone_slab",
             () -> new BlockItem(BlockHandler.SMOOTH_MOONSTONE_SLAB.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
-
-    public static final RegistryObject<Item> MOONSTONE_ITEM = ITEMS.register("moonstone",
-            () -> new BlockItem(BlockHandler.MOONSTONE.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
-
-    public static final RegistryObject<Item> MOONSTONE_SLABS_ITEM = ITEMS.register("moonstone_slab",
-            () -> new BlockItem(BlockHandler.MOONSTONE_SLAB.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
-
 
     //Wood Block Items
     public static final RegistryObject<Item> THORN_LOG_ITEM = ITEMS.register("thorn_log",

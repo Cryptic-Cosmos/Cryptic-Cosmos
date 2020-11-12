@@ -43,7 +43,6 @@ public class RecipesGenerator extends RecipeProvider {
                 .addCriterion("has_thorn_log", this.hasItem(ItemHandler.THORN_LOG_ITEM.get()))
                 .build(consumer, ItemHandler.THORN_PLANKS_ITEM.getId());
 
-
         // Smooth moonstone
         CookingRecipeBuilder.smeltingRecipe(
                 Ingredient.fromItems(ItemHandler.MOONSTONE_ITEM.get()),
@@ -73,11 +72,40 @@ public class RecipesGenerator extends RecipeProvider {
 
         // Moonstone bricks
         SingleItemRecipeBuilder
-                .stonecuttingRecipe(
-                        Ingredient.fromItems(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()),
+                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()),
                         ItemHandler.MOONSTONE_BRICKS_ITEM.get())
                 .addCriterion("has_smooth_moonstone",
                         this.hasItem(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()))
                 .build(consumer, ItemHandler.MOONSTONE_BRICKS_ITEM.getId());
+
+        // Mooncalite slab
+        ShapedRecipeBuilder.shapedRecipe(ItemHandler.MOONCALITE_SLAB_ITEM.get(), 6)
+                .patternLine("mmm")
+                .key('m', ItemHandler.MOONCALITE_ITEM.get())
+                .addCriterion("has_mooncalite", hasItem(ItemHandler.MOONCALITE_ITEM.get()))
+                .build(consumer, ItemHandler.MOONCALITE_SLAB_ITEM.getId());
+
+        // Mooncalite slab (in stonecutter)
+        SingleItemRecipeBuilder
+                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.MOONCALITE_ITEM.get()),
+                        ItemHandler.MOONCALITE_SLAB_ITEM.get())
+                .addCriterion("has_mooncalite", hasItem(ItemHandler.MOONCALITE_ITEM.get()))
+                .build(consumer, "mooncalite_slab_stonecutter");
+
+        // Mooncalite stairs
+        ShapedRecipeBuilder.shapedRecipe(ItemHandler.MOONCALITE_STAIRS_ITEM.get(), 4)
+                .patternLine("m  ")
+                .patternLine("mm ")
+                .patternLine("mmm")
+                .key('m', ItemHandler.MOONCALITE_ITEM.get())
+                .addCriterion("has_mooncalite", hasItem(ItemHandler.MOONCALITE_ITEM.get()))
+                .build(consumer, ItemHandler.MOONCALITE_STAIRS_ITEM.getId());
+
+        // Mooncalite stairs (in stonecutter)
+        SingleItemRecipeBuilder
+                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.MOONCALITE_ITEM.get()),
+                        ItemHandler.MOONCALITE_STAIRS_ITEM.get())
+                .addCriterion("has_mooncalite", hasItem(ItemHandler.MOONCALITE_ITEM.get()))
+                .build(consumer, "mooncalite_stairs_stonecutter");
     }
 }

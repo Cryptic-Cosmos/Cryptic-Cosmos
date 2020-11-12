@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mmm"
+  ],
+  "key": {
+    "m": {
+      "item": "lovecraftplus:mooncalite"
+    }
+  },
+  "result": {
+    "item": "lovecraftplus:mooncalite_slab",
+    "count": 6
+  }
+}

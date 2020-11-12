@@ -46,6 +46,10 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockHandler.MOONCALITE.get());
 
+        loot.dropSlabs(BlockHandler.MOONCALITE_SLAB.get());
+
+        loot.dropSelf(BlockHandler.MOONCALITE_STAIRS.get());
+
         loot.addLoot(BlockHandler.MOON_LEAVES.get(),
                 BlockLootTables.droppingWithChancesSticksAndApples(BlockHandler.MOON_LEAVES.get(),
                         BlockHandler.MOON_SAPLING.get(),
@@ -59,9 +63,15 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockHandler.MOONSTONE.get());
 
+        loot.dropSlabs(BlockHandler.MOONSTONE_SLAB.get());
+
         loot.dropSelf(BlockHandler.MOONSTONE_BRICKS.get());
 
+        loot.dropSlabs(BlockHandler.MOONSTONE_BRICK_SLAB.get());
+
         loot.dropSelf(BlockHandler.SMOOTH_MOONSTONE.get());
+
+        loot.dropSlabs(BlockHandler.SMOOTH_MOONSTONE_SLAB.get());
 
         loot.addLoot(BlockHandler.THORN_LEAVES.get(),
                 BlockLootTables.droppingWithChancesSticksAndApples(BlockHandler.THORN_LEAVES.get(),

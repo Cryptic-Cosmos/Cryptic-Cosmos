@@ -35,6 +35,8 @@ public abstract class Lang extends LanguageProvider {
             // Blocks
             add(BlockHandler.HUMMING_STONE.get(), "Humming Stone");
             add(BlockHandler.MOONCALITE.get(), "Mooncalite");
+            add(BlockHandler.MOONCALITE_SLAB.get(), "Mooncalite Slab");
+            add(BlockHandler.MOONCALITE_STAIRS.get(), "Mooncalite Stairs");
             add(BlockHandler.MOONSTONE.get(), "Moonstone");
             add(BlockHandler.SMOOTH_MOONSTONE.get(), "Smooth Moonstone");
             add(BlockHandler.MOONSTONE_BRICKS.get(), "Moonstone Bricks");

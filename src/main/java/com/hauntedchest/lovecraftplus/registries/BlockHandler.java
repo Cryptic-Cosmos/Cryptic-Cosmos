@@ -7,6 +7,7 @@ import com.hauntedchest.lovecraftplus.world.feature.ThornTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -22,9 +23,31 @@ public class BlockHandler {
     public static final RegistryObject<Block> HUMMING_OBSIDIAN =
             BLOCKS.register("humming_obsidian", HummingObsidian::new);
 
-    //Moon Blocks
+    // Mooncalite
     public static final RegistryObject<Block> MOONCALITE =
-            BLOCKS.register("mooncalite", Mooncalite::new);
+            BLOCKS.register("mooncalite", () ->
+                    new Block(Properties.create(Material.ROCK)
+                            .hardnessAndResistance(2.0f, 6)
+                            .sound(SoundType.STONE)
+                            .harvestLevel(2)
+                            .harvestTool(ToolType.PICKAXE)));
+
+    public static final RegistryObject<Block> MOONCALITE_SLAB =
+            BLOCKS.register("mooncalite_slab", () ->
+                    new SlabBlock(Properties.from(MOONCALITE.get())));
+
+    public static final RegistryObject<Block> MOONCALITE_STAIRS =
+            BLOCKS.register("mooncalite_stairs", () ->
+                    new StairsBlock(() -> MOONCALITE.get().getDefaultState(),
+                            Properties.from(MOONCALITE.get())));
+
+    // Moonstone
+    public static final RegistryObject<Block> MOONSTONE =
+            BLOCKS.register("moonstone", MoonHolesBlock::new);
+
+    public static final RegistryObject<Block> MOONSTONE_SLAB =
+            BLOCKS.register("moonstone_slab",
+                    () -> new SlabBlock(Properties.from(Blocks.STONE_SLAB)));
 
     public static final RegistryObject<Block> MOONSTONE_BRICKS =
             BLOCKS.register("moonstone_bricks", MoonStoneBricks::new);
@@ -32,13 +55,6 @@ public class BlockHandler {
     public static final RegistryObject<Block> MOONSTONE_BRICK_SLAB =
             BLOCKS.register("moonstone_brick_slab",
                     () -> new SlabBlock(Properties.from(Blocks.BRICK_SLAB)));
-
-    public static final RegistryObject<Block> MOONSTONE =
-            BLOCKS.register("moonstone", MoonHolesBlock::new);
-
-    public static final RegistryObject<Block> MOONSTONE_SLAB =
-            BLOCKS.register("moonstone_slab",
-                    () -> new SlabBlock(Properties.from(Blocks.STONE_SLAB)));
 
     public static final RegistryObject<Block> SMOOTH_MOONSTONE =
             BLOCKS.register("smooth_moonstone", MoonStoneBricks::new);
