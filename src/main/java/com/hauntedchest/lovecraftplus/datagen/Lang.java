@@ -34,26 +34,35 @@ public abstract class Lang extends LanguageProvider {
 
             // Blocks
             add(BlockHandler.HUMMING_STONE.get(), "Humming Stone");
+            add(BlockHandler.HUMMING_OBSIDIAN.get(), "Humming Obsidian");
+
             add(BlockHandler.MOONCALITE.get(), "Mooncalite");
             add(BlockHandler.MOONCALITE_SLAB.get(), "Mooncalite Slab");
             add(BlockHandler.MOONCALITE_STAIRS.get(), "Mooncalite Stairs");
+
             add(BlockHandler.MOONSTONE.get(), "Moonstone");
+            add(BlockHandler.MOONSTONE_SLAB.get(), "Moonstone Slab");
+            add(BlockHandler.MOONSTONE_STAIRS.get(), "Moonstone Stairs");
+
             add(BlockHandler.SMOOTH_MOONSTONE.get(), "Smooth Moonstone");
+            add(BlockHandler.SMOOTH_MOONSTONE_STAIRS.get(), "Smooth Moonstone Stairs");
+
             add(BlockHandler.MOONSTONE_BRICKS.get(), "Moonstone Bricks");
             add(BlockHandler.MOONSTONE_BRICK_SLAB.get(), "Moonstone Brick Slab");
-            add(BlockHandler.SMOOTH_MOONSTONE_SLAB.get(), "Smooth Moonstone Slab");
-            add(BlockHandler.MOONSTONE_SLAB.get(), "Moonstone Slab");
-            add(BlockHandler.THORN_SLAB.get(), "Thorn Slab");
-            add(BlockHandler.HUMMING_OBSIDIAN.get(), "Humming Obsidian");
+            add(BlockHandler.MOONSTONE_BRICK_STAIRS.get(), "Moonstone Brick Stairs");
+
             add(BlockHandler.THORN_LOG.get(), "Thorn Log");
             add(BlockHandler.THORN_PLANKS.get(), "Thorn Planks");
+            add(BlockHandler.THORN_SLAB.get(), "Thorn Slab");
             add(BlockHandler.THORN_LEAVES.get(), "Thorn Leaves");
             add(BlockHandler.THORN_SAPLING.get(), "Thorn Sapling");
+            add(BlockHandler.THORN_DOOR.get(), "Thorn Door");
+
             add(BlockHandler.MOON_LOG.get(), "Moon Log");
             add(BlockHandler.MOON_PLANKS.get(), "Moon Planks");
             add(BlockHandler.MOON_LEAVES.get(), "Moon Leaves");
             add(BlockHandler.MOON_SAPLING.get(), "Moon Sapling");
-            add(BlockHandler.THORN_DOOR.get(), "Thorn Door");
+
             add(BlockHandler.LAVA_SPONGE.get(), "Lava Sponge");
             add(BlockHandler.MOLTEN_LAVA_SPONGE.get(), "Molten Lava Sponge");
 

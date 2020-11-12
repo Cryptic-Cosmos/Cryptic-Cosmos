@@ -2,16 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "lovecraftplus:moonstone_bricks"
+      "minecraft:moonstone_bricks_stonecutter"
     ]
   },
   "criteria": {
-    "has_moonstone_bricks": {
+    "has_smooth_moonstone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "lovecraftplus:moonstone_bricks"
+            "item": "lovecraftplus:smooth_moonstone"
           }
         ]
       }
@@ -19,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "lovecraftplus:moonstone_bricks"
+        "recipe": "minecraft:moonstone_bricks_stonecutter"
       }
     }
   },
   "requirements": [
     [
-      "has_moonstone_bricks",
+      "has_smooth_moonstone",
       "has_the_recipe"
     ]
   ]

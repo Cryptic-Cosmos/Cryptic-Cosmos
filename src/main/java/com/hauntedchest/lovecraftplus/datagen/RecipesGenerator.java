@@ -43,15 +43,6 @@ public class RecipesGenerator extends RecipeProvider {
                 .addCriterion("has_thorn_log", this.hasItem(ItemHandler.THORN_LOG_ITEM.get()))
                 .build(consumer, ItemHandler.THORN_PLANKS_ITEM.getId());
 
-        // Smooth moonstone
-        CookingRecipeBuilder.smeltingRecipe(
-                Ingredient.fromItems(ItemHandler.MOONSTONE_ITEM.get()),
-                ItemHandler.SMOOTH_MOONSTONE_ITEM.get(),
-                0.5f,
-                200)
-                .addCriterion("has_moonstone", this.hasItem(ItemHandler.MOONSTONE_ITEM.get()))
-                .build(consumer, ItemHandler.SMOOTH_MOONSTONE_ITEM.getId());
-
         // Haunted ingot
         CookingRecipeBuilder.smeltingRecipe(
                 Ingredient.fromItems(ItemHandler.HUMMING_STONE_ITEM.get()),
@@ -70,14 +61,12 @@ public class RecipesGenerator extends RecipeProvider {
                 .addCriterion("has_lava_sponge", this.hasItem(ItemHandler.LAVA_SPONGE_ITEM.get()))
                 .build(consumer, ItemHandler.LAVA_SPONGE_ITEM.getId());
 
-        // Moonstone bricks
-        SingleItemRecipeBuilder
-                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()),
-                        ItemHandler.MOONSTONE_BRICKS_ITEM.get())
-                .addCriterion("has_smooth_moonstone",
-                        this.hasItem(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()))
-                .build(consumer, ItemHandler.MOONSTONE_BRICKS_ITEM.getId());
+        registerMoonstoneRecipes(consumer);
 
+        registerMooncaliteRecipes(consumer);
+    }
+
+    private void registerMooncaliteRecipes(Consumer<IFinishedRecipe> consumer) {
         // Mooncalite slab
         ShapedRecipeBuilder.shapedRecipe(ItemHandler.MOONCALITE_SLAB_ITEM.get(), 6)
                 .patternLine("mmm")
@@ -107,5 +96,131 @@ public class RecipesGenerator extends RecipeProvider {
                         ItemHandler.MOONCALITE_STAIRS_ITEM.get())
                 .addCriterion("has_mooncalite", hasItem(ItemHandler.MOONCALITE_ITEM.get()))
                 .build(consumer, "mooncalite_stairs_stonecutter");
+    }
+
+    private void registerMoonstoneRecipes(Consumer<IFinishedRecipe> consumer) {
+        // Moonstone slab
+        ShapedRecipeBuilder.shapedRecipe(ItemHandler.MOONSTONE_SLAB_ITEM.get(), 6)
+                .patternLine("mmm")
+                .key('m', ItemHandler.MOONSTONE_ITEM.get())
+                .addCriterion("has_moonstone", hasItem(ItemHandler.MOONSTONE_ITEM.get()))
+                .build(consumer, ItemHandler.MOONSTONE_SLAB_ITEM.getId());
+
+        // Moonstone slab (in stonecutter)
+        SingleItemRecipeBuilder
+                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.MOONSTONE_ITEM.get()),
+                        ItemHandler.MOONSTONE_SLAB_ITEM.get())
+                .addCriterion("has_moonstone", hasItem(ItemHandler.MOONSTONE_ITEM.get()))
+                .build(consumer, "moonstone_slab_stonecutter");
+
+        // Moonstone stairs
+        ShapedRecipeBuilder.shapedRecipe(ItemHandler.MOONSTONE_STAIRS_ITEM.get(), 4)
+                .patternLine("m  ")
+                .patternLine("mm ")
+                .patternLine("mmm")
+                .key('m', ItemHandler.MOONSTONE_ITEM.get())
+                .addCriterion("has_moonstone", hasItem(ItemHandler.MOONSTONE_ITEM.get()))
+                .build(consumer, ItemHandler.MOONSTONE_STAIRS_ITEM.getId());
+
+        // Moonstone stairs (in stonecutter)
+        SingleItemRecipeBuilder
+                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.MOONSTONE_ITEM.get()),
+                        ItemHandler.MOONSTONE_STAIRS_ITEM.get())
+                .addCriterion("has_moonstone", hasItem(ItemHandler.MOONSTONE_ITEM.get()))
+                .build(consumer, "moonstone_stairs_stonecutter");
+
+
+        // Moonstone bricks
+        ShapedRecipeBuilder.shapedRecipe(ItemHandler.MOONSTONE_BRICKS_ITEM.get(), 4)
+                .patternLine("bb")
+                .patternLine("bb")
+                .key('b', ItemHandler.MOONSTONE_ITEM.get())
+                .addCriterion("has_moonstone_bricks", hasItem(ItemHandler.MOONSTONE_BRICKS_ITEM.get()))
+                .build(consumer, ItemHandler.MOONSTONE_BRICKS_ITEM.getId());
+
+        // Moonstone bricks (in stonecutter)
+        SingleItemRecipeBuilder
+                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()),
+                        ItemHandler.MOONSTONE_BRICKS_ITEM.get())
+                .addCriterion("has_smooth_moonstone",
+                        this.hasItem(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()))
+                .build(consumer, "moonstone_bricks_stonecutter");
+
+        // Moonstone bricks slab
+        ShapedRecipeBuilder.shapedRecipe(ItemHandler.MOONSTONE_BRICK_SLAB_ITEM.get(), 6)
+                .patternLine("mmm")
+                .key('m', ItemHandler.MOONSTONE_BRICKS_ITEM.get())
+                .addCriterion("has_moonstone_bricks", hasItem(ItemHandler.MOONSTONE_BRICKS_ITEM.get()))
+                .build(consumer, ItemHandler.MOONSTONE_BRICK_SLAB_ITEM.getId());
+
+        // Moonstone bricks slab (in stonecutter)
+        SingleItemRecipeBuilder
+                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.MOONSTONE_BRICKS_ITEM.get()),
+                        ItemHandler.MOONSTONE_BRICK_SLAB_ITEM.get())
+                .addCriterion("has_moonstone_bricks", hasItem(ItemHandler.MOONSTONE_BRICKS_ITEM.get()))
+                .build(consumer, "moonstone_bricks_slab_stonecutter");
+
+        // Moonstone bricks stairs
+        ShapedRecipeBuilder.shapedRecipe(ItemHandler.MOONSTONE_BRICK_STAIRS_ITEM.get(), 4)
+                .patternLine("m  ")
+                .patternLine("mm ")
+                .patternLine("mmm")
+                .key('m', ItemHandler.MOONSTONE_BRICKS_ITEM.get())
+                .addCriterion("has_moonstone_bricks", hasItem(ItemHandler.MOONSTONE_BRICKS_ITEM.get()))
+                .build(consumer, ItemHandler.MOONSTONE_BRICK_STAIRS_ITEM.getId());
+
+        // Moonstone bricks stairs (in stonecutter)
+        SingleItemRecipeBuilder
+                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.MOONSTONE_BRICKS_ITEM.get()),
+                        ItemHandler.MOONSTONE_BRICK_STAIRS_ITEM.get())
+                .addCriterion("has_moonstone_bricks", hasItem(ItemHandler.MOONSTONE_BRICKS_ITEM.get()))
+                .build(consumer, "moonstone_bricks_stairs_stonecutter");
+
+
+        // Smooth moonstone
+        CookingRecipeBuilder.smeltingRecipe(
+                Ingredient.fromItems(ItemHandler.MOONSTONE_ITEM.get()),
+                ItemHandler.SMOOTH_MOONSTONE_ITEM.get(),
+                0.5f,
+                200)
+                .addCriterion("has_moonstone", this.hasItem(ItemHandler.MOONSTONE_ITEM.get()))
+                .build(consumer, ItemHandler.SMOOTH_MOONSTONE_ITEM.getId());
+
+        // Smooth moonstone (in stonecutter)
+        SingleItemRecipeBuilder
+                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.MOONSTONE_ITEM.get()),
+                        ItemHandler.SMOOTH_MOONSTONE_ITEM.get())
+                .addCriterion("has_moonstone", hasItem(ItemHandler.MOONSTONE_ITEM.get()))
+                .build(consumer, "smooth_moonstone_stonecutter");
+
+        // Smooth moonstone slab
+        ShapedRecipeBuilder.shapedRecipe(ItemHandler.SMOOTH_MOONSTONE_SLAB_ITEM.get(), 6)
+                .patternLine("mmm")
+                .key('m', ItemHandler.SMOOTH_MOONSTONE_ITEM.get())
+                .addCriterion("has_smooth_moonstone", hasItem(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()))
+                .build(consumer, ItemHandler.SMOOTH_MOONSTONE_SLAB_ITEM.getId());
+
+        // Smooth moonstone slab (in stonecutter)
+        SingleItemRecipeBuilder
+                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()),
+                        ItemHandler.SMOOTH_MOONSTONE_SLAB_ITEM.get())
+                .addCriterion("has_smooth_moonstone", hasItem(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()))
+                .build(consumer, "smooth_moonstone_slab_stonecutter");
+
+        // Smooth moonstone stairs
+        ShapedRecipeBuilder.shapedRecipe(ItemHandler.SMOOTH_MOONSTONE_STAIRS_ITEM.get(), 4)
+                .patternLine("m  ")
+                .patternLine("mm ")
+                .patternLine("mmm")
+                .key('m', ItemHandler.SMOOTH_MOONSTONE_ITEM.get())
+                .addCriterion("has_smooth_moonstone", hasItem(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()))
+                .build(consumer, ItemHandler.SMOOTH_MOONSTONE_STAIRS_ITEM.getId());
+
+        // Moonstone bricks stairs (in stonecutter)
+        SingleItemRecipeBuilder
+                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()),
+                        ItemHandler.SMOOTH_MOONSTONE_STAIRS_ITEM.get())
+                .addCriterion("has_smooth_moonstone", hasItem(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()))
+                .build(consumer, "smooth_moonstone_stairs_stonecutter");
     }
 }

@@ -43,26 +43,52 @@ public class BlockHandler {
 
     // Moonstone
     public static final RegistryObject<Block> MOONSTONE =
-            BLOCKS.register("moonstone", MoonHolesBlock::new);
+            BLOCKS.register("moonstone", () -> new Block(Properties.create(Material.ROCK)
+                    .hardnessAndResistance(4.0f, 12)
+                    .sound(SoundType.STONE)
+                    .harvestLevel(2)
+                    .harvestTool(ToolType.PICKAXE)));
 
     public static final RegistryObject<Block> MOONSTONE_SLAB =
             BLOCKS.register("moonstone_slab",
-                    () -> new SlabBlock(Properties.from(Blocks.STONE_SLAB)));
+                    () -> new SlabBlock(Properties.from(MOONSTONE.get())));
+
+    public static final RegistryObject<Block> MOONSTONE_STAIRS =
+            BLOCKS.register("moonstone_stairs",
+                    () -> new StairsBlock(() -> MOONSTONE.get().getDefaultState(),
+                            Properties.from(MOONSTONE.get())));
 
     public static final RegistryObject<Block> MOONSTONE_BRICKS =
-            BLOCKS.register("moonstone_bricks", MoonStoneBricks::new);
+            BLOCKS.register("moonstone_bricks", () -> new Block(Properties.create(Material.ROCK)
+                    .hardnessAndResistance(4.0f, 15)
+                    .sound(SoundType.STONE)
+                    .harvestLevel(2)
+                    .harvestTool(ToolType.PICKAXE)));
 
     public static final RegistryObject<Block> MOONSTONE_BRICK_SLAB =
             BLOCKS.register("moonstone_brick_slab",
-                    () -> new SlabBlock(Properties.from(Blocks.BRICK_SLAB)));
+                    () -> new SlabBlock(Properties.from(MOONSTONE_BRICKS.get())));
+
+    public static final RegistryObject<Block> MOONSTONE_BRICK_STAIRS =
+            BLOCKS.register("moonstone_brick_stairs",
+                    () -> new StairsBlock(() -> MOONSTONE_BRICKS.get().getDefaultState(),
+                            Properties.from(MOONSTONE_BRICKS.get())));
 
     public static final RegistryObject<Block> SMOOTH_MOONSTONE =
-            BLOCKS.register("smooth_moonstone", MoonStoneBricks::new);
+            BLOCKS.register("smooth_moonstone", () -> new Block(Properties.create(Material.ROCK)
+                    .hardnessAndResistance(4.0f, 15)
+                    .sound(SoundType.STONE)
+                    .harvestLevel(2)
+                    .harvestTool(ToolType.PICKAXE)));
 
     public static final RegistryObject<Block> SMOOTH_MOONSTONE_SLAB =
             BLOCKS.register("smooth_moonstone_slab",
-                    () -> new SlabBlock(Properties.from(Blocks.SMOOTH_STONE_SLAB)));
+                    () -> new SlabBlock(Properties.from(SMOOTH_MOONSTONE.get())));
 
+    public static final RegistryObject<Block> SMOOTH_MOONSTONE_STAIRS =
+            BLOCKS.register("smooth_moonstone_stairs",
+                    () -> new StairsBlock(() -> SMOOTH_MOONSTONE.get().getDefaultState(),
+                            Properties.from(SMOOTH_MOONSTONE.get())));
 
     //Thorn Wood
     public static final RegistryObject<Block> THORN_LOG =

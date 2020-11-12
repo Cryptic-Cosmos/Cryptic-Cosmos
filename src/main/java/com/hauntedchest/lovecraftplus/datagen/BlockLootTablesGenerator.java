@@ -65,13 +65,19 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSlabs(BlockHandler.MOONSTONE_SLAB.get());
 
+        loot.dropSelf(BlockHandler.MOONSTONE_STAIRS.get());
+
         loot.dropSelf(BlockHandler.MOONSTONE_BRICKS.get());
 
         loot.dropSlabs(BlockHandler.MOONSTONE_BRICK_SLAB.get());
 
+        loot.dropSelf(BlockHandler.MOONSTONE_BRICK_STAIRS.get());
+
         loot.dropSelf(BlockHandler.SMOOTH_MOONSTONE.get());
 
         loot.dropSlabs(BlockHandler.SMOOTH_MOONSTONE_SLAB.get());
+
+        loot.dropSelf(BlockHandler.SMOOTH_MOONSTONE_STAIRS.get());
 
         loot.addLoot(BlockHandler.THORN_LEAVES.get(),
                 BlockLootTables.droppingWithChancesSticksAndApples(BlockHandler.THORN_LEAVES.get(),

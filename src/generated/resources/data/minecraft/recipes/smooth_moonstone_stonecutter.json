@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lovecraftplus:moonstone"
+  },
+  "result": "lovecraftplus:smooth_moonstone",
+  "count": 1
+}

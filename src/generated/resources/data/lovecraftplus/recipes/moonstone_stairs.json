@@ -1,16 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "bb",
-    "bb"
+    "m  ",
+    "mm ",
+    "mmm"
   ],
   "key": {
-    "b": {
+    "m": {
       "item": "lovecraftplus:moonstone"
     }
   },
   "result": {
-    "item": "lovecraftplus:moonstone_bricks",
+    "item": "lovecraftplus:moonstone_stairs",
     "count": 4
   }
 }
