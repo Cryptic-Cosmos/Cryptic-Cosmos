@@ -31,6 +31,7 @@ public abstract class Lang extends LanguageProvider {
             add(ItemHandler.CRATERED_BONE.get(), "Cratered Bone");
             add(ItemHandler.BUNDLE_NECRONOMICON.get(), "Corrupted Bundle of Knowledge");
             add(ItemHandler.MOON_BEAST_SPAWN_EGG.get(), "Moon Beast Spawn Egg");
+            add(ItemHandler.MOON_FROG_SPAWN_EGG.get(), "Moon Frog Spawn Egg");
 
             // Blocks
             add(BlockHandler.HUMMING_STONE.get(), "Humming Stone");
@@ -38,9 +39,11 @@ public abstract class Lang extends LanguageProvider {
             add(BlockHandler.MOONCALITE_SLAB.get(), "Mooncalite Slab");
             add(BlockHandler.MOONCALITE_STAIRS.get(), "Mooncalite Stairs");
             add(BlockHandler.MOONSTONE.get(), "Moonstone");
+            add(BlockHandler.MOONSTONE_STAIRS.get(), "Moonstone Stairs");
             add(BlockHandler.SMOOTH_MOONSTONE.get(), "Smooth Moonstone");
             add(BlockHandler.MOONSTONE_BRICKS.get(), "Moonstone Bricks");
             add(BlockHandler.MOONSTONE_BRICK_SLAB.get(), "Moonstone Brick Slab");
+            add(BlockHandler.MOONSTONE_BRICK_STAIRS.get(), "Moonstone Brick Stairs");
             add(BlockHandler.SMOOTH_MOONSTONE_SLAB.get(), "Smooth Moonstone Slab");
             add(BlockHandler.MOONSTONE_SLAB.get(), "Moonstone Slab");
             add(BlockHandler.THORN_SLAB.get(), "Thorn Slab");

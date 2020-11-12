@@ -64,6 +64,13 @@ public class ItemHandler {
 
     public static final RegistryObject<Item> MOONSTONE_SLABS_ITEM = ITEMS.register("moonstone_slab",
             () -> new BlockItem(BlockHandler.MOONSTONE_SLAB.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
+
+    public static final RegistryObject<Item> MOONSTONE_STAIRS_ITEM = ITEMS.register("moonstone_stairs",
+            () -> new BlockItem(BlockHandler.MOONSTONE_STAIRS.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
+
+    public static final RegistryObject<Item> MOONSTONE_BRICK_STAIRS_ITEM = ITEMS.register("moonstone_brick_stairs",
+            () -> new BlockItem(BlockHandler.MOONSTONE_BRICK_STAIRS.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
+
     public static final RegistryObject<Item> MOONSTONE_BRICKS_ITEM = ITEMS.register("moonstone_bricks",
             () -> new BlockItem(BlockHandler.MOONSTONE_BRICKS.get(), LovecraftPlusMod.BLOCK_TAB_PROP));
 

@@ -78,6 +78,36 @@ public class RecipesGenerator extends RecipeProvider {
                         this.hasItem(ItemHandler.SMOOTH_MOONSTONE_ITEM.get()))
                 .build(consumer, ItemHandler.MOONSTONE_BRICKS_ITEM.getId());
 
+        // Moonstone Brick slab
+        ShapedRecipeBuilder.shapedRecipe(ItemHandler.MOONSTONE_BRICK_SLABS_ITEM.get(), 6)
+                .patternLine("mmm")
+                .key('m', ItemHandler.MOONSTONE_BRICKS_ITEM.get())
+                .addCriterion("has_moonstone_bricks", hasItem(ItemHandler.MOONSTONE_BRICKS_ITEM.get()))
+                .build(consumer, ItemHandler.MOONSTONE_BRICK_SLABS_ITEM.getId());
+
+        // Moonstone Bricks slab (in stonecutter)
+        SingleItemRecipeBuilder
+                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.MOONSTONE_BRICKS_ITEM.get()),
+                        ItemHandler.MOONSTONE_BRICK_SLABS_ITEM.get())
+                .addCriterion("has_moonstone_bricks", hasItem(ItemHandler.MOONSTONE_BRICKS_ITEM.get()))
+                .build(consumer, "moonstone_bricks_slab_stonecutter");
+
+        // Moonstone Bricks stairs
+        ShapedRecipeBuilder.shapedRecipe(ItemHandler.MOONSTONE_BRICK_STAIRS_ITEM.get(), 4)
+                .patternLine("m  ")
+                .patternLine("mm ")
+                .patternLine("mmm")
+                .key('m', ItemHandler.MOONSTONE_BRICKS_ITEM.get())
+                .addCriterion("has_moonstone_bricks", hasItem(ItemHandler.MOONSTONE_BRICKS_ITEM.get()))
+                .build(consumer, ItemHandler.MOONSTONE_BRICK_STAIRS_ITEM.getId());
+
+        // Moonstone Bricks stairs (in stonecutter)
+        SingleItemRecipeBuilder
+                .stonecuttingRecipe(Ingredient.fromItems(ItemHandler.MOONSTONE_BRICKS_ITEM.get()),
+                        ItemHandler.MOONSTONE_BRICK_STAIRS_ITEM.get())
+                .addCriterion("has_moonstone_bricks", hasItem(ItemHandler.MOONSTONE_BRICKS_ITEM.get()))
+                .build(consumer, "moonstone_bricks_stairs_stonecutter");
+
         // Mooncalite slab
         ShapedRecipeBuilder.shapedRecipe(ItemHandler.MOONCALITE_SLAB_ITEM.get(), 6)
                 .patternLine("mmm")

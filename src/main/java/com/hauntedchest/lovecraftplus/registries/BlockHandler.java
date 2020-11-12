@@ -49,12 +49,23 @@ public class BlockHandler {
             BLOCKS.register("moonstone_slab",
                     () -> new SlabBlock(Properties.from(Blocks.STONE_SLAB)));
 
+    public static final RegistryObject<Block> MOONSTONE_STAIRS =
+            BLOCKS.register("moonstone_stairs", () ->
+                    new StairsBlock(() -> MOONSTONE.get().getDefaultState(),
+                            Properties.from(MOONSTONE.get())));
+
+
     public static final RegistryObject<Block> MOONSTONE_BRICKS =
             BLOCKS.register("moonstone_bricks", MoonStoneBricks::new);
 
     public static final RegistryObject<Block> MOONSTONE_BRICK_SLAB =
             BLOCKS.register("moonstone_brick_slab",
                     () -> new SlabBlock(Properties.from(Blocks.BRICK_SLAB)));
+
+    public static final RegistryObject<Block> MOONSTONE_BRICK_STAIRS =
+            BLOCKS.register("moonstone_brick_stairs", () ->
+                    new StairsBlock(() -> MOONSTONE_BRICKS.get().getDefaultState(),
+                            Properties.from(MOONSTONE_BRICKS.get())));
 
     public static final RegistryObject<Block> SMOOTH_MOONSTONE =
             BLOCKS.register("smooth_moonstone", MoonStoneBricks::new);
