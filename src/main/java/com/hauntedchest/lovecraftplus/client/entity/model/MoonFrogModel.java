@@ -1,9 +1,15 @@
-// Made with Blockbench 3.6.6
+package com.hauntedchest.lovecraftplus.client.entity.model;// Made with Blockbench 3.6.6
 // Exported for Minecraft version 1.15
 // Paste this class into your mod and generate all required imports
 
 
-public class MoonFrogModel extends EntityModel<Entity> {
+import com.hauntedchest.lovecraftplus.entities.MoonFrogEntity;
+import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.IVertexBuilder;
+import net.minecraft.client.renderer.entity.model.EntityModel;
+import net.minecraft.client.renderer.model.ModelRenderer;
+
+public class MoonFrogModel<T extends MoonFrogEntity> extends EntityModel<T> {
 	private final ModelRenderer right_leg;
 	private final ModelRenderer cube_r1;
 	private final ModelRenderer cube_r2;
@@ -180,8 +186,8 @@ public class MoonFrogModel extends EntityModel<Entity> {
 	}
 
 	@Override
-	public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		//previously the render function, render code was moved to a method below
+	public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+
 	}
 
 	@Override
@@ -212,5 +218,117 @@ public class MoonFrogModel extends EntityModel<Entity> {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
+	}
+
+	public ModelRenderer getBody() {
+		return body;
+	}
+
+	public ModelRenderer getCube_r7() {
+		return cube_r7;
+	}
+
+	public ModelRenderer getCube_r8() {
+		return cube_r8;
+	}
+
+	public ModelRenderer getCube_r1() {
+		return cube_r1;
+	}
+
+	public ModelRenderer getCube_r2() {
+		return cube_r2;
+	}
+
+	public ModelRenderer getCube_r3() {
+		return cube_r3;
+	}
+
+	public ModelRenderer getCube_r4() {
+		return cube_r4;
+	}
+
+	public ModelRenderer getCube_r6() {
+		return cube_r6;
+	}
+
+	public ModelRenderer getCube_r5() {
+		return cube_r5;
+	}
+
+	public ModelRenderer getLeft_arm() {
+		return left_arm;
+	}
+
+	public ModelRenderer getHead() {
+		return head;
+	}
+
+	public ModelRenderer getLeft_leg() {
+		return left_leg;
+	}
+
+	public ModelRenderer getRight_arm() {
+		return right_arm;
+	}
+
+	public ModelRenderer getRight_leg() {
+		return right_leg;
+	}
+
+	public ModelRenderer getGetBody() {
+		return getBody;
+	}
+
+	public ModelRenderer getGetCube_r1() {
+		return getCube_r1;
+	}
+
+	public ModelRenderer getGetCube_r2() {
+		return getCube_r2;
+	}
+
+	public ModelRenderer getGetCube_r3() {
+		return getCube_r3;
+	}
+
+	public ModelRenderer getGetCube_r4() {
+		return getCube_r4;
+	}
+
+	public ModelRenderer getGetCube_r5() {
+		return getCube_r5;
+	}
+
+	public ModelRenderer getGetCube_r6() {
+		return getCube_r6;
+	}
+
+	public ModelRenderer getGetCube_r7() {
+		return getCube_r7;
+	}
+
+	public ModelRenderer getGetCube_r8() {
+		return getCube_r8;
+	}
+
+	public ModelRenderer getGetHead() {
+		return getHead;
+	}
+
+	public ModelRenderer getGetLeft_arm() {
+		return getLeft_arm;
+	}
+
+	public ModelRenderer getGetLeft_leg() {
+		return getLeft_leg;
+	}
+
+	public ModelRenderer getGetRight_arm() {
+		return getRight_arm;
+	}
+
+	public ModelRenderer getGetRight_leg() {
+		return getRight_leg;
 	}
 }
