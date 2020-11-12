@@ -24,10 +24,12 @@ public class MoonBeastEntity extends MonsterEntity {
     }
 
     protected void applyEntityAI() {
-        this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, false));
+        this.goalSelector.addGoal(4, new SwimGoal(this));
+        this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.0D, false));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setCallsForHelp());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, EndermanEntity.class, true));
+
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, EndermanEntity.class, true));
     }
 
     @Override
@@ -46,4 +48,5 @@ public class MoonBeastEntity extends MonsterEntity {
 
         return super.getExperiencePoints(player);
     }
+
 }

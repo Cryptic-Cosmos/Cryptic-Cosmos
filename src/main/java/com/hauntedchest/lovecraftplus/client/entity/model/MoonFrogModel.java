@@ -1,15 +1,9 @@
-package com.hauntedchest.lovecraftplus.client.entity.model;// Made with Blockbench 3.7.0
+// Made with Blockbench 3.6.6
 // Exported for Minecraft version 1.15
 // Paste this class into your mod and generate all required imports
 
 
-import com.hauntedchest.lovecraftplus.entities.MoonFrogEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
-import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.client.renderer.model.ModelRenderer;
-
-public class MoonFrogModel<T extends MoonFrogEntity> extends EntityModel<T> {
+public class MoonFrogModel extends EntityModel<Entity> {
 	private final ModelRenderer right_leg;
 	private final ModelRenderer cube_r1;
 	private final ModelRenderer cube_r2;
@@ -24,6 +18,20 @@ public class MoonFrogModel<T extends MoonFrogEntity> extends EntityModel<T> {
 	private final ModelRenderer left_arm;
 	private final ModelRenderer cube_r7;
 	private final ModelRenderer cube_r8;
+	private final ModelRenderer getRight_leg;
+	private final ModelRenderer getRight_arm;
+	private final ModelRenderer getLeft_leg;
+	private final ModelRenderer getHead;
+	private final ModelRenderer getLeft_arm;
+	private final ModelRenderer getCube_r5;
+	private final ModelRenderer getCube_r6;
+	private final ModelRenderer getCube_r4;
+	private final ModelRenderer getCube_r3;
+	private final ModelRenderer getCube_r2;
+	private final ModelRenderer getCube_r1;
+	private final ModelRenderer getBody;
+	private final ModelRenderer getCube_r8;
+	private final ModelRenderer getCube_r7;
 
 	public MoonFrogModel() {
 		textureWidth = 16;
@@ -113,12 +121,68 @@ public class MoonFrogModel<T extends MoonFrogEntity> extends EntityModel<T> {
 		left_arm.addChild(cube_r8);
 		setRotationAngle(cube_r8, 0.0F, 0.7854F, 0.0F);
 		cube_r8.setTextureOffset(10, 0).addBox(-1.0F, -1.0F, -2.0F, 1.0F, 1.0F, 3.0F, 0.0F, false);
+
+		getRight_leg = new ModelRenderer(this);
+		getRight_leg.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+
+		getRight_arm = new ModelRenderer(this);
+		getRight_arm.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+
+		getLeft_leg = new ModelRenderer(this);
+		getLeft_leg.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+
+		getHead = new ModelRenderer(this);
+		getHead.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+
+		getLeft_arm = new ModelRenderer(this);
+		getLeft_arm.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+
+		getCube_r5 = new ModelRenderer(this);
+		getCube_r5.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+
+		getCube_r6 = new ModelRenderer(this);
+		getCube_r6.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+
+		getCube_r4 = new ModelRenderer(this);
+		getCube_r4.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+
+		getCube_r3 = new ModelRenderer(this);
+		getCube_r3.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+
+		getCube_r2 = new ModelRenderer(this);
+		getCube_r2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+
+		getCube_r1 = new ModelRenderer(this);
+		getCube_r1.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+
+		getBody = new ModelRenderer(this);
+		getBody.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+
+		getCube_r8 = new ModelRenderer(this);
+		getCube_r8.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
+
+		getCube_r7 = new ModelRenderer(this);
+		getCube_r7.setRotationPoint(0.0F, 0.0F, 0.0F);
+		
 	}
 
-    @Override
-    public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
-    }
+	@Override
+	public void setRotationAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+		//previously the render function, render code was moved to a method below
+	}
 
 	@Override
 	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
@@ -128,6 +192,20 @@ public class MoonFrogModel<T extends MoonFrogEntity> extends EntityModel<T> {
 		head.render(matrixStack, buffer, packedLight, packedOverlay);
 		right_arm.render(matrixStack, buffer, packedLight, packedOverlay);
 		left_arm.render(matrixStack, buffer, packedLight, packedOverlay);
+		getRight_leg.render(matrixStack, buffer, packedLight, packedOverlay);
+		getRight_arm.render(matrixStack, buffer, packedLight, packedOverlay);
+		getLeft_leg.render(matrixStack, buffer, packedLight, packedOverlay);
+		getHead.render(matrixStack, buffer, packedLight, packedOverlay);
+		getLeft_arm.render(matrixStack, buffer, packedLight, packedOverlay);
+		getCube_r5.render(matrixStack, buffer, packedLight, packedOverlay);
+		getCube_r6.render(matrixStack, buffer, packedLight, packedOverlay);
+		getCube_r4.render(matrixStack, buffer, packedLight, packedOverlay);
+		getCube_r3.render(matrixStack, buffer, packedLight, packedOverlay);
+		getCube_r2.render(matrixStack, buffer, packedLight, packedOverlay);
+		getCube_r1.render(matrixStack, buffer, packedLight, packedOverlay);
+		getBody.render(matrixStack, buffer, packedLight, packedOverlay);
+		getCube_r8.render(matrixStack, buffer, packedLight, packedOverlay);
+		getCube_r7.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
@@ -135,60 +213,4 @@ public class MoonFrogModel<T extends MoonFrogEntity> extends EntityModel<T> {
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
 	}
-
-    public ModelRenderer getRight_leg() {
-        return right_leg;
-    }
-
-    public ModelRenderer getRight_arm() {
-        return right_arm;
-    }
-
-    public ModelRenderer getLeft_leg() {
-        return left_leg;
-    }
-
-    public ModelRenderer getHead() {
-        return head;
-    }
-
-    public ModelRenderer getLeft_arm() {
-        return left_arm;
-    }
-
-    public ModelRenderer getCube_r5() {
-        return cube_r5;
-    }
-
-    public ModelRenderer getCube_r6() {
-        return cube_r6;
-    }
-
-    public ModelRenderer getCube_r4() {
-        return cube_r4;
-    }
-
-    public ModelRenderer getCube_r3() {
-        return cube_r3;
-    }
-
-    public ModelRenderer getCube_r2() {
-        return cube_r2;
-    }
-
-    public ModelRenderer getCube_r1() {
-        return cube_r1;
-    }
-
-    public ModelRenderer getBody() {
-        return body;
-    }
-
-    public ModelRenderer getCube_r8() {
-        return cube_r8;
-    }
-
-    public ModelRenderer getCube_r7() {
-        return cube_r7;
-    }
 }
