@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class MoonFrogRender extends MobRenderer<MoonFrogEntity, MoonFrogModel<MoonFrogEntity>> {
 
-    protected static final ResourceLocation TEXTURE = new ResourceLocation(LovecraftPlusMod.MOD_ID, "textures/entity/moon_beast_texture.png");
+    protected static final ResourceLocation TEXTURE = new ResourceLocation(LovecraftPlusMod.MOD_ID, "textures/entity/moon_frog.png");
 
     public MoonFrogRender(EntityRendererManager renderManagerIn){
         super(renderManagerIn, new MoonFrogModel<>(), 0.5f);
