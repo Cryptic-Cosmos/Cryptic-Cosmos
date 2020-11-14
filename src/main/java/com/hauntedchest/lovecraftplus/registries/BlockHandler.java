@@ -6,7 +6,6 @@ import com.hauntedchest.lovecraftplus.world.feature.MoonTree;
 import com.hauntedchest.lovecraftplus.world.feature.ThornTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -116,11 +115,9 @@ public class BlockHandler {
                     () -> new ThornDoor(Properties.from(Blocks.JUNGLE_DOOR)));
 
     //Moon Wood
-    public static final RegistryObject<Block> MOON_LOG = BLOCKS.register("moon_log",
-            () -> new LogBlock(MaterialColor.WOOD, Properties.from(Blocks.BIRCH_LOG)));
+    public static final RegistryObject<Block> MOON_LOG = BLOCKS.register("moon_log", MoonLog::new);
 
-    public static final RegistryObject<Block> MOON_PLANKS = BLOCKS.register("moon_planks",
-            () -> new Block(Properties.from(Blocks.BIRCH_PLANKS)));
+    public static final RegistryObject<Block> MOON_PLANKS = BLOCKS.register("moon_planks", MoonPlanks::new);
 
     public static final RegistryObject<Block> MOON_SAPLING = BLOCKS.register("moon_sapling",
             () -> new MoonSapling(MoonTree::new, Properties.from(Blocks.BIRCH_SAPLING)));

@@ -1,5 +1,13 @@
 {
   "variants": {
-    "": { "model": "lovecraftplus:block/moon_planks" }
+    "infection_level=0": {
+      "model": "lovecraftplus:block/moon_planks"
+    },
+    "infection_level=1": {
+      "model": "lovecraftplus:block/moon_planks1"
+    },
+    "infection_level=2": {
+      "model": "lovecraftplus:block/moon_planks2"
+    }
   }
 }
