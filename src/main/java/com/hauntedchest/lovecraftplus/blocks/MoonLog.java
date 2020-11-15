@@ -33,7 +33,8 @@ public class MoonLog extends LogBlock implements IInfectable {
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.getDefaultState().with(INFECTION_LEVEL, 0);
+        //noinspection ConstantConditions
+        return super.getStateForPlacement(context).with(INFECTION_LEVEL, 0);
     }
 
     @Override
