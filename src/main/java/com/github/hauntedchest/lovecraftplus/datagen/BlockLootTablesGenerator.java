@@ -50,10 +50,14 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockRegistries.MOONCALITE_STAIRS.get());
 
-        loot.addLoot(BlockRegistries.MOON_LEAVES.get(),
-                BlockLootTables.droppingWithChancesSticksAndApples(BlockRegistries.MOON_LEAVES.get(),
+        loot.addLoot(
+                BlockRegistries.MOON_LEAVES.get(),
+                BlockLootTables.droppingWithChancesSticksAndApples(
+                        BlockRegistries.MOON_LEAVES.get(),
                         BlockRegistries.MOON_SAPLING.get(),
-                        BlockLootTables.DEFAULT_SAPLING_DROP_RATES));
+                        BlockLootTables.DEFAULT_SAPLING_DROP_RATES
+                )
+        );
 
         loot.dropSelf(BlockRegistries.MOON_LOG.get());
 
@@ -79,11 +83,15 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockRegistries.SMOOTH_MOONSTONE_STAIRS.get());
 
-        loot.addLoot(BlockRegistries.THORN_LEAVES.get(),
-                BlockLootTables.droppingWithChancesSticksAndApples(BlockRegistries.THORN_LEAVES.get(),
+        loot.addLoot(
+                BlockRegistries.THORN_LEAVES.get(),
+                BlockLootTables.droppingWithChancesSticksAndApples(
+                        BlockRegistries.THORN_LEAVES.get(),
                         BlockRegistries.THORN_SAPLING.get(),
-                        BlockLootTables.DEFAULT_SAPLING_DROP_RATES));
-
+                        BlockLootTables.DEFAULT_SAPLING_DROP_RATES
+                )
+        );
+        
         loot.dropSelf(BlockRegistries.THORN_LOG.get());
 
         loot.dropSelf(BlockRegistries.THORN_PLANKS.get());
