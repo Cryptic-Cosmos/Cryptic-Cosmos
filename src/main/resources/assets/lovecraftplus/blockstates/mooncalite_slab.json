@@ -1,13 +1,13 @@
 {
-    "variants": {
-        "type=bottom": {
-            "model": "lovecraftplus:block/mooncalite_slab"
-        },
-        "type=top": {
-            "model": "lovecraftplus:block/mooncalite_slab_top"
-        },
-        "type=double": {
-            "model": "lovecraftplus:block/mooncalite"
-        }
+  "variants": {
+    "type=bottom": {
+      "model": "lovecraftplus:block/mooncalite_slab"
+    },
+    "type=top": {
+      "model": "lovecraftplus:block/mooncalite_slab_top"
+    },
+    "type=double": {
+      "model": "lovecraftplus:block/mooncalite"
     }
+  }
 }

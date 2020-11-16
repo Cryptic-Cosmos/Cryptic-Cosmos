@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "lovecraftplus:block/lava_sponge" }
+    "": {
+      "model": "lovecraftplus:block/lava_sponge"
+    }
   }
 }

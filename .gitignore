@@ -21,6 +21,7 @@ build
 eclipse
 run
 logs
+src/generated/resources/.cache
 
 # bad macos
 .DS_Store
