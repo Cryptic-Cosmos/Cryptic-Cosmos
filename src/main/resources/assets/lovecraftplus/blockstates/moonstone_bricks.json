@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "lovecraftplus:block/moonstone_bricks" }
+    "": {
+      "model": "lovecraftplus:block/moonstone_bricks"
+    }
   }
 }

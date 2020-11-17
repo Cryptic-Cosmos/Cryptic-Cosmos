@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "lovecraftplus:block/smooth_moonstone" }
+    "": {
+      "model": "lovecraftplus:block/smooth_moonstone"
+    }
   }
 }

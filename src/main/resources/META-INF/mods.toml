@@ -1,40 +1,32 @@
-modLoader = "javafml" #mandatory
-loaderVersion = "[31.2,)" 
+modLoader = "javafml"
+loaderVersion = "[31.2,)"
+
 license = "GPL version 3 or any later version"
-# A URL to refer people to when problems occur with this mod
-issueTrackerURL = "https://github.com/DenDragon23/LovecraftPlus/issues" #optional
-# A list of mods - how many allowed here is determined by the individual mod loader
-[[mods]] #mandatory
-# The modid of the mod
-modId = "lovecraftplus" #mandatory
-# The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version = "1.15.2-1.0.0-ALPHA" #mandatory
-# A display name for the mod
-displayName = "Lovecraft Plus" #mandatory
-# A URL for the "homepage" for this mod, displayed in the mod UI
-displayURL = "https://github.com/DenDragon23/LovecraftPlus" #optional
-# A text field displayed in the mod UI
-credits = "This mod goes to my discord community and the people who helped in the project" #optional
-# A text field displayed in the mod UI
-authors = "Haunted Chest, PutoPug, Cheese God, Conzilla and TheOnlyTails" #optional
-# The description text for the mod (multi line!) (#mandatory)
-description = "This mod takes inspiration from the writer H.P Lovecraft and here we make all sorts of new mobs, and dimensions where these monsters come from."
-# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.examplemod]] #optional
-    # the modid of the dependency
-    modId="forge" #mandatory
-    # Does this dependency have to exist - if not, ordering below must be specified
-    mandatory=true #mandatory
-    # The version range of the dependency
-    versionRange="[31.2,)" #mandatory
-    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
-    ordering="NONE"
-    # Side this dependency is applied on - BOTH, CLIENT or SERVER
-    side="BOTH"
-# Here's another dependency
-[[dependencies.examplemod]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.15.2]"
-    ordering="NONE"
-    side="BOTH"
+issueTrackerURL = "https://github.com/DenDragon23/LovecraftPlus/issues"
+
+[[mods]]
+modId = "lovecraftplus"
+displayName = "Lovecraft Plus"
+version = "${version}"
+description = """
+This mod takes inspiration from the writer H.P Lovecraft.
+Here, we make all sorts of new mobs and dimensions where these monsters come from.
+"""
+displayURL = "https://github.com/DenDragon23/LovecraftPlus"
+
+credits = "Haunted Chest, PutoPug, Cheese God, Conzilla and TheOnlyTails"
+authors = "LovecraftPlus Team"
+
+[[dependencies.lovecraftplus]]
+modId = "forge"
+versionRange = "[31.2,)"
+mandatory = true
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.lovecraftplus]]
+modId = "minecraft"
+versionRange = "[1.15.2]"
+mandatory = true
+ordering = "NONE"
+side = "BOTH"

@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "lovecraftplus:block/thorn_planks" }
+    "": {
+      "model": "lovecraftplus:block/thorn_planks"
+    }
   }
 }

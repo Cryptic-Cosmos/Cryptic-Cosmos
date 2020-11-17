@@ -1,7 +1,13 @@
 {
   "variants": {
-    "type=bottom": { "model": "lovecraftplus:block/smooth_moonstone_slab" },
-    "type=top": { "model": "lovecraftplus:block/smooth_moonstone_slab_top" },
-    "type=double": { "model": "lovecraftplus:block/smooth_moonstone" }
+    "type=bottom": {
+      "model": "lovecraftplus:block/smooth_moonstone_slab"
+    },
+    "type=top": {
+      "model": "lovecraftplus:block/smooth_moonstone_slab_top"
+    },
+    "type=double": {
+      "model": "lovecraftplus:block/smooth_moonstone"
+    }
   }
 }

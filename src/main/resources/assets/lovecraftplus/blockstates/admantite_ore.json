@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "lovecraftplus:block/admantite_ore" }
+    "": {
+      "model": "lovecraftplus:block/admantite_ore"
+    }
   }
 }

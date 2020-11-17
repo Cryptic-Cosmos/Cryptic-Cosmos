@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "lovecraftplus:block/humming_stone" }
+    "": {
+      "model": "lovecraftplus:block/humming_stone"
+    }
   }
 }
