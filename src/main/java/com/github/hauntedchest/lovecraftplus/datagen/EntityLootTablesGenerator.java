@@ -22,16 +22,17 @@ import java.util.Map;
 @SuppressWarnings("NullableProblems")
 public class EntityLootTablesGenerator extends LootTableProvider {
     private final HashMap<EntityType<?>, LootTable.Builder> TABLES = new HashMap<>();
-    private final DataGenerator GENERATOR;
-    private final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+    private final DataGenerator generator;
 
     public EntityLootTablesGenerator(DataGenerator generator) {
         super(generator);
-        this.GENERATOR = generator;
+
+        this.generator = generator;
     }
 
-    private void addLootTables(EntityLootTablesGenerator loot) {
-        loot.addLoot(
+    private void addLootTables() {
+        this.add(
                 EntityTypeRegistries.MOON_BEAST.get(),
                 LootTable.builder()
                         .addLootPool(LootPool.builder()
@@ -43,13 +44,13 @@ public class EntityLootTablesGenerator extends LootTableProvider {
     }
 
     // Add a custom loot table
-    private void addLoot(EntityType<?> entity, LootTable.Builder loot) {
+    private void add(EntityType<?> entity, LootTable.Builder loot) {
         TABLES.put(entity, loot);
     }
 
     @Override
     public void act(DirectoryCache cache) {
-        addLootTables(this);
+        this.addLootTables();
 
         HashMap<ResourceLocation, LootTable> namespacedTables = new HashMap<>();
 
@@ -64,7 +65,7 @@ public class EntityLootTablesGenerator extends LootTableProvider {
     }
 
     private void writeLootTables(HashMap<ResourceLocation, LootTable> tables, DirectoryCache cache) {
-        Path output = GENERATOR.getOutputFolder();
+        Path output = generator.getOutputFolder();
 
         tables.forEach((key, table) -> {
             Path path = output.resolve("data/" + key.getNamespace() + "/loot_tables/" + key.getPath() + ".json");

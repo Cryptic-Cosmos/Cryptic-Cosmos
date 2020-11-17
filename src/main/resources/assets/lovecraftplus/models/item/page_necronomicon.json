@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "lovecraftplus:item/page_necro"
+    "layer0": "lovecraftplus:item/page_necronomicon"
   }
 }

@@ -147,11 +147,14 @@ public class BlockRegistries {
 
     public static final RegistryObject<Block> THORN_LEAVES = BLOCKS.register(
             "thorn_leaves",
-            () -> new LeavesBlock(Properties.create(Material.LEAVES)
-                    .hardnessAndResistance(0.2F)
-                    .tickRandomly()
-                    .sound(SoundType.PLANT)
-                    .notSolid())
+            () -> new LeavesBlockDroppingSaplingsImpl(
+                    Properties.create(Material.LEAVES)
+                            .hardnessAndResistance(0.2F)
+                            .tickRandomly()
+                            .sound(SoundType.PLANT)
+                            .notSolid(),
+                    THORN_SAPLING
+            )
     );
     public static final RegistryObject<Block> THORN_DOOR = BLOCKS.register(
             "thorn_door",
@@ -170,11 +173,14 @@ public class BlockRegistries {
 
     public static final RegistryObject<Block> MOON_LEAVES = BLOCKS.register(
             "moon_leaves",
-            () -> new LeavesBlock(Properties.create(Material.LEAVES)
-                    .hardnessAndResistance(0.2F)
-                    .tickRandomly()
-                    .sound(SoundType.PLANT)
-                    .notSolid())
+            () -> new LeavesBlockDroppingSaplingsImpl(
+                    Properties.create(Material.LEAVES)
+                            .hardnessAndResistance(0.2F)
+                            .tickRandomly()
+                            .sound(SoundType.PLANT)
+                            .notSolid(),
+                    MOON_SAPLING
+            )
     );
 
     //Other Blocks

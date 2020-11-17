@@ -19,6 +19,8 @@ public class RecipesGenerator extends RecipeProvider {
      */
     @Override
     public void registerRecipes(Consumer<IFinishedRecipe> consumer) {
+        // TODO: make this and structure loot tables automatic, if possible
+
         // Dreaming souls
         ShapedRecipeBuilder.shapedRecipe(BlockRegistries.HUMMING_OBSIDIAN.get(), 1)
                 .patternLine("yxy")

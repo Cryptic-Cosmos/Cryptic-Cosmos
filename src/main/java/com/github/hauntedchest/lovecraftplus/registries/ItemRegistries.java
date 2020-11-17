@@ -23,12 +23,12 @@ public class ItemRegistries {
     );
 
     public static final RegistryObject<Item> PAGE_NECRONOMICON = ITEMS.register(
-            "page_necro",
+            "page_necronomicon",
             () -> new Item(LovecraftPlus.ITEM_GROUP_PROPERTY)
     );
 
     public static final RegistryObject<Item> BUNDLE_NECRONOMICON = ITEMS.register(
-            "bundle_necro",
+            "bundle_necronomicon",
             () -> new Item(LovecraftPlus.ITEM_GROUP_PROPERTY)
     );
 
