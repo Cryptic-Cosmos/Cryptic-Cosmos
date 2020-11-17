@@ -5,6 +5,7 @@ import com.github.hauntedchest.lovecraftplus.registries.ItemRegistries;
 import net.minecraft.data.*;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraftforge.fml.RegistryObject;
 
 import java.util.function.Consumer;
 
@@ -20,6 +21,14 @@ public class RecipesGenerator extends RecipeProvider {
     @Override
     public void registerRecipes(Consumer<IFinishedRecipe> consumer) {
         // TODO: make this and structure loot tables automatic, if possible
+
+        BlockRegistries.BLOCKS
+                .getEntries()
+                .stream()
+                .map(RegistryObject::get)
+                .forEach(block -> {
+                    // TODO
+                });
 
         // Dreaming souls
         ShapedRecipeBuilder.shapedRecipe(BlockRegistries.HUMMING_OBSIDIAN.get(), 1)

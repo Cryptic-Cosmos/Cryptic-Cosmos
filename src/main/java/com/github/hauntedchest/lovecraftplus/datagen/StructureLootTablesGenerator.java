@@ -51,12 +51,13 @@ public class StructureLootTablesGenerator extends LootTableProvider {
         );
     }};
 
-    private final DataGenerator GENERATOR;
-    private final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+    private final DataGenerator generator;
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     public StructureLootTablesGenerator(DataGenerator generator) {
         super(generator);
-        this.GENERATOR = generator;
+
+        this.generator = generator;
     }
 
     @Override
@@ -65,7 +66,7 @@ public class StructureLootTablesGenerator extends LootTableProvider {
     }
 
     private void writeLootTables(HashMap<ResourceLocation, LootTable> tables, DirectoryCache cache) {
-        Path output = GENERATOR.getOutputFolder();
+        Path output = generator.getOutputFolder();
 
         tables.forEach((key, table) -> {
             Path path = output.resolve("data/" + key.getNamespace() + "/loot_tables/" + key.getPath() + ".json");
