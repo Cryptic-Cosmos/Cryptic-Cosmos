@@ -118,6 +118,7 @@ public class LovecraftPlus {
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_LEAVES.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.MOON_SAPLING.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistries.CORRUPTED_VINESWORD.get(),RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_DOOR.get(), RenderType.getCutout());
 
         RenderingRegistry.registerEntityRenderingHandler(
