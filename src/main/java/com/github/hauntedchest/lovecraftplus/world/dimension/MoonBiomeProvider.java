@@ -19,8 +19,8 @@ public class MoonBiomeProvider extends BiomeProvider {
         super(biomes);
 
         this.biomeNoise.setSeed((int) genSettings.getSeed());
-        biomes.add(BiomeRegistries.MOON_PLAINS.get());
-        biomes.add(BiomeRegistries.MOON_FOREST.get());
+        biomes.add(BiomeRegistries.VULVON_PLAINS.get());
+        biomes.add(BiomeRegistries.MONDROVE_GROVE.get());
         biomes.add(BiomeRegistries.MOON_MOUNTAINS.get());
     }
 
