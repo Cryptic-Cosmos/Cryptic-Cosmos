@@ -20,7 +20,6 @@ public class VulvonPlainsBiome extends Biome {
     private static final BlockState VINESWORD = BlockRegistries.CORRUPTED_VINESWORD.get().getDefaultState();
     public static final BlockClusterFeatureConfig VINESWORD_CONFIG = (new BlockClusterFeatureConfig.Builder((new WeightedBlockStateProvider()).addWeightedBlockstate(VINESWORD, 2), new SimpleBlockPlacer())).tries(64).build();
 
-
     public VulvonPlainsBiome(Biome.Builder builder) {
         super(builder);
         this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_RANDOM_SELECTOR.withConfiguration(new MultipleWithChanceRandomFeatureConfig(ImmutableList.of(Feature.RANDOM_PATCH.withConfiguration(VINESWORD_CONFIG)), 2)).withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(5))));
