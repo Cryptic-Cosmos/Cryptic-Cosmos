@@ -7,8 +7,8 @@ import net.minecraft.entity.EntityClassification;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.blockplacer.DoublePlantBlockPlacer;
-import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
+import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.feature.BlockClusterFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.MultipleWithChanceRandomFeatureConfig;
@@ -18,7 +18,7 @@ import net.minecraft.world.gen.placement.Placement;
 @SuppressWarnings("NullableProblems")
 public class VulvonPlainsBiome extends Biome {
     private static final BlockState VINESWORD = BlockRegistries.CORRUPTED_VINESWORD.get().getDefaultState();
-    public static final BlockClusterFeatureConfig VINESWORD_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VINESWORD), new DoublePlantBlockPlacer())).tries(64).func_227317_b_().build();
+    public static final BlockClusterFeatureConfig VINESWORD_CONFIG = (new BlockClusterFeatureConfig.Builder((new WeightedBlockStateProvider()).addWeightedBlockstate(VINESWORD, 2), new SimpleBlockPlacer())).tries(64).build();
 
 
     public VulvonPlainsBiome(Biome.Builder builder) {
