@@ -18,7 +18,7 @@ import net.minecraft.world.gen.placement.Placement;
 @SuppressWarnings("NullableProblems")
 public class VulvonPlainsBiome extends Biome {
     private static final BlockState VINESWORD = BlockRegistries.CORRUPTED_VINESWORD.get().getDefaultState();
-    public static final BlockClusterFeatureConfig VINESWORD_CONFIG = (new BlockClusterFeatureConfig.Builder((new WeightedBlockStateProvider()).addWeightedBlockstate(VINESWORD, 2), new SimpleBlockPlacer()).tries(64).build();
+    public static final BlockClusterFeatureConfig VINESWORD_CONFIG = (new BlockClusterFeatureConfig.Builder((new WeightedBlockStateProvider()).addWeightedBlockstate(VINESWORD, 2), new SimpleBlockPlacer())).tries(64).build();
 
     public VulvonPlainsBiome(Biome.Builder builder) {
         super(builder);
