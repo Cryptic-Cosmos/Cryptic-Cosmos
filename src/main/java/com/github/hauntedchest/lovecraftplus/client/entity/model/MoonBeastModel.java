@@ -428,10 +428,13 @@ public class MoonBeastModel<T extends MoonBeastEntity> extends EntityModel<T> {
         modelRenderer.rotateAngleZ = z;
     }
 
+
     @Override
     public void setLivingAnimations(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
         super.setLivingAnimations(entityIn, limbSwing, limbSwingAmount, partialTick);
     }
+    
+
 
     public ModelRenderer getArm_proper_left() {
         return arm_proper_left;
