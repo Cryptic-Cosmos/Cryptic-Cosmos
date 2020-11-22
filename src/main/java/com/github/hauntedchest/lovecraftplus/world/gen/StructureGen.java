@@ -12,7 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class StructureGen {
     public static void generateStructures() {
         for (Biome biome : ForgeRegistries.BIOMES) {
-            if (biome == BiomeRegistries.MOON_PLAINS.get()) {
+            if (biome == BiomeRegistries.VULVON_PLAINS.get()) {
                 biome.addStructure(FeatureRegistries.MOON_PILLAR.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
             }
 
@@ -20,7 +20,7 @@ public class StructureGen {
                 biome.addStructure(FeatureRegistries.MOON_PILLAR.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
             }
 
-            if (biome == BiomeRegistries.MOON_FOREST.get()) {
+            if (biome == BiomeRegistries.MONDROVE_GROVE.get()) {
                 biome.addStructure(FeatureRegistries.MOON_PILLAR.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
             }
 
