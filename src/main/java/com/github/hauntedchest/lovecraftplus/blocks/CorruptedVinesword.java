@@ -1,17 +1,19 @@
 package com.github.hauntedchest.lovecraftplus.blocks;
 
 import com.github.hauntedchest.lovecraftplus.registries.BlockRegistries;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FlowerBlock;
-import net.minecraft.potion.Effect;
+import net.minecraft.block.*;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
-public class CorruptedVinesword extends FlowerBlock {
-    public CorruptedVinesword(Effect effectIn, int effectDuration, Properties properties) {
-        super(effectIn, effectDuration, properties);
+import java.util.Random;
+
+public class CorruptedVinesword extends DoublePlantBlock implements IGrowable {
+    public CorruptedVinesword(Block.Properties properties) {
+        super(properties);
     }
 
     @Override
@@ -24,5 +26,26 @@ public class CorruptedVinesword extends FlowerBlock {
                 || block == Blocks.PODZOL
                 || block == Blocks.FARMLAND
                 || block == BlockRegistries.MOONCALITE.get();
+    }
+
+    @Override
+    public boolean isReplaceable(BlockState state, BlockItemUseContext useContext) {
+        return false;
+    }
+
+    /**
+     * Whether this IGrowable can grow
+     */
+    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+        return true;
+    }
+
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
+        return true;
+    }
+
+    @Override
+    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+        spawnAsEntity(worldIn, pos, new ItemStack(this));
     }
 }
