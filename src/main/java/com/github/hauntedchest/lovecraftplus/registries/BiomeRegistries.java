@@ -1,10 +1,7 @@
 package com.github.hauntedchest.lovecraftplus.registries;
 
 import com.github.hauntedchest.lovecraftplus.LovecraftPlus;
-import com.github.hauntedchest.lovecraftplus.world.biomes.MoonForestBiome;
-import com.github.hauntedchest.lovecraftplus.world.biomes.MoonMountainsBiome;
-import com.github.hauntedchest.lovecraftplus.world.biomes.MoonPlainsBiome;
-import com.github.hauntedchest.lovecraftplus.world.biomes.ThornJungleBiome;
+import com.github.hauntedchest.lovecraftplus.world.biomes.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
@@ -41,9 +38,9 @@ public class BiomeRegistries {
     );
 
     // moon biomes
-    public static final RegistryObject<MoonPlainsBiome> MOON_PLAINS = BIOMES.register(
-            "moon_plains",
-            () -> new MoonPlainsBiome(new Biome.Builder()
+    public static final RegistryObject<VulvonPlainsBiome> VULVON_PLAINS = BIOMES.register(
+            "vulvon_plains",
+            () -> new VulvonPlainsBiome(new Biome.Builder()
                     .scale(1f)
                     .temperature(0f)
                     .waterColor(0xfffff5)
@@ -78,9 +75,9 @@ public class BiomeRegistries {
                     .parent(null)
                     .precipitation(Biome.RainType.RAIN))
     );
-    public static final RegistryObject<Biome> MOON_FOREST = BIOMES.register(
-            "moon_forest",
-            () -> new MoonForestBiome(new Biome.Builder()
+    public static final RegistryObject<MondroveGroveBiome> MONDROVE_GROVE = BIOMES.register(
+            "mondrove_grove",
+            () -> new MondroveGroveBiome(new Biome.Builder()
                     .scale(1f)
                     .temperature(0f)
                     .waterColor(0xfffff5)
@@ -102,9 +99,9 @@ public class BiomeRegistries {
 
     public static void registerBiomes() {
         registerBiome(THORN_JUNGLE.get(), true, Type.JUNGLE, Type.LUSH, Type.OVERWORLD, Type.SPOOKY);
-        registerBiome(BiomeRegistries.MOON_PLAINS.get(), false, Type.PLAINS, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
+        registerBiome(BiomeRegistries.VULVON_PLAINS.get(), false, Type.PLAINS, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
         registerBiome(BiomeRegistries.MOON_MOUNTAINS.get(), false, Type.MOUNTAIN, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
-        registerBiome(BiomeRegistries.MOON_FOREST.get(), false, Type.FOREST, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
+        registerBiome(BiomeRegistries.MONDROVE_GROVE.get(), false, Type.FOREST, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
 
     }
 

@@ -31,6 +31,7 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(ItemRegistries.CRATERED_BONE.get(), "Cratered Bone");
             add(ItemRegistries.BUNDLE_NECRONOMICON.get(), "Corrupted Bundle of Knowledge");
             add(ItemRegistries.MOON_BEAST_SPAWN_EGG.get(), "Moon Beast Spawn Egg");
+            add(ItemRegistries.MOON_FROG_SPAWN_EGG.get(), "Moon Frog Spawn Egg");
 
             // Blocks
             add(BlockRegistries.HUMMING_STONE.get(), "Humming Stone");
@@ -63,6 +64,8 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.MOON_PLANKS.get(), "Moon Planks");
             add(BlockRegistries.MOON_LEAVES.get(), "Moon Leaves");
             add(BlockRegistries.MOON_SAPLING.get(), "Moon Sapling");
+
+            add(BlockRegistries.CORRUPTED_VINESWORD.get(), "Corrupted Vinesword");
 
             add(BlockRegistries.LAVA_SPONGE.get(), "Lava Sponge");
             add(BlockRegistries.MOLTEN_LAVA_SPONGE.get(), "Molten Lava Sponge");

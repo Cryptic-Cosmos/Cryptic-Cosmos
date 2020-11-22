@@ -4,7 +4,6 @@ import com.github.hauntedchest.lovecraftplus.registries.BlockRegistries;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStage;
@@ -17,7 +16,9 @@ import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraftforge.common.IPlantable;
 
-public class MoonForestBiome extends Biome {
+import javax.annotation.Nonnull;
+
+public class MondroveGroveBiome extends Biome {
     private static final BlockState MOON_LOG = BlockRegistries.MOON_LOG.get().getDefaultState();
     private static final BlockState MOON_LEAVES = BlockRegistries.MOON_LEAVES.get().getDefaultState();
     public static final TreeFeatureConfig MOON_TREE_CONFIG = new TreeFeatureConfig.Builder(
@@ -32,18 +33,8 @@ public class MoonForestBiome extends Biome {
             .setSapling((IPlantable) BlockRegistries.MOON_SAPLING.get())
             .build();
 
-    public MoonForestBiome(Biome.Builder builder) {
+    public MondroveGroveBiome(Biome.Builder builder) {
         super(builder);
-
-        this.addSpawn(
-                EntityClassification.CREATURE,
-                new SpawnListEntry(EntityType.COW, 8, 4, 4)
-        );
-
-        this.addSpawn(
-                EntityClassification.MONSTER,
-                new Biome.SpawnListEntry(EntityType.ENDERMAN, 10, 1, 4)
-        );
 
 
         DefaultBiomeFeatures.addCarvers(this);
@@ -55,5 +46,10 @@ public class MoonForestBiome extends Biome {
                         .withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP
                                 .configure(new AtSurfaceWithExtraConfig(10, 0.1F, 1)))
         );
+    }
+
+    @Override
+    public void addSpawn(@Nonnull EntityClassification type, @Nonnull SpawnListEntry spawnListEntry) {
+        super.addSpawn(type, spawnListEntry);
     }
 }

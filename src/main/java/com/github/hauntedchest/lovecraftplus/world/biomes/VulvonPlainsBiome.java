@@ -5,8 +5,8 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 
 @SuppressWarnings("NullableProblems")
-public class MoonPlainsBiome extends Biome {
-    public MoonPlainsBiome(Biome.Builder builder) {
+public class VulvonPlainsBiome extends Biome {
+    public VulvonPlainsBiome(Biome.Builder builder) {
         super(builder);
 
         DefaultBiomeFeatures.addStoneVariants(this);

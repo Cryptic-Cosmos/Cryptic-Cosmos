@@ -7,6 +7,7 @@ import com.github.hauntedchest.lovecraftplus.world.feature.ThornTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -191,4 +192,9 @@ public class BlockRegistries {
                     .hardnessAndResistance(0.6F)
                     .sound(SoundType.STONE))
     );
+
+    public static final RegistryObject<Block> CORRUPTED_VINESWORD = BLOCKS.register(
+            "corrupted_vinesword",
+            () -> new CorruptedVinesword(Effects.NIGHT_VISION,
+            5, Properties.create(Material.PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)));
 }

@@ -87,6 +87,11 @@ public class LovecraftPlus {
         DeferredWorkQueue.runLater(() -> {
             StructureGen.generateStructures();
 
+            BiomeRegistries.MONDROVE_GROVE.get().addSpawn(
+                    EntityClassification.CREATURE,
+                    new SpawnListEntry(EntityTypeRegistries.MOON_FROG.get(), 8, 1, 2)
+            );
+
             BiomeRegistries.MOON_MOUNTAINS.get().addSpawn(
                     EntityClassification.MONSTER,
                     new SpawnListEntry(EntityTypeRegistries.MOON_BEAST.get(), 8, 1, 2)
@@ -97,12 +102,12 @@ public class LovecraftPlus {
                     new SpawnListEntry(EntityType.ENDERMAN, 4, 1, 4)
             );
 
-            BiomeRegistries.MOON_PLAINS.get().addSpawn(
+            BiomeRegistries.VULVON_PLAINS.get().addSpawn(
                     EntityClassification.MONSTER,
-                    new Biome.SpawnListEntry(EntityType.ENDERMAN, 4, 1, 4)
+                    new SpawnListEntry(EntityType.ENDERMAN, 4, 1, 4)
             );
 
-            BiomeRegistries.MOON_PLAINS.get().addSpawn(
+            BiomeRegistries.VULVON_PLAINS.get().addSpawn(
                     EntityClassification.CREATURE,
                     new SpawnListEntry(EntityTypeRegistries.MOON_BEAST.get(), 8, 1, 2)
             );
