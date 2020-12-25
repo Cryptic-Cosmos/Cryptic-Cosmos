@@ -13,6 +13,7 @@ This mod takes inspiration from the writer H.P Lovecraft.
 Here, we make all sorts of new mobs and dimensions where these monsters come from.
 """
 displayURL = "https://github.com/DenDragon23/LovecraftPlus"
+logoFile = "mon.png"
 
 credits = "Haunted Chest, PutoPug, Cheese God, Conzilla and TheOnlyTails"
 authors = "LovecraftPlus Team"

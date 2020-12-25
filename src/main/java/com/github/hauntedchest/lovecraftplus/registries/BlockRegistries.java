@@ -191,4 +191,10 @@ public class BlockRegistries {
                     .hardnessAndResistance(0.6F)
                     .sound(SoundType.STONE))
     );
+
+    public static final RegistryObject<Block> RIFT_BLOCK = BLOCKS.register(
+            "rift_block",
+            () -> new RiftBlock(Properties.create(Material.AIR)
+            .hardnessAndResistance(18000000)
+            .sound(SoundType.STONE)));
 }
