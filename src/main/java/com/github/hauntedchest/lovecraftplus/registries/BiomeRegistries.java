@@ -1,10 +1,7 @@
 package com.github.hauntedchest.lovecraftplus.registries;
 
 import com.github.hauntedchest.lovecraftplus.LovecraftPlus;
-import com.github.hauntedchest.lovecraftplus.world.biomes.MoonForestBiome;
-import com.github.hauntedchest.lovecraftplus.world.biomes.MoonMountainsBiome;
-import com.github.hauntedchest.lovecraftplus.world.biomes.MoonPlainsBiome;
-import com.github.hauntedchest.lovecraftplus.world.biomes.ThornJungleBiome;
+import com.github.hauntedchest.lovecraftplus.world.biomes.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
@@ -99,12 +96,31 @@ public class BiomeRegistries {
                     .parent(null)
                     .precipitation(Biome.RainType.RAIN))
     );
+    public static final RegistryObject<UmbralDunes> UMBRAL_DUNES = BIOMES.register(
+            "umbral_dunes",
+            () -> new UmbralDunes(new Biome.Builder()
+                    .scale(1f)
+                    .temperature(3f)
+                    .waterColor(8530968)
+                    .waterFogColor(8530968)
+                    .surfaceBuilder(SurfaceBuilder.DEFAULT,
+                            new SurfaceBuilderConfig(
+                                    BlockRegistries.UMBRAL_DUNE.get().getDefaultState(),
+                                    BlockRegistries.UMBRAL_DUNE.get().getDefaultState(),
+                                    BlockRegistries.UMBRAL_DUNE.get().getDefaultState()))
+                    .category(Biome.Category.PLAINS)
+                    .downfall(0)
+                    .depth(-0.5f)
+                    .parent(null)
+                    .precipitation(Biome.RainType.RAIN))
+    );
 
     public static void registerBiomes() {
         registerBiome(THORN_JUNGLE.get(), true, Type.JUNGLE, Type.LUSH, Type.OVERWORLD, Type.SPOOKY);
-        registerBiome(BiomeRegistries.MOON_PLAINS.get(), false, Type.PLAINS, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
-        registerBiome(BiomeRegistries.MOON_MOUNTAINS.get(), false, Type.MOUNTAIN, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
-        registerBiome(BiomeRegistries.MOON_FOREST.get(), false, Type.FOREST, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
+        registerBiome(MOON_PLAINS.get(), false, Type.PLAINS, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
+        registerBiome(MOON_MOUNTAINS.get(), false, Type.MOUNTAIN, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
+        registerBiome(MOON_FOREST.get(), false, Type.FOREST, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
+        registerBiome(UMBRAL_DUNES.get(),false,Type.HOT, Type.DRY,Type.PLAINS,Type.DEAD);
 
     }
 

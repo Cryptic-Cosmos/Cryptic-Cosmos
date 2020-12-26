@@ -97,6 +97,8 @@ public class BlockLootTablesGenerator extends LootTableProvider {
         loot.dropSelf(BlockRegistries.THORN_PLANKS.get());
 
         loot.dropSelf(BlockRegistries.THORN_SAPLING.get());
+
+        loot.dropSelf(BlockRegistries.UMBRAL_DUNE.get());
     }
 
     // Add a custom loot table

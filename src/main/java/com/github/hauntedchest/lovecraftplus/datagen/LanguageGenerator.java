@@ -68,6 +68,8 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.MOLTEN_LAVA_SPONGE.get(), "Molten Lava Sponge");
             add(BlockRegistries.RIFT_BLOCK.get(),"Rift Block");
 
+            add(BlockRegistries.UMBRAL_DUNE.get(), "Umbral Sand");
+
             // Entities
             add(EntityTypeRegistries.MOON_BEAST.get(), "Moon Beast");
             add(EntityTypeRegistries.MOON_FROG.get(), "Moon Frog");

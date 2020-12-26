@@ -22,5 +22,25 @@ public class ForgeEventBusSubscriber {
 
             LovecraftPlus.LOGGER.debug("Dimensions registered to DimensionManager!");
         }
+        if (DimensionType.byName(DimensionRegistries.ABYSS_DIM_TYPE) == null) {
+            DimensionManager.registerDimension(
+                    DimensionRegistries.ABYSS_DIM_TYPE,
+                    DimensionRegistries.ABYSS_DIM.get(),
+                    null,
+                    true
+            );
+
+            LovecraftPlus.LOGGER.debug("Dimensions registered to DimensionManager!");
+        }
+        if (DimensionType.byName(DimensionRegistries.ISLAND_DIM_TYPE) == null) {
+            DimensionManager.registerDimension(
+                    DimensionRegistries.ISLAND_DIM_TYPE,
+                    DimensionRegistries.ISLAND_DIM.get(),
+                    null,
+                    true
+            );
+
+            LovecraftPlus.LOGGER.debug("Dimensions registered to DimensionManager!");
+        }
     }
 }
