@@ -101,8 +101,8 @@ public class BiomeRegistries {
             () -> new UmbralDunes(new Biome.Builder()
                     .scale(1f)
                     .temperature(3f)
-                    .waterColor(8530968)
-                    .waterFogColor(8530968)
+                    .waterColor(1042)
+                    .waterFogColor(1042)
                     .surfaceBuilder(SurfaceBuilder.DEFAULT,
                             new SurfaceBuilderConfig(
                                     BlockRegistries.UMBRAL_DUNE.get().getDefaultState(),
