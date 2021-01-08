@@ -1,6 +1,5 @@
 package com.github.hauntedchest.lovecraftplus.datagen;
 
-import com.github.hauntedchest.lovecraftplus.LovecraftPlus;
 import com.github.hauntedchest.lovecraftplus.registries.EntityTypeRegistries;
 import com.github.hauntedchest.lovecraftplus.registries.ItemRegistries;
 import com.google.gson.Gson;
@@ -72,7 +71,7 @@ public class EntityLootTablesGenerator extends LootTableProvider {
             try {
                 IDataProvider.save(GSON, cache, LootTableManager.toJson(table), path);
             } catch (IOException e) {
-                LovecraftPlus.LOGGER.error("couldn't write loot table" + path, e);
+
             }
         });
     }

@@ -27,8 +27,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.IForgeRegistry;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import software.bernie.example.GeckoLibMod;
+import software.bernie.geckolib3.GeckoLib;
 
 import java.util.Objects;
 
@@ -36,7 +36,6 @@ import static net.minecraft.world.biome.Biome.SpawnListEntry;
 
 @Mod(LovecraftPlus.MOD_ID)
 public class LovecraftPlus {
-    public static final Logger LOGGER = LogManager.getLogger();
 
     public static final String MOD_ID = "lovecraftplus";
 
@@ -75,11 +74,13 @@ public class LovecraftPlus {
         modEventBus.addGenericListener(Biome.class, this::onRegisterBiomes);
         modEventBus.addGenericListener(Feature.class, FeatureRegistries::registerStructurePieces);
         modEventBus.addGenericListener(EntityType.class, this::onRegisterEntities);
+
+        GeckoLibMod.DISABLE_IN_DEV = true;
+        GeckoLib.initialize();
     }
 
     public void onRegisterBiomes(final RegistryEvent.Register<Biome> event) {
         BiomeRegistries.registerBiomes();
-        LOGGER.debug("Registered biomes!");
     }
 
     @SuppressWarnings("deprecation")
