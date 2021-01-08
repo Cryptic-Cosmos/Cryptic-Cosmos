@@ -78,7 +78,7 @@ public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
 
     @Override
     public AnimationFactory getFactory() {
-        return null;
+        return this.factory;
     }
 
     protected SoundEvent getAmbientSound() {

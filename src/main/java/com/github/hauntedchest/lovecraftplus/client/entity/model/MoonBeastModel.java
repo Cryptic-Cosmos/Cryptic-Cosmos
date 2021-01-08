@@ -5,7 +5,7 @@ import com.github.hauntedchest.lovecraftplus.entities.MoonBeastEntity;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
-public class MoonBeastEntityModel extends AnimatedGeoModel<MoonBeastEntity> {
+public class MoonBeastModel extends AnimatedGeoModel<MoonBeastEntity> {
     @Override
     public ResourceLocation getModelLocation(MoonBeastEntity moonBeastEntity) {
         return new ResourceLocation(LovecraftPlus.MOD_ID, "geo/MoonBeastModel.geo.json");

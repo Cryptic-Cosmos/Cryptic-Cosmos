@@ -27,7 +27,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.IForgeRegistry;
-import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.GeckoLib;
 
 import java.util.Objects;
@@ -75,9 +74,10 @@ public class LovecraftPlus {
         modEventBus.addGenericListener(Feature.class, FeatureRegistries::registerStructurePieces);
         modEventBus.addGenericListener(EntityType.class, this::onRegisterEntities);
 
-        GeckoLibMod.DISABLE_IN_DEV = true;
         GeckoLib.initialize();
     }
+
+
 
     public void onRegisterBiomes(final RegistryEvent.Register<Biome> event) {
         BiomeRegistries.registerBiomes();
@@ -117,14 +117,12 @@ public class LovecraftPlus {
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_DOOR.get(), RenderType.getCutout());
 
         RenderingRegistry.registerEntityRenderingHandler(
-                EntityTypeRegistries.MOON_BEAST.get(),
-                MoonBeastRender::new
-        );
-
-        RenderingRegistry.registerEntityRenderingHandler(
                 EntityTypeRegistries.MOON_FROG.get(),
                 MoonFrogRender::new
         );
+
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypeRegistries.MOON_BEAST.get(),
+                MoonBeastRender::new);
     }
 
     private void onRegisterItems(final RegistryEvent.Register<Item> event) {
