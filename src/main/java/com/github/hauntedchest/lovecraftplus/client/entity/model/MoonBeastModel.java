@@ -30,10 +30,11 @@ public class MoonBeastModel extends AnimatedGeoModel<MoonBeastEntity> {
     @Override
     public void setLivingAnimations(MoonBeastEntity entity, Integer uniqueID, @Nullable AnimationEvent customPredicate) {
         super.setLivingAnimations(entity, uniqueID, customPredicate);
+        assert customPredicate != null;
         EntityModelData data = (EntityModelData) customPredicate.getExtraData().get(0);
 
         // Apply head look to model
-        IBone head = this.getAnimationProcessor().getBone("head");
+        IBone head = this.getAnimationProcessor().getBone("head_skull");
         head.setRotationY((float) Math.toRadians(Utils.clamp(data.netHeadYaw, -45, 45)));
         head.setRotationX(-(float) Math.toRadians(data.headPitch));
     }

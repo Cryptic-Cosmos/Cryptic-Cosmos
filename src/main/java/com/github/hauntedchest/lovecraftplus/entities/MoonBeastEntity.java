@@ -41,7 +41,7 @@ public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
 
     protected void applyEntityAI() {
         this.goalSelector.addGoal(4, new SwimGoal(this));
-        this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.5D, false));
+        this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 0.45D, false));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setCallsForHelp());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, EndermanEntity.class, true));
@@ -52,7 +52,7 @@ public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
         super.registerAttributes();
 
         this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50.0D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.75D);
+        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.45D);
         this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.5D);
     }
 
