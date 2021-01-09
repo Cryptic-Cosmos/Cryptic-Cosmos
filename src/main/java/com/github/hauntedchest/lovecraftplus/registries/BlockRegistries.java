@@ -177,6 +177,32 @@ public class BlockRegistries {
                     .notSolid())
     );
 
+    //Rubber Wood
+    public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.from(Blocks.JUNGLE_LOG)));
+
+    public static final RegistryObject<Block> STRIPPED_RUBBER_LOG = BLOCKS.register(
+            "stripped_rubber_log",
+            () -> new LogBlock(MaterialColor.WOOD, Properties.create
+                    (Material.WOOD, MaterialColor.WOOD)
+                    .hardnessAndResistance(2.0F)
+                    .sound(SoundType.WOOD)));
+
+    public static final RegistryObject<Block> RUBBER_PLANKS = BLOCKS.register("rubber_planks", () -> new Block(Block.Properties.from(Blocks.JUNGLE_PLANKS)));
+
+    public static final RegistryObject<Block> RUBBER_SAPLING = BLOCKS.register(
+            "rubber_sapling",
+            () -> new RubberSapling(RubberTree::new, Properties.from(Blocks.JUNGLE_SAPLING))
+    );
+
+    public static final RegistryObject<Block> RUBBER_LEAVES = BLOCKS.register(
+            "moon_leaves",
+            () -> new LeavesBlock(Properties.create(Material.LEAVES)
+                    .hardnessAndResistance(0.2F)
+                    .tickRandomly()
+                    .sound(SoundType.PLANT)
+                    .notSolid())
+    );
+
     //Other Blocks
     public static final RegistryObject<Block> LAVA_SPONGE = BLOCKS.register(
             "lava_sponge",
