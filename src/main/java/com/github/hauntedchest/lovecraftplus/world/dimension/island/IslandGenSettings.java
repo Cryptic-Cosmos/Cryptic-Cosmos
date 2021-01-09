@@ -1,4 +1,4 @@
-package com.github.hauntedchest.lovecraftplus.world.dimension;
+package com.github.hauntedchest.lovecraftplus.world.dimension.island;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.world.gen.GenerationSettings;

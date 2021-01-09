@@ -1,4 +1,4 @@
-package com.github.hauntedchest.lovecraftplus.world.dimension;
+package com.github.hauntedchest.lovecraftplus.world.dimension.island;
 
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.Dimension;
@@ -7,9 +7,9 @@ import net.minecraftforge.common.ModDimension;
 
 import java.util.function.BiFunction;
 
-public class AbyssDimension extends ModDimension {
+public class IslandDimension extends ModDimension {
     @Override
     public BiFunction<World, DimensionType, ? extends Dimension> getFactory() {
-        return AbyssConfigDimension::new;
+        return IslandConfigDimension::new;
     }
 }

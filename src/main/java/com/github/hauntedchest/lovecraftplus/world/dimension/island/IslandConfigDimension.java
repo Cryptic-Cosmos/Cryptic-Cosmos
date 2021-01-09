@@ -1,4 +1,4 @@
-package com.github.hauntedchest.lovecraftplus.world.dimension;
+package com.github.hauntedchest.lovecraftplus.world.dimension.island;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,15 +18,15 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class AbyssConfigDimension extends Dimension {
-    public AbyssConfigDimension(World world, DimensionType type) {
+public class IslandConfigDimension extends Dimension {
+    public IslandConfigDimension(World world, DimensionType type) {
         super(world, type, 0.0f);
     }
 
     @Override
     @Nonnull
-    public AbyssChunkGenerator createChunkGenerator() {
-        return new AbyssChunkGenerator(world, new AbyssBiomeProvider(new AbyssBiomeProviderSettings(world.getWorldInfo())), new AbyssGenSettings());
+    public IslandChunkGenerator createChunkGenerator() {
+        return new IslandChunkGenerator(world, new IslandBiomeProvider(new IslandBiomeProviderSettings(world.getWorldInfo())), new IslandGenSettings());
     }
 
     @Nullable

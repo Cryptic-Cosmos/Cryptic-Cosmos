@@ -1,4 +1,4 @@
-package com.github.hauntedchest.lovecraftplus.world.dimension;
+package com.github.hauntedchest.lovecraftplus.world.dimension.abyss;
 
 import com.github.hauntedchest.lovecraftplus.registries.BiomeRegistries;
 import net.minecraft.world.biome.Biome;
@@ -10,16 +10,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-public class IslandBiomeProvider extends BiomeProvider {
+public class AbyssBiomeProvider extends BiomeProvider {
     private static final Set<Biome> biomes = new HashSet<>();
     private static final double BIOME_SIZE = 32.0d;
-    private final IslandGenerator biomeNoise = new IslandGenerator();
+    private final AbyssGenerator biomeNoise = new AbyssGenerator();
 
-    public IslandBiomeProvider(@Nonnull IslandBiomeProviderSettings genSettings) {
+    public AbyssBiomeProvider(@Nonnull AbyssBiomeProviderSettings genSettings) {
         super(biomes);
 
         this.biomeNoise.setSeed((int) genSettings.getSeed());
-        biomes.add(BiomeRegistries.THORN_JUNGLE.get());
+        biomes.add(BiomeRegistries.UMBRAL_DUNES.get());
     }
 
     @Override

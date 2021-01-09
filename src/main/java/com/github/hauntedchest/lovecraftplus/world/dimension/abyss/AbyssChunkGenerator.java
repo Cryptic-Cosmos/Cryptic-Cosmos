@@ -1,4 +1,4 @@
-package com.github.hauntedchest.lovecraftplus.world.dimension;
+package com.github.hauntedchest.lovecraftplus.world.dimension.abyss;
 
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.util.SharedSeedRandom;
@@ -24,7 +24,7 @@ import net.minecraft.world.spawner.WorldEntitySpawner;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class MoonChunkGenerator extends NoiseChunkGenerator<MoonGenSettings> {
+public class AbyssChunkGenerator extends NoiseChunkGenerator<AbyssGenSettings> {
     private static final float[] field_222576_h = Util.make(new float[25], (p_222575_0_) -> {
         for (int i = -2; i <= 2; ++i) {
             for (int j = -2; j <= 2; ++j) {
@@ -40,7 +40,7 @@ public class MoonChunkGenerator extends NoiseChunkGenerator<MoonGenSettings> {
     private final CatSpawner catSpawner = new CatSpawner();
     private final VillageSiege siegeSpawner = new VillageSiege();
 
-    public MoonChunkGenerator(IWorld worldIn, BiomeProvider provider, MoonGenSettings settingsIn) {
+    public AbyssChunkGenerator(IWorld worldIn, BiomeProvider provider, AbyssGenSettings settingsIn) {
         super(worldIn, provider, 4, 8, 256, settingsIn, true);
 
         this.randomSeed.skip(2620);

@@ -1,4 +1,4 @@
-package com.github.hauntedchest.lovecraftplus.world.dimension;
+package com.github.hauntedchest.lovecraftplus.world.dimension.moon;
 
 public class MoonGenerator {
     private static final int X_NOISE_GEN = 1619;

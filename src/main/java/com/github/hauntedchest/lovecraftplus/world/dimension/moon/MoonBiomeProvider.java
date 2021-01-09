@@ -1,4 +1,4 @@
-package com.github.hauntedchest.lovecraftplus.world.dimension;
+package com.github.hauntedchest.lovecraftplus.world.dimension.moon;
 
 import com.github.hauntedchest.lovecraftplus.registries.BiomeRegistries;
 import net.minecraft.world.biome.Biome;

@@ -1,4 +1,4 @@
-package com.github.hauntedchest.lovecraftplus.world.dimension;
+package com.github.hauntedchest.lovecraftplus.world.dimension.moon;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

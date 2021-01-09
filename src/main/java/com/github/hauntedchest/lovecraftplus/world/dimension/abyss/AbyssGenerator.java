@@ -1,4 +1,4 @@
-package com.github.hauntedchest.lovecraftplus.world.dimension;
+package com.github.hauntedchest.lovecraftplus.world.dimension.abyss;
 
 public class AbyssGenerator {
     private static final int X_NOISE_GEN = 1619;

@@ -1,14 +1,14 @@
-package com.github.hauntedchest.lovecraftplus.world.dimension;
+package com.github.hauntedchest.lovecraftplus.world.dimension.island;
 
 import net.minecraft.world.biome.provider.IBiomeProviderSettings;
 import net.minecraft.world.storage.WorldInfo;
 
 import javax.annotation.Nonnull;
 
-public class AbyssBiomeProviderSettings implements IBiomeProviderSettings {
+public class IslandBiomeProviderSettings implements IBiomeProviderSettings {
     private final long seed;
 
-    public AbyssBiomeProviderSettings(@Nonnull WorldInfo info) {
+    public IslandBiomeProviderSettings(@Nonnull WorldInfo info) {
         this.seed = info.getSeed();
     }
 
