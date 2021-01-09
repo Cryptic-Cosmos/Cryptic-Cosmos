@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 @SuppressWarnings("NullableProblems")
 public class MoonBeastRender extends MobRenderer<MoonBeastEntity, MoonBeastModel<MoonBeastEntity>> {
 
-    protected static final ResourceLocation TEXTURE = new ResourceLocation(LovecraftPlus.MOD_ID, "textures/entity/moon_beast_texture.png");
+    protected static final ResourceLocation TEXTURE = new ResourceLocation(LovecraftPlus.MOD_ID, "textures/entity/moon_beast.png");
 
     public MoonBeastRender(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new MoonBeastModel<>(), 0.5f);
