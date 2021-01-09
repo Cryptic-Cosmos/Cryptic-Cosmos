@@ -19,7 +19,7 @@ public class MoonBeastModel extends AnimatedGeoModel<MoonBeastEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(MoonBeastEntity moonBeastEntity) {
-        return new ResourceLocation(LovecraftPlus.MOD_ID, "textures/entity/moon_beast_texture.png");
+        return new ResourceLocation(LovecraftPlus.MOD_ID, "textures/entity/moon_beast.png");
     }
 
     @Override

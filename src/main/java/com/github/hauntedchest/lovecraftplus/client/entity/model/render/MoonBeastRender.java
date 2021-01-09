@@ -9,7 +9,7 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 public class MoonBeastRender extends GeoEntityRenderer<MoonBeastEntity> {
     public MoonBeastRender(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new MoonBeastModel());
-        this.shadowSize = 0.6f;
+        this.shadowSize = 1.2f;
 
     }
 }
