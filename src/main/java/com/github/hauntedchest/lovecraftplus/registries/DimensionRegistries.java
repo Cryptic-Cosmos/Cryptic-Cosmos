@@ -1,9 +1,9 @@
 package com.github.hauntedchest.lovecraftplus.registries;
 
 import com.github.hauntedchest.lovecraftplus.LovecraftPlus;
-import com.github.hauntedchest.lovecraftplus.world.dimension.abyss.AbyssDimension;
-import com.github.hauntedchest.lovecraftplus.world.dimension.island.IslandDimension;
-import com.github.hauntedchest.lovecraftplus.world.dimension.moon.MoonDimension;
+import com.github.hauntedchest.lovecraftplus.world.dimension.AbyssDimension;
+import com.github.hauntedchest.lovecraftplus.world.dimension.IslandDimension;
+import com.github.hauntedchest.lovecraftplus.world.dimension.MoonDimension;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ModDimension;
 import net.minecraftforge.fml.RegistryObject;

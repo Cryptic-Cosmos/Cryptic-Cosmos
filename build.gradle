@@ -83,7 +83,6 @@ minecraft {
     }
 }
 
-
 repositories {
     maven {
         // location of the maven that hosts JEI files
@@ -98,6 +97,7 @@ repositories {
     }
 
     maven {
+        // location of the maven that hosts Geckolib files
         url 'https://repo.repsy.io/mvn/gandiber/geckolib'
     }
 }
@@ -111,7 +111,8 @@ dependencies {
     // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 
-    compile fg.deobf('software.bernie.geckolib:forge-1.15.2-geckolib:3.0.0')
+    // geckolib
+    implementation fg.deobf("software.bernie.geckolib:forge-1.15.2-geckolib:${geckolib_version}")
 }
 
 jar {
