@@ -13,26 +13,26 @@
       "y": 90
     },
     "axis=y,infection_level=1": {
-      "model": "lovecraftplus:block/moon_log1"
+      "model": "lovecraftplus:block/moon_log_level_1"
     },
     "axis=z,infection_level=1": {
-      "model": "lovecraftplus:block/moon_log1",
+      "model": "lovecraftplus:block/moon_log_level_1",
       "x": 90
     },
     "axis=x,infection_level=1": {
-      "model": "lovecraftplus:block/moon_log1",
+      "model": "lovecraftplus:block/moon_log_level_1",
       "x": 90,
       "y": 90
     },
     "axis=y,infection_level=2": {
-      "model": "lovecraftplus:block/moon_log2"
+      "model": "lovecraftplus:block/moon_log_level_2"
     },
     "axis=z,infection_level=2": {
-      "model": "lovecraftplus:block/moon_log2",
+      "model": "lovecraftplus:block/moon_log_level_2",
       "x": 90
     },
     "axis=x,infection_level=2": {
-      "model": "lovecraftplus:block/moon_log2",
+      "model": "lovecraftplus:block/moon_log_level_2",
       "x": 90,
       "y": 90
     }

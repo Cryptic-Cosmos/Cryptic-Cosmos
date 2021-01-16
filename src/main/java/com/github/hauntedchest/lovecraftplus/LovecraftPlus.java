@@ -27,8 +27,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.IForgeRegistry;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 import java.util.Objects;
 
@@ -36,7 +35,6 @@ import static net.minecraft.world.biome.Biome.SpawnListEntry;
 
 @Mod(LovecraftPlus.MOD_ID)
 public class LovecraftPlus {
-    public static final Logger LOGGER = LogManager.getLogger();
 
     public static final String MOD_ID = "lovecraftplus";
 
@@ -75,11 +73,14 @@ public class LovecraftPlus {
         modEventBus.addGenericListener(Biome.class, this::onRegisterBiomes);
         modEventBus.addGenericListener(Feature.class, FeatureRegistries::registerStructurePieces);
         modEventBus.addGenericListener(EntityType.class, this::onRegisterEntities);
+
+        GeckoLib.initialize();
     }
+
+
 
     public void onRegisterBiomes(final RegistryEvent.Register<Biome> event) {
         BiomeRegistries.registerBiomes();
-        LOGGER.debug("Registered biomes!");
     }
 
     @SuppressWarnings("deprecation")
@@ -116,14 +117,12 @@ public class LovecraftPlus {
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_DOOR.get(), RenderType.getCutout());
 
         RenderingRegistry.registerEntityRenderingHandler(
-                EntityTypeRegistries.MOON_BEAST.get(),
-                MoonBeastRender::new
-        );
-
-        RenderingRegistry.registerEntityRenderingHandler(
                 EntityTypeRegistries.MOON_FROG.get(),
                 MoonFrogRender::new
         );
+
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypeRegistries.MOON_BEAST.get(),
+                MoonBeastRender::new);
     }
 
     private void onRegisterItems(final RegistryEvent.Register<Item> event) {

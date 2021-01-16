@@ -104,7 +104,6 @@ public class MoonPillarStructure extends Structure<NoFeatureConfig> {
 
             this.recalculateStructureSize();
 
-            LovecraftPlus.LOGGER.debug("We can find a moon pillar at: " + pos);
         }
     }
 }

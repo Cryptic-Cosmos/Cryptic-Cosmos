@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "lovecraftplus:block/moon_log_top",
+    "side": "lovecraftplus:block/moon_log_level_2"
+  }
+}

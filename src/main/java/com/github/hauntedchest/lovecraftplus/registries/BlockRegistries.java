@@ -192,11 +192,7 @@ public class BlockRegistries {
                     .sound(SoundType.STONE))
     );
 
-    public static final RegistryObject<Block> RIFT_BLOCK = BLOCKS.register(
-            "rift_block",
-            () -> new RiftBlock(Properties.create(Material.ROCK)
-            .hardnessAndResistance(18000000)
-            .sound(SoundType.STONE)));
+    public static final RegistryObject<Block> RIFT_BLOCK = BLOCKS.register("rift_block", RiftBlock::new);
 
     // Umbral Plains
     public static final RegistryObject<Block> UMBRAL_DUNE = BLOCKS.register(

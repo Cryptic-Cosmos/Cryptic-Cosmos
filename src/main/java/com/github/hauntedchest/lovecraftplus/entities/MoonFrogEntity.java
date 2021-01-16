@@ -8,13 +8,27 @@ import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Lazy;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
-public class MoonFrogEntity extends TameableEntity {
+public class MoonFrogEntity extends TameableEntity implements IAnimatable {
+    private final AnimationFactory factory = new AnimationFactory(this);
+    public static AnimationBuilder IDLE_ANIM = new AnimationBuilder().addAnimation("Idle");
+    public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("Walk");
+
     private static final Lazy<Ingredient> BREEDING_ITEM = Lazy.of(
             () -> Ingredient.fromItems(BlockRegistries.MOON_SAPLING.get())
     );
@@ -70,5 +84,33 @@ public class MoonFrogEntity extends TameableEntity {
     @Override
     protected void setupTamedAI() {
         this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 0.5f, 10f, 5f, false));
+    }
+
+    @Override
+    public void registerControllers(AnimationData animationData) {
+        animationData.addAnimationController(new AnimationController(this, "controller", 5, this::predicate));
+    }
+
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        AnimationController controller = event.getController();
+        controller.setAnimation(event.isMoving() ? WALK_ANIM : IDLE_ANIM);
+        return PlayState.CONTINUE;
+    }
+
+    @Override
+    public AnimationFactory getFactory() {
+        return this.factory;
+    }
+
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.ENTITY_SALMON_AMBIENT;
+    }
+
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+        return SoundEvents.ENTITY_SALMON_HURT;
+    }
+
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.ENTITY_SALMON_DEATH;
     }
 }
