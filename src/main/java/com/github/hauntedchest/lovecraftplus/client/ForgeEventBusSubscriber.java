@@ -20,7 +20,7 @@ public class ForgeEventBusSubscriber {
                     true
             );
 
-
+            LovecraftPlus.LOGGER.debug("Dimensions registered to DimensionManager!");
         }
         if (DimensionType.byName(DimensionRegistries.ABYSS_DIM_TYPE) == null) {
             DimensionManager.registerDimension(
@@ -30,7 +30,7 @@ public class ForgeEventBusSubscriber {
                     true
             );
 
-
+            LovecraftPlus.LOGGER.debug("Dimensions registered to DimensionManager!");
         }
         if (DimensionType.byName(DimensionRegistries.ISLAND_DIM_TYPE) == null) {
             DimensionManager.registerDimension(
@@ -40,7 +40,7 @@ public class ForgeEventBusSubscriber {
                     true
             );
 
-
+            LovecraftPlus.LOGGER.debug("Dimensions registered to DimensionManager!");
         }
     }
 }
