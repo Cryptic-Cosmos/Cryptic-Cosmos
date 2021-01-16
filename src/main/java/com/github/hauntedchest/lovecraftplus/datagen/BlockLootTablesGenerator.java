@@ -1,5 +1,6 @@
 package com.github.hauntedchest.lovecraftplus.datagen;
 
+import com.github.hauntedchest.lovecraftplus.LovecraftPlus;
 import com.github.hauntedchest.lovecraftplus.registries.BlockRegistries;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -153,7 +154,7 @@ public class BlockLootTablesGenerator extends LootTableProvider {
             try {
                 IDataProvider.save(GSON, cache, LootTableManager.toJson(table), path);
             } catch (IOException e) {
-
+                LovecraftPlus.LOGGER.error("couldn't write loot table" + path, e);
             }
         });
     }

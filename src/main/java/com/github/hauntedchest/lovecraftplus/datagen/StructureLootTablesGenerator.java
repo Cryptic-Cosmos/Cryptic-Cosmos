@@ -73,7 +73,7 @@ public class StructureLootTablesGenerator extends LootTableProvider {
             try {
                 IDataProvider.save(GSON, cache, LootTableManager.toJson(table), path);
             } catch (IOException e) {
-
+                LovecraftPlus.LOGGER.error("Couldn't write loot table" + path + "!", e);
             }
         });
     }

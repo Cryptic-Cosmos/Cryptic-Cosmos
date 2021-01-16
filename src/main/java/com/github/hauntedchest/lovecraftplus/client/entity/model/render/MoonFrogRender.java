@@ -1,13 +1,25 @@
 package com.github.hauntedchest.lovecraftplus.client.entity.model.render;
 
+import com.github.hauntedchest.lovecraftplus.LovecraftPlus;
 import com.github.hauntedchest.lovecraftplus.client.entity.model.MoonFrogModel;
 import com.github.hauntedchest.lovecraftplus.entities.MoonFrogEntity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.util.ResourceLocation;
 
-public class MoonFrogRender extends GeoEntityRenderer<MoonFrogEntity> {
-    public MoonFrogRender(EntityRendererManager renderManager) {
-        super(renderManager, new MoonFrogModel());
-        this.shadowSize = 0.6f;
+import javax.annotation.Nonnull;
+
+public class MoonFrogRender extends MobRenderer<MoonFrogEntity, MoonFrogModel<MoonFrogEntity>> {
+    private static final ResourceLocation TEXTURE = new ResourceLocation(LovecraftPlus.MOD_ID, "textures/entity/moon_frog.png");
+
+    public MoonFrogRender(EntityRendererManager renderManagerIn) {
+        super(renderManagerIn, new MoonFrogModel<>(), 0.5f);
+
+    }
+
+    @Nonnull
+    @Override
+    public ResourceLocation getEntityTexture(@Nonnull MoonFrogEntity entity) {
+        return TEXTURE;
     }
 }
