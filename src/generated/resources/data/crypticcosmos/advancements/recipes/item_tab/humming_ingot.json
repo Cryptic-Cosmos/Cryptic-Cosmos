@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:humming_ingot"
+    ]
+  },
+  "criteria": {
+    "has_humming_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:humming_stone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:humming_ingot"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_humming_stone",
+      "has_the_recipe"
+    ]
+  ]
+}

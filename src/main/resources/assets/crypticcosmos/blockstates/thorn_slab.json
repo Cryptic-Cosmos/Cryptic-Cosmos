@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "crypticcosmos:block/thorn_slab"
+    },
+    "type=top": {
+      "model": "crypticcosmos:block/thorn_slab_top"
+    },
+    "type=double": {
+      "model": "crypticcosmos:block/thorn_planks"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "crypticcosmos:molten_lava_sponge"
+  },
+  "result": "crypticcosmos:lava_sponge",
+  "experience": 0.75,
+  "cookingtime": 400
+}

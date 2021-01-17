@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_top",
+  "textures": {
+    "bottom": "crypticcosmos:block/thorn_door_bottom",
+    "top": "crypticcosmos:block/thorn_door_top"
+  }
+}

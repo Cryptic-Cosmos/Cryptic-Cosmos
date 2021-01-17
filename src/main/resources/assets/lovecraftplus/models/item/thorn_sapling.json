@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "lovecraftplus:block/thorn_sapling"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "block/outer_stairs",
-  "textures": {
-    "bottom": "lovecraftplus:block/smooth_moonstone",
-    "top": "lovecraftplus:block/smooth_moonstone",
-    "side": "lovecraftplus:block/smooth_moonstone"
-  }
-}

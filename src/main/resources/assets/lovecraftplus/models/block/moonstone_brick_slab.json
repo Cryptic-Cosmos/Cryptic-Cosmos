@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab",
-  "textures": {
-    "bottom": "lovecraftplus:block/moonstone_bricks",
-    "top": "lovecraftplus:block/moonstone_bricks",
-    "side": "lovecraftplus:block/moonstone_bricks"
-  }
-}

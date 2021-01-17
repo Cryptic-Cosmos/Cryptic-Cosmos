@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "lovecraftplus:humming_stone"
-  },
-  "result": "lovecraftplus:humming_ingot",
-  "experience": 0.75,
-  "cookingtime": 400
-}

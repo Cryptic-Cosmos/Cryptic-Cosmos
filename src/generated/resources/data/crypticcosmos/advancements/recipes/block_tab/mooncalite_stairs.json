@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:mooncalite_stairs"
+    ]
+  },
+  "criteria": {
+    "has_mooncalite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:mooncalite"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:mooncalite_stairs"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mooncalite",
+      "has_the_recipe"
+    ]
+  ]
+}
