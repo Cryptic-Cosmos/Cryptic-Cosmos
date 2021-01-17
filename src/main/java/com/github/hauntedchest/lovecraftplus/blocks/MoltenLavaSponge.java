@@ -20,8 +20,10 @@ import java.util.Random;
 
 @SuppressWarnings("NullableProblems")
 public class MoltenLavaSponge extends Block {
-    public MoltenLavaSponge(Block.Properties properties) {
-        super(properties);
+    public MoltenLavaSponge() {
+        super(Properties.create(Material.ROCK)
+                .hardnessAndResistance(0.6F)
+                .sound(SoundType.STONE));
     }
 
     /**

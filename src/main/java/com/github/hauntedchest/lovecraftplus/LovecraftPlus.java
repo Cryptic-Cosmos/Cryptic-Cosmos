@@ -4,7 +4,8 @@ import com.github.hauntedchest.lovecraftplus.client.entity.model.render.MoonBeas
 import com.github.hauntedchest.lovecraftplus.client.entity.model.render.MoonFrogRender;
 import com.github.hauntedchest.lovecraftplus.items.CustomSpawnEggItem;
 import com.github.hauntedchest.lovecraftplus.registries.*;
-import com.github.hauntedchest.lovecraftplus.world.gen.StructureGen;
+import com.github.hauntedchest.lovecraftplus.world.gen.FeatureGen;
+import com.github.hauntedchest.lovecraftplus.world.gen.RiftSpawning;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -61,6 +62,7 @@ public class LovecraftPlus {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.addListener(RiftSpawning::riftSpawning);
 
         BlockRegistries.BLOCKS.register(modEventBus);
         ItemRegistries.ITEMS.register(modEventBus);
@@ -85,7 +87,7 @@ public class LovecraftPlus {
     @SuppressWarnings("deprecation")
     private void setup(final FMLCommonSetupEvent event) {
         DeferredWorkQueue.runLater(() -> {
-            StructureGen.generateStructures();
+            FeatureGen.generateStructures();
 
             BiomeRegistries.MOON_MOUNTAINS.get().addSpawn(
                     EntityClassification.MONSTER,

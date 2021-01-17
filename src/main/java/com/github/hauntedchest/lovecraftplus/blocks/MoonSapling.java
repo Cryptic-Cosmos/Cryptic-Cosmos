@@ -1,6 +1,7 @@
 package com.github.hauntedchest.lovecraftplus.blocks;
 
 import com.github.hauntedchest.lovecraftplus.registries.BlockRegistries;
+import com.github.hauntedchest.lovecraftplus.world.feature.MoonTree;
 import net.minecraft.block.*;
 import net.minecraft.block.trees.Tree;
 import net.minecraft.state.IntegerProperty;
@@ -26,9 +27,9 @@ public class MoonSapling extends BushBlock implements IGrowable {
     );
     private final Supplier<Tree> tree;
 
-    public MoonSapling(Supplier<Tree> treeIn, Properties properties) {
-        super(properties);
-        this.tree = treeIn;
+    public MoonSapling() {
+        super(Properties.from(Blocks.BIRCH_SAPLING));
+        this.tree = MoonTree::new;
     }
 
     @SuppressWarnings("deprecation")
