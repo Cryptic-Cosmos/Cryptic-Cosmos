@@ -22,9 +22,10 @@ import java.util.function.Function;
 public class RiftBlock extends Block {
     public RiftBlock() {
         super(Properties.create(Material.ROCK)
-                .hardnessAndResistance(18000000)
+                .hardnessAndResistance(40f, 1200f)
                 .sound(SoundType.STONE)
                 .doesNotBlockMovement()
+                .noDrops()
         );
     }
 
