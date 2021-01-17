@@ -9,7 +9,7 @@ import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class StructureGen {
+public class FeatureGen {
     public static void generateStructures() {
         for (Biome biome : ForgeRegistries.BIOMES) {
             if (biome == BiomeRegistries.MOON_PLAINS.get()) {
