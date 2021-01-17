@@ -1,9 +1,7 @@
 package com.github.hauntedchest.lovecraftplus.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BushBlock;
-import net.minecraft.block.IGrowable;
+import com.github.hauntedchest.lovecraftplus.world.feature.ThornTree;
+import net.minecraft.block.*;
 import net.minecraft.block.trees.Tree;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
@@ -28,10 +26,10 @@ public class ThornSapling extends BushBlock implements IGrowable {
     );
     private final Supplier<Tree> tree;
 
-    public ThornSapling(Supplier<Tree> treeIn, Properties properties) {
-        super(properties);
+    public ThornSapling() {
+        super(Properties.from(Blocks.JUNGLE_SAPLING));
 
-        this.tree = treeIn;
+        this.tree = ThornTree::new;
     }
 
     @SuppressWarnings("deprecation")

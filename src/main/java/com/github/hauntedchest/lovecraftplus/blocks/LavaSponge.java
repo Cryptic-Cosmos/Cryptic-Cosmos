@@ -17,8 +17,10 @@ import javax.annotation.Nonnull;
 import java.util.Queue;
 
 public class LavaSponge extends Block {
-    public LavaSponge(Block.Properties properties) {
-        super(properties);
+    public LavaSponge() {
+        super(Properties.create(Material.ROCK)
+                .hardnessAndResistance(0.6F)
+                .sound(SoundType.STONE));
     }
 
     @Override

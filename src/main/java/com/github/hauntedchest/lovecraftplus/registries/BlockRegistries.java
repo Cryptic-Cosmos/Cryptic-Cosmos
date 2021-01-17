@@ -2,11 +2,8 @@ package com.github.hauntedchest.lovecraftplus.registries;
 
 import com.github.hauntedchest.lovecraftplus.LovecraftPlus;
 import com.github.hauntedchest.lovecraftplus.blocks.*;
-import com.github.hauntedchest.lovecraftplus.world.feature.MoonTree;
-import com.github.hauntedchest.lovecraftplus.world.feature.ThornTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -118,32 +115,15 @@ public class BlockRegistries {
     );
 
     //Thorn Wood
-    public static final RegistryObject<Block> THORN_LOG = BLOCKS.register(
-            "thorn_log",
-            () -> new ThornLog(MaterialColor.WOOD, Properties.create(Material.WOOD)
-                    .hardnessAndResistance(1.0F, 1.0F)
-                    .sound(SoundType.WOOD)
-                    .harvestLevel(0)
-                    .harvestTool(ToolType.AXE))
-    );
+    public static final RegistryObject<Block> THORN_LOG = BLOCKS.register("thorn_log", ThornLog::new);
 
-    public static final RegistryObject<Block> THORN_PLANKS = BLOCKS.register(
-            "thorn_planks",
-            () -> new ThornLog(MaterialColor.WOOD, Properties.create(Material.WOOD)
-                    .hardnessAndResistance(1.0F, 1.0F)
-                    .sound(SoundType.WOOD)
-                    .harvestLevel(0)
-                    .harvestTool(ToolType.AXE))
-    );
+    public static final RegistryObject<Block> THORN_PLANKS = BLOCKS.register("thorn_planks", ThornLog::new);
 
     public static final RegistryObject<Block> THORN_SLAB = BLOCKS.register(
             "thorn_slab",
             () -> new SlabBlock(Properties.from(Blocks.JUNGLE_SLAB))
     );
-    public static final RegistryObject<Block> THORN_SAPLING = BLOCKS.register(
-            "thorn_sapling",
-            () -> new ThornSapling(ThornTree::new, Properties.from(Blocks.JUNGLE_SAPLING))
-    );
+    public static final RegistryObject<Block> THORN_SAPLING = BLOCKS.register("thorn_sapling", ThornSapling::new);
 
     public static final RegistryObject<Block> THORN_LEAVES = BLOCKS.register(
             "thorn_leaves",
@@ -153,20 +133,15 @@ public class BlockRegistries {
                     .sound(SoundType.PLANT)
                     .notSolid())
     );
-    public static final RegistryObject<Block> THORN_DOOR = BLOCKS.register(
-            "thorn_door",
-            () -> new ModdedDoorBlock(Properties.from(Blocks.JUNGLE_DOOR))
-    );
+
+    public static final RegistryObject<Block> THORN_DOOR = BLOCKS.register("thorn_door", ModdedDoorBlock::new);
 
     //Moon Wood
     public static final RegistryObject<Block> MOON_LOG = BLOCKS.register("moon_log", MoonLog::new);
 
     public static final RegistryObject<Block> MOON_PLANKS = BLOCKS.register("moon_planks", MoonPlanks::new);
 
-    public static final RegistryObject<Block> MOON_SAPLING = BLOCKS.register(
-            "moon_sapling",
-            () -> new MoonSapling(MoonTree::new, Properties.from(Blocks.BIRCH_SAPLING))
-    );
+    public static final RegistryObject<Block> MOON_SAPLING = BLOCKS.register("moon_sapling", MoonSapling::new);
 
     public static final RegistryObject<Block> MOON_LEAVES = BLOCKS.register(
             "moon_leaves",
@@ -178,25 +153,12 @@ public class BlockRegistries {
     );
 
     //Other Blocks
-    public static final RegistryObject<Block> LAVA_SPONGE = BLOCKS.register(
-            "lava_sponge",
-            () -> new LavaSponge(Properties.create(Material.ROCK)
-                    .hardnessAndResistance(0.6F)
-                    .sound(SoundType.STONE))
-    );
+    public static final RegistryObject<Block> LAVA_SPONGE = BLOCKS.register("lava_sponge", LavaSponge::new);
 
-    public static final RegistryObject<Block> MOLTEN_LAVA_SPONGE = BLOCKS.register(
-            "molten_lava_sponge",
-            () -> new MoltenLavaSponge(Properties.create(Material.ROCK)
-                    .hardnessAndResistance(0.6F)
-                    .sound(SoundType.STONE))
-    );
+    public static final RegistryObject<Block> MOLTEN_LAVA_SPONGE =
+            BLOCKS.register("molten_lava_sponge", MoltenLavaSponge::new);
 
-    public static final RegistryObject<Block> RIFT_BLOCK = BLOCKS.register(
-            "rift_block",
-            () -> new RiftBlock(Properties.create(Material.ROCK)
-            .hardnessAndResistance(18000000)
-            .sound(SoundType.STONE)));
+    public static final RegistryObject<Block> RIFT_BLOCK = BLOCKS.register("rift_block", RiftBlock::new);
 
     // Umbral Plains
     public static final RegistryObject<Block> UMBRAL_DUNE = BLOCKS.register(
