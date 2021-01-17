@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "crypticcosmos:block/moon_log_top",
+    "side": "crypticcosmos:block/moon_log"
+  }
+}

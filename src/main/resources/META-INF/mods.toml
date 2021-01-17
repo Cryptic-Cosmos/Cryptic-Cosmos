@@ -2,30 +2,30 @@ modLoader = "javafml"
 loaderVersion = "[31.2,)"
 
 license = "GPL version 3 or any later version"
-issueTrackerURL = "https://github.com/DenDragon23/LovecraftPlus/issues"
+issueTrackerURL = "https://github.com/Team-Cryptic-Cosmos/Cryptic-Cosmos/issues"
 
 [[mods]]
-modId = "lovecraftplus"
-displayName = "Lovecraft Plus"
-version = "${version}"
+modId = "crypticcosmos"
+displayName = "Cryptic Cosmos"
+version = "1.0.0-alpha"
 description = """
 This mod takes inspiration from the writer H.P Lovecraft.
 Here, we make all sorts of new mobs and dimensions where these monsters come from.
 """
-displayURL = "https://github.com/DenDragon23/LovecraftPlus"
+displayURL = "https://github.com/Team-Cryptic-Cosmos/Cryptic-Cosmos/"
 logoFile = "mon.png"
 
 credits = "Haunted Chest, PutoPug, Cheese God, Conzilla and TheOnlyTails"
-authors = "LovecraftPlus Team"
+authors = "Cryptic Cosmos Team"
 
-[[dependencies.lovecraftplus]]
+[[dependencies.crypticcosmos]]
 modId = "forge"
 versionRange = "[31.2,)"
 mandatory = true
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.lovecraftplus]]
+[[dependencies.crypticcosmos]]
 modId = "minecraft"
 versionRange = "[1.15.2]"
 mandatory = true

@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab_top",
-  "textures": {
-    "bottom": "lovecraftplus:block/mooncalite",
-    "top": "lovecraftplus:block/mooncalite",
-    "side": "lovecraftplus:block/mooncalite"
-  }
-}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "crypticcosmos:block/thorn_leaves"
+  }
+}

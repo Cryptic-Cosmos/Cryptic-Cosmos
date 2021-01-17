@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yxy",
+    "xzx",
+    "yxy"
+  ],
+  "key": {
+    "x": {
+      "item": "crypticcosmos:humming_ingot"
+    },
+    "y": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "z": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "result": {
+    "item": "crypticcosmos:humming_obsidian"
+  }
+}

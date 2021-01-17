@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "m  ",
+    "mm ",
+    "mmm"
+  ],
+  "key": {
+    "m": {
+      "item": "crypticcosmos:mooncalite"
+    }
+  },
+  "result": {
+    "item": "crypticcosmos:mooncalite_stairs",
+    "count": 4
+  }
+}

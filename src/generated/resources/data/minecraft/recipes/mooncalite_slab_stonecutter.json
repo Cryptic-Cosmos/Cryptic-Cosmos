@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "lovecraftplus:mooncalite"
+    "item": "crypticcosmos:mooncalite"
   },
-  "result": "lovecraftplus:mooncalite_slab",
+  "result": "crypticcosmos:mooncalite_slab",
   "count": 1
 }

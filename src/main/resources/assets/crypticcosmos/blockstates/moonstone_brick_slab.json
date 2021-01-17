@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "crypticcosmos:block/moonstone_brick_slab"
+    },
+    "type=top": {
+      "model": "crypticcosmos:block/moonstone_brick_slab_top"
+    },
+    "type=double": {
+      "model": "crypticcosmos:block/moonstone_bricks"
+    }
+  }
+}

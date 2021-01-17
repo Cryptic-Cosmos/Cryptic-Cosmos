@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "crypticcosmos:block/mooncalite_slab"
+    },
+    "type=top": {
+      "model": "crypticcosmos:block/mooncalite_slab_top"
+    },
+    "type=double": {
+      "model": "crypticcosmos:block/mooncalite"
+    }
+  }
+}

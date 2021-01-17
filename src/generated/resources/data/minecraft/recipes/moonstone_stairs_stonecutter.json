@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "lovecraftplus:moonstone"
+    "item": "crypticcosmos:moonstone"
   },
-  "result": "lovecraftplus:moonstone_stairs",
+  "result": "crypticcosmos:moonstone_stairs",
   "count": 1
 }

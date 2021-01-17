@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "m  ",
+    "mm ",
+    "mmm"
+  ],
+  "key": {
+    "m": {
+      "item": "crypticcosmos:moonstone"
+    }
+  },
+  "result": {
+    "item": "crypticcosmos:moonstone_stairs",
+    "count": 4
+  }
+}
