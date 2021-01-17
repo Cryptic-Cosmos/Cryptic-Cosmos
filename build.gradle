@@ -85,18 +85,6 @@ minecraft {
 
 repositories {
     maven {
-        // location of the maven that hosts JEI files
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
-    }
-
-    maven {
-        // location of a maven mirror for JEI files, as a fallback
-        name = "ModMaven"
-        url = "https://modmaven.k-4u.nl"
-    }
-
-    maven {
         // location of the maven that hosts Geckolib files
         url 'https://repo.repsy.io/mvn/gandiber/geckolib'
     }
@@ -105,11 +93,6 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${project.mc_version}-${project.forge_version}"
-
-    // Compiling The JEI API
-    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api"))
-    // at runtime, use the full JEI jar
-    runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}"))
 
     // geckolib
     implementation fg.deobf("software.bernie.geckolib:forge-1.15.2-geckolib:${geckolib_version}")
