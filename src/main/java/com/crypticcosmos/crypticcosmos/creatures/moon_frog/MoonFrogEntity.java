@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.entities;
+package com.crypticcosmos.crypticcosmos.creatures.moon_frog;
 
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
@@ -10,11 +10,22 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Lazy;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
-public class MoonFrogEntity extends TameableEntity {
+public class MoonFrogEntity extends TameableEntity implements IAnimatable {
+    private final AnimationFactory factory = new AnimationFactory(this);
+    public static AnimationBuilder IDLE_ANIM = new AnimationBuilder().addAnimation("idle");
+    public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("walk");
+
     private static final Lazy<Ingredient> BREEDING_ITEM = Lazy.of(
             () -> Ingredient.fromItems(BlockRegistries.MOON_SAPLING.get())
     );
@@ -23,6 +34,11 @@ public class MoonFrogEntity extends TameableEntity {
         super(type, worldIn);
 
         this.ignoreFrustumCheck = true;
+    }
+
+    @Override
+    public int getMaxAir() {
+        return 900;
     }
 
     @Override
@@ -43,6 +59,22 @@ public class MoonFrogEntity extends TameableEntity {
 
         this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
         this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2F);
+    }
+
+    @Override
+    public void registerControllers(AnimationData data) {
+        data.addAnimationController(new AnimationController<>(this, "controller", 5, this::predicate));
+    }
+
+    @Override
+    public AnimationFactory getFactory() {
+        return this.factory;
+    }
+
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        AnimationController controller = event.getController();
+        controller.setAnimation(event.isMoving() ? WALK_ANIM : IDLE_ANIM);
+        return PlayState.CONTINUE;
     }
 
 

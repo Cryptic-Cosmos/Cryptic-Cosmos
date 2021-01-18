@@ -1,7 +1,7 @@
 package com.crypticcosmos.crypticcosmos;
 
 import com.crypticcosmos.crypticcosmos.client.entity.model.render.MoonBeastRender;
-import com.crypticcosmos.crypticcosmos.client.entity.model.render.MoonFrogRender;
+import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
 import com.crypticcosmos.crypticcosmos.registries.*;
 import com.crypticcosmos.crypticcosmos.world.gen.FeatureGen;
