@@ -23,8 +23,8 @@ import javax.annotation.Nullable;
 @SuppressWarnings("NullableProblems")
 public class MoonFrogEntity extends TameableEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
-    public static AnimationBuilder IDLE_ANIM = new AnimationBuilder().addAnimation("idle");
-    public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("walk");
+    public static AnimationBuilder IDLE_ANIM = new AnimationBuilder().addAnimation("Idle");
+    public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("Walk");
 
     private static final Lazy<Ingredient> BREEDING_ITEM = Lazy.of(
             () -> Ingredient.fromItems(BlockRegistries.MOON_SAPLING.get())

@@ -4,8 +4,14 @@ package com.crypticcosmos.crypticcosmos.creatures.moon_frog;// Made with Blockbe
 
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
+import com.sun.javafx.util.Utils;
 import net.minecraft.util.ResourceLocation;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib3.model.provider.data.EntityModelData;
+
+import javax.annotation.Nullable;
 
 public class MoonFrogModel extends AnimatedGeoModel<MoonFrogEntity>{
 
@@ -21,6 +27,16 @@ public class MoonFrogModel extends AnimatedGeoModel<MoonFrogEntity>{
 
     @Override
     public ResourceLocation getAnimationFileLocation(MoonFrogEntity moonFrogEntity) {
-        return new ResourceLocation(CrypticCosmos.MOD_ID, "animations/moon.frog.json");
+        return new ResourceLocation(CrypticCosmos.MOD_ID, "animations/moonfrog.json");
+    }
+
+    @Override
+    public void setLivingAnimations(MoonFrogEntity entity, Integer uniqueID, @Nullable AnimationEvent customPredicate) {
+        super.setLivingAnimations(entity, uniqueID, customPredicate);
+        EntityModelData data = (EntityModelData) customPredicate.getExtraData().get(0);
+        // Apply head look to model
+        IBone head = this.getAnimationProcessor().getBone("Head");
+        head.setRotationY((float) Math.toRadians(Utils.clamp(data.netHeadYaw, -45, 45)));
+        head.setRotationX(-(float) Math.toRadians(data.headPitch));
     }
 }

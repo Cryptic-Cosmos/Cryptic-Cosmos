@@ -51,8 +51,8 @@ public class ItemRegistries {
             "moon_frog_spawn_egg",
             () -> new CustomSpawnEggItem(
                     EntityTypeRegistries.MOON_FROG::get,
-                    0x003dff,
-                    0x1a1a1b,
+                    0x993333,
+                    0x660033,
                     CrypticCosmos.ITEM_GROUP_PROPERTY
             )
     );
