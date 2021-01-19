@@ -31,6 +31,7 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(ItemRegistries.CRATERED_BONE.get(), "Cratered Bone");
             add(ItemRegistries.BUNDLE_NECRONOMICON.get(), "Corrupted Bundle of Knowledge");
             add(ItemRegistries.MOON_BEAST_SPAWN_EGG.get(), "Moon Beast Spawn Egg");
+            add(ItemRegistries.MOON_FROG_SPAWN_EGG.get(), "Moon Frog Spawn Egg");
 
             // Blocks
             add(BlockRegistries.HUMMING_STONE.get(), "Humming Stone");
@@ -59,14 +60,14 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.THORN_SAPLING.get(), "Thorn Sapling");
             add(BlockRegistries.THORN_DOOR.get(), "Thorn Door");
 
-            add(BlockRegistries.MOON_LOG.get(), "Moon Log");
-            add(BlockRegistries.MOON_PLANKS.get(), "Moon Planks");
-            add(BlockRegistries.MOON_LEAVES.get(), "Moon Leaves");
-            add(BlockRegistries.MOON_SAPLING.get(), "Moon Sapling");
+            add(BlockRegistries.MONDROVE_LOG.get(), "Moon Log");
+            add(BlockRegistries.MONDROVE_PLANKS.get(), "Moon Planks");
+            add(BlockRegistries.MONDROVE_LEAVES.get(), "Moon Leaves");
+            add(BlockRegistries.MONDROVE_SAPLING.get(), "Moon Sapling");
 
             add(BlockRegistries.LAVA_SPONGE.get(), "Lava Sponge");
             add(BlockRegistries.MOLTEN_LAVA_SPONGE.get(), "Molten Lava Sponge");
-            add(BlockRegistries.RIFT_BLOCK.get(),"Rift Block");
+            add(BlockRegistries.RIFT_BLOCK.get(), "Rift Block");
 
             add(BlockRegistries.UMBRAL_DUNE.get(), "Umbral Sand");
 

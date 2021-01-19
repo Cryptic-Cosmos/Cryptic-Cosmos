@@ -51,19 +51,19 @@ public class BlockLootTablesGenerator extends LootTableProvider {
         loot.dropSelf(BlockRegistries.MOONCALITE_STAIRS.get());
 
         loot.addLoot(
-                BlockRegistries.MOON_LEAVES.get(),
+                BlockRegistries.MONDROVE_LEAVES.get(),
                 BlockLootTables.droppingWithChancesSticksAndApples(
-                        BlockRegistries.MOON_LEAVES.get(),
-                        BlockRegistries.MOON_SAPLING.get(),
+                        BlockRegistries.MONDROVE_LEAVES.get(),
+                        BlockRegistries.MONDROVE_SAPLING.get(),
                         BlockLootTables.DEFAULT_SAPLING_DROP_RATES
                 )
         );
 
-        loot.dropSelf(BlockRegistries.MOON_LOG.get());
+        loot.dropSelf(BlockRegistries.MONDROVE_LOG.get());
 
-        loot.dropSelf(BlockRegistries.MOON_PLANKS.get());
+        loot.dropSelf(BlockRegistries.MONDROVE_PLANKS.get());
 
-        loot.dropSelf(BlockRegistries.MOON_SAPLING.get());
+        loot.dropSelf(BlockRegistries.MONDROVE_SAPLING.get());
 
         loot.dropSelf(BlockRegistries.MOONSTONE.get());
 

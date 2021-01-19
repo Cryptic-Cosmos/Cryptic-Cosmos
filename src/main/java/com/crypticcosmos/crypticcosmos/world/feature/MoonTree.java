@@ -17,25 +17,25 @@ import java.util.Random;
 
 public class MoonTree extends Tree {
     public static final TreeFeatureConfig MOON_TREE_CONFIG2 = new TreeFeatureConfig.Builder(
-            new SimpleBlockStateProvider(BlockRegistries.MOON_LOG.get().getDefaultState()),
-            new SimpleBlockStateProvider(BlockRegistries.MOON_LEAVES.get().getDefaultState()),
+            new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LOG.get().getDefaultState()),
+            new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LEAVES.get().getDefaultState()),
             new BlobFoliagePlacer(2, 0))
             .baseHeight(5)
             .heightRandA(2)
             .foliageHeight(3)
             .ignoreVines()
             .decorators(ImmutableList.of(new BeehiveTreeDecorator(0.05F)))
-            .setSapling((IPlantable) BlockRegistries.MOON_SAPLING.get()).build();
+            .setSapling((IPlantable) BlockRegistries.MONDROVE_SAPLING.get()).build();
 
     public static final TreeFeatureConfig MOON_TREE_CONFIG = new TreeFeatureConfig.Builder(
-            new SimpleBlockStateProvider(BlockRegistries.MOON_LOG.get().getDefaultState()),
-            new SimpleBlockStateProvider(BlockRegistries.MOON_LEAVES.get().getDefaultState()),
+            new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LOG.get().getDefaultState()),
+            new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LEAVES.get().getDefaultState()),
             new BlobFoliagePlacer(2, 0))
             .baseHeight(5)
             .heightRandA(2)
             .foliageHeight(3)
             .ignoreVines()
-            .setSapling((IPlantable) BlockRegistries.MOON_SAPLING.get()).build();
+            .setSapling((IPlantable) BlockRegistries.MONDROVE_SAPLING.get()).build();
 
     @Override
     @Nullable

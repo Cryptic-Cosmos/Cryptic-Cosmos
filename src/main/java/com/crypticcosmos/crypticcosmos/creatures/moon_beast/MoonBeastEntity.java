@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.entities;
+package com.crypticcosmos.crypticcosmos.creatures.moon_beast;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -7,10 +7,21 @@ import net.minecraft.entity.monster.EndermanEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import javax.annotation.Nonnull;
 
-public class MoonBeastEntity extends MonsterEntity {
+public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
+    public static AnimationBuilder IDLE_ANIM = new AnimationBuilder().addAnimation("idle");
+    public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("walk");
+    private final AnimationFactory factory = new AnimationFactory(this);
+
     public MoonBeastEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
         super(type, worldIn);
     }
@@ -51,4 +62,21 @@ public class MoonBeastEntity extends MonsterEntity {
         return super.getExperiencePoints(player);
     }
 
+    @Override
+    public void registerControllers(AnimationData data) {
+        data.addAnimationController(
+                new AnimationController<>(this, "controller", 5, this::predicate));
+    }
+
+    @Override
+    public AnimationFactory getFactory() {
+        return factory;
+    }
+
+
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        AnimationController<?> controller = event.getController();
+        controller.setAnimation(event.isMoving() ? WALK_ANIM : IDLE_ANIM);
+        return PlayState.CONTINUE;
+    }
 }

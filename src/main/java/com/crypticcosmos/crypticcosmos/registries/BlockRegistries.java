@@ -137,13 +137,13 @@ public class BlockRegistries {
     public static final RegistryObject<Block> THORN_DOOR = BLOCKS.register("thorn_door", ModdedDoorBlock::new);
 
     //Moon Wood
-    public static final RegistryObject<Block> MOON_LOG = BLOCKS.register("moon_log", MoonLog::new);
+    public static final RegistryObject<Block> MONDROVE_LOG = BLOCKS.register("moon_log", MoonLog::new);
 
-    public static final RegistryObject<Block> MOON_PLANKS = BLOCKS.register("moon_planks", MoonPlanks::new);
+    public static final RegistryObject<Block> MONDROVE_PLANKS = BLOCKS.register("moon_planks", MoonPlanks::new);
 
-    public static final RegistryObject<Block> MOON_SAPLING = BLOCKS.register("moon_sapling", MoonSapling::new);
+    public static final RegistryObject<Block> MONDROVE_SAPLING = BLOCKS.register("moon_sapling", MoonSapling::new);
 
-    public static final RegistryObject<Block> MOON_LEAVES = BLOCKS.register(
+    public static final RegistryObject<Block> MONDROVE_LEAVES = BLOCKS.register(
             "moon_leaves",
             () -> new LeavesBlock(Properties.create(Material.LEAVES)
                     .hardnessAndResistance(0.2F)

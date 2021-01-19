@@ -27,7 +27,7 @@ public class MoonFrogEntity extends TameableEntity implements IAnimatable {
     public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("Walk");
 
     private static final Lazy<Ingredient> BREEDING_ITEM = Lazy.of(
-            () -> Ingredient.fromItems(BlockRegistries.MOON_SAPLING.get())
+            () -> Ingredient.fromItems(BlockRegistries.MONDROVE_SAPLING.get())
     );
 
     public MoonFrogEntity(EntityType<? extends TameableEntity> type, World worldIn) {
@@ -72,7 +72,7 @@ public class MoonFrogEntity extends TameableEntity implements IAnimatable {
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        AnimationController controller = event.getController();
+        AnimationController<?> controller = event.getController();
         controller.setAnimation(event.isMoving() ? WALK_ANIM : IDLE_ANIM);
         return PlayState.CONTINUE;
     }

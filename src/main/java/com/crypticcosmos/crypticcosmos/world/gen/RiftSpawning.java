@@ -26,7 +26,7 @@ public class RiftSpawning {
 
         PlayerEntity player = event.player;
 
-        if (ThreadLocalRandom.current().nextInt(spawningChance) == 1) {
+        if (ThreadLocalRandom.current().nextInt(spawningChance) == 0) {
             if (!(player.dimension.equals(DimensionType.THE_END) || player.dimension.equals(DimensionType.THE_NETHER))) {
                 for (Direction direction : Direction.values()) {
                     for (int i = 0; i <= range; i++) {
