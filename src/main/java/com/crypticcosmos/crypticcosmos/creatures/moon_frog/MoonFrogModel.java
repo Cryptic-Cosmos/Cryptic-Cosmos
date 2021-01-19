@@ -4,7 +4,7 @@ package com.crypticcosmos.crypticcosmos.creatures.moon_frog;// Made with Blockbe
 
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.sun.javafx.util.Utils;
+import com.crypticcosmos.crypticcosmos.registries.Utils;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
