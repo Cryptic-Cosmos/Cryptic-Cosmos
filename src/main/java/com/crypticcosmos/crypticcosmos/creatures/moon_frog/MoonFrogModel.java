@@ -17,7 +17,7 @@ public class MoonFrogModel extends AnimatedGeoModel<MoonFrogEntity>{
 
     @Override
     public ResourceLocation getModelLocation(MoonFrogEntity moonFrogEntity) {
-        return new ResourceLocation(CrypticCosmos.MOD_ID, "geo/moonfrog.geo.json");
+        return new ResourceLocation(CrypticCosmos.MOD_ID, "geo/moon_frog.geo.json");
     }
 
     @Override
@@ -27,7 +27,7 @@ public class MoonFrogModel extends AnimatedGeoModel<MoonFrogEntity>{
 
     @Override
     public ResourceLocation getAnimationFileLocation(MoonFrogEntity moonFrogEntity) {
-        return new ResourceLocation(CrypticCosmos.MOD_ID, "animations/moonfrog.json");
+        return new ResourceLocation(CrypticCosmos.MOD_ID, "animations/moon_frog.json");
     }
 
     @Override
