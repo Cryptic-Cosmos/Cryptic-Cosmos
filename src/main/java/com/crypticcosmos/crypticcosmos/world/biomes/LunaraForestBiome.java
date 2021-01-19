@@ -18,8 +18,8 @@ import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraftforge.common.IPlantable;
 
 public class LunaraForestBiome extends Biome {
-    private static final BlockState MOON_LOG = BlockRegistries.MOON_LOG.get().getDefaultState();
-    private static final BlockState MOON_LEAVES = BlockRegistries.MOON_LEAVES.get().getDefaultState();
+    private static final BlockState MOON_LOG = BlockRegistries.MONDROVE_LOG.get().getDefaultState();
+    private static final BlockState MOON_LEAVES = BlockRegistries.MONDROVE_LEAVES.get().getDefaultState();
     public static final TreeFeatureConfig MOON_TREE_CONFIG = new TreeFeatureConfig.Builder(
             new SimpleBlockStateProvider(MOON_LOG),
             new SimpleBlockStateProvider(MOON_LEAVES),
@@ -29,7 +29,7 @@ public class LunaraForestBiome extends Biome {
             .foliageHeight(3)
             .ignoreVines()
             .decorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F)))
-            .setSapling((IPlantable) BlockRegistries.MOON_SAPLING.get())
+            .setSapling((IPlantable) BlockRegistries.MONDROVE_SAPLING.get())
             .build();
 
     public LunaraForestBiome(Biome.Builder builder) {

@@ -84,10 +84,7 @@ minecraft {
 }
 
 repositories {
-    maven {
-        // location of the maven that hosts Geckolib files
-        url 'https://repo.repsy.io/mvn/gandiber/geckolib'
-    }
+    maven { url 'https://repo.repsy.io/mvn/gandiber/geckolib' }
 }
 
 
@@ -95,7 +92,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${project.mc_version}-${project.forge_version}"
 
     // geckolib
-    implementation fg.deobf("software.bernie.geckolib:forge-1.15.2-geckolib:${geckolib_version}")
+    compile fg.deobf('software.bernie.geckolib:forge-1.15.2-geckolib:3.0.0')
 }
 
 jar {

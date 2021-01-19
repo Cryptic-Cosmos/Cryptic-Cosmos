@@ -1,8 +1,8 @@
 package com.crypticcosmos.crypticcosmos.registries;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.entities.MoonBeastEntity;
-import com.crypticcosmos.crypticcosmos.entities.MoonFrogEntity;
+import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastEntity;
+import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogEntity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;

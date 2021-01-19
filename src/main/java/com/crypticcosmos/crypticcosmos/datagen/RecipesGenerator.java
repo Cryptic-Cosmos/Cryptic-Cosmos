@@ -31,11 +31,11 @@ public class RecipesGenerator extends RecipeProvider {
                 .build(consumer, BlockRegistries.HUMMING_OBSIDIAN.getId());
 
         // Moon planks
-        ShapelessRecipeBuilder.shapelessRecipe(BlockRegistries.MOON_PLANKS.get(), 4)
-                .addIngredient(BlockRegistries.MOON_LOG.get())
+        ShapelessRecipeBuilder.shapelessRecipe(BlockRegistries.MONDROVE_PLANKS.get(), 4)
+                .addIngredient(BlockRegistries.MONDROVE_LOG.get())
                 .setGroup("planks")
-                .addCriterion("has_moon_log", this.hasItem(BlockRegistries.MOON_LOG.get()))
-                .build(consumer, BlockRegistries.MOON_PLANKS.getId());
+                .addCriterion("has_moon_log", this.hasItem(BlockRegistries.MONDROVE_LOG.get()))
+                .build(consumer, BlockRegistries.MONDROVE_PLANKS.getId());
 
         // Thorn planks
         ShapelessRecipeBuilder.shapelessRecipe(BlockRegistries.THORN_PLANKS.get(), 4)

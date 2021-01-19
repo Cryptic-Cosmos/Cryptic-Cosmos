@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "lovecraftplus:item/humming_ingot"
+    "layer0": "crypticcosmos:item/humming_ingot"
   }
 }

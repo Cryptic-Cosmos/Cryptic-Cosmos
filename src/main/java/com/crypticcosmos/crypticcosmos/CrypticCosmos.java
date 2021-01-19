@@ -1,7 +1,7 @@
 package com.crypticcosmos.crypticcosmos;
 
-import com.crypticcosmos.crypticcosmos.client.entity.model.render.MoonBeastRender;
-import com.crypticcosmos.crypticcosmos.client.entity.model.render.MoonFrogRender;
+import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastRender;
+import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
 import com.crypticcosmos.crypticcosmos.registries.*;
 import com.crypticcosmos.crypticcosmos.world.gen.FeatureGen;
@@ -30,6 +30,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 import java.util.Objects;
 
@@ -77,6 +78,8 @@ public class CrypticCosmos {
         modEventBus.addGenericListener(Biome.class, this::onRegisterBiomes);
         modEventBus.addGenericListener(Feature.class, FeatureRegistries::registerStructurePieces);
         modEventBus.addGenericListener(EntityType.class, this::onRegisterEntities);
+
+        GeckoLib.initialize();
     }
 
     public void onRegisterBiomes(final RegistryEvent.Register<Biome> event) {
@@ -114,7 +117,7 @@ public class CrypticCosmos {
     private void doClientStuff(final FMLClientSetupEvent event) {
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_LEAVES.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_SAPLING.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BlockRegistries.MOON_SAPLING.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_DOOR.get(), RenderType.getCutout());
 
         RenderingRegistry.registerEntityRenderingHandler(
