@@ -3,6 +3,7 @@ package com.crypticcosmos.crypticcosmos;
 import com.crypticcosmos.crypticcosmos.creatures.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastRender;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
+import com.crypticcosmos.crypticcosmos.creatures.moon_tadpole.MoonTadpoleRender;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
 import com.crypticcosmos.crypticcosmos.registries.*;
 import com.crypticcosmos.crypticcosmos.world.gen.FeatureGen;
@@ -143,7 +144,7 @@ public class CrypticCosmos {
 
         RenderingRegistry.registerEntityRenderingHandler(
                 EntityTypeRegistries.MOON_TADPOLE.get(),
-                MoonFrogRender::new
+                MoonTadpoleRender::new
         );
     }
 
