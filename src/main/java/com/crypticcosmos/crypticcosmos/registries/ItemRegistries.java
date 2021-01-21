@@ -57,4 +57,14 @@ public class ItemRegistries {
                     CrypticCosmos.ITEM_GROUP_PROPERTY
             )
     );
+
+    public static final RegistryObject<Item> MOON_TADPOLE_SPAWN_EGG = ITEMS.register(
+            "moon_frog_spawn_egg",
+            () -> new CustomSpawnEggItem(
+                    EntityTypeRegistries.MOON_TADPOLE::get,
+                    0x993333,
+                    0x660033,
+                    CrypticCosmos.ITEM_GROUP_PROPERTY
+            )
+    );
 }

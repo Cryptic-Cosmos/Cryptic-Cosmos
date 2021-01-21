@@ -33,7 +33,7 @@ public class EntityTypeRegistries {
     public static final RegistryObject<EntityType<MoonTadpoleEntity>> MOON_TADPOLE = ENTITY_TYPES.register(
             "moon_tadpole",
             () -> EntityType.Builder
-                    .create(MoonTadpoleEntity::new, EntityClassification.CREATURE)
+                    .create(MoonTadpoleEntity::new, EntityClassification.WATER_CREATURE)
                     .size(1f, 0.5f)
                     .build(new ResourceLocation(CrypticCosmos.MOD_ID, "moon_tadpole").toString())
     );
