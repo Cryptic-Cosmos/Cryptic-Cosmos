@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.registries;
+package com.crypticcosmos.crypticcosmos.creatures;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastEntity;
@@ -27,5 +27,13 @@ public class EntityTypeRegistries {
                     .create(MoonFrogEntity::new, EntityClassification.CREATURE)
                     .size(1f, 1f)
                     .build(new ResourceLocation(CrypticCosmos.MOD_ID, "moon_frog").toString())
+    );
+
+    public static final RegistryObject<EntityType<MoonFrogEntity>> MOON_TADPOLE = ENTITY_TYPES.register(
+            "moon_tadpole",
+            () -> EntityType.Builder
+                    .create(MoonFrogEntity::new, EntityClassification.CREATURE)
+                    .size(1f, 0.5f)
+                    .build(new ResourceLocation(CrypticCosmos.MOD_ID, "moon_tadpole").toString())
     );
 }

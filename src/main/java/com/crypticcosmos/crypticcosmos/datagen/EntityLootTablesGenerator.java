@@ -1,7 +1,7 @@
 package com.crypticcosmos.crypticcosmos.datagen;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
+import com.crypticcosmos.crypticcosmos.creatures.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.registries.ItemRegistries;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -1,13 +1,17 @@
-package com.crypticcosmos.crypticcosmos.creatures.moon_frog;
+package com.crypticcosmos.crypticcosmos.creatures.moon_tadpole;
 
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
-import com.crypticcosmos.crypticcosmos.creatures.EntityTypeRegistries;
-import net.minecraft.entity.*;
+import net.minecraft.entity.EntitySize;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.Pose;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.passive.TameableEntity;
+import net.minecraft.entity.passive.fish.AbstractGroupFishEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Lazy;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -21,7 +25,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
-public class MoonFrogEntity extends TameableEntity implements IAnimatable {
+public class MoonTadpoleEntity extends AbstractGroupFishEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
     public static AnimationBuilder IDLE_ANIM = new AnimationBuilder().addAnimation("Idle");
     public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("Walk");
@@ -30,27 +34,29 @@ public class MoonFrogEntity extends TameableEntity implements IAnimatable {
             () -> Ingredient.fromItems(BlockRegistries.MONDROVE_SAPLING.get())
     );
 
-    public MoonFrogEntity(EntityType<? extends TameableEntity> type, World worldIn) {
-        super(type, worldIn);
+    public MoonTadpoleEntity(EntityType<? extends MoonTadpoleEntity> p_i50279_1_, World p_i50279_2_) {
+        super(p_i50279_1_, p_i50279_2_);
 
         this.ignoreFrustumCheck = true;
     }
 
-    @Override
-    public int getMaxAir() {
-        return 900;
-    }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.0D));
-        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, BREEDING_ITEM.get(), false));
-        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
-        this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
+    }
+
+    @Override
+    protected ItemStack getFishBucket() {
+        return null;
+    }
+
+    protected SoundEvent getFlopSound() {
+        return SoundEvents.ENTITY_COD_FLOP;
     }
 
     @Override
@@ -79,28 +85,9 @@ public class MoonFrogEntity extends TameableEntity implements IAnimatable {
 
 
     @Nullable
-    @Override
-    public AgeableEntity createChild(AgeableEntity ageable) {
-        return EntityTypeRegistries.MOON_FROG.get().create(this.world);
-    }
 
     @Override
     protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
         return this.isChild() ? sizeIn.height * 0.95F : 1.3F;
-    }
-
-    @Override
-    public boolean isBreedingItem(ItemStack stack) {
-        return BREEDING_ITEM.get().test(stack);
-    }
-
-    @Override
-    public boolean canDespawn(double distanceToClosestPlayer) {
-        return !this.isTamed() && this.ticksExisted > 2400;
-    }
-
-    @Override
-    protected void setupTamedAI() {
-        this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 0.5f, 10f, 5f, false));
     }
 }

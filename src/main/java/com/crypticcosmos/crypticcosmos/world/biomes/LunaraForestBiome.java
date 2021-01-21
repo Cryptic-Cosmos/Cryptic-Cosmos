@@ -4,7 +4,6 @@ import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStage;
@@ -35,17 +34,6 @@ public class LunaraForestBiome extends Biome {
     public LunaraForestBiome(Biome.Builder builder) {
         super(builder);
 
-        this.addSpawn(
-                EntityClassification.CREATURE,
-                new SpawnListEntry(EntityType.COW, 8, 4, 4)
-        );
-
-        this.addSpawn(
-                EntityClassification.MONSTER,
-                new Biome.SpawnListEntry(EntityType.ENDERMAN, 10, 1, 4)
-        );
-
-
         DefaultBiomeFeatures.addCarvers(this);
 
         this.addFeature(
@@ -55,5 +43,12 @@ public class LunaraForestBiome extends Biome {
                         .withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP
                                 .configure(new AtSurfaceWithExtraConfig(10, 0.1F, 1)))
         );
+
+
+    }
+
+    @Override
+    public void addSpawn(EntityClassification type, SpawnListEntry spawnListEntry) {
+        super.addSpawn(type, spawnListEntry);
     }
 }

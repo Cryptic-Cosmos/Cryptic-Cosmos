@@ -1,5 +1,6 @@
 package com.crypticcosmos.crypticcosmos;
 
+import com.crypticcosmos.crypticcosmos.creatures.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastRender;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
@@ -104,12 +105,22 @@ public class CrypticCosmos {
 
             BiomeRegistries.LUNARA_PLAINS.get().addSpawn(
                     EntityClassification.MONSTER,
-                    new Biome.SpawnListEntry(EntityType.ENDERMAN, 4, 1, 4)
+                    new SpawnListEntry(EntityType.ENDERMAN, 4, 1, 4)
             );
 
             BiomeRegistries.LUNARA_PLAINS.get().addSpawn(
                     EntityClassification.CREATURE,
                     new SpawnListEntry(EntityTypeRegistries.MOON_BEAST.get(), 8, 1, 2)
+            );
+
+            BiomeRegistries.LUNARA_FOREST.get().addSpawn(
+                    EntityClassification.CREATURE,
+                    new SpawnListEntry(EntityTypeRegistries.MOON_FROG.get(), 8, 1, 2)
+            );
+
+            BiomeRegistries.LUNARA_FOREST.get().addSpawn(
+                    EntityClassification.CREATURE,
+                    new SpawnListEntry(EntityTypeRegistries.MOON_TADPOLE.get(), 8, 1, 2)
             );
         });
     }
@@ -127,6 +138,11 @@ public class CrypticCosmos {
 
         RenderingRegistry.registerEntityRenderingHandler(
                 EntityTypeRegistries.MOON_FROG.get(),
+                MoonFrogRender::new
+        );
+
+        RenderingRegistry.registerEntityRenderingHandler(
+                EntityTypeRegistries.MOON_TADPOLE.get(),
                 MoonFrogRender::new
         );
     }
