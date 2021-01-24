@@ -63,7 +63,7 @@ public class ItemRegistries {
             () -> new CustomSpawnEggItem(
                     EntityTypeRegistries.MOON_TADPOLE::get,
                     0x993333,
-                    0x660033,
+                    0x660034,
                     CrypticCosmos.ITEM_GROUP_PROPERTY
             )
     );
