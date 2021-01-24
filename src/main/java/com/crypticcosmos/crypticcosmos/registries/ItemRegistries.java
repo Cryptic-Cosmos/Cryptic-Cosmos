@@ -59,7 +59,7 @@ public class ItemRegistries {
     );
 
     public static final RegistryObject<Item> MOON_TADPOLE_SPAWN_EGG = ITEMS.register(
-            "moon_frog_spawn_egg",
+            "moon_tadpole_spawn_egg",
             () -> new CustomSpawnEggItem(
                     EntityTypeRegistries.MOON_TADPOLE::get,
                     0x993333,
