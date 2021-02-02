@@ -33,7 +33,7 @@ public class StructureLootTablesGenerator extends LootTableProvider {
                                 .addEntry(ItemLootEntry.builder(BlockRegistries.MOONCALITE.get().asItem())
                                         .weight(5)
                                         .acceptFunction(SetCount.builder(RandomValueRange.of(1f, 5f))))
-                                .addEntry(ItemLootEntry.builder(BlockRegistries.MOONSTONE.get().asItem())
+                                .addEntry(ItemLootEntry.builder(BlockRegistries.LUNON.get().asItem())
                                         .weight(15)
                                         .acceptFunction(SetCount.builder(RandomValueRange.of(1f, 3f))))
                                 .addEntry(ItemLootEntry.builder(Items.IRON_SWORD).weight(5))

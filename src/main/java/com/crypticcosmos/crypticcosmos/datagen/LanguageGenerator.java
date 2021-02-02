@@ -41,9 +41,7 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.MOONCALITE_SLAB.get(), "Mooncalite Slab");
             add(BlockRegistries.MOONCALITE_STAIRS.get(), "Mooncalite Stairs");
 
-            add(BlockRegistries.MOONSTONE.get(), "Moonstone");
-            add(BlockRegistries.MOONSTONE_SLAB.get(), "Moonstone Slab");
-            add(BlockRegistries.MOONSTONE_STAIRS.get(), "Moonstone Stairs");
+            add(BlockRegistries.LUNON.get(), "Lunon");
 
             add(BlockRegistries.SMOOTH_MOONSTONE.get(), "Smooth Moonstone");
             add(BlockRegistries.SMOOTH_MOONSTONE_SLAB.get(), "Smooth Moonstone Slab");

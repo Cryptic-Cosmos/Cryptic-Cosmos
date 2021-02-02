@@ -48,7 +48,7 @@ public class BiomeRegistries {
                     .surfaceBuilder(SurfaceBuilder.DEFAULT,
                             new SurfaceBuilderConfig(
                                     BlockRegistries.MOONCALITE.get().getDefaultState(),
-                                    BlockRegistries.MOONSTONE.get().getDefaultState(),
+                                    BlockRegistries.LUNON.get().getDefaultState(),
                                     BlockRegistries.MOONCALITE.get().getDefaultState()))
                     .category(Biome.Category.PLAINS)
                     .downfall(0.0001f)
@@ -66,7 +66,7 @@ public class BiomeRegistries {
                     .surfaceBuilder(SurfaceBuilder.DEFAULT,
                             new SurfaceBuilderConfig(
                                     BlockRegistries.MOONCALITE.get().getDefaultState(),
-                                    BlockRegistries.MOONSTONE.get().getDefaultState(),
+                                    BlockRegistries.LUNON.get().getDefaultState(),
                                     BlockRegistries.MOONCALITE.get().getDefaultState()
                             ))
                     .category(Biome.Category.EXTREME_HILLS)
@@ -86,7 +86,7 @@ public class BiomeRegistries {
                             SurfaceBuilder.DEFAULT,
                             new SurfaceBuilderConfig(
                                     BlockRegistries.MOONCALITE.get().getDefaultState(),
-                                    BlockRegistries.MOONSTONE.get().getDefaultState(),
+                                    BlockRegistries.LUNON.get().getDefaultState(),
                                     BlockRegistries.MOONCALITE.get().getDefaultState()
                             )
                     )

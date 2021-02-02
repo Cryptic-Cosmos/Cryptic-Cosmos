@@ -65,11 +65,7 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockRegistries.MONDROVE_SAPLING.get());
 
-        loot.dropSelf(BlockRegistries.MOONSTONE.get());
-
-        loot.dropSlabs(BlockRegistries.MOONSTONE_SLAB.get());
-
-        loot.dropSelf(BlockRegistries.MOONSTONE_STAIRS.get());
+        loot.dropSelf(BlockRegistries.LUNON.get());
 
         loot.dropSelf(BlockRegistries.MOONSTONE_BRICKS.get());
 
