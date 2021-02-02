@@ -37,23 +37,13 @@ public class BlockRegistries {
     );
 
     // Mooncalite
-    public static final RegistryObject<Block> MOONCALITE = BLOCKS.register(
-            "mooncalite",
+    public static final RegistryObject<Block> GRASS_LUNON = BLOCKS.register(
+            "grass_lunon",
             () -> new Block(Properties.create(Material.ROCK)
-                    .hardnessAndResistance(2.0f, 6)
+                    .hardnessAndResistance(1.5f, 5)
                     .sound(SoundType.STONE)
-                    .harvestLevel(2)
+                    .harvestLevel(1)
                     .harvestTool(ToolType.PICKAXE))
-    );
-
-    public static final RegistryObject<Block> MOONCALITE_SLAB = BLOCKS.register(
-            "mooncalite_slab",
-            () -> new SlabBlock(Properties.from(MOONCALITE.get()))
-    );
-
-    public static final RegistryObject<Block> MOONCALITE_STAIRS = BLOCKS.register(
-            "mooncalite_stairs",
-            () -> new StairsBlock(() -> MOONCALITE.get().getDefaultState(), Properties.from(MOONCALITE.get()))
     );
 
     // Moonstone

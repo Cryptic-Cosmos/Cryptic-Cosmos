@@ -37,9 +37,7 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.HUMMING_STONE.get(), "Humming Stone");
             add(BlockRegistries.HUMMING_OBSIDIAN.get(), "Humming Obsidian");
 
-            add(BlockRegistries.MOONCALITE.get(), "Mooncalite");
-            add(BlockRegistries.MOONCALITE_SLAB.get(), "Mooncalite Slab");
-            add(BlockRegistries.MOONCALITE_STAIRS.get(), "Mooncalite Stairs");
+            add(BlockRegistries.GRASS_LUNON.get(), "Overgrown Lunon");
 
             add(BlockRegistries.LUNON.get(), "Lunon");
 

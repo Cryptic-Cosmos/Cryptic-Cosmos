@@ -52,7 +52,7 @@ public class CrypticCosmos {
     public static final ItemGroup BLOCK_ITEM_GROUP = new ItemGroup("block_tab") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(BlockRegistries.HUMMING_OBSIDIAN.get());
+            return new ItemStack(BlockRegistries.LUNON.get());
         }
     };
 

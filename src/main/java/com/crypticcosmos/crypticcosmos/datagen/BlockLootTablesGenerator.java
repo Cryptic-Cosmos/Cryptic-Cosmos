@@ -44,11 +44,7 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockRegistries.MOLTEN_LAVA_SPONGE.get());
 
-        loot.dropSelf(BlockRegistries.MOONCALITE.get());
-
-        loot.dropSlabs(BlockRegistries.MOONCALITE_SLAB.get());
-
-        loot.dropSelf(BlockRegistries.MOONCALITE_STAIRS.get());
+        loot.dropSelf(BlockRegistries.GRASS_LUNON.get());
 
         loot.addLoot(
                 BlockRegistries.MONDROVE_LEAVES.get(),
