@@ -76,10 +76,6 @@ public class MoonTadpoleEntity extends WaterMobEntity implements IAnimatable {
         boolean isInWater = isInWater();
         boolean isMoving = isInWater ? !(limbSwingAmount > -0.02) || !(limbSwingAmount < 0.02) : !(limbSwingAmount > -0.10F) || !(limbSwingAmount < 0.10F);
         AnimationBuilder anim = isInWater ? IDLE_SWIM_ANIM : IDLE_ANIM;
-        if (isMoving) {
-            anim = isInWater ? SWIM_ANIM : WALK_ANIM;
-        }
-        controller.setAnimation(anim);
 
         return PlayState.CONTINUE;
     }
