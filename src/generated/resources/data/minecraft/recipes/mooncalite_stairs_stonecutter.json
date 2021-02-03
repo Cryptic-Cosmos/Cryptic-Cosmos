@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "crypticcosmos:mooncalite"
-  },
-  "result": "crypticcosmos:mooncalite_stairs",
-  "count": 1
-}
