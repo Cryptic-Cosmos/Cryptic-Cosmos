@@ -120,7 +120,7 @@ public class CrypticCosmos {
             );
 
             BiomeRegistries.LUNARA_FOREST.get().addSpawn(
-                    EntityClassification.CREATURE,
+                    EntityClassification.WATER_CREATURE,
                     new SpawnListEntry(EntityTypeRegistries.MOON_TADPOLE.get(), 8, 1, 2)
             );
         });
