@@ -61,8 +61,8 @@ public class MoonSapling extends BushBlock implements IGrowable {
                || block == Blocks.COARSE_DIRT
                || block == Blocks.PODZOL
                || block == Blocks.FARMLAND
-               || block == BlockRegistries.MOONSTONE.get()
-               || block == BlockRegistries.MOONCALITE.get();
+               || block == BlockRegistries.LUNON.get()
+               || block == BlockRegistries.OVERGROWN_LUNON.get();
     }
 
     public void grow(ServerWorld serverWorld, BlockPos pos, BlockState state, Random rand) {

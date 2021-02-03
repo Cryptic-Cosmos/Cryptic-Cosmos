@@ -36,44 +36,20 @@ public class BlockRegistries {
                     .harvestTool(ToolType.PICKAXE))
     );
 
-    // Mooncalite
-    public static final RegistryObject<Block> MOONCALITE = BLOCKS.register(
-            "mooncalite",
+    // Overgrown Lunon
+    public static final RegistryObject<Block> OVERGROWN_LUNON = BLOCKS.register(
+            "overgrown_lunon",
+            OvergrownLunonBlock::new
+    );
+
+    // Lunon
+    public static final RegistryObject<Block> LUNON = BLOCKS.register(
+            "lunon",
             () -> new Block(Properties.create(Material.ROCK)
-                    .hardnessAndResistance(2.0f, 6)
+                    .hardnessAndResistance(2.0f, 10)
                     .sound(SoundType.STONE)
-                    .harvestLevel(2)
+                    .harvestLevel(1)
                     .harvestTool(ToolType.PICKAXE))
-    );
-
-    public static final RegistryObject<Block> MOONCALITE_SLAB = BLOCKS.register(
-            "mooncalite_slab",
-            () -> new SlabBlock(Properties.from(MOONCALITE.get()))
-    );
-
-    public static final RegistryObject<Block> MOONCALITE_STAIRS = BLOCKS.register(
-            "mooncalite_stairs",
-            () -> new StairsBlock(() -> MOONCALITE.get().getDefaultState(), Properties.from(MOONCALITE.get()))
-    );
-
-    // Moonstone
-    public static final RegistryObject<Block> MOONSTONE = BLOCKS.register(
-            "moonstone",
-            () -> new Block(Properties.create(Material.ROCK)
-                    .hardnessAndResistance(4.0f, 12)
-                    .sound(SoundType.STONE)
-                    .harvestLevel(2)
-                    .harvestTool(ToolType.PICKAXE))
-    );
-
-    public static final RegistryObject<Block> MOONSTONE_SLAB = BLOCKS.register(
-            "moonstone_slab",
-            () -> new SlabBlock(Properties.from(MOONSTONE.get()))
-    );
-
-    public static final RegistryObject<Block> MOONSTONE_STAIRS = BLOCKS.register(
-            "moonstone_stairs",
-            () -> new StairsBlock(() -> MOONSTONE.get().getDefaultState(), Properties.from(MOONSTONE.get()))
     );
 
     public static final RegistryObject<Block> MOONSTONE_BRICKS = BLOCKS.register(

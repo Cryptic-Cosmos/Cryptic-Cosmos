@@ -36,7 +36,7 @@
               }
             }
           ],
-          "name": "crypticcosmos:mooncalite"
+          "name": "crypticcosmos:grass_lunon"
         },
         {
           "type": "minecraft:item",
@@ -51,7 +51,7 @@
               }
             }
           ],
-          "name": "crypticcosmos:moonstone"
+          "name": "crypticcosmos:lunon"
         },
         {
           "type": "minecraft:item",

@@ -68,84 +68,16 @@ public class RecipesGenerator extends RecipeProvider {
 
         registerMoonstoneRecipes(consumer);
 
-        registerMooncaliteRecipes(consumer);
-    }
-
-    private void registerMooncaliteRecipes(Consumer<IFinishedRecipe> consumer) {
-        // Mooncalite slab
-        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.MOONCALITE_SLAB.get(), 6)
-                .patternLine("mmm")
-                .key('m', BlockRegistries.MOONCALITE.get())
-                .addCriterion("has_mooncalite", hasItem(BlockRegistries.MOONCALITE.get()))
-                .build(consumer, BlockRegistries.MOONCALITE_SLAB.getId());
-
-        // Mooncalite slab (in stonecutter)
-        SingleItemRecipeBuilder.stonecuttingRecipe(
-                Ingredient.fromItems(BlockRegistries.MOONCALITE.get()),
-                BlockRegistries.MOONCALITE_SLAB.get()
-        ).addCriterion("has_mooncalite", hasItem(BlockRegistries.MOONCALITE.get()))
-                .build(consumer, "mooncalite_slab_stonecutter");
-
-        // Mooncalite stairs
-        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.MOONCALITE_STAIRS.get(), 4)
-                .patternLine("m  ")
-                .patternLine("mm ")
-                .patternLine("mmm")
-                .key('m', BlockRegistries.MOONCALITE.get())
-                .addCriterion("has_mooncalite", hasItem(BlockRegistries.MOONCALITE.get()))
-                .build(consumer, BlockRegistries.MOONCALITE_STAIRS.getId());
-
-        // Mooncalite stairs (in stonecutter)
-        SingleItemRecipeBuilder
-                .stonecuttingRecipe(
-                        Ingredient.fromItems(BlockRegistries.MOONCALITE.get()),
-                        BlockRegistries.MOONCALITE_STAIRS.get()
-                )
-                .addCriterion("has_mooncalite", hasItem(BlockRegistries.MOONCALITE.get()))
-                .build(consumer, "mooncalite_stairs_stonecutter");
     }
 
     private void registerMoonstoneRecipes(Consumer<IFinishedRecipe> consumer) {
-        // Moonstone slab
-        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.MOONSTONE_SLAB.get(), 6)
-                .patternLine("mmm")
-                .key('m', BlockRegistries.MOONSTONE.get())
-                .addCriterion("has_moonstone", hasItem(BlockRegistries.MOONSTONE.get()))
-                .build(consumer, BlockRegistries.MOONSTONE_SLAB.getId());
-
-        // Moonstone slab (in stonecutter)
-        SingleItemRecipeBuilder
-                .stonecuttingRecipe(
-                        Ingredient.fromItems(BlockRegistries.MOONSTONE.get()),
-                        BlockRegistries.MOONSTONE_SLAB.get()
-                )
-                .addCriterion("has_moonstone", hasItem(BlockRegistries.MOONSTONE.get()))
-                .build(consumer, "moonstone_slab_stonecutter");
-
-        // Moonstone stairs
-        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.MOONSTONE_STAIRS.get(), 4)
-                .patternLine("m  ")
-                .patternLine("mm ")
-                .patternLine("mmm")
-                .key('m', BlockRegistries.MOONSTONE.get())
-                .addCriterion("has_moonstone", hasItem(BlockRegistries.MOONSTONE.get()))
-                .build(consumer, BlockRegistries.MOONSTONE_STAIRS.getId());
-
-        // Moonstone stairs (in stonecutter)
-        SingleItemRecipeBuilder
-                .stonecuttingRecipe(
-                        Ingredient.fromItems(BlockRegistries.MOONSTONE.get()),
-                        BlockRegistries.MOONSTONE_STAIRS.get()
-                )
-                .addCriterion("has_moonstone", hasItem(BlockRegistries.MOONSTONE.get()))
-                .build(consumer, "moonstone_stairs_stonecutter");
 
 
         // Moonstone bricks
         ShapedRecipeBuilder.shapedRecipe(BlockRegistries.MOONSTONE_BRICKS.get(), 4)
                 .patternLine("bb")
                 .patternLine("bb")
-                .key('b', BlockRegistries.MOONSTONE.get())
+                .key('b', BlockRegistries.LUNON.get())
                 .addCriterion("has_moonstone_bricks", hasItem(BlockRegistries.MOONSTONE_BRICKS.get()))
                 .build(consumer, BlockRegistries.MOONSTONE_BRICKS.getId());
 
@@ -196,21 +128,21 @@ public class RecipesGenerator extends RecipeProvider {
         // Smooth moonstone
         CookingRecipeBuilder
                 .smeltingRecipe(
-                        Ingredient.fromItems(BlockRegistries.MOONSTONE.get()),
+                        Ingredient.fromItems(BlockRegistries.LUNON.get()),
                         BlockRegistries.SMOOTH_MOONSTONE.get(),
                         0.5f,
                         200
                 )
-                .addCriterion("has_moonstone", this.hasItem(BlockRegistries.MOONSTONE.get()))
+                .addCriterion("has_moonstone", this.hasItem(BlockRegistries.LUNON.get()))
                 .build(consumer, BlockRegistries.SMOOTH_MOONSTONE.getId());
 
         // Smooth moonstone (in stonecutter)
         SingleItemRecipeBuilder
                 .stonecuttingRecipe(
-                        Ingredient.fromItems(BlockRegistries.MOONSTONE.get()),
+                        Ingredient.fromItems(BlockRegistries.LUNON.get()),
                         BlockRegistries.SMOOTH_MOONSTONE.get()
                 )
-                .addCriterion("has_moonstone", hasItem(BlockRegistries.MOONSTONE.get()))
+                .addCriterion("has_moonstone", hasItem(BlockRegistries.LUNON.get()))
                 .build(consumer, "smooth_moonstone_stonecutter");
 
         // Smooth moonstone slab

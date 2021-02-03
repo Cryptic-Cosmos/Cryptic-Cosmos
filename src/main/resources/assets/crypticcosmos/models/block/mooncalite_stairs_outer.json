@@ -1,8 +1,0 @@
-{
-  "parent": "block/outer_stairs",
-  "textures": {
-    "bottom": "crypticcosmos:block/mooncalite",
-    "top": "crypticcosmos:block/mooncalite",
-    "side": "crypticcosmos:block/mooncalite"
-  }
-}
