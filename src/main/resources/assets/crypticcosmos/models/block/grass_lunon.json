@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_bottom_top",
-  "textures": {
-    "bottom": "crytpiccosmos:block/lunon",
-    "top": "crytpiccosmos:block/grass_lunon_top",
-    "side": "crytpiccosmos:block/grass_lunon_side"
-  }
-}

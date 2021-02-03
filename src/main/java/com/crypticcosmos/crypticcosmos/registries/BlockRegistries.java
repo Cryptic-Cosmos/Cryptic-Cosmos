@@ -37,13 +37,9 @@ public class BlockRegistries {
     );
 
     // Overgrown Lunon
-    public static final RegistryObject<Block> GRASS_LUNON = BLOCKS.register(
-            "grass_lunon",
-            () -> new Block(Properties.create(Material.ROCK)
-                    .hardnessAndResistance(1.6f, 7)
-                    .sound(SoundType.STONE)
-                    .harvestLevel(1)
-                    .harvestTool(ToolType.PICKAXE))
+    public static final RegistryObject<Block> OVERGROWN_LUNON = BLOCKS.register(
+            "overgrown_lunon",
+            OvergrownLunonBlock::new
     );
 
     // Lunon

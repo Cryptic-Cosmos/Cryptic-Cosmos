@@ -37,7 +37,7 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.HUMMING_STONE.get(), "Humming Stone");
             add(BlockRegistries.HUMMING_OBSIDIAN.get(), "Humming Obsidian");
 
-            add(BlockRegistries.GRASS_LUNON.get(), "Overgrown Lunon");
+            add(BlockRegistries.OVERGROWN_LUNON.get(), "Overgrown Lunon");
 
             add(BlockRegistries.LUNON.get(), "Lunon");
 

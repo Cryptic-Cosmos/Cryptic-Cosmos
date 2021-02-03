@@ -30,7 +30,7 @@ public class StructureLootTablesGenerator extends LootTableProvider {
                                 .addEntry(ItemLootEntry.builder(ItemRegistries.PAGE_NECRONOMICON.get())
                                         .weight(5)
                                         .acceptFunction(SetCount.builder(RandomValueRange.of(1f, 3f))))
-                                .addEntry(ItemLootEntry.builder(BlockRegistries.GRASS_LUNON.get().asItem())
+                                .addEntry(ItemLootEntry.builder(BlockRegistries.OVERGROWN_LUNON.get().asItem())
                                         .weight(5)
                                         .acceptFunction(SetCount.builder(RandomValueRange.of(1f, 5f))))
                                 .addEntry(ItemLootEntry.builder(BlockRegistries.LUNON.get().asItem())

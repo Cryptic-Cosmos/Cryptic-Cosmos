@@ -47,7 +47,7 @@ public class BiomeRegistries {
                     .waterFogColor(0xfffff5)
                     .surfaceBuilder(SurfaceBuilder.DEFAULT,
                             new SurfaceBuilderConfig(
-                                    BlockRegistries.GRASS_LUNON.get().getDefaultState(),
+                                    BlockRegistries.OVERGROWN_LUNON.get().getDefaultState(),
                                     BlockRegistries.LUNON.get().getDefaultState(),
                                     BlockRegistries.LUNON.get().getDefaultState()))
                     .category(Biome.Category.PLAINS)
@@ -65,7 +65,7 @@ public class BiomeRegistries {
                     .waterFogColor(0xfffff5)
                     .surfaceBuilder(SurfaceBuilder.DEFAULT,
                             new SurfaceBuilderConfig(
-                                    BlockRegistries.GRASS_LUNON.get().getDefaultState(),
+                                    BlockRegistries.OVERGROWN_LUNON.get().getDefaultState(),
                                     BlockRegistries.LUNON.get().getDefaultState(),
                                     BlockRegistries.LUNON.get().getDefaultState()
                             ))
@@ -85,7 +85,7 @@ public class BiomeRegistries {
                     .surfaceBuilder(
                             SurfaceBuilder.DEFAULT,
                             new SurfaceBuilderConfig(
-                                    BlockRegistries.GRASS_LUNON.get().getDefaultState(),
+                                    BlockRegistries.OVERGROWN_LUNON.get().getDefaultState(),
                                     BlockRegistries.LUNON.get().getDefaultState(),
                                     BlockRegistries.LUNON.get().getDefaultState()
                             )
