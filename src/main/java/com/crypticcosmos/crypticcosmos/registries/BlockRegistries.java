@@ -36,21 +36,21 @@ public class BlockRegistries {
                     .harvestTool(ToolType.PICKAXE))
     );
 
-    // Mooncalite
+    // Overgrown Lunon
     public static final RegistryObject<Block> GRASS_LUNON = BLOCKS.register(
             "grass_lunon",
             () -> new Block(Properties.create(Material.ROCK)
-                    .hardnessAndResistance(1.5f, 5)
+                    .hardnessAndResistance(1.6f, 7)
                     .sound(SoundType.STONE)
                     .harvestLevel(1)
                     .harvestTool(ToolType.PICKAXE))
     );
 
-    // Moonstone
+    // Lunon
     public static final RegistryObject<Block> LUNON = BLOCKS.register(
             "lunon",
             () -> new Block(Properties.create(Material.ROCK)
-                    .hardnessAndResistance(3.0f, 10)
+                    .hardnessAndResistance(2.0f, 10)
                     .sound(SoundType.STONE)
                     .harvestLevel(1)
                     .harvestTool(ToolType.PICKAXE))
