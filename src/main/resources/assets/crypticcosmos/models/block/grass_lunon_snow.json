@@ -1,0 +1,9 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "particle": "crytpiccosmos:block/lunon",
+    "bottom": "crytpiccosmos:block/lunon",
+    "top": "crytpiccosmos:block/grass_lunon_top",
+    "side": "crytpiccosmos:block/grass_lunon_snow"
+  }
+}
