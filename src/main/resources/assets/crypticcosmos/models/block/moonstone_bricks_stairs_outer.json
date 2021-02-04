@@ -1,8 +1,0 @@
-{
-  "parent": "block/outer_stairs",
-  "textures": {
-    "bottom": "crypticcosmos:block/moonstone_bricks",
-    "top": "crypticcosmos:block/moonstone_bricks",
-    "side": "crypticcosmos:block/moonstone_bricks"
-  }
-}

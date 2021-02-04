@@ -52,8 +52,8 @@ public class BlockRegistries {
                     .harvestTool(ToolType.PICKAXE))
     );
 
-    public static final RegistryObject<Block> MOONSTONE_BRICKS = BLOCKS.register(
-            "moonstone_bricks",
+    public static final RegistryObject<Block> LUNON_BRICKS = BLOCKS.register(
+            "lunon_bricks",
             () -> new Block(Properties.create(Material.ROCK)
                     .hardnessAndResistance(4.0f, 15)
                     .sound(SoundType.STONE)
@@ -61,18 +61,18 @@ public class BlockRegistries {
                     .harvestTool(ToolType.PICKAXE))
     );
 
-    public static final RegistryObject<Block> MOONSTONE_BRICK_SLAB = BLOCKS.register(
-            "moonstone_brick_slab",
-            () -> new SlabBlock(Properties.from(MOONSTONE_BRICKS.get()))
+    public static final RegistryObject<Block> LUNON_BRICK_SLAB = BLOCKS.register(
+            "lunon_brick_slab",
+            () -> new SlabBlock(Properties.from(LUNON_BRICKS.get()))
     );
 
-    public static final RegistryObject<Block> MOONSTONE_BRICK_STAIRS = BLOCKS.register(
-            "moonstone_brick_stairs",
-            () -> new StairsBlock(() -> MOONSTONE_BRICKS.get().getDefaultState(), Properties.from(MOONSTONE_BRICKS.get()))
+    public static final RegistryObject<Block> LUNON_BRICK_STAIRS = BLOCKS.register(
+            "lunon_brick_stairs",
+            () -> new StairsBlock(() -> LUNON_BRICKS.get().getDefaultState(), Properties.from(LUNON_BRICKS.get()))
     );
 
-    public static final RegistryObject<Block> SMOOTH_MOONSTONE = BLOCKS.register(
-            "smooth_moonstone",
+    public static final RegistryObject<Block> SMOOTH_LUNON = BLOCKS.register(
+            "smooth_lunon",
             () -> new Block(Properties.create(Material.ROCK)
                     .hardnessAndResistance(4.0f, 15)
                     .sound(SoundType.STONE)
@@ -80,14 +80,9 @@ public class BlockRegistries {
                     .harvestTool(ToolType.PICKAXE))
     );
 
-    public static final RegistryObject<Block> SMOOTH_MOONSTONE_SLAB = BLOCKS.register(
-            "smooth_moonstone_slab",
-            () -> new SlabBlock(Properties.from(SMOOTH_MOONSTONE.get()))
-    );
-
-    public static final RegistryObject<Block> SMOOTH_MOONSTONE_STAIRS = BLOCKS.register(
-            "smooth_moonstone_stairs",
-            () -> new StairsBlock(() -> SMOOTH_MOONSTONE.get().getDefaultState(), Properties.from(SMOOTH_MOONSTONE.get()))
+    public static final RegistryObject<Block> SMOOTH_LUNON_SLAB = BLOCKS.register(
+            "smooth_lunon_slab",
+            () -> new SlabBlock(Properties.from(SMOOTH_LUNON.get()))
     );
 
     //Thorn Wood

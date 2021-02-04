@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:smooth_lunon_slab"
+    ]
+  },
+  "criteria": {
+    "has_smooth_lunon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:smooth_lunon"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:smooth_lunon_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_smooth_lunon",
+      "has_the_recipe"
+    ]
+  ]
+}
