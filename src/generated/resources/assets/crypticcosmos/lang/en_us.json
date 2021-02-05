@@ -1,6 +1,6 @@
 {
+  "Corruption": "Corruption",
   "biome.crypticcosmos.thorn_jungle": "Thorn Jungle",
-  "block.crypticcosmos.grass_lunon": "Overgrown Lunon",
   "block.crypticcosmos.humming_obsidian": "Humming Obsidian",
   "block.crypticcosmos.humming_stone": "Humming Stone",
   "block.crypticcosmos.lava_sponge": "Lava Sponge",
@@ -13,6 +13,7 @@
   "block.crypticcosmos.moonstone_brick_slab": "Moonstone Brick Slab",
   "block.crypticcosmos.moonstone_brick_stairs": "Moonstone Brick Stairs",
   "block.crypticcosmos.moonstone_bricks": "Moonstone Bricks",
+  "block.crypticcosmos.overgrown_lunon": "Overgrown Lunon",
   "block.crypticcosmos.rift_block": "Rift Block",
   "block.crypticcosmos.smooth_moonstone": "Smooth Moonstone",
   "block.crypticcosmos.smooth_moonstone_slab": "Smooth Moonstone Slab",

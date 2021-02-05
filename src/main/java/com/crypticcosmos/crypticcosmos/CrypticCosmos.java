@@ -71,6 +71,7 @@ public class CrypticCosmos {
         BiomeRegistries.BIOMES.register(modEventBus);
         DimensionRegistries.MOD_DIMENSIONS.register(modEventBus);
         FeatureRegistries.FEATURE.register(modEventBus);
+        EffectRegistries.EFFECTS.register(modEventBus);
 
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::doClientStuff);
