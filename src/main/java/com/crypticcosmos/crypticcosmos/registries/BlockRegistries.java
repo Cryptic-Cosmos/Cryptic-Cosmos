@@ -71,8 +71,8 @@ public class BlockRegistries {
             () -> new StairsBlock(() -> LUNON_BRICKS.get().getDefaultState(), Properties.from(LUNON_BRICKS.get()))
     );
 
-    public static final RegistryObject<Block> SMOOTH_LUNON = BLOCKS.register(
-            "smooth_lunon",
+    public static final RegistryObject<Block> POLISHED_LUNON = BLOCKS.register(
+            "polished_lunon",
             () -> new Block(Properties.create(Material.ROCK)
                     .hardnessAndResistance(4.0f, 15)
                     .sound(SoundType.STONE)
@@ -80,9 +80,18 @@ public class BlockRegistries {
                     .harvestTool(ToolType.PICKAXE))
     );
 
-    public static final RegistryObject<Block> SMOOTH_LUNON_SLAB = BLOCKS.register(
-            "smooth_lunon_slab",
-            () -> new SlabBlock(Properties.from(SMOOTH_LUNON.get()))
+    public static final RegistryObject<Block> POLISHED_LUNON_SLAB = BLOCKS.register(
+            "polished_lunon_slab",
+            () -> new SlabBlock(Properties.from(POLISHED_LUNON.get()))
+    );
+
+    public static final RegistryObject<Block> CHISELED_POLISHED_LUNON = BLOCKS.register(
+            "chiseled_polished_lunon",
+            () -> new Block(Properties.create(Material.ROCK)
+                    .hardnessAndResistance(4.0f, 15)
+                    .sound(SoundType.STONE)
+                    .harvestLevel(2)
+                    .harvestTool(ToolType.PICKAXE))
     );
 
     //Thorn Wood

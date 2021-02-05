@@ -7,11 +7,11 @@
   ],
   "key": {
     "m": {
-      "item": "crypticcosmos:moonstone_bricks"
+      "item": "crypticcosmos:lunon_bricks"
     }
   },
   "result": {
-    "item": "crypticcosmos:moonstone_brick_stairs",
+    "item": "crypticcosmos:lunon_brick_stairs",
     "count": 4
   }
 }

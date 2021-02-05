@@ -1,5 +1,6 @@
 {
   "biome.crypticcosmos.thorn_jungle": "Thorn Jungle",
+  "block.crypticcosmos.chiseled_polished_lunon": "Chiseled Polished Lunon",
   "block.crypticcosmos.humming_obsidian": "Humming Obsidian",
   "block.crypticcosmos.humming_stone": "Humming Stone",
   "block.crypticcosmos.lava_sponge": "Lava Sponge",
@@ -13,9 +14,9 @@
   "block.crypticcosmos.moon_planks": "Moon Planks",
   "block.crypticcosmos.moon_sapling": "Moon Sapling",
   "block.crypticcosmos.overgrown_lunon": "Overgrown Lunon",
+  "block.crypticcosmos.polished_lunon": "Polished Lunon",
+  "block.crypticcosmos.polished_lunon_slab": "Polished Lunon Slab",
   "block.crypticcosmos.rift_block": "Rift Block",
-  "block.crypticcosmos.smooth_lunon": "Smooth Lunon",
-  "block.crypticcosmos.smooth_lunon_slab": "Smooth Lunon Slab",
   "block.crypticcosmos.thorn_door": "Thorn Door",
   "block.crypticcosmos.thorn_leaves": "Thorn Leaves",
   "block.crypticcosmos.thorn_log": "Thorn Log",

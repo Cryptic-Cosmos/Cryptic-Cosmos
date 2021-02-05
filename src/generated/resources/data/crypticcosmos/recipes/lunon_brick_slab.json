@@ -5,11 +5,11 @@
   ],
   "key": {
     "m": {
-      "item": "crypticcosmos:smooth_moonstone"
+      "item": "crypticcosmos:lunon_bricks"
     }
   },
   "result": {
-    "item": "crypticcosmos:smooth_moonstone_slab",
+    "item": "crypticcosmos:lunon_brick_slab",
     "count": 6
   }
 }

@@ -69,9 +69,12 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockRegistries.LUNON_BRICK_STAIRS.get());
 
-        loot.dropSelf(BlockRegistries.SMOOTH_LUNON.get());
+        loot.dropSelf(BlockRegistries.POLISHED_LUNON.get());
 
-        loot.dropSlabs(BlockRegistries.SMOOTH_LUNON_SLAB.get());
+        loot.dropSlabs(BlockRegistries.POLISHED_LUNON_SLAB.get());
+
+        loot.dropSlabs(BlockRegistries.CHISELED_POLISHED_LUNON.get());
+
         loot.addLoot(
                 BlockRegistries.THORN_LEAVES.get(),
                 BlockLootTables.droppingWithChancesSticksAndApples(
