@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.creatures.moon_tadpole;
+package com.crypticcosmos.crypticcosmos.creatures.moon_traploom;
 
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import net.minecraft.entity.EntitySize;
@@ -25,7 +25,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
-public class MoonTadpoleEntity extends WaterMobEntity implements IAnimatable {
+public class MoonTraploomEntity extends WaterMobEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
     public static AnimationBuilder IDLE_ANIM = new AnimationBuilder().addAnimation("Idle");
     public static AnimationBuilder IDLE_SWIM_ANIM = new AnimationBuilder().addAnimation("IdleSwim");
@@ -36,7 +36,7 @@ public class MoonTadpoleEntity extends WaterMobEntity implements IAnimatable {
             () -> Ingredient.fromItems(BlockRegistries.MONDROVE_SAPLING.get())
     );
 
-    public MoonTadpoleEntity(EntityType<? extends WaterMobEntity> type, World worldIn) {
+    public MoonTraploomEntity(EntityType<? extends WaterMobEntity> type, World worldIn) {
         super(type, worldIn);
 
         this.ignoreFrustumCheck = true;
@@ -70,7 +70,7 @@ public class MoonTadpoleEntity extends WaterMobEntity implements IAnimatable {
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        AnimationController controller = event.getController();
+        AnimationController<?> controller = event.getController();
         // TODO: Come up with alternative moving predicate?
         //       The default one doesn't seen to work with slow movement speeds.
         boolean isInWater = isInWater();

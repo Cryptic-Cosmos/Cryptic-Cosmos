@@ -3,7 +3,7 @@ package com.crypticcosmos.crypticcosmos.creatures;
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogEntity;
-import com.crypticcosmos.crypticcosmos.creatures.moon_tadpole.MoonTadpoleEntity;
+import com.crypticcosmos.crypticcosmos.creatures.moon_traploom.MoonTraploomEntity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
@@ -30,11 +30,11 @@ public class EntityTypeRegistries {
                     .build(new ResourceLocation(CrypticCosmos.MOD_ID, "moon_frog").toString())
     );
 
-    public static final RegistryObject<EntityType<MoonTadpoleEntity>> MOON_TADPOLE = ENTITY_TYPES.register(
-            "moon_tadpole",
+    public static final RegistryObject<EntityType<MoonTraploomEntity>> MOON_TRAPLOOM = ENTITY_TYPES.register(
+            "moon_traploom",
             () -> EntityType.Builder
-                    .create(MoonTadpoleEntity::new, EntityClassification.WATER_CREATURE)
+                    .create(MoonTraploomEntity::new, EntityClassification.WATER_CREATURE)
                     .size(1f, 0.5f)
-                    .build(new ResourceLocation(CrypticCosmos.MOD_ID, "moon_tadpole").toString())
+                    .build(new ResourceLocation(CrypticCosmos.MOD_ID, "moon_traploom").toString())
     );
 }

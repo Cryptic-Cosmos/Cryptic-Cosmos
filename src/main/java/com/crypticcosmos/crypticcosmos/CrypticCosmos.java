@@ -3,7 +3,7 @@ package com.crypticcosmos.crypticcosmos;
 import com.crypticcosmos.crypticcosmos.creatures.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastRender;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
-import com.crypticcosmos.crypticcosmos.creatures.moon_tadpole.MoonTadpoleRender;
+import com.crypticcosmos.crypticcosmos.creatures.moon_traploom.MoonTraploomRender;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
 import com.crypticcosmos.crypticcosmos.registries.*;
 import com.crypticcosmos.crypticcosmos.world.gen.FeatureGen;
@@ -45,6 +45,7 @@ public class CrypticCosmos {
     public static final String MOD_ID = "crypticcosmos";
 
     public static final ItemGroup ITEM_ITEM_GROUP = new ItemGroup("item_tab") {
+        @SuppressWarnings("NullableProblems")
         @Override
         public ItemStack createIcon() {
             return new ItemStack(ItemRegistries.HUMMING_INGOT.get());
@@ -52,6 +53,7 @@ public class CrypticCosmos {
     };
 
     public static final ItemGroup BLOCK_ITEM_GROUP = new ItemGroup("block_tab") {
+        @SuppressWarnings("NullableProblems")
         @Override
         public ItemStack createIcon() {
             return new ItemStack(BlockRegistries.HUMMING_OBSIDIAN.get());
@@ -121,7 +123,7 @@ public class CrypticCosmos {
 
             BiomeRegistries.LUNARA_FOREST.get().addSpawn(
                     EntityClassification.WATER_CREATURE,
-                    new SpawnListEntry(EntityTypeRegistries.MOON_TADPOLE.get(), 8, 1, 2)
+                    new SpawnListEntry(EntityTypeRegistries.MOON_TRAPLOOM.get(), 8, 1, 2)
             );
         });
     }
@@ -143,8 +145,8 @@ public class CrypticCosmos {
         );
 
         RenderingRegistry.registerEntityRenderingHandler(
-                EntityTypeRegistries.MOON_TADPOLE.get(),
-                MoonTadpoleRender::new
+                EntityTypeRegistries.MOON_TRAPLOOM.get(),
+                MoonTraploomRender::new
         );
     }
 

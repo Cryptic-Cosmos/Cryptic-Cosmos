@@ -58,12 +58,12 @@ public class ItemRegistries {
             )
     );
 
-    public static final RegistryObject<Item> MOON_TADPOLE_SPAWN_EGG = ITEMS.register(
-            "moon_tadpole_spawn_egg",
+    public static final RegistryObject<Item> MOON_TRAPLOOM_SPAWN_EGG = ITEMS.register(
+            "moon_traploom_spawn_egg",
             () -> new CustomSpawnEggItem(
-                    EntityTypeRegistries.MOON_TADPOLE::get,
-                    10897459,
-                    7675188,
+                    EntityTypeRegistries.MOON_TRAPLOOM::get,
+                    0xa64833,
+                    0x751d34,
                     CrypticCosmos.ITEM_GROUP_PROPERTY
             )
     );

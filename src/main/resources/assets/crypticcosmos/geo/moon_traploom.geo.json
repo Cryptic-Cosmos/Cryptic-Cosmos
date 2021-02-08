@@ -3,12 +3,16 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.moonpollywog",
+				"identifier": "geometry.moon_traploom",
 				"texture_width": 32,
 				"texture_height": 32,
 				"visible_bounds_width": 3,
 				"visible_bounds_height": 1.5,
-				"visible_bounds_offset": [0, 0.25, 0]
+				"visible_bounds_offset": [
+					0,
+					0.25,
+					0
+				]
 			},
 			"bones": [
 				{

@@ -1,9 +1,9 @@
 package com.crypticcosmos.crypticcosmos.datagen;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
+import com.crypticcosmos.crypticcosmos.creatures.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.registries.BiomeRegistries;
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
-import com.crypticcosmos.crypticcosmos.creatures.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.registries.ItemRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -32,6 +32,7 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(ItemRegistries.BUNDLE_NECRONOMICON.get(), "Corrupted Bundle of Knowledge");
             add(ItemRegistries.MOON_BEAST_SPAWN_EGG.get(), "Moon Beast Spawn Egg");
             add(ItemRegistries.MOON_FROG_SPAWN_EGG.get(), "Moon Frog Spawn Egg");
+            add(ItemRegistries.MOON_TRAPLOOM_SPAWN_EGG.get(), "Moon Traploom Spawn Egg");
 
             // Blocks
             add(BlockRegistries.HUMMING_STONE.get(), "Humming Stone");
