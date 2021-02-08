@@ -44,11 +44,7 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockRegistries.MOLTEN_LAVA_SPONGE.get());
 
-        loot.dropSelf(BlockRegistries.MOONCALITE.get());
-
-        loot.dropSlabs(BlockRegistries.MOONCALITE_SLAB.get());
-
-        loot.dropSelf(BlockRegistries.MOONCALITE_STAIRS.get());
+        loot.dropSelf(BlockRegistries.OVERGROWN_LUNON.get());
 
         loot.addLoot(
                 BlockRegistries.MONDROVE_LEAVES.get(),
@@ -65,23 +61,19 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockRegistries.MONDROVE_SAPLING.get());
 
-        loot.dropSelf(BlockRegistries.MOONSTONE.get());
+        loot.dropSelf(BlockRegistries.LUNON.get());
 
-        loot.dropSlabs(BlockRegistries.MOONSTONE_SLAB.get());
+        loot.dropSelf(BlockRegistries.LUNON_BRICKS.get());
 
-        loot.dropSelf(BlockRegistries.MOONSTONE_STAIRS.get());
+        loot.dropSlabs(BlockRegistries.LUNON_BRICK_SLAB.get());
 
-        loot.dropSelf(BlockRegistries.MOONSTONE_BRICKS.get());
+        loot.dropSelf(BlockRegistries.LUNON_BRICK_STAIRS.get());
 
-        loot.dropSlabs(BlockRegistries.MOONSTONE_BRICK_SLAB.get());
+        loot.dropSelf(BlockRegistries.POLISHED_LUNON.get());
 
-        loot.dropSelf(BlockRegistries.MOONSTONE_BRICK_STAIRS.get());
+        loot.dropSlabs(BlockRegistries.POLISHED_LUNON_SLAB.get());
 
-        loot.dropSelf(BlockRegistries.SMOOTH_MOONSTONE.get());
-
-        loot.dropSlabs(BlockRegistries.SMOOTH_MOONSTONE_SLAB.get());
-
-        loot.dropSelf(BlockRegistries.SMOOTH_MOONSTONE_STAIRS.get());
+        loot.dropSlabs(BlockRegistries.CHISELED_POLISHED_LUNON.get());
 
         loot.addLoot(
                 BlockRegistries.THORN_LEAVES.get(),

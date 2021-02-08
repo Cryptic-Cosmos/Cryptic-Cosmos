@@ -5,7 +5,7 @@ import net.minecraft.world.gen.GenerationSettings;
 
 public class LunaraGenSettings extends GenerationSettings {
     public LunaraGenSettings() {
-        this.defaultBlock = BlockRegistries.MOONSTONE.get().getDefaultState();
+        this.defaultBlock = BlockRegistries.LUNON.get().getDefaultState();
     }
 
     @Override

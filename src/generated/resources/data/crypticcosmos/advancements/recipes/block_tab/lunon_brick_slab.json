@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:lunon_brick_slab"
+    ]
+  },
+  "criteria": {
+    "has_lunon_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:lunon_bricks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:lunon_brick_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_lunon_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

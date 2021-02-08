@@ -56,7 +56,7 @@ public class CrypticCosmos {
         @SuppressWarnings("NullableProblems")
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(BlockRegistries.HUMMING_OBSIDIAN.get());
+            return new ItemStack(BlockRegistries.LUNON.get());
         }
     };
 

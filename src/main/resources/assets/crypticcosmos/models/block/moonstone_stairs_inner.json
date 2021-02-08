@@ -1,8 +1,0 @@
-{
-  "parent": "block/inner_stairs",
-  "textures": {
-    "bottom": "crypticcosmos:block/moonstone",
-    "top": "crypticcosmos:block/moonstone",
-    "side": "crypticcosmos:block/moonstone"
-  }
-}

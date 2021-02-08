@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "crypticcosmos:moonstone"
-  },
-  "result": "crypticcosmos:smooth_moonstone",
-  "experience": 0.5,
-  "cookingtime": 200
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab_top",
-  "textures": {
-    "bottom": "crypticcosmos:block/moonstone",
-    "top": "crypticcosmos:block/moonstone",
-    "side": "crypticcosmos:block/moonstone"
-  }
-}
