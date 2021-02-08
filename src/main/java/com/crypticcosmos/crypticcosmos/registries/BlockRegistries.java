@@ -73,11 +73,7 @@ public class BlockRegistries {
 
     public static final RegistryObject<Block> POLISHED_LUNON = BLOCKS.register(
             "polished_lunon",
-            () -> new Block(Properties.create(Material.ROCK)
-                    .hardnessAndResistance(4.0f, 15)
-                    .sound(SoundType.STONE)
-                    .harvestLevel(2)
-                    .harvestTool(ToolType.PICKAXE))
+            () -> new Block(Properties.from(LUNON_BRICKS.get()))
     );
 
     public static final RegistryObject<Block> POLISHED_LUNON_SLAB = BLOCKS.register(
@@ -87,11 +83,7 @@ public class BlockRegistries {
 
     public static final RegistryObject<Block> CHISELED_POLISHED_LUNON = BLOCKS.register(
             "chiseled_polished_lunon",
-            () -> new Block(Properties.create(Material.ROCK)
-                    .hardnessAndResistance(4.0f, 15)
-                    .sound(SoundType.STONE)
-                    .harvestLevel(2)
-                    .harvestTool(ToolType.PICKAXE))
+            () -> new Block(Properties.from(POLISHED_LUNON.get()))
     );
 
     //Thorn Wood
@@ -107,11 +99,7 @@ public class BlockRegistries {
 
     public static final RegistryObject<Block> THORN_LEAVES = BLOCKS.register(
             "thorn_leaves",
-            () -> new LeavesBlock(Properties.create(Material.LEAVES)
-                    .hardnessAndResistance(0.2F)
-                    .tickRandomly()
-                    .sound(SoundType.PLANT)
-                    .notSolid())
+            () -> new LeavesBlock(Properties.from(Blocks.OAK_LEAVES))
     );
 
     public static final RegistryObject<Block> THORN_DOOR = BLOCKS.register("thorn_door", ModdedDoorBlock::new);
@@ -125,11 +113,7 @@ public class BlockRegistries {
 
     public static final RegistryObject<Block> MONDROVE_LEAVES = BLOCKS.register(
             "moon_leaves",
-            () -> new LeavesBlock(Properties.create(Material.LEAVES)
-                    .hardnessAndResistance(0.2F)
-                    .tickRandomly()
-                    .sound(SoundType.PLANT)
-                    .notSolid())
+            () -> new LeavesBlock(Properties.from(Blocks.OAK_LEAVES))
     );
 
     //Other Blocks
