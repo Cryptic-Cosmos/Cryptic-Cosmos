@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crypticcosmos:moonstone_brick_slab"
+          "name": "crypticcosmos:lunon_brick_slab"
         }
       ],
       "conditions": [
@@ -20,7 +20,7 @@
           "conditions": [
             {
               "condition": "minecraft:block_state_property",
-              "block": "crypticcosmos:moonstone_brick_slab",
+              "block": "crypticcosmos:lunon_brick_slab",
               "properties": {
                 "type": "double"
               }

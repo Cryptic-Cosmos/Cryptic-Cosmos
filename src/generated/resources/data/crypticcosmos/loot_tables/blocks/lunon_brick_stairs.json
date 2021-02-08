@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crypticcosmos:moonstone_bricks"
+          "name": "crypticcosmos:lunon_brick_stairs"
         }
       ],
       "conditions": [

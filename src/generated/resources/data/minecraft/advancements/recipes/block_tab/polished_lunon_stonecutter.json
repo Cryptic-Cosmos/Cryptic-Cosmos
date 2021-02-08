@@ -2,16 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "minecraft:lunon_bricks_stonecutter"
+      "minecraft:polished_lunon_stonecutter"
     ]
   },
   "criteria": {
-    "has_polished_lunon": {
+    "has_lunon": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "crypticcosmos:polished_lunon"
+            "item": "crypticcosmos:lunon"
           }
         ]
       }
@@ -19,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "minecraft:lunon_bricks_stonecutter"
+        "recipe": "minecraft:polished_lunon_stonecutter"
       }
     }
   },
   "requirements": [
     [
-      "has_polished_lunon",
+      "has_lunon",
       "has_the_recipe"
     ]
   ]

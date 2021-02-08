@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crypticcosmos:smooth_moonstone_slab"
+          "name": "crypticcosmos:chiseled_polished_lunon"
         }
       ],
       "conditions": [
@@ -20,7 +20,7 @@
           "conditions": [
             {
               "condition": "minecraft:block_state_property",
-              "block": "crypticcosmos:smooth_moonstone_slab",
+              "block": "crypticcosmos:chiseled_polished_lunon",
               "properties": {
                 "type": "double"
               }

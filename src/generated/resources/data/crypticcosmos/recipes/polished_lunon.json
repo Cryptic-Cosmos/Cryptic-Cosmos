@@ -1,9 +1,16 @@
 {
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "crypticcosmos:lunon"
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mm",
+    "mm"
+  ],
+  "key": {
+    "m": {
+      "item": "crypticcosmos:lunon"
+    }
   },
-  "result": "crypticcosmos:polished_lunon",
-  "experience": 0.5,
-  "cookingtime": 200
+  "result": {
+    "item": "crypticcosmos:polished_lunon",
+    "count": 4
+  }
 }
