@@ -25,7 +25,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
-public class MoonTraploomEntity extends WaterMobEntity implements IAnimatable {
+public class TraploomEntity extends WaterMobEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
     public static AnimationBuilder IDLE_ANIM = new AnimationBuilder().addAnimation("Idle");
     public static AnimationBuilder IDLE_SWIM_ANIM = new AnimationBuilder().addAnimation("IdleSwim");
@@ -36,7 +36,7 @@ public class MoonTraploomEntity extends WaterMobEntity implements IAnimatable {
             () -> Ingredient.fromItems(BlockRegistries.MONDROVE_SAPLING.get())
     );
 
-    public MoonTraploomEntity(EntityType<? extends WaterMobEntity> type, World worldIn) {
+    public TraploomEntity(EntityType<? extends WaterMobEntity> type, World worldIn) {
         super(type, worldIn);
 
         this.ignoreFrustumCheck = true;

@@ -32,7 +32,7 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(ItemRegistries.BUNDLE_NECRONOMICON.get(), "Corrupted Bundle of Knowledge");
             add(ItemRegistries.MOON_BEAST_SPAWN_EGG.get(), "Moon Beast Spawn Egg");
             add(ItemRegistries.MOON_FROG_SPAWN_EGG.get(), "Moon Frog Spawn Egg");
-            add(ItemRegistries.MOON_TRAPLOOM_SPAWN_EGG.get(), "Moon Traploom Spawn Egg");
+            add(ItemRegistries.TRAPLOOM_SPAWN_EGG.get(), "Traploom Spawn Egg");
 
             // Blocks
             add(BlockRegistries.HUMMING_STONE.get(), "Humming Stone");

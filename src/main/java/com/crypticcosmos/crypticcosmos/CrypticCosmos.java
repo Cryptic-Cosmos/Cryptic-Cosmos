@@ -3,7 +3,7 @@ package com.crypticcosmos.crypticcosmos;
 import com.crypticcosmos.crypticcosmos.creatures.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastRender;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
-import com.crypticcosmos.crypticcosmos.creatures.moon_traploom.MoonTraploomRender;
+import com.crypticcosmos.crypticcosmos.creatures.moon_traploom.TraploomRender;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
 import com.crypticcosmos.crypticcosmos.registries.*;
 import com.crypticcosmos.crypticcosmos.world.gen.FeatureGen;
@@ -123,7 +123,7 @@ public class CrypticCosmos {
 
             BiomeRegistries.LUNARA_FOREST.get().addSpawn(
                     EntityClassification.WATER_CREATURE,
-                    new SpawnListEntry(EntityTypeRegistries.MOON_TRAPLOOM.get(), 8, 1, 2)
+                    new SpawnListEntry(EntityTypeRegistries.TRAPLOOM.get(), 8, 1, 2)
             );
         });
     }
@@ -145,8 +145,8 @@ public class CrypticCosmos {
         );
 
         RenderingRegistry.registerEntityRenderingHandler(
-                EntityTypeRegistries.MOON_TRAPLOOM.get(),
-                MoonTraploomRender::new
+                EntityTypeRegistries.TRAPLOOM.get(),
+                TraploomRender::new
         );
     }
 
