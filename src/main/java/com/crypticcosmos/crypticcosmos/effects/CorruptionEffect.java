@@ -3,8 +3,6 @@ package com.crypticcosmos.crypticcosmos.effects;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.item.Item;
-import net.minecraft.item.ToolItem;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectType;
 
@@ -24,23 +22,25 @@ public class CorruptionEffect extends Effect {
                 AttributeModifier.Operation.MULTIPLY_TOTAL
         );
 
-        Item activeItem = entity.getActiveItemStack().getItem();
-
-        if (activeItem instanceof ToolItem) {
-            ToolItem tool = (ToolItem) activeItem;
-
-            this.addAttributesModifier(SharedMonsterAttributes.ATTACK_SPEED,
-                    "AF8B6E3F-3328-4C0A-AA36-5BA2BB9DBEF3",
-                    amplifier * 0.3,
-                    AttributeModifier.Operation.MULTIPLY_TOTAL
-            );
-        } else {
-            this.addAttributesModifier(SharedMonsterAttributes.ATTACK_SPEED,
-                    "AF8B6E3F-3328-4C0A-AA36-5BA2BB9DBEF3",
-                    amplifier * -0.3,
-                    AttributeModifier.Operation.MULTIPLY_TOTAL
-            );
-        }
+        // Item activeItem = entity.getActiveItemStack().getItem();
+        //
+        // if (activeItem instanceof ToolItem) {
+        //     ToolItem tool = (ToolItem) activeItem;
+        //
+        //     if (tool.getTier().equals(ItemTier.WOOD)) {
+        //         this.addAttributesModifier(SharedMonsterAttributes.ATTACK_SPEED,
+        //                 "AF8B6E3F-3328-4C0A-AA36-5BA2BB9DBEF3",
+        //                 amplifier * 0.3,
+        //                 AttributeModifier.Operation.MULTIPLY_TOTAL
+        //         );
+        //     } else {
+        //         this.addAttributesModifier(SharedMonsterAttributes.ATTACK_SPEED,
+        //                 "AF8B6E3F-3328-4C0A-AA36-5BA2BB9DBEF3",
+        //                 amplifier * -0.3,
+        //                 AttributeModifier.Operation.MULTIPLY_TOTAL
+        //         );
+        //     }
+        // }
     }
 
     /**
