@@ -66,117 +66,112 @@ public class RecipesGenerator extends RecipeProvider {
                 .addCriterion("has_lava_sponge", this.hasItem(BlockRegistries.LAVA_SPONGE.get()))
                 .build(consumer, BlockRegistries.LAVA_SPONGE.getId());
 
-        registerMoonstoneRecipes(consumer);
+        registerLunonRecipes(consumer);
 
     }
 
-    private void registerMoonstoneRecipes(Consumer<IFinishedRecipe> consumer) {
-
-
-        // Moonstone bricks
-        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.MOONSTONE_BRICKS.get(), 4)
+    private void registerLunonRecipes(Consumer<IFinishedRecipe> consumer) {
+        // Lunon bricks
+        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.LUNON_BRICKS.get(), 4)
                 .patternLine("bb")
                 .patternLine("bb")
                 .key('b', BlockRegistries.LUNON.get())
-                .addCriterion("has_moonstone_bricks", hasItem(BlockRegistries.MOONSTONE_BRICKS.get()))
-                .build(consumer, BlockRegistries.MOONSTONE_BRICKS.getId());
+                .addCriterion("has_lunon_bricks", hasItem(BlockRegistries.LUNON_BRICKS.get()))
+                .build(consumer, BlockRegistries.LUNON_BRICKS.getId());
 
-        // Moonstone bricks (in stonecutter)
+        // Lunon bricks (in stonecutter)
         SingleItemRecipeBuilder
                 .stonecuttingRecipe(
-                        Ingredient.fromItems(BlockRegistries.SMOOTH_MOONSTONE.get()),
-                        BlockRegistries.MOONSTONE_BRICKS.get()
+                        Ingredient.fromItems(BlockRegistries.POLISHED_LUNON.get()),
+                        BlockRegistries.LUNON_BRICKS.get()
                 )
-                .addCriterion("has_smooth_moonstone", this.hasItem(BlockRegistries.SMOOTH_MOONSTONE.get()))
-                .build(consumer, "moonstone_bricks_stonecutter");
+                .addCriterion("has_polished_lunon", this.hasItem(BlockRegistries.POLISHED_LUNON.get()))
+                .build(consumer, "lunon_bricks_stonecutter");
 
-        // Moonstone bricks slab
-        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.MOONSTONE_BRICK_SLAB.get(), 6)
+        // Lunon bricks slab
+        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.LUNON_BRICK_SLAB.get(), 6)
                 .patternLine("mmm")
-                .key('m', BlockRegistries.MOONSTONE_BRICKS.get())
-                .addCriterion("has_moonstone_bricks", hasItem(BlockRegistries.MOONSTONE_BRICKS.get()))
-                .build(consumer, BlockRegistries.MOONSTONE_BRICK_SLAB.getId());
+                .key('m', BlockRegistries.LUNON_BRICKS.get())
+                .addCriterion("has_lunon_bricks", hasItem(BlockRegistries.LUNON_BRICKS.get()))
+                .build(consumer, BlockRegistries.LUNON_BRICK_SLAB.getId());
 
-        // Moonstone bricks slab (in stonecutter)
+        // Lunon bricks slab (in stonecutter)
         SingleItemRecipeBuilder
                 .stonecuttingRecipe(
-                        Ingredient.fromItems(BlockRegistries.MOONSTONE_BRICKS.get()),
-                        BlockRegistries.MOONSTONE_BRICK_SLAB.get()
+                        Ingredient.fromItems(BlockRegistries.LUNON_BRICKS.get()),
+                        BlockRegistries.LUNON_BRICK_SLAB.get()
                 )
-                .addCriterion("has_moonstone_bricks", hasItem(BlockRegistries.MOONSTONE_BRICKS.get()))
-                .build(consumer, "moonstone_bricks_slab_stonecutter");
+                .addCriterion("has_lunon_bricks", hasItem(BlockRegistries.LUNON_BRICKS.get()))
+                .build(consumer, "lunon_bricks_slab_stonecutter");
 
-        // Moonstone bricks stairs
-        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.MOONSTONE_BRICK_STAIRS.get(), 4)
+        // Lunon bricks stairs
+        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.LUNON_BRICK_STAIRS.get(), 4)
                 .patternLine("m  ")
                 .patternLine("mm ")
                 .patternLine("mmm")
-                .key('m', BlockRegistries.MOONSTONE_BRICKS.get())
-                .addCriterion("has_moonstone_bricks", hasItem(BlockRegistries.MOONSTONE_BRICKS.get()))
-                .build(consumer, BlockRegistries.MOONSTONE_BRICK_STAIRS.getId());
+                .key('m', BlockRegistries.LUNON_BRICKS.get())
+                .addCriterion("has_lunon_bricks", hasItem(BlockRegistries.LUNON_BRICKS.get()))
+                .build(consumer, BlockRegistries.LUNON_BRICK_STAIRS.getId());
 
-        // Moonstone bricks stairs (in stonecutter)
+        // Lunon bricks stairs (in stonecutter)
         SingleItemRecipeBuilder
                 .stonecuttingRecipe(
-                        Ingredient.fromItems(BlockRegistries.MOONSTONE_BRICKS.get()),
-                        BlockRegistries.MOONSTONE_BRICK_STAIRS.get()
+                        Ingredient.fromItems(BlockRegistries.LUNON_BRICKS.get()),
+                        BlockRegistries.LUNON_BRICK_STAIRS.get()
                 )
-                .addCriterion("has_moonstone_bricks", hasItem(BlockRegistries.MOONSTONE_BRICKS.get()))
-                .build(consumer, "moonstone_bricks_stairs_stonecutter");
+                .addCriterion("has_lunon_bricks", hasItem(BlockRegistries.LUNON_BRICKS.get()))
+                .build(consumer, "lunon_bricks_stairs_stonecutter");
 
 
-        // Smooth moonstone
-        CookingRecipeBuilder
-                .smeltingRecipe(
-                        Ingredient.fromItems(BlockRegistries.LUNON.get()),
-                        BlockRegistries.SMOOTH_MOONSTONE.get(),
-                        0.5f,
-                        200
-                )
-                .addCriterion("has_moonstone", this.hasItem(BlockRegistries.LUNON.get()))
-                .build(consumer, BlockRegistries.SMOOTH_MOONSTONE.getId());
+        // Polished Lunon
+        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.POLISHED_LUNON.get(), 4)
+                .patternLine("mm")
+                .patternLine("mm")
+                .key('m', BlockRegistries.LUNON.get())
+                .addCriterion("has_polished_lunon", hasItem(BlockRegistries.LUNON.get()))
+                .build(consumer, BlockRegistries.POLISHED_LUNON.getId());
 
-        // Smooth moonstone (in stonecutter)
+        // Polished Lunon (in stonecutter)
         SingleItemRecipeBuilder
                 .stonecuttingRecipe(
                         Ingredient.fromItems(BlockRegistries.LUNON.get()),
-                        BlockRegistries.SMOOTH_MOONSTONE.get()
+                        BlockRegistries.POLISHED_LUNON.get()
                 )
-                .addCriterion("has_moonstone", hasItem(BlockRegistries.LUNON.get()))
-                .build(consumer, "smooth_moonstone_stonecutter");
+                .addCriterion("has_lunon", hasItem(BlockRegistries.LUNON.get()))
+                .build(consumer, "polished_lunon_stonecutter");
 
-        // Smooth moonstone slab
-        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.SMOOTH_MOONSTONE_SLAB.get(), 6)
+        // Polished Lunon slab
+        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.POLISHED_LUNON_SLAB.get(), 6)
                 .patternLine("mmm")
-                .key('m', BlockRegistries.SMOOTH_MOONSTONE.get())
-                .addCriterion("has_smooth_moonstone", hasItem(BlockRegistries.SMOOTH_MOONSTONE.get()))
-                .build(consumer, BlockRegistries.SMOOTH_MOONSTONE_SLAB.getId());
+                .key('m', BlockRegistries.POLISHED_LUNON.get())
+                .addCriterion("has_polished_lunon", hasItem(BlockRegistries.POLISHED_LUNON.get()))
+                .build(consumer, BlockRegistries.POLISHED_LUNON_SLAB.getId());
 
-        // Smooth moonstone slab (in stonecutter)
+        // Polished Lunon slab (in stonecutter)
         SingleItemRecipeBuilder
                 .stonecuttingRecipe(
-                        Ingredient.fromItems(BlockRegistries.SMOOTH_MOONSTONE.get()),
-                        BlockRegistries.SMOOTH_MOONSTONE_SLAB.get()
+                        Ingredient.fromItems(BlockRegistries.POLISHED_LUNON.get()),
+                        BlockRegistries.POLISHED_LUNON_SLAB.get()
                 )
-                .addCriterion("has_smooth_moonstone", hasItem(BlockRegistries.SMOOTH_MOONSTONE.get()))
-                .build(consumer, "smooth_moonstone_slab_stonecutter");
+                .addCriterion("has_polished_lunon", hasItem(BlockRegistries.POLISHED_LUNON.get()))
+                .build(consumer, "polished_lunon_slab_stonecutter");
 
-        // Smooth moonstone stairs
-        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.SMOOTH_MOONSTONE_STAIRS.get(), 4)
-                .patternLine("m  ")
-                .patternLine("mm ")
-                .patternLine("mmm")
-                .key('m', BlockRegistries.SMOOTH_MOONSTONE.get())
-                .addCriterion("has_smooth_moonstone", hasItem(BlockRegistries.SMOOTH_MOONSTONE.get()))
-                .build(consumer, BlockRegistries.SMOOTH_MOONSTONE_STAIRS.getId());
+        // Chiseled Polished Lunon
+        ShapedRecipeBuilder.shapedRecipe(BlockRegistries.CHISELED_POLISHED_LUNON.get(), 1)
+                .patternLine("m")
+                .patternLine("m")
+                .key('m', BlockRegistries.POLISHED_LUNON_SLAB.get())
+                .addCriterion("has_polished_lunon_slab", hasItem(BlockRegistries.POLISHED_LUNON_SLAB.get()))
+                .build(consumer, BlockRegistries.CHISELED_POLISHED_LUNON.getId());
 
-        // Moonstone bricks stairs (in stonecutter)
+        // Polished Lunon (in stonecutter)
         SingleItemRecipeBuilder
                 .stonecuttingRecipe(
-                        Ingredient.fromItems(BlockRegistries.SMOOTH_MOONSTONE.get()),
-                        BlockRegistries.SMOOTH_MOONSTONE_STAIRS.get()
+                        Ingredient.fromItems(BlockRegistries.POLISHED_LUNON.get()),
+                        BlockRegistries.CHISELED_POLISHED_LUNON.get()
                 )
-                .addCriterion("has_smooth_moonstone", hasItem(BlockRegistries.SMOOTH_MOONSTONE.get()))
-                .build(consumer, "smooth_moonstone_stairs_stonecutter");
+                .addCriterion("has_polished_lunon", hasItem(BlockRegistries.POLISHED_LUNON.get()))
+                .build(consumer, "chiseled_polished_lunon_stonecutter");
+
     }
 }

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "crypticcosmos:smooth_moonstone"
-  },
-  "result": "crypticcosmos:smooth_moonstone_slab",
-  "count": 1
-}
