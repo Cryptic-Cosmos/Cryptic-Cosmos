@@ -4,14 +4,10 @@ import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Pose;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.PanicGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.passive.WaterMobEntity;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.passive.fish.AbstractGroupFishEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Lazy;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -25,7 +21,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
-public class TraploomEntity extends WaterMobEntity implements IAnimatable {
+public class TraploomEntity extends AbstractGroupFishEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
     public static AnimationBuilder IDLE_ANIM = new AnimationBuilder().addAnimation("Idle");
     public static AnimationBuilder IDLE_SWIM_ANIM = new AnimationBuilder().addAnimation("IdleSwim");
@@ -36,27 +32,10 @@ public class TraploomEntity extends WaterMobEntity implements IAnimatable {
             () -> Ingredient.fromItems(BlockRegistries.MONDROVE_SAPLING.get())
     );
 
-    public TraploomEntity(EntityType<? extends WaterMobEntity> type, World worldIn) {
+    public TraploomEntity(EntityType<? extends TraploomEntity> type, World worldIn) {
         super(type, worldIn);
 
         this.ignoreFrustumCheck = true;
-    }
-
-
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new SwimGoal(this));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 2.0D));
-        this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 6.0F));
-        this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
-    }
-
-    @Override
-    protected void registerAttributes() {
-        super.registerAttributes();
-
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2F);
     }
 
     @Override
@@ -86,5 +65,15 @@ public class TraploomEntity extends WaterMobEntity implements IAnimatable {
     @Override
     protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
         return this.isChild() ? sizeIn.height * 0.95F : 1.3F;
+    }
+
+    @Override
+    protected ItemStack getFishBucket() {
+        return null;
+    }
+
+    @Override
+    protected SoundEvent getFlopSound() {
+        return null;
     }
 }
