@@ -39,6 +39,13 @@ public class TraploomEntity extends AbstractGroupFishEntity implements IAnimatab
     }
 
     @Override
+    public void registerGoals() {
+        super.registerGoals();
+        // TODO: make this work, or make a new goal that works in water.
+        // this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, BREEDING_ITEM.get(), false));
+    }
+
+    @Override
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController<>(this, "controller", 5, this::predicate));
     }
