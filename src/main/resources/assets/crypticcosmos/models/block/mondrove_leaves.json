@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/leaves",
   "textures": {
-    "all": "crypticcosmos:block/moon_leaves"
+    "all": "crypticcosmos:block/mondrove_leaves"
   }
 }

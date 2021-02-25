@@ -35,7 +35,7 @@
                   ]
                 }
               ],
-              "name": "crypticcosmos:moon_leaves"
+              "name": "crypticcosmos:mondrove_leaves"
             },
             {
               "type": "minecraft:item",
@@ -54,7 +54,7 @@
                   ]
                 }
               ],
-              "name": "crypticcosmos:moon_sapling"
+              "name": "crypticcosmos:mondrove_sapling"
             }
           ]
         }

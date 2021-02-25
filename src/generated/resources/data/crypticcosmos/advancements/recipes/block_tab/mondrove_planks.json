@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "crypticcosmos:moon_planks"
+      "crypticcosmos:mondrove_planks"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "crypticcosmos:moon_log"
+            "item": "crypticcosmos:mondrove_log"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "crypticcosmos:moon_planks"
+        "recipe": "crypticcosmos:mondrove_planks"
       }
     }
   },

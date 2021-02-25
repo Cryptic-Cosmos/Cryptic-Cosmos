@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crypticcosmos:moon_sapling"
+          "name": "crypticcosmos:mondrove_log"
         }
       ],
       "conditions": [

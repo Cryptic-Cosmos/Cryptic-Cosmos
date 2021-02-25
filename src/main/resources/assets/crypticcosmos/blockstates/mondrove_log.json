@@ -1,38 +1,38 @@
 {
   "variants": {
     "axis=y,infection_level=0": {
-      "model": "crypticcosmos:block/moon_log"
+      "model": "crypticcosmos:block/mondrove_log"
     },
     "axis=z,infection_level=0": {
-      "model": "crypticcosmos:block/moon_log",
+      "model": "crypticcosmos:block/mondrove_log",
       "x": 90
     },
     "axis=x,infection_level=0": {
-      "model": "crypticcosmos:block/moon_log",
+      "model": "crypticcosmos:block/mondrove_log",
       "x": 90,
       "y": 90
     },
     "axis=y,infection_level=1": {
-      "model": "crypticcosmos:block/moon_log1"
+      "model": "crypticcosmos:block/mondrove_log1"
     },
     "axis=z,infection_level=1": {
-      "model": "crypticcosmos:block/moon_log1",
+      "model": "crypticcosmos:block/mondrove_log1",
       "x": 90
     },
     "axis=x,infection_level=1": {
-      "model": "crypticcosmos:block/moon_log1",
+      "model": "crypticcosmos:block/mondrove_log1",
       "x": 90,
       "y": 90
     },
     "axis=y,infection_level=2": {
-      "model": "crypticcosmos:block/moon_log2"
+      "model": "crypticcosmos:block/mondrove_log2"
     },
     "axis=z,infection_level=2": {
-      "model": "crypticcosmos:block/moon_log2",
+      "model": "crypticcosmos:block/mondrove_log2",
       "x": 90
     },
     "axis=x,infection_level=2": {
-      "model": "crypticcosmos:block/moon_log2",
+      "model": "crypticcosmos:block/mondrove_log2",
       "x": 90,
       "y": 90
     }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "crypticcosmos:block/moon_sapling"
+    "cross": "crypticcosmos:block/mondrove_sapling"
   }
 }

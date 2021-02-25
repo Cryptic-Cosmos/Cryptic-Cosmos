@@ -15,8 +15,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class MoonTree extends Tree {
-    public static final TreeFeatureConfig MOON_TREE_CONFIG2 = new TreeFeatureConfig.Builder(
+public class MondroveTree extends Tree {
+    public static final TreeFeatureConfig MONDROVE_TREE_CONFIG2 = new TreeFeatureConfig.Builder(
             new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LOG.get().getDefaultState()),
             new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LEAVES.get().getDefaultState()),
             new BlobFoliagePlacer(2, 0))
@@ -27,7 +27,7 @@ public class MoonTree extends Tree {
             .decorators(ImmutableList.of(new BeehiveTreeDecorator(0.05F)))
             .setSapling((IPlantable) BlockRegistries.MONDROVE_SAPLING.get()).build();
 
-    public static final TreeFeatureConfig MOON_TREE_CONFIG = new TreeFeatureConfig.Builder(
+    public static final TreeFeatureConfig MONDROVE_TREE_CONFIG = new TreeFeatureConfig.Builder(
             new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LOG.get().getDefaultState()),
             new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LEAVES.get().getDefaultState()),
             new BlobFoliagePlacer(2, 0))
@@ -40,6 +40,6 @@ public class MoonTree extends Tree {
     @Override
     @Nullable
     protected ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(@Nonnull Random randomIn, boolean p_225546_2_) {
-        return Feature.NORMAL_TREE.withConfiguration(p_225546_2_ ? MOON_TREE_CONFIG2 : MOON_TREE_CONFIG);
+        return Feature.NORMAL_TREE.withConfiguration(p_225546_2_ ? MONDROVE_TREE_CONFIG2 : MONDROVE_TREE_CONFIG);
     }
 }
