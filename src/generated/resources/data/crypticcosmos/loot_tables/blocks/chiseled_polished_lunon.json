@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "crypticcosmos:chiseled_polished_lunon"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:set_count",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "crypticcosmos:chiseled_polished_lunon",
+              "properties": {
+                "type": "double"
+              }
+            }
+          ],
+          "count": 2
+        }
+      ]
+    }
+  ]
+}

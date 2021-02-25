@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mm",
+    "mm"
+  ],
+  "key": {
+    "m": {
+      "item": "crypticcosmos:lunon"
+    }
+  },
+  "result": {
+    "item": "crypticcosmos:polished_lunon",
+    "count": 4
+  }
+}

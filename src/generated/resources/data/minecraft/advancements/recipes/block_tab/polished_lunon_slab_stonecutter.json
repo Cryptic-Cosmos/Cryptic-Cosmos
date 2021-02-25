@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:polished_lunon_slab_stonecutter"
+    ]
+  },
+  "criteria": {
+    "has_polished_lunon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:polished_lunon"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:polished_lunon_slab_stonecutter"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_polished_lunon",
+      "has_the_recipe"
+    ]
+  ]
+}
