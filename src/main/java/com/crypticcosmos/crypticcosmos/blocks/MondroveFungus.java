@@ -10,6 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -40,6 +41,8 @@ public class MondroveFungus extends BushBlock {
     public void onEntityCollision(@Nonnull BlockState state, World world, @Nonnull BlockPos pos, @Nonnull Entity entity) {
         if (!world.isRemote && entity instanceof LivingEntity) {
             LivingEntity livingEntity = (LivingEntity) entity;
+
+            livingEntity.attackEntityFrom(DamageSource.MAGIC, 7f);
 
             livingEntity.addPotionEffect(new EffectInstance(EffectRegistries.CORRUPTION.get(), Integer.MAX_VALUE));
         }
