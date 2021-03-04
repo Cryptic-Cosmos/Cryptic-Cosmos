@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "crypticcosmos:lunon_bricks"
+  },
+  "result": "crypticcosmos:lunon_brick_slab",
+  "count": 1
+}

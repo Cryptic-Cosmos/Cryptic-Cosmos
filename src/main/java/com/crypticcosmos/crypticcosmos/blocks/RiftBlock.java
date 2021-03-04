@@ -60,6 +60,10 @@ public class RiftBlock extends Block {
             return;
         }
 
+        if (!(entity instanceof PlayerEntity)) {
+            return;
+        }
+
         // set a cooldown before this can run again
         entity.timeUntilPortal = 10;
 

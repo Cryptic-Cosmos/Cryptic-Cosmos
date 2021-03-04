@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "m  ",
+    "mm ",
+    "mmm"
+  ],
+  "key": {
+    "m": {
+      "item": "crypticcosmos:lunon_bricks"
+    }
+  },
+  "result": {
+    "item": "crypticcosmos:lunon_brick_stairs",
+    "count": 4
+  }
+}

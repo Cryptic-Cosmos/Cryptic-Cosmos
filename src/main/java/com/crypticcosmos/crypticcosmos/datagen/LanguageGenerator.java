@@ -38,13 +38,14 @@ public abstract class LanguageGenerator extends LanguageProvider {
 
             add(BlockRegistries.LUNON.get(), "Lunon");
 
-            add(BlockRegistries.SMOOTH_MOONSTONE.get(), "Smooth Moonstone");
-            add(BlockRegistries.SMOOTH_MOONSTONE_SLAB.get(), "Smooth Moonstone Slab");
-            add(BlockRegistries.SMOOTH_MOONSTONE_STAIRS.get(), "Smooth Moonstone Stairs");
+            add(BlockRegistries.CHISELED_POLISHED_LUNON.get(), "Chiseled Polished Lunon");
 
-            add(BlockRegistries.MOONSTONE_BRICKS.get(), "Moonstone Bricks");
-            add(BlockRegistries.MOONSTONE_BRICK_SLAB.get(), "Moonstone Brick Slab");
-            add(BlockRegistries.MOONSTONE_BRICK_STAIRS.get(), "Moonstone Brick Stairs");
+            add(BlockRegistries.POLISHED_LUNON.get(), "Polished Lunon");
+            add(BlockRegistries.POLISHED_LUNON_SLAB.get(), "Polished Lunon Slab");
+
+            add(BlockRegistries.LUNON_BRICKS.get(), "Lunon Bricks");
+            add(BlockRegistries.LUNON_BRICK_SLAB.get(), "Lunon Brick Slab");
+            add(BlockRegistries.LUNON_BRICK_STAIRS.get(), "Lunon Brick Stairs");
 
             add(BlockRegistries.THORN_LOG.get(), "Thorn Log");
             add(BlockRegistries.THORN_PLANKS.get(), "Thorn Planks");
@@ -53,10 +54,11 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.THORN_SAPLING.get(), "Thorn Sapling");
             add(BlockRegistries.THORN_DOOR.get(), "Thorn Door");
 
-            add(BlockRegistries.MONDROVE_LOG.get(), "Moon Log");
-            add(BlockRegistries.MONDROVE_PLANKS.get(), "Moon Planks");
-            add(BlockRegistries.MONDROVE_LEAVES.get(), "Moon Leaves");
-            add(BlockRegistries.MONDROVE_SAPLING.get(), "Moon Sapling");
+            add(BlockRegistries.MONDROVE_LOG.get(), "Mondrove Log");
+            add(BlockRegistries.MONDROVE_PLANKS.get(), "Mondrove Planks");
+            add(BlockRegistries.MONDROVE_LEAVES.get(), "Mondrove Leaves");
+            add(BlockRegistries.MONDROVE_SAPLING.get(), "Mondrove Sapling");
+            add(BlockRegistries.MONDROVE_FUNGUS.get(), "Mondrove Fungus");
 
             add(BlockRegistries.LAVA_SPONGE.get(), "Lava Sponge");
             add(BlockRegistries.MOLTEN_LAVA_SPONGE.get(), "Molten Lava Sponge");

@@ -119,6 +119,7 @@ public class CrypticCosmos {
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_LEAVES.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_SAPLING.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_FUNGUS.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_DOOR.get(), RenderType.getCutout());
 
         RenderingRegistry.registerEntityRenderingHandler(
