@@ -14,7 +14,7 @@ public class CorruptionEffect extends Effect {
 
     @Override
     public void performEffect(LivingEntity entity, int amplifier) {
-        entity.attackEntityFrom(DamageSource.MAGIC, 2.0F);
+        entity.attackEntityFrom(DamageSource.MAGIC, 1.5F);
     }
 
     @Override

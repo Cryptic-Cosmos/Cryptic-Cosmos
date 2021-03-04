@@ -75,7 +75,7 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSlabs(BlockRegistries.POLISHED_LUNON_SLAB.get());
 
-        loot.dropSlabs(BlockRegistries.CHISELED_POLISHED_LUNON.get());
+        loot.dropSelf(BlockRegistries.CHISELED_POLISHED_LUNON.get());
 
         loot.addLoot(
                 BlockRegistries.THORN_LEAVES.get(),

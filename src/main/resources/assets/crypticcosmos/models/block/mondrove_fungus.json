@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "block/cross",
   "textures": {
     "cross": "crypticcosmos:block/mondrove_fungus"
   }

@@ -1,3 +1,6 @@
 {
-  "parent": "crypticcosmos:block/mondrove_leaves"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "crypticcosmos:item/mondrove_fungus"
+  }
 }
