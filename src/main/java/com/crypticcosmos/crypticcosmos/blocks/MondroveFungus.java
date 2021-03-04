@@ -33,7 +33,7 @@ public class MondroveFungus extends BushBlock {
     @Override
     public boolean isValidGround(BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
         Block block = state.getBlock();
-        return block == BlockRegistries.LUNON.get() || block == BlockRegistries.OVERGROWN_LUNON.get();
+        return block == BlockRegistries.OVERGROWN_LUNON.get();
     }
 
     @SuppressWarnings("deprecation")

@@ -86,6 +86,14 @@ public class BlockRegistries {
             () -> new Block(Properties.from(POLISHED_LUNON.get()))
     );
 
+    public static final RegistryObject<Block> LUNON_DUST = BLOCKS.register(
+            "lunon_dust",
+            () -> new SandBlock(22,
+                    Properties.create(Material.SAND)
+                            .hardnessAndResistance(0.5F)
+                            .sound(SoundType.SAND))
+    );
+
     //Thorn Wood
     public static final RegistryObject<Block> THORN_LOG = BLOCKS.register("thorn_log", ThornLog::new);
 
@@ -134,3 +142,4 @@ public class BlockRegistries {
                             .hardnessAndResistance(0.5F)
                             .sound(SoundType.SAND)));
 }
+
