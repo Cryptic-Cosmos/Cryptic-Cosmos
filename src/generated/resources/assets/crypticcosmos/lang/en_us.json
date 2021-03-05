@@ -27,6 +27,8 @@
   "block.crypticcosmos.thorn_sapling": "Thorn Sapling",
   "block.crypticcosmos.thorn_slab": "Thorn Slab",
   "block.crypticcosmos.umbral_dune": "Umbral Sand",
+  "death.attack.corruption": "%1$s phased out of this realm",
+  "death.attack.corruption.player": "%1$s phased out of this realm whilst fighting %2$s",
   "entity.crypticcosmos.moon_beast": "Moon Beast",
   "entity.crypticcosmos.moon_frog": "Moon Frog",
   "item.crypticcosmos.bundle_necro": "Corrupted Bundle of Knowledge",

@@ -1,5 +1,6 @@
 package com.crypticcosmos.crypticcosmos.blocks;
 
+import com.crypticcosmos.crypticcosmos.effects.CorruptionEffect;
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.EffectRegistries;
 import net.minecraft.block.Block;
@@ -10,7 +11,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -42,12 +42,13 @@ public class MondroveFungus extends BushBlock {
         if (!world.isRemote && entity instanceof LivingEntity) {
             LivingEntity livingEntity = (LivingEntity) entity;
 
-            livingEntity.attackEntityFrom(DamageSource.MAGIC, 7f);
+            livingEntity.attackEntityFrom(CorruptionEffect.CORRUPTION_DAMAGE_SOURCE, 7f);
 
             livingEntity.addPotionEffect(new EffectInstance(EffectRegistries.CORRUPTION.get(), Integer.MAX_VALUE));
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public @Nonnull
     VoxelShape getShape(BlockState state,
