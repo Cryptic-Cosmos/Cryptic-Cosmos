@@ -78,8 +78,8 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(EffectRegistries.CORRUPTION.get(), "Corruption");
 
             // Death messages
-            add("death.attack.corruption", "%1$s phased out of this realm");
-            add("death.attack.corruption.player", "%1$s phased out of this realm whilst fighting %2$s");
+            add("death.attack.corruption", "%1$s inhaled the spores");
+            add("death.attack.corruption.player", "%1$s inhaled the spores whilst fighting %2$s");
         }
     }
 }
