@@ -2,7 +2,6 @@ package com.crypticcosmos.crypticcosmos.world.biomes;
 
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.google.common.collect.ImmutableList;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -27,11 +26,9 @@ public class LunaraForestBiome extends Biome {
                     .addWeightedBlockstate(BlockRegistries.MONDROVE_FUNGUS.get().getDefaultState(), 2),
                     new SimpleBlockPlacer()
             ).tries(64).build();
-    private static final BlockState MOON_LOG = BlockRegistries.MONDROVE_LOG.get().getDefaultState();
-    private static final BlockState MOON_LEAVES = BlockRegistries.MONDROVE_LEAVES.get().getDefaultState();
     public static final TreeFeatureConfig MOON_TREE_CONFIG = new TreeFeatureConfig.Builder(
-            new SimpleBlockStateProvider(MOON_LOG),
-            new SimpleBlockStateProvider(MOON_LEAVES),
+            new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LOG.get().getDefaultState()),
+            new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LEAVES.get().getDefaultState()),
             new BlobFoliagePlacer(2, 0))
             .baseHeight(5)
             .heightRandA(2)
@@ -45,15 +42,9 @@ public class LunaraForestBiome extends Biome {
         super(builder);
 
         this.addSpawn(
-                EntityClassification.CREATURE,
-                new SpawnListEntry(EntityType.COW, 8, 4, 4)
-        );
-
-        this.addSpawn(
                 EntityClassification.MONSTER,
                 new Biome.SpawnListEntry(EntityType.ENDERMAN, 10, 1, 4)
         );
-
 
         DefaultBiomeFeatures.addCarvers(this);
 

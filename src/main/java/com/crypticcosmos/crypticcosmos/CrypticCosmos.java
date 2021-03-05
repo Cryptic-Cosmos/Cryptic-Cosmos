@@ -94,17 +94,17 @@ public class CrypticCosmos {
             FeatureGen.generateStructures();
 
             BiomeRegistries.LUNARA_MOUNTAINS.get().addSpawn(
-                    EntityClassification.MONSTER,
+                    EntityClassification.CREATURE,
                     new SpawnListEntry(EntityTypeRegistries.MOON_BEAST.get(), 8, 1, 2)
             );
 
             BiomeRegistries.LUNARA_MOUNTAINS.get().addSpawn(
-                    EntityClassification.MONSTER,
+                    EntityClassification.CREATURE,
                     new SpawnListEntry(EntityType.ENDERMAN, 4, 1, 4)
             );
 
             BiomeRegistries.LUNARA_PLAINS.get().addSpawn(
-                    EntityClassification.MONSTER,
+                    EntityClassification.CREATURE,
                     new Biome.SpawnListEntry(EntityType.ENDERMAN, 4, 1, 4)
             );
 
