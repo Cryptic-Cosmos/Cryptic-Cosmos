@@ -27,25 +27,33 @@ public class StructureLootTablesGenerator extends LootTableProvider {
                 LootTable.builder()
                         .addLootPool(LootPool.builder()
                                 .rolls(RandomValueRange.of(2f, 4f))
+
                                 .addEntry(ItemLootEntry.builder(ItemRegistries.PAGE_NECRONOMICON.get())
                                         .weight(5)
                                         .acceptFunction(SetCount.builder(RandomValueRange.of(1f, 3f))))
+
                                 .addEntry(ItemLootEntry.builder(BlockRegistries.OVERGROWN_LUNON.get().asItem())
                                         .weight(5)
                                         .acceptFunction(SetCount.builder(RandomValueRange.of(1f, 5f))))
+
                                 .addEntry(ItemLootEntry.builder(BlockRegistries.LUNON.get().asItem())
                                         .weight(15)
                                         .acceptFunction(SetCount.builder(RandomValueRange.of(1f, 3f))))
+
                                 .addEntry(ItemLootEntry.builder(Items.IRON_SWORD).weight(5))
                                 .addEntry(ItemLootEntry.builder(Items.IRON_CHESTPLATE).weight(5))
                                 .addEntry(ItemLootEntry.builder(Items.IRON_PICKAXE).weight(5))
+
                                 .addEntry(ItemLootEntry.builder(Items.NETHER_WART)
                                         .weight(5)
                                         .acceptFunction(SetCount.builder(RandomValueRange.of(3f, 7f))))
+
                                 .addEntry(ItemLootEntry.builder(Items.SADDLE).weight(10))
+
                                 .addEntry(ItemLootEntry.builder(BlockRegistries.HUMMING_OBSIDIAN.get().asItem())
                                         .weight(2)
                                         .acceptFunction(SetCount.builder(RandomValueRange.of(2f, 4f)))))
+
                         .setParameterSet(LootParameterSets.CHEST)
                         .build()
         );

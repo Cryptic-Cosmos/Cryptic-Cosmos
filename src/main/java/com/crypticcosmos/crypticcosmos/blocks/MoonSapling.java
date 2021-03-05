@@ -1,7 +1,7 @@
 package com.crypticcosmos.crypticcosmos.blocks;
 
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
-import com.crypticcosmos.crypticcosmos.world.feature.MoonTree;
+import com.crypticcosmos.crypticcosmos.world.feature.MondroveTree;
 import net.minecraft.block.*;
 import net.minecraft.block.trees.Tree;
 import net.minecraft.state.IntegerProperty;
@@ -29,7 +29,7 @@ public class MoonSapling extends BushBlock implements IGrowable {
 
     public MoonSapling() {
         super(Properties.from(Blocks.BIRCH_SAPLING));
-        this.tree = MoonTree::new;
+        this.tree = MondroveTree::new;
     }
 
     @SuppressWarnings("deprecation")

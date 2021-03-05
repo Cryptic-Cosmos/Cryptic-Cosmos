@@ -71,6 +71,7 @@ public class CrypticCosmos {
         BiomeRegistries.BIOMES.register(modEventBus);
         DimensionRegistries.MOD_DIMENSIONS.register(modEventBus);
         FeatureRegistries.FEATURE.register(modEventBus);
+        EffectRegistries.EFFECTS.register(modEventBus);
 
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::doClientStuff);
@@ -93,17 +94,17 @@ public class CrypticCosmos {
             FeatureGen.generateStructures();
 
             BiomeRegistries.LUNARA_MOUNTAINS.get().addSpawn(
-                    EntityClassification.MONSTER,
+                    EntityClassification.CREATURE,
                     new SpawnListEntry(EntityTypeRegistries.MOON_BEAST.get(), 8, 1, 2)
             );
 
             BiomeRegistries.LUNARA_MOUNTAINS.get().addSpawn(
-                    EntityClassification.MONSTER,
+                    EntityClassification.CREATURE,
                     new SpawnListEntry(EntityType.ENDERMAN, 4, 1, 4)
             );
 
             BiomeRegistries.LUNARA_PLAINS.get().addSpawn(
-                    EntityClassification.MONSTER,
+                    EntityClassification.CREATURE,
                     new Biome.SpawnListEntry(EntityType.ENDERMAN, 4, 1, 4)
             );
 
@@ -118,6 +119,7 @@ public class CrypticCosmos {
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_LEAVES.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_SAPLING.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_FUNGUS.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.THORN_DOOR.get(), RenderType.getCutout());
 
         RenderingRegistry.registerEntityRenderingHandler(

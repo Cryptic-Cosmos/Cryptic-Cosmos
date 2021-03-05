@@ -47,9 +47,9 @@ public class BiomeRegistries {
                     .waterFogColor(0xfffff5)
                     .surfaceBuilder(SurfaceBuilder.DEFAULT,
                             new SurfaceBuilderConfig(
-                                    BlockRegistries.OVERGROWN_LUNON.get().getDefaultState(),
                                     BlockRegistries.LUNON.get().getDefaultState(),
-                                    BlockRegistries.LUNON.get().getDefaultState()))
+                                    BlockRegistries.LUNON.get().getDefaultState(),
+                                    BlockRegistries.LUNON_DUST.get().getDefaultState()))
                     .category(Biome.Category.PLAINS)
                     .downfall(0.0001f)
                     .depth(0.125f)
@@ -65,9 +65,9 @@ public class BiomeRegistries {
                     .waterFogColor(0xfffff5)
                     .surfaceBuilder(SurfaceBuilder.DEFAULT,
                             new SurfaceBuilderConfig(
-                                    BlockRegistries.OVERGROWN_LUNON.get().getDefaultState(),
                                     BlockRegistries.LUNON.get().getDefaultState(),
-                                    BlockRegistries.LUNON.get().getDefaultState()
+                                    BlockRegistries.LUNON.get().getDefaultState(),
+                                    BlockRegistries.LUNON_DUST.get().getDefaultState()
                             ))
                     .category(Biome.Category.EXTREME_HILLS)
                     .downfall(0.0001f)
@@ -87,7 +87,7 @@ public class BiomeRegistries {
                             new SurfaceBuilderConfig(
                                     BlockRegistries.OVERGROWN_LUNON.get().getDefaultState(),
                                     BlockRegistries.LUNON.get().getDefaultState(),
-                                    BlockRegistries.LUNON.get().getDefaultState()
+                                    BlockRegistries.LUNON_DUST.get().getDefaultState()
                             )
                     )
                     .category(Biome.Category.FOREST)

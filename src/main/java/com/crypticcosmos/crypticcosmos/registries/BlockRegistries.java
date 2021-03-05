@@ -86,6 +86,14 @@ public class BlockRegistries {
             () -> new Block(Properties.from(POLISHED_LUNON.get()))
     );
 
+    public static final RegistryObject<Block> LUNON_DUST = BLOCKS.register(
+            "lunon_dust",
+            () -> new SandBlock(22,
+                    Properties.create(Material.SAND)
+                            .hardnessAndResistance(0.5F)
+                            .sound(SoundType.SAND))
+    );
+
     //Thorn Wood
     public static final RegistryObject<Block> THORN_LOG = BLOCKS.register("thorn_log", ThornLog::new);
 
@@ -105,16 +113,18 @@ public class BlockRegistries {
     public static final RegistryObject<Block> THORN_DOOR = BLOCKS.register("thorn_door", ModdedDoorBlock::new);
 
     //Moon Wood
-    public static final RegistryObject<Block> MONDROVE_LOG = BLOCKS.register("moon_log", MoonLog::new);
+    public static final RegistryObject<Block> MONDROVE_LOG = BLOCKS.register("mondrove_log", MoonLog::new);
 
-    public static final RegistryObject<Block> MONDROVE_PLANKS = BLOCKS.register("moon_planks", MoonPlanks::new);
+    public static final RegistryObject<Block> MONDROVE_PLANKS = BLOCKS.register("mondrove_planks", MoonPlanks::new);
 
-    public static final RegistryObject<Block> MONDROVE_SAPLING = BLOCKS.register("moon_sapling", MoonSapling::new);
+    public static final RegistryObject<Block> MONDROVE_SAPLING = BLOCKS.register("mondrove_sapling", MoonSapling::new);
 
     public static final RegistryObject<Block> MONDROVE_LEAVES = BLOCKS.register(
-            "moon_leaves",
+            "mondrove_leaves",
             () -> new LeavesBlock(Properties.from(Blocks.OAK_LEAVES))
     );
+
+    public static final RegistryObject<Block> MONDROVE_FUNGUS = BLOCKS.register("mondrove_fungus", MondroveFungus::new);
 
     //Other Blocks
     public static final RegistryObject<Block> LAVA_SPONGE = BLOCKS.register("lava_sponge", LavaSponge::new);
@@ -132,3 +142,4 @@ public class BlockRegistries {
                             .hardnessAndResistance(0.5F)
                             .sound(SoundType.SAND)));
 }
+
