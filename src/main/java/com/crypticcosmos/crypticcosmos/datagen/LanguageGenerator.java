@@ -1,7 +1,10 @@
 package com.crypticcosmos.crypticcosmos.datagen;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.registries.*;
+import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
+import com.crypticcosmos.crypticcosmos.registries.EffectRegistries;
+import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
+import com.crypticcosmos.crypticcosmos.registries.ItemRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -72,7 +75,11 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(EntityTypeRegistries.MOON_FROG.get(), "Moon Frog");
 
             // Biomes
-            add(BiomeRegistries.THORN_JUNGLE.get(), "Thorn Jungle");
+            add("biome.crypticcosmos.thorn_jungle", "Thorn Jungle");
+            add("biome.crypticcosmos.lunara_plains", "Lunara Plains");
+            add("biome.crypticcosmos.lunara_mountains", "Lunara Mountains");
+            add("biome.crypticcosmos.lunara_forest", "Lunara Forest");
+            add("biome.crypticcosmos.umbral_dunes", "Umbral Dunes");
 
             // Effects
             add(EffectRegistries.CORRUPTION.get(), "Corruption");

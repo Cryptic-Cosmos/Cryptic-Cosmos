@@ -6,9 +6,10 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.ITeleporter;
@@ -30,11 +31,10 @@ public class RiftBlock extends Block {
     }
 
     private static DimensionType getDestination(Entity entity) {
-        List<DimensionType> allDimensions = new ArrayList<>();
-        DimensionType randomDimension;
+        List<World> allDimensions = new ArrayList<>();
+        RegistryKey<World> randomDimension;
 
         // Adds all of the dimensions to a regular list
-        DimensionType.getAll().iterator().forEachRemaining(allDimensions::add);
 
         // We don't want people teleporting to the end, the nether or the dimensions they're currently in
         allDimensions.remove(DimensionType.THE_END);
@@ -56,7 +56,7 @@ public class RiftBlock extends Block {
             return;
         }
 
-        if (entity.timeUntilPortal > 0) {
+        if (entity.getPortalCooldown() > 0) {
             return;
         }
 

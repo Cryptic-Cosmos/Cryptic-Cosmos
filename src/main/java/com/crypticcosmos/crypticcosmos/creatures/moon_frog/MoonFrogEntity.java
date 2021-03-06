@@ -2,13 +2,19 @@ package com.crypticcosmos.crypticcosmos.creatures.moon_frog;
 
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
-import net.minecraft.entity.*;
+import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.EntitySize;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.Pose;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.Lazy;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -53,12 +59,12 @@ public class MoonFrogEntity extends TameableEntity implements IAnimatable {
         this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
     }
 
-    @Override
-    protected void registerAttributes() {
-        super.registerAttributes();
-
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2F);
+    public static AttributeModifierMap setCustomAttributes() {
+        // func_233666_p_() -> registerAttributes()
+        return func_233666_p_()
+                .createMutableAttribute(Attributes.MAX_HEALTH, 10f)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.2f)
+                .create();
     }
 
     @Override
@@ -75,13 +81,6 @@ public class MoonFrogEntity extends TameableEntity implements IAnimatable {
         AnimationController<?> controller = event.getController();
         controller.setAnimation(event.isMoving() ? WALK_ANIM : IDLE_ANIM);
         return PlayState.CONTINUE;
-    }
-
-
-    @Nullable
-    @Override
-    public AgeableEntity createChild(AgeableEntity ageable) {
-        return EntityTypeRegistries.MOON_FROG.get().create(this.world);
     }
 
     @Override
@@ -102,5 +101,11 @@ public class MoonFrogEntity extends TameableEntity implements IAnimatable {
     @Override
     protected void setupTamedAI() {
         this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 0.5f, 10f, 5f, false));
+    }
+
+    @Nullable
+    @Override
+    public AgeableEntity func_241840_a(ServerWorld p_241840_1_, AgeableEntity p_241840_2_) {
+        return EntityTypeRegistries.MOON_FROG.get().create(this.world);
     }
 }

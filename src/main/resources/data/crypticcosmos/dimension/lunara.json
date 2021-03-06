@@ -36,7 +36,7 @@
       },
       "biomes": [
         {
-          "biome": "minecraft:plains",
+          "biome": "",
           "parameters": {
             "altitude": 0,
             "temperature": 0,

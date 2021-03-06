@@ -4,8 +4,8 @@ import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.google.common.collect.Lists;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -58,9 +58,9 @@ public class LavaSponge extends Block {
             for (Direction direction : Direction.values()) {
                 BlockPos blockpos1 = blockpos.offset(direction);
                 BlockState blockstate = worldIn.getBlockState(blockpos1);
-                IFluidState ifluidstate = worldIn.getFluidState(blockpos1);
+                FluidState fluidstate = worldIn.getFluidState(blockpos1);
                 Material material = blockstate.getMaterial();
-                if (ifluidstate.isTagged(FluidTags.LAVA)) {
+                if (fluidstate.isTagged(FluidTags.LAVA)) {
                     if (blockstate.getBlock() instanceof IBucketPickupHandler && ((IBucketPickupHandler) blockstate.getBlock()).pickupFluid(worldIn, blockpos1, blockstate) != Fluids.EMPTY) {
                         ++i;
                         if (j < 6) {

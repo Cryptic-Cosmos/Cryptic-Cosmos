@@ -27,21 +27,21 @@ public class RecipesGenerator extends RecipeProvider {
                 .key('x', ItemRegistries.HUMMING_INGOT.get())
                 .key('y', Items.GLOWSTONE_DUST)
                 .key('z', Items.OBSIDIAN)
-                .addCriterion("has_humming_ingot", this.hasItem(ItemRegistries.HUMMING_INGOT.get()))
+                .addCriterion("has_humming_ingot", hasItem(ItemRegistries.HUMMING_INGOT.get()))
                 .build(consumer, BlockRegistries.HUMMING_OBSIDIAN.getId());
 
         // Moon planks
         ShapelessRecipeBuilder.shapelessRecipe(BlockRegistries.MONDROVE_PLANKS.get(), 4)
                 .addIngredient(BlockRegistries.MONDROVE_LOG.get())
                 .setGroup("planks")
-                .addCriterion("has_moon_log", this.hasItem(BlockRegistries.MONDROVE_LOG.get()))
+                .addCriterion("has_moon_log", hasItem(BlockRegistries.MONDROVE_LOG.get()))
                 .build(consumer, BlockRegistries.MONDROVE_PLANKS.getId());
 
         // Thorn planks
         ShapelessRecipeBuilder.shapelessRecipe(BlockRegistries.THORN_PLANKS.get(), 4)
                 .addIngredient(BlockRegistries.THORN_LOG.get())
                 .setGroup("planks")
-                .addCriterion("has_thorn_log", this.hasItem(BlockRegistries.THORN_LOG.get()))
+                .addCriterion("has_thorn_log", hasItem(BlockRegistries.THORN_LOG.get()))
                 .build(consumer, BlockRegistries.THORN_PLANKS.getId());
 
         // Haunted ingot
@@ -52,7 +52,7 @@ public class RecipesGenerator extends RecipeProvider {
                         0.75f,
                         400
                 )
-                .addCriterion("has_humming_stone", this.hasItem(BlockRegistries.HUMMING_STONE.get()))
+                .addCriterion("has_humming_stone", hasItem(BlockRegistries.HUMMING_STONE.get()))
                 .build(consumer, ItemRegistries.HUMMING_INGOT.getId());
 
         // Lava sponge
@@ -63,7 +63,7 @@ public class RecipesGenerator extends RecipeProvider {
                         0.75f,
                         400
                 )
-                .addCriterion("has_lava_sponge", this.hasItem(BlockRegistries.LAVA_SPONGE.get()))
+                .addCriterion("has_lava_sponge", hasItem(BlockRegistries.LAVA_SPONGE.get()))
                 .build(consumer, BlockRegistries.LAVA_SPONGE.getId());
 
         registerLunonRecipes(consumer);
@@ -85,7 +85,7 @@ public class RecipesGenerator extends RecipeProvider {
                         Ingredient.fromItems(BlockRegistries.POLISHED_LUNON.get()),
                         BlockRegistries.LUNON_BRICKS.get()
                 )
-                .addCriterion("has_polished_lunon", this.hasItem(BlockRegistries.POLISHED_LUNON.get()))
+                .addCriterion("has_polished_lunon", hasItem(BlockRegistries.POLISHED_LUNON.get()))
                 .build(consumer, "lunon_bricks_stonecutter");
 
         // Lunon bricks slab

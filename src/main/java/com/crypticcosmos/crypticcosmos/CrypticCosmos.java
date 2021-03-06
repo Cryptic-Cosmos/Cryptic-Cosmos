@@ -1,26 +1,26 @@
 package com.crypticcosmos.crypticcosmos;
 
+import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastRender;
+import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
 import com.crypticcosmos.crypticcosmos.registries.*;
-import com.crypticcosmos.crypticcosmos.world.gen.FeatureGen;
 import com.crypticcosmos.crypticcosmos.world.gen.RiftSpawning;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -33,8 +33,6 @@ import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
 
 import java.util.Objects;
-
-import static net.minecraft.world.biome.Biome.SpawnListEntry;
 
 @Mod(CrypticCosmos.MOD_ID)
 public class CrypticCosmos {
@@ -64,55 +62,24 @@ public class CrypticCosmos {
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.addListener(RiftSpawning::riftSpawning);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, BiomeRegistries::biomeLoading);
 
         BlockRegistries.BLOCKS.register(modEventBus);
         ItemRegistries.ITEMS.register(modEventBus);
         EntityTypeRegistries.ENTITY_TYPES.register(modEventBus);
         BiomeRegistries.BIOMES.register(modEventBus);
-        DimensionRegistries.MOD_DIMENSIONS.register(modEventBus);
-        FeatureRegistries.FEATURE.register(modEventBus);
         EffectRegistries.EFFECTS.register(modEventBus);
 
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::doClientStuff);
         modEventBus.addGenericListener(Item.class, this::onRegisterItems);
-        modEventBus.addGenericListener(Biome.class, this::onRegisterBiomes);
-        modEventBus.addGenericListener(Feature.class, FeatureRegistries::registerStructurePieces);
         modEventBus.addGenericListener(EntityType.class, this::onRegisterEntities);
 
         GeckoLib.initialize();
     }
 
-    public void onRegisterBiomes(final RegistryEvent.Register<Biome> event) {
-        BiomeRegistries.registerBiomes();
-        LOGGER.debug("Registered biomes!");
-    }
-
-    @SuppressWarnings("deprecation")
-    private void setup(final FMLCommonSetupEvent event) {
-        DeferredWorkQueue.runLater(() -> {
-            FeatureGen.generateStructures();
-
-            BiomeRegistries.LUNARA_MOUNTAINS.get().addSpawn(
-                    EntityClassification.CREATURE,
-                    new SpawnListEntry(EntityTypeRegistries.MOON_BEAST.get(), 8, 1, 2)
-            );
-
-            BiomeRegistries.LUNARA_MOUNTAINS.get().addSpawn(
-                    EntityClassification.CREATURE,
-                    new SpawnListEntry(EntityType.ENDERMAN, 4, 1, 4)
-            );
-
-            BiomeRegistries.LUNARA_PLAINS.get().addSpawn(
-                    EntityClassification.CREATURE,
-                    new Biome.SpawnListEntry(EntityType.ENDERMAN, 4, 1, 4)
-            );
-
-            BiomeRegistries.LUNARA_PLAINS.get().addSpawn(
-                    EntityClassification.CREATURE,
-                    new SpawnListEntry(EntityTypeRegistries.MOON_BEAST.get(), 8, 1, 2)
-            );
-        });
+    public static ResourceLocation id(String path) {
+        return new ResourceLocation(MOD_ID, path);
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -150,5 +117,13 @@ public class CrypticCosmos {
 
     private void onRegisterEntities(RegistryEvent.Register<EntityType<?>> event) {
         CustomSpawnEggItem.initSpawnEggs();
+    }
+
+    @SuppressWarnings("deprecation")
+    private void setup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            GlobalEntityTypeAttributes.put(EntityTypeRegistries.MOON_BEAST.get(), MoonBeastEntity.setCustomAttributes());
+            GlobalEntityTypeAttributes.put(EntityTypeRegistries.MOON_FROG.get(), MoonFrogEntity.setCustomAttributes());
+        });
     }
 }

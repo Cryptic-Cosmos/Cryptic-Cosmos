@@ -4,6 +4,7 @@ import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.world.feature.MondroveTree;
 import net.minecraft.block.*;
 import net.minecraft.block.trees.Tree;
+import net.minecraft.item.DebugStickItem;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -67,11 +68,11 @@ public class MoonSapling extends BushBlock implements IGrowable {
 
     public void grow(ServerWorld serverWorld, BlockPos pos, BlockState state, Random rand) {
         if (state.get(STAGE) == 0) {
-            serverWorld.setBlockState(pos, state.cycle(STAGE), 4);
+            serverWorld.setBlockState(pos, DebugStickItem.cycleProperty(state, STAGE, false), 4);
         } else {
             if (!ForgeEventFactory.saplingGrowTree(serverWorld, rand, pos)) return;
 
-            this.tree.get().place(
+            this.tree.get().attemptGrowTree(
                     serverWorld,
                     serverWorld.getChunkProvider().getChunkGenerator(),
                     pos,

@@ -7,7 +7,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.World;
 import net.minecraftforge.event.TickEvent;
 
 import java.util.ArrayList;
@@ -27,7 +27,8 @@ public class RiftSpawning {
         PlayerEntity player = event.player;
 
         if (ThreadLocalRandom.current().nextInt(spawningChance) == 0) {
-            if (!(player.dimension.equals(DimensionType.THE_END) || player.dimension.equals(DimensionType.THE_NETHER))) {
+            if (!(World.THE_END.equals(player.getEntityWorld().getDimensionKey())
+                  || World.THE_NETHER.equals(player.getEntityWorld().getDimensionKey()))) {
                 for (Direction direction : Direction.values()) {
                     for (int i = 0; i <= range; i++) {
                         CrypticCosmos.LOGGER.debug("Tried to spawn a rift!");

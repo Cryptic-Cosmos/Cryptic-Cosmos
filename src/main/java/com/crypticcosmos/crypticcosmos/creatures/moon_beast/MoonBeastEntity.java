@@ -1,7 +1,8 @@
 package com.crypticcosmos.crypticcosmos.creatures.moon_beast;
 
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.EndermanEntity;
 import net.minecraft.entity.monster.MonsterEntity;
@@ -43,21 +44,20 @@ public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, EndermanEntity.class, true));
     }
 
-    @Override
-    protected void registerAttributes() {
-        super.registerAttributes();
-
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50.0D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
-        this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
-        this.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(4D);
+    @Nonnull
+    public static AttributeModifierMap setCustomAttributes() {
+        // func_233666_p_() -> registerAttributes()
+        return func_233666_p_()
+                .createMutableAttribute(Attributes.MAX_HEALTH, 50f)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.5f)
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 6f)
+                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 4f)
+                .create();
     }
 
     @Override
     protected int getExperiencePoints(@Nonnull PlayerEntity player) {
-        if (this.isChild()) {
-            this.experienceValue = (int) ((float) this.experienceValue * 4F);
-        }
+        if (this.isChild()) this.experienceValue = (int) ((float) this.experienceValue * 4f);
 
         return super.getExperiencePoints(player);
     }
@@ -72,7 +72,6 @@ public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
     public AnimationFactory getFactory() {
         return factory;
     }
-
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         AnimationController<?> controller = event.getController();

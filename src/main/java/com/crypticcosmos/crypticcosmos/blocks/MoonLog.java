@@ -3,8 +3,7 @@ package com.crypticcosmos.crypticcosmos.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.LogBlock;
-import net.minecraft.block.material.MaterialColor;
+import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.math.BlockPos;
@@ -13,9 +12,9 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.Random;
 
 @SuppressWarnings("NullableProblems")
-public class MoonLog extends LogBlock implements Infectable {
+public class MoonLog extends RotatedPillarBlock implements Infectable {
     public MoonLog() {
-        super(MaterialColor.WOOD, Properties.from(Blocks.BIRCH_LOG));
+        super(Properties.from(Blocks.BIRCH_LOG));
 
         this.setDefaultState(this.getDefaultState().with(INFECTION_LEVEL, 0));
     }
