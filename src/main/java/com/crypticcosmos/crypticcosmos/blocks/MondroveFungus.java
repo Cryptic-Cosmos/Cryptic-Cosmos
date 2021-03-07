@@ -17,6 +17,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.common.PlantType;
 
 import javax.annotation.Nonnull;
 
@@ -31,8 +32,13 @@ public class MondroveFungus extends BushBlock {
     }
 
     @Override
+    public PlantType getPlantType(IBlockReader world, BlockPos pos) {
+        return PlantType.get("lunara");
+    }
+
+    @Override
     public boolean isValidGround(BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
-        return state.isIn(TagRegistries.MOON_PLANTS_GROUND_BLOCKS);
+        return state.isIn(TagRegistries.LUNARA_PLANTABLE_BLOCKS);
     }
 
     @SuppressWarnings("deprecation")

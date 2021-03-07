@@ -14,6 +14,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.PlantType;
 import net.minecraftforge.event.ForgeEventFactory;
 
 import javax.annotation.Nonnull;
@@ -53,8 +54,13 @@ public class MoonSapling extends BushBlock implements IGrowable {
     }
 
     @Override
+    public PlantType getPlantType(IBlockReader world, BlockPos pos) {
+        return PlantType.get("lunara");
+    }
+
+    @Override
     public boolean isValidGround(@Nonnull BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.isIn(TagRegistries.MOON_PLANTS_GROUND_BLOCKS);
+        return state.isIn(TagRegistries.LUNARA_PLANTABLE_BLOCKS);
     }
 
     @Override
