@@ -1,8 +1,8 @@
 package com.crypticcosmos.crypticcosmos.blocks;
 
 import com.crypticcosmos.crypticcosmos.effects.CorruptionEffect;
-import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.EffectRegistries;
+import com.crypticcosmos.crypticcosmos.registries.TagRegistries;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
@@ -32,8 +32,7 @@ public class MondroveFungus extends BushBlock {
 
     @Override
     public boolean isValidGround(BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
-        Block block = state.getBlock();
-        return block == BlockRegistries.OVERGROWN_LUNON.get();
+        return state.isIn(TagRegistries.MOON_PLANTS_GROUND_BLOCKS);
     }
 
     @SuppressWarnings("deprecation")
@@ -50,11 +49,11 @@ public class MondroveFungus extends BushBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public @Nonnull
-    VoxelShape getShape(BlockState state,
-                        @Nonnull IBlockReader worldIn,
-                        @Nonnull BlockPos pos,
-                        @Nonnull ISelectionContext context) {
+    @Nonnull
+    public VoxelShape getShape(BlockState state,
+                               @Nonnull IBlockReader worldIn,
+                               @Nonnull BlockPos pos,
+                               @Nonnull ISelectionContext context) {
         Vector3d vec3d = state.getOffset(worldIn, pos);
         return SHAPE.withOffset(vec3d.x, vec3d.y, vec3d.z);
     }

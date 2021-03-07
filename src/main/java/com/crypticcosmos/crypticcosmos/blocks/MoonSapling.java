@@ -1,6 +1,6 @@
 package com.crypticcosmos.crypticcosmos.blocks;
 
-import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
+import com.crypticcosmos.crypticcosmos.registries.TagRegistries;
 import com.crypticcosmos.crypticcosmos.world.feature.MondroveTree;
 import net.minecraft.block.*;
 import net.minecraft.block.trees.Tree;
@@ -16,27 +16,26 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.ForgeEventFactory;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 import java.util.function.Supplier;
 
 @SuppressWarnings("NullableProblems")
 public class MoonSapling extends BushBlock implements IGrowable {
     public static final IntegerProperty STAGE = BlockStateProperties.STAGE_0_1;
-    private static final VoxelShape SHAPE = Block.makeCuboidShape(
-            2.0D, 0.0D, 2.0D,
-            14.0D, 12.0D, 14.0D
-    );
-    private final Supplier<Tree> tree;
+    private final Supplier<Tree> tree = MondroveTree::new;
 
     public MoonSapling() {
         super(Properties.from(Blocks.BIRCH_SAPLING));
-        this.tree = MondroveTree::new;
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        return SHAPE;
+        return Block.makeCuboidShape(
+                2.0D, 0.0D, 2.0D,
+                14.0D, 12.0D, 14.0D
+        );
     }
 
     @SuppressWarnings("deprecation")
@@ -49,24 +48,17 @@ public class MoonSapling extends BushBlock implements IGrowable {
         }
 
         if (worldIn.getLight(pos.up()) >= 9 && rand.nextInt(7) == 0) {
-            this.grow(worldIn, pos, state, rand);
+            this.grow(worldIn, rand, pos, state);
         }
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        Block block = state.getBlock();
-
-        return block == Blocks.GRASS_BLOCK
-               || block == Blocks.DIRT
-               || block == Blocks.COARSE_DIRT
-               || block == Blocks.PODZOL
-               || block == Blocks.FARMLAND
-               || block == BlockRegistries.LUNON.get()
-               || block == BlockRegistries.OVERGROWN_LUNON.get();
+    public boolean isValidGround(@Nonnull BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return state.isIn(TagRegistries.MOON_PLANTS_GROUND_BLOCKS);
     }
 
-    public void grow(ServerWorld serverWorld, BlockPos pos, BlockState state, Random rand) {
+    @Override
+    public void grow(ServerWorld serverWorld, Random rand, BlockPos pos, BlockState state) {
         if (state.get(STAGE) == 0) {
             serverWorld.setBlockState(pos, DebugStickItem.cycleProperty(state, STAGE, false), 4);
         } else {
@@ -83,22 +75,17 @@ public class MoonSapling extends BushBlock implements IGrowable {
     }
 
     @Override
-    public void grow(ServerWorld serverWorld, Random rand, BlockPos pos, BlockState state) {
-        this.grow(serverWorld, pos, state, rand);
-    }
-
-    @Override
     public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
         return true;
     }
 
     @Override
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
-        return (double) worldIn.rand.nextFloat() < 0.45D;
+    public boolean canUseBonemeal(@Nonnull World worldIn, Random rand, BlockPos pos, BlockState state) {
+        return worldIn.rand.nextFloat() < 0.45f;
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void fillStateContainer(@Nonnull StateContainer.Builder<Block, BlockState> builder) {
         builder.add(STAGE);
     }
 }

@@ -11,7 +11,6 @@ import net.minecraft.block.CropsBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -19,13 +18,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.LogManager;
@@ -70,10 +69,10 @@ public class CrypticCosmos {
         BiomeRegistries.BIOMES.register(modEventBus);
         EffectRegistries.EFFECTS.register(modEventBus);
 
-        modEventBus.addListener(this::setup);
-        modEventBus.addListener(this::doClientStuff);
-        modEventBus.addGenericListener(Item.class, this::onRegisterItems);
-        modEventBus.addGenericListener(EntityType.class, this::onRegisterEntities);
+        modEventBus.addListener(this::registerEntityAttributes);
+        modEventBus.addListener(this::clientSetup);
+        modEventBus.addGenericListener(Item.class, this::registerBlockItems);
+        modEventBus.addGenericListener(EntityType.class, this::createSpawnEggs);
 
         GeckoLib.initialize();
     }
@@ -82,7 +81,7 @@ public class CrypticCosmos {
         return new ResourceLocation(MOD_ID, path);
     }
 
-    private void doClientStuff(final FMLClientSetupEvent event) {
+    private void clientSetup(final FMLClientSetupEvent event) {
         RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_FUNGUS.get(), RenderType.getCutout());
 
@@ -97,7 +96,7 @@ public class CrypticCosmos {
         );
     }
 
-    private void onRegisterItems(final RegistryEvent.Register<Item> event) {
+    private void registerBlockItems(final RegistryEvent.Register<Item> event) {
         // automatically register block items
         final IForgeRegistry<Item> registry = event.getRegistry();
         BlockRegistries.BLOCKS
@@ -112,15 +111,12 @@ public class CrypticCosmos {
                 });
     }
 
-    private void onRegisterEntities(RegistryEvent.Register<EntityType<?>> event) {
-        CustomSpawnEggItem.initSpawnEggs();
+    private void registerEntityAttributes(EntityAttributeCreationEvent event) {
+        event.put(EntityTypeRegistries.MOON_BEAST.get(), MoonBeastEntity.setCustomAttributes());
+        event.put(EntityTypeRegistries.MOON_FROG.get(), MoonFrogEntity.setCustomAttributes());
     }
 
-    @SuppressWarnings("deprecation")
-    private void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            GlobalEntityTypeAttributes.put(EntityTypeRegistries.MOON_BEAST.get(), MoonBeastEntity.setCustomAttributes());
-            GlobalEntityTypeAttributes.put(EntityTypeRegistries.MOON_FROG.get(), MoonFrogEntity.setCustomAttributes());
-        });
+    private void createSpawnEggs(RegistryEvent.Register<EntityType<?>> event) {
+        CustomSpawnEggItem.initSpawnEggs();
     }
 }
