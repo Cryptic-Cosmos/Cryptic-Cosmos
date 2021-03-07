@@ -92,7 +92,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${project.mc_version}-${project.forge_version}"
 
     // geckolib
-    compile fg.deobf('software.bernie.geckolib:forge-1.15.2-geckolib:3.0.0')
+    implementation(fg.deobf("software.bernie.geckolib:geckolib-forge-1.16.5:3.0.15"))
 }
 
 jar {

@@ -11,7 +11,7 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = CrypticCosmos.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = CrypticCosmos.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModOreGen {
     @SubscribeEvent
     public static void generateOres(BiomeLoadingEvent event) {

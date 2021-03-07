@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "crypticcosmos:thorn_sapling",
     "crypticcosmos:mondrove_sapling"
   ]
 }

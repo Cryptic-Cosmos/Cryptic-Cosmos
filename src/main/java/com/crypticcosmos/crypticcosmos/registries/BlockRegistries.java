@@ -81,24 +81,6 @@ public class BlockRegistries {
                             .sound(SoundType.SAND))
     );
 
-    //Thorn Wood
-    public static final RegistryObject<Block> THORN_LOG = BLOCKS.register("thorn_log", ThornLog::new);
-
-    public static final RegistryObject<Block> THORN_PLANKS = BLOCKS.register("thorn_planks", ThornLog::new);
-
-    public static final RegistryObject<Block> THORN_SLAB = BLOCKS.register("thorn_slab", () ->
-            new SlabBlock(Properties.from(Blocks.JUNGLE_SLAB))
-    );
-    public static final RegistryObject<Block> THORN_SAPLING = BLOCKS.register("thorn_sapling", ThornSapling::new);
-
-    public static final RegistryObject<Block> THORN_LEAVES = BLOCKS.register("thorn_leaves", () ->
-            new LeavesBlock(Properties.from(Blocks.OAK_LEAVES))
-    );
-
-    public static final RegistryObject<Block> THORN_DOOR = BLOCKS.register("thorn_door", () ->
-            new DoorBlock(Properties.from(Blocks.JUNGLE_DOOR))
-    );
-
     //Moon Wood
     public static final RegistryObject<Block> MONDROVE_LOG = BLOCKS.register("mondrove_log", MoonLog::new);
 

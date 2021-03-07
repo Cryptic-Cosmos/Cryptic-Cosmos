@@ -7,7 +7,6 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
-import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,9 +15,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class BiomeRegistries {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, CrypticCosmos.MOD_ID);
 
-    public static final RegistryObject<Biome> THORN_JUNGLE = BIOMES.register("thorn_jungle", BiomeMaker::makeThornJungle);
-    public static final RegistryKey<Biome> THORN_JUNGLE_KEY =
-            RegistryKey.getOrCreateKey(Registry.BIOME_KEY, CrypticCosmos.id("thorn_jungle"));
     // lunara biomes
     public static final RegistryObject<Biome> LUNARA_PLAINS = BIOMES.register("moon_plains", BiomeMaker::makeLunaraPlains);
     public static final RegistryKey<Biome> LUNARA_PLAINS_KEY =
@@ -37,11 +33,6 @@ public class BiomeRegistries {
             RegistryKey.getOrCreateKey(Registry.BIOME_KEY, CrypticCosmos.id("umbral_dunes"));
 
     public static void biomeLoading(BiomeLoadingEvent event) {
-        if (event.getName() == THORN_JUNGLE.get().getRegistryName()) {
-            BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(THORN_JUNGLE_KEY, 25));
-        }
-
-        BiomeDictionary.addTypes(THORN_JUNGLE_KEY, Type.JUNGLE, Type.LUSH, Type.OVERWORLD, Type.SPOOKY);
         BiomeDictionary.addTypes(LUNARA_PLAINS_KEY, Type.PLAINS, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
         BiomeDictionary.addTypes(LUNARA_MOUNTAINS_KEY, Type.MOUNTAIN, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
         BiomeDictionary.addTypes(LUNARA_FOREST_KEY, Type.FOREST, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);

@@ -79,21 +79,6 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockRegistries.CHISELED_POLISHED_LUNON.get());
 
-        loot.addLoot(
-                BlockRegistries.THORN_LEAVES.get(),
-                BlockLootTables.droppingWithChancesSticksAndApples(
-                        BlockRegistries.THORN_LEAVES.get(),
-                        BlockRegistries.THORN_SAPLING.get(),
-                        BlockLootTables.DEFAULT_SAPLING_DROP_RATES
-                )
-        );
-        
-        loot.dropSelf(BlockRegistries.THORN_LOG.get());
-
-        loot.dropSelf(BlockRegistries.THORN_PLANKS.get());
-
-        loot.dropSelf(BlockRegistries.THORN_SAPLING.get());
-
         loot.dropSelf(BlockRegistries.UMBRAL_DUNE.get());
     }
 

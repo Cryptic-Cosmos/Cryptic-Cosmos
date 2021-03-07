@@ -1,11 +1,11 @@
 {
-  "type": "minecraft:overworld",
+  "type": "crypticcosmos:lunara",
   "generator": {
     "type": "minecraft:noise",
-    "seed": -374115348,
+    "seed": 0,
     "biome_source": {
       "type": "minecraft:multi_noise",
-      "seed": -374115348,
+      "seed": 0,
       "altitude_noise": {
         "firstOctave": -7,
         "amplitudes": [
@@ -36,11 +36,31 @@
       },
       "biomes": [
         {
-          "biome": "",
+          "biome": "crypticcosmos:lunara_plains",
           "parameters": {
-            "altitude": 0,
+            "altitude": 0.5,
             "temperature": 0,
             "humidity": 0,
+            "weirdness": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "crypticcosmos:lunara_forest",
+          "parameters": {
+            "altitude": 1,
+            "temperature": 0,
+            "humidity": 0.5,
+            "weirdness": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "crypticcosmos:lunara_mountains",
+          "parameters": {
+            "altitude": 1.5,
+            "temperature": 0.5,
+            "humidity": -1,
             "weirdness": 0,
             "offset": 0
           }

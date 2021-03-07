@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[31.2,)"
+loaderVersion = "[36,)"
 
 license = "GPL version 3 or any later version"
 issueTrackerURL = "https://github.com/Team-Cryptic-Cosmos/Cryptic-Cosmos/issues"
@@ -20,14 +20,14 @@ authors = "Cryptic Cosmos Team"
 
 [[dependencies.crypticcosmos]]
 modId = "forge"
-versionRange = "[31.2,)"
+versionRange = "[36,)"
 mandatory = true
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.crypticcosmos]]
 modId = "minecraft"
-versionRange = "[1.15.2]"
+versionRange = "[1.16.5,)"
 mandatory = true
 ordering = "NONE"
 side = "BOTH"

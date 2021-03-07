@@ -51,13 +51,6 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.LUNON_BRICK_SLAB.get(), "Lunon Brick Slab");
             add(BlockRegistries.LUNON_BRICK_STAIRS.get(), "Lunon Brick Stairs");
 
-            add(BlockRegistries.THORN_LOG.get(), "Thorn Log");
-            add(BlockRegistries.THORN_PLANKS.get(), "Thorn Planks");
-            add(BlockRegistries.THORN_SLAB.get(), "Thorn Slab");
-            add(BlockRegistries.THORN_LEAVES.get(), "Thorn Leaves");
-            add(BlockRegistries.THORN_SAPLING.get(), "Thorn Sapling");
-            add(BlockRegistries.THORN_DOOR.get(), "Thorn Door");
-
             add(BlockRegistries.MONDROVE_LOG.get(), "Mondrove Log");
             add(BlockRegistries.MONDROVE_PLANKS.get(), "Mondrove Planks");
             add(BlockRegistries.MONDROVE_LEAVES.get(), "Mondrove Leaves");

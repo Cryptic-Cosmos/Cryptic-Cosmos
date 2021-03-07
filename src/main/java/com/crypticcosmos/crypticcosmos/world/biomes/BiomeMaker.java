@@ -3,7 +3,6 @@ package com.crypticcosmos.crypticcosmos.world.biomes;
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.world.feature.MondroveTree;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.MathHelper;
@@ -15,7 +14,6 @@ import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.feature.BlockClusterFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.Features;
-import net.minecraft.world.gen.feature.structure.StructureFeatures;
 import net.minecraft.world.gen.surfacebuilders.ISurfaceBuilderConfig;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
@@ -34,12 +32,6 @@ public class BiomeMaker {
             BlockRegistries.UMBRAL_DUNE.get().getDefaultState(),
             BlockRegistries.UMBRAL_DUNE.get().getDefaultState(),
             BlockRegistries.UMBRAL_DUNE.get().getDefaultState()
-    );
-
-    public static final SurfaceBuilderConfig THORN_JUNGLE_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            Blocks.GRASS_BLOCK.getDefaultState(),
-            Blocks.STONE.getDefaultState(),
-            Blocks.SAND.getDefaultState()
     );
 
     @SuppressWarnings("unused")
@@ -179,48 +171,6 @@ public class BiomeMaker {
         );
     }
 
-    public static Biome makeThornJungle() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT,
-                THORN_JUNGLE_SURFACE_BUILDER_CONFIG);
-
-        genSettings.withStructure(StructureFeatures.MINESHAFT);
-        DefaultBiomeFeatures.withMonsterRoom(genSettings);
-
-        DefaultBiomeFeatures.withCavesAndCanyons(genSettings);
-        DefaultBiomeFeatures.withCommonOverworldBlocks(genSettings);
-        DefaultBiomeFeatures.withOverworldOres(genSettings);
-        DefaultBiomeFeatures.withDisks(genSettings);
-        DefaultBiomeFeatures.withBambooVegetation(genSettings);
-        DefaultBiomeFeatures.withDefaultFlowers(genSettings);
-        DefaultBiomeFeatures.withLavaAndWaterLakes(genSettings);
-        DefaultBiomeFeatures.withLavaAndWaterLakes(genSettings);
-        DefaultBiomeFeatures.withNormalMushroomGeneration(genSettings);
-        DefaultBiomeFeatures.withSugarCaneAndPumpkins(genSettings);
-        DefaultBiomeFeatures.withLavaAndWaterSprings(genSettings);
-        DefaultBiomeFeatures.withJungleGrass(genSettings);
-        DefaultBiomeFeatures.withFrozenTopLayer(genSettings);
-
-        final MobSpawnInfo.Builder spawnSettings = spawnSettings();
-
-        addSpawn(spawnSettings, EntityClassification.CREATURE, EntityType.BEE, 1, 1, 2);
-
-        return biome(
-                RainType.RAIN,
-                Category.JUNGLE,
-                0.125f,
-                1f,
-                0.2f,
-                0.0001f,
-                effects(0x465623,
-                        0x88ba40,
-                        DEFAULT_GRASS_COLOR,
-                        DEFAULT_FOLIAGE_COLOR,
-                        0.2f,
-                        DEFAULT_SKY_FOG_COLOR),
-                genSettings, spawnSettings.copy()
-        );
-    }
-
     /**
      * Base biome function Sky color is not generated
      */
@@ -251,8 +201,7 @@ public class BiomeMaker {
     /**
      * Shortcut function and enforces surface builder
      */
-    private static <C extends ISurfaceBuilderConfig> BiomeGenerationSettings.Builder
-    genSettings(SurfaceBuilder<C> surfaceBuilder, C config) {
+    private static <C extends ISurfaceBuilderConfig> BiomeGenerationSettings.Builder genSettings(SurfaceBuilder<C> surfaceBuilder, C config) {
         return new BiomeGenerationSettings.Builder()
                 .withSurfaceBuilder(surfaceBuilder.func_242929_a(config));
     }

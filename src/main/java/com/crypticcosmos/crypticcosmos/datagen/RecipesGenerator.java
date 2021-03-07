@@ -37,13 +37,6 @@ public class RecipesGenerator extends RecipeProvider {
                 .addCriterion("has_moon_log", hasItem(BlockRegistries.MONDROVE_LOG.get()))
                 .build(consumer, BlockRegistries.MONDROVE_PLANKS.getId());
 
-        // Thorn planks
-        ShapelessRecipeBuilder.shapelessRecipe(BlockRegistries.THORN_PLANKS.get(), 4)
-                .addIngredient(BlockRegistries.THORN_LOG.get())
-                .setGroup("planks")
-                .addCriterion("has_thorn_log", hasItem(BlockRegistries.THORN_LOG.get()))
-                .build(consumer, BlockRegistries.THORN_PLANKS.getId());
-
         // Haunted ingot
         CookingRecipeBuilder
                 .smeltingRecipe(
