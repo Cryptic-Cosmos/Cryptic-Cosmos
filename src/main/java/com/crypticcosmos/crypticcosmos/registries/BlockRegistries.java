@@ -21,7 +21,8 @@ public class BlockRegistries {
                             .hardnessAndResistance(6.0f, 34)
                             .sound(SoundType.STONE)
                             .harvestLevel(3)
-                            .harvestTool(ToolType.PICKAXE),
+                            .harvestTool(ToolType.PICKAXE)
+                            .setRequiresTool(),
                     3
             )
     );
@@ -31,7 +32,8 @@ public class BlockRegistries {
                     .hardnessAndResistance(50.0F, 1200.0F)
                     .sound(SoundType.STONE)
                     .harvestLevel(3)
-                    .harvestTool(ToolType.PICKAXE))
+                    .harvestTool(ToolType.PICKAXE)
+                    .setRequiresTool())
     );
 
     // Overgrown Lunon
@@ -43,7 +45,8 @@ public class BlockRegistries {
                     .hardnessAndResistance(2.0f, 10)
                     .sound(SoundType.STONE)
                     .harvestLevel(1)
-                    .harvestTool(ToolType.PICKAXE))
+                    .harvestTool(ToolType.PICKAXE)
+                    .setRequiresTool())
     );
 
     public static final RegistryObject<Block> LUNON_BRICKS = BLOCKS.register("lunon_bricks", () ->
@@ -51,7 +54,8 @@ public class BlockRegistries {
                     .hardnessAndResistance(4.0f, 15)
                     .sound(SoundType.STONE)
                     .harvestLevel(2)
-                    .harvestTool(ToolType.PICKAXE))
+                    .harvestTool(ToolType.PICKAXE)
+                    .setRequiresTool())
     );
 
     public static final RegistryObject<Block> LUNON_BRICK_SLAB = BLOCKS.register("lunon_brick_slab", () ->

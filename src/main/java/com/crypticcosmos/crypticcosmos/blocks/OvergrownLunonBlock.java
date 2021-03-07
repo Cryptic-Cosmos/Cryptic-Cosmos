@@ -21,7 +21,9 @@ public class OvergrownLunonBlock extends SnowyDirtBlock {
                 .hardnessAndResistance(1.6f, 7)
                 .sound(SoundType.STONE)
                 .harvestLevel(1)
-                .harvestTool(ToolType.PICKAXE));
+                .harvestTool(ToolType.PICKAXE)
+                .setRequiresTool()
+        );
 
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(SNOWY, false));
     }
