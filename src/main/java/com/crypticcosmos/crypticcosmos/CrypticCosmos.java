@@ -69,16 +69,12 @@ public class CrypticCosmos {
         BiomeRegistries.BIOMES.register(modEventBus);
         EffectRegistries.EFFECTS.register(modEventBus);
 
-        modEventBus.addListener(this::registerEntityAttributes);
         modEventBus.addListener(this::clientSetup);
+        modEventBus.addListener(this::registerEntityAttributes);
         modEventBus.addGenericListener(Item.class, this::registerBlockItems);
         modEventBus.addGenericListener(EntityType.class, this::createSpawnEggs);
 
         GeckoLib.initialize();
-    }
-
-    public static ResourceLocation id(String path) {
-        return new ResourceLocation(MOD_ID, path);
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
@@ -118,5 +114,9 @@ public class CrypticCosmos {
 
     private void createSpawnEggs(RegistryEvent.Register<EntityType<?>> event) {
         CustomSpawnEggItem.initSpawnEggs();
+    }
+
+    public static ResourceLocation id(String path) {
+        return new ResourceLocation(MOD_ID, path);
     }
 }
