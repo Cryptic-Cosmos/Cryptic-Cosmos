@@ -107,11 +107,9 @@ public class BlockRegistries {
     public static final RegistryObject<Block> RIFT_BLOCK = BLOCKS.register("rift_block", RiftBlock::new);
 
     // Umbral Plains
-    public static final RegistryObject<Block> UMBRAL_DUNE = BLOCKS.register(
-            "umbral_dune",
-            () -> new SandBlock(22,
-                    Properties.create(Material.SAND)
-                            .hardnessAndResistance(0.5F)
-                            .sound(SoundType.SAND)));
+    public static final RegistryObject<Block> UMBRAL_DUNE = BLOCKS.register("umbral_dune", () ->
+            new SandBlock(22, Properties.create(Material.SAND)
+                    .hardnessAndResistance(0.5F)
+                    .sound(SoundType.SAND)));
 }
 

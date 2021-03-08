@@ -16,7 +16,7 @@ public class BiomeRegistries {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, CrypticCosmos.MOD_ID);
 
     // lunara biomes
-    public static final RegistryObject<Biome> LUNARA_PLAINS = BIOMES.register("moon_plains", BiomeMaker::makeLunaraPlains);
+    public static final RegistryObject<Biome> LUNARA_PLAINS = BIOMES.register("lunara_plains", BiomeMaker::makeLunaraPlains);
     public static final RegistryKey<Biome> LUNARA_PLAINS_KEY =
             RegistryKey.getOrCreateKey(Registry.BIOME_KEY, CrypticCosmos.id("lunara_plains"));
 

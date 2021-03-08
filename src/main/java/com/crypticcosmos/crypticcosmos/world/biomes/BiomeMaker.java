@@ -23,7 +23,7 @@ import static net.minecraft.world.biome.Biome.*;
 @SuppressWarnings("SameParameterValue")
 public class BiomeMaker {
     public static final SurfaceBuilderConfig LUNARA_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            BlockRegistries.LUNON.get().getDefaultState(),
+            BlockRegistries.OVERGROWN_LUNON.get().getDefaultState(),
             BlockRegistries.LUNON.get().getDefaultState(),
             BlockRegistries.LUNON_DUST.get().getDefaultState()
     );
