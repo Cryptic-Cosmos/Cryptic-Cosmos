@@ -67,6 +67,6 @@
         }
       ]
     },
-    "settings": "minecraft:overworld"
+    "settings": "crypticcosmos:lunara_settings"
   }
 }
