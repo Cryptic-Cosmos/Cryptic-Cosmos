@@ -2,9 +2,11 @@ package com.crypticcosmos.crypticcosmos.datagen;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
+import com.crypticcosmos.crypticcosmos.registries.TagRegistries;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.BlockTags;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
@@ -20,5 +22,7 @@ public class BlockTagGenerator extends BlockTagsProvider {
         getOrCreateBuilder(BlockTags.LOGS).add(BlockRegistries.MONDROVE_LOG.get());
         getOrCreateBuilder(BlockTags.PLANKS).add(BlockRegistries.MONDROVE_PLANKS.get());
         getOrCreateBuilder(BlockTags.SAPLINGS).add(BlockRegistries.MONDROVE_SAPLING.get());
+        // this makes sure the mondrove trees generate correctly
+        getOrCreateBuilder(Tags.Blocks.DIRT).addTag(TagRegistries.LUNARA_PLANTABLE_BLOCKS);
     }
 }

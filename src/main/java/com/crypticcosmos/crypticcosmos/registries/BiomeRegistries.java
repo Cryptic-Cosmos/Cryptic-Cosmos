@@ -7,8 +7,8 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
-import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -32,7 +32,7 @@ public class BiomeRegistries {
     public static final RegistryKey<Biome> UMBRAL_DUNES_KEY =
             RegistryKey.getOrCreateKey(Registry.BIOME_KEY, CrypticCosmos.id("umbral_dunes"));
 
-    public static void biomeLoading(BiomeLoadingEvent event) {
+    public static void biomeLoading(FMLCommonSetupEvent event) {
         BiomeDictionary.addTypes(LUNARA_PLAINS_KEY, Type.PLAINS, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
         BiomeDictionary.addTypes(LUNARA_MOUNTAINS_KEY, Type.MOUNTAIN, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
         BiomeDictionary.addTypes(LUNARA_FOREST_KEY, Type.FOREST, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);

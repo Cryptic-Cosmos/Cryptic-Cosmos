@@ -2,21 +2,24 @@ package com.crypticcosmos.crypticcosmos.world.biomes;
 
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
+import com.crypticcosmos.crypticcosmos.registries.FeatureRegistries;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.WorldGenRegistries;
-import net.minecraft.world.biome.*;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeAmbience;
+import net.minecraft.world.biome.BiomeGenerationSettings;
+import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
-import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
+import net.minecraft.world.gen.feature.BlockClusterFeatureConfig;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.surfacebuilders.ISurfaceBuilderConfig;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
-import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 
 import static net.minecraft.world.biome.Biome.*;
 
@@ -34,18 +37,6 @@ public class BiomeMaker {
             BlockRegistries.UMBRAL_DUNE.get().getDefaultState()
     );
 
-    public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> MONDROVE_TREE = Feature.TREE.withConfiguration(
-            new BaseTreeFeatureConfig.Builder(
-                    new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LOG.get().getDefaultState()),
-                    new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LEAVES.get().getDefaultState()),
-                    new BlobFoliagePlacer(FeatureSpread.func_242252_a(2),
-                            FeatureSpread.func_242252_a(0), 3),
-                    new StraightTrunkPlacer(4, 2, 0),
-                    new TwoLayerFeature(1, 0, 1))
-                    .setIgnoreVines()
-                    .build()
-    );
-
     @SuppressWarnings("unused")
     public static final int DEFAULT_WATER_COLOR = 0x3f76e4;
     @SuppressWarnings("unused")
@@ -58,8 +49,6 @@ public class BiomeMaker {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, LUNARA_SURFACE_BUILDER_CONFIG);
 
         WorldGenRegistries.init();
-
-        DefaultBiomeFeatures.withCavesAndCanyons(genSettings);
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
@@ -92,8 +81,6 @@ public class BiomeMaker {
 
         WorldGenRegistries.init();
 
-        DefaultBiomeFeatures.withCavesAndCanyons(genSettings);
-
         final BlockClusterFeatureConfig MONDROVE_FUNGUS_CONFIG =
                 new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider()
                         .addWeightedBlockstate(BlockRegistries.MONDROVE_FUNGUS.get().getDefaultState(), 2),
@@ -108,7 +95,7 @@ public class BiomeMaker {
                         .func_242731_b(2));
 
         // Add mondrove tree generation.
-        genSettings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, MONDROVE_TREE);
+        genSettings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureRegistries.MONDROVE_TREE);
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 

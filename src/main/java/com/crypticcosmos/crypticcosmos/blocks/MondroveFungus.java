@@ -17,7 +17,6 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.common.PlantType;
 
 import javax.annotation.Nonnull;
 
@@ -31,10 +30,10 @@ public class MondroveFungus extends BushBlock {
                 .sound(SoundType.PLANT));
     }
 
-    @Override
-    public PlantType getPlantType(IBlockReader world, BlockPos pos) {
-        return PlantType.get("lunara");
-    }
+    // @Override
+    // public PlantType getPlantType(IBlockReader world, BlockPos pos) {
+    //     return PlantType.get("lunara");
+    // }
 
     @Override
     public boolean isValidGround(BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
