@@ -61,7 +61,6 @@ public class BiomeMaker {
                 DEFAULT_FOLIAGE_COLOR,
                 0,
                 DEFAULT_SKY_FOG_COLOR,
-                SoundEventRegistries.MUSIC_LUNARA.get(),
                 SoundEventRegistries.MUSIC_ACERBIC_ISLES.get()
         );
 
@@ -98,8 +97,8 @@ public class BiomeMaker {
                 DEFAULT_FOLIAGE_COLOR,
                 0,
                 DEFAULT_SKY_FOG_COLOR,
-                SoundEventRegistries.MUSIC_LUNARA.get(),
-                SoundEventRegistries.MUSIC_MONDROVE_GROVES.get());
+                SoundEventRegistries.MUSIC_MONDROVE_GROVES.get()
+        );
 
         return biome(
                 RainType.RAIN,
@@ -236,27 +235,6 @@ public class BiomeMaker {
                                                  int foliageColor,
                                                  float temperature,
                                                  int skyFogColor,
-                                                 SoundEvent ambientSound) {
-        return new BiomeAmbience.Builder()
-                .setWaterColor(waterColor)
-                .setWaterFogColor(waterFogColor)
-                .withGrassColor(grassColor)
-                .withFoliageColor(foliageColor)
-                .withSkyColor(getSkyForTemp(temperature))
-                .setFogColor(skyFogColor)
-                .setAmbientSound(ambientSound);
-    }
-
-    /**
-     * Biome ambience builder.
-     */
-    private static BiomeAmbience.Builder effects(int waterColor,
-                                                 int waterFogColor,
-                                                 int grassColor,
-                                                 int foliageColor,
-                                                 float temperature,
-                                                 int skyFogColor,
-                                                 SoundEvent ambientSound,
                                                  SoundEvent music) {
         return new BiomeAmbience.Builder()
                 .setWaterColor(waterColor)
@@ -265,7 +243,6 @@ public class BiomeMaker {
                 .withFoliageColor(foliageColor)
                 .withSkyColor(getSkyForTemp(temperature))
                 .setFogColor(skyFogColor)
-                .setAmbientSound(ambientSound)
                 .setMusic(BackgroundMusicTracks.getDefaultBackgroundMusicSelector(music));
     }
 
