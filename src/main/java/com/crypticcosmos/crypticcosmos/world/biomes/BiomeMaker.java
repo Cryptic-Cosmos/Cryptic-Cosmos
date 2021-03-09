@@ -6,17 +6,11 @@ import com.crypticcosmos.crypticcosmos.registries.FeatureRegistries;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
-import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
-import net.minecraft.world.gen.feature.BlockClusterFeatureConfig;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.surfacebuilders.ISurfaceBuilderConfig;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
@@ -48,8 +42,6 @@ public class BiomeMaker {
     public static Biome makeLunaraMountains() {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, LUNARA_SURFACE_BUILDER_CONFIG);
 
-        WorldGenRegistries.init();
-
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
         addSpawn(spawnSettings, EntityClassification.CREATURE,
@@ -79,20 +71,8 @@ public class BiomeMaker {
     public static Biome makeLunaraForest() {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, LUNARA_SURFACE_BUILDER_CONFIG);
 
-        WorldGenRegistries.init();
-
-        final BlockClusterFeatureConfig MONDROVE_FUNGUS_CONFIG =
-                new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider()
-                        .addWeightedBlockstate(BlockRegistries.MONDROVE_FUNGUS.get().getDefaultState(), 2),
-                        new SimpleBlockPlacer()
-                ).tries(64).build();
-
         // Add mondrove fungus generation.
-        genSettings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-                Feature.FLOWER.withConfiguration(MONDROVE_FUNGUS_CONFIG)
-                        .withPlacement(Features.Placements.VEGETATION_PLACEMENT)
-                        .withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT)
-                        .func_242731_b(2));
+        genSettings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureRegistries.MONDROVE_FUNGUS);
 
         // Add mondrove tree generation.
         genSettings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureRegistries.MONDROVE_TREE);
