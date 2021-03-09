@@ -10,6 +10,9 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biome.Builder;
+import net.minecraft.world.biome.Biome.Category;
+import net.minecraft.world.biome.Biome.RainType;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
@@ -19,8 +22,6 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
 import javax.annotation.Nonnull;
-
-import static net.minecraft.world.biome.Biome.*;
 
 @SuppressWarnings("SameParameterValue")
 public class BiomeMaker {
@@ -73,7 +74,7 @@ public class BiomeMaker {
                 0.0001f,
                 effects,
                 genSettings,
-                spawnSettings.copy()
+                spawnSettings.build()
         );
     }
 
@@ -109,7 +110,7 @@ public class BiomeMaker {
                 0.0001f,
                 effects,
                 genSettings,
-                spawnSettings.copy()
+                spawnSettings.build()
         );
     }
 
@@ -142,7 +143,7 @@ public class BiomeMaker {
                 0.0001f,
                 effects,
                 genSettings,
-                spawnSettings.copy()
+                spawnSettings.build()
         );
     }
 

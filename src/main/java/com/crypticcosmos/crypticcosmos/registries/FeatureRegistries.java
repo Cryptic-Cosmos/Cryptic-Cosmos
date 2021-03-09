@@ -15,8 +15,8 @@ public class FeatureRegistries {
             Feature.TREE.withConfiguration(new BaseTreeFeatureConfig.Builder(
                     new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LOG.get().getDefaultState()),
                     new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LEAVES.get().getDefaultState()),
-                    new BlobFoliagePlacer(FeatureSpread.func_242252_a(2),
-                            FeatureSpread.func_242252_a(0), 3),
+                    new BlobFoliagePlacer(FeatureSpread.create(2),
+                            FeatureSpread.create(0), 3),
                     new StraightTrunkPlacer(4, 2, 0),
                     new TwoLayerFeature(1, 0, 1))
                     .setIgnoreVines()
@@ -32,7 +32,7 @@ public class FeatureRegistries {
                     .build()
             ).withPlacement(Features.Placements.VEGETATION_PLACEMENT)
                     .withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT)
-                    .func_242731_b(2)
+                    .count(2)
     );
 
     private static <T extends IFeatureConfig> ConfiguredFeature<T, ?> registerFeature(String path, ConfiguredFeature<T, ?> feature) {

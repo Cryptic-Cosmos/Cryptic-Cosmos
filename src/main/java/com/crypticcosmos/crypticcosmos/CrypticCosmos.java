@@ -1,12 +1,12 @@
 package com.crypticcosmos.crypticcosmos;
 
+import com.crypticcosmos.crypticcosmos.blocks.RiftBlock;
 import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastRender;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
 import com.crypticcosmos.crypticcosmos.registries.*;
-import com.crypticcosmos.crypticcosmos.world.gen.RiftSpawning;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -59,7 +59,7 @@ public class CrypticCosmos {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.addListener(RiftSpawning::riftSpawning);
+        MinecraftForge.EVENT_BUS.addListener(RiftBlock::riftSpawning);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, BiomeRegistries::biomeLoading);
 
         BlockRegistries.BLOCKS.register(modEventBus);

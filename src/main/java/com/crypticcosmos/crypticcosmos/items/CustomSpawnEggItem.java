@@ -39,7 +39,7 @@ public class CustomSpawnEggItem extends SpawnEggItem {
 
     public static void initSpawnEggs() {
         final Map<EntityType<?>, SpawnEggItem> EGGS = Objects.requireNonNull(
-                ObfuscationReflectionHelper.getPrivateValue(SpawnEggItem.class, null, "field_195987_b")
+                ObfuscationReflectionHelper.getPrivateValue(SpawnEggItem.class, null, "EGGS")
         );
 
         DefaultDispenseItemBehavior dispenserBehavior = new DefaultDispenseItemBehavior() {

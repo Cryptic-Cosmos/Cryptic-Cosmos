@@ -105,7 +105,7 @@ public class MoonFrogEntity extends TameableEntity implements IAnimatable {
 
     @Nullable
     @Override
-    public AgeableEntity func_241840_a(ServerWorld p_241840_1_, AgeableEntity p_241840_2_) {
+    public AgeableEntity createChild(ServerWorld world, AgeableEntity mate) {
         return EntityTypeRegistries.MOON_FROG.get().create(this.world);
     }
 }
