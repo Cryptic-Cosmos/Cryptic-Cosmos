@@ -36,7 +36,8 @@ public class RiftBlock extends Block {
     }
 
     public static void riftSpawning(@Nonnull TickEvent.PlayerTickEvent event) {
-        final int spawningChance = 20000;
+        // The higher this is, the less likely it is for a rift to spawn (the exact chance is 1/spawning chance)
+        final int spawningChance = 15000;
         final int minDistance = 5;
         final int maxDistance = 120;
 
