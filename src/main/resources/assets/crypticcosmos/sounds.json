@@ -12,6 +12,10 @@
       {
         "name": "crypticcosmos:lunara/payper",
         "stream": true
+      },
+      {
+        "name": "crypticcosmos:lunara/albedo",
+        "stream": true
       }
     ]
   },
@@ -19,6 +23,10 @@
     "sounds": [
       {
         "name": "crypticcosmos:lunara/toru",
+        "stream": true
+      },
+      {
+        "name": "crypticcosmos:lunara/albedo",
         "stream": true
       }
     ]
