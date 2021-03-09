@@ -36,7 +36,6 @@ import java.util.Objects;
 @Mod(CrypticCosmos.MOD_ID)
 public class CrypticCosmos {
     public static final Logger LOGGER = LogManager.getLogger();
-
     public static final String MOD_ID = "crypticcosmos";
 
     public static final ItemGroup ITEM_ITEM_GROUP = new ItemGroup("item_tab") {
@@ -68,6 +67,7 @@ public class CrypticCosmos {
         EntityTypeRegistries.ENTITY_TYPES.register(modEventBus);
         BiomeRegistries.BIOMES.register(modEventBus);
         EffectRegistries.EFFECTS.register(modEventBus);
+        SoundEventRegistries.SOUND_EVENTS.register(modEventBus);
 
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::registerEntityAttributes);

@@ -46,7 +46,7 @@
           }
         },
         {
-          "biome": "crypticcosmos:lunara_forest",
+          "biome": "crypticcosmos:mondrove_groves",
           "parameters": {
             "altitude": 1,
             "temperature": 0,
@@ -56,7 +56,7 @@
           }
         },
         {
-          "biome": "crypticcosmos:lunara_mountains",
+          "biome": "crypticcosmos:acerbic_isles",
           "parameters": {
             "altitude": 1.5,
             "temperature": 0.5,

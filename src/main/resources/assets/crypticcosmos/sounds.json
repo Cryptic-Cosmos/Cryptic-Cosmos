@@ -1,0 +1,46 @@
+{
+  "lunara": {
+    "sounds": [
+      {
+        "name": "crypticcosmos:lunara/albedo",
+        "stream": true
+      }
+    ]
+  },
+  "mondrove_groves": {
+    "sounds": [
+      {
+        "name": "crypticcosmos:lunara/payper",
+        "stream": true
+      }
+    ]
+  },
+  "acerbic_isles": {
+    "sounds": [
+      {
+        "name": "crypticcosmos:lunara/toru",
+        "stream": true
+      }
+    ]
+  },
+  "abyss": {
+    "sounds": [
+      {
+        "name": "crypticcosmos:abyss/altum",
+        "stream": true
+      },
+      {
+        "name": "crypticcosmos:abyss/styx",
+        "stream": true
+      },
+      {
+        "name": "crypticcosmos:abyss/ourea",
+        "stream": true
+      },
+      {
+        "name": "crypticcosmos:abyss/cocytus",
+        "stream": true
+      }
+    ]
+  }
+}

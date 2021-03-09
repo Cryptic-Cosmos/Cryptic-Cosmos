@@ -3,8 +3,11 @@ package com.crypticcosmos.crypticcosmos.world.biomes;
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.registries.FeatureRegistries;
+import com.crypticcosmos.crypticcosmos.registries.SoundEventRegistries;
+import net.minecraft.client.audio.BackgroundMusicTracks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeAmbience;
@@ -14,6 +17,8 @@ import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.surfacebuilders.ISurfaceBuilderConfig;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
+
+import javax.annotation.Nonnull;
 
 import static net.minecraft.world.biome.Biome.*;
 
@@ -39,7 +44,7 @@ public class BiomeMaker {
     public static final int DEFAULT_FOLIAGE_COLOR = 0x77ab2f;
     public static final int DEFAULT_SKY_FOG_COLOR = 12638463;
 
-    public static Biome makeLunaraMountains() {
+    public static Biome makeAcerbicIsles() {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, LUNARA_SURFACE_BUILDER_CONFIG);
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
@@ -50,6 +55,16 @@ public class BiomeMaker {
         addSpawn(spawnSettings, EntityClassification.CREATURE,
                 EntityType.ENDERMAN, 4, 1, 4);
 
+        final BiomeAmbience.Builder effects = effects(0xfffff5,
+                0xfffff5,
+                DEFAULT_GRASS_COLOR,
+                DEFAULT_FOLIAGE_COLOR,
+                0,
+                DEFAULT_SKY_FOG_COLOR,
+                SoundEventRegistries.MUSIC_LUNARA.get(),
+                SoundEventRegistries.MUSIC_ACERBIC_ISLES.get()
+        );
+
         return biome(
                 RainType.RAIN,
                 Category.EXTREME_HILLS,
@@ -57,18 +72,13 @@ public class BiomeMaker {
                 1,
                 0f,
                 0.0001f,
-                effects(0xfffff5,
-                        0xfffff5,
-                        DEFAULT_GRASS_COLOR,
-                        DEFAULT_FOLIAGE_COLOR,
-                        0,
-                        DEFAULT_SKY_FOG_COLOR),
+                effects,
                 genSettings,
                 spawnSettings.copy()
         );
     }
 
-    public static Biome makeLunaraForest() {
+    public static Biome makeMondroveGroves() {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, LUNARA_SURFACE_BUILDER_CONFIG);
 
         // Add mondrove fungus generation.
@@ -82,6 +92,15 @@ public class BiomeMaker {
         addSpawn(spawnSettings, EntityClassification.CREATURE,
                 EntityType.ENDERMAN, 10, 1, 4);
 
+        final BiomeAmbience.Builder effects = effects(0xfffff5,
+                0xfffff5,
+                DEFAULT_GRASS_COLOR,
+                DEFAULT_FOLIAGE_COLOR,
+                0,
+                DEFAULT_SKY_FOG_COLOR,
+                SoundEventRegistries.MUSIC_LUNARA.get(),
+                SoundEventRegistries.MUSIC_MONDROVE_GROVES.get());
+
         return biome(
                 RainType.RAIN,
                 Category.FOREST,
@@ -89,17 +108,13 @@ public class BiomeMaker {
                 1,
                 0f,
                 0.0001f,
-                effects(0xfffff5,
-                        0xfffff5,
-                        DEFAULT_GRASS_COLOR,
-                        DEFAULT_FOLIAGE_COLOR,
-                        0,
-                        DEFAULT_SKY_FOG_COLOR),
+                effects,
                 genSettings,
                 spawnSettings.copy()
         );
     }
 
+    @Nonnull
     public static Biome makeLunaraPlains() {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, LUNARA_SURFACE_BUILDER_CONFIG);
 
@@ -111,6 +126,14 @@ public class BiomeMaker {
         addSpawn(spawnSettings, EntityClassification.CREATURE,
                 EntityType.ENDERMAN, 4, 1, 4);
 
+        final BiomeAmbience.Builder effects = effects(0xfffff5,
+                0xfffff5,
+                DEFAULT_GRASS_COLOR,
+                DEFAULT_FOLIAGE_COLOR,
+                0,
+                DEFAULT_SKY_FOG_COLOR,
+                SoundEventRegistries.MUSIC_LUNARA.get());
+
         return biome(
                 RainType.RAIN,
                 Category.PLAINS,
@@ -118,12 +141,7 @@ public class BiomeMaker {
                 1,
                 0f,
                 0.0001f,
-                effects(0xfffff5,
-                        0xfffff5,
-                        DEFAULT_GRASS_COLOR,
-                        DEFAULT_FOLIAGE_COLOR,
-                        0,
-                        DEFAULT_SKY_FOG_COLOR),
+                effects,
                 genSettings,
                 spawnSettings.copy()
         );
@@ -132,6 +150,14 @@ public class BiomeMaker {
     public static Biome makeUmbralDunes() {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, ABYSS_SURFACE_BUILDER_CONFIG);
 
+        final BiomeAmbience.Builder effects = effects(0x412,
+                0x412,
+                DEFAULT_GRASS_COLOR,
+                DEFAULT_FOLIAGE_COLOR,
+                3f,
+                DEFAULT_SKY_FOG_COLOR,
+                SoundEventRegistries.MUSIC_ABYSS.get());
+
         return biome(
                 RainType.RAIN,
                 Category.PLAINS,
@@ -139,12 +165,7 @@ public class BiomeMaker {
                 1f,
                 3f,
                 0,
-                effects(0x412,
-                        0x412,
-                        DEFAULT_GRASS_COLOR,
-                        DEFAULT_FOLIAGE_COLOR,
-                        3f,
-                        DEFAULT_SKY_FOG_COLOR),
+                effects,
                 genSettings,
                 MobSpawnInfo.EMPTY
         );
@@ -214,14 +235,38 @@ public class BiomeMaker {
                                                  int grassColor,
                                                  int foliageColor,
                                                  float temperature,
-                                                 int skyFogColor) {
+                                                 int skyFogColor,
+                                                 SoundEvent ambientSound) {
         return new BiomeAmbience.Builder()
                 .setWaterColor(waterColor)
                 .setWaterFogColor(waterFogColor)
                 .withGrassColor(grassColor)
                 .withFoliageColor(foliageColor)
                 .withSkyColor(getSkyForTemp(temperature))
-                .setFogColor(skyFogColor);
+                .setFogColor(skyFogColor)
+                .setAmbientSound(ambientSound);
+    }
+
+    /**
+     * Biome ambience builder.
+     */
+    private static BiomeAmbience.Builder effects(int waterColor,
+                                                 int waterFogColor,
+                                                 int grassColor,
+                                                 int foliageColor,
+                                                 float temperature,
+                                                 int skyFogColor,
+                                                 SoundEvent ambientSound,
+                                                 SoundEvent music) {
+        return new BiomeAmbience.Builder()
+                .setWaterColor(waterColor)
+                .setWaterFogColor(waterFogColor)
+                .withGrassColor(grassColor)
+                .withFoliageColor(foliageColor)
+                .withSkyColor(getSkyForTemp(temperature))
+                .setFogColor(skyFogColor)
+                .setAmbientSound(ambientSound)
+                .setMusic(BackgroundMusicTracks.getDefaultBackgroundMusicSelector(music));
     }
 
     private static int getSkyForTemp(float temperature) {

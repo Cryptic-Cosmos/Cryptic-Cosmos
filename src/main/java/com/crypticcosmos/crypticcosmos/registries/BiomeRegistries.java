@@ -20,11 +20,11 @@ public class BiomeRegistries {
     public static final RegistryKey<Biome> LUNARA_PLAINS_KEY =
             RegistryKey.getOrCreateKey(Registry.BIOME_KEY, CrypticCosmos.id("lunara_plains"));
 
-    public static final RegistryObject<Biome> LUNARA_MOUNTAINS = BIOMES.register("lunara_mountains", BiomeMaker::makeLunaraMountains);
+    public static final RegistryObject<Biome> ACERBIC_ISLES = BIOMES.register("acerbic_isles", BiomeMaker::makeAcerbicIsles);
     public static final RegistryKey<Biome> LUNARA_MOUNTAINS_KEY =
             RegistryKey.getOrCreateKey(Registry.BIOME_KEY, CrypticCosmos.id("lunara_mountains"));
 
-    public static final RegistryObject<Biome> LUNARA_FOREST = BIOMES.register("lunara_forest", BiomeMaker::makeLunaraForest);
+    public static final RegistryObject<Biome> MONDROVE_GROVES = BIOMES.register("mondrove_groves", BiomeMaker::makeMondroveGroves);
     public static final RegistryKey<Biome> LUNARA_FOREST_KEY =
             RegistryKey.getOrCreateKey(Registry.BIOME_KEY, CrypticCosmos.id("lunara_forest"));
 
