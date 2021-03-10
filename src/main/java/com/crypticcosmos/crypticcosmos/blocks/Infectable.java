@@ -10,15 +10,15 @@ public interface Infectable {
     IntegerProperty INFECTION_LEVEL = IntegerProperty.create("infection_level", 0, 2);
 
     default void infect(ServerWorld world, BlockPos pos) {
-        if (world.getDimensionKey() == CrypticCosmosDimensions.LUNARA_KEY) {
+        if (world.dimension() == CrypticCosmosDimensions.LUNARA_KEY) {
             BlockState infectedLogState = world.getBlockState(pos);
 
-            if (infectedLogState.get(INFECTION_LEVEL) < 2) {
-                world.setBlockState(
+            if (infectedLogState.getValue(INFECTION_LEVEL) < 2) {
+                world.setBlock(
                         pos,
-                        infectedLogState.with(
+                        infectedLogState.setValue(
                                 INFECTION_LEVEL,
-                                infectedLogState.get(INFECTION_LEVEL) + 1
+                                infectedLogState.getValue(INFECTION_LEVEL) + 1
                         ),
                         3
                 );

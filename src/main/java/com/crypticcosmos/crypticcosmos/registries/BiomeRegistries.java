@@ -18,19 +18,19 @@ public class BiomeRegistries {
     // lunara biomes
     public static final RegistryObject<Biome> LUNARA_PLAINS = BIOMES.register("lunara_plains", BiomeMaker::makeLunaraPlains);
     public static final RegistryKey<Biome> LUNARA_PLAINS_KEY =
-            RegistryKey.getOrCreateKey(Registry.BIOME_KEY, CrypticCosmos.id("lunara_plains"));
+            RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("lunara_plains"));
 
     public static final RegistryObject<Biome> ACERBIC_ISLES = BIOMES.register("acerbic_isles", BiomeMaker::makeAcerbicIsles);
     public static final RegistryKey<Biome> LUNARA_MOUNTAINS_KEY =
-            RegistryKey.getOrCreateKey(Registry.BIOME_KEY, CrypticCosmos.id("lunara_mountains"));
+            RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("lunara_mountains"));
 
     public static final RegistryObject<Biome> MONDROVE_GROVES = BIOMES.register("mondrove_groves", BiomeMaker::makeMondroveGroves);
     public static final RegistryKey<Biome> LUNARA_FOREST_KEY =
-            RegistryKey.getOrCreateKey(Registry.BIOME_KEY, CrypticCosmos.id("lunara_forest"));
+            RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("lunara_forest"));
 
     public static final RegistryObject<Biome> UMBRAL_DUNES = BIOMES.register("umbral_dunes", BiomeMaker::makeUmbralDunes);
     public static final RegistryKey<Biome> UMBRAL_DUNES_KEY =
-            RegistryKey.getOrCreateKey(Registry.BIOME_KEY, CrypticCosmos.id("umbral_dunes"));
+            RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("umbral_dunes"));
 
     public static void biomeLoading(FMLCommonSetupEvent event) {
         BiomeDictionary.addTypes(LUNARA_PLAINS_KEY, Type.PLAINS, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);

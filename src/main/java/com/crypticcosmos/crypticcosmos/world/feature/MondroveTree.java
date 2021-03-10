@@ -12,7 +12,7 @@ import java.util.Random;
 public class MondroveTree extends Tree {
     @Override
     @Nullable
-    public ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(@Nonnull Random randomIn, boolean largeHive) {
+    public ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(@Nonnull Random randomIn, boolean largeHive) {
         return FeatureRegistries.MONDROVE_TREE;
     }
 }

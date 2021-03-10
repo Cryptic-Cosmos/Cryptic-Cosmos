@@ -5,6 +5,8 @@ import net.minecraft.block.OreBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
 
+import javax.annotation.Nonnull;
+
 public class ExpDroppingOreBlock extends OreBlock {
     private final int expDrop;
 
@@ -15,7 +17,7 @@ public class ExpDroppingOreBlock extends OreBlock {
     }
 
     @Override
-    public int getExpDrop(BlockState state, IWorldReader reader, BlockPos pos, int fortune, int silktouch) {
+    public int getExpDrop(@Nonnull BlockState state, @Nonnull IWorldReader reader, @Nonnull BlockPos pos, int fortune, int silktouch) {
         return expDrop;
     }
 }

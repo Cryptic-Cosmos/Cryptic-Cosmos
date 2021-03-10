@@ -40,20 +40,20 @@ public class CrypticCosmos {
 
     public static final ItemGroup ITEM_ITEM_GROUP = new ItemGroup("item_tab") {
         @Override
-        public ItemStack createIcon() {
+        public ItemStack makeIcon() {
             return new ItemStack(ItemRegistries.HUMMING_INGOT.get());
         }
     };
 
     public static final ItemGroup BLOCK_ITEM_GROUP = new ItemGroup("block_tab") {
         @Override
-        public ItemStack createIcon() {
+        public ItemStack makeIcon() {
             return new ItemStack(BlockRegistries.LUNON.get());
         }
     };
 
-    public static final Item.Properties ITEM_GROUP_PROPERTY = new Item.Properties().group(ITEM_ITEM_GROUP);
-    public static final Item.Properties BLOCK_GROUP_PROPERTY = new Item.Properties().group(BLOCK_ITEM_GROUP);
+    public static final Item.Properties ITEM_GROUP_PROPERTY = new Item.Properties().tab(ITEM_ITEM_GROUP);
+    public static final Item.Properties BLOCK_GROUP_PROPERTY = new Item.Properties().tab(BLOCK_ITEM_GROUP);
 
     public CrypticCosmos() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -78,8 +78,8 @@ public class CrypticCosmos {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_SAPLING.get(), RenderType.getCutout());
-        RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_FUNGUS.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_SAPLING.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_FUNGUS.get(), RenderType.cutout());
 
         RenderingRegistry.registerEntityRenderingHandler(
                 EntityTypeRegistries.MOON_BEAST.get(),

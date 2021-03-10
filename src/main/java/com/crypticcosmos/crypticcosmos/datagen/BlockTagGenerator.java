@@ -17,12 +17,12 @@ public class BlockTagGenerator extends BlockTagsProvider {
     }
 
     @Override
-    protected void registerTags() {
-        getOrCreateBuilder(BlockTags.LEAVES).add(BlockRegistries.MONDROVE_LEAVES.get());
-        getOrCreateBuilder(BlockTags.LOGS).add(BlockRegistries.MONDROVE_LOG.get());
-        getOrCreateBuilder(BlockTags.PLANKS).add(BlockRegistries.MONDROVE_PLANKS.get());
-        getOrCreateBuilder(BlockTags.SAPLINGS).add(BlockRegistries.MONDROVE_SAPLING.get());
+    protected void addTags() {
+        tag(BlockTags.LEAVES).add(BlockRegistries.MONDROVE_LEAVES.get());
+        tag(BlockTags.LOGS).add(BlockRegistries.MONDROVE_LOG.get());
+        tag(BlockTags.PLANKS).add(BlockRegistries.MONDROVE_PLANKS.get());
+        tag(BlockTags.SAPLINGS).add(BlockRegistries.MONDROVE_SAPLING.get());
         // this makes sure the mondrove trees generate correctly
-        getOrCreateBuilder(Tags.Blocks.DIRT).addTag(TagRegistries.LUNARA_PLANTABLE_BLOCKS);
+        tag(Tags.Blocks.DIRT).addTag(TagRegistries.LUNARA_PLANTABLE_BLOCKS);
     }
 }

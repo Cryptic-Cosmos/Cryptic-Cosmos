@@ -21,7 +21,7 @@ public class ItemTagGenerator extends ItemTagsProvider {
     }
 
     @Override
-    protected void registerTags() {
+    protected void addTags() {
         addItemProvider(ItemTags.LEAVES, BlockRegistries.MONDROVE_LEAVES.get());
         addItemProvider(ItemTags.LOGS, BlockRegistries.MONDROVE_LOG.get());
         addItemProvider(ItemTags.PLANKS, BlockRegistries.MONDROVE_PLANKS.get());
@@ -29,6 +29,6 @@ public class ItemTagGenerator extends ItemTagsProvider {
     }
 
     private void addItemProvider(ITag.INamedTag<Item> tag, IItemProvider... itemProvider) {
-        Arrays.stream(itemProvider).forEach((item) -> getOrCreateBuilder(tag).add(item.asItem()));
+        Arrays.stream(itemProvider).forEach((item) -> tag(tag).add(item.asItem()));
     }
 }

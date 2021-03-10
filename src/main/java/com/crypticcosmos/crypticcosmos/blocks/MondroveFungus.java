@@ -21,34 +21,34 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 
 public class MondroveFungus extends BushBlock {
-    public static final VoxelShape SHAPE = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
+    public static final VoxelShape SHAPE = Block.box(5.0D,
+            0.0D,
+            5.0D,
+            11.0D,
+            10.0D,
+            11.0D);
 
     public MondroveFungus() {
-        super(Properties.create(Material.PLANTS)
-                .hardnessAndResistance(0)
-                .doesNotBlockMovement()
-                .sound(SoundType.PLANT));
+        super(Properties.of(Material.PLANT)
+                .strength(0)
+                .noCollission()
+                .sound(SoundType.GRASS));
     }
 
-    // @Override
-    // public PlantType getPlantType(IBlockReader world, BlockPos pos) {
-    //     return PlantType.get("lunara");
-    // }
-
     @Override
-    public boolean isValidGround(BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
-        return state.isIn(TagRegistries.LUNARA_PLANTABLE_BLOCKS);
+    public boolean mayPlaceOn(BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
+        return state.is(TagRegistries.LUNARA_PLANTABLE_BLOCKS);
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    public void onEntityCollision(@Nonnull BlockState state, World world, @Nonnull BlockPos pos, @Nonnull Entity entity) {
-        if (!world.isRemote && entity instanceof LivingEntity) {
+    public void entityInside(@Nonnull BlockState state, World world, @Nonnull BlockPos pos, @Nonnull Entity entity) {
+        if (!world.isClientSide() && entity instanceof LivingEntity) {
             LivingEntity livingEntity = (LivingEntity) entity;
 
-            livingEntity.attackEntityFrom(CorruptionEffect.CORRUPTION_DAMAGE_SOURCE, 7f);
+            livingEntity.hurt(CorruptionEffect.CORRUPTION_DAMAGE_SOURCE, 7f);
 
-            livingEntity.addPotionEffect(new EffectInstance(EffectRegistries.CORRUPTION.get(), Integer.MAX_VALUE));
+            livingEntity.addEffect(new EffectInstance(EffectRegistries.CORRUPTION.get(), Integer.MAX_VALUE));
         }
     }
 
@@ -60,6 +60,6 @@ public class MondroveFungus extends BushBlock {
                                @Nonnull BlockPos pos,
                                @Nonnull ISelectionContext context) {
         Vector3d vec3d = state.getOffset(worldIn, pos);
-        return SHAPE.withOffset(vec3d.x, vec3d.y, vec3d.z);
+        return SHAPE.move(vec3d.x, vec3d.y, vec3d.z);
     }
 }

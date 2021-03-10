@@ -26,15 +26,15 @@ import javax.annotation.Nonnull;
 @SuppressWarnings("SameParameterValue")
 public class BiomeMaker {
     public static final SurfaceBuilderConfig LUNARA_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            BlockRegistries.OVERGROWN_LUNON.get().getDefaultState(),
-            BlockRegistries.LUNON.get().getDefaultState(),
-            BlockRegistries.LUNON_DUST.get().getDefaultState()
+            BlockRegistries.OVERGROWN_LUNON.get().defaultBlockState(),
+            BlockRegistries.LUNON.get().defaultBlockState(),
+            BlockRegistries.LUNON_DUST.get().defaultBlockState()
     );
 
     public static final SurfaceBuilderConfig ABYSS_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            BlockRegistries.UMBRAL_DUNE.get().getDefaultState(),
-            BlockRegistries.UMBRAL_DUNE.get().getDefaultState(),
-            BlockRegistries.UMBRAL_DUNE.get().getDefaultState()
+            BlockRegistries.UMBRAL_DUNE.get().defaultBlockState(),
+            BlockRegistries.UMBRAL_DUNE.get().defaultBlockState(),
+            BlockRegistries.UMBRAL_DUNE.get().defaultBlockState()
     );
 
     @SuppressWarnings("unused")
@@ -82,10 +82,10 @@ public class BiomeMaker {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, LUNARA_SURFACE_BUILDER_CONFIG);
 
         // Add mondrove fungus generation.
-        genSettings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureRegistries.MONDROVE_FUNGUS);
+        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureRegistries.MONDROVE_FUNGUS);
 
         // Add mondrove tree generation.
-        genSettings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureRegistries.MONDROVE_TREE);
+        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureRegistries.MONDROVE_TREE);
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
@@ -187,14 +187,14 @@ public class BiomeMaker {
     ) {
         return new Builder()
                 .precipitation(precipitation)
-                .category(category)
+                .biomeCategory(category)
                 .depth(depth)
                 .scale(scale)
                 .temperature(temperature)
                 .downfall(downfall)
-                .setEffects(effects.build())
-                .withGenerationSettings(genSettings.build())
-                .withMobSpawnSettings(spawnSettings)
+                .specialEffects(effects.build())
+                .generationSettings(genSettings.build())
+                .mobSpawnSettings(spawnSettings)
                 .build();
     }
 
@@ -202,8 +202,7 @@ public class BiomeMaker {
      * Shortcut function and enforces surface builder
      */
     private static <C extends ISurfaceBuilderConfig> BiomeGenerationSettings.Builder genSettings(SurfaceBuilder<C> surfaceBuilder, C config) {
-        return new BiomeGenerationSettings.Builder()
-                .withSurfaceBuilder(surfaceBuilder.func_242929_a(config));
+        return new BiomeGenerationSettings.Builder().surfaceBuilder(surfaceBuilder.configured(config));
     }
 
     /**
@@ -223,12 +222,12 @@ public class BiomeMaker {
             int weight,
             int min,
             int max) {
-        spawnSettings.withSpawner(classification,
+        spawnSettings.addSpawn(classification,
                 new MobSpawnInfo.Spawners(entityType, weight, min, max));
     }
 
     /**
-     * Biome ambience with default parameters and enforced the required ones. Should prevent slip ups on my part :)
+     * Biome ambience add default parameters and enforced the required ones. Should prevent slip ups on my part :)
      */
     private static BiomeAmbience.Builder effects(int waterColor,
                                                  int waterFogColor,
@@ -238,17 +237,17 @@ public class BiomeMaker {
                                                  int skyFogColor,
                                                  SoundEvent music) {
         return new BiomeAmbience.Builder()
-                .setWaterColor(waterColor)
-                .setWaterFogColor(waterFogColor)
-                .withGrassColor(grassColor)
-                .withFoliageColor(foliageColor)
-                .withSkyColor(getSkyForTemp(temperature))
-                .setFogColor(skyFogColor)
-                .setMusic(BackgroundMusicTracks.getDefaultBackgroundMusicSelector(music));
+                .waterColor(waterColor)
+                .waterFogColor(waterFogColor)
+                .grassColorOverride(grassColor)
+                .foliageColorOverride(foliageColor)
+                .skyColor(getSkyForTemp(temperature))
+                .fogColor(skyFogColor)
+                .backgroundMusic(BackgroundMusicTracks.createGameMusic(music));
     }
 
     private static int getSkyForTemp(float temperature) {
         final float a = MathHelper.clamp(temperature / 3.0f, -1.0f, 1.0f);
-        return MathHelper.hsvToRGB(0.62222224f - a * 0.05f, 0.5f + a * 0.1f, 1.0f);
+        return MathHelper.hsvToRgb(0.62222224f - a * 0.05f, 0.5f + a * 0.1f, 1.0f);
     }
 }

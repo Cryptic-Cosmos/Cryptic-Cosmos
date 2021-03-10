@@ -13,9 +13,9 @@ import java.util.Random;
 @SuppressWarnings("NullableProblems")
 public class MoonPlanks extends Block implements Infectable {
     public MoonPlanks() {
-        super(Properties.from(Blocks.BIRCH_PLANKS));
+        super(Properties.copy(Blocks.BIRCH_PLANKS));
 
-        this.setDefaultState(this.getDefaultState().with(INFECTION_LEVEL, 0));
+        this.registerDefaultState(this.defaultBlockState().setValue(INFECTION_LEVEL, 0));
     }
 
     @SuppressWarnings("deprecation")
@@ -25,18 +25,18 @@ public class MoonPlanks extends Block implements Infectable {
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        super.fillStateContainer(builder);
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
         builder.add(INFECTION_LEVEL);
     }
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.getDefaultState().with(INFECTION_LEVEL, 0);
+        return this.defaultBlockState().setValue(INFECTION_LEVEL, 0);
     }
 
     @Override
-    public boolean ticksRandomly(BlockState state) {
+    public boolean isRandomlyTicking(BlockState state) {
         return true;
     }
 }

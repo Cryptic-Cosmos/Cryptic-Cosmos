@@ -48,10 +48,10 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.addLoot(
                 BlockRegistries.MONDROVE_LEAVES.get(),
-                BlockLootTables.droppingWithChancesSticksAndApples(
+                BlockLootTables.createOakLeavesDrops(
                         BlockRegistries.MONDROVE_LEAVES.get(),
                         BlockRegistries.MONDROVE_SAPLING.get(),
-                        BlockLootTables.DEFAULT_SAPLING_DROP_RATES
+                        BlockLootTables.NORMAL_LEAVES_SAPLING_CHANCES
                 )
         );
 
@@ -88,30 +88,30 @@ public class BlockLootTablesGenerator extends LootTableProvider {
     }
 
     private void dropSelf(Block block) {
-        LootPool.Builder pool = LootPool.builder()
-                .rolls(ConstantRange.of(1))
-                .addEntry(ItemLootEntry.builder(block))
-                .acceptCondition(SurvivesExplosion.builder());
+        LootPool.Builder pool = LootPool.lootPool()
+                .setRolls(ConstantRange.exactly(1))
+                .add(ItemLootEntry.lootTableItem(block))
+                .when(SurvivesExplosion.survivesExplosion());
 
-        TABLES.put(block, LootTable.builder().addLootPool(pool));
+        TABLES.put(block, LootTable.lootTable().withPool(pool));
     }
 
     private void dropSlabs(Block block) {
-        LootPool.Builder pool = LootPool.builder()
-                .rolls(ConstantRange.of(1))
-                .addEntry(ItemLootEntry.builder(block))
-                .acceptCondition(SurvivesExplosion.builder())
-                .acceptFunction(SetCount.builder(ConstantRange.of(2))
-                        .acceptCondition(BlockStateProperty.builder(block)
-                                .fromProperties(StatePropertiesPredicate.Builder
-                                        .newBuilder()
-                                        .withProp(SlabBlock.TYPE, SlabType.DOUBLE))));
+        LootPool.Builder pool = LootPool.lootPool()
+                .setRolls(ConstantRange.exactly(1))
+                .add(ItemLootEntry.lootTableItem(block))
+                .when(SurvivesExplosion.survivesExplosion())
+                .apply(SetCount.setCount(ConstantRange.exactly(2))
+                        .when(BlockStateProperty.hasBlockStateProperties(block)
+                                .setProperties(StatePropertiesPredicate.Builder
+                                        .properties()
+                                        .hasProperty(SlabBlock.TYPE, SlabType.DOUBLE))));
 
-        TABLES.put(block, LootTable.builder().addLootPool(pool));
+        TABLES.put(block, LootTable.lootTable().withPool(pool));
     }
 
     @Override
-    public void act(DirectoryCache cache) {
+    public void run(DirectoryCache cache) {
         addLootTables(this);
 
         HashMap<ResourceLocation, LootTable> namespacedTables = new HashMap<>();
@@ -119,7 +119,7 @@ public class BlockLootTablesGenerator extends LootTableProvider {
         for (Map.Entry<Block, LootTable.Builder> entry : TABLES.entrySet()) {
             namespacedTables.put(
                     entry.getKey().getLootTable(),
-                    entry.getValue().setParameterSet(LootParameterSets.BLOCK).build()
+                    entry.getValue().setParamSet(LootParameterSets.BLOCK).build()
             );
         }
 
@@ -133,7 +133,7 @@ public class BlockLootTablesGenerator extends LootTableProvider {
             Path path = output.resolve("data/" + key.getNamespace() + "/loot_tables/" + key.getPath() + ".json");
 
             try {
-                IDataProvider.save(GSON, cache, LootTableManager.toJson(table), path);
+                IDataProvider.save(GSON, cache, LootTableManager.serialize(table), path);
             } catch (IOException e) {
                 CrypticCosmos.LOGGER.error("couldn't write loot table" + path, e);
             }

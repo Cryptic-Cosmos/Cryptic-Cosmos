@@ -14,9 +14,9 @@ import java.util.Random;
 @SuppressWarnings("NullableProblems")
 public class MoonLog extends RotatedPillarBlock implements Infectable {
     public MoonLog() {
-        super(Properties.from(Blocks.BIRCH_LOG));
+        super(Properties.copy(Blocks.BIRCH_LOG));
 
-        this.setDefaultState(this.getDefaultState().with(INFECTION_LEVEL, 0));
+        this.registerDefaultState(this.defaultBlockState().setValue(INFECTION_LEVEL, 0));
     }
 
     @SuppressWarnings("deprecation")
@@ -26,19 +26,19 @@ public class MoonLog extends RotatedPillarBlock implements Infectable {
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        super.fillStateContainer(builder);
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
         builder.add(INFECTION_LEVEL);
     }
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         //noinspection ConstantConditions
-        return super.getStateForPlacement(context).with(INFECTION_LEVEL, 0);
+        return super.getStateForPlacement(context).setValue(INFECTION_LEVEL, 0);
     }
 
     @Override
-    public boolean ticksRandomly(BlockState state) {
+    public boolean isRandomlyTicking(BlockState state) {
         return true;
     }
 }

@@ -12,26 +12,26 @@ import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 
 public class FeatureRegistries {
     public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> MONDROVE_TREE = registerFeature("mondrove",
-            Feature.TREE.withConfiguration(new BaseTreeFeatureConfig.Builder(
-                    new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LOG.get().getDefaultState()),
-                    new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LEAVES.get().getDefaultState()),
-                    new BlobFoliagePlacer(FeatureSpread.create(2),
-                            FeatureSpread.create(0), 3),
+            Feature.TREE.configured(new BaseTreeFeatureConfig.Builder(
+                    new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LOG.get().defaultBlockState()),
+                    new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LEAVES.get().defaultBlockState()),
+                    new BlobFoliagePlacer(FeatureSpread.fixed(2),
+                            FeatureSpread.fixed(0), 3),
                     new StraightTrunkPlacer(4, 2, 0),
                     new TwoLayerFeature(1, 0, 1))
-                    .setIgnoreVines()
+                    .ignoreVines()
                     .build()
             )
     );
 
     public static final ConfiguredFeature<?, ?> MONDROVE_FUNGUS = registerFeature("mondrove_fungus",
-            Feature.FLOWER.withConfiguration(new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider()
-                    .addWeightedBlockstate(BlockRegistries.MONDROVE_FUNGUS.get().getDefaultState(), 2),
+            Feature.FLOWER.configured(new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider()
+                    .add(BlockRegistries.MONDROVE_FUNGUS.get().defaultBlockState(), 2),
                     new SimpleBlockPlacer())
                     .tries(64)
                     .build()
-            ).withPlacement(Features.Placements.VEGETATION_PLACEMENT)
-                    .withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT)
+            ).decorated(Features.Placements.ADD_32)
+                    .decorated(Features.Placements.HEIGHTMAP_SQUARE)
                     .count(2)
     );
 

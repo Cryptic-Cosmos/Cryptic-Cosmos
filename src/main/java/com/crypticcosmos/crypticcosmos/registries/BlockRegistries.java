@@ -16,23 +16,23 @@ public class BlockRegistries {
     //Portal Blocks
     public static final RegistryObject<Block> HUMMING_STONE = BLOCKS.register("humming_stone", () ->
             new ExpDroppingOreBlock(
-                    Properties.create(Material.ROCK)
-                            .hardnessAndResistance(6.0f, 34)
+                    Properties.of(Material.STONE)
+                            .strength(6.0f, 34)
                             .sound(SoundType.STONE)
                             .harvestLevel(3)
                             .harvestTool(ToolType.PICKAXE)
-                            .setRequiresTool(),
+                            .requiresCorrectToolForDrops(),
                     3
             )
     );
 
     public static final RegistryObject<Block> HUMMING_OBSIDIAN = BLOCKS.register("humming_obsidian", () ->
-            new Block(Properties.create(Material.ROCK)
-                    .hardnessAndResistance(50.0F, 1200.0F)
+            new Block(Properties.of(Material.STONE)
+                    .strength(50.0F, 1200.0F)
                     .sound(SoundType.STONE)
                     .harvestLevel(3)
                     .harvestTool(ToolType.PICKAXE)
-                    .setRequiresTool())
+                    .requiresCorrectToolForDrops())
     );
 
     // Overgrown Lunon
@@ -40,48 +40,47 @@ public class BlockRegistries {
 
     // Lunon
     public static final RegistryObject<Block> LUNON = BLOCKS.register("lunon", () ->
-            new Block(Properties.create(Material.ROCK)
-                    .hardnessAndResistance(2.0f, 10)
+            new Block(Properties.of(Material.STONE)
+                    .strength(2.0f, 10)
                     .sound(SoundType.STONE)
                     .harvestLevel(1)
                     .harvestTool(ToolType.PICKAXE)
-                    .setRequiresTool())
+                    .requiresCorrectToolForDrops())
     );
 
     public static final RegistryObject<Block> LUNON_BRICKS = BLOCKS.register("lunon_bricks", () ->
-            new Block(Properties.create(Material.ROCK)
-                    .hardnessAndResistance(4.0f, 15)
+            new Block(Properties.of(Material.STONE)
+                    .strength(4.0f, 15)
                     .sound(SoundType.STONE)
                     .harvestLevel(2)
                     .harvestTool(ToolType.PICKAXE)
-                    .setRequiresTool())
+                    .requiresCorrectToolForDrops())
     );
 
     public static final RegistryObject<Block> LUNON_BRICK_SLAB = BLOCKS.register("lunon_brick_slab", () ->
-            new SlabBlock(Properties.from(LUNON_BRICKS.get()))
+            new SlabBlock(Properties.copy(LUNON_BRICKS.get()))
     );
 
     public static final RegistryObject<Block> LUNON_BRICK_STAIRS = BLOCKS.register("lunon_brick_stairs", () ->
-            new StairsBlock(() -> LUNON_BRICKS.get().getDefaultState(), Properties.from(LUNON_BRICKS.get()))
+            new StairsBlock(() -> LUNON_BRICKS.get().defaultBlockState(), Properties.copy(LUNON_BRICKS.get()))
     );
 
     public static final RegistryObject<Block> POLISHED_LUNON = BLOCKS.register("polished_lunon", () ->
-            new Block(Properties.from(LUNON_BRICKS.get()))
+            new Block(Properties.copy(LUNON_BRICKS.get()))
     );
 
     public static final RegistryObject<Block> POLISHED_LUNON_SLAB = BLOCKS.register("polished_lunon_slab", () ->
-            new SlabBlock(Properties.from(POLISHED_LUNON.get()))
+            new SlabBlock(Properties.copy(POLISHED_LUNON.get()))
     );
 
     public static final RegistryObject<Block> CHISELED_POLISHED_LUNON = BLOCKS.register("chiseled_polished_lunon", () ->
-            new Block(Properties.from(POLISHED_LUNON.get()))
+            new Block(Properties.copy(POLISHED_LUNON.get()))
     );
 
     public static final RegistryObject<Block> LUNON_DUST = BLOCKS.register("lunon_dust", () ->
-            new SandBlock(22,
-                    Properties.create(Material.SAND)
-                            .hardnessAndResistance(0.5F)
-                            .sound(SoundType.SAND))
+            new SandBlock(22, Properties.of(Material.SAND)
+                    .strength(0.5F)
+                    .sound(SoundType.SAND))
     );
 
     //Moon Wood
@@ -92,7 +91,7 @@ public class BlockRegistries {
     public static final RegistryObject<Block> MONDROVE_SAPLING = BLOCKS.register("mondrove_sapling", MoonSapling::new);
 
     public static final RegistryObject<Block> MONDROVE_LEAVES = BLOCKS.register("mondrove_leaves", () ->
-            new LeavesBlock(Properties.from(Blocks.OAK_LEAVES))
+            new LeavesBlock(Properties.copy(Blocks.OAK_LEAVES))
     );
 
     public static final RegistryObject<Block> MONDROVE_FUNGUS = BLOCKS.register("mondrove_fungus", MondroveFungus::new);
@@ -107,8 +106,8 @@ public class BlockRegistries {
 
     // Umbral Plains
     public static final RegistryObject<Block> UMBRAL_DUNE = BLOCKS.register("umbral_dune", () ->
-            new SandBlock(22, Properties.create(Material.SAND)
-                    .hardnessAndResistance(0.5F)
+            new SandBlock(22, Properties.of(Material.SAND)
+                    .strength(0.5F)
                     .sound(SoundType.SAND)));
 }
 

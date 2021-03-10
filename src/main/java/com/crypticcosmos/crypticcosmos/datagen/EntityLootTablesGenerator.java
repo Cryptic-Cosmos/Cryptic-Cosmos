@@ -33,11 +33,11 @@ public class EntityLootTablesGenerator extends LootTableProvider {
     private void addLootTables(EntityLootTablesGenerator loot) {
         loot.addLoot(
                 EntityTypeRegistries.MOON_BEAST.get(),
-                LootTable.builder()
-                        .addLootPool(LootPool.builder()
-                                .rolls(ConstantRange.of(1))
-                                .addEntry(ItemLootEntry.builder(ItemRegistries.CRATERED_BONE.get()))
-                                .acceptCondition(RandomChanceWithLooting.builder(0.5f, 0.07f)))
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantRange.exactly(1))
+                                .add(ItemLootEntry.lootTableItem(ItemRegistries.CRATERED_BONE.get()))
+                                .when(RandomChanceWithLooting.randomChanceAndLootingBoost(0.5f, 0.07f)))
         );
     }
 
@@ -47,15 +47,15 @@ public class EntityLootTablesGenerator extends LootTableProvider {
     }
 
     @Override
-    public void act(DirectoryCache cache) {
+    public void run(DirectoryCache cache) {
         addLootTables(this);
 
         HashMap<ResourceLocation, LootTable> namespacedTables = new HashMap<>();
 
         for (Map.Entry<EntityType<?>, LootTable.Builder> entry : TABLES.entrySet()) {
             namespacedTables.put(
-                    entry.getKey().getLootTable(),
-                    entry.getValue().setParameterSet(LootParameterSets.ENTITY).build()
+                    entry.getKey().getDefaultLootTable(),
+                    entry.getValue().setParamSet(LootParameterSets.ENTITY).build()
             );
         }
 
@@ -69,7 +69,7 @@ public class EntityLootTablesGenerator extends LootTableProvider {
             Path path = output.resolve("data/" + key.getNamespace() + "/loot_tables/" + key.getPath() + ".json");
 
             try {
-                IDataProvider.save(GSON, cache, LootTableManager.toJson(table), path);
+                IDataProvider.save(GSON, cache, LootTableManager.serialize(table), path);
             } catch (IOException e) {
                 CrypticCosmos.LOGGER.error("couldn't write loot table" + path, e);
             }

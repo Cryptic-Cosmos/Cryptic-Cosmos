@@ -18,14 +18,14 @@ import java.util.Queue;
 
 public class LavaSponge extends Block {
     public LavaSponge() {
-        super(Properties.create(Material.ROCK)
-                .hardnessAndResistance(0.6F)
+        super(Properties.of(Material.STONE)
+                .strength(0.6F)
                 .sound(SoundType.STONE));
     }
 
     @Override
     @SuppressWarnings("deprecation")
-    public void onBlockAdded(BlockState state, @Nonnull World worldIn, @Nonnull BlockPos pos, BlockState oldState, boolean isMoving) {
+    public void onPlace(BlockState state, @Nonnull World worldIn, @Nonnull BlockPos pos, BlockState oldState, boolean isMoving) {
         if (oldState.getBlock() != state.getBlock()) {
             this.tryAbsorb(worldIn, pos);
         }
@@ -40,8 +40,8 @@ public class LavaSponge extends Block {
 
     protected void tryAbsorb(World worldIn, BlockPos pos) {
         if (this.absorb(worldIn, pos)) {
-            worldIn.setBlockState(pos, BlockRegistries.MOLTEN_LAVA_SPONGE.get().getDefaultState(), 2);
-            worldIn.playEvent(2001, pos, Block.getStateId(Blocks.LAVA.getDefaultState()));
+            worldIn.setBlock(pos, BlockRegistries.MOLTEN_LAVA_SPONGE.get().defaultBlockState(), 2);
+            worldIn.levelEvent(2001, pos, Block.getId(Blocks.LAVA.defaultBlockState()));
         }
     }
 
@@ -56,26 +56,26 @@ public class LavaSponge extends Block {
             int j = tuple.getB();
 
             for (Direction direction : Direction.values()) {
-                BlockPos blockpos1 = blockpos.offset(direction);
+                BlockPos blockpos1 = blockpos.relative(direction);
                 BlockState blockstate = worldIn.getBlockState(blockpos1);
                 FluidState fluidstate = worldIn.getFluidState(blockpos1);
                 Material material = blockstate.getMaterial();
-                if (fluidstate.isTagged(FluidTags.LAVA)) {
-                    if (blockstate.getBlock() instanceof IBucketPickupHandler && ((IBucketPickupHandler) blockstate.getBlock()).pickupFluid(worldIn, blockpos1, blockstate) != Fluids.EMPTY) {
+                if (fluidstate.is(FluidTags.LAVA)) {
+                    if (blockstate.getBlock() instanceof IBucketPickupHandler && ((IBucketPickupHandler) blockstate.getBlock()).takeLiquid(worldIn, blockpos1, blockstate) != Fluids.EMPTY) {
                         ++i;
                         if (j < 6) {
                             queue.add(new Tuple<>(blockpos1, j + 1));
                         }
                     } else if (blockstate.getBlock() instanceof FlowingFluidBlock) {
-                        worldIn.setBlockState(blockpos1, Blocks.AIR.getDefaultState(), 3);
+                        worldIn.setBlock(blockpos1, Blocks.AIR.defaultBlockState(), 3);
                         ++i;
                         if (j < 6) {
                             queue.add(new Tuple<>(blockpos1, j + 1));
                         }
-                    } else if (material == Material.OCEAN_PLANT || material == Material.SEA_GRASS) {
-                        TileEntity tileentity = blockstate.getBlock().hasTileEntity(blockstate) ? worldIn.getTileEntity(blockpos1) : null;
-                        spawnDrops(blockstate, worldIn, blockpos1, tileentity);
-                        worldIn.setBlockState(blockpos1, Blocks.AIR.getDefaultState(), 3);
+                    } else if (material == Material.WATER_PLANT || material == Material.REPLACEABLE_WATER_PLANT) {
+                        TileEntity tileentity = blockstate.getBlock().hasTileEntity(blockstate) ? worldIn.getBlockEntity(blockpos1) : null;
+                        dropResources(blockstate, worldIn, blockpos1, tileentity);
+                        worldIn.setBlock(blockpos1, Blocks.AIR.defaultBlockState(), 3);
                         ++i;
                         if (j < 6) {
                             queue.add(new Tuple<>(blockpos1, j + 1));

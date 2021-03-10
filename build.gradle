@@ -1,8 +1,7 @@
 buildscript {
     repositories {
-        maven {
-            url = 'https://files.minecraftforge.net/maven'
-        }
+        maven { url = 'https://files.minecraftforge.net/maven' }
+//        maven { url = 'https://dist.creeper.host/Sponge/maven' }
 
         jcenter()
         mavenCentral()
@@ -10,6 +9,7 @@ buildscript {
 
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
+//        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
@@ -21,12 +21,12 @@ version = project.mc_version + '-' + project.mod_version
 group = project.maven_group
 archivesBaseName = project.archives_base_name
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
 
 println("Java: ${System.getProperty('java.version')}, JVM: ${System.getProperty('java.vm.version')} (${System.getProperty('java.vendor')}), Arch: ${System.getProperty('os.arch')}")
 
 minecraft {
-    mappings channel: project.mappings_channel, version: project.mappings_version
+    mappings channel: project.mappings_channel, version: project.mc_version
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -41,7 +41,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                lovecraftplus {
+                crypticcosmos {
                     source sourceSets.main
                 }
             }
@@ -57,7 +57,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                lovecraftplus {
+                crypticcosmos {
                     source sourceSets.main
                 }
             }
@@ -75,7 +75,7 @@ minecraft {
             args '--mod', project.modid, '--all', '--output', file('src/generated/resources/'), "--existing", file('src/main/resources/')
 
             mods {
-                lovecraftplus {
+                crypticcosmos {
                     source sourceSets.main
                 }
             }
@@ -111,36 +111,6 @@ jar {
 
 jar.finalizedBy('reobfJar')
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
-build.dependsOn sourcesJar
-
-artifacts {
-    archives sourcesJar
-}
-
-// Process resources on build
-processResources {
-    // This will ensure that this task is redone when the versions change.
-    inputs.property 'version', project.version
-
-    // Replace stuff in mods.toml, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'META-INF/mods.toml'
-
-        // Replace version
-        expand 'version': project.version
-    }
-
-    // Copy everything else except the mods.toml
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'META-INF/mods.toml'
-    }
-}
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -154,6 +124,4 @@ publishing {
     }
 }
 
-sourceSets.main.resources {
-    srcDir 'src/generated/resources'
-}
+sourceSets.main.resources { srcDir 'src/generated/resources' }

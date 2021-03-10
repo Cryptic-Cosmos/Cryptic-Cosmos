@@ -27,10 +27,10 @@ import java.util.function.Function;
 
 public class RiftBlock extends Block {
     public RiftBlock() {
-        super(Properties.create(Material.ROCK)
-                .hardnessAndResistance(40f, 1200f)
+        super(Properties.of(Material.STONE)
+                .strength(40f, 1200f)
                 .sound(SoundType.STONE)
-                .doesNotBlockMovement()
+                .noCollission()
                 .noDrops()
         );
     }
@@ -42,28 +42,28 @@ public class RiftBlock extends Block {
         final int maxDistance = 120;
 
         List<BlockState> airStates = new ArrayList<>();
-        airStates.add(Blocks.AIR.getDefaultState());
-        airStates.add(Blocks.CAVE_AIR.getDefaultState());
-        airStates.add(Blocks.VOID_AIR.getDefaultState());
+        airStates.add(Blocks.AIR.defaultBlockState());
+        airStates.add(Blocks.CAVE_AIR.defaultBlockState());
+        airStates.add(Blocks.VOID_AIR.defaultBlockState());
 
         PlayerEntity player = event.player;
-        final World world = player.getEntityWorld();
+        final World world = player.getCommandSenderWorld();
 
         if (ThreadLocalRandom.current().nextInt(spawningChance) == 0) {
-            if (!(World.THE_END.equals(world.getDimensionKey())
-                  || World.THE_NETHER.equals(world.getDimensionKey()))) {
+            if (!(World.END.equals(world.dimension())
+                  || World.NETHER.equals(world.dimension()))) {
                 for (Direction direction : Direction.values()) {
                     for (int i = 0; i <= maxDistance; i++) {
                         if (i < minDistance) continue;
 
-                        BlockPos riftPos = player.getPosition().offset(direction, i);
+                        BlockPos riftPos = player.blockPosition().relative(direction, i);
 
                         if (airStates.contains(world.getBlockState(riftPos)) &&
-                            !riftPos.equals(player.getPosition())) {
-                            if (world.getBlockState(riftPos.offset(direction))
+                            !riftPos.equals(player.blockPosition())) {
+                            if (world.getBlockState(riftPos.relative(direction))
                                     .getBlock().equals(BlockRegistries.RIFT_BLOCK.get())) return;
 
-                            world.setBlockState(riftPos, BlockRegistries.RIFT_BLOCK.get().getDefaultState());
+                            world.setBlockAndUpdate(riftPos, BlockRegistries.RIFT_BLOCK.get().defaultBlockState());
 
                             return;
                         }
@@ -79,20 +79,20 @@ public class RiftBlock extends Block {
                 CrypticCosmosDimensions.ABYSS_KEY
         );
 
-        VALID_DIMENSIONS.remove(world.getDimensionKey());
+        VALID_DIMENSIONS.remove(world.dimension());
 
         return VALID_DIMENSIONS.get(ThreadLocalRandom.current().nextInt(VALID_DIMENSIONS.size()));
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    public void onEntityCollision(@Nonnull BlockState state, @Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull Entity entity) {
-        if (!entity.isAlive() || entity.world.isRemote) return;
+    public void entityInside(@Nonnull BlockState state, @Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull Entity entity) {
+        if (!entity.isAlive() || entity.getCommandSenderWorld().isClientSide()) return;
 
-        if (entity.isPassenger() || entity.isBeingRidden() || !entity.canChangeDimension()) return;
+        if (entity.isPassenger() || entity.isVehicle() || !entity.canChangeDimensions()) return;
 
         // noinspection ConstantConditions
-        ServerWorld destination = worldIn.getServer().getWorld(getDestination(entity.getEntityWorld()));
+        ServerWorld destination = worldIn.getServer().getLevel(getDestination(entity.getCommandSenderWorld()));
 
         //noinspection ConstantConditions
         entity.changeDimension(destination, new ITeleporter() {
@@ -103,8 +103,8 @@ public class RiftBlock extends Block {
                 // update the portal cooldown of the entity
                 repositionedEntity.setPortalCooldown();
 
-                repositionedEntity.setPositionAndUpdate(pos.getX(),
-                        destWorld.getHeight(Heightmap.Type.MOTION_BLOCKING, pos).getY(),
+                repositionedEntity.setPos(pos.getX(),
+                        destWorld.getHeightmapPos(Heightmap.Type.MOTION_BLOCKING, pos).getY(),
                         pos.getZ());
 
                 return repositionedEntity;

@@ -36,30 +36,29 @@ public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
         this.applyEntityAI();
     }
 
+    @Nonnull
+    public static AttributeModifierMap setCustomAttributes() {
+        return createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 50f)
+                .add(Attributes.MOVEMENT_SPEED, 0.5f)
+                .add(Attributes.ATTACK_DAMAGE, 6f)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 4f)
+                .build();
+    }
+
     protected void applyEntityAI() {
         this.goalSelector.addGoal(4, new SwimGoal(this));
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.0D, false));
-        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setCallsForHelp());
+        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, EndermanEntity.class, true));
     }
 
-    @Nonnull
-    public static AttributeModifierMap setCustomAttributes() {
-        // func_233666_p_() -> registerAttributes()
-        return func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 50f)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.5f)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 6f)
-                .createMutableAttribute(Attributes.KNOCKBACK_RESISTANCE, 4f)
-                .create();
-    }
-
     @Override
-    protected int getExperiencePoints(@Nonnull PlayerEntity player) {
-        if (this.isChild()) this.experienceValue = (int) ((float) this.experienceValue * 4f);
+    protected int getExperienceReward(@Nonnull PlayerEntity player) {
+        if (this.isBaby()) this.xpReward = (int) ((float) this.xpReward * 4f);
 
-        return super.getExperiencePoints(player);
+        return super.getExperienceReward(player);
     }
 
     @Override
