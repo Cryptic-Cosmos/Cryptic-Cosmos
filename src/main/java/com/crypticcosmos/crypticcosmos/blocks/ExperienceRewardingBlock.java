@@ -7,17 +7,17 @@ import net.minecraft.world.IWorldReader;
 
 import javax.annotation.Nonnull;
 
-public class ExpDroppingOreBlock extends OreBlock {
-    private final int expDrop;
+public class ExperienceRewardingBlock extends OreBlock {
+    private final int xpDrop;
 
-    public ExpDroppingOreBlock(Properties properties, int expDrop) {
+    public ExperienceRewardingBlock(Properties properties, int xpDrop) {
         super(properties);
 
-        this.expDrop = expDrop;
+        this.xpDrop = xpDrop;
     }
 
     @Override
     public int getExpDrop(@Nonnull BlockState state, @Nonnull IWorldReader reader, @Nonnull BlockPos pos, int fortune, int silktouch) {
-        return expDrop;
+        return xpDrop;
     }
 }

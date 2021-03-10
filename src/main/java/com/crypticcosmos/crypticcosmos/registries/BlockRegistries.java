@@ -15,7 +15,7 @@ public class BlockRegistries {
 
     //Portal Blocks
     public static final RegistryObject<Block> HUMMING_STONE = BLOCKS.register("humming_stone", () ->
-            new ExpDroppingOreBlock(
+            new ExperienceRewardingBlock(
                     Properties.of(Material.STONE)
                             .strength(6.0f, 34)
                             .sound(SoundType.STONE)
