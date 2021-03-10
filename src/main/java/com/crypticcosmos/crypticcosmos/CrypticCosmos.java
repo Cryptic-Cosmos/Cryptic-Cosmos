@@ -26,11 +26,11 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
 
+import javax.annotation.Nonnull;
 import java.util.Objects;
 
 @Mod(CrypticCosmos.MOD_ID)
@@ -94,20 +94,22 @@ public class CrypticCosmos {
 
     private void registerBlockItems(final RegistryEvent.Register<Item> event) {
         // automatically register block items
-        final IForgeRegistry<Item> registry = event.getRegistry();
-        BlockRegistries.BLOCKS
-                .getEntries()
-                .stream()
-                .map(RegistryObject::get)
-                .filter(it -> !(it instanceof CropsBlock))
+        BlockRegistries.BLOCKS.getEntries().stream().map(RegistryObject::get)
+                .filter(block -> !(block instanceof CropsBlock))
                 .forEach(block -> {
-                    final BlockItem blockItem = new BlockItem(block, BLOCK_GROUP_PROPERTY);
+                    BlockItem blockItem;
+
+                    // this makes sure you can't get a rift from the creative menu.
+                    if (!(block instanceof RiftBlock)) blockItem = new BlockItem(block, BLOCK_GROUP_PROPERTY);
+                    else blockItem = new BlockItem(block, new Item.Properties());
+
                     blockItem.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
-                    registry.register(blockItem);
+
+                    event.getRegistry().register(blockItem);
                 });
     }
 
-    private void registerEntityAttributes(EntityAttributeCreationEvent event) {
+    private void registerEntityAttributes(@Nonnull EntityAttributeCreationEvent event) {
         event.put(EntityTypeRegistries.MOON_BEAST.get(), MoonBeastEntity.setCustomAttributes());
         event.put(EntityTypeRegistries.MOON_FROG.get(), MoonFrogEntity.setCustomAttributes());
     }
