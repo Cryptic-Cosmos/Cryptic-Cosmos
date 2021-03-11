@@ -34,7 +34,7 @@ public class OvergrownLunonBlock extends SnowyDirtBlock {
         Block block = context.getLevel().getBlockState(context.getClickedPos().above()).getBlock();
         return this.defaultBlockState()
                 .setValue(FACING, context.getHorizontalDirection().getOpposite())
-                .setValue(SNOWY, block == Blocks.SNOW_BLOCK || block == Blocks.SNOW);
+                .setValue(SNOWY, block.is(Blocks.SNOW_BLOCK) || block.is(Blocks.SNOW));
     }
 
     @Override

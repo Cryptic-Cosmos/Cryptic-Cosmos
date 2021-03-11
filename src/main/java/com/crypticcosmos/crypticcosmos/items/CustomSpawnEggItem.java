@@ -11,13 +11,10 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.common.util.NonNullSupplier;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 @SuppressWarnings("NullableProblems")
 public class CustomSpawnEggItem extends SpawnEggItem {
@@ -38,10 +35,6 @@ public class CustomSpawnEggItem extends SpawnEggItem {
     }
 
     public static void initSpawnEggs() {
-        final Map<EntityType<?>, SpawnEggItem> BY_ID = Objects.requireNonNull(
-                ObfuscationReflectionHelper.getPrivateValue(SpawnEggItem.class, null, "BY_ID")
-        );
-
         DefaultDispenseItemBehavior dispenserBehavior = new DefaultDispenseItemBehavior() {
             @Override
             public ItemStack execute(IBlockSource source, ItemStack stack) {
@@ -63,10 +56,10 @@ public class CustomSpawnEggItem extends SpawnEggItem {
             }
         };
 
-        for (SpawnEggItem spawnEgg : UNADDED_EGGS) {
+        UNADDED_EGGS.forEach(spawnEgg -> {
             BY_ID.put(spawnEgg.getType(null), spawnEgg);
             DispenserBlock.registerBehavior(spawnEgg, dispenserBehavior);
-        }
+        });
 
         UNADDED_EGGS.clear();
     }

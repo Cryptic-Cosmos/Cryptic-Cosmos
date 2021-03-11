@@ -48,7 +48,7 @@
         {
           "biome": "crypticcosmos:mondrove_groves",
           "parameters": {
-            "altitude": 1,
+            "altitude": 0.7,
             "temperature": 0,
             "humidity": 0.5,
             "weirdness": 0,
@@ -58,7 +58,7 @@
         {
           "biome": "crypticcosmos:acerbic_isles",
           "parameters": {
-            "altitude": 1.5,
+            "altitude": 1,
             "temperature": 0.5,
             "humidity": -1,
             "weirdness": 0,

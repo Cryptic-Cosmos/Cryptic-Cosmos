@@ -21,8 +21,7 @@ public class FeatureRegistries {
                     new TwoLayerFeature(1, 0, 1))
                     .ignoreVines()
                     .build()
-            )
-    );
+            ));
 
     public static final ConfiguredFeature<?, ?> MONDROVE_FUNGUS = registerFeature("mondrove_fungus",
             Feature.FLOWER.configured(new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider()
@@ -30,9 +29,7 @@ public class FeatureRegistries {
                     new SimpleBlockPlacer())
                     .tries(64)
                     .build()
-            ).decorated(Features.Placements.ADD_32)
-                    .decorated(Features.Placements.HEIGHTMAP_SQUARE)
-                    .count(2)
+            )
     );
 
     private static <T extends IFeatureConfig> ConfiguredFeature<T, ?> registerFeature(String path, ConfiguredFeature<T, ?> feature) {

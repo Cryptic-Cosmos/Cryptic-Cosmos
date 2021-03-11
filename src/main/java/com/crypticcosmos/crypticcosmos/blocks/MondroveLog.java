@@ -9,11 +9,11 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 
-@SuppressWarnings("NullableProblems")
-public class MoonLog extends RotatedPillarBlock implements Infectable {
-    public MoonLog() {
+public class MondroveLog extends RotatedPillarBlock implements Infectable {
+    public MondroveLog() {
         super(Properties.copy(Blocks.BIRCH_LOG));
 
         this.registerDefaultState(this.defaultBlockState().setValue(INFECTION_LEVEL, 0));
@@ -21,24 +21,24 @@ public class MoonLog extends RotatedPillarBlock implements Infectable {
 
     @SuppressWarnings("deprecation")
     @Override
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
+    public void randomTick(@Nonnull BlockState state, @Nonnull ServerWorld world, @Nonnull BlockPos pos, @Nonnull Random rand) {
         this.infect(world, pos);
     }
 
     @Override
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(@Nonnull StateContainer.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(INFECTION_LEVEL);
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
+    public BlockState getStateForPlacement(@Nonnull BlockItemUseContext context) {
         //noinspection ConstantConditions
         return super.getStateForPlacement(context).setValue(INFECTION_LEVEL, 0);
     }
 
     @Override
-    public boolean isRandomlyTicking(BlockState state) {
+    public boolean isRandomlyTicking(@Nonnull BlockState state) {
         return true;
     }
 }
