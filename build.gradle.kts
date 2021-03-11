@@ -43,10 +43,12 @@ tasks.withType<JavaCompile> {
 }
 
 println(
-    """Java: ${System.getProperty("java.version")}, 
+    """
+        Java: ${System.getProperty("java.version")}, 
         JVM: ${System.getProperty("java.vm.version")} (${System.getProperty("java.vendor")}), 
         Arch: ${System.getProperty("os.arch")}
-        """
+        
+    """.trimIndent()
 )
 
 dependencies {

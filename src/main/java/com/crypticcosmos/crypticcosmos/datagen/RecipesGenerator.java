@@ -1,9 +1,8 @@
 package com.crypticcosmos.crypticcosmos.datagen;
 
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
-import com.crypticcosmos.crypticcosmos.registries.ItemRegistries;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.*;
-import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 
 import java.util.function.Consumer;
@@ -16,17 +15,6 @@ public class RecipesGenerator extends RecipeProvider {
 
     @Override
     protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
-        // Dreaming souls
-        ShapedRecipeBuilder.shaped(BlockRegistries.HUMMING_OBSIDIAN.get(), 1)
-                .pattern("yxy")
-                .pattern("xzx")
-                .pattern("yxy")
-                .define('x', ItemRegistries.HUMMING_INGOT.get())
-                .define('y', Items.GLOWSTONE_DUST)
-                .define('z', Items.OBSIDIAN)
-                .unlockedBy("has_humming_ingot", has(ItemRegistries.HUMMING_INGOT.get()))
-                .save(consumer, BlockRegistries.HUMMING_OBSIDIAN.getId());
-
         // Mondrove planks
         ShapelessRecipeBuilder.shapeless(BlockRegistries.MONDROVE_PLANKS.get(), 4)
                 .requires(BlockRegistries.MONDROVE_LOG.get())
@@ -34,25 +22,7 @@ public class RecipesGenerator extends RecipeProvider {
                 .unlockedBy("has_moon_log", has(BlockRegistries.MONDROVE_LOG.get()))
                 .save(consumer, BlockRegistries.MONDROVE_PLANKS.getId());
 
-        // Haunted ingot
-        CookingRecipeBuilder.smelting(Ingredient.of(BlockRegistries.HUMMING_STONE.get()),
-                ItemRegistries.HUMMING_INGOT.get(),
-                0.75f,
-                400)
-                .unlockedBy("has_humming_stone", has(BlockRegistries.HUMMING_STONE.get()))
-                .save(consumer, ItemRegistries.HUMMING_INGOT.getId());
-
-        // Lava sponge
-        CookingRecipeBuilder.smelting(
-                Ingredient.of(BlockRegistries.MOLTEN_LAVA_SPONGE.get()),
-                BlockRegistries.LAVA_SPONGE.get(),
-                0.75f,
-                400)
-                .unlockedBy("has_lava_sponge", has(BlockRegistries.LAVA_SPONGE.get()))
-                .save(consumer, BlockRegistries.LAVA_SPONGE.getId());
-
         registerLunonRecipes(consumer);
-
     }
 
     private void registerLunonRecipes(Consumer<IFinishedRecipe> consumer) {
@@ -158,5 +128,11 @@ public class RecipesGenerator extends RecipeProvider {
                 .unlocks("has_polished_lunon", has(BlockRegistries.POLISHED_LUNON.get()))
                 .save(consumer, "chiseled_polished_lunon_stonecutter");
 
+        // Mossy lunon
+        ShapelessRecipeBuilder
+                .shapeless(BlockRegistries.MOSSY_LUNON.get())
+                .requires(BlockRegistries.LUNON.get())
+                .requires(Blocks.VINE).unlockedBy("has_vine", has(Blocks.VINE))
+                .save(consumer);
     }
 }

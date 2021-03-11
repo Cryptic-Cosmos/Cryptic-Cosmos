@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "crypticcosmos:humming_stone"
-  },
-  "result": "crypticcosmos:humming_ingot",
-  "experience": 0.75,
-  "cookingtime": 400
-}

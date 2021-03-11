@@ -18,28 +18,6 @@ import javax.annotation.Nonnull;
 public class BlockRegistries {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, CrypticCosmos.MOD_ID);
 
-    //Portal Blocks
-    public static final RegistryObject<Block> HUMMING_STONE = BLOCKS.register("humming_stone", () ->
-            new ExperienceRewardingBlock(
-                    Properties.of(Material.STONE)
-                            .strength(6.0f, 34)
-                            .sound(SoundType.STONE)
-                            .harvestLevel(3)
-                            .harvestTool(ToolType.PICKAXE)
-                            .requiresCorrectToolForDrops(),
-                    3
-            )
-    );
-
-    public static final RegistryObject<Block> HUMMING_OBSIDIAN = BLOCKS.register("humming_obsidian", () ->
-            new Block(Properties.of(Material.STONE)
-                    .strength(50.0F, 1200.0F)
-                    .sound(SoundType.STONE)
-                    .harvestLevel(3)
-                    .harvestTool(ToolType.PICKAXE)
-                    .requiresCorrectToolForDrops())
-    );
-
     // Overgrown Lunon
     public static final RegistryObject<Block> OVERGROWN_LUNON = BLOCKS.register("overgrown_lunon", OvergrownLunonBlock::new);
 
@@ -82,6 +60,10 @@ public class BlockRegistries {
             new Block(Properties.copy(POLISHED_LUNON.get()))
     );
 
+    public static final RegistryObject<Block> MOSSY_LUNON = BLOCKS.register("mossy_lunon", () ->
+            new Block(Properties.copy(OVERGROWN_LUNON.get()))
+    );
+
     public static final RegistryObject<Block> LUNON_DUST = BLOCKS.register("lunon_dust", () ->
             new SandBlock(22, Properties.of(Material.SAND)
                     .strength(0.5F)
@@ -108,12 +90,6 @@ public class BlockRegistries {
     );
 
     public static final RegistryObject<Block> MONDROVE_FUNGUS = BLOCKS.register("mondrove_fungus", MondroveFungus::new);
-
-    //Other Blocks
-    public static final RegistryObject<Block> LAVA_SPONGE = BLOCKS.register("lava_sponge", LavaSponge::new);
-
-    public static final RegistryObject<Block> MOLTEN_LAVA_SPONGE =
-            BLOCKS.register("molten_lava_sponge", MoltenLavaSponge::new);
 
     public static final RegistryObject<Block> RIFT_BLOCK = BLOCKS.register("rift_block", RiftBlock::new);
 

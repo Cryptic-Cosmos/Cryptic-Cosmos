@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab",
-  "textures": {
-    "bottom": "crypticcosmos:block/thorn_planks",
-    "top": "crypticcosmos:block/thorn_planks",
-    "side": "crypticcosmos:block/thorn_planks"
-  }
-}

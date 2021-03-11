@@ -36,14 +36,6 @@ public class BlockLootTablesGenerator extends LootTableProvider {
     }
 
     private void addLootTables(BlockLootTablesGenerator loot) {
-        loot.dropSelf(BlockRegistries.HUMMING_OBSIDIAN.get());
-
-        loot.dropSelf(BlockRegistries.HUMMING_STONE.get());
-
-        loot.dropSelf(BlockRegistries.LAVA_SPONGE.get());
-
-        loot.dropSelf(BlockRegistries.MOLTEN_LAVA_SPONGE.get());
-
         loot.dropSelf(BlockRegistries.OVERGROWN_LUNON.get());
 
         loot.addLoot(
@@ -78,6 +70,8 @@ public class BlockLootTablesGenerator extends LootTableProvider {
         loot.dropSlabs(BlockRegistries.POLISHED_LUNON_SLAB.get());
 
         loot.dropSelf(BlockRegistries.CHISELED_POLISHED_LUNON.get());
+
+        loot.dropSelf(BlockRegistries.MOSSY_LUNON.get());
 
         loot.dropSelf(BlockRegistries.UMBRAL_DUNE.get());
     }

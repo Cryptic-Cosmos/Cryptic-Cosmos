@@ -2,16 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "crypticcosmos:humming_ingot"
+      "crypticcosmos:mossy_lunon"
     ]
   },
   "criteria": {
-    "has_humming_stone": {
+    "has_vine": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "crypticcosmos:humming_stone"
+            "item": "minecraft:vine"
           }
         ]
       }
@@ -19,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "crypticcosmos:humming_ingot"
+        "recipe": "crypticcosmos:mossy_lunon"
       }
     }
   },
   "requirements": [
     [
-      "has_humming_stone",
+      "has_vine",
       "has_the_recipe"
     ]
   ]

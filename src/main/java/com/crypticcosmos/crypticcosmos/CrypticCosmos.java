@@ -38,22 +38,14 @@ public class CrypticCosmos {
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "crypticcosmos";
 
-    public static final ItemGroup ITEM_ITEM_GROUP = new ItemGroup("item_tab") {
+    public static final ItemGroup CRYPTIC_COSMOS_ITEM_GROUP = new ItemGroup("cryptic_cosmos_tab") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(ItemRegistries.HUMMING_INGOT.get());
+            return new ItemStack(BlockRegistries.OVERGROWN_LUNON.get());
         }
     };
 
-    public static final ItemGroup BLOCK_ITEM_GROUP = new ItemGroup("block_tab") {
-        @Override
-        public ItemStack makeIcon() {
-            return new ItemStack(BlockRegistries.LUNON.get());
-        }
-    };
-
-    public static final Item.Properties ITEM_GROUP_PROPERTY = new Item.Properties().tab(ITEM_ITEM_GROUP);
-    public static final Item.Properties BLOCK_GROUP_PROPERTY = new Item.Properties().tab(BLOCK_ITEM_GROUP);
+    public static final Item.Properties DEFAULT_PROPERTY = new Item.Properties().tab(CRYPTIC_COSMOS_ITEM_GROUP);
 
     public CrypticCosmos() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -100,7 +92,7 @@ public class CrypticCosmos {
                     BlockItem blockItem;
 
                     // this makes sure you can't get a rift from the creative menu.
-                    if (!(block instanceof RiftBlock)) blockItem = new BlockItem(block, BLOCK_GROUP_PROPERTY);
+                    if (!(block instanceof RiftBlock)) blockItem = new BlockItem(block, DEFAULT_PROPERTY);
                     else blockItem = new BlockItem(block, new Item.Properties());
 
                     blockItem.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
