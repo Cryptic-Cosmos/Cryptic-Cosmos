@@ -23,14 +23,13 @@ apply(plugin = "net.minecraftforge.gradle")
 val minecraftVersion: String by extra
 val forgeVersion: String by extra
 val modVersion: String by extra
+val geckolibVersion: String by extra
+
 val modId: String by extra
 val author: String by extra
 
 val mavenGroup: String by extra
 val baseName: String by extra
-
-// Mappings
-val channel: String by extra
 
 version = "$minecraftVersion-$modVersion"
 group = mavenGroup
@@ -42,14 +41,7 @@ tasks.withType<JavaCompile> {
     targetCompatibility = "1.8"
 }
 
-println(
-    """
-        Java: ${System.getProperty("java.version")}, 
-        JVM: ${System.getProperty("java.vm.version")} (${System.getProperty("java.vendor")}), 
-        Arch: ${System.getProperty("os.arch")}
-        
-    """.trimIndent()
-)
+repositories { maven(url = "https://repo.repsy.io/mvn/gandiber/geckolib") }
 
 dependencies {
     "minecraft"(group = "net.minecraftforge", name = "forge", version = "$minecraftVersion-$forgeVersion")
@@ -57,7 +49,7 @@ dependencies {
     // geckolib
     implementation(
         project.the<DependencyManagementExtension>()
-            .deobf("software.bernie.geckolib:geckolib-forge-$minecraftVersion:3.0.15")
+            .deobf("software.bernie.geckolib:geckolib-forge-$minecraftVersion:$geckolibVersion")
     )
 }
 
@@ -85,8 +77,6 @@ minecraft {
         }
     }
 }
-
-repositories { maven(url = "https://repo.repsy.io/mvn/gandiber/geckolib") }
 
 // Manifest
 tasks.withType<Jar> {
