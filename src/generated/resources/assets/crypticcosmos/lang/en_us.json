@@ -22,6 +22,7 @@
   "block.crypticcosmos.polished_lunon_slab": "Polished Lunon Slab",
   "block.crypticcosmos.rift_block": "Rift Block",
   "block.crypticcosmos.umbral_dune": "Umbral Sand",
+  "commands.rift.success": "%1$s rifted away to %2$s",
   "death.attack.corruption": "%1$s inhaled the spores",
   "death.attack.corruption.player": "%1$s inhaled the spores whilst fighting %2$s",
   "entity.crypticcosmos.moon_beast": "Moon Beast",

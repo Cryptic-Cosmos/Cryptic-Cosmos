@@ -5,7 +5,6 @@ import com.crypticcosmos.crypticcosmos.registries.CrypticCosmosDimensions;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -42,9 +41,6 @@ public class RiftBlock extends Block {
         final int maxDistance = 120;
 
         List<BlockState> airStates = new ArrayList<>();
-        airStates.add(Blocks.AIR.defaultBlockState());
-        airStates.add(Blocks.CAVE_AIR.defaultBlockState());
-        airStates.add(Blocks.VOID_AIR.defaultBlockState());
 
         PlayerEntity player = event.player;
         final World world = player.getCommandSenderWorld();
@@ -57,9 +53,10 @@ public class RiftBlock extends Block {
                         if (i < minDistance) continue;
 
                         BlockPos riftPos = player.blockPosition().relative(direction, i);
+                        BlockState riftState = world.getBlockState(riftPos);
 
-                        if (airStates.contains(world.getBlockState(riftPos)) &&
-                            !riftPos.equals(player.blockPosition())) {
+                        //noinspection deprecation
+                        if (riftState.isAir() && !riftPos.equals(player.blockPosition())) {
                             if (world.getBlockState(riftPos.relative(direction))
                                     .getBlock().equals(BlockRegistries.RIFT_BLOCK.get())) return;
 
@@ -84,15 +81,10 @@ public class RiftBlock extends Block {
         return VALID_DIMENSIONS.get(ThreadLocalRandom.current().nextInt(VALID_DIMENSIONS.size()));
     }
 
-    @SuppressWarnings("deprecation")
-    @Override
-    public void entityInside(@Nonnull BlockState state, @Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull Entity entity) {
-        if (!entity.isAlive() || entity.getCommandSenderWorld().isClientSide()) return;
-
-        if (entity.isPassenger() || entity.isVehicle() || !entity.canChangeDimensions()) return;
-
+    public static RegistryKey<World> rift(World world, Entity entity, BlockPos pos) {
+        final RegistryKey<World> dimension = getDestination(entity.getCommandSenderWorld());
         // noinspection ConstantConditions
-        ServerWorld destination = worldIn.getServer().getLevel(getDestination(entity.getCommandSenderWorld()));
+        ServerWorld destination = world.getServer().getLevel(dimension);
 
         //noinspection ConstantConditions
         entity.changeDimension(destination, new ITeleporter() {
@@ -103,12 +95,27 @@ public class RiftBlock extends Block {
                 // update the portal cooldown of the entity
                 repositionedEntity.setPortalCooldown();
 
-                repositionedEntity.setPos(pos.getX(),
-                        destWorld.getHeightmapPos(Heightmap.Type.MOTION_BLOCKING, pos).getY(),
-                        pos.getZ());
+                int x = pos.getX();
+                int z = pos.getZ();
+                repositionedEntity.setPos(x,
+                        destWorld.getChunk(x / 16, z / 16)
+                                .getHeight(Heightmap.Type.MOTION_BLOCKING, x % 16, z % 16),
+                        z);
 
                 return repositionedEntity;
             }
         });
+
+        return dimension;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public void entityInside(@Nonnull BlockState state, @Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull Entity entity) {
+        if (!entity.isAlive() || entity.getCommandSenderWorld().isClientSide()) return;
+
+        if (entity.isPassenger() || entity.isVehicle() || !entity.canChangeDimensions()) return;
+
+        rift(worldIn, entity, pos);
     }
 }

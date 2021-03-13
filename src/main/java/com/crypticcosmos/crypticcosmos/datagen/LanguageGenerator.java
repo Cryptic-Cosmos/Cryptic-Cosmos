@@ -72,6 +72,9 @@ public abstract class LanguageGenerator extends LanguageProvider {
             // Death messages
             add("death.attack.corruption", "%1$s inhaled the spores");
             add("death.attack.corruption.player", "%1$s inhaled the spores whilst fighting %2$s");
+
+            // Commands
+            add("commands.rift.success", "%1$s rifted away to %2$s");
         }
     }
 }

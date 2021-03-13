@@ -60,6 +60,7 @@ public class CrypticCosmos {
         BiomeRegistries.BIOMES.register(modEventBus);
         EffectRegistries.EFFECTS.register(modEventBus);
         SoundEventRegistries.SOUND_EVENTS.register(modEventBus);
+        MinecraftForge.EVENT_BUS.addListener(CommandRegistries::registerCommands);
 
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::registerEntityAttributes);
