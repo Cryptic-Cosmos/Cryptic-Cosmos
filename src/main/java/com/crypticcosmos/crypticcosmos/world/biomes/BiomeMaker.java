@@ -23,7 +23,6 @@ import javax.annotation.Nonnull;
 
 import static com.crypticcosmos.crypticcosmos.world.biomes.BiomeHelper.*;
 
-@SuppressWarnings("SameParameterValue")
 public class BiomeMaker {
     public static final SurfaceBuilderConfig LUNARA_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
             BlockRegistries.OVERGROWN_LUNON.get().defaultBlockState(),
@@ -91,6 +90,9 @@ public class BiomeMaker {
 
         addSpawn(spawnSettings, EntityClassification.CREATURE,
                 EntityType.ENDERMAN, 10, 1, 4);
+
+        addSpawn(spawnSettings, EntityClassification.WATER_CREATURE,
+                EntityTypeRegistries.TRAPLOOM.get(), 8, 1, 2);
 
         final BiomeAmbience.Builder effects = effects(0xfffff5,
                 0xfffff5,

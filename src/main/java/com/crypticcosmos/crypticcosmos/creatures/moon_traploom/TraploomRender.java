@@ -6,6 +6,6 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 public class TraploomRender extends GeoEntityRenderer<TraploomEntity> {
     public TraploomRender(EntityRendererManager renderManager) {
         super(renderManager, new TraploomModel());
-        this.shadowSize = 0.1F;
+        this.shadowRadius = 0.1F;
     }
 }

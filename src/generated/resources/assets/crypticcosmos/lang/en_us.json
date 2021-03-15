@@ -27,8 +27,10 @@
   "death.attack.corruption.player": "%1$s inhaled the spores whilst fighting %2$s",
   "entity.crypticcosmos.moon_beast": "Moon Beast",
   "entity.crypticcosmos.moon_frog": "Moon Frog",
+  "entity.crypticcosmos.traploom": "Traploom",
   "item.crypticcosmos.cratered_bone": "Cratered Bone",
   "item.crypticcosmos.moon_beast_spawn_egg": "Moon Beast Spawn Egg",
   "item.crypticcosmos.moon_frog_spawn_egg": "Moon Frog Spawn Egg",
+  "item.crypticcosmos.traploom_spawn_egg": "Traploom Spawn Egg",
   "itemGroup.cryptic_cosmos_tab": "Cryptic Cosmos Materials"
 }

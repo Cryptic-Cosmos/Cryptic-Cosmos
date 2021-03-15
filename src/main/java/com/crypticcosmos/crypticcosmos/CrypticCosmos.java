@@ -5,6 +5,8 @@ import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastRender;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
+import com.crypticcosmos.crypticcosmos.creatures.moon_traploom.TraploomEntity;
+import com.crypticcosmos.crypticcosmos.creatures.moon_traploom.TraploomRender;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
 import com.crypticcosmos.crypticcosmos.registries.*;
 import net.minecraft.block.CropsBlock;
@@ -39,6 +41,7 @@ public class CrypticCosmos {
     public static final String MOD_ID = "crypticcosmos";
 
     public static final ItemGroup CRYPTIC_COSMOS_ITEM_GROUP = new ItemGroup("cryptic_cosmos_tab") {
+        @Nonnull
         @Override
         public ItemStack makeIcon() {
             return new ItemStack(BlockRegistries.OVERGROWN_LUNON.get());
@@ -83,6 +86,11 @@ public class CrypticCosmos {
                 EntityTypeRegistries.MOON_FROG.get(),
                 MoonFrogRender::new
         );
+
+        RenderingRegistry.registerEntityRenderingHandler(
+                EntityTypeRegistries.TRAPLOOM.get(),
+                TraploomRender::new
+        );
     }
 
     private void registerBlockItems(final RegistryEvent.Register<Item> event) {
@@ -105,6 +113,7 @@ public class CrypticCosmos {
     private void registerEntityAttributes(@Nonnull EntityAttributeCreationEvent event) {
         event.put(EntityTypeRegistries.MOON_BEAST.get(), MoonBeastEntity.setCustomAttributes());
         event.put(EntityTypeRegistries.MOON_FROG.get(), MoonFrogEntity.setCustomAttributes());
+        event.put(EntityTypeRegistries.TRAPLOOM.get(), TraploomEntity.createAttributes().build());
     }
 
     private void createSpawnEggs(RegistryEvent.Register<EntityType<?>> event) {

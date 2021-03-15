@@ -29,13 +29,13 @@ public class TraploomEntity extends AbstractGroupFishEntity implements IAnimatab
     public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("Walk");
 
     private static final Lazy<Ingredient> BREEDING_ITEM = Lazy.of(
-            () -> Ingredient.fromItems(BlockRegistries.MONDROVE_SAPLING.get())
+            () -> Ingredient.of(BlockRegistries.MONDROVE_SAPLING.get())
     );
 
     public TraploomEntity(EntityType<? extends TraploomEntity> type, World worldIn) {
         super(type, worldIn);
 
-        this.ignoreFrustumCheck = true;
+        this.noCulling = true;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class TraploomEntity extends AbstractGroupFishEntity implements IAnimatab
         // TODO: Come up with alternative moving predicate?
         //       The default one doesn't seen to work with slow movement speeds.
         boolean isInWater = isInWater();
-        boolean isMoving = isInWater ? !(limbSwingAmount > -0.02) || !(limbSwingAmount < 0.02) : !(limbSwingAmount > -0.10F) || !(limbSwingAmount < 0.10F);
+        boolean isMoving = isInWater ? !(animationSpeed > -0.02) || !(animationSpeed < 0.02) : !(animationSpeed > -0.10F) || !(animationSpeed < 0.10F);
         AnimationBuilder anim = isInWater ? IDLE_SWIM_ANIM : IDLE_ANIM;
 
         return PlayState.CONTINUE;
@@ -68,14 +68,13 @@ public class TraploomEntity extends AbstractGroupFishEntity implements IAnimatab
 
 
     @Nullable
-
     @Override
     protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
-        return this.isChild() ? sizeIn.height * 0.95F : 1.3F;
+        return this.isBaby() ? sizeIn.height * 0.95F : 1.3F;
     }
 
     @Override
-    protected ItemStack getFishBucket() {
+    protected ItemStack getBucketItemStack() {
         return null;
     }
 

@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.creatures;
+package com.crypticcosmos.crypticcosmos.registries;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastEntity;
@@ -33,8 +33,8 @@ public class EntityTypeRegistries {
     public static final RegistryObject<EntityType<TraploomEntity>> TRAPLOOM = ENTITY_TYPES.register(
             "traploom",
             () -> EntityType.Builder
-                    .create(TraploomEntity::new, EntityClassification.WATER_CREATURE)
-                    .size(1f, 0.5f)
+                    .of(TraploomEntity::new, EntityClassification.WATER_CREATURE)
+                    .sized(1f, 0.5f)
                     .build(new ResourceLocation(CrypticCosmos.MOD_ID, "traploom").toString())
     );
 }
