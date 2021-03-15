@@ -1,7 +1,8 @@
 package com.crypticcosmos.crypticcosmos.creatures.moon_beast;
 
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.EndermanEntity;
 import net.minecraft.entity.monster.MonsterEntity;
@@ -35,31 +36,29 @@ public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
         this.applyEntityAI();
     }
 
+    @Nonnull
+    public static AttributeModifierMap setCustomAttributes() {
+        return createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 50f)
+                .add(Attributes.MOVEMENT_SPEED, 0.5f)
+                .add(Attributes.ATTACK_DAMAGE, 6f)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 4f)
+                .build();
+    }
+
     protected void applyEntityAI() {
         this.goalSelector.addGoal(4, new SwimGoal(this));
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.0D, false));
-        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setCallsForHelp());
+        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, EndermanEntity.class, true));
     }
 
     @Override
-    protected void registerAttributes() {
-        super.registerAttributes();
+    protected int getExperienceReward(@Nonnull PlayerEntity player) {
+        if (this.isBaby()) this.xpReward = (int) ((float) this.xpReward * 4f);
 
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50.0D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
-        this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
-        this.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(4D);
-    }
-
-    @Override
-    protected int getExperiencePoints(@Nonnull PlayerEntity player) {
-        if (this.isChild()) {
-            this.experienceValue = (int) ((float) this.experienceValue * 4F);
-        }
-
-        return super.getExperiencePoints(player);
+        return super.getExperienceReward(player);
     }
 
     @Override
@@ -72,7 +71,6 @@ public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
     public AnimationFactory getFactory() {
         return factory;
     }
-
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         AnimationController<?> controller = event.getController();

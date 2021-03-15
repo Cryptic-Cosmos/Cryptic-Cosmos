@@ -4,8 +4,8 @@ package com.crypticcosmos.crypticcosmos.creatures.moon_beast;// Made with Blockb
 
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.util.Utils;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
@@ -33,7 +33,7 @@ public class MoonBeastModel extends AnimatedGeoModel<MoonBeastEntity> {
         EntityModelData data = (EntityModelData) customPredicate.getExtraData().get(0);
         // Apply head look to model
         IBone head = this.getAnimationProcessor().getBone("head_skull");
-        head.setRotationY((float) Math.toRadians(Utils.clamp(data.netHeadYaw, -45, 45)));
+        head.setRotationY((float) Math.toRadians(MathHelper.clamp(data.netHeadYaw, -45, 45)));
         head.setRotationX(-(float) Math.toRadians(data.headPitch));
     }
 }

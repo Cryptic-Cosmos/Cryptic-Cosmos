@@ -1,7 +1,0 @@
-{
-  "parent": "crypticcosmos:block/cube_column_horizontal",
-  "textures": {
-    "end": "crypticcosmos:block/thorn_log_top",
-    "side": "crypticcosmos:block/thorn_log"
-  }
-}

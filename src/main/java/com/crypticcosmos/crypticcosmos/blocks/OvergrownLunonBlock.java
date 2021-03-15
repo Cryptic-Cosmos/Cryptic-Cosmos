@@ -14,39 +14,43 @@ import javax.annotation.Nonnull;
 
 @SuppressWarnings("deprecation")
 public class OvergrownLunonBlock extends SnowyDirtBlock {
-    public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+    public static final DirectionProperty FACING = HorizontalBlock.FACING;
 
     public OvergrownLunonBlock() {
-        super(Properties.create(Material.ROCK)
-                .hardnessAndResistance(1.6f, 7)
+        super(Properties.of(Material.STONE)
+                .strength(1.6f, 7)
                 .sound(SoundType.STONE)
                 .harvestLevel(1)
-                .harvestTool(ToolType.PICKAXE));
+                .harvestTool(ToolType.PICKAXE)
+                .requiresCorrectToolForDrops()
+        );
 
-        this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(SNOWY, false));
+        this.registerDefaultState(this.getStateDefinition().any()
+                .setValue(FACING, Direction.NORTH)
+                .setValue(SNOWY, false));
     }
 
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        Block block = context.getWorld().getBlockState(context.getPos().up()).getBlock();
-        return this.getDefaultState()
-                .with(FACING, context.getPlacementHorizontalFacing().getOpposite())
-                .with(SNOWY, block == Blocks.SNOW_BLOCK || block == Blocks.SNOW);
+        Block block = context.getLevel().getBlockState(context.getClickedPos().above()).getBlock();
+        return this.defaultBlockState()
+                .setValue(FACING, context.getHorizontalDirection().getOpposite())
+                .setValue(SNOWY, block.is(Blocks.SNOW_BLOCK) || block.is(Blocks.SNOW));
     }
 
     @Override
     @Nonnull
     public BlockState rotate(BlockState state, Rotation rot) {
-        return state.with(FACING, rot.rotate(state.get(FACING)));
+        return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     @Override
     @Nonnull
     public BlockState mirror(BlockState state, Mirror mirrorIn) {
-        return state.rotate(mirrorIn.toRotation(state.get(FACING)));
+        return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
     }
 
     @Override
-    public void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(FACING, SNOWY);
     }
 }

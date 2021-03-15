@@ -9,20 +9,20 @@ import javax.annotation.Nonnull;
 
 public class CorruptionEffect extends Effect {
     public static final DamageSource CORRUPTION_DAMAGE_SOURCE = new DamageSource("corruption")
-            .setMagicDamage()
-            .setDamageBypassesArmor();
+            .setMagic()
+            .bypassArmor();
 
     public CorruptionEffect() {
         super(EffectType.HARMFUL, 0x584033);
     }
 
     @Override
-    public void performEffect(LivingEntity entity, int amplifier) {
-        entity.attackEntityFrom(CORRUPTION_DAMAGE_SOURCE, 1.05F);
+    public void applyEffectTick(LivingEntity entity, int amplifier) {
+        entity.hurt(CORRUPTION_DAMAGE_SOURCE, 1.05F);
     }
 
     @Override
-    public boolean isReady(int duration, int amplifier) {
+    public boolean isDurationEffectTick(int duration, int amplifier) {
         int j = 25 >> amplifier;
         if (j > 0) {
             return duration % j == 0;
@@ -36,7 +36,7 @@ public class CorruptionEffect extends Effect {
      */
     @Nonnull
     @Override
-    public String getName() {
+    public String getDescriptionId() {
         return "Corruption";
     }
 }
