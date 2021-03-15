@@ -19,7 +19,6 @@ import net.minecraftforge.common.util.ITeleporter;
 import net.minecraftforge.event.TickEvent;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
@@ -39,8 +38,6 @@ public class RiftBlock extends Block {
         final int spawningChance = 15000;
         final int minDistance = 5;
         final int maxDistance = 120;
-
-        List<BlockState> airStates = new ArrayList<>();
 
         PlayerEntity player = event.player;
         final World world = player.getCommandSenderWorld();
@@ -97,9 +94,8 @@ public class RiftBlock extends Block {
 
                 int x = pos.getX();
                 int z = pos.getZ();
-                repositionedEntity.setPos(x,
-                        destWorld.getChunk(x / 16, z / 16)
-                                .getHeight(Heightmap.Type.MOTION_BLOCKING, x % 16, z % 16),
+                repositionedEntity.moveTo(x,
+                        destWorld.getHeight(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, x, z),
                         z);
 
                 return repositionedEntity;
