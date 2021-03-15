@@ -88,17 +88,21 @@ public class RiftBlock extends Block {
         entity.changeDimension(destination, new ITeleporter() {
             @Override
             public Entity placeEntity(Entity entity, ServerWorld currentWorld, ServerWorld destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {
+                // Runs the teleportation mechanics
                 Entity repositionedEntity = repositionEntity.apply(false);
 
                 // update the portal cooldown of the entity
                 repositionedEntity.setPortalCooldown();
 
+                // Get the positions
                 int x = pos.getX();
                 int z = pos.getZ();
-                repositionedEntity.moveTo(x,
-                        destWorld.getHeight(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, x, z),
-                        z);
+                int surfaceY = destWorld.getHeight(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, x, z);
+                int y = surfaceY < 1 ? 70 : surfaceY;
 
+                repositionedEntity.moveTo(x, y, z);
+
+                // Destroy the rift once it's used
                 currentWorld.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
 
                 return repositionedEntity;
@@ -111,8 +115,8 @@ public class RiftBlock extends Block {
     @SuppressWarnings("deprecation")
     @Override
     public void entityInside(@Nonnull BlockState state, @Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull Entity entity) {
+        // Make some checks before teleporting
         if (!entity.isAlive() || entity.getCommandSenderWorld().isClientSide()) return;
-
         if (entity.isPassenger() || entity.isVehicle() || !entity.canChangeDimensions()) return;
 
         rift(worldIn, entity, pos);
