@@ -5,6 +5,7 @@ import com.crypticcosmos.crypticcosmos.registries.CrypticCosmosDimensions;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -97,6 +98,8 @@ public class RiftBlock extends Block {
                 repositionedEntity.moveTo(x,
                         destWorld.getHeight(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, x, z),
                         z);
+
+                currentWorld.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
 
                 return repositionedEntity;
             }
