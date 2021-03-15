@@ -1,82 +1,124 @@
 package com.crypticcosmos.crypticcosmos.blocks;
 
+import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
+import com.crypticcosmos.crypticcosmos.registries.CrypticCosmosDimensions;
+import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.Direction;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.ITeleporter;
+import net.minecraftforge.event.TickEvent;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
 
 public class RiftBlock extends Block {
     public RiftBlock() {
-        super(Properties.create(Material.ROCK)
-                .hardnessAndResistance(40f, 1200f)
+        super(Properties.of(Material.STONE)
+                .strength(40f, 1200f)
                 .sound(SoundType.STONE)
-                .doesNotBlockMovement()
+                .noCollission()
                 .noDrops()
         );
     }
 
-    private static DimensionType getDestination(Entity entity) {
-        List<DimensionType> allDimensions = new ArrayList<>();
-        DimensionType randomDimension;
+    public static void riftSpawning(@Nonnull TickEvent.PlayerTickEvent event) {
+        // The higher this is, the less likely it is for a rift to spawn (the exact chance is 1/spawning chance)
+        final int spawningChance = 15000;
+        final int minDistance = 5;
+        final int maxDistance = 120;
 
-        // Adds all of the dimensions to a regular list
-        DimensionType.getAll().iterator().forEachRemaining(allDimensions::add);
+        PlayerEntity player = event.player;
+        final World world = player.getCommandSenderWorld();
 
-        // We don't want people teleporting to the end, the nether or the dimensions they're currently in
-        allDimensions.remove(DimensionType.THE_END);
-        allDimensions.remove(DimensionType.THE_NETHER);
-        allDimensions.remove(entity.dimension);
+        if (ThreadLocalRandom.current().nextInt(spawningChance) == 0) {
+            if (!(World.END.equals(world.dimension())
+                  || World.NETHER.equals(world.dimension()))) {
+                for (Direction direction : Direction.values()) {
+                    for (int i = 0; i <= maxDistance; i++) {
+                        if (i < minDistance) continue;
 
-        randomDimension = allDimensions.get(ThreadLocalRandom.current().nextInt(allDimensions.size()));
+                        BlockPos riftPos = player.blockPosition().relative(direction, i);
+                        BlockState riftState = world.getBlockState(riftPos);
 
-        return randomDimension;
+                        //noinspection deprecation
+                        if (riftState.isAir() && !riftPos.equals(player.blockPosition())) {
+                            if (world.getBlockState(riftPos.relative(direction))
+                                    .getBlock().equals(BlockRegistries.RIFT_BLOCK.get())) return;
+
+                            world.setBlockAndUpdate(riftPos, BlockRegistries.RIFT_BLOCK.get().defaultBlockState());
+
+                            return;
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    @Override
-    public void onEntityCollision(@Nonnull BlockState state, @Nonnull World worldIn, @Nonnull BlockPos pos, Entity entity) {
-        if (!entity.isAlive() || entity.world.isRemote) {
-            return;
-        }
+    private static RegistryKey<World> getDestination(World world) {
+        final List<RegistryKey<World>> VALID_DIMENSIONS = Lists.newArrayList(World.OVERWORLD,
+                CrypticCosmosDimensions.LUNARA_KEY,
+                CrypticCosmosDimensions.ABYSS_KEY
+        );
 
-        if (entity.isPassenger() || entity.isBeingRidden() || !entity.isNonBoss()) {
-            return;
-        }
+        VALID_DIMENSIONS.remove(world.dimension());
 
-        if (entity.timeUntilPortal > 0) {
-            return;
-        }
+        return VALID_DIMENSIONS.get(ThreadLocalRandom.current().nextInt(VALID_DIMENSIONS.size()));
+    }
 
-        // set a cooldown before this can run again
-        entity.timeUntilPortal = 10;
+    public static RegistryKey<World> rift(World world, Entity entity, BlockPos pos) {
+        final RegistryKey<World> dimension = getDestination(entity.getCommandSenderWorld());
+        // noinspection ConstantConditions
+        ServerWorld destination = world.getServer().getLevel(dimension);
 
-        DimensionType destination = getDestination(entity);
-
+        //noinspection ConstantConditions
         entity.changeDimension(destination, new ITeleporter() {
             @Override
             public Entity placeEntity(Entity entity, ServerWorld currentWorld, ServerWorld destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {
-                PlayerEntity playerIn = (PlayerEntity) repositionEntity.apply(false);
+                // Runs the teleportation mechanics
+                Entity repositionedEntity = repositionEntity.apply(false);
 
-                playerIn.setPositionAndUpdate(pos.getX(),
-                        destWorld.getHeight(Heightmap.Type.MOTION_BLOCKING, pos).getY(),
-                        pos.getZ());
+                // update the portal cooldown of the entity
+                repositionedEntity.setPortalCooldown();
 
-                return playerIn;
+                // Get the positions
+                int x = pos.getX();
+                int z = pos.getZ();
+                int surfaceY = destWorld.getHeight(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, x, z);
+                int y = surfaceY < 1 ? 70 : surfaceY;
+
+                repositionedEntity.moveTo(x, y, z);
+
+                // Destroy the rift once it's used
+                currentWorld.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+
+                return repositionedEntity;
             }
         });
+
+        return dimension;
     }
 
+    @SuppressWarnings("deprecation")
+    @Override
+    public void entityInside(@Nonnull BlockState state, @Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull Entity entity) {
+        // Make some checks before teleporting
+        if (!entity.isAlive() || entity.getCommandSenderWorld().isClientSide()) return;
+        if (entity.isPassenger() || entity.isVehicle() || !entity.canChangeDimensions()) return;
+
+        rift(worldIn, entity, pos);
+    }
 }

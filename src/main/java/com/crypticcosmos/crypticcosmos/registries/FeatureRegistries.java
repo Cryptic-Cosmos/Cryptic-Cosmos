@@ -1,34 +1,38 @@
 package com.crypticcosmos.crypticcosmos.registries;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.world.feature.structures.MoonPillarPieces;
-import com.crypticcosmos.crypticcosmos.world.feature.structures.MoonPillarStructure;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.structure.IStructurePieceType;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.Locale;
+import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
+import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
+import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
+import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 
 public class FeatureRegistries {
-    public static final DeferredRegister<Feature<?>> FEATURE = DeferredRegister.create(ForgeRegistries.FEATURES, CrypticCosmos.MOD_ID);
+    public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> MONDROVE_TREE = registerFeature("mondrove",
+            Feature.TREE.configured(new BaseTreeFeatureConfig.Builder(
+                    new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LOG.get().defaultBlockState()),
+                    new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LEAVES.get().defaultBlockState()),
+                    new BlobFoliagePlacer(FeatureSpread.fixed(2),
+                            FeatureSpread.fixed(0), 3),
+                    new StraightTrunkPlacer(4, 2, 0),
+                    new TwoLayerFeature(1, 0, 1))
+                    .ignoreVines()
+                    .build()
+            ));
 
-    public static final RegistryObject<MoonPillarStructure> MOON_PILLAR = FEATURE.register(
-            "moon_pillar",
-            () -> new MoonPillarStructure(NoFeatureConfig::deserialize)
+    public static final ConfiguredFeature<?, ?> MONDROVE_FUNGUS = registerFeature("mondrove_fungus",
+            Feature.FLOWER.configured(new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider()
+                    .add(BlockRegistries.MONDROVE_FUNGUS.get().defaultBlockState(), 2),
+                    new SimpleBlockPlacer())
+                    .tries(64)
+                    .build()
+            )
     );
 
-    public static final IStructurePieceType MOON_PILLAR_PIECE = MoonPillarPieces.Piece::new;
-
-    public static void registerStructurePieces(RegistryEvent.Register<Feature<?>> event) {
-        Registry.register(
-                Registry.STRUCTURE_PIECE,
-                "MOON_PILLAR".toLowerCase(Locale.ROOT),
-                MOON_PILLAR_PIECE
-        );
+    private static <T extends IFeatureConfig> ConfiguredFeature<T, ?> registerFeature(String path, ConfiguredFeature<T, ?> feature) {
+        return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, CrypticCosmos.id(path), feature);
     }
 }

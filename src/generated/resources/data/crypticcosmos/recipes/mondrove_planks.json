@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "crypticcosmos:mondrove_log"
+    }
+  ],
+  "result": {
+    "item": "crypticcosmos:mondrove_planks",
+    "count": 4
+  }
+}

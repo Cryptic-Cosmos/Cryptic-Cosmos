@@ -1,9 +1,9 @@
 package com.crypticcosmos.crypticcosmos.datagen;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.creatures.EntityTypeRegistries;
-import com.crypticcosmos.crypticcosmos.registries.BiomeRegistries;
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
+import com.crypticcosmos.crypticcosmos.registries.EffectRegistries;
+import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.registries.ItemRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -21,26 +21,18 @@ public abstract class LanguageGenerator extends LanguageProvider {
         @Override
         protected void addTranslations() {
             // Creative tabs
-            add("itemGroup.item_tab", "Cryptic Cosmos Materials");
-            add("itemGroup.block_tab", "Cryptic Cosmos Blocks");
+            add("itemGroup.cryptic_cosmos_tab", "Cryptic Cosmos Materials");
 
             // Items
-            add(ItemRegistries.HUMMING_INGOT.get(), "Humming Ingot");
-            add(ItemRegistries.NECRONOMICON.get(), "Necronomicon");
-            add(ItemRegistries.PAGE_NECRONOMICON.get(), "Undecipherable Page");
             add(ItemRegistries.CRATERED_BONE.get(), "Cratered Bone");
-            add(ItemRegistries.BUNDLE_NECRONOMICON.get(), "Corrupted Bundle of Knowledge");
             add(ItemRegistries.MOON_BEAST_SPAWN_EGG.get(), "Moon Beast Spawn Egg");
             add(ItemRegistries.MOON_FROG_SPAWN_EGG.get(), "Moon Frog Spawn Egg");
-            add(ItemRegistries.TRAPLOOM_SPAWN_EGG.get(), "Traploom Spawn Egg");
 
             // Blocks
-            add(BlockRegistries.HUMMING_STONE.get(), "Humming Stone");
-            add(BlockRegistries.HUMMING_OBSIDIAN.get(), "Humming Obsidian");
-
             add(BlockRegistries.OVERGROWN_LUNON.get(), "Overgrown Lunon");
 
             add(BlockRegistries.LUNON.get(), "Lunon");
+            add(BlockRegistries.LUNON_DUST.get(), "Lunon Dust");
 
             add(BlockRegistries.CHISELED_POLISHED_LUNON.get(), "Chiseled Polished Lunon");
 
@@ -51,20 +43,14 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.LUNON_BRICK_SLAB.get(), "Lunon Brick Slab");
             add(BlockRegistries.LUNON_BRICK_STAIRS.get(), "Lunon Brick Stairs");
 
-            add(BlockRegistries.THORN_LOG.get(), "Thorn Log");
-            add(BlockRegistries.THORN_PLANKS.get(), "Thorn Planks");
-            add(BlockRegistries.THORN_SLAB.get(), "Thorn Slab");
-            add(BlockRegistries.THORN_LEAVES.get(), "Thorn Leaves");
-            add(BlockRegistries.THORN_SAPLING.get(), "Thorn Sapling");
-            add(BlockRegistries.THORN_DOOR.get(), "Thorn Door");
+            add(BlockRegistries.MOSSY_LUNON.get(), "Mossy Lunon");
 
-            add(BlockRegistries.MONDROVE_LOG.get(), "Moon Log");
-            add(BlockRegistries.MONDROVE_PLANKS.get(), "Moon Planks");
-            add(BlockRegistries.MONDROVE_LEAVES.get(), "Moon Leaves");
-            add(BlockRegistries.MONDROVE_SAPLING.get(), "Moon Sapling");
+            add(BlockRegistries.MONDROVE_LOG.get(), "Mondrove Log");
+            add(BlockRegistries.MONDROVE_PLANKS.get(), "Mondrove Planks");
+            add(BlockRegistries.MONDROVE_LEAVES.get(), "Mondrove Leaves");
+            add(BlockRegistries.MONDROVE_SAPLING.get(), "Mondrove Sapling");
+            add(BlockRegistries.MONDROVE_FUNGUS.get(), "Mondrove Fungus");
 
-            add(BlockRegistries.LAVA_SPONGE.get(), "Lava Sponge");
-            add(BlockRegistries.MOLTEN_LAVA_SPONGE.get(), "Molten Lava Sponge");
             add(BlockRegistries.RIFT_BLOCK.get(), "Rift Block");
 
             add(BlockRegistries.UMBRAL_DUNE.get(), "Umbral Sand");
@@ -74,7 +60,21 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(EntityTypeRegistries.MOON_FROG.get(), "Moon Frog");
 
             // Biomes
-            add(BiomeRegistries.THORN_JUNGLE.get(), "Thorn Jungle");
+            add("biome.crypticcosmos.thorn_jungle", "Thorn Jungle");
+            add("biome.crypticcosmos.lunara_plains", "Lunara Plains");
+            add("biome.crypticcosmos.lunara_mountains", "Lunara Mountains");
+            add("biome.crypticcosmos.lunara_forest", "Lunara Forest");
+            add("biome.crypticcosmos.umbral_dunes", "Umbral Dunes");
+
+            // Effects
+            add(EffectRegistries.CORRUPTION.get(), "Corruption");
+
+            // Death messages
+            add("death.attack.corruption", "%1$s inhaled the spores");
+            add("death.attack.corruption.player", "%1$s inhaled the spores whilst fighting %2$s");
+
+            // Commands
+            add("commands.rift.success", "%1$s rifted away to %2$s");
         }
     }
 }
