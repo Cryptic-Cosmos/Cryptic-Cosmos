@@ -15,13 +15,15 @@ public class DataGenerators {
 
         if (event.includeClient()) {
             generator.addProvider(new LanguageGenerator.English(generator));
+            generator.addProvider(new ItemModelGenerator(generator, existingFileHelper));
         }
 
         if (event.includeServer()) {
+            final BlockTagGenerator blockTags = new BlockTagGenerator(generator, existingFileHelper);
+
             generator.addProvider(new RecipesGenerator(generator));
             generator.addProvider(new BlockLootTablesGenerator(generator));
             generator.addProvider(new EntityLootTablesGenerator(generator));
-            final BlockTagGenerator blockTags = new BlockTagGenerator(generator, existingFileHelper);
             generator.addProvider(blockTags);
             generator.addProvider(new ItemTagGenerator(generator, blockTags, existingFileHelper));
         }
