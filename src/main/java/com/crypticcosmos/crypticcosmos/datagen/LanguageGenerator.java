@@ -60,14 +60,15 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(EntityTypeRegistries.MOON_FROG.get(), "Moon Frog");
 
             // Biomes
-            add("biome.crypticcosmos.thorn_jungle", "Thorn Jungle");
-            add("biome.crypticcosmos.lunara_plains", "Lunara Plains");
-            add("biome.crypticcosmos.lunara_mountains", "Lunara Mountains");
-            add("biome.crypticcosmos.lunara_forest", "Lunara Forest");
-            add("biome.crypticcosmos.umbral_dunes", "Umbral Dunes");
+            add(String.format("biome.%s.thorn_jungle", CrypticCosmos.MOD_ID), "Thorn Jungle");
+            add(String.format("biome.%s.lunara_plains", CrypticCosmos.MOD_ID), "Lunara Plains");
+            add(String.format("biome.%s.lunara_mountains", CrypticCosmos.MOD_ID), "Lunara Mountains");
+            add(String.format("biome.%s.lunara_forest", CrypticCosmos.MOD_ID), "Lunara Forest");
+            add(String.format("biome.%s.umbral_dunes", CrypticCosmos.MOD_ID), "Umbral Dunes");
 
             // Effects
             add(EffectRegistries.CORRUPTION.get(), "Corruption");
+            add(EffectRegistries.PURIFICATION.get(), "Purification");
 
             // Death messages
             add("death.attack.corruption", "%1$s inhaled the spores");
@@ -75,6 +76,17 @@ public abstract class LanguageGenerator extends LanguageProvider {
 
             // Commands
             add("commands.rift.success", "%1$s rifted away to %2$s");
+
+            // Potions
+            add("item.minecraft.potion.effect.corruption", "Potion of Corruption");
+            add("item.minecraft.splash_potion.effect.corruption", "Splash Potion of Corruption");
+            add("item.minecraft.lingering_potion.effect.corruption", "Lingering Potion of Corruption");
+            add("item.minecraft.tipped_arrow.effect.corruption", "Tipped Arrow of Corruption");
+
+            add("item.minecraft.potion.effect.purification", "Potion of Purification");
+            add("item.minecraft.splash_potion.effect.purification", "Splash Potion of Purification");
+            add("item.minecraft.lingering_potion.effect.purification", "Lingering Potion of Purification");
+            add("item.minecraft.tipped_arrow.effect.purification", "Tipped Arrow of Purification");
         }
     }
 }
