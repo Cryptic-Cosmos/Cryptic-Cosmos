@@ -7,6 +7,7 @@ import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
 import com.crypticcosmos.crypticcosmos.registries.*;
+import com.crypticcosmos.crypticcosmos.util.BrewingRecipes;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -39,6 +40,7 @@ public class CrypticCosmos {
     public static final String MOD_ID = "crypticcosmos";
 
     public static final ItemGroup CRYPTIC_COSMOS_ITEM_GROUP = new ItemGroup("cryptic_cosmos_tab") {
+        @Nonnull
         @Override
         public ItemStack makeIcon() {
             return new ItemStack(BlockRegistries.OVERGROWN_LUNON.get());
@@ -60,9 +62,11 @@ public class CrypticCosmos {
         BiomeRegistries.BIOMES.register(modEventBus);
         EffectRegistries.EFFECTS.register(modEventBus);
         SoundEventRegistries.SOUND_EVENTS.register(modEventBus);
+        PotionRegistries.POTIONS.register(modEventBus);
         MinecraftForge.EVENT_BUS.addListener(CommandRegistries::registerCommands);
 
         modEventBus.addListener(this::clientSetup);
+        modEventBus.addListener(BrewingRecipes::registerBrewingRecipes);
         modEventBus.addListener(this::registerEntityAttributes);
         modEventBus.addGenericListener(Item.class, this::registerBlockItems);
         modEventBus.addGenericListener(EntityType.class, this::createSpawnEggs);

@@ -15,6 +15,7 @@ public class DataGenerators {
 
         if (event.includeClient()) {
             generator.addProvider(new LanguageGenerator.English(generator));
+            generator.addProvider(new ItemModelGenerator(generator, existingFileHelper));
         }
 
         if (event.includeServer()) {
