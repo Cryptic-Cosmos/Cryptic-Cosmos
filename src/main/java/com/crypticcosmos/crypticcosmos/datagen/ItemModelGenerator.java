@@ -41,9 +41,15 @@ public class ItemModelGenerator extends ItemModelProvider {
 
     private void generatedItem(@Nonnull IItemProvider item) {
         ResourceLocation resourceLocation = Objects.requireNonNull(item.asItem().getRegistryName());
-        getBuilder(resourceLocation.getPath())
-                .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .texture("layer0", resourceLocation.getNamespace() + ":item/" + resourceLocation.getPath());
+        String path = String.format("%s:item/%s", resourceLocation.getNamespace(), resourceLocation.getPath());
+
+        try {
+            getBuilder(resourceLocation.getPath())
+                    .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                    .texture("layer0", path);
+        } catch (IllegalArgumentException e) {
+            CrypticCosmos.LOGGER.error("No such texture exists: " + path);
+        }
     }
 
     private void generatedItem(@Nonnull IItemProvider item, String texture) {
@@ -64,7 +70,7 @@ public class ItemModelGenerator extends ItemModelProvider {
         if (registryName != null) {
             getBuilder(registryName.getPath())
                     .parent(new ModelFile.UncheckedModelFile(
-                            registryName.getNamespace() + ":block/" + registryName.getPath()
+                            String.format("%s:block/%s", registryName.getNamespace(), registryName.getPath())
                     ));
         }
     }

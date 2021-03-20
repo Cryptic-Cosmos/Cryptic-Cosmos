@@ -9,6 +9,7 @@ import com.crypticcosmos.crypticcosmos.creatures.moon_traploom.TraploomEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_traploom.TraploomRender;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
 import com.crypticcosmos.crypticcosmos.registries.*;
+import com.crypticcosmos.crypticcosmos.util.BrewingRecipes;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -63,9 +64,11 @@ public class CrypticCosmos {
         BiomeRegistries.BIOMES.register(modEventBus);
         EffectRegistries.EFFECTS.register(modEventBus);
         SoundEventRegistries.SOUND_EVENTS.register(modEventBus);
+        PotionRegistries.POTIONS.register(modEventBus);
         MinecraftForge.EVENT_BUS.addListener(CommandRegistries::registerCommands);
 
         modEventBus.addListener(this::clientSetup);
+        modEventBus.addListener(BrewingRecipes::registerBrewingRecipes);
         modEventBus.addListener(this::registerEntityAttributes);
         modEventBus.addGenericListener(Item.class, this::registerBlockItems);
         modEventBus.addGenericListener(EntityType.class, this::createSpawnEggs);
