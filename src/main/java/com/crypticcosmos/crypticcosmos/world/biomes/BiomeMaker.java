@@ -26,10 +26,17 @@ import static com.crypticcosmos.crypticcosmos.world.biomes.BiomeHelper.*;
 @SuppressWarnings("SameParameterValue")
 public class BiomeMaker {
     public static final SurfaceBuilderConfig LUNARA_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
+            BlockRegistries.LUNON.get().defaultBlockState(),
+            BlockRegistries.LUNON.get().defaultBlockState(),
+            BlockRegistries.LUNON_DUST.get().defaultBlockState()
+    );
+
+    public static final SurfaceBuilderConfig ACERBIC_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
             BlockRegistries.OVERGROWN_LUNON.get().defaultBlockState(),
             BlockRegistries.LUNON.get().defaultBlockState(),
             BlockRegistries.LUNON_DUST.get().defaultBlockState()
     );
+
 
     public static final SurfaceBuilderConfig ABYSS_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
             BlockRegistries.UMBRAL_DUNE.get().defaultBlockState(),
@@ -38,7 +45,7 @@ public class BiomeMaker {
     );
 
     public static Biome acerbicIsles() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, LUNARA_SURFACE_BUILDER_CONFIG);
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, ACERBIC_SURFACE_BUILDER_CONFIG);
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
