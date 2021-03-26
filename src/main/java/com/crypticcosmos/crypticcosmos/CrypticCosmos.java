@@ -5,6 +5,8 @@ import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastRender;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
+import com.crypticcosmos.crypticcosmos.creatures.moon_traploom.TraploomEntity;
+import com.crypticcosmos.crypticcosmos.creatures.moon_traploom.TraploomRender;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
 import com.crypticcosmos.crypticcosmos.registries.*;
 import com.crypticcosmos.crypticcosmos.util.BrewingRecipes;
@@ -87,6 +89,11 @@ public class CrypticCosmos {
                 EntityTypeRegistries.MOON_FROG.get(),
                 MoonFrogRender::new
         );
+
+        RenderingRegistry.registerEntityRenderingHandler(
+                EntityTypeRegistries.TRAPLOOM.get(),
+                TraploomRender::new
+        );
     }
 
     private void registerBlockItems(final RegistryEvent.Register<Item> event) {
@@ -109,6 +116,7 @@ public class CrypticCosmos {
     private void registerEntityAttributes(@Nonnull EntityAttributeCreationEvent event) {
         event.put(EntityTypeRegistries.MOON_BEAST.get(), MoonBeastEntity.setCustomAttributes());
         event.put(EntityTypeRegistries.MOON_FROG.get(), MoonFrogEntity.setCustomAttributes());
+        event.put(EntityTypeRegistries.TRAPLOOM.get(), TraploomEntity.createAttributes().build());
     }
 
     private void createSpawnEggs(RegistryEvent.Register<EntityType<?>> event) {

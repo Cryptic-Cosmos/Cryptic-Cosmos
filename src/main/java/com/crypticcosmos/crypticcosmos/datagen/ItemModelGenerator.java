@@ -29,6 +29,7 @@ public class ItemModelGenerator extends ItemModelProvider {
         // Spawn eggs
         spawnEgg(ItemRegistries.MOON_FROG_SPAWN_EGG.get());
         spawnEgg(ItemRegistries.MOON_BEAST_SPAWN_EGG.get());
+        spawnEgg(ItemRegistries.TRAPLOOM_SPAWN_EGG.get());
 
         // Block items
         BlockRegistries.BLOCKS.getEntries().stream().map(RegistryObject::get)

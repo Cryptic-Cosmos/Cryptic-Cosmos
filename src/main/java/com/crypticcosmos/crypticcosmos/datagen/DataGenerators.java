@@ -19,10 +19,11 @@ public class DataGenerators {
         }
 
         if (event.includeServer()) {
+            final BlockTagGenerator blockTags = new BlockTagGenerator(generator, existingFileHelper);
+
             generator.addProvider(new RecipesGenerator(generator));
             generator.addProvider(new BlockLootTablesGenerator(generator));
             generator.addProvider(new EntityLootTablesGenerator(generator));
-            final BlockTagGenerator blockTags = new BlockTagGenerator(generator, existingFileHelper);
             generator.addProvider(blockTags);
             generator.addProvider(new ItemTagGenerator(generator, blockTags, existingFileHelper));
         }

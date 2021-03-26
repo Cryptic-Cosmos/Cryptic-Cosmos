@@ -27,6 +27,7 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(ItemRegistries.CRATERED_BONE.get(), "Cratered Bone");
             add(ItemRegistries.MOON_BEAST_SPAWN_EGG.get(), "Moon Beast Spawn Egg");
             add(ItemRegistries.MOON_FROG_SPAWN_EGG.get(), "Moon Frog Spawn Egg");
+            add(ItemRegistries.TRAPLOOM_SPAWN_EGG.get(), "Traploom Spawn Egg");
 
             // Blocks
             add(BlockRegistries.OVERGROWN_LUNON.get(), "Overgrown Lunon");
@@ -58,6 +59,7 @@ public abstract class LanguageGenerator extends LanguageProvider {
             // Entities
             add(EntityTypeRegistries.MOON_BEAST.get(), "Moon Beast");
             add(EntityTypeRegistries.MOON_FROG.get(), "Moon Frog");
+            add(EntityTypeRegistries.TRAPLOOM.get(), "Traploom");
 
             // Biomes
             add(String.format("biome.%s.thorn_jungle", CrypticCosmos.MOD_ID), "Thorn Jungle");

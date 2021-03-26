@@ -1,0 +1,153 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"Idle": {
+			"loop": true
+		},
+		"Walk": {
+			"animation_length": 0.76,
+			"bones": {
+				"main": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.52": {
+							"vector": [25, 0, 0]
+						},
+						"0.76": {
+							"vector": [0, 0, 0],
+							"easing": "easeOutBack"
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.52": {
+							"vector": [0, 4, 0]
+						},
+						"0.76": {
+							"vector": [0, 0, 0],
+							"easing": "easeOutBack"
+						}
+					}
+				},
+				"lowerbody": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.52": {
+							"vector": [-30, 0, 0]
+						},
+						"0.76": {
+							"vector": [0, 0, 0],
+							"easing": "easeOutBack"
+						}
+					}
+				},
+				"tail": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"lowertail": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.52": {
+							"vector": [-40, 0, 0]
+						},
+						"0.76": {
+							"vector": [0, 0, 0],
+							"easing": "easeOutBack"
+						}
+					}
+				}
+			}
+		},
+		"Swim": {
+			"animation_length": 1.68,
+			"bones": {
+				"main": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.28": {
+							"vector": [0, -17.5, 0]
+						},
+						"0.64": {
+							"vector": [0, 0, 0]
+						},
+						"1.08": {
+							"vector": [0, 22.5, 0]
+						},
+						"1.6": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"tail": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.32": {
+							"vector": [0, 25, 0]
+						},
+						"0.68": {
+							"vector": [0, 0, 0]
+						},
+						"1.04": {
+							"vector": [0, -27.5, 0]
+						},
+						"1.44": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"IdleSwim": {
+			"animation_length": 0.88,
+			"bones": {
+				"main": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.48": {
+							"vector": [0, -2.5, 0]
+						},
+						"0.88": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"lowertail": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.24": {
+							"vector": [0, 20, 0]
+						},
+						"0.72": {
+							"vector": [0, -2.5, 0]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

@@ -11,14 +11,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ItemRegistries {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CrypticCosmos.MOD_ID);
 
-    public static final RegistryObject<Item> CRATERED_BONE = ITEMS.register(
-            "cratered_bone",
-            () -> new Item(CrypticCosmos.DEFAULT_PROPERTY)
+    public static final RegistryObject<Item> CRATERED_BONE = ITEMS.register("cratered_bone", () ->
+            new Item(CrypticCosmos.DEFAULT_PROPERTY)
     );
 
-    public static final RegistryObject<Item> MOON_BEAST_SPAWN_EGG = ITEMS.register(
-            "moon_beast_spawn_egg",
-            () -> new CustomSpawnEggItem(
+    public static final RegistryObject<Item> MOON_BEAST_SPAWN_EGG = ITEMS.register("moon_beast_spawn_egg", () ->
+            new CustomSpawnEggItem(
                     EntityTypeRegistries.MOON_BEAST::get,
                     0x666666,
                     0x333333,
@@ -26,12 +24,20 @@ public class ItemRegistries {
             )
     );
 
-    public static final RegistryObject<Item> MOON_FROG_SPAWN_EGG = ITEMS.register(
-            "moon_frog_spawn_egg",
-            () -> new CustomSpawnEggItem(
+    public static final RegistryObject<Item> MOON_FROG_SPAWN_EGG = ITEMS.register("moon_frog_spawn_egg", () ->
+            new CustomSpawnEggItem(
                     EntityTypeRegistries.MOON_FROG::get,
                     0x993333,
                     0x660033,
+                    CrypticCosmos.DEFAULT_PROPERTY
+            )
+    );
+
+    public static final RegistryObject<Item> TRAPLOOM_SPAWN_EGG = ITEMS.register("traploom_spawn_egg", () ->
+            new CustomSpawnEggItem(
+                    EntityTypeRegistries.TRAPLOOM::get,
+                    0xa64833,
+                    0x751d34,
                     CrypticCosmos.DEFAULT_PROPERTY
             )
     );
