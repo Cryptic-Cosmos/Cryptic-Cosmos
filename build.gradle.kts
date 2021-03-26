@@ -50,8 +50,12 @@ dependencies {
 	"minecraft"(group = "net.minecraftforge", name = "forge", version = "$minecraftVersion-$forgeVersion")
 
 	// geckolib
-	implementation(project.the<DependencyManagementExtension>()
-		.deobf("software.bernie.geckolib:geckolib-forge-$minecraftVersion:$geckolibVersion"))
+	implementation(
+		project.the<DependencyManagementExtension>()
+			.deobf("software.bernie.geckolib:geckolib-forge-$minecraftVersion:$geckolibVersion")
+	)
+
+	implementation(group = "com.github.LudoCrypt", name = "Shapes-Api-Forge", version = "1.2.2nam")
 }
 
 minecraft {
