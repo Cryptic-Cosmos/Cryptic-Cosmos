@@ -41,7 +41,10 @@ tasks.withType<JavaCompile> {
     targetCompatibility = "1.8"
 }
 
-repositories { maven(url = "https://repo.repsy.io/mvn/gandiber/geckolib") }
+repositories {
+    maven(url = "https://repo.repsy.io/mvn/gandiber/geckolib")
+    maven(url = "https://jitpack.io")
+}
 
 dependencies {
     "minecraft"(group = "net.minecraftforge", name = "forge", version = "$minecraftVersion-$forgeVersion")
@@ -51,6 +54,9 @@ dependencies {
         project.the<DependencyManagementExtension>()
             .deobf("software.bernie.geckolib:geckolib-forge-$minecraftVersion:$geckolibVersion")
     )
+
+    implementation(group = "com.github.LudoCrypt", name = "Shapes-Api-Forge", version = "1.2.2nam")
+
 }
 
 minecraft {
