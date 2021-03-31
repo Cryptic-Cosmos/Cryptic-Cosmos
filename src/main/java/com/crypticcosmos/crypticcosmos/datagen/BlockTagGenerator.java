@@ -23,6 +23,6 @@ public class BlockTagGenerator extends BlockTagsProvider {
         tag(BlockTags.PLANKS).add(BlockRegistries.MONDROVE_PLANKS.get());
         tag(BlockTags.SAPLINGS).add(BlockRegistries.MONDROVE_SAPLING.get());
         // this makes sure the mondrove trees generate correctly
-        tag(Tags.Blocks.DIRT).addTag(TagRegistries.LUNARA_PLANTABLE_BLOCKS);
+        tag(Tags.Blocks.DIRT).addTag(TagRegistries.MONDROVE_PLANTABLE_BLOCKS);
     }
 }

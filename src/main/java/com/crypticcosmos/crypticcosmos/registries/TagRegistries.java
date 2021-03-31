@@ -9,5 +9,6 @@ import net.minecraft.tags.ItemTags;
 
 public class TagRegistries {
     public static final ITag.INamedTag<Block> LUNARA_PLANTABLE_BLOCKS = BlockTags.createOptional(CrypticCosmos.id("lunara_plantable"));
+    public static final ITag.INamedTag<Block> MONDROVE_PLANTABLE_BLOCKS = BlockTags.createOptional(CrypticCosmos.id("mondrove_fungus_plantable"));
     public static final ITag.INamedTag<Item> LUNARA_PLANTABLE_ITEMS = ItemTags.createOptional(CrypticCosmos.id("lunara_plantable"));
 }

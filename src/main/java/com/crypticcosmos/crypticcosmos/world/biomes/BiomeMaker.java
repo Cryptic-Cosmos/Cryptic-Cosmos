@@ -26,13 +26,19 @@ import static com.crypticcosmos.crypticcosmos.world.biomes.BiomeHelper.*;
 @SuppressWarnings("SameParameterValue")
 public class BiomeMaker {
     public static final SurfaceBuilderConfig LUNARA_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            BlockRegistries.LUNON.get().defaultBlockState(),
+            BlockRegistries.OVERGROWN_LUNON.get().defaultBlockState(),
             BlockRegistries.LUNON.get().defaultBlockState(),
             BlockRegistries.LUNON_DUST.get().defaultBlockState()
     );
 
     public static final SurfaceBuilderConfig ACERBIC_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            BlockRegistries.OVERGROWN_LUNON.get().defaultBlockState(),
+            BlockRegistries.LUNON.get().defaultBlockState(),
+            BlockRegistries.LUNON.get().defaultBlockState(),
+            BlockRegistries.LUNON_DUST.get().defaultBlockState()
+    );
+
+    public static final SurfaceBuilderConfig MONDROVE_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
+            BlockRegistries.FUNGAL_LUNON.get().defaultBlockState(),
             BlockRegistries.LUNON.get().defaultBlockState(),
             BlockRegistries.LUNON_DUST.get().defaultBlockState()
     );
@@ -78,7 +84,7 @@ public class BiomeMaker {
     }
 
     public static Biome mondroveGroves() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, LUNARA_SURFACE_BUILDER_CONFIG);
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, MONDROVE_SURFACE_BUILDER_CONFIG);
 
         // Add mondrove fungus generation.
         genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,

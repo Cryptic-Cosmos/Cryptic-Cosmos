@@ -20,6 +20,7 @@ public class BlockRegistries {
 
     // Overgrown Lunon
     public static final RegistryObject<Block> OVERGROWN_LUNON = BLOCKS.register("overgrown_lunon", OvergrownLunonBlock::new);
+    public static final RegistryObject<Block> FUNGAL_LUNON = BLOCKS.register("fungal_lunon", OvergrownLunonBlock::new);
 
     // Lunon
     public static final RegistryObject<Block> LUNON = BLOCKS.register("lunon", () ->

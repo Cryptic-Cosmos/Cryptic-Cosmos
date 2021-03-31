@@ -30,6 +30,7 @@ public abstract class LanguageGenerator extends LanguageProvider {
 
             // Blocks
             add(BlockRegistries.OVERGROWN_LUNON.get(), "Overgrown Lunon");
+            add(BlockRegistries.FUNGAL_LUNON.get(), "Fungal Lunon");
 
             add(BlockRegistries.LUNON.get(), "Lunon");
             add(BlockRegistries.LUNON_DUST.get(), "Lunon Dust");

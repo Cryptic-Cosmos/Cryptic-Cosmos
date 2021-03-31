@@ -1,5 +1,6 @@
 import Build_gradle.*
 import net.minecraftforge.gradle.userdev.DependencyManagementExtension
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 buildscript {
     repositories {
@@ -16,6 +17,8 @@ buildscript {
 plugins {
     `java-library`
     id("eclipse")
+    java
+    id("com.github.johnrengelman.shadow") version "4.0.4"
 }
 
 apply(plugin = "net.minecraftforge.gradle")
@@ -42,6 +45,7 @@ tasks.withType<JavaCompile> {
 }
 
 repositories {
+    jcenter()
     maven(url = "https://repo.repsy.io/mvn/gandiber/geckolib")
     maven(url = "https://jitpack.io")
 }
@@ -55,7 +59,7 @@ dependencies {
             .deobf("software.bernie.geckolib:geckolib-forge-$minecraftVersion:$geckolibVersion")
     )
 
-    implementation(group = "com.github.LudoCrypt", name = "Shapes-Api-Forge", version = "1.2.2nam")
+    implementation(group = "com.github.LudoCrypt", name = "Shapes-Api-Forge", version = "1.2.2")
 
 }
 
