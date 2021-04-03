@@ -5,6 +5,7 @@ import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastRender;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
+import com.crypticcosmos.crypticcosmos.effects.CorruptionEffect.SpawnFrogOnCorruptionKill;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
 import com.crypticcosmos.crypticcosmos.registries.*;
 import com.crypticcosmos.crypticcosmos.util.BrewingRecipes;
@@ -54,6 +55,7 @@ public class CrypticCosmos {
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.addListener(RiftBlock::riftSpawning);
+        MinecraftForge.EVENT_BUS.addListener(SpawnFrogOnCorruptionKill::spawnFrogOnCorruptionKill);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, BiomeRegistries::biomeLoading);
 
         BlockRegistries.BLOCKS.register(modEventBus);
@@ -72,6 +74,10 @@ public class CrypticCosmos {
         modEventBus.addGenericListener(EntityType.class, this::createSpawnEggs);
 
         GeckoLib.initialize();
+    }
+
+    public static ResourceLocation id(String path) {
+        return new ResourceLocation(MOD_ID, path);
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
@@ -113,9 +119,5 @@ public class CrypticCosmos {
 
     private void createSpawnEggs(RegistryEvent.Register<EntityType<?>> event) {
         CustomSpawnEggItem.initSpawnEggs();
-    }
-
-    public static ResourceLocation id(String path) {
-        return new ResourceLocation(MOD_ID, path);
     }
 }

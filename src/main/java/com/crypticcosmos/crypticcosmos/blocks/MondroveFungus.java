@@ -1,6 +1,5 @@
 package com.crypticcosmos.crypticcosmos.blocks;
 
-import com.crypticcosmos.crypticcosmos.effects.CorruptionEffect;
 import com.crypticcosmos.crypticcosmos.registries.EffectRegistries;
 import com.crypticcosmos.crypticcosmos.registries.TagRegistries;
 import net.minecraft.block.Block;
@@ -44,11 +43,7 @@ public class MondroveFungus extends BushBlock {
     @Override
     public void entityInside(@Nonnull BlockState state, World world, @Nonnull BlockPos pos, @Nonnull Entity entity) {
         if (!world.isClientSide() && entity instanceof LivingEntity) {
-            LivingEntity livingEntity = (LivingEntity) entity;
-
-            livingEntity.hurt(CorruptionEffect.CORRUPTION_DAMAGE_SOURCE, 7f);
-
-            livingEntity.addEffect(new EffectInstance(EffectRegistries.CORRUPTION.get(), Integer.MAX_VALUE));
+            ((LivingEntity) entity).addEffect(new EffectInstance(EffectRegistries.CORRUPTION.get(), Integer.MAX_VALUE));
         }
     }
 
