@@ -74,8 +74,21 @@ public class BlockRegistries {
     //Moon Wood
     public static final RegistryObject<Block> MONDROVE_LOG = BLOCKS.register("mondrove_log", MondroveLog::new);
 
+    public static final RegistryObject<Block> MONDROVE_WOOD = BLOCKS.register("mondrove_wood", MondroveLog::new);
+
+    public static final RegistryObject<Block> STRIPPED_MONDROVE_LOG = BLOCKS.register("stripped_mondrove_log", MondroveLog::new);
+
+    public static final RegistryObject<Block> STRIPPED_MONDROVE_WOOD = BLOCKS.register("stripped_mondrove_wood", MondroveLog::new);
+
     public static final RegistryObject<Block> MONDROVE_PLANKS = BLOCKS.register("mondrove_planks", () ->
             new InfectableBlock(Properties.copy(Blocks.BIRCH_PLANKS))
+    );
+
+    public static final RegistryObject<Block> MONDROVE_PLANKS_SLAB = BLOCKS.register("mondrove_planks_slab", () ->
+            new SlabBlock(Properties.copy(MONDROVE_PLANKS.get())));
+
+    public static final RegistryObject<Block> MONDROVE_PLANKS_STAIRS = BLOCKS.register("mondrove_planks_stairs", () ->
+            new StairsBlock(() -> MONDROVE_PLANKS.get().defaultBlockState(), Properties.copy(MONDROVE_PLANKS.get()))
     );
 
     public static final RegistryObject<Block> MONDROVE_SAPLING = BLOCKS.register("mondrove_sapling", () ->

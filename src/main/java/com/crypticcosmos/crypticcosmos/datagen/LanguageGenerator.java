@@ -47,7 +47,12 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.MOSSY_LUNON.get(), "Mossy Lunon");
 
             add(BlockRegistries.MONDROVE_LOG.get(), "Mondrove Log");
+            add(BlockRegistries.MONDROVE_WOOD.get(), "Mondrove Wood");
+            add(BlockRegistries.STRIPPED_MONDROVE_LOG.get(), "Stripped Mondrove Log");
+            add(BlockRegistries.STRIPPED_MONDROVE_WOOD.get(), "Stripped Mondrove Wood");
             add(BlockRegistries.MONDROVE_PLANKS.get(), "Mondrove Planks");
+            add(BlockRegistries.MONDROVE_PLANKS_SLAB.get(), "Mondrove Planks Slab");
+            add(BlockRegistries.MONDROVE_PLANKS_STAIRS.get(), "Mondrove Planks Stairs");
             add(BlockRegistries.MONDROVE_LEAVES.get(), "Mondrove Leaves");
             add(BlockRegistries.MONDROVE_SAPLING.get(), "Mondrove Sapling");
             add(BlockRegistries.MONDROVE_FUNGUS.get(), "Mondrove Fungus");

@@ -49,7 +49,17 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockRegistries.MONDROVE_LOG.get());
 
+        loot.dropSelf(BlockRegistries.MONDROVE_WOOD.get());
+
+        loot.dropSelf(BlockRegistries.STRIPPED_MONDROVE_LOG.get());
+
+        loot.dropSelf(BlockRegistries.STRIPPED_MONDROVE_WOOD.get());
+
         loot.dropSelf(BlockRegistries.MONDROVE_PLANKS.get());
+
+        loot.dropSelf(BlockRegistries.MONDROVE_PLANKS_SLAB.get());
+
+        loot.dropSelf(BlockRegistries.MONDROVE_PLANKS_STAIRS.get());
 
         loot.dropSelf(BlockRegistries.MONDROVE_SAPLING.get());
 
