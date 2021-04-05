@@ -11,7 +11,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DirectoryCache;
 import net.minecraft.data.IDataProvider;
 import net.minecraft.data.LootTableProvider;
-import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.loot.*;
 import net.minecraft.loot.conditions.BlockStateProperty;
 import net.minecraft.loot.conditions.SurvivesExplosion;
@@ -37,15 +36,6 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
     private void addLootTables(BlockLootTablesGenerator loot) {
         loot.dropSelf(BlockRegistries.OVERGROWN_LUNON.get());
-
-        loot.addLoot(
-                BlockRegistries.MONDROVE_LEAVES.get(),
-                BlockLootTables.createOakLeavesDrops(
-                        BlockRegistries.MONDROVE_LEAVES.get(),
-                        BlockRegistries.MONDROVE_SAPLING.get(),
-                        BlockLootTables.NORMAL_LEAVES_SAPLING_CHANCES
-                )
-        );
 
         loot.dropSelf(BlockRegistries.MONDROVE_LOG.get());
 

@@ -13,7 +13,9 @@ import javax.annotation.Nonnull;
 
 public class BrewingRecipes {
     public static void registerBrewingRecipes(@SuppressWarnings("unused") FMLCommonSetupEvent event) {
+
         addMix(Potions.WATER, BlockRegistries.MONDROVE_FUNGUS.get(), PotionRegistries.CORRUPTION.get());
+
 
         addPotency(PotionRegistries.CORRUPTION.get(), PotionRegistries.STRONG_CORRUPTION.get());
         addTime(PotionRegistries.CORRUPTION.get(), PotionRegistries.LONG_CORRUPTION.get());

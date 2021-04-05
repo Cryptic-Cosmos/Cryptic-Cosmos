@@ -1,5 +1,6 @@
 package com.crypticcosmos.crypticcosmos.items;
 
+import com.google.common.collect.Maps;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.dispenser.IBlockSource;
@@ -15,11 +16,13 @@ import net.minecraftforge.common.util.NonNullSupplier;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @SuppressWarnings("NullableProblems")
 public class CustomSpawnEggItem extends SpawnEggItem {
     private static final List<CustomSpawnEggItem> UNADDED_EGGS = new ArrayList<>();
     private final Lazy<? extends EntityType<?>> entityTypeSupplier;
+    private static final Map<EntityType<?>, SpawnEggItem> BY_ID = Maps.newIdentityHashMap();
 
     public CustomSpawnEggItem(
             final NonNullSupplier<? extends EntityType<?>> entityTypeSupplier,
