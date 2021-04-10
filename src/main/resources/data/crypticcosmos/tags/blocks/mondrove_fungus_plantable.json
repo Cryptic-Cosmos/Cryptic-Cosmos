@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "crypticcosmos:lunon",
-    "crypticcosmos:fungal_lunon"
+    "crypticcosmos:fungal_lunon",
+    "crypticcosmos:overgrown_lunon",
+    "crypticcosmos:mondrove_fungus_block",
+    "crypticcosmos:mondrove_fungus_spore_block"
   ]
 }
