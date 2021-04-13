@@ -53,6 +53,14 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockRegistries.MONDROVE_SAPLING.get());
 
+        loot.dropSelf(BlockRegistries.MONDROVE_FUNGUS_BLOCK.get());
+
+        loot.dropSelf(BlockRegistries.MONDROVE_FUNGUS_SPORE_BLOCK.get());
+
+        loot.dropSelf(BlockRegistries.SMOOTH_MONDROVE_FUNGUS.get());
+
+        loot.dropSelf(BlockRegistries.SMOOTH_MONDROVE_BRICKS.get());
+
         loot.dropSelf(BlockRegistries.MONDROVE_FUNGUS.get());
 
         loot.dropSelf(BlockRegistries.LUNON.get());

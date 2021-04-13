@@ -111,6 +111,12 @@ public class BlockRegistries {
     public static final RegistryObject<Block> MONDROVE_FUNGUS_SPORE_BLOCK = BLOCKS.register("mondrove_fungus_spore_block",
             () -> new Block(Properties.copy(Blocks.BROWN_MUSHROOM_BLOCK)));
 
+    public static final RegistryObject<Block> SMOOTH_MONDROVE_FUNGUS = BLOCKS.register("smooth_mondrove_fungus",
+            () -> new Block(Properties.copy(Blocks.BROWN_MUSHROOM_BLOCK)));
+
+    public static final RegistryObject<Block> SMOOTH_MONDROVE_BRICKS = BLOCKS.register("smooth_mondrove_bricks",
+            () -> new Block(Properties.copy(Blocks.BROWN_MUSHROOM_BLOCK)));
+
     public static final RegistryObject<Block> RIFT_BLOCK = BLOCKS.register("rift_block", RiftBlock::new);
 
     // Umbral Plains

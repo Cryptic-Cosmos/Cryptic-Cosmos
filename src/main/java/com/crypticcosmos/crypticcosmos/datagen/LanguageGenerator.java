@@ -58,6 +58,8 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.MONDROVE_FUNGUS.get(), "Mondrove Fungus");
             add(BlockRegistries.MONDROVE_FUNGUS_BLOCK.get(), "Mondrove Fungus Block");
             add(BlockRegistries.MONDROVE_FUNGUS_SPORE_BLOCK.get(), "Mondrove Fungus Spore Block");
+            add(BlockRegistries.SMOOTH_MONDROVE_FUNGUS.get(), "Smooth Mondrove Fungus");
+            add(BlockRegistries.SMOOTH_MONDROVE_BRICKS.get(), "Smooth Mondrove Bricks");
 
             add(BlockRegistries.RIFT_BLOCK.get(), "Rift Block");
 
