@@ -103,6 +103,22 @@ public class BlockRegistries {
             new LeavesBlock(Properties.copy(Blocks.OAK_LEAVES))
     );
 
+    public static final RegistryObject<Block> OSMINSTEM_CAP = BLOCKS.register("osminstem_cap", () ->
+            new LeavesBlock(Properties.copy(Blocks.OAK_LEAVES))
+    );
+
+    public static final RegistryObject<Block> OSMINSTEM_HIVE = BLOCKS.register("osminstem_hive", () ->
+            new Block(Properties.copy(Blocks.STONE))
+    );
+
+    public static final RegistryObject<Block> OSMINSTEM_LOG = BLOCKS.register("osminstem_log", () ->
+            new RotatedPillarBlock(Properties.copy(Blocks.CRIMSON_STEM))
+    );
+
+    public static final RegistryObject<Block> OSMINSTEM_POROUS_LOG = BLOCKS.register("osminstem_porous_log", () ->
+            new RotatedPillarBlock(Properties.copy(Blocks.CRIMSON_STEM))
+    );
+
     public static final RegistryObject<Block> MONDROVE_FUNGUS = BLOCKS.register("mondrove_fungus", MondroveFungus::new);
 
     public static final RegistryObject<Block> MONDROVE_FUNGUS_BLOCK = BLOCKS.register("mondrove_fungus_block",

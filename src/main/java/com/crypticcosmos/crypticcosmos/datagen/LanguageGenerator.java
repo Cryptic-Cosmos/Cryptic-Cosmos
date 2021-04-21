@@ -60,6 +60,10 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.MONDROVE_FUNGUS_SPORE_BLOCK.get(), "Mondrove Fungus Spore Block");
             add(BlockRegistries.SMOOTH_MONDROVE_FUNGUS.get(), "Smooth Mondrove Fungus");
             add(BlockRegistries.SMOOTH_MONDROVE_BRICKS.get(), "Smooth Mondrove Bricks");
+            add(BlockRegistries.OSMINSTEM_CAP.get(), "Osminstem Cap");
+            add(BlockRegistries.OSMINSTEM_HIVE.get(), "Osminstem Hive");
+            add(BlockRegistries.OSMINSTEM_LOG.get(), "Osminstem Log");
+            add(BlockRegistries.OSMINSTEM_POROUS_LOG.get(), "Osminstem Porous Log");
 
             add(BlockRegistries.RIFT_BLOCK.get(), "Rift Block");
 
