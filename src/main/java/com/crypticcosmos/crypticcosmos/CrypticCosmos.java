@@ -52,11 +52,12 @@ public class CrypticCosmos {
 
     public CrypticCosmos() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 
-        MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.addListener(RiftBlock::riftSpawning);
-        MinecraftForge.EVENT_BUS.addListener(SpawnFrogOnCorruptionKill::spawnFrogOnCorruptionKill);
-        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, BiomeRegistries::biomeLoading);
+        forgeBus.register(this);
+        forgeBus.addListener(RiftBlock::riftSpawning);
+        forgeBus.addListener(SpawnFrogOnCorruptionKill::spawnFrogOnCorruptionKill);
+        forgeBus.addListener(EventPriority.HIGH, BiomeRegistries::biomeLoading);
 
         BlockRegistries.BLOCKS.register(modEventBus);
         ItemRegistries.ITEMS.register(modEventBus);
