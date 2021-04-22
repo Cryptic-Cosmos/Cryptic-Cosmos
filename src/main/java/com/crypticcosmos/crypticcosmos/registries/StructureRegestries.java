@@ -20,7 +20,7 @@ public class StructureRegestries {
     public static final DeferredRegister<Structure<?>> DEFERRED_REGISTRY_STRUCTURE = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, CrypticCosmos.MOD_ID);
 
 
-    public static final RegistryObject<Structure<NoFeatureConfig>> MONDROVE_BUNDLE = DEFERRED_REGISTRY_STRUCTURE.register("run_down_house", () -> (new MondroveBundleStructure(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> MONDROVE_BUNDLE = DEFERRED_REGISTRY_STRUCTURE.register("mondrove_bundle", () -> (new MondroveBundleStructure(NoFeatureConfig.CODEC)));
 
     public static void setupStructures() {
         setupMapSpacingAndLand(

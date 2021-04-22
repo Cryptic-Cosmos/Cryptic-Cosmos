@@ -110,7 +110,7 @@ public class MondroveBundleStructure extends Structure<NoFeatureConfig>{
              * Make sure to set the final boolean in JigsawManager.addPieces to false so
              * that the structure spawns at blockpos's y value instead of placing the structure on the Bedrock roof!
              */
-            //IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
+            //IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.get(X), blockpos.getZ());
 
             // All a structure has to do is call this method to turn it into a jigsaw based structure!
             JigsawManager.addPieces(
@@ -121,9 +121,9 @@ public class MondroveBundleStructure extends Structure<NoFeatureConfig>{
                             // Note, this is "structure_tutorial:run_down_house/start_pool" which means
                             // the game will automatically look into the following path for the template pool:
                             // "resources/data/structure_tutorial/worldgen/template_pool/run_down_house/start_pool.json"
-                            // This is why your pool files must be in "data/<modid>/worldgen/template_pool/<the path to the pool here>"
+                            // This is why your poaol files must be in "dta/<modid>/worldgen/template_pool/<the path to the pool here>"
                             // because the game automatically will check in worldgen/template_pool for the pools.
-                            .get(new ResourceLocation(CrypticCosmos.MOD_ID, "run_down_house/start_pool")),
+                            .get(new ResourceLocation(CrypticCosmos.MOD_ID, "mondrove_bundle/start_pool")),
 
                             // How many pieces outward from center can a recursive jigsaw structure spawn.
                             // Our structure is only 1 piece outward and isn't recursive so any value of 1 or more doesn't change anything.
@@ -168,7 +168,7 @@ public class MondroveBundleStructure extends Structure<NoFeatureConfig>{
 
             // I use to debug and quickly find out if the structure is spawning or not and where it is.
             // This is returning the coordinates of the center starting piece.
-            CrypticCosmos.LOGGER.log(Level.DEBUG, "Mondrove Bund;e at " +
+            CrypticCosmos.LOGGER.log(Level.DEBUG, "Mondrove Bundle at " +
                     this.pieces.get(0).getBoundingBox().x0 + " " +
                     this.pieces.get(0).getBoundingBox().y0 + " " +
                     this.pieces.get(0).getBoundingBox().z0);

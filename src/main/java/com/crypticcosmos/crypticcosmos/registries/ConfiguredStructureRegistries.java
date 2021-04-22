@@ -23,7 +23,7 @@ public class ConfiguredStructureRegistries {
      */
     public static void registerConfiguredStructures() {
         Registry<StructureFeature<?, ?>> registry = WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE;
-        Registry.register(registry, new ResourceLocation(CrypticCosmos.MOD_ID, "configured_mondrove_bund;e"), CONFIGURED_MONDROVE_BUNDLE);
+        Registry.register(registry, new ResourceLocation(CrypticCosmos.MOD_ID, "configured_mondrove_bundle"), CONFIGURED_MONDROVE_BUNDLE);
 
         /* Ok so, this part may be hard to grasp but basically, just add your structure to this to
          * prevent any sort of crash or issue with other mod's custom ChunkGenerators. If they use

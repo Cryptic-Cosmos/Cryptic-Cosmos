@@ -1,5 +1,5 @@
 {
-  "name": "crypticcosmos:mondrove_bund;e/start_pool",
+  "name": "crypticcosmos:mondrove_bundle/start_pool",
   "fallback": "minecraft:empty",
 
   "elements": [
