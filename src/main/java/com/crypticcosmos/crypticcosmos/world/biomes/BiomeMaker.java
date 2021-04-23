@@ -1,9 +1,6 @@
 package com.crypticcosmos.crypticcosmos.world.biomes;
 
-import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
-import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
-import com.crypticcosmos.crypticcosmos.registries.FeatureRegistries;
-import com.crypticcosmos.crypticcosmos.registries.SoundEventRegistries;
+import com.crypticcosmos.crypticcosmos.registries.*;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -99,6 +96,7 @@ public class BiomeMaker {
                         .decorated(Features.Placements.HEIGHTMAP_SQUARE)
                         .decorated(Placement.COUNT_EXTRA
                                 .configured(new AtSurfaceWithExtraConfig(7, 0.1F, 1))));
+
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 

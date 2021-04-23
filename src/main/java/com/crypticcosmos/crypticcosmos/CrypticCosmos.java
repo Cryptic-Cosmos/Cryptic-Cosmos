@@ -69,6 +69,7 @@ public class CrypticCosmos {
     public CrypticCosmos() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+        modEventBus.addListener(this::setup);
 
         forgeBus.register(this);
         forgeBus.addListener(RiftBlock::riftSpawning);
@@ -79,12 +80,13 @@ public class CrypticCosmos {
         BlockRegistries.BLOCKS.register(modEventBus);
         ItemRegistries.ITEMS.register(modEventBus);
         EntityTypeRegistries.ENTITY_TYPES.register(modEventBus);
+        StructureRegestries.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
         BiomeRegistries.BIOMES.register(modEventBus);
         EffectRegistries.EFFECTS.register(modEventBus);
         SoundEventRegistries.SOUND_EVENTS.register(modEventBus);
         PotionRegistries.POTIONS.register(modEventBus);
         MinecraftForge.EVENT_BUS.addListener(CommandRegistries::registerCommands);
-        StructureRegestries.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
+
 
         forgeBus.addListener(EventPriority.NORMAL, this::addDimensionalSpacing);
 
