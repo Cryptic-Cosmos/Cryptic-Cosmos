@@ -69,6 +69,12 @@ public class BlockLootTablesGenerator extends LootTableProvider {
 
         loot.dropSelf(BlockRegistries.OSMINSTEM_POROUS_LOG.get());
 
+        loot.dropSelf(BlockRegistries.OSMINSTEM_WOOD.get());
+
+        loot.dropSelf(BlockRegistries.STRIPPED_OSMINSTEM_WOOD.get());
+
+        loot.dropSelf(BlockRegistries.STRIPPED_OSMINSTEM_LOG.get());
+
         loot.dropSelf(BlockRegistries.LUNON.get());
 
         loot.dropSelf(BlockRegistries.LUNON_DUST.get());

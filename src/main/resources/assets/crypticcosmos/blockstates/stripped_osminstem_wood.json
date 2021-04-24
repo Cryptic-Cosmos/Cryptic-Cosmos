@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "crypticcosmos:block/stripped_osminstem_wood"
+    },
+    "axis=z": {
+      "model": "crypticcosmos:block/stripped_osminstem_wood",
+      "x": 90
+    },
+    "axis=x,": {
+      "model": "crypticcosmos:block/stripped_osminstem_wood",
+      "x": 90,
+      "y": 90
+    }
+  }
+}
