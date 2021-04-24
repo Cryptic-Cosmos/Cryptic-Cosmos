@@ -115,6 +115,18 @@ public class BlockRegistries {
             new RotatedPillarBlock(Properties.copy(Blocks.CRIMSON_STEM))
     );
 
+    public static final RegistryObject<Block> STRIPPED_OSMINSTEM_LOG = BLOCKS.register("stripped_osminstem_log", () ->
+            new RotatedPillarBlock(Properties.copy(Blocks.CRIMSON_STEM))
+    );
+
+    public static final RegistryObject<Block> OSMINSTEM_WOOD = BLOCKS.register("osminstem_wood", () ->
+            new RotatedPillarBlock(Properties.copy(Blocks.CRIMSON_STEM))
+    );
+
+    public static final RegistryObject<Block> STRIPPED_OSMINSTEM_WOOD = BLOCKS.register("stripped_osminstem_wood", () ->
+            new RotatedPillarBlock(Properties.copy(Blocks.CRIMSON_STEM))
+    );
+
     public static final RegistryObject<Block> OSMINSTEM_POROUS_LOG = BLOCKS.register("osminstem_porous_log", () ->
             new RotatedPillarBlock(Properties.copy(Blocks.CRIMSON_STEM))
     );
