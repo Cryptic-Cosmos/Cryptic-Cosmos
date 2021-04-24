@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.items;
+package com.crypticcosmos.crypticcosmos.registries;
 
 
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
@@ -18,7 +18,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Stripping {
+public class StrippingRegistries {
 
     public static Map<Block, Block> BLOCK_STRIPPING_MAP = new HashMap<>();
 
