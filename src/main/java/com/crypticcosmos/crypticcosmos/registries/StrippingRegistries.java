@@ -43,7 +43,7 @@ public class StrippingRegistries {
                     world.setBlock(blockPos, block.defaultBlockState()
                             .setValue(RotatedPillarBlock.AXIS, blockState.getValue(RotatedPillarBlock.AXIS)), 11);
                     if (playerEntity != null) {
-                        event.getItemStack().hurtAndBreak(1, playerEntity, (p_220040_1_) -> p_220040_1_.broadcastBreakEvent(event.getHand()));
+                        event.getItemStack().hurtAndBreak(1, playerEntity, player -> player.broadcastBreakEvent(event.getHand()));
                     }
                 }
             }
