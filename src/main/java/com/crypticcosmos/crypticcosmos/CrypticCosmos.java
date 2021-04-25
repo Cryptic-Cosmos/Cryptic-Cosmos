@@ -7,7 +7,7 @@ import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogEntity;
 import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
 import com.crypticcosmos.crypticcosmos.effects.CorruptionEffect.SpawnFrogOnCorruptionKill;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
-import com.crypticcosmos.crypticcosmos.items.Stripping;
+import com.crypticcosmos.crypticcosmos.registries.StrippingRegistries;
 import com.crypticcosmos.crypticcosmos.registries.*;
 import com.crypticcosmos.crypticcosmos.util.BrewingRecipes;
 import com.mojang.serialization.Codec;
@@ -31,7 +31,6 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -77,7 +76,7 @@ public class CrypticCosmos {
         forgeBus.addListener(RiftBlock::riftSpawning);
         forgeBus.addListener(SpawnFrogOnCorruptionKill::spawnFrogOnCorruptionKill);
         forgeBus.addListener(EventPriority.HIGH, BiomeRegistries::biomeLoading);
-        forgeBus.addListener(EventPriority.HIGH, Stripping::onBlockClicked);
+        forgeBus.addListener(EventPriority.HIGH, StrippingRegistries::onBlockClicked);
 
 
         BlockRegistries.BLOCKS.register(modEventBus);

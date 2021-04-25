@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.items;
+package com.crypticcosmos.crypticcosmos.registries;
 
 
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
@@ -7,9 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
-import net.minecraft.item.ItemUseContext;
 import net.minecraft.item.PickaxeItem;
-import net.minecraft.util.ActionResultType;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -20,7 +18,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Stripping {
+public class StrippingRegistries {
 
     public static Map<Block, Block> BLOCK_STRIPPING_MAP = new HashMap<>();
 
@@ -45,9 +43,7 @@ public class Stripping {
                     world.setBlock(blockPos, block.defaultBlockState()
                             .setValue(RotatedPillarBlock.AXIS, blockState.getValue(RotatedPillarBlock.AXIS)), 11);
                     if (playerEntity != null) {
-                        event.getItemStack().hurtAndBreak(1, playerEntity, (p_220040_1_) -> {
-                            p_220040_1_.broadcastBreakEvent(event.getHand());
-                        });
+                        event.getItemStack().hurtAndBreak(1, playerEntity, player -> player.broadcastBreakEvent(event.getHand()));
                     }
                 }
             }
