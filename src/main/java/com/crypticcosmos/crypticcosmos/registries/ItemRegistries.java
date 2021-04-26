@@ -16,26 +16,6 @@ public class ItemRegistries {
             () -> new Item(CrypticCosmos.DEFAULT_PROPERTY)
     );
 
-    public static final RegistryObject<MondroveThread> MONDROVE_THREADS = ITEMS.register(
-            "mondrove_threads",
-            () -> new MondroveThread(CrypticCosmos.DEFAULT_PROPERTY)
-    );
-
-    public static final RegistryObject<CrispyMondroveThread> CRISPY_MONDROVE_THREADS = ITEMS.register(
-            "crispy_mondrove_thread",
-            () -> new CrispyMondroveThread(CrypticCosmos.DEFAULT_PROPERTY)
-    );
-
-    public static final RegistryObject<RawMoonBeast> RAW_MOON_BEAST_FLESH = ITEMS.register(
-            "raw_moon_beast_flesh",
-            () -> new RawMoonBeast(CrypticCosmos.DEFAULT_PROPERTY)
-    );
-
-    public static final RegistryObject<CookedMoonBeast> COOKED_MOON_BEAST_FLESH = ITEMS.register(
-            "cooked_moon_beast_flesh",
-            () -> new CookedMoonBeast(CrypticCosmos.DEFAULT_PROPERTY)
-    );
-
     public static final RegistryObject<Item> MOON_BEAST_SPAWN_EGG = ITEMS.register(
             "moon_beast_spawn_egg",
             () -> new CustomSpawnEggItem(
