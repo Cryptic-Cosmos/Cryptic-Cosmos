@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "crypticcosmos:item/cooked_moon_beast_flesh"
+  }
+}
