@@ -97,6 +97,12 @@ public class BiomeMaker {
                         .decorated(Placement.COUNT_EXTRA
                                 .configured(new AtSurfaceWithExtraConfig(7, 0.1F, 1))));
 
+        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+                FeatureRegistries.OSMINSTEM_TREE
+                        .decorated(Features.Placements.HEIGHTMAP_SQUARE)
+                        .decorated(Placement.COUNT_EXTRA
+                                .configured(new AtSurfaceWithExtraConfig(14, 0.1F, 3))));
+
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 

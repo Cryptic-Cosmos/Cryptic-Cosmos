@@ -7,7 +7,9 @@ import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
+import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 
 public class FeatureRegistries {
@@ -21,6 +23,18 @@ public class FeatureRegistries {
                     new TwoLayerFeature(1, 0, 1))
                     .ignoreVines()
                     .build()
+            ));
+
+    public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> OSMINSTEM_TREE = registerFeature("osminstem",
+            Feature.TREE.configured(new BaseTreeFeatureConfig.Builder(
+                    new SimpleBlockStateProvider(BlockRegistries.OSMINSTEM_LOG.get().defaultBlockState()),
+                    new SimpleBlockStateProvider(BlockRegistries.OSMINSTEM_CAP.get().defaultBlockState()),
+                    new AcaciaFoliagePlacer(FeatureSpread.fixed(2),
+                            FeatureSpread.fixed(0)),
+                    new ForkyTrunkPlacer(5, 2, 2),
+                    new TwoLayerFeature(1, 0, 2))
+                            .ignoreVines()
+                            .build()
             ));
 
     public static final ConfiguredFeature<?, ?> MONDROVE_FUNGUS = registerFeature("mondrove_fungus",
