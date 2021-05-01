@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "crypticcosmos:mondrove_leaves",
-    "crypticcosmos:osminstem_cap"
+    "crypticcosmos:mondrove_leaves"
   ]
 }

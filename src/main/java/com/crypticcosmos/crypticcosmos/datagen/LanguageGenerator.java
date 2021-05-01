@@ -67,6 +67,14 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.OSMINSTEM_WOOD.get(), "Osminstem Wood");
             add(BlockRegistries.STRIPPED_OSMINSTEM_LOG.get(), "Stripped Osminstem Log");
             add(BlockRegistries.STRIPPED_OSMINSTEM_WOOD.get(), "Stripped Osminstem Wood");
+            add(BlockRegistries.STINKY_OSMIN.get(), "Stinky Osmin");
+            add(BlockRegistries.OSMINSTEM_PLANKS.get(), "Osminstem Planks");
+            add(BlockRegistries.OSMINSTEM_DOOR.get(), "Osminstem Door");
+            add(BlockRegistries.OSMINSTEM_TRAPDOOR.get(), "Osminstem Trapdoor");
+            add(BlockRegistries.MONDROVE_DOOR.get(), "Mondrove Door");
+            add(BlockRegistries.MONDROVE_TRAPDOOR.get(), "Mondrove Trapdoor");
+
+
 
             add(BlockRegistries.RIFT_BLOCK.get(), "Rift Block");
 

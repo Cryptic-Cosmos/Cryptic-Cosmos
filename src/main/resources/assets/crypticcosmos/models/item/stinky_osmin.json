@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "crypticcosmos:block/stinky_osmin"
+  }
+}

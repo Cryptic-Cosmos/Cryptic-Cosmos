@@ -18,10 +18,13 @@ public class BlockTagGenerator extends BlockTagsProvider {
 
     @Override
     protected void addTags() {
-        tag(BlockTags.LEAVES).add(BlockRegistries.MONDROVE_LEAVES.get()).add(BlockRegistries.OSMINSTEM_CAP.get());
+        tag(BlockTags.LEAVES).add(BlockRegistries.MONDROVE_LEAVES.get());
         tag(BlockTags.LOGS).add(BlockRegistries.MONDROVE_LOG.get());
+        tag(BlockTags.LOGS).add(BlockRegistries.OSMINSTEM_LOG.get());
         tag(BlockTags.PLANKS).add(BlockRegistries.MONDROVE_PLANKS.get());
+        tag(BlockTags.PLANKS).add(BlockRegistries.OSMINSTEM_PLANKS.get());
         tag(BlockTags.SAPLINGS).add(BlockRegistries.MONDROVE_SAPLING.get());
+        tag(BlockTags.SAPLINGS).add(BlockRegistries.STINKY_OSMIN.get());
         // this makes sure the mondrove trees generate correctly
         tag(Tags.Blocks.DIRT).addTag(TagRegistries.MONDROVE_PLANTABLE_BLOCKS);
     }

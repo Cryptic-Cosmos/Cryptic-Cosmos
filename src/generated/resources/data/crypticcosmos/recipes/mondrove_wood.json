@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "crypticcosmos:mondrove_log"
+    },
+    {
+      "item": "crypticcosmos:mondrove_log"
+    },
+    {
+      "item": "crypticcosmos:mondrove_log"
+    },
+    {
+      "item": "crypticcosmos:mondrove_log"
+    }
+  ],
+  "result": {
+    "item": "crypticcosmos:mondrove_wood",
+    "count": 3
+  }
+}

@@ -33,13 +33,22 @@ public class FeatureRegistries {
                             FeatureSpread.fixed(0)),
                     new ForkyTrunkPlacer(5, 2, 2),
                     new TwoLayerFeature(1, 0, 2))
-                            .ignoreVines()
-                            .build()
+                    .ignoreVines()
+                    .build()
             ));
 
     public static final ConfiguredFeature<?, ?> MONDROVE_FUNGUS = registerFeature("mondrove_fungus",
             Feature.FLOWER.configured(new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider()
                     .add(BlockRegistries.MONDROVE_FUNGUS.get().defaultBlockState(), 2),
+                    new SimpleBlockPlacer())
+                    .tries(64)
+                    .build()
+            )
+    );
+
+    public static final ConfiguredFeature<?, ?> STINKY_OSMIN = registerFeature("stinky_osmin",
+            Feature.FLOWER.configured(new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider()
+                    .add(BlockRegistries.STINKY_OSMIN.get().defaultBlockState(), 2),
                     new SimpleBlockPlacer())
                     .tries(64)
                     .build()

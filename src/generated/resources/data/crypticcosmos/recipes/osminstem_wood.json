@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "crypticcosmos:osminstem_log"
+    },
+    {
+      "item": "crypticcosmos:osminstem_log"
+    },
+    {
+      "item": "crypticcosmos:osminstem_log"
+    },
+    {
+      "item": "crypticcosmos:osminstem_log"
+    }
+  ],
+  "result": {
+    "item": "crypticcosmos:osminstem_wood",
+    "count": 3
+  }
+}

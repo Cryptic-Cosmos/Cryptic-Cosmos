@@ -3,6 +3,7 @@ package com.crypticcosmos.crypticcosmos.registries;
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.blocks.*;
 import com.crypticcosmos.crypticcosmos.world.feature.MondroveTree;
+import com.crypticcosmos.crypticcosmos.world.feature.OsminstemTree;
 import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -101,10 +102,23 @@ public class BlockRegistries {
 
     public static final RegistryObject<Block> MONDROVE_LEAVES = BLOCKS.register("mondrove_leaves", () ->
             new LeavesBlock(Properties.copy(Blocks.OAK_LEAVES))
+
     );
 
+    public static final RegistryObject<DoorBlock> MONDROVE_DOOR = BLOCKS.register("mondrove_door", () -> new DoorBlock(AbstractBlock.Properties.copy(BlockRegistries.MONDROVE_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<TrapDoorBlock> MONDROVE_TRAPDOOR = BLOCKS.register("mondrove_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.copy(BlockRegistries.MONDROVE_PLANKS.get()).noOcclusion()));
+
+
+    public static final RegistryObject<Block> STINKY_OSMIN = BLOCKS.register("stinky_osmin", () ->
+            new SaplingBlock(new OsminstemTree(), Properties.copy(Blocks.BIRCH_SAPLING)) {
+                @Override
+                public boolean mayPlaceOn(@Nonnull BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
+                    return state.is(TagRegistries.LUNARA_PLANTABLE_BLOCKS);
+                }
+            });
+
     public static final RegistryObject<Block> OSMINSTEM_CAP = BLOCKS.register("osminstem_cap", () ->
-            new LeavesBlock(Properties.copy(Blocks.OAK_LEAVES))
+            new Block(Properties.copy(Blocks.BROWN_MUSHROOM_BLOCK))
     );
 
     public static final RegistryObject<Block> OSMINSTEM_HIVE = BLOCKS.register("osminstem_hive", () ->
@@ -130,6 +144,12 @@ public class BlockRegistries {
     public static final RegistryObject<Block> OSMINSTEM_POROUS_LOG = BLOCKS.register("osminstem_porous_log", () ->
             new RotatedPillarBlock(Properties.copy(Blocks.CRIMSON_STEM))
     );
+
+    public static final RegistryObject<Block> OSMINSTEM_PLANKS = BLOCKS.register("osminstem_planks", () ->
+            new Block(Properties.copy(Blocks.BIRCH_PLANKS))
+    );
+    public static final RegistryObject<DoorBlock> OSMINSTEM_DOOR = BLOCKS.register("osminstem_door", () -> new DoorBlock(AbstractBlock.Properties.copy(BlockRegistries.OSMINSTEM_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<TrapDoorBlock> OSMINSTEM_TRAPDOOR = BLOCKS.register("osminstem_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.copy(BlockRegistries.OSMINSTEM_PLANKS.get()).noOcclusion()));
 
     public static final RegistryObject<Block> MONDROVE_FUNGUS = BLOCKS.register("mondrove_fungus", MondroveFungus::new);
 

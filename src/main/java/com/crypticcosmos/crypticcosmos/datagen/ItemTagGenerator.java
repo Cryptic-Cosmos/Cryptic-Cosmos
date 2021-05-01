@@ -23,9 +23,11 @@ public class ItemTagGenerator extends ItemTagsProvider {
     @Override
     protected void addTags() {
         addItemProvider(ItemTags.LEAVES, BlockRegistries.MONDROVE_LEAVES.get());
+        addItemProvider(ItemTags.LEAVES, BlockRegistries.OSMINSTEM_CAP.get());
         addItemProvider(ItemTags.LOGS, BlockRegistries.MONDROVE_LOG.get());
         addItemProvider(ItemTags.PLANKS, BlockRegistries.MONDROVE_PLANKS.get());
         addItemProvider(ItemTags.SAPLINGS, BlockRegistries.MONDROVE_SAPLING.get());
+        addItemProvider(ItemTags.SAPLINGS, BlockRegistries.STINKY_OSMIN.get());
     }
 
     private void addItemProvider(ITag.INamedTag<Item> tag, IItemProvider... itemProvider) {

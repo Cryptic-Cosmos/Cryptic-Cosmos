@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "crypticcosmos:mondrove_sapling"
+    "crypticcosmos:mondrove_sapling",
+    "crypticcosmos:stinky_osmin"
   ]
 }

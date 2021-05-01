@@ -111,6 +111,12 @@ public class CrypticCosmos {
     private void clientSetup(final FMLClientSetupEvent event) {
         RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_SAPLING.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_FUNGUS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistries.STINKY_OSMIN.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistries.OSMINSTEM_TRAPDOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistries.OSMINSTEM_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_TRAPDOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_DOOR.get(), RenderType.cutout());
+
 
         RenderingRegistry.registerEntityRenderingHandler(
                 EntityTypeRegistries.MOON_BEAST.get(),

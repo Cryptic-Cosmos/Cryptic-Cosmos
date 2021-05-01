@@ -90,6 +90,12 @@ public class BiomeMaker {
                         .decorated(Features.Placements.HEIGHTMAP_SQUARE)
                         .count(2));
 
+        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+                FeatureRegistries.STINKY_OSMIN
+                        .decorated(Features.Placements.ADD_32)
+                        .decorated(Features.Placements.HEIGHTMAP_SQUARE)
+                        .count(2));
+
         // Add mondrove tree generation.
         genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
                 FeatureRegistries.MONDROVE_TREE
