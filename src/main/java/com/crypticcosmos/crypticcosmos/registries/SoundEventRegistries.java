@@ -16,6 +16,11 @@ public class SoundEventRegistries {
     public static final RegistryObject<SoundEvent> MUSIC_ACERBIC_ISLES = registerSoundEvent("acerbic_isles");
     public static final RegistryObject<SoundEvent> MUSIC_ABYSS = registerSoundEvent("abyss");
 
+    // entity noises
+    public static final RegistryObject<SoundEvent> MOON_BEAST_AMBIENCE = registerSoundEvent("entity.moon_beast_living");
+    public static final RegistryObject<SoundEvent> MOON_BEAST_HURT = registerSoundEvent("entity.moon_beast_hurt");
+    public static final RegistryObject<SoundEvent> MOON_BEAST_DEATH = registerSoundEvent("entity.moon_beast_death");
+
     private static RegistryObject<SoundEvent> registerSoundEvent(String id) {
         return SOUND_EVENTS.register(id, () -> new SoundEvent(CrypticCosmos.id(id)));
     }

@@ -50,5 +50,27 @@
         "stream": true
       }
     ]
+  },
+  "entity.moon_beast_living": {
+    "subtitle": "subtitles.entity.moon_beast_living",
+    "sounds": [
+      "crypticcosmos:moon_beast/moon_beast_living1",
+      "crypticcosmos:moon_beast/moon_beast_living2",
+      "crypticcosmos:moon_beast/moon_beast_living3"
+    ]
+  },
+  "entity.moon_beast_hurt": {
+    "subtitle": "subtitles.entity.moon_beast_hurt",
+    "sounds": [
+      "crypticcosmos:moon_beast/moon_beast_hurt1",
+      "crypticcosmos:moon_beast/moon_beast_hurt2",
+      "crypticcosmos:moon_beast/moon_beast_hurt3"
+    ]
+  },
+  "entity.moon_beast_death": {
+    "subtitle": "subtitles.entity.moon_beast_death",
+    "sounds": [
+      "crypticcosmos:moon_beast/moon_beast_death"
+    ]
   }
 }

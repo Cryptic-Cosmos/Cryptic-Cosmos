@@ -82,10 +82,11 @@ public class CrypticCosmos {
         EffectRegistries.EFFECTS.register(modEventBus);
         BlockRegistries.BLOCKS.register(modEventBus);
         ItemRegistries.ITEMS.register(modEventBus);
+        SoundEventRegistries.SOUND_EVENTS.register(modEventBus);
         EntityTypeRegistries.ENTITY_TYPES.register(modEventBus);
         StructureRegestries.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
         BiomeRegistries.BIOMES.register(modEventBus);
-        SoundEventRegistries.SOUND_EVENTS.register(modEventBus);
+
         PotionRegistries.POTIONS.register(modEventBus);
         MinecraftForge.EVENT_BUS.addListener(CommandRegistries::registerCommands);
 

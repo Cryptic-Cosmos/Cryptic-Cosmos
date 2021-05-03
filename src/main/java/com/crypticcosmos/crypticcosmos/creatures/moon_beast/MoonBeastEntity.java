@@ -1,5 +1,6 @@
 package com.crypticcosmos.crypticcosmos.creatures.moon_beast;
 
+import com.crypticcosmos.crypticcosmos.registries.SoundEventRegistries;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -7,6 +8,8 @@ import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.EndermanEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -76,5 +79,20 @@ public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
         AnimationController<?> controller = event.getController();
         controller.setAnimation(event.isMoving() ? WALK_ANIM : IDLE_ANIM);
         return PlayState.CONTINUE;
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundEventRegistries.MOON_BEAST_AMBIENCE.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return SoundEventRegistries.MOON_BEAST_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundEventRegistries.MOON_BEAST_DEATH.get();
     }
 }
