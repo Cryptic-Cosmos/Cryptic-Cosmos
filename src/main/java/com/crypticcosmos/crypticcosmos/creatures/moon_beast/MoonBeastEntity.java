@@ -1,12 +1,12 @@
 package com.crypticcosmos.crypticcosmos.creatures.moon_beast;
 
+import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogEntity;
 import com.crypticcosmos.crypticcosmos.registries.SoundEventRegistries;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.monster.EndermanEntity;
-import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
@@ -53,8 +53,13 @@ public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
         this.goalSelector.addGoal(4, new SwimGoal(this));
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.0D, false));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
+        this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, EndermanEntity.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, HuskEntity.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, ZombieEntity.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, DrownedEntity.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, MoonFrogEntity.class, true));
     }
 
     @Override
@@ -77,8 +82,16 @@ public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         AnimationController<?> controller = event.getController();
-        controller.setAnimation(event.isMoving() ? WALK_ANIM : IDLE_ANIM);
-        return PlayState.CONTINUE;
+        boolean isMoving = !(event.getLimbSwingAmount() > -0.10F) || !(event.getLimbSwingAmount() < 0.10F);
+        boolean isRunning = isMoving && !(event.getLimbSwingAmount() > -0.9F) || !(event.getLimbSwingAmount() < 0.9F);
+
+        if(isMoving) {
+            controller.setAnimation(WALK_ANIM);
+            return PlayState.CONTINUE;
+        } else {
+            controller.setAnimation(IDLE_ANIM);
+            return PlayState.CONTINUE;
+        }
     }
 
     @Override

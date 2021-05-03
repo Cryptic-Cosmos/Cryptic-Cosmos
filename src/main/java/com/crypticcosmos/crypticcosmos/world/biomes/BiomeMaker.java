@@ -1,6 +1,9 @@
 package com.crypticcosmos.crypticcosmos.world.biomes;
 
-import com.crypticcosmos.crypticcosmos.registries.*;
+import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
+import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
+import com.crypticcosmos.crypticcosmos.registries.FeatureRegistries;
+import com.crypticcosmos.crypticcosmos.registries.SoundEventRegistries;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -113,7 +116,7 @@ public class BiomeMaker {
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
         addSpawn(spawnSettings, EntityClassification.CREATURE,
-                EntityType.ENDERMAN, 10, 1, 4);
+                EntityTypeRegistries.MOON_FROG.get(), 10, 1, 7);
 
         final BiomeAmbience.Builder effects = effects(0xfffff5,
                 0xfffff5,
