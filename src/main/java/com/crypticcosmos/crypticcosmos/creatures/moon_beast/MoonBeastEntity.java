@@ -24,6 +24,8 @@ import javax.annotation.Nonnull;
 public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
     public static AnimationBuilder IDLE_ANIM = new AnimationBuilder().addAnimation("idle");
     public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("walk");
+    public static AnimationBuilder RUN_ANIM = new AnimationBuilder().addAnimation("run");
+
     private final AnimationFactory factory = new AnimationFactory(this);
 
     public MoonBeastEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
@@ -85,7 +87,10 @@ public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
         boolean isMoving = !(event.getLimbSwingAmount() > -0.10F) || !(event.getLimbSwingAmount() < 0.10F);
         boolean isRunning = isMoving && !(event.getLimbSwingAmount() > -0.9F) || !(event.getLimbSwingAmount() < 0.9F);
 
-        if(isMoving) {
+        if (isRunning) {
+            controller.setAnimation(RUN_ANIM);
+            return PlayState.CONTINUE;
+        } else if(isMoving) {
             controller.setAnimation(WALK_ANIM);
             return PlayState.CONTINUE;
         } else {
