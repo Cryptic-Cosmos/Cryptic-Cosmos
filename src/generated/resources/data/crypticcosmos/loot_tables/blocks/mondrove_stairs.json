@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crypticcosmos:smooth_mondrove_fungus"
+          "name": "crypticcosmos:mondrove_stairs"
         }
       ],
       "conditions": [

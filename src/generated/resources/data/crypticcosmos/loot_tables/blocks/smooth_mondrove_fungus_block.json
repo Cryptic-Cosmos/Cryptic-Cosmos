@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crypticcosmos:smooth_mondrove_bricks"
+          "name": "crypticcosmos:smooth_mondrove_fungus_block"
         }
       ],
       "conditions": [

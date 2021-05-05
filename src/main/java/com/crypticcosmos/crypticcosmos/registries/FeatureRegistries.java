@@ -12,11 +12,14 @@ import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 
+import static com.crypticcosmos.crypticcosmos.registries.BlockRegistries.MONDROVE_LEAVES;
+import static com.crypticcosmos.crypticcosmos.registries.BlockRegistries.MONDROVE_LOG;
+
 public class FeatureRegistries {
     public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> MONDROVE_TREE = registerFeature("mondrove",
             Feature.TREE.configured(new BaseTreeFeatureConfig.Builder(
-                    new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LOG.get().defaultBlockState()),
-                    new SimpleBlockStateProvider(BlockRegistries.MONDROVE_LEAVES.get().defaultBlockState()),
+                    new SimpleBlockStateProvider(MONDROVE_LOG.get().defaultBlockState()),
+                    new SimpleBlockStateProvider(MONDROVE_LEAVES.get().defaultBlockState()),
                     new BlobFoliagePlacer(FeatureSpread.fixed(2),
                             FeatureSpread.fixed(0), 3),
                     new StraightTrunkPlacer(4, 2, 0),

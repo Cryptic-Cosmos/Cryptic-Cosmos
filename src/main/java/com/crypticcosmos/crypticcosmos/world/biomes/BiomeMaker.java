@@ -1,6 +1,5 @@
 package com.crypticcosmos.crypticcosmos.world.biomes;
 
-import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.registries.FeatureRegistries;
 import com.crypticcosmos.crypticcosmos.registries.SoundEventRegistries;
@@ -21,33 +20,34 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
 import javax.annotation.Nonnull;
 
+import static com.crypticcosmos.crypticcosmos.registries.BlockRegistries.*;
 import static com.crypticcosmos.crypticcosmos.world.biomes.BiomeHelper.*;
 
 @SuppressWarnings("SameParameterValue")
 public class BiomeMaker {
     public static final SurfaceBuilderConfig LUNARA_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            BlockRegistries.OVERGROWN_LUNON.get().defaultBlockState(),
-            BlockRegistries.LUNON.get().defaultBlockState(),
-            BlockRegistries.LUNON_DUST.get().defaultBlockState()
+            OVERGROWN_LUNON.get().defaultBlockState(),
+            LUNON.get().defaultBlockState(),
+            LUNON_DUST.get().defaultBlockState()
     );
 
     public static final SurfaceBuilderConfig ACERBIC_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            BlockRegistries.LUNON.get().defaultBlockState(),
-            BlockRegistries.LUNON.get().defaultBlockState(),
-            BlockRegistries.LUNON_DUST.get().defaultBlockState()
+            LUNON.get().defaultBlockState(),
+            LUNON.get().defaultBlockState(),
+            LUNON_DUST.get().defaultBlockState()
     );
 
     public static final SurfaceBuilderConfig MONDROVE_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            BlockRegistries.FUNGAL_LUNON.get().defaultBlockState(),
-            BlockRegistries.LUNON.get().defaultBlockState(),
-            BlockRegistries.LUNON_DUST.get().defaultBlockState()
+            FUNGAL_LUNON.get().defaultBlockState(),
+            LUNON.get().defaultBlockState(),
+            LUNON_DUST.get().defaultBlockState()
     );
 
 
     public static final SurfaceBuilderConfig ABYSS_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            BlockRegistries.UMBRAL_DUNE.get().defaultBlockState(),
-            BlockRegistries.UMBRAL_DUNE.get().defaultBlockState(),
-            BlockRegistries.UMBRAL_DUNE.get().defaultBlockState()
+            UMBRAL_DUNE.get().defaultBlockState(),
+            UMBRAL_DUNE.get().defaultBlockState(),
+            UMBRAL_DUNE.get().defaultBlockState()
     );
 
     public static Biome acerbicIsles() {

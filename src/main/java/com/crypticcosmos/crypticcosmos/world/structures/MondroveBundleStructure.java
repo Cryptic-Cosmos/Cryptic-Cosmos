@@ -28,19 +28,22 @@ import net.minecraft.world.gen.feature.structure.VillageConfig;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 import org.apache.logging.log4j.Level;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
-public class MondroveBundleStructure extends Structure<NoFeatureConfig>{
+public class MondroveBundleStructure extends Structure<NoFeatureConfig> {
 
     public MondroveBundleStructure(Codec<NoFeatureConfig> codec) {
         super(codec);
     }
 
+    @Nonnull
     @Override
-    public  IStartFactory<NoFeatureConfig> getStartFactory() {
+    public IStartFactory<NoFeatureConfig> getStartFactory() {
         return MondroveBundleStructure.Start::new;
     }
 
+    @Nonnull
     @Override
     public GenerationStage.Decoration step() {
         return GenerationStage.Decoration.SURFACE_STRUCTURES;
@@ -58,20 +61,29 @@ public class MondroveBundleStructure extends Structure<NoFeatureConfig>{
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_CREATURES = ImmutableList.of(
             new MobSpawnInfo.Spawners(EntityTypeRegistries.GROMBLE_FROG.get(), 100, 4, 9)
     );
+
     @Override
     public List<MobSpawnInfo.Spawners> getDefaultCreatureSpawnList() {
         return STRUCTURE_CREATURES;
     }
 
     @Override
-    protected boolean isFeatureChunk(ChunkGenerator chunkGenerator, BiomeProvider biomeSource, long seed, SharedSeedRandom chunkRandom, int chunkX, int chunkZ, Biome biome, ChunkPos chunkPos, NoFeatureConfig featureConfig) {
+    protected boolean isFeatureChunk(ChunkGenerator chunkGenerator,
+                                     @Nonnull BiomeProvider biomeSource,
+                                     long seed,
+                                     @Nonnull SharedSeedRandom chunkRandom,
+                                     int chunkX,
+                                     int chunkZ,
+                                     @Nonnull Biome biome,
+                                     @Nonnull ChunkPos chunkPos,
+                                     @Nonnull NoFeatureConfig featureConfig) {
         BlockPos centerOfChunk = new BlockPos((chunkX << 4) + 7, 0, (chunkZ << 4) + 7);
 
         // Grab height of land. Will stop at first non-air block.
         int landHeight = chunkGenerator.getFirstOccupiedHeight(centerOfChunk.getX(), centerOfChunk.getZ(), Heightmap.Type.WORLD_SURFACE_WG);
 
-        // Grabs column of blocks at given position. In overworld, this column will be made of stone, water, and air.
-        // In nether, it will be netherrack, lava, and air. End will only be endstone and air. It depends on what block
+        // Grabs column of blocks at given position. In the overworld, this column will be made of stone, water, and air.
+        // In nether, it will be netherrack, lava, and air. End will only be end stone and air. It depends on what block
         // the chunk generator will place for that dimension.
         IBlockReader columnOfBlocks = chunkGenerator.getBaseColumn(centerOfChunk.getX(), centerOfChunk.getZ());
 
@@ -89,7 +101,13 @@ public class MondroveBundleStructure extends Structure<NoFeatureConfig>{
         }
 
         @Override
-        public void generatePieces(DynamicRegistries dynamicRegistryManager, ChunkGenerator chunkGenerator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn, NoFeatureConfig config) {
+        public void generatePieces(@Nonnull DynamicRegistries dynamicRegistryManager,
+                                   @Nonnull ChunkGenerator chunkGenerator,
+                                   @Nonnull TemplateManager templateManagerIn,
+                                   int chunkX,
+                                   int chunkZ,
+                                   @Nonnull Biome biomeIn,
+                                   @Nonnull NoFeatureConfig config) {
 
             // Turns the chunk coordinates into actual coordinates we can use. (Gets center of that chunk)
             int x = (chunkX << 4) + 7;
@@ -169,9 +187,9 @@ public class MondroveBundleStructure extends Structure<NoFeatureConfig>{
             // I use to debug and quickly find out if the structure is spawning or not and where it is.
             // This is returning the coordinates of the center starting piece.
             CrypticCosmos.LOGGER.log(Level.DEBUG, "Mondrove Bundle at " +
-                    this.pieces.get(0).getBoundingBox().x0 + " " +
-                    this.pieces.get(0).getBoundingBox().y0 + " " +
-                    this.pieces.get(0).getBoundingBox().z0);
+                                                  this.pieces.get(0).getBoundingBox().x0 + " " +
+                                                  this.pieces.get(0).getBoundingBox().y0 + " " +
+                                                  this.pieces.get(0).getBoundingBox().z0);
         }
     }
 

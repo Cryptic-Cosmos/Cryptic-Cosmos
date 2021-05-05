@@ -1,10 +1,10 @@
 {
   "variants": {
     "type=bottom": {
-      "model": "crypticcosmos:block/mondrove_planks_slab"
+      "model": "crypticcosmos:block/mondrove_slab"
     },
     "type=top": {
-      "model": "crypticcosmos:block/mondrove_planks_slab_top"
+      "model": "crypticcosmos:block/mondrove_slab_top"
     },
     "type=double": {
       "model": "crypticcosmos:block/mondrove_planks"

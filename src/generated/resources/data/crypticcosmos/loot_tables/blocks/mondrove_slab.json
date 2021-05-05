@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crypticcosmos:mondrove_planks_slab"
+          "name": "crypticcosmos:mondrove_slab"
         }
       ],
       "conditions": [

@@ -1,12 +1,13 @@
 package com.crypticcosmos.crypticcosmos.datagen;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.EffectRegistries;
 import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.registries.ItemRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
+
+import static com.crypticcosmos.crypticcosmos.registries.BlockRegistries.*;
 
 public abstract class LanguageGenerator extends LanguageProvider {
     public LanguageGenerator(DataGenerator gen, String locale) {
@@ -28,57 +29,59 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(ItemRegistries.MAKROSSA_RAMBLER_SPAWN_EGG.get(), "Makrossa Rambler Spawn Egg");
             add(ItemRegistries.GROMBLE_FROG_SPAWN_EGG.get(), "Gromble Frog Spawn Egg");
 
-            // Blocks
-            add(BlockRegistries.OVERGROWN_LUNON.get(), "Overgrown Lunon");
-            add(BlockRegistries.FUNGAL_LUNON.get(), "Fungal Lunon");
+            // Lunon block set
+            add(OVERGROWN_LUNON.get(), "Overgrown Lunon");
+            add(FUNGAL_LUNON.get(), "Fungal Lunon");
 
-            add(BlockRegistries.LUNON.get(), "Lunon");
-            add(BlockRegistries.LUNON_DUST.get(), "Lunon Dust");
+            add(LUNON.get(), "Lunon");
+            add(LUNON_DUST.get(), "Lunon Dust");
 
-            add(BlockRegistries.CHISELED_POLISHED_LUNON.get(), "Chiseled Polished Lunon");
+            add(CHISELED_POLISHED_LUNON.get(), "Chiseled Polished Lunon");
 
-            add(BlockRegistries.POLISHED_LUNON.get(), "Polished Lunon");
-            add(BlockRegistries.POLISHED_LUNON_SLAB.get(), "Polished Lunon Slab");
+            add(POLISHED_LUNON.get(), "Polished Lunon");
+            add(POLISHED_LUNON_SLAB.get(), "Polished Lunon Slab");
 
-            add(BlockRegistries.LUNON_BRICKS.get(), "Lunon Bricks");
-            add(BlockRegistries.LUNON_BRICK_SLAB.get(), "Lunon Brick Slab");
-            add(BlockRegistries.LUNON_BRICK_STAIRS.get(), "Lunon Brick Stairs");
+            add(LUNON_BRICKS.get(), "Lunon Bricks");
+            add(LUNON_BRICK_SLAB.get(), "Lunon Brick Slab");
+            add(LUNON_BRICK_STAIRS.get(), "Lunon Brick Stairs");
 
-            add(BlockRegistries.MOSSY_LUNON.get(), "Mossy Lunon");
+            add(MOSSY_LUNON.get(), "Mossy Lunon");
 
-            add(BlockRegistries.MONDROVE_LOG.get(), "Mondrove Log");
-            add(BlockRegistries.MONDROVE_WOOD.get(), "Mondrove Wood");
-            add(BlockRegistries.STRIPPED_MONDROVE_LOG.get(), "Stripped Mondrove Log");
-            add(BlockRegistries.STRIPPED_MONDROVE_WOOD.get(), "Stripped Mondrove Wood");
-            add(BlockRegistries.MONDROVE_PLANKS.get(), "Mondrove Planks");
-            add(BlockRegistries.MONDROVE_PLANKS_SLAB.get(), "Mondrove Planks Slab");
-            add(BlockRegistries.MONDROVE_PLANKS_STAIRS.get(), "Mondrove Planks Stairs");
-            add(BlockRegistries.MONDROVE_LEAVES.get(), "Mondrove Leaves");
-            add(BlockRegistries.MONDROVE_SAPLING.get(), "Mondrove Sapling");
-            add(BlockRegistries.MONDROVE_FUNGUS.get(), "Mondrove Fungus");
-            add(BlockRegistries.MONDROVE_FUNGUS_BLOCK.get(), "Mondrove Fungus Block");
-            add(BlockRegistries.MONDROVE_FUNGUS_SPORE_BLOCK.get(), "Mondrove Fungus Spore Block");
-            add(BlockRegistries.SMOOTH_MONDROVE_FUNGUS.get(), "Smooth Mondrove Fungus");
-            add(BlockRegistries.SMOOTH_MONDROVE_BRICKS.get(), "Smooth Mondrove Bricks");
-            add(BlockRegistries.OSMINSTEM_CAP.get(), "Osminstem Cap");
-            add(BlockRegistries.OSMINSTEM_HIVE.get(), "Osminstem Hive");
-            add(BlockRegistries.OSMINSTEM_LOG.get(), "Osminstem Log");
-            add(BlockRegistries.OSMINSTEM_POROUS_LOG.get(), "Osminstem Porous Log");
-            add(BlockRegistries.OSMINSTEM_WOOD.get(), "Osminstem Wood");
-            add(BlockRegistries.STRIPPED_OSMINSTEM_LOG.get(), "Stripped Osminstem Log");
-            add(BlockRegistries.STRIPPED_OSMINSTEM_WOOD.get(), "Stripped Osminstem Wood");
-            add(BlockRegistries.STINKY_OSMIN.get(), "Stinky Osmin");
-            add(BlockRegistries.OSMINSTEM_PLANKS.get(), "Osminstem Planks");
-            add(BlockRegistries.OSMINSTEM_DOOR.get(), "Osminstem Door");
-            add(BlockRegistries.OSMINSTEM_TRAPDOOR.get(), "Osminstem Trapdoor");
-            add(BlockRegistries.MONDROVE_DOOR.get(), "Mondrove Door");
-            add(BlockRegistries.MONDROVE_TRAPDOOR.get(), "Mondrove Trapdoor");
+            // Mondrove wood set
+            add(MONDROVE_LOG.get(), "Mondrove Log");
+            add(MONDROVE_WOOD.get(), "Mondrove Wood");
+            add(STRIPPED_MONDROVE_LOG.get(), "Stripped Mondrove Log");
+            add(STRIPPED_MONDROVE_WOOD.get(), "Stripped Mondrove Wood");
+            add(MONDROVE_PLANKS.get(), "Mondrove Planks");
+            add(MONDROVE_SLAB.get(), "Mondrove Slab");
+            add(MONDROVE_STAIRS.get(), "Mondrove Stairs");
+            add(MONDROVE_TRAPDOOR.get(), "Mondrove Trapdoor");
+            add(MONDROVE_LEAVES.get(), "Mondrove Leaves");
+            add(MONDROVE_SAPLING.get(), "Mondrove Sapling");
+            add(MONDROVE_FUNGUS.get(), "Mondrove Fungus");
+            add(MONDROVE_FUNGUS_BLOCK.get(), "Mondrove Fungus Block");
+            add(MONDROVE_FUNGUS_SPORE_BLOCK.get(), "Mondrove Fungus Spore Block");
+            add(SMOOTH_MONDROVE_FUNGUS_BLOCK.get(), "Smooth Mondrove Fungus Block");
+            add(SMOOTH_MONDROVE_FUNGUS_BRICKS.get(), "Smooth Mondrove Fungus Bricks");
+            add(STINKY_OSMIN.get(), "Stinky Osmin");
+            add(OSMINSTEM_PLANKS.get(), "Osminstem Planks");
+            add(OSMINSTEM_DOOR.get(), "Osminstem Door");
+            add(OSMINSTEM_TRAPDOOR.get(), "Osminstem Trapdoor");
+            add(MONDROVE_DOOR.get(), "Mondrove Door");
 
 
+            // Osminstem wood set
+            add(OSMINSTEM_CAP.get(), "Osminstem Cap");
+            add(OSMINSTEM_HIVE.get(), "Osminstem Hive");
+            add(OSMINSTEM_LOG.get(), "Osminstem Log");
+            add(OSMINSTEM_POROUS_LOG.get(), "Osminstem Porous Log");
+            add(OSMINSTEM_WOOD.get(), "Osminstem Wood");
+            add(STRIPPED_OSMINSTEM_LOG.get(), "Stripped Osminstem Log");
+            add(STRIPPED_OSMINSTEM_WOOD.get(), "Stripped Osminstem Wood");
 
-            add(BlockRegistries.RIFT_BLOCK.get(), "Rift Block");
+            add(RIFT_BLOCK.get(), "Rift Block");
 
-            add(BlockRegistries.UMBRAL_DUNE.get(), "Umbral Sand");
+            add(UMBRAL_DUNE.get(), "Umbral Sand");
 
             // Entities
             add(EntityTypeRegistries.MAKROSSA_RAMBLER.get(), "Makrossa Rambler");
