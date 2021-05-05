@@ -25,8 +25,8 @@ public abstract class LanguageGenerator extends LanguageProvider {
 
             // Items
             add(ItemRegistries.CRATERED_BONE.get(), "Cratered Bone");
-            add(ItemRegistries.MOON_BEAST_SPAWN_EGG.get(), "Moon Beast Spawn Egg");
-            add(ItemRegistries.MOON_FROG_SPAWN_EGG.get(), "Moon Frog Spawn Egg");
+            add(ItemRegistries.MAKROSSA_RAMBLER_SPAWN_EGG.get(), "Makrossa Rambler Spawn Egg");
+            add(ItemRegistries.GROMBLE_FROG_SPAWN_EGG.get(), "Gromble Frog Spawn Egg");
 
             // Blocks
             add(BlockRegistries.OVERGROWN_LUNON.get(), "Overgrown Lunon");
@@ -81,15 +81,14 @@ public abstract class LanguageGenerator extends LanguageProvider {
             add(BlockRegistries.UMBRAL_DUNE.get(), "Umbral Sand");
 
             // Entities
-            add(EntityTypeRegistries.MOON_BEAST.get(), "Moon Beast");
-            add(EntityTypeRegistries.MOON_FROG.get(), "Moon Frog");
+            add(EntityTypeRegistries.MAKROSSA_RAMBLER.get(), "Makrossa Rambler");
+            add(EntityTypeRegistries.GROMBLE_FROG.get(), "Gromble Frog");
 
             // Biomes
-            add(String.format("biome.%s.thorn_jungle", CrypticCosmos.MOD_ID), "Thorn Jungle");
-            add(String.format("biome.%s.lunara_plains", CrypticCosmos.MOD_ID), "Lunara Plains");
-            add(String.format("biome.%s.lunara_mountains", CrypticCosmos.MOD_ID), "Lunara Mountains");
-            add(String.format("biome.%s.lunara_forest", CrypticCosmos.MOD_ID), "Lunara Forest");
             add(String.format("biome.%s.umbral_dunes", CrypticCosmos.MOD_ID), "Umbral Dunes");
+            add(String.format("biome.%s.kafsinian_forest", CrypticCosmos.MOD_ID), "Kafsinian Forest");
+            add(String.format("biome.%s.lunaran_plains", CrypticCosmos.MOD_ID), "Lunaran Plains");
+            add(String.format("biome.%s.acerbic_isles", CrypticCosmos.MOD_ID), "Acerbic Isles");
 
             // Effects
             add(EffectRegistries.CORRUPTION.get(), "Corruption");

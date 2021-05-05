@@ -16,22 +16,22 @@ public class ItemRegistries {
             () -> new Item(CrypticCosmos.DEFAULT_PROPERTY)
     );
 
-    public static final RegistryObject<Item> MOON_BEAST_SPAWN_EGG = ITEMS.register(
-            "moon_beast_spawn_egg",
+    public static final RegistryObject<Item> MAKROSSA_RAMBLER_SPAWN_EGG = ITEMS.register(
+            "makrossa_rambler_spawn_egg",
             () -> new CustomSpawnEggItem(
-                    EntityTypeRegistries.MOON_BEAST::get,
-                    0x7694969,
-                    0x2039088,
+                    EntityTypeRegistries.MAKROSSA_RAMBLER::get,
+                    0x65616a,
+                    0x1f1d30,
                     CrypticCosmos.DEFAULT_PROPERTY
             )
     );
 
-    public static final RegistryObject<Item> MOON_FROG_SPAWN_EGG = ITEMS.register(
-            "moon_frog_spawn_egg",
+    public static final RegistryObject<Item> GROMBLE_FROG_SPAWN_EGG = ITEMS.register(
+            "gromble_frog_spawn_egg",
             () -> new CustomSpawnEggItem(
-                    EntityTypeRegistries.MOON_FROG::get,
-                    0x993333,
-                    0x660033,
+                    EntityTypeRegistries.GROMBLE_FROG::get,
+                    0xc26d7d,
+                    0x9e427e,
                     CrypticCosmos.DEFAULT_PROPERTY
             )
     );

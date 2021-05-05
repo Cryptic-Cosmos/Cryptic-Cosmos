@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.creatures.moon_frog;
+package com.crypticcosmos.crypticcosmos.creatures.gromble_frog;
 
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
@@ -9,7 +9,7 @@ import net.minecraft.entity.Pose;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.passive.TameableEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -27,7 +27,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
-public class MoonFrogEntity extends TameableEntity implements IAnimatable {
+public class GrombleFrogEntity extends AnimalEntity implements IAnimatable {
     private static final Lazy<Ingredient> BREEDING_ITEM = Lazy.of(
             () -> Ingredient.of(BlockRegistries.MONDROVE_SAPLING.get())
     );
@@ -35,7 +35,7 @@ public class MoonFrogEntity extends TameableEntity implements IAnimatable {
     public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("Walk");
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    public MoonFrogEntity(EntityType<? extends TameableEntity> type, World worldIn) {
+    public GrombleFrogEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
         super(type, worldIn);
 
         this.noCulling = true;
@@ -92,18 +92,14 @@ public class MoonFrogEntity extends TameableEntity implements IAnimatable {
     }
 
     @Override
-    public boolean removeWhenFarAway(double distanceToClosestPlayer) {
-        return !this.isTame() && this.tickCount > 2400;
+    public boolean removeWhenFarAway(double p_213397_1_) {
+        return !this.isPersistenceRequired();
     }
 
-    @Override
-    protected void reassessTameGoals() {
-        this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 0.5f, 10f, 5f, false));
-    }
 
     @Nullable
     @Override
     public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity mate) {
-        return EntityTypeRegistries.MOON_FROG.get().create(this.getCommandSenderWorld());
+        return EntityTypeRegistries.GROMBLE_FROG.get().create(this.getCommandSenderWorld());
     }
 }

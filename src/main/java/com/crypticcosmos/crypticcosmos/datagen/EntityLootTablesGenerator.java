@@ -32,7 +32,7 @@ public class EntityLootTablesGenerator extends LootTableProvider {
 
     private void addLootTables(EntityLootTablesGenerator loot) {
         loot.addLoot(
-                EntityTypeRegistries.MOON_BEAST.get(),
+                EntityTypeRegistries.MAKROSSA_RAMBLER.get(),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantRange.exactly(1))

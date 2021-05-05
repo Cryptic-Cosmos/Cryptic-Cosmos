@@ -1,6 +1,6 @@
 package com.crypticcosmos.crypticcosmos.effects;
 
-import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogEntity;
+import com.crypticcosmos.crypticcosmos.creatures.gromble_frog.GrombleFrogEntity;
 import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
@@ -51,14 +51,14 @@ public class CorruptionEffect extends Effect {
             if (event.getSource().equals(CORRUPTION_DAMAGE_SOURCE)) {
                 LivingEntity killedEntity = event.getEntityLiving();
 
-                MoonFrogEntity moonFrog = new MoonFrogEntity(EntityTypeRegistries.MOON_FROG.get(), event.getEntity().level);
-                moonFrog.moveTo(killedEntity.blockPosition(),
+                GrombleFrogEntity gorbleFrog = new GrombleFrogEntity(EntityTypeRegistries.GROMBLE_FROG.get(), event.getEntity().level);
+                gorbleFrog.moveTo(killedEntity.blockPosition(),
                         killedEntity.yRot,
                         killedEntity.xRot);
 
                 //noinspection ConstantConditions
-                moonFrog.finalizeSpawn(killedEntity.getServer().overworld(),
-                        killedEntity.level.getCurrentDifficultyAt(moonFrog.blockPosition()),
+                gorbleFrog.finalizeSpawn(killedEntity.getServer().overworld(),
+                        killedEntity.level.getCurrentDifficultyAt(gorbleFrog.blockPosition()),
                         SpawnReason.MOB_SUMMONED,
                         null,
                         null);

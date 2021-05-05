@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.creatures.moon_frog;// Made with Blockbench 3.6.6
+package com.crypticcosmos.crypticcosmos.creatures.gromble_frog;// Made with Blockbench 3.6.6
 // Exported for Minecraft version 1.15
 // Paste this class into your mod and generate all required imports
 
@@ -11,25 +11,25 @@ import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
-public class MoonFrogModel extends AnimatedGeoModel<MoonFrogEntity> {
+public class GrombleFrogModel extends AnimatedGeoModel<GrombleFrogEntity> {
 
     @Override
-    public ResourceLocation getModelLocation(MoonFrogEntity moonFrogEntity) {
-        return new ResourceLocation(CrypticCosmos.MOD_ID, "geo/moon_frog.geo.json");
+    public ResourceLocation getModelLocation(GrombleFrogEntity grombleFrogEntity) {
+        return new ResourceLocation(CrypticCosmos.MOD_ID, "geo/gromble_frog.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(MoonFrogEntity moonFrogEntity) {
-        return new ResourceLocation(CrypticCosmos.MOD_ID, "textures/entity/moon_frog.png");
+    public ResourceLocation getTextureLocation(GrombleFrogEntity grombleFrogEntity) {
+        return new ResourceLocation(CrypticCosmos.MOD_ID, "textures/entity/gromble_frog.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(MoonFrogEntity moonFrogEntity) {
-        return new ResourceLocation(CrypticCosmos.MOD_ID, "animations/moon_frog.json");
+    public ResourceLocation getAnimationFileLocation(GrombleFrogEntity grombleFrogEntity) {
+        return new ResourceLocation(CrypticCosmos.MOD_ID, "animations/gromble_frog.json");
     }
 
     @Override
-    public void setLivingAnimations(MoonFrogEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+    public void setLivingAnimations(GrombleFrogEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
         super.setLivingAnimations(entity, uniqueID, customPredicate);
         EntityModelData data = (EntityModelData) customPredicate.getExtraData().get(0);
         // Apply head look to model

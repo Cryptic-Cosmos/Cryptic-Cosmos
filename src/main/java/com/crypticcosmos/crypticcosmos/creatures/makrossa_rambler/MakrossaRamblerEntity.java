@@ -1,6 +1,6 @@
-package com.crypticcosmos.crypticcosmos.creatures.moon_beast;
+package com.crypticcosmos.crypticcosmos.creatures.makrossa_rambler;
 
-import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogEntity;
+import com.crypticcosmos.crypticcosmos.creatures.gromble_frog.GrombleFrogEntity;
 import com.crypticcosmos.crypticcosmos.registries.SoundEventRegistries;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -21,14 +21,14 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import javax.annotation.Nonnull;
 
-public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
+public class MakrossaRamblerEntity extends MonsterEntity implements IAnimatable {
     public static AnimationBuilder IDLE_ANIM = new AnimationBuilder().addAnimation("idle");
     public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("walk");
     public static AnimationBuilder RUN_ANIM = new AnimationBuilder().addAnimation("run");
 
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    public MoonBeastEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
+    public MakrossaRamblerEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
         super(type, worldIn);
     }
 
@@ -61,7 +61,7 @@ public class MoonBeastEntity extends MonsterEntity implements IAnimatable {
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, HuskEntity.class, true));
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, ZombieEntity.class, true));
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, DrownedEntity.class, true));
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, MoonFrogEntity.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, GrombleFrogEntity.class, true));
     }
 
     @Override

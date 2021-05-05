@@ -10,8 +10,8 @@ import java.util.List;
 
 public class CrypticCosmosDimensions {
     public static final List<RegistryKey<World>> RIFT_VALID_DIMENSIONS = new ArrayList<>();
-    public static final RegistryKey<World> LUNARA_KEY = newDimensionKey("lunara");
-    public static final RegistryKey<World> ABYSS_KEY = newDimensionKey("abyss");
+    public static final RegistryKey<World> MAKROSSA_KEY = newDimensionKey("makrossa");
+    public static final RegistryKey<World> UMBRAL_DAWN_KEY = newDimensionKey("umbral_dawn");
 
     private static RegistryKey<World> newDimensionKey(String id) {
         final RegistryKey<World> key = RegistryKey.create(Registry.DIMENSION_REGISTRY, CrypticCosmos.id(id));

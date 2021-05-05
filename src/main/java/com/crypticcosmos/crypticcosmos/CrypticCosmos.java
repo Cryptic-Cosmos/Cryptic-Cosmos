@@ -1,10 +1,10 @@
 package com.crypticcosmos.crypticcosmos;
 
 import com.crypticcosmos.crypticcosmos.blocks.RiftBlock;
-import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastEntity;
-import com.crypticcosmos.crypticcosmos.creatures.moon_beast.MoonBeastRender;
-import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogEntity;
-import com.crypticcosmos.crypticcosmos.creatures.moon_frog.MoonFrogRender;
+import com.crypticcosmos.crypticcosmos.creatures.makrossa_rambler.MakrossaRamblerEntity;
+import com.crypticcosmos.crypticcosmos.creatures.makrossa_rambler.MakrossaRamblerRender;
+import com.crypticcosmos.crypticcosmos.creatures.gromble_frog.GrombleFrogEntity;
+import com.crypticcosmos.crypticcosmos.creatures.gromble_frog.GrombleFrogRender;
 import com.crypticcosmos.crypticcosmos.effects.CorruptionEffect.SpawnFrogOnCorruptionKill;
 import com.crypticcosmos.crypticcosmos.items.CustomSpawnEggItem;
 import com.crypticcosmos.crypticcosmos.registries.StrippingRegistries;
@@ -120,13 +120,13 @@ public class CrypticCosmos {
 
 
         RenderingRegistry.registerEntityRenderingHandler(
-                EntityTypeRegistries.MOON_BEAST.get(),
-                MoonBeastRender::new
+                EntityTypeRegistries.MAKROSSA_RAMBLER.get(),
+                MakrossaRamblerRender::new
         );
 
         RenderingRegistry.registerEntityRenderingHandler(
-                EntityTypeRegistries.MOON_FROG.get(),
-                MoonFrogRender::new
+                EntityTypeRegistries.GROMBLE_FROG.get(),
+                GrombleFrogRender::new
         );
     }
 
@@ -156,8 +156,8 @@ public class CrypticCosmos {
     }
 
     private void registerEntityAttributes(@Nonnull EntityAttributeCreationEvent event) {
-        event.put(EntityTypeRegistries.MOON_BEAST.get(), MoonBeastEntity.setCustomAttributes());
-        event.put(EntityTypeRegistries.MOON_FROG.get(), MoonFrogEntity.setCustomAttributes());
+        event.put(EntityTypeRegistries.MAKROSSA_RAMBLER.get(), MakrossaRamblerEntity.setCustomAttributes());
+        event.put(EntityTypeRegistries.GROMBLE_FROG.get(), GrombleFrogEntity.setCustomAttributes());
     }
 
     private void createSpawnEggs(RegistryEvent.Register<EntityType<?>> event) {

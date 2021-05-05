@@ -70,8 +70,8 @@ public class RiftBlock extends Block {
 
     private static RegistryKey<World> getDestination(World world) {
         final List<RegistryKey<World>> VALID_DIMENSIONS = Lists.newArrayList(World.OVERWORLD,
-                CrypticCosmosDimensions.LUNARA_KEY,
-                CrypticCosmosDimensions.ABYSS_KEY
+                CrypticCosmosDimensions.MAKROSSA_KEY,
+                CrypticCosmosDimensions.UMBRAL_DAWN_KEY
         );
 
         VALID_DIMENSIONS.remove(world.dimension());

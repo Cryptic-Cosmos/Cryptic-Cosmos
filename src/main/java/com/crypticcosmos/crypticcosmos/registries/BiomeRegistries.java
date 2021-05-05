@@ -16,26 +16,26 @@ public class BiomeRegistries {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, CrypticCosmos.MOD_ID);
 
     // lunara biomes
-    public static final RegistryObject<Biome> LUNARA_PLAINS = BIOMES.register("lunara_plains", BiomeMaker::lunaraPlains);
-    public static final RegistryKey<Biome> LUNARA_PLAINS_KEY =
-            RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("lunara_plains"));
+    public static final RegistryObject<Biome> LUNARAN_PLAINS = BIOMES.register("lunaran_plains", BiomeMaker::lunaraPlains);
+    public static final RegistryKey<Biome> LUNARAN_PLAINS_KEY =
+            RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("lunaran_plains"));
 
     public static final RegistryObject<Biome> ACERBIC_ISLES = BIOMES.register("acerbic_isles", BiomeMaker::acerbicIsles);
-    public static final RegistryKey<Biome> LUNARA_MOUNTAINS_KEY =
-            RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("lunara_mountains"));
+    public static final RegistryKey<Biome> ACERBIC_ISLES_KEY =
+            RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("acerbic_isles"));
 
-    public static final RegistryObject<Biome> MONDROVE_GROVES = BIOMES.register("mondrove_groves", BiomeMaker::mondroveGroves);
-    public static final RegistryKey<Biome> LUNARA_FOREST_KEY =
-            RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("lunara_forest"));
+    public static final RegistryObject<Biome> KAFSINIAN_FOREST = BIOMES.register("kafsinian_forest", BiomeMaker::kafisnianForest);
+    public static final RegistryKey<Biome> KAFSINIAN_FOREST_KEY =
+            RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("kafsinian_forest"));
 
     public static final RegistryObject<Biome> UMBRAL_DUNES = BIOMES.register("umbral_dunes", BiomeMaker::umbralDunes);
     public static final RegistryKey<Biome> UMBRAL_DUNES_KEY =
             RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("umbral_dunes"));
 
     public static void biomeLoading(FMLCommonSetupEvent event) {
-        BiomeDictionary.addTypes(LUNARA_PLAINS_KEY, Type.PLAINS, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
-        BiomeDictionary.addTypes(LUNARA_MOUNTAINS_KEY, Type.MOUNTAIN, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
-        BiomeDictionary.addTypes(LUNARA_FOREST_KEY, Type.FOREST, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
+        BiomeDictionary.addTypes(LUNARAN_PLAINS_KEY, Type.PLAINS, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
+        BiomeDictionary.addTypes(ACERBIC_ISLES_KEY, Type.MOUNTAIN, Type.DEAD, Type.NETHER, Type.HOT);
+        BiomeDictionary.addTypes(KAFSINIAN_FOREST_KEY, Type.FOREST, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
         BiomeDictionary.addTypes(UMBRAL_DUNES_KEY, Type.HOT, Type.DRY, Type.PLAINS, Type.DEAD);
     }
 }

@@ -55,10 +55,10 @@ public class BiomeMaker {
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
-        addSpawn(spawnSettings, EntityClassification.CREATURE,
-                EntityTypeRegistries.MOON_BEAST.get(), 8, 1, 2);
+        addSpawn(spawnSettings, EntityClassification.MONSTER,
+                EntityTypeRegistries.MAKROSSA_RAMBLER.get(), 8, 1, 2);
 
-        addSpawn(spawnSettings, EntityClassification.CREATURE,
+        addSpawn(spawnSettings, EntityClassification.MONSTER,
                 EntityType.ENDERMAN, 4, 1, 4);
 
         final BiomeAmbience.Builder effects = effects(0xfffff5,
@@ -83,7 +83,7 @@ public class BiomeMaker {
         );
     }
 
-    public static Biome mondroveGroves() {
+    public static Biome kafisnianForest() {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, MONDROVE_SURFACE_BUILDER_CONFIG);
 
         // Add mondrove fungus generation.
@@ -116,7 +116,7 @@ public class BiomeMaker {
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
         addSpawn(spawnSettings, EntityClassification.CREATURE,
-                EntityTypeRegistries.MOON_FROG.get(), 10, 1, 7);
+                EntityTypeRegistries.GROMBLE_FROG.get(), 8, 2, 5);
 
         final BiomeAmbience.Builder effects = effects(0xfffff5,
                 0xfffff5,
@@ -147,7 +147,7 @@ public class BiomeMaker {
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
         addSpawn(spawnSettings, EntityClassification.CREATURE,
-                EntityTypeRegistries.MOON_BEAST.get(), 8, 1, 2);
+                EntityTypeRegistries.MAKROSSA_RAMBLER.get(), 8, 1, 2);
 
         addSpawn(spawnSettings, EntityClassification.CREATURE,
                 EntityType.ENDERMAN, 4, 1, 4);
