@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "crypticcosmos:mondrove_planks"
+      "crypticcosmos:osminstem_planks"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "crypticcosmos:mondrove_logs"
+            "tag": "crypticcosmos:osminstem_logs"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "crypticcosmos:mondrove_planks"
+        "recipe": "crypticcosmos:osminstem_planks"
       }
     }
   },

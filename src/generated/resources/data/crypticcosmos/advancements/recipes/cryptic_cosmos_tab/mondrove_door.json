@@ -2,16 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "crypticcosmos:mondrove_planks"
+      "crypticcosmos:mondrove_door"
     ]
   },
   "criteria": {
-    "has_logs": {
+    "has_planks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "crypticcosmos:mondrove_logs"
+            "item": "crypticcosmos:mondrove_planks"
           }
         ]
       }
@@ -19,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "crypticcosmos:mondrove_planks"
+        "recipe": "crypticcosmos:mondrove_door"
       }
     }
   },
   "requirements": [
     [
-      "has_logs",
+      "has_planks",
       "has_the_recipe"
     ]
   ]

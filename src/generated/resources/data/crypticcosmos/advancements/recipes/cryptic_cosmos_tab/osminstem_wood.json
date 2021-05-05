@@ -2,16 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "crypticcosmos:mondrove_planks"
+      "crypticcosmos:osminstem_wood"
     ]
   },
   "criteria": {
-    "has_logs": {
+    "has_log": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "crypticcosmos:mondrove_logs"
+            "item": "crypticcosmos:osminstem_log"
           }
         ]
       }
@@ -19,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "crypticcosmos:mondrove_planks"
+        "recipe": "crypticcosmos:osminstem_wood"
       }
     }
   },
   "requirements": [
     [
-      "has_logs",
+      "has_log",
       "has_the_recipe"
     ]
   ]

@@ -36,7 +36,7 @@ public class MondroveFungus extends BushBlock {
 
     @Override
     public boolean mayPlaceOn(BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
-        return state.is(TagRegistries.MONDROVE_PLANTABLE_BLOCKS);
+        return state.is(TagRegistries.MONDROVE_FUNGUS_PLANTABLE);
     }
 
     @SuppressWarnings("deprecation")

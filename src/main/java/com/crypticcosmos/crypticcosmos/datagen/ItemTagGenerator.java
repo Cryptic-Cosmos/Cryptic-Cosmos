@@ -1,37 +1,52 @@
 package com.crypticcosmos.crypticcosmos.datagen;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
+import com.crypticcosmos.crypticcosmos.registries.TagRegistries;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
-import net.minecraft.item.Item;
-import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.IItemProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
-import java.util.Arrays;
 
 import static com.crypticcosmos.crypticcosmos.registries.BlockRegistries.*;
 
 public class ItemTagGenerator extends ItemTagsProvider {
-
     public ItemTagGenerator(DataGenerator dataGenerator, BlockTagsProvider blockTagProvider, @Nullable ExistingFileHelper existingFileHelper) {
         super(dataGenerator, blockTagProvider, CrypticCosmos.MOD_ID, existingFileHelper);
     }
 
     @Override
     protected void addTags() {
-        addItemProvider(ItemTags.LEAVES, MONDROVE_LEAVES.get());
-        addItemProvider(ItemTags.LOGS, MONDROVE_LOG.get());
-        addItemProvider(ItemTags.PLANKS, MONDROVE_PLANKS.get());
-        addItemProvider(ItemTags.SAPLINGS, MONDROVE_SAPLING.get());
-        addItemProvider(ItemTags.LEAVES, OSMINSTEM_CAP.get());
-        addItemProvider(ItemTags.SAPLINGS, STINKY_OSMIN.get());
-    }
+        tag(ItemTags.LEAVES).add(MONDROVE_LEAVES.get().asItem(), OSMINSTEM_CAP.get().asItem());
+        tag(ItemTags.LOGS).add(MONDROVE_LOG.get().asItem());
+        tag(ItemTags.PLANKS).add(MONDROVE_PLANKS.get().asItem());
+        tag(ItemTags.SAPLINGS).add(MONDROVE_SAPLING.get().asItem(), STINKY_OSMIN.get().asItem());
 
-    private void addItemProvider(ITag.INamedTag<Item> tag, IItemProvider... itemProvider) {
-        Arrays.stream(itemProvider).forEach((item) -> tag(tag).add(item.asItem()));
+        tag(TagRegistries.LUNARA_PLANTABLE_ITEMS).add(
+                LUNON.get().asItem(),
+                OVERGROWN_LUNON.get().asItem(),
+                FUNGAL_LUNON.get().asItem()
+        );
+
+        tag(TagRegistries.MONDROVE_FUNGUS_PLANTABLE_ITEMS)
+                .add(MONDROVE_FUNGUS_BLOCK.get().asItem(), MONDROVE_FUNGUS_SPORE_BLOCK.get().asItem())
+                .addTag(TagRegistries.LUNARA_PLANTABLE_ITEMS);
+
+        tag(TagRegistries.MONDROVE_LOGS_ITEMS).add(
+                MONDROVE_LOG.get().asItem(),
+                MONDROVE_WOOD.get().asItem(),
+                STRIPPED_MONDROVE_LOG.get().asItem(),
+                STRIPPED_MONDROVE_WOOD.get().asItem()
+        );
+
+        tag(TagRegistries.OSMINSTEM_LOGS_ITEMS).add(
+                OSMINSTEM_LOG.get().asItem(),
+                OSMINSTEM_WOOD.get().asItem(),
+                STRIPPED_OSMINSTEM_LOG.get().asItem(),
+                STRIPPED_OSMINSTEM_WOOD.get().asItem(),
+                OSMINSTEM_POROUS_LOG.get().asItem()
+        );
     }
 }

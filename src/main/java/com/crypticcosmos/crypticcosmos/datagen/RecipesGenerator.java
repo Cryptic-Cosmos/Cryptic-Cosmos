@@ -1,5 +1,6 @@
 package com.crypticcosmos.crypticcosmos.datagen;
 
+import com.crypticcosmos.crypticcosmos.registries.TagRegistries;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.*;
 import net.minecraft.item.crafting.Ingredient;
@@ -16,14 +17,9 @@ public class RecipesGenerator extends RecipeProvider {
 
     @Override
     protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
-        // Mondrove planks
-        ShapelessRecipeBuilder.shapeless(MONDROVE_PLANKS.get(), 4)
-                .requires(MONDROVE_LOG.get())
-                .group("planks")
-                .unlockedBy("has_moon_log", has(MONDROVE_LOG.get()))
-                .save(consumer, MONDROVE_PLANKS.getId());
-
         registerLunonRecipes(consumer);
+        registerMondroveRecipes(consumer);
+        registerOsminstemRecipes(consumer);
     }
 
     private void registerLunonRecipes(Consumer<IFinishedRecipe> consumer) {
@@ -135,5 +131,22 @@ public class RecipesGenerator extends RecipeProvider {
                 .requires(LUNON.get())
                 .requires(Blocks.VINE).unlockedBy("has_vine", has(Blocks.VINE))
                 .save(consumer);
+    }
+
+    private void registerMondroveRecipes(Consumer<IFinishedRecipe> consumer) {
+        planksFromLogs(consumer, MONDROVE_PLANKS.get(), TagRegistries.MONDROVE_LOGS_ITEMS);
+        woodFromLogs(consumer, MONDROVE_WOOD.get(), MONDROVE_LOG.get());
+        woodenDoor(consumer, MONDROVE_DOOR.get(), MONDROVE_PLANKS.get());
+        woodenSlab(consumer, MONDROVE_SLAB.get(), MONDROVE_PLANKS.get());
+        woodenStairs(consumer, MONDROVE_STAIRS.get(), MONDROVE_PLANKS.get());
+        woodenTrapdoor(consumer, MONDROVE_TRAPDOOR.get(), MONDROVE_PLANKS.get());
+    }
+
+    private void registerOsminstemRecipes(Consumer<IFinishedRecipe> consumer) {
+        planksFromLogs(consumer, OSMINSTEM_PLANKS.get(), TagRegistries.OSMINSTEM_LOGS_ITEMS);
+        woodFromLogs(consumer, OSMINSTEM_WOOD.get(), OSMINSTEM_LOG.get());
+        // woodFromLogs(consumer, OSMINSTEM_WOOD.get(), OSMINSTEM_POROUS_LOG.get());
+        woodenDoor(consumer, OSMINSTEM_DOOR.get(), OSMINSTEM_PLANKS.get());
+        woodenTrapdoor(consumer, OSMINSTEM_TRAPDOOR.get(), OSMINSTEM_PLANKS.get());
     }
 }

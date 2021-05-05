@@ -124,7 +124,7 @@ public class BlockRegistries {
             new SaplingBlock(new MondroveTree(), Properties.copy(Blocks.BIRCH_SAPLING)) {
                 @Override
                 public boolean mayPlaceOn(@Nonnull BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
-                    return state.is(TagRegistries.LUNARA_PLANTABLE_BLOCKS);
+                    return state.is(TagRegistries.LUNARA_PLANTABLE);
                 }
             }
     );
@@ -155,7 +155,7 @@ public class BlockRegistries {
             new SaplingBlock(new OsminstemTree(), Properties.copy(Blocks.BIRCH_SAPLING)) {
                 @Override
                 public boolean mayPlaceOn(@Nonnull BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
-                    return state.is(TagRegistries.LUNARA_PLANTABLE_BLOCKS);
+                    return state.is(TagRegistries.LUNARA_PLANTABLE);
                 }
             });
 

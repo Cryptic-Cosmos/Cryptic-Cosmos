@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "crypticcosmos:mondrove_planks"
+    }
+  },
+  "result": {
+    "item": "crypticcosmos:mondrove_trapdoor",
+    "count": 2
+  }
+}

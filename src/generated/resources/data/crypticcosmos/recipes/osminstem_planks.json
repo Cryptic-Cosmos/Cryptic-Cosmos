@@ -3,11 +3,11 @@
   "group": "planks",
   "ingredients": [
     {
-      "tag": "crypticcosmos:mondrove_logs"
+      "tag": "crypticcosmos:osminstem_logs"
     }
   ],
   "result": {
-    "item": "crypticcosmos:mondrove_planks",
+    "item": "crypticcosmos:osminstem_planks",
     "count": 4
   }
 }
