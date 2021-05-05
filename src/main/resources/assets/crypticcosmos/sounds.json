@@ -51,26 +51,46 @@
       }
     ]
   },
-  "entity.moon_beast_living": {
-    "subtitle": "subtitles.entity.moon_beast_living",
+  "entity.makrossa_rambler_living": {
+    "subtitle": "subtitles.entity.makrossa_rambler_living",
     "sounds": [
-      "crypticcosmos:moon_beast/moon_beast_living1",
-      "crypticcosmos:moon_beast/moon_beast_living2",
-      "crypticcosmos:moon_beast/moon_beast_living3"
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_living1",
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_living2",
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_living3"
     ]
   },
-  "entity.moon_beast_hurt": {
-    "subtitle": "subtitles.entity.moon_beast_hurt",
+  "entity.makrossa_rambler_hurt": {
+    "subtitle": "subtitles.entity.makrossa_rambler_hurt",
     "sounds": [
-      "crypticcosmos:moon_beast/moon_beast_hurt1",
-      "crypticcosmos:moon_beast/moon_beast_hurt2",
-      "crypticcosmos:moon_beast/moon_beast_hurt3"
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_hurt1",
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_hurt2",
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_hurt3"
     ]
   },
-  "entity.moon_beast_death": {
-    "subtitle": "subtitles.entity.moon_beast_death",
+  "entity.makrossa_rambler_death": {
+    "subtitle": "subtitles.entity.makrossa_rambler_death",
     "sounds": [
-      "crypticcosmos:moon_beast/moon_beast_death"
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_death"
+    ]
+  },
+  "entity.gromble_frog_living": {
+    "subtitle": "subtitles.entity.gromble_frog_living",
+    "sounds": [
+      "crypticcosmos:gromble_frog/gromble_frog_ambient"
+    ]
+  },
+  "entity.gromble_frog_hurt": {
+    "subtitle": "subtitles.entity.gromble_frog_hurt",
+    "sounds": [
+      "crypticcosmos:gromble_frog/gromble_frog_hurt1",
+      "crypticcosmos:gromble_frog/gromble_frog_hurt2",
+      "crypticcosmos:gromble_frog/gromble_frog_hurt3"
+    ]
+  },
+  "entity.gromble_frog_death": {
+    "subtitle": "subtitles.entity.gromble_frog_death",
+    "sounds": [
+      "crypticcosmos:gromble_frog/gromble_frog_death"
     ]
   }
 }

@@ -2,6 +2,7 @@ package com.crypticcosmos.crypticcosmos.creatures.gromble_frog;
 
 import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
+import com.crypticcosmos.crypticcosmos.registries.SoundEventRegistries;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
@@ -13,6 +14,8 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.Lazy;
@@ -101,5 +104,20 @@ public class GrombleFrogEntity extends AnimalEntity implements IAnimatable {
     @Override
     public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity mate) {
         return EntityTypeRegistries.GROMBLE_FROG.get().create(this.getCommandSenderWorld());
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundEventRegistries.GROMBLE_FROG_AMBIENCE.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return SoundEventRegistries.GROMBLE_FROG_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundEventRegistries.GROMBLE_FROG_DEATH.get();
     }
 }
