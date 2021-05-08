@@ -76,7 +76,9 @@
   "entity.gromble_frog_living": {
     "subtitle": "subtitles.entity.gromble_frog_living",
     "sounds": [
-      "crypticcosmos:gromble_frog/gromble_frog_ambient"
+      "crypticcosmos:gromble_frog/gromble_frog_ambient",
+      "crypticcosmos:gromble_frog/gromble_frog_ambient2",
+      "crypticcosmos:gromble_frog/gromble_frog_ambient3"
     ]
   },
   "entity.gromble_frog_hurt": {

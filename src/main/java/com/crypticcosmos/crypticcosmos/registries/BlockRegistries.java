@@ -2,6 +2,7 @@ package com.crypticcosmos.crypticcosmos.registries;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.blocks.*;
+import com.crypticcosmos.crypticcosmos.world.feature.GrombleTree;
 import com.crypticcosmos.crypticcosmos.world.feature.MondroveTree;
 import com.crypticcosmos.crypticcosmos.world.feature.OsminstemTree;
 import net.minecraft.block.*;
@@ -195,5 +196,49 @@ public class BlockRegistries {
     ));
     public static final RegistryObject<TrapDoorBlock> OSMINSTEM_TRAPDOOR = BLOCKS.register("osminstem_trapdoor", () -> new TrapDoorBlock(
             Properties.copy(BlockRegistries.OSMINSTEM_PLANKS.get()).noOcclusion()
+    ));
+
+    //gromble blocks
+    public static final RegistryObject<Block> GLUM_LUNON = BLOCKS.register("glum_lunon", OvergrownLunonBlock::new);
+
+    public static final RegistryObject<Block> GROMBLE_SAPLING = BLOCKS.register("gromble_sapling", () ->
+            new SaplingBlock(new GrombleTree(), Properties.copy(Blocks.BIRCH_SAPLING)) {
+                @Override
+                public boolean mayPlaceOn(@Nonnull BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
+                    return state.is(TagRegistries.LUNARA_PLANTABLE);
+                }
+            });
+
+    public static final RegistryObject<Block> GIANT_GROMBLE_BERRY = BLOCKS.register("giant_gromble_berry",
+            () -> new Block(Properties.copy(Blocks.SHROOMLIGHT)));
+
+    public static final RegistryObject<Block> GROMBLE_LEAVES = BLOCKS.register("gromble_leaves", () ->
+            new Block(Properties.copy(Blocks.OAK_LEAVES))
+    );
+
+    public static final RegistryObject<Block> GROMBLE_LOG = BLOCKS.register("gromble_log", () ->
+            new RotatedPillarBlock(Properties.copy(Blocks.CRIMSON_STEM))
+    );
+
+    public static final RegistryObject<Block> STRIPPED_GROMBLE_LOG = BLOCKS.register("stripped_gromble_log", () ->
+            new RotatedPillarBlock(Properties.copy(Blocks.CRIMSON_STEM))
+    );
+
+    public static final RegistryObject<Block> GROMBLE_WOOD = BLOCKS.register("gromble_wood", () ->
+            new RotatedPillarBlock(Properties.copy(Blocks.CRIMSON_STEM))
+    );
+
+    public static final RegistryObject<Block> STRIPPED_GROMBLE_WOOD = BLOCKS.register("stripped_gromble_wood", () ->
+            new RotatedPillarBlock(Properties.copy(Blocks.CRIMSON_STEM))
+    );
+
+    public static final RegistryObject<Block> GROMBLE_PLANKS = BLOCKS.register("gromble_planks", () ->
+            new Block(Properties.copy(Blocks.BIRCH_PLANKS))
+    );
+    public static final RegistryObject<DoorBlock> GROMBLE_DOOR = BLOCKS.register("gromble_door", () -> new DoorBlock(
+            Properties.copy(BlockRegistries.GROMBLE_PLANKS.get()).noOcclusion()
+    ));
+    public static final RegistryObject<TrapDoorBlock>GROMBLE_TRAPDOOR = BLOCKS.register("gromble_trapdoor", () -> new TrapDoorBlock(
+            Properties.copy(BlockRegistries.GROMBLE_PLANKS.get()).noOcclusion()
     ));
 }

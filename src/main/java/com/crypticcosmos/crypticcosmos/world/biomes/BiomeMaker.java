@@ -43,6 +43,11 @@ public class BiomeMaker {
             LUNON_DUST.get().defaultBlockState()
     );
 
+    public static final SurfaceBuilderConfig GROMBLE_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
+            GLUM_LUNON.get().defaultBlockState(),
+            LUNON.get().defaultBlockState(),
+            LUNON_DUST.get().defaultBlockState()
+    );
 
     public static final SurfaceBuilderConfig ABYSS_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
             UMBRAL_DUNE.get().defaultBlockState(),
@@ -165,6 +170,49 @@ public class BiomeMaker {
                 Category.PLAINS,
                 0.125f,
                 0.1f,
+                0f,
+                0.0001f,
+                effects,
+                genSettings,
+                spawnSettings.build()
+        );
+    }
+
+    public static Biome grombleGrove() {
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, MONDROVE_SURFACE_BUILDER_CONFIG);
+
+        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+                FeatureRegistries.GIANT_GROMBLE_BERRY_PATCH
+                        .decorated(Features.Placements.ADD_32)
+                        .decorated(Features.Placements.HEIGHTMAP_SQUARE)
+                        .count(13));
+
+        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+                FeatureRegistries.GROMBLE_TREE
+                        .decorated(Features.Placements.HEIGHTMAP_SQUARE)
+                        .decorated(Placement.COUNT_EXTRA
+                                .configured(new AtSurfaceWithExtraConfig(14, 0.1F, 3))));
+
+
+        final MobSpawnInfo.Builder spawnSettings = spawnSettings();
+
+        addSpawn(spawnSettings, EntityClassification.CREATURE,
+                EntityTypeRegistries.GROMBLE_FROG.get(), 8, 2, 5);
+
+        final BiomeAmbience.Builder effects = effects(0xfffff5,
+                0xfffff5,
+                DEFAULT_GRASS_COLOR,
+                DEFAULT_FOLIAGE_COLOR,
+                0,
+                DEFAULT_SKY_FOG_COLOR,
+                SoundEventRegistries.MUSIC_MONDROVE_GROVES.get()
+        );
+
+        return biome(
+                RainType.RAIN,
+                Category.FOREST,
+                0.125f,
+                0.07f,
                 0f,
                 0.0001f,
                 effects,

@@ -98,6 +98,23 @@ public class BlockLootTablesGenerator extends LootTableProvider {
         loot.dropSelf(MOSSY_LUNON.get());
 
         loot.dropSelf(UMBRAL_DUNE.get());
+
+        // gromble stuff
+        loot.dropSelf(GROMBLE_LOG.get());
+
+        loot.dropSelf(GROMBLE_WOOD.get());
+
+        loot.dropSelf(STRIPPED_GROMBLE_WOOD.get());
+
+        loot.dropSelf(STRIPPED_GROMBLE_LOG.get());
+
+        loot.dropSelf(GROMBLE_PLANKS.get());
+
+        loot.dropSelf(GROMBLE_DOOR.get());
+
+        loot.dropSelf(GROMBLE_TRAPDOOR.get());
+
+        loot.dropSelf(GROMBLE_SAPLING.get());
     }
 
     private void dropSelf(Block block) {

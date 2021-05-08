@@ -98,6 +98,8 @@ public class CrypticCosmos {
         RenderTypeLookup.setRenderLayer(BlockRegistries.OSMINSTEM_DOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_TRAPDOOR.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistries.GROMBLE_DOOR.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlockRegistries.GROMBLE_SAPLING.get(), RenderType.cutout());
 
 
         RenderingRegistry.registerEntityRenderingHandler(

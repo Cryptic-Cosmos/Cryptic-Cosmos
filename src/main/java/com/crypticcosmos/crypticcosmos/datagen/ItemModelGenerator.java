@@ -22,7 +22,8 @@ import java.util.Objects;
 public class ItemModelGenerator extends ItemModelProvider {
     public static final List<Block> CUSTOM_BLOCK_ITEMS = Lists.newArrayList(
             BlockRegistries.MONDROVE_TRAPDOOR.get(),
-            BlockRegistries.OSMINSTEM_TRAPDOOR.get()
+            BlockRegistries.OSMINSTEM_TRAPDOOR.get(),
+            BlockRegistries.GROMBLE_TRAPDOOR.get()
     );
 
     public ItemModelGenerator(DataGenerator generator, ExistingFileHelper helper) {
@@ -47,8 +48,10 @@ public class ItemModelGenerator extends ItemModelProvider {
         generatedItem(BlockRegistries.STINKY_OSMIN.get(), "stinky_osmin");
         generatedItem(BlockRegistries.MONDROVE_DOOR.get());
         generatedItem(BlockRegistries.OSMINSTEM_DOOR.get());
+        generatedItem(BlockRegistries.GROMBLE_DOOR.get());
         blockItem(BlockRegistries.MONDROVE_TRAPDOOR.get(), "mondrove_trapdoor_bottom");
         blockItem(BlockRegistries.OSMINSTEM_TRAPDOOR.get(), "osminstem_trapdoor_bottom");
+        blockItem(BlockRegistries.GROMBLE_TRAPDOOR.get(), "gromble_trapdoor_bottom");
     }
 
     private void generatedItem(@Nonnull IItemProvider item) {

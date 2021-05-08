@@ -28,6 +28,10 @@ public class BiomeRegistries {
     public static final RegistryKey<Biome> KAFSINIAN_FOREST_KEY =
             RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("kafsinian_forest"));
 
+    public static final RegistryObject<Biome> GROMBLE_GROVE = BIOMES.register("gromble_grove", BiomeMaker::grombleGrove);
+    public static final RegistryKey<Biome> GROMBLE_GROVE_KEY =
+            RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("gromble_grove"));
+
     public static final RegistryObject<Biome> UMBRAL_DUNES = BIOMES.register("umbral_dunes", BiomeMaker::umbralDunes);
     public static final RegistryKey<Biome> UMBRAL_DUNES_KEY =
             RegistryKey.create(Registry.BIOME_REGISTRY, CrypticCosmos.id("umbral_dunes"));
@@ -36,6 +40,7 @@ public class BiomeRegistries {
         BiomeDictionary.addTypes(LUNARAN_PLAINS_KEY, Type.PLAINS, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
         BiomeDictionary.addTypes(ACERBIC_ISLES_KEY, Type.MOUNTAIN, Type.DEAD, Type.NETHER, Type.HOT);
         BiomeDictionary.addTypes(KAFSINIAN_FOREST_KEY, Type.FOREST, Type.DRY, BiomeDictionary.Type.COLD, Type.DEAD);
+        BiomeDictionary.addTypes(GROMBLE_GROVE_KEY, Type.FOREST, Type.LUSH, Type.HOT, Type.HILLS);
         BiomeDictionary.addTypes(UMBRAL_DUNES_KEY, Type.HOT, Type.DRY, Type.PLAINS, Type.DEAD);
     }
 }

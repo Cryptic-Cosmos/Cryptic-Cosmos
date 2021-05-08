@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_bottom",
+  "textures": {
+    "bottom": "crypticcosmos:block/gromble_door_bottom",
+    "top": "crypticcosmos:block/gromble_door_top"
+  }
+}

@@ -40,6 +40,16 @@ public class FeatureRegistries {
                     .build()
             ));
 
+    public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> GROMBLE_TREE = registerFeature("gromble_tree",
+            Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(
+                    new SimpleBlockStateProvider(BlockRegistries.GROMBLE_LOG.get().defaultBlockState()),
+                    new SimpleBlockStateProvider(BlockRegistries.GROMBLE_LEAVES.get().defaultBlockState()),
+                    new BlobFoliagePlacer(FeatureSpread.fixed(6),
+                            FeatureSpread.fixed(3), 15),
+                    new StraightTrunkPlacer(4, 8, 12),
+                    new TwoLayerFeature(6, 12, 1))).ignoreVines().build()));
+
+
     public static final ConfiguredFeature<?, ?> MONDROVE_FUNGUS = registerFeature("mondrove_fungus",
             Feature.FLOWER.configured(new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider()
                     .add(BlockRegistries.MONDROVE_FUNGUS.get().defaultBlockState(), 2),
@@ -57,6 +67,16 @@ public class FeatureRegistries {
                     .build()
             )
     );
+
+    public static final ConfiguredFeature<?, ?> GIANT_GROMBLE_BERRY_PATCH = registerFeature("giant_gromble_berry_patch",
+            Feature.FLOWER.configured(new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider()
+                    .add(BlockRegistries.GIANT_GROMBLE_BERRY.get().defaultBlockState(), 2),
+                    new SimpleBlockPlacer())
+                    .tries(64)
+                    .build()
+            )
+    );
+
 
     private static <T extends IFeatureConfig> ConfiguredFeature<T, ?> registerFeature(String path, ConfiguredFeature<T, ?> feature) {
         return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, CrypticCosmos.id(path), feature);

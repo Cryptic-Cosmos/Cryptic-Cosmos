@@ -1,6 +1,7 @@
 package com.crypticcosmos.crypticcosmos.datagen;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
+import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.TagRegistries;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
@@ -20,14 +21,15 @@ public class ItemTagGenerator extends ItemTagsProvider {
     @Override
     protected void addTags() {
         tag(ItemTags.LEAVES).add(MONDROVE_LEAVES.get().asItem(), OSMINSTEM_CAP.get().asItem());
-        tag(ItemTags.LOGS).add(MONDROVE_LOG.get().asItem());
-        tag(ItemTags.PLANKS).add(MONDROVE_PLANKS.get().asItem());
-        tag(ItemTags.SAPLINGS).add(MONDROVE_SAPLING.get().asItem(), STINKY_OSMIN.get().asItem());
+        tag(ItemTags.LOGS).add(MONDROVE_LOG.get().asItem(), OSMINSTEM_LOG.get().asItem(), GROMBLE_LOG.get().asItem());
+        tag(ItemTags.PLANKS).add(MONDROVE_PLANKS.get().asItem(), OSMINSTEM_PLANKS.get().asItem(), GROMBLE_PLANKS.get().asItem());
+        tag(ItemTags.SAPLINGS).add(MONDROVE_SAPLING.get().asItem(), STINKY_OSMIN.get().asItem(), GROMBLE_SAPLING.get().asItem());
 
         tag(TagRegistries.LUNARA_PLANTABLE_ITEMS).add(
                 LUNON.get().asItem(),
                 OVERGROWN_LUNON.get().asItem(),
-                FUNGAL_LUNON.get().asItem()
+                FUNGAL_LUNON.get().asItem(),
+                GLUM_LUNON.get().asItem()
         );
 
         tag(TagRegistries.MONDROVE_FUNGUS_PLANTABLE_ITEMS)
@@ -42,11 +44,19 @@ public class ItemTagGenerator extends ItemTagsProvider {
         );
 
         tag(TagRegistries.OSMINSTEM_LOGS_ITEMS).add(
-                OSMINSTEM_LOG.get().asItem(),
-                OSMINSTEM_WOOD.get().asItem(),
-                STRIPPED_OSMINSTEM_LOG.get().asItem(),
-                STRIPPED_OSMINSTEM_WOOD.get().asItem(),
-                OSMINSTEM_POROUS_LOG.get().asItem()
+                BlockRegistries.OSMINSTEM_LOG.get().asItem(),
+                BlockRegistries.OSMINSTEM_WOOD.get().asItem(),
+                BlockRegistries.STRIPPED_OSMINSTEM_LOG.get().asItem(),
+                BlockRegistries.STRIPPED_OSMINSTEM_WOOD.get().asItem(),
+                BlockRegistries.OSMINSTEM_POROUS_LOG.get().asItem()
+        );
+
+        tag(TagRegistries.GROMBLE_LOGS_ITEMS).add(
+                BlockRegistries.GROMBLE_LOG.get().asItem(),
+                BlockRegistries.GROMBLE_WOOD.get().asItem(),
+                BlockRegistries.STRIPPED_GROMBLE_LOG.get().asItem(),
+                BlockRegistries.STRIPPED_OSMINSTEM_WOOD.get().asItem(),
+                BlockRegistries.OSMINSTEM_POROUS_LOG.get().asItem()
         );
     }
 }

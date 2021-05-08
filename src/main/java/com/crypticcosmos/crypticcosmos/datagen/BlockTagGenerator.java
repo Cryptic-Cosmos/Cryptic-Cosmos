@@ -1,6 +1,7 @@
 package com.crypticcosmos.crypticcosmos.datagen;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
+import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.TagRegistries;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
@@ -19,13 +20,13 @@ public class BlockTagGenerator extends BlockTagsProvider {
 
     @Override
     protected void addTags() {
-        tag(BlockTags.LEAVES).add(MONDROVE_LEAVES.get(), OSMINSTEM_CAP.get());
-        tag(BlockTags.LOGS).add(MONDROVE_LOG.get());
-        tag(BlockTags.PLANKS).add(MONDROVE_PLANKS.get());
-        tag(BlockTags.SAPLINGS).add(MONDROVE_SAPLING.get(), STINKY_OSMIN.get());
+        tag(BlockTags.LEAVES).add(MONDROVE_LEAVES.get(), OSMINSTEM_CAP.get(), GROMBLE_LEAVES.get());
+        tag(BlockTags.LOGS).add(MONDROVE_LOG.get(), BlockRegistries.OSMINSTEM_LOG.get(), GROMBLE_LOG.get());
+        tag(BlockTags.PLANKS).add(MONDROVE_PLANKS.get(), BlockRegistries.OSMINSTEM_PLANKS.get(), GROMBLE_PLANKS.get());
+        tag(BlockTags.SAPLINGS).add(MONDROVE_SAPLING.get(), STINKY_OSMIN.get(), GROMBLE_SAPLING.get());
 
         tag(TagRegistries.LUNARA_PLANTABLE)
-                .add(LUNON.get(), OVERGROWN_LUNON.get(), FUNGAL_LUNON.get());
+                .add(LUNON.get(), OVERGROWN_LUNON.get(), FUNGAL_LUNON.get(), GLUM_LUNON.get());
 
         tag(TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
                 .add(MONDROVE_FUNGUS_BLOCK.get(), MONDROVE_FUNGUS_SPORE_BLOCK.get())
@@ -39,11 +40,18 @@ public class BlockTagGenerator extends BlockTagsProvider {
         );
 
         tag(TagRegistries.OSMINSTEM_LOGS).add(
-                OSMINSTEM_LOG.get(),
-                OSMINSTEM_WOOD.get(),
-                STRIPPED_OSMINSTEM_LOG.get(),
-                STRIPPED_OSMINSTEM_WOOD.get(),
-                OSMINSTEM_POROUS_LOG.get()
+                BlockRegistries.OSMINSTEM_LOG.get(),
+                BlockRegistries.OSMINSTEM_WOOD.get(),
+                BlockRegistries.STRIPPED_OSMINSTEM_LOG.get(),
+                BlockRegistries.STRIPPED_OSMINSTEM_WOOD.get(),
+                BlockRegistries.OSMINSTEM_POROUS_LOG.get()
+        );
+
+        tag(TagRegistries.GROMBLE_LOGS).add(
+                BlockRegistries.GROMBLE_LOG.get(),
+                BlockRegistries.GROMBLE_WOOD.get(),
+                BlockRegistries.STRIPPED_GROMBLE_LOG.get(),
+                BlockRegistries.STRIPPED_GROMBLE_WOOD.get()
         );
 
         // this makes sure the mondrove trees generate correctly

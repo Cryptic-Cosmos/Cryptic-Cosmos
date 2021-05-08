@@ -20,6 +20,7 @@ public class RecipesGenerator extends RecipeProvider {
         registerLunonRecipes(consumer);
         registerMondroveRecipes(consumer);
         registerOsminstemRecipes(consumer);
+        registerGrombleRecipes(consumer);
     }
 
     private void registerLunonRecipes(Consumer<IFinishedRecipe> consumer) {
@@ -148,5 +149,12 @@ public class RecipesGenerator extends RecipeProvider {
         // woodFromLogs(consumer, OSMINSTEM_WOOD.get(), OSMINSTEM_POROUS_LOG.get());
         woodenDoor(consumer, OSMINSTEM_DOOR.get(), OSMINSTEM_PLANKS.get());
         woodenTrapdoor(consumer, OSMINSTEM_TRAPDOOR.get(), OSMINSTEM_PLANKS.get());
+    }
+
+    private void registerGrombleRecipes(Consumer<IFinishedRecipe> consumer) {
+        planksFromLogs(consumer, GROMBLE_PLANKS.get(), TagRegistries.GROMBLE_LOGS_ITEMS);
+        woodFromLogs(consumer, GROMBLE_WOOD.get(), GROMBLE_LOG.get());
+        woodenDoor(consumer, GROMBLE_DOOR.get(), GROMBLE_PLANKS.get());
+        woodenTrapdoor(consumer, GROMBLE_TRAPDOOR.get(), GROMBLE_PLANKS.get());
     }
 }
