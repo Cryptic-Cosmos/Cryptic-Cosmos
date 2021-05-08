@@ -209,8 +209,7 @@ public class BlockRegistries {
                 }
             });
 
-    public static final RegistryObject<Block> GIANT_GROMBLE_BERRY = BLOCKS.register("giant_gromble_berry",
-            () -> new Block(Properties.copy(Blocks.SHROOMLIGHT)));
+    public static final RegistryObject<Block> GIANT_GROMBLE_BERRY = BLOCKS.register("giant_gromble_berry", GiantGrombleBerry::new);
 
     public static final RegistryObject<Block> GROMBLE_LEAVES = BLOCKS.register("gromble_leaves", () ->
             new Block(Properties.copy(Blocks.OAK_LEAVES))

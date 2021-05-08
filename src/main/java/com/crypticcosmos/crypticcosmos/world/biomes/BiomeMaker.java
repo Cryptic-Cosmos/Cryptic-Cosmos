@@ -179,13 +179,13 @@ public class BiomeMaker {
     }
 
     public static Biome grombleGrove() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, MONDROVE_SURFACE_BUILDER_CONFIG);
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, GROMBLE_SURFACE_BUILDER_CONFIG);
 
         genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
                 FeatureRegistries.GIANT_GROMBLE_BERRY_PATCH
                         .decorated(Features.Placements.ADD_32)
                         .decorated(Features.Placements.HEIGHTMAP_SQUARE)
-                        .count(13));
+                        .count(5));
 
         genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
                 FeatureRegistries.GROMBLE_TREE
@@ -211,7 +211,7 @@ public class BiomeMaker {
         return biome(
                 RainType.RAIN,
                 Category.FOREST,
-                0.125f,
+                0.5f,
                 0.07f,
                 0f,
                 0.0001f,
