@@ -45,9 +45,9 @@ public class FeatureRegistries {
                     new SimpleBlockStateProvider(BlockRegistries.GROMBLE_LOG.get().defaultBlockState()),
                     new SimpleBlockStateProvider(BlockRegistries.GROMBLE_LEAVES.get().defaultBlockState()),
                     new BlobFoliagePlacer(FeatureSpread.fixed(6),
-                            FeatureSpread.fixed(3), 15),
-                    new StraightTrunkPlacer(4, 8, 12),
-                    new TwoLayerFeature(6, 12, 1))).ignoreVines().build()));
+                            FeatureSpread.fixed(3), 4),
+                    new StraightTrunkPlacer(4, 4, 4),
+                    new TwoLayerFeature(6, 8, 1))).ignoreVines().build()));
 
 
     public static final ConfiguredFeature<?, ?> MONDROVE_FUNGUS = registerFeature("mondrove_fungus",

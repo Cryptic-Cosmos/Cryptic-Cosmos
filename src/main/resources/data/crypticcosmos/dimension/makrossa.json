@@ -36,14 +36,6 @@
       },
       "biomes": [
         {
-          "biome": "crypticcosmos:gromble_grove",
-          "parameters": {
-            "altitude": 0.7,
-            "temperature": 0,
-            "humidity": 0.5,
-            "weirdness": 0,
-            "offset": 0
-          },
           "biome": "crypticcosmos:lunaran_plains",
           "parameters": {
             "altitude": 0.5,
@@ -72,6 +64,17 @@
             "weirdness": 0,
             "offset": 0
           }
+        },
+        {
+          "biome": "crypticcosmos:gromble_grove",
+          "parameters": {
+            "altitude": 0.7,
+            "temperature": 1,
+            "humidity": 0.5,
+            "weirdness": 1,
+            "offset": 0
+          }
+
         }
       ]
     },
