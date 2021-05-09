@@ -90,6 +90,7 @@ public class CrypticCosmos {
         return new ResourceLocation(MOD_ID, path);
     }
 
+
     private void clientSetup(final FMLClientSetupEvent event) {
         RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_SAPLING.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlockRegistries.MONDROVE_FUNGUS.get(), RenderType.cutout());

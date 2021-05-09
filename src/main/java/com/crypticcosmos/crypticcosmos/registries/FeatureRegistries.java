@@ -9,6 +9,7 @@ import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
+import net.minecraft.world.gen.trunkplacer.DarkOakTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.ForkyTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 
@@ -16,6 +17,7 @@ import static com.crypticcosmos.crypticcosmos.registries.BlockRegistries.MONDROV
 import static com.crypticcosmos.crypticcosmos.registries.BlockRegistries.MONDROVE_LOG;
 
 public class FeatureRegistries {
+
     public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> MONDROVE_TREE = registerFeature("mondrove",
             Feature.TREE.configured(new BaseTreeFeatureConfig.Builder(
                     new SimpleBlockStateProvider(MONDROVE_LOG.get().defaultBlockState()),
@@ -33,9 +35,9 @@ public class FeatureRegistries {
                     new SimpleBlockStateProvider(BlockRegistries.OSMINSTEM_LOG.get().defaultBlockState()),
                     new SimpleBlockStateProvider(BlockRegistries.OSMINSTEM_CAP.get().defaultBlockState()),
                     new AcaciaFoliagePlacer(FeatureSpread.fixed(2),
-                            FeatureSpread.fixed(0)),
-                    new ForkyTrunkPlacer(5, 2, 2),
-                    new TwoLayerFeature(1, 0, 2))
+                            FeatureSpread.fixed(1)),
+                    new ForkyTrunkPlacer(3, 8, 5),
+                    new TwoLayerFeature(1, 3, 5))
                     .ignoreVines()
                     .build()
             ));
@@ -44,10 +46,10 @@ public class FeatureRegistries {
             Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(
                     new SimpleBlockStateProvider(BlockRegistries.GROMBLE_LOG.get().defaultBlockState()),
                     new SimpleBlockStateProvider(BlockRegistries.GROMBLE_LEAVES.get().defaultBlockState()),
-                    new BlobFoliagePlacer(FeatureSpread.fixed(6),
-                            FeatureSpread.fixed(3), 4),
-                    new StraightTrunkPlacer(4, 7, 4),
-                    new TwoLayerFeature(6, 3, 1))).ignoreVines().build()));
+                    new BlobFoliagePlacer(FeatureSpread.fixed(4),
+                            FeatureSpread.fixed(4), 3),
+                    new DarkOakTrunkPlacer(6, 7, 9),
+                    new TwoLayerFeature(6, 3, 5))).ignoreVines().build()));
 
 
     public static final ConfiguredFeature<?, ?> MONDROVE_FUNGUS = registerFeature("mondrove_fungus",

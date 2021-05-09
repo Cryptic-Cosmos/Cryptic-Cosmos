@@ -53,6 +53,7 @@ public class BiomeMaker {
             UMBRAL_DUNE.get().defaultBlockState(),
             UMBRAL_DUNE.get().defaultBlockState(),
             UMBRAL_DUNE.get().defaultBlockState()
+
     );
 
     public static Biome acerbicIsles() {
@@ -179,7 +180,7 @@ public class BiomeMaker {
     }
 
     public static Biome grombleGrove() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, GROMBLE_SURFACE_BUILDER_CONFIG);
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.NETHER_FOREST, GROMBLE_SURFACE_BUILDER_CONFIG);
 
         genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
                 FeatureRegistries.GIANT_GROMBLE_BERRY_PATCH
@@ -191,7 +192,7 @@ public class BiomeMaker {
                 FeatureRegistries.GROMBLE_TREE
                         .decorated(Features.Placements.HEIGHTMAP_SQUARE)
                         .decorated(Placement.COUNT_EXTRA
-                                .configured(new AtSurfaceWithExtraConfig(14, 0.1F, 3))));
+                                .configured(new AtSurfaceWithExtraConfig(10, 2F, 13))));
 
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
