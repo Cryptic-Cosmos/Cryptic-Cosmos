@@ -2,22 +2,22 @@
   "type": "crypticcosmos:makrossa",
   "generator": {
     "type": "minecraft:noise",
-    "seed": 0,
+    "seed": 838749523,
     "biome_source": {
       "type": "minecraft:multi_noise",
-      "seed": 0,
+      "seed": 838749523,
       "altitude_noise": {
-        "firstOctave": -7,
+        "firstOctave": -6,
         "amplitudes": [
-          1,
+          0.75,
           1
         ]
       },
       "temperature_noise": {
-        "firstOctave": -7,
+        "firstOctave": -8,
         "amplitudes": [
           1,
-          1
+          -1
         ]
       },
       "humidity_noise": {
@@ -38,7 +38,7 @@
         {
           "biome": "crypticcosmos:lunaran_plains",
           "parameters": {
-            "altitude": 0.5,
+            "altitude": 0,
             "temperature": 0,
             "humidity": 0,
             "weirdness": 0,
@@ -48,19 +48,9 @@
         {
           "biome": "crypticcosmos:kafsinian_forest",
           "parameters": {
-            "altitude": 0.7,
+            "altitude": 0,
             "temperature": 0,
-            "humidity": 0.5,
-            "weirdness": 0,
-            "offset": 0
-          }
-        },
-        {
-          "biome": "crypticcosmos:acerbic_isles",
-          "parameters": {
-            "altitude": 1,
-            "temperature": 0.5,
-            "humidity": -1,
+            "humidity": -0.2,
             "weirdness": 0,
             "offset": 0
           }
@@ -68,13 +58,22 @@
         {
           "biome": "crypticcosmos:gromble_grove",
           "parameters": {
-            "altitude": 0.7,
-            "temperature": 1,
-            "humidity": 0.5,
-            "weirdness": 1,
-            "offset": 0
+            "altitude": 0,
+            "temperature": 0,
+            "humidity": 0.3,
+            "weirdness": 0,
+            "offset": 0.275
           }
-
+        },
+        {
+          "biome": "crypticcosmos:acerbic_isles",
+          "parameters": {
+            "altitude": 0.1,
+            "temperature": 0,
+            "humidity": 0.25,
+            "weirdness": 0,
+            "offset": 0.25
+          }
         }
       ]
     },
