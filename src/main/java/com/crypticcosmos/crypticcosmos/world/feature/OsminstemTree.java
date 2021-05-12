@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class OsminstemTree  extends Tree {
-        @Override
-        @Nullable
-        public ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(@Nonnull Random randomIn, boolean largeHive) {
-            return FeatureRegistries.OSMINSTEM_TREE;
-        }
+public class OsminstemTree extends Tree {
+    @Override
+    @Nullable
+    public ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(@Nonnull Random randomIn, boolean largeHive) {
+        return FeatureRegistries.OSMINSTEM_TREE;
+    }
 }

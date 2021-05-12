@@ -12,7 +12,7 @@ public class ConfiguredStructureRegistries {
     /*
      * Static instance of our structure so we can reference it and add it to biomes easily.
      */
-    public static StructureFeature<?, ?> CONFIGURED_MONDROVE_BUNDLE = StructureRegestries.MONDROVE_BUNDLE.get().configured(IFeatureConfig.NONE);
+    public static StructureFeature<?, ?> CONFIGURED_MONDROVE_BUNDLE = StructureRegistries.MONDROVE_BUNDLE.get().configured(IFeatureConfig.NONE);
 
     /*
      * Registers the configured structure which is what gets added to the biomes.
@@ -40,6 +40,6 @@ public class ConfiguredStructureRegistries {
          *
          * Requires AccessTransformer ( see resources/META-INF/accesstransformer.cfg )
          */
-        FlatGenerationSettings.STRUCTURE_FEATURES.put(StructureRegestries.MONDROVE_BUNDLE.get(), CONFIGURED_MONDROVE_BUNDLE);
+        FlatGenerationSettings.STRUCTURE_FEATURES.put(StructureRegistries.MONDROVE_BUNDLE.get(), CONFIGURED_MONDROVE_BUNDLE);
     }
 }

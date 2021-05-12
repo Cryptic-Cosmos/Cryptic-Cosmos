@@ -2,7 +2,7 @@ package com.crypticcosmos.crypticcosmos.world.structures;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.registries.ConfiguredStructureRegistries;
-import com.crypticcosmos.crypticcosmos.registries.StructureRegestries;
+import com.crypticcosmos.crypticcosmos.registries.StructureRegistries;
 import com.mojang.serialization.Codec;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -76,7 +76,7 @@ public class StructureConfig {
              * And if you want to do dimension blacklisting, you need to remove the spacing entry entirely from the map below to prevent generation safely.
              */
             Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
-            tempMap.putIfAbsent(StructureRegestries.MONDROVE_BUNDLE.get(), DimensionStructuresSettings.DEFAULTS.get(StructureRegestries.MONDROVE_BUNDLE.get()));
+            tempMap.putIfAbsent(StructureRegistries.MONDROVE_BUNDLE.get(), DimensionStructuresSettings.DEFAULTS.get(StructureRegistries.MONDROVE_BUNDLE.get()));
             serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
         }
     }

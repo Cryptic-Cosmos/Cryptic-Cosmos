@@ -1,14 +1,12 @@
 package com.crypticcosmos.crypticcosmos.blocks;
 
 import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
-import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
 
@@ -16,14 +14,8 @@ import javax.annotation.Nonnull;
 public class OvergrownLunonBlock extends SnowyDirtBlock {
     public static final DirectionProperty FACING = HorizontalBlock.FACING;
 
-    public OvergrownLunonBlock() {
-        super(Properties.of(Material.STONE)
-                .strength(1.6f, 7)
-                .sound(SoundType.STONE)
-                .harvestLevel(1)
-                .harvestTool(ToolType.PICKAXE)
-                .requiresCorrectToolForDrops()
-        );
+    public OvergrownLunonBlock(Properties properties) {
+        super(properties);
 
         this.registerDefaultState(this.getStateDefinition().any()
                 .setValue(FACING, Direction.NORTH)

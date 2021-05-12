@@ -16,18 +16,18 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StructureRegestries {
+public class StructureRegistries {
     public static final DeferredRegister<Structure<?>> DEFERRED_REGISTRY_STRUCTURE = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, CrypticCosmos.MOD_ID);
 
 
-    public static final RegistryObject<Structure<NoFeatureConfig>> MONDROVE_BUNDLE = DEFERRED_REGISTRY_STRUCTURE.register("mondrove_bundle", () -> (new MondroveBundleStructure(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> MONDROVE_BUNDLE = DEFERRED_REGISTRY_STRUCTURE.register("mondrove_bundle", () -> new MondroveBundleStructure(NoFeatureConfig.CODEC));
 
     public static void setupStructures() {
         setupMapSpacingAndLand(
                 MONDROVE_BUNDLE.get(), /* The instance of the structure */
                 new StructureSeparationSettings(10 /* average distance apart in chunks between spawn attempts */,
                         5 /* minimum distance apart in chunks between spawn attempts */,
-                        03213012321 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
+                        439096529 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
                 true);
 
 
@@ -44,6 +44,7 @@ public class StructureRegestries {
      * If the registration is setup properly for the structure,
      * getRegistryName() should never return null.
      */
+        //noinspection ConstantConditions
         Structure.STRUCTURES_REGISTRY.put(structure.getRegistryName().toString(), structure);
 
         /*

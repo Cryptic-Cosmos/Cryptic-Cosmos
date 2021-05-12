@@ -1,7 +1,7 @@
 package com.crypticcosmos.crypticcosmos.creatures.gromble_frog;
 
-import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
 import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
+import com.crypticcosmos.crypticcosmos.registries.MondroveRegistries;
 import com.crypticcosmos.crypticcosmos.registries.SoundEventRegistries;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntitySize;
@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
 @SuppressWarnings("NullableProblems")
 public class GrombleFrogEntity extends AnimalEntity implements IAnimatable {
     private static final Lazy<Ingredient> BREEDING_ITEM = Lazy.of(
-            () -> Ingredient.of(BlockRegistries.MONDROVE_SAPLING.get())
+            () -> Ingredient.of(MondroveRegistries.MONDROVE_SAPLING.get())
     );
     public static AnimationBuilder IDLE_ANIM = new AnimationBuilder().addAnimation("Idle");
     public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("Walk");
@@ -44,11 +44,10 @@ public class GrombleFrogEntity extends AnimalEntity implements IAnimatable {
         this.noCulling = true;
     }
 
-    public static AttributeModifierMap setCustomAttributes() {
+    public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
         return createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 10f)
-                .add(Attributes.MOVEMENT_SPEED, 0.2f)
-                .build();
+                .add(Attributes.MOVEMENT_SPEED, 0.2f);
     }
 
     @Override

@@ -20,44 +20,18 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
 import javax.annotation.Nonnull;
 
-import static com.crypticcosmos.crypticcosmos.registries.BlockRegistries.*;
+import static com.crypticcosmos.crypticcosmos.registries.BlockRegistries.UMBRAL_DUNE;
+import static com.crypticcosmos.crypticcosmos.registries.LunonRegistries.*;
 import static com.crypticcosmos.crypticcosmos.world.biomes.BiomeHelper.*;
 
 @SuppressWarnings("SameParameterValue")
 public class BiomeMaker {
-    public static final SurfaceBuilderConfig LUNARA_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            OVERGROWN_LUNON.get().defaultBlockState(),
-            LUNON.get().defaultBlockState(),
-            LUNON_DUST.get().defaultBlockState()
-    );
-
-    public static final SurfaceBuilderConfig ACERBIC_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            LUNON.get().defaultBlockState(),
-            LUNON.get().defaultBlockState(),
-            LUNON_DUST.get().defaultBlockState()
-    );
-
-    public static final SurfaceBuilderConfig MONDROVE_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            FUNGAL_LUNON.get().defaultBlockState(),
-            LUNON.get().defaultBlockState(),
-            LUNON_DUST.get().defaultBlockState()
-    );
-
-    public static final SurfaceBuilderConfig GROMBLE_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            GLUM_LUNON.get().defaultBlockState(),
-            LUNON.get().defaultBlockState(),
-            LUNON_DUST.get().defaultBlockState()
-    );
-
-    public static final SurfaceBuilderConfig ABYSS_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            UMBRAL_DUNE.get().defaultBlockState(),
-            UMBRAL_DUNE.get().defaultBlockState(),
-            UMBRAL_DUNE.get().defaultBlockState()
-
-    );
-
     public static Biome acerbicIsles() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, ACERBIC_SURFACE_BUILDER_CONFIG);
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
+                LUNON.get().defaultBlockState(),
+                LUNON.get().defaultBlockState(),
+                LUNON_DUST.get().defaultBlockState()
+        ));
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
@@ -90,7 +64,11 @@ public class BiomeMaker {
     }
 
     public static Biome kafisnianForest() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, MONDROVE_SURFACE_BUILDER_CONFIG);
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
+                FUNGAL_LUNON.get().defaultBlockState(),
+                LUNON.get().defaultBlockState(),
+                LUNON_DUST.get().defaultBlockState()
+        ));
 
         // Add mondrove fungus generation.
         genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
@@ -148,7 +126,11 @@ public class BiomeMaker {
 
     @Nonnull
     public static Biome lunaraPlains() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, LUNARA_SURFACE_BUILDER_CONFIG);
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
+                OVERGROWN_LUNON.get().defaultBlockState(),
+                LUNON.get().defaultBlockState(),
+                LUNON_DUST.get().defaultBlockState()
+        ));
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
@@ -180,7 +162,11 @@ public class BiomeMaker {
     }
 
     public static Biome grombleGrove() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.NETHER_FOREST, GROMBLE_SURFACE_BUILDER_CONFIG);
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.NETHER_FOREST, new SurfaceBuilderConfig(
+                GLUM_LUNON.get().defaultBlockState(),
+                LUNON.get().defaultBlockState(),
+                LUNON_DUST.get().defaultBlockState()
+        ));
 
         genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
                 FeatureRegistries.GIANT_GROMBLE_BERRY_PATCH
@@ -223,7 +209,11 @@ public class BiomeMaker {
     }
 
     public static Biome umbralDunes() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, ABYSS_SURFACE_BUILDER_CONFIG);
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
+                UMBRAL_DUNE.get().defaultBlockState(),
+                UMBRAL_DUNE.get().defaultBlockState(),
+                UMBRAL_DUNE.get().defaultBlockState()
+        ));
 
         final BiomeAmbience.Builder effects = effects(0x412,
                 0x412,

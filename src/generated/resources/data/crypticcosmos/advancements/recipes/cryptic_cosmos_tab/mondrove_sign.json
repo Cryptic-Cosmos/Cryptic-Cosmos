@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:mondrove_sign"
+    ]
+  },
+  "criteria": {
+    "has_mondrove_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:mondrove_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:mondrove_sign"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mondrove_planks",
+      "has_the_recipe"
+    ]
+  ]
+}

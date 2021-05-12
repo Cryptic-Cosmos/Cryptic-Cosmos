@@ -5,8 +5,6 @@ import com.crypticcosmos.crypticcosmos.registries.TagRegistries;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.EffectInstance;
@@ -27,11 +25,8 @@ public class MondroveFungus extends BushBlock {
             10.0D,
             11.0D);
 
-    public MondroveFungus() {
-        super(Properties.of(Material.PLANT)
-                .strength(0)
-                .noCollission()
-                .sound(SoundType.GRASS));
+    public MondroveFungus(Properties properties) {
+        super(properties);
     }
 
     @Override

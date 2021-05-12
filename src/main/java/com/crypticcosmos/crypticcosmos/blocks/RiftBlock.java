@@ -6,8 +6,6 @@ import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Direction;
@@ -25,13 +23,8 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
 
 public class RiftBlock extends Block {
-    public RiftBlock() {
-        super(Properties.of(Material.STONE)
-                .strength(40f, 1200f)
-                .sound(SoundType.STONE)
-                .noCollission()
-                .noDrops()
-        );
+    public RiftBlock(Properties properties) {
+        super(properties);
     }
 
     public static void riftSpawning(@Nonnull TickEvent.PlayerTickEvent event) {
@@ -91,7 +84,7 @@ public class RiftBlock extends Block {
                 // Runs the teleportation mechanics
                 Entity repositionedEntity = repositionEntity.apply(false);
 
-                // update the portal cooldown of the entity
+                // update the portal cool down of the entity
                 repositionedEntity.setPortalCooldown();
 
                 // Get the positions

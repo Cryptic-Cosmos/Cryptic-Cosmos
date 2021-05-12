@@ -49,22 +49,18 @@ public class MondroveBundleStructure extends Structure<NoFeatureConfig> {
         return GenerationStage.Decoration.SURFACE_STRUCTURES;
     }
 
-    /*
-    private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-            new MobSpawnInfo.Spawners(EntityTypeRegistries.MOON_FROG.get(), 100, 4, 9)
-    );
-    @Override
-    public List<MobSpawnInfo.Spawners> getDefaultSpawnList() {
-        return STRUCTURE_MONSTERS;
-    } */
-
-    private static final List<MobSpawnInfo.Spawners> STRUCTURE_CREATURES = ImmutableList.of(
-            new MobSpawnInfo.Spawners(EntityTypeRegistries.GROMBLE_FROG.get(), 100, 4, 9)
-    );
+    // @Override
+    // public List<MobSpawnInfo.Spawners> getDefaultSpawnList() {
+    //     return ImmutableList.of(
+    //             new MobSpawnInfo.Spawners(EntityTypeRegistries.MAKROSSA_RAMBLER.get(), 100, 4, 9)
+    //     );
+    // }
 
     @Override
     public List<MobSpawnInfo.Spawners> getDefaultCreatureSpawnList() {
-        return STRUCTURE_CREATURES;
+        return ImmutableList.of(
+                new MobSpawnInfo.Spawners(EntityTypeRegistries.GROMBLE_FROG.get(), 100, 4, 9)
+        );
     }
 
     @Override
