@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "crypticcosmos:lunon"
+  },
+  "result": "crypticcosmos:polished_lunon",
+  "experience": 0.1,
+  "cookingtime": 200
+}

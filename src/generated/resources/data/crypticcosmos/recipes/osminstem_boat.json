@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "boat",
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "crypticcosmos:osminstem_planks"
+    }
+  },
+  "result": {
+    "item": "crypticcosmos:osminstem_boat"
+  }
+}

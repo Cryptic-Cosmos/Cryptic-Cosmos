@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "boat",
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "crypticcosmos:gromble_planks"
+    }
+  },
+  "result": {
+    "item": "crypticcosmos:gromble_boat"
+  }
+}

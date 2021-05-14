@@ -1,7 +1,0 @@
-{
-  "parent": "block/door_bottom",
-  "textures": {
-    "bottom": "crypticcosmos:block/mondrove_door_bottom",
-    "top": "crypticcosmos:block/mondrove_door_top"
-  }
-}

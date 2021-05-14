@@ -2,8 +2,8 @@
   "replace": false,
   "values": [
     "crypticcosmos:osminstem_log",
-    "crypticcosmos:osminstem_wood",
     "crypticcosmos:stripped_osminstem_log",
+    "crypticcosmos:osminstem_wood",
     "crypticcosmos:stripped_osminstem_wood",
     "crypticcosmos:osminstem_porous_log"
   ]

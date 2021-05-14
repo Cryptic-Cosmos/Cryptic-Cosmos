@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab",
-  "textures": {
-    "bottom": "crypticcosmos:block/mondrove_planks",
-    "top": "crypticcosmos:block/mondrove_planks",
-    "side": "crypticcosmos:block/mondrove_planks"
-  }
-}

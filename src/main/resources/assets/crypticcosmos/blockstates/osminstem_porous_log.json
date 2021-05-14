@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "axis=y":  { "model": "crypticcosmos:block/osminstem_porous_log" },
-    "axis=z":   { "model": "crypticcosmos:block/osminstem_porous_log", "x": 90 },
-    "axis=x":   { "model": "crypticcosmos:block/osminstem_porous_log", "x": 90, "y": 90 }
-  }
-}

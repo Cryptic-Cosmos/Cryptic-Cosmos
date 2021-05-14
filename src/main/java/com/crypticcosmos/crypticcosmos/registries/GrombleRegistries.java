@@ -1,5 +1,6 @@
 package com.crypticcosmos.crypticcosmos.registries;
 
+import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.blocks.LunaraPlantableBush;
 import com.crypticcosmos.crypticcosmos.blocks.LunaraPlantableSapling;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
@@ -36,7 +37,13 @@ public class GrombleRegistries {
             .tag(BlockTags.SAPLINGS)
             .addLayer(() -> RenderType::cutout)
             .blockstate(RegistrationUtils::crossModel)
-            .item().tag(ItemTags.SAPLINGS).build()
+
+            .item()
+            .model((context, provider) -> provider.generated(context,
+                    provider.modLoc("block/" + provider.name(context)))
+            )
+            .tag(ItemTags.SAPLINGS).build()
+
             .register();
 
     public static final BlockEntry<LunaraPlantableBush> GIANT_GROMBLE_BERRY = getRegistrate().object("giant_gromble_berry")
@@ -75,6 +82,9 @@ public class GrombleRegistries {
             .properties(p -> GROMBLE_PROPERTIES)
             .tag(TagRegistries.GROMBLE_LOGS)
             .recipe((context, provider) -> woodFromLogs(provider, context.get(), GROMBLE_LOG.get()))
+            .blockstate((context, provider) -> provider.models()
+                    .cubeAll(context.getName(), provider.blockTexture(GROMBLE_LOG.get()))
+            )
             .item().tag(TagRegistries.GROMBLE_LOGS_ITEMS).build()
             .register();
 
@@ -82,6 +92,9 @@ public class GrombleRegistries {
             .block(RotatedPillarBlock::new)
             .properties(p -> GROMBLE_PROPERTIES)
             .tag(TagRegistries.GROMBLE_LOGS)
+            .blockstate((context, provider) -> provider.models()
+                    .cubeAll(context.getName(), provider.blockTexture(STRIPPED_GROMBLE_LOG.get()))
+            )
             .item().tag(TagRegistries.GROMBLE_LOGS_ITEMS).build()
             .register();
 
@@ -101,8 +114,8 @@ public class GrombleRegistries {
             .recipe((context, provider) -> provider.slab(DataIngredient.items(GROMBLE_PLANKS), context, "wooden_slab", false))
             .blockstate((context, provider) -> provider.slabBlock(
                     context.get(),
-                    GROMBLE_PLANKS.getId(),
-                    context.getId()
+                    provider.blockTexture(GROMBLE_PLANKS.get()),
+                    provider.blockTexture(GROMBLE_PLANKS.get())
             ))
             .item().tag(ItemTags.WOODEN_SLABS).build()
             .register();
@@ -116,7 +129,7 @@ public class GrombleRegistries {
             )
             .blockstate((context, provider) -> provider.stairsBlock(
                     context.get(),
-                    GROMBLE_PLANKS.getId()
+                    provider.blockTexture(GROMBLE_PLANKS.get())
             ))
             .item().tag(ItemTags.WOODEN_STAIRS).build()
             .register();
@@ -131,7 +144,11 @@ public class GrombleRegistries {
             .recipe((context, provider) -> provider.door(DataIngredient.items(GROMBLE_PLANKS), context, null))
             .tag(BlockTags.WOODEN_DOORS)
             .blockstate(RegistrationUtils::doorModel)
-            .item().tag(ItemTags.WOODEN_DOORS).build()
+
+            .item()
+            .model((context, provider) -> provider.generated(context))
+            .tag(ItemTags.WOODEN_DOORS).build()
+
             .register();
 
     public static final BlockEntry<TrapDoorBlock> GROMBLE_TRAPDOOR = getRegistrate().object("gromble_trapdoor")
@@ -139,7 +156,7 @@ public class GrombleRegistries {
             .properties(p -> Properties.copy(GROMBLE_DOOR.get()))
             .tag(BlockTags.WOODEN_TRAPDOORS)
             .recipe((context, provider) -> provider.trapDoor(DataIngredient.items(GROMBLE_PLANKS), context, null))
-            .blockstate((context, provider) -> provider.trapdoorBlock(context.get(), provider.modLoc("gromble_trapdoor"), true))
+            .blockstate((context, provider) -> provider.trapdoorBlock(context.get(), provider.blockTexture(context.get()), true))
 
             .item()
             .model((context, provider) -> provider.blockItem(context::getEntry, "_bottom"))
@@ -176,10 +193,11 @@ public class GrombleRegistries {
             .properties(p -> GROMBLE_PROPERTIES)
             .tag(BlockTags.WOODEN_FENCES)
             .recipe((context, provider) -> provider.fence(DataIngredient.items(GROMBLE_PLANKS), context, "wooden_fence"))
-            .blockstate((context, provider) -> provider.fenceBlock(context.get(), GROMBLE_PLANKS.getId()))
+            .blockstate((context, provider) -> provider.fenceBlock(context.get(), provider.blockTexture(GROMBLE_PLANKS.get())))
 
             .item().tag(ItemTags.WOODEN_FENCES)
-            .model((context, provider) -> provider.fenceInventory(context.getId().getPath(), GROMBLE_PLANKS.getId()))
+            .model((context, provider) -> provider.fenceInventory(context.getId().getPath(),
+                    provider.modLoc("block/" + provider.name(GROMBLE_PLANKS))))
             .build()
 
             .register();
@@ -189,7 +207,7 @@ public class GrombleRegistries {
             .properties(p -> GROMBLE_PROPERTIES)
             .tag(BlockTags.FENCE_GATES)
             .recipe((context, provider) -> provider.fenceGate(DataIngredient.items(GROMBLE_PLANKS), context, "wooden_fence_gate"))
-            .blockstate((context, provider) -> provider.fenceGateBlock(context.get(), GROMBLE_PLANKS.getId()))
+            .blockstate((context, provider) -> provider.fenceGateBlock(context.get(), provider.blockTexture(GROMBLE_PLANKS.get())))
             .simpleItem()
             .register();
 
@@ -200,4 +218,8 @@ public class GrombleRegistries {
                     woodenBoat(provider, context.get(), GROMBLE_PLANKS.get())
             )
             .register();
+
+    public static void init() {
+        CrypticCosmos.LOGGER.info("GrombleRegistries initialized");
+    }
 }

@@ -1,5 +1,6 @@
 package com.crypticcosmos.crypticcosmos.registries;
 
+import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.blocks.LunaraPlantableSapling;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
 import com.crypticcosmos.crypticcosmos.world.feature.OsminstemTree;
@@ -36,7 +37,13 @@ public class OsminstemRegistries {
             .tag(BlockTags.SAPLINGS)
             .addLayer(() -> RenderType::cutout)
             .blockstate(RegistrationUtils::crossModel)
-            .item().tag(ItemTags.SAPLINGS).build()
+
+            .item()
+            .model((context, provider) -> provider.generated(context,
+                    provider.modLoc("block/" + provider.name(context)))
+            )
+            .tag(ItemTags.SAPLINGS)
+            .build()
             .register();
 
     public static final BlockEntry<Block> OSMINSTEM_CAP = getRegistrate().object("osminstem_cap")
@@ -74,6 +81,9 @@ public class OsminstemRegistries {
             .properties(p -> OSMINSTEM_PROPERTIES)
             .tag(TagRegistries.OSMINSTEM_LOGS)
             .recipe((context, provider) -> woodFromLogs(provider, context.get(), OSMINSTEM_LOG.get()))
+            .blockstate((context, provider) -> provider.models()
+                    .cubeAll(context.getName(), provider.blockTexture(OSMINSTEM_LOG.get()))
+            )
             .item().tag(TagRegistries.OSMINSTEM_LOGS_ITEMS).build()
             .register();
 
@@ -81,13 +91,19 @@ public class OsminstemRegistries {
             .block(RotatedPillarBlock::new)
             .properties(p -> OSMINSTEM_PROPERTIES)
             .tag(TagRegistries.OSMINSTEM_LOGS)
+            .blockstate((context, provider) -> provider.models()
+                    .cubeAll(context.getName(), provider.blockTexture(STRIPPED_OSMINSTEM_LOG.get()))
+            )
             .item().tag(TagRegistries.OSMINSTEM_LOGS_ITEMS).build()
             .register();
 
     public static final BlockEntry<RotatedPillarBlock> OSMINSTEM_POROUS_LOG = getRegistrate().object("osminstem_porous_log")
             .block(p -> Blocks.log(MaterialColor.CRIMSON_HYPHAE, MaterialColor.SAND))
             .tag(TagRegistries.OSMINSTEM_LOGS)
-            .blockstate((context, provider) -> provider.logBlock(context.get()))
+            .blockstate((context, provider) -> provider.axisBlock(
+                    context.get(),
+                    provider.blockTexture(context.get()),
+                    RegistrationUtils.blockTexture(OSMINSTEM_LOG.get(), "_top")))
             .item().tag(TagRegistries.OSMINSTEM_LOGS_ITEMS).build()
             .register();
 
@@ -107,8 +123,8 @@ public class OsminstemRegistries {
             .recipe((context, provider) -> provider.slab(DataIngredient.items(OSMINSTEM_PLANKS), context, "wooden_slab", false))
             .blockstate((context, provider) -> provider.slabBlock(
                     context.get(),
-                    OSMINSTEM_PLANKS.getId(),
-                    context.getId()
+                    provider.blockTexture(OSMINSTEM_PLANKS.get()),
+                    provider.blockTexture(OSMINSTEM_PLANKS.get())
             ))
             .item().tag(ItemTags.WOODEN_SLABS).build()
             .register();
@@ -122,7 +138,7 @@ public class OsminstemRegistries {
             )
             .blockstate((context, provider) -> provider.stairsBlock(
                     context.get(),
-                    OSMINSTEM_PLANKS.getId()
+                    provider.blockTexture(OSMINSTEM_PLANKS.get())
             ))
             .item().tag(ItemTags.WOODEN_STAIRS).build()
             .register();
@@ -137,7 +153,11 @@ public class OsminstemRegistries {
             .recipe((context, provider) -> provider.door(DataIngredient.items(OSMINSTEM_PLANKS), context, "wooden_door"))
             .tag(BlockTags.WOODEN_DOORS)
             .blockstate(RegistrationUtils::doorModel)
-            .item().tag(ItemTags.WOODEN_DOORS).build()
+
+            .item()
+            .model((context, provider) -> provider.generated(context))
+            .tag(ItemTags.WOODEN_DOORS).build()
+
             .register();
 
     public static final BlockEntry<TrapDoorBlock> OSMINSTEM_TRAPDOOR = getRegistrate().object("osminstem_trapdoor")
@@ -146,7 +166,7 @@ public class OsminstemRegistries {
             .addLayer(() -> RenderType::cutout)
             .recipe((context, provider) -> provider.trapDoor(DataIngredient.items(OSMINSTEM_PLANKS), context, "wooden_trapdoor"))
             .tag(BlockTags.WOODEN_TRAPDOORS)
-            .blockstate((context, provider) -> provider.trapdoorBlock(context.get(), provider.modLoc("osminstem_trapdoor"), true))
+            .blockstate((context, provider) -> provider.trapdoorBlock(context.get(), provider.blockTexture(context.get()), true))
 
             .item()
             .model((context, provider) -> provider.blockItem(context::getEntry, "_bottom"))
@@ -183,11 +203,12 @@ public class OsminstemRegistries {
             .properties(p -> OSMINSTEM_PROPERTIES)
             .tag(BlockTags.WOODEN_FENCES)
             .recipe((context, provider) -> provider.fence(DataIngredient.items(OSMINSTEM_PLANKS), context, "wooden_fence"))
-            .blockstate((context, provider) -> provider.fenceBlock(context.get(), OSMINSTEM_PLANKS.getId()))
+            .blockstate((context, provider) -> provider.fenceBlock(context.get(), provider.blockTexture(OSMINSTEM_PLANKS.get())))
 
             .item()
             .tag(ItemTags.WOODEN_FENCES)
-            .model((context, provider) -> provider.fenceInventory(context.getId().getPath(), OSMINSTEM_PLANKS.getId()))
+            .model((context, provider) -> provider.fenceInventory(context.getId().getPath(),
+                    provider.modLoc("block/" + provider.name(OSMINSTEM_PLANKS))))
             .build()
 
             .register();
@@ -197,7 +218,7 @@ public class OsminstemRegistries {
             .properties(p -> OSMINSTEM_PROPERTIES)
             .tag(BlockTags.FENCE_GATES)
             .recipe((context, provider) -> provider.fenceGate(DataIngredient.items(OSMINSTEM_PLANKS), context, "wooden_fence_gate"))
-            .blockstate((context, provider) -> provider.fenceGateBlock(context.get(), OSMINSTEM_PLANKS.getId()))
+            .blockstate((context, provider) -> provider.fenceGateBlock(context.get(), provider.blockTexture(OSMINSTEM_PLANKS.get())))
             .simpleItem()
             .register();
 
@@ -208,4 +229,8 @@ public class OsminstemRegistries {
                     woodenBoat(provider, context.get(), OSMINSTEM_PLANKS.get())
             )
             .register();
+
+    public static void init() {
+        CrypticCosmos.LOGGER.info("OsminstemRegistries initialized");
+    }
 }

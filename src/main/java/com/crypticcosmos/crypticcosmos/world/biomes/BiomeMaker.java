@@ -28,9 +28,9 @@ import static com.crypticcosmos.crypticcosmos.world.biomes.BiomeHelper.*;
 public class BiomeMaker {
     public static Biome acerbicIsles() {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
-                LUNON.get().defaultBlockState(),
-                LUNON.get().defaultBlockState(),
-                LUNON_DUST.get().defaultBlockState()
+                LUNON.getDefaultState(),
+                LUNON.getDefaultState(),
+                LUNON_DUST.getDefaultState()
         ));
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
@@ -65,9 +65,9 @@ public class BiomeMaker {
 
     public static Biome kafisnianForest() {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
-                FUNGAL_LUNON.get().defaultBlockState(),
-                LUNON.get().defaultBlockState(),
-                LUNON_DUST.get().defaultBlockState()
+                FUNGAL_LUNON.getDefaultState(),
+                LUNON.getDefaultState(),
+                LUNON_DUST.getDefaultState()
         ));
 
         // Add mondrove fungus generation.
@@ -127,9 +127,9 @@ public class BiomeMaker {
     @Nonnull
     public static Biome lunaraPlains() {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
-                OVERGROWN_LUNON.get().defaultBlockState(),
-                LUNON.get().defaultBlockState(),
-                LUNON_DUST.get().defaultBlockState()
+                OVERGROWN_LUNON.getDefaultState(),
+                LUNON.getDefaultState(),
+                LUNON_DUST.getDefaultState()
         ));
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
@@ -163,9 +163,9 @@ public class BiomeMaker {
 
     public static Biome grombleGrove() {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.NETHER_FOREST, new SurfaceBuilderConfig(
-                GLUM_LUNON.get().defaultBlockState(),
-                LUNON.get().defaultBlockState(),
-                LUNON_DUST.get().defaultBlockState()
+                GLUM_LUNON.getDefaultState(),
+                LUNON.getDefaultState(),
+                LUNON_DUST.getDefaultState()
         ));
 
         genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
@@ -210,9 +210,9 @@ public class BiomeMaker {
 
     public static Biome umbralDunes() {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
-                UMBRAL_DUNE.get().defaultBlockState(),
-                UMBRAL_DUNE.get().defaultBlockState(),
-                UMBRAL_DUNE.get().defaultBlockState()
+                UMBRAL_DUNE.getDefaultState(),
+                UMBRAL_DUNE.getDefaultState(),
+                UMBRAL_DUNE.getDefaultState()
         ));
 
         final BiomeAmbience.Builder effects = effects(0x412,

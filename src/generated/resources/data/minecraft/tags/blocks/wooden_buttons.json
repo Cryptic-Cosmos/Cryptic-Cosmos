@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "crypticcosmos:mondrove_button",
+    "crypticcosmos:osminstem_button",
+    "crypticcosmos:gromble_button"
+  ]
+}

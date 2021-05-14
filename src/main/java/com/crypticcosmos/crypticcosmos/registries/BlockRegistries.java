@@ -1,5 +1,6 @@
 package com.crypticcosmos.crypticcosmos.registries;
 
+import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.blocks.MondroveFungus;
 import com.crypticcosmos.crypticcosmos.blocks.RiftBlock;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
@@ -40,7 +41,13 @@ public class BlockRegistries {
                     .sound(SoundType.GRASS))
             .addLayer(() -> RenderType::cutout)
             .blockstate(RegistrationUtils::crossModel)
-            .item().build()
+
+            .item()
+            .model((context, provider) -> provider.generated(context,
+                    provider.modLoc("block/" + provider.name(context)))
+            )
+            .build()
+
             .register();
 
     public static final BlockEntry<Block> MONDROVE_FUNGUS_BLOCK = getRegistrate().object("mondrove_fungus_block")
@@ -72,4 +79,8 @@ public class BlockRegistries {
             .properties(p -> Properties.copy(MONDROVE_FUNGUS_BLOCK.get()))
             .simpleItem()
             .register();
+
+    public static void init() {
+        CrypticCosmos.LOGGER.info("BlockRegistries initialized");
+    }
 }

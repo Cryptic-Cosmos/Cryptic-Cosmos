@@ -1,5 +1,6 @@
 package com.crypticcosmos.crypticcosmos.registries;
 
+import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.blocks.InfectableBlock;
 import com.crypticcosmos.crypticcosmos.blocks.LunaraPlantableSapling;
 import com.crypticcosmos.crypticcosmos.blocks.MondroveLog;
@@ -30,16 +31,41 @@ public class MondroveRegistries {
             .strength(2.0F)
             .sound(SoundType.WOOD);
 
+    public static final BlockEntry<LunaraPlantableSapling> MONDROVE_SAPLING = getRegistrate().object("mondrove_sapling")
+            .block(p -> new LunaraPlantableSapling(new MondroveTree(), p))
+            .properties(p -> Properties.copy(Blocks.BIRCH_SAPLING))
+            .tag(BlockTags.SAPLINGS)
+            .addLayer(() -> RenderType::cutout)
+            .blockstate(RegistrationUtils::crossModel)
+
+            .item()
+            .model((context, provider) -> provider.generated(context,
+                    provider.modLoc("block/" + provider.name(context)))
+            )
+            .tag(ItemTags.SAPLINGS).build()
+
+            .register();
+
+    public static final BlockEntry<LeavesBlock> MONDROVE_LEAVES = getRegistrate().object("mondrove_leaves")
+            .block(p -> Blocks.leaves())
+            .tag(BlockTags.LEAVES)
+            .addLayer(() -> RenderType::cutout)
+            .loot((lootTables, block) -> lootTables.add(block, BlockLootTables.createLeavesDrops(
+                    block, Blocks.BIRCH_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES
+            )))
+            .blockstate(RegistrationUtils::leavesModel)
+            .item().tag(ItemTags.LEAVES).build()
+            .register();
 
     // Mondrove Wood set
     public static final BlockEntry<MondroveLog> MONDROVE_LOG = getRegistrate().object("mondrove_log")
             .block(MondroveLog::new)
             .properties(p -> MONDROVE_PROPERTIES)
             .tag(BlockTags.LOGS, TagRegistries.MONDROVE_LOGS)
-            .item().tag(ItemTags.LOGS, TagRegistries.MONDROVE_LOGS_ITEMS).build()
             .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
                     .forAllStates(blockState -> mondroveLogModels(blockState, context, provider, false))
             )
+            .item().tag(ItemTags.LOGS, TagRegistries.MONDROVE_LOGS_ITEMS).build()
             .register();
 
     public static final BlockEntry<MondroveLog> MONDROVE_WOOD = getRegistrate().object("mondrove_wood")
@@ -48,7 +74,7 @@ public class MondroveRegistries {
             .tag(TagRegistries.MONDROVE_LOGS)
             .recipe((context, provider) -> woodFromLogs(provider, context.get(), MONDROVE_LOG.get()))
             .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
-                    .forAllStates(blockState -> mondroveWoodModels(blockState, context, provider)))
+                    .forAllStates(blockState -> mondroveWoodModels(blockState, context, provider, false)))
             .item().tag(TagRegistries.MONDROVE_LOGS_ITEMS).build()
             .register();
 
@@ -56,10 +82,10 @@ public class MondroveRegistries {
             .block(MondroveLog::new)
             .properties(p -> MONDROVE_PROPERTIES)
             .tag(TagRegistries.MONDROVE_LOGS)
-            .item().tag(TagRegistries.MONDROVE_LOGS_ITEMS).build()
             .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
                     .forAllStates(blockState -> mondroveLogModels(blockState, context, provider, true))
             )
+            .item().tag(TagRegistries.MONDROVE_LOGS_ITEMS).build()
             .register();
 
     public static final BlockEntry<MondroveLog> STRIPPED_MONDROVE_WOOD = getRegistrate().object("stripped_mondrove_wood")
@@ -67,7 +93,7 @@ public class MondroveRegistries {
             .properties(p -> MONDROVE_PROPERTIES)
             .tag(TagRegistries.MONDROVE_LOGS)
             .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
-                    .forAllStates(blockState -> mondroveWoodModels(blockState, context, provider)))
+                    .forAllStates(blockState -> mondroveWoodModels(blockState, context, provider, true)))
             .item().tag(TagRegistries.MONDROVE_LOGS_ITEMS).build()
             .register();
 
@@ -88,11 +114,11 @@ public class MondroveRegistries {
             .loot((lootTables, block) ->
                     lootTables.add(block, BlockLootTables.createSlabItemTable(block))
             )
-            .tag(BlockTags.SLABS)
             .recipe((context, provider) ->
                     provider.slab(DataIngredient.items(MONDROVE_PLANKS), context, "wooden_slab", false)
             )
-            .blockstate((context, provider) -> provider.slabBlock(context.get(), MONDROVE_PLANKS.getId(), provider.modLoc("mondrove_slab")))
+            .tag(BlockTags.SLABS)
+            .blockstate((context, provider) -> provider.slabBlock(context.get(), provider.blockTexture(MONDROVE_PLANKS.get()), provider.blockTexture(MONDROVE_PLANKS.get())))
             .item().tag(ItemTags.WOODEN_SLABS).build()
             .register();
 
@@ -103,7 +129,7 @@ public class MondroveRegistries {
             .recipe((context, provider) ->
                     provider.stairs(DataIngredient.items(MONDROVE_PLANKS), context, "wooden_stairs", false)
             )
-            .blockstate((context, provider) -> provider.stairsBlock(context.get(), provider.modLoc("mondrove_planks")))
+            .blockstate((context, provider) -> provider.stairsBlock(context.get(), provider.blockTexture(MONDROVE_PLANKS.get())))
             .item().tag(ItemTags.WOODEN_STAIRS).build()
             .register();
 
@@ -119,7 +145,11 @@ public class MondroveRegistries {
             )
             .tag(BlockTags.WOODEN_DOORS)
             .blockstate(RegistrationUtils::doorModel)
-            .item().tag(ItemTags.WOODEN_DOORS).build()
+
+            .item()
+            .model((context, provider) -> provider.generated(context))
+            .tag(ItemTags.WOODEN_DOORS)
+            .build()
             .register();
 
     public static final BlockEntry<TrapDoorBlock> MONDROVE_TRAPDOOR = getRegistrate().object("mondrove_trapdoor")
@@ -130,7 +160,7 @@ public class MondroveRegistries {
             .recipe((context, provider) ->
                     provider.trapDoor(DataIngredient.items(MONDROVE_PLANKS.get()), context, "wooden_trapdoor")
             )
-            .blockstate((context, provider) -> provider.trapdoorBlock(context.get(), provider.modLoc("mondrove_trapdoor"), true))
+            .blockstate((context, provider) -> provider.trapdoorBlock(context.get(), provider.blockTexture(context.get()), true))
 
             .item()
             .model((context, provider) -> provider.blockItem(context::getEntry, "_bottom"))
@@ -167,10 +197,11 @@ public class MondroveRegistries {
             .properties(p -> MONDROVE_PROPERTIES)
             .tag(BlockTags.WOODEN_FENCES)
             .recipe((context, provider) -> provider.fence(DataIngredient.items(MONDROVE_PLANKS), context, "wooden_fence"))
-            .blockstate((context, provider) -> provider.fenceBlock(context.get(), MONDROVE_PLANKS.getId()))
+            .blockstate((context, provider) -> provider.fenceBlock(context.get(), provider.blockTexture(MONDROVE_PLANKS.get())))
 
             .item().tag(ItemTags.WOODEN_FENCES)
-            .model((context, provider) -> provider.fenceInventory(context.getId().getPath(), MONDROVE_PLANKS.getId()))
+            .model((context, provider) -> provider.fenceInventory(context.getId().getPath(),
+                    provider.modLoc("block/" + provider.name(MONDROVE_PLANKS))))
             .build()
 
             .register();
@@ -180,28 +211,8 @@ public class MondroveRegistries {
             .properties(p -> MONDROVE_PROPERTIES)
             .tag(BlockTags.FENCE_GATES)
             .recipe((context, provider) -> provider.fenceGate(DataIngredient.items(MONDROVE_PLANKS), context, "wooden_fence_gate"))
-            .blockstate((context, provider) -> provider.fenceGateBlock(context.get(), MONDROVE_PLANKS.getId()))
+            .blockstate((context, provider) -> provider.fenceGateBlock(context.get(), provider.blockTexture(MONDROVE_PLANKS.get())))
             .simpleItem()
-            .register();
-
-    public static final BlockEntry<LunaraPlantableSapling> MONDROVE_SAPLING = getRegistrate().object("mondrove_sapling")
-            .block(p -> new LunaraPlantableSapling(new MondroveTree(), p))
-            .properties(p -> Properties.copy(Blocks.BIRCH_SAPLING))
-            .tag(BlockTags.SAPLINGS)
-            .addLayer(() -> RenderType::cutout)
-            .blockstate(RegistrationUtils::crossModel)
-            .item().tag(ItemTags.SAPLINGS).build()
-            .register();
-
-    public static final BlockEntry<LeavesBlock> MONDROVE_LEAVES = getRegistrate().object("mondrove_leaves")
-            .block(p -> Blocks.leaves())
-            .tag(BlockTags.LEAVES)
-            .addLayer(() -> RenderType::cutout)
-            .loot((lootTables, block) -> lootTables.add(block, BlockLootTables.createLeavesDrops(
-                    block, Blocks.BIRCH_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES
-            )))
-            .blockstate(RegistrationUtils::leavesModel)
-            .item().tag(ItemTags.LEAVES).build()
             .register();
 
     public static final ItemEntry<BoatItem> MONDROVE_BOAT = getRegistrate().object("mondrove_boat")
@@ -211,4 +222,8 @@ public class MondroveRegistries {
                     woodenBoat(provider, context.get(), MONDROVE_PLANKS.get())
             )
             .register();
+
+    public static void init() {
+        CrypticCosmos.LOGGER.info("MondroveRegistries initialized");
+    }
 }

@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "m  ",
-    "mm ",
-    "mmm"
+    "X  ",
+    "XX ",
+    "XXX"
   ],
   "key": {
-    "m": {
+    "X": {
       "item": "crypticcosmos:lunon_bricks"
     }
   },

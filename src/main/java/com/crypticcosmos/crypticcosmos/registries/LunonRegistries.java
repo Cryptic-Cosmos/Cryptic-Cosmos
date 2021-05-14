@@ -1,6 +1,8 @@
 package com.crypticcosmos.crypticcosmos.registries;
 
+import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.blocks.OvergrownLunonBlock;
+import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.block.AbstractBlock.Properties;
@@ -9,12 +11,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.data.loot.BlockLootTables;
+import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
-import static com.crypticcosmos.crypticcosmos.util.RegistrationUtils.fungalLunonModels;
 import static com.tterrag.registrate.providers.RegistrateRecipeProvider.hasItem;
 
 public class LunonRegistries {
@@ -22,30 +24,28 @@ public class LunonRegistries {
             .block(Material.STONE, OvergrownLunonBlock::new)
             .properties(LunonRegistries::overgrownLunonProperties)
             .tag(TagRegistries.LUNARA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
-            .blockstate((context, provider) ->
-                    provider.getVariantBuilder(context.get()).forAllStates(
-                            blockState -> fungalLunonModels(blockState, context, provider)
-                    ))
+            .blockstate(RegistrationUtils::overgrownLunonModels)
             .simpleItem()
             .register();
+
     // Fungal lunon
     public static final BlockEntry<OvergrownLunonBlock> FUNGAL_LUNON = getRegistrate().object("fungal_lunon")
             .block(Material.STONE, OvergrownLunonBlock::new)
             .properties(LunonRegistries::overgrownLunonProperties)
             .tag(TagRegistries.LUNARA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
-            .blockstate((context, provider) ->
-                    provider.getVariantBuilder(context.get()).forAllStates(
-                            blockState -> fungalLunonModels(blockState, context, provider)
-                    ))
+            .blockstate(RegistrationUtils::overgrownLunonModels)
             .simpleItem()
             .register();
+
     // Glum Lunon
     public static final BlockEntry<OvergrownLunonBlock> GLUM_LUNON = getRegistrate().object("glum_lunon")
             .block(OvergrownLunonBlock::new)
             .properties(LunonRegistries::overgrownLunonProperties)
             .tag(TagRegistries.LUNARA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
+            .blockstate(RegistrationUtils::overgrownLunonModels)
             .simpleItem()
             .register();
+
     // Lunon
     public static final BlockEntry<Block> LUNON = getRegistrate().object("lunon")
             .block(Material.STONE, Block::new)
@@ -57,6 +57,7 @@ public class LunonRegistries {
             .tag(TagRegistries.LUNARA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
             .simpleItem()
             .register();
+
     // Lunon bricks
     public static final BlockEntry<Block> LUNON_BRICKS = getRegistrate().object("lunon_bricks")
             .block(Block::new)
@@ -67,6 +68,7 @@ public class LunonRegistries {
             .recipe((context, provider) -> provider.stonecutting(DataIngredient.items(LUNON), context))
             .simpleItem()
             .register();
+
     // Lunon brick slab
     public static final BlockEntry<SlabBlock> LUNON_BRICK_SLAB = getRegistrate().object("lunon_brick_slab")
             .block(SlabBlock::new)
@@ -75,15 +77,16 @@ public class LunonRegistries {
                     lootTables.add(block, BlockLootTables.createSlabItemTable(block))
             )
             .recipe((context, provider) -> provider.slab(DataIngredient.items(LUNON_BRICKS), context, null, true))
-            .blockstate((context, provider) -> provider.slabBlock(context.get(), LUNON_BRICKS.getId(), provider.modLoc("lunon_bricks")))
-            .simpleItem()
+            .blockstate((context, provider) -> provider.slabBlock(context.get(), provider.blockTexture(LUNON_BRICKS.get()), provider.blockTexture(LUNON_BRICKS.get())))
+            .item().tag(ItemTags.SLABS).build()
             .register();
+
     // Lunon brick stairs
     public static final BlockEntry<StairsBlock> LUNON_BRICK_STAIRS = getRegistrate().object("lunon_brick_stairs")
             .block(p -> new StairsBlock(() -> LUNON_BRICKS.get().defaultBlockState(), p))
             .properties(p -> Properties.copy(LUNON_BRICKS.get()))
             .recipe((context, provider) -> provider.stairs(DataIngredient.items(LUNON_BRICKS), context, null, true))
-            .blockstate((context, provider) -> provider.stairsBlock(context.get(), provider.modLoc("lunon_bricks")))
+            .blockstate((context, provider) -> provider.stairsBlock(context.get(), provider.blockTexture(LUNON_BRICKS.get())))
             .simpleItem()
             .register();
     // Polished Lunon
@@ -101,8 +104,10 @@ public class LunonRegistries {
                     lootTables.add(block, BlockLootTables.createSlabItemTable(block))
             )
             .recipe((context, provider) -> provider.slab(DataIngredient.items(POLISHED_LUNON), context, null, true))
-            .blockstate((context, provider) -> provider.slabBlock(context.get(), POLISHED_LUNON.getId(), provider.modLoc("polished_lunon")))
+            .blockstate((context, provider) -> provider.slabBlock(context.get(), POLISHED_LUNON.getId(), provider.blockTexture(POLISHED_LUNON.get())))
+            .item().tag(ItemTags.SLABS).build()
             .register();
+
     // Chiseled Polished Lunon
     public static final BlockEntry<Block> CHISELED_POLISHED_LUNON = getRegistrate().object("chiseled_polished_lunon")
             .block(Block::new)
@@ -118,9 +123,10 @@ public class LunonRegistries {
             .blockstate((context, provider) -> provider.simpleBlock(context.get(),
                     provider.models().cubeColumn(
                             context.getName(),
-                            provider.modLoc(context.getName()),
-                            provider.modLoc(POLISHED_LUNON.getId().getPath()))
+                            provider.blockTexture(context.get()),
+                            provider.blockTexture(POLISHED_LUNON.get()))
             ))
+            .simpleItem()
             .register();
     // Mossy lunon
     public static final BlockEntry<Block> MOSSY_LUNON = getRegistrate().object("mossy_lunon")
@@ -132,6 +138,7 @@ public class LunonRegistries {
                     .unlockedBy("has_vine", hasItem(context.get()))
                     .save(provider)
             )
+            .simpleItem()
             .register();
     // Lunon dust
     public static final BlockEntry<SandBlock> LUNON_DUST = getRegistrate().object("lunon_dust")
@@ -149,5 +156,9 @@ public class LunonRegistries {
                 .harvestLevel(1)
                 .harvestTool(ToolType.PICKAXE)
                 .requiresCorrectToolForDrops();
+    }
+
+    public static void init() {
+        CrypticCosmos.LOGGER.info("BlockRegistries initialized");
     }
 }

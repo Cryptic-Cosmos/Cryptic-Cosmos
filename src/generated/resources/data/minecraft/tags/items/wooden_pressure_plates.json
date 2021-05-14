@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "crypticcosmos:mondrove_pressure_plate",
+    "crypticcosmos:osminstem_pressure_plate",
+    "crypticcosmos:gromble_pressure_plate"
+  ]
+}

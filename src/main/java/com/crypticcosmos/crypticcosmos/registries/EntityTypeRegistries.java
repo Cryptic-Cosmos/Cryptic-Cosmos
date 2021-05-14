@@ -1,5 +1,6 @@
 package com.crypticcosmos.crypticcosmos.registries;
 
+import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.creatures.gromble_frog.GrombleFrogEntity;
 import com.crypticcosmos.crypticcosmos.creatures.gromble_frog.GrombleFrogRender;
 import com.crypticcosmos.crypticcosmos.creatures.makrossa_rambler.MakrossaRamblerEntity;
@@ -46,5 +47,10 @@ public class EntityTypeRegistries {
             .spawnPlacement(PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::checkAnimalSpawnRules)
             .properties(builder -> builder.sized(1f, 1f))
             .spawnEgg(0xc26d7d, 0x9e427e).build()
+            .loot((lootTables, entity) -> lootTables.add(entity, LootTable.lootTable()))
             .register();
+
+    public static void init() {
+        CrypticCosmos.LOGGER.info("EntityTypeRegistries initialized");
+    }
 }

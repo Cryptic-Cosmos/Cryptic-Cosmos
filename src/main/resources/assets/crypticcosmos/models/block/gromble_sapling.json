@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "crypticcosmos:block/gromble_sapling"
-  }
-}

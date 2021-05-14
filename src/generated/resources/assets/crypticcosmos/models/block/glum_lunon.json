@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "crypticcosmos:block/glum_lunon_side",
+    "bottom": "crypticcosmos:block/lunon",
+    "top": "crypticcosmos:block/glum_lunon_top"
+  }
+}

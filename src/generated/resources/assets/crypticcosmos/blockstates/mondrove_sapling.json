@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "crypticcosmos:block/mondrove_sapling"
+    },
+    "stage=1": {
+      "model": "crypticcosmos:block/mondrove_sapling"
+    }
+  }
+}

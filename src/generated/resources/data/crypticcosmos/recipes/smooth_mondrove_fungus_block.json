@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "crypticcosmos:mondrove_fungus_block"
+    }
+  },
+  "result": {
+    "item": "crypticcosmos:smooth_mondrove_fungus_block"
+  }
+}

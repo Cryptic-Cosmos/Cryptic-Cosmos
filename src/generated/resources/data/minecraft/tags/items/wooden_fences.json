@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "crypticcosmos:mondrove_fence",
+    "crypticcosmos:osminstem_fence",
+    "crypticcosmos:gromble_fence"
+  ]
+}

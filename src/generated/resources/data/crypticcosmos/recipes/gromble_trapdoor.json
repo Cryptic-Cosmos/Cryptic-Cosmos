@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "crypticcosmos:gromble_planks"
+    }
+  },
+  "result": {
+    "item": "crypticcosmos:gromble_trapdoor",
+    "count": 2
+  }
+}

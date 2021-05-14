@@ -49,6 +49,14 @@ public class CrypticCosmos {
         forgeBus.addListener(EventPriority.HIGH, BiomeRegistries::biomeLoading);
         forgeBus.addListener(EventPriority.HIGH, StrippingRegistries::onStripped);
 
+        BlockRegistries.init();
+        ItemRegistries.init();
+        LunonRegistries.init();
+        MondroveRegistries.init();
+        OsminstemRegistries.init();
+        GrombleRegistries.init();
+        EntityTypeRegistries.init();
+
         StructureRegistries.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
         BiomeRegistries.BIOMES.register(modEventBus);
         EffectRegistries.EFFECTS.register(modEventBus);

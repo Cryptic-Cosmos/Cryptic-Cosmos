@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "facing=north,snowy=false": {
+      "model": "crypticcosmos:block/fungal_lunon",
+      "y": 180
+    },
+    "facing=south,snowy=false": {
+      "model": "crypticcosmos:block/fungal_lunon"
+    },
+    "facing=west,snowy=false": {
+      "model": "crypticcosmos:block/fungal_lunon",
+      "y": 90
+    },
+    "facing=east,snowy=false": {
+      "model": "crypticcosmos:block/fungal_lunon",
+      "y": 270
+    },
+    "facing=north,snowy=true": {
+      "model": "crypticcosmos:block/fungal_lunon"
+    },
+    "facing=south,snowy=true": {
+      "model": "crypticcosmos:block/fungal_lunon"
+    },
+    "facing=west,snowy=true": {
+      "model": "crypticcosmos:block/fungal_lunon"
+    },
+    "facing=east,snowy=true": {
+      "model": "crypticcosmos:block/fungal_lunon"
+    }
+  }
+}
