@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "side": "crypticcosmos:block/mondrove_log",
+    "side": "crypticcosmos:block/mondrove_log2",
     "end": "crypticcosmos:block/mondrove_log_top"
   }
 }

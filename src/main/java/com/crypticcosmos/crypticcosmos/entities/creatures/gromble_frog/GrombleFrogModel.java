@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.creatures.makrossa_rambler;// Made with Blockbench 3.7.2
+package com.crypticcosmos.crypticcosmos.entities.creatures.gromble_frog;// Made with Blockbench 3.6.6
 // Exported for Minecraft version 1.15
 // Paste this class into your mod and generate all required imports
 
@@ -11,28 +11,29 @@ import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
-public class MakrossaRamblerModel extends AnimatedGeoModel<MakrossaRamblerEntity> {
+public class GrombleFrogModel extends AnimatedGeoModel<GrombleFrogEntity> {
+
     @Override
-    public ResourceLocation getModelLocation(MakrossaRamblerEntity makrossaRamblerEntity) {
-        return new ResourceLocation(CrypticCosmos.MOD_ID, "geo/makrossa_rambler.geo.json");
+    public ResourceLocation getModelLocation(GrombleFrogEntity grombleFrogEntity) {
+        return new ResourceLocation(CrypticCosmos.MOD_ID, "geo/gromble_frog.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(MakrossaRamblerEntity makrossaRamblerEntity) {
-        return new ResourceLocation(CrypticCosmos.MOD_ID, "textures/entity/makrossa_rambler.png");
+    public ResourceLocation getTextureLocation(GrombleFrogEntity grombleFrogEntity) {
+        return new ResourceLocation(CrypticCosmos.MOD_ID, "textures/entity/gromble_frog.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(MakrossaRamblerEntity makrossaRamblerEntity) {
-        return new ResourceLocation(CrypticCosmos.MOD_ID, "animations/makrossa_rambler.json");
+    public ResourceLocation getAnimationFileLocation(GrombleFrogEntity grombleFrogEntity) {
+        return new ResourceLocation(CrypticCosmos.MOD_ID, "animations/gromble_frog.json");
     }
 
     @Override
-    public void setLivingAnimations(MakrossaRamblerEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+    public void setLivingAnimations(GrombleFrogEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
         super.setLivingAnimations(entity, uniqueID, customPredicate);
         EntityModelData data = (EntityModelData) customPredicate.getExtraData().get(0);
         // Apply head look to model
-        IBone head = this.getAnimationProcessor().getBone("head_skull");
+        IBone head = this.getAnimationProcessor().getBone("Head");
         head.setRotationY((float) Math.toRadians(MathHelper.clamp(data.netHeadYaw, -45, 45)));
         head.setRotationX(-(float) Math.toRadians(data.headPitch));
     }

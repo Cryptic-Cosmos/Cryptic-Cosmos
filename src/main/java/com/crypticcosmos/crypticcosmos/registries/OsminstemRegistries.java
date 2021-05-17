@@ -17,6 +17,7 @@ import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.item.BoatItem;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 import static net.minecraft.block.material.Material.WOOD;
@@ -81,9 +82,12 @@ public class OsminstemRegistries {
             .properties(p -> OSMINSTEM_PROPERTIES)
             .tag(TagRegistries.OSMINSTEM_LOGS)
             .recipe((context, provider) -> woodFromLogs(provider, context.get(), OSMINSTEM_LOG.get()))
-            .blockstate((context, provider) -> provider.models()
-                    .cubeAll(context.getName(), provider.blockTexture(OSMINSTEM_LOG.get()))
-            )
+            .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
+                    .forAllStates(state -> ConfiguredModel.builder().modelFile(
+                            provider.models().cubeAll(context.getName(),
+                                    provider.blockTexture(OSMINSTEM_LOG.get()))
+                            ).build()
+                    ))
             .item().tag(TagRegistries.OSMINSTEM_LOGS_ITEMS).build()
             .register();
 
@@ -91,9 +95,12 @@ public class OsminstemRegistries {
             .block(RotatedPillarBlock::new)
             .properties(p -> OSMINSTEM_PROPERTIES)
             .tag(TagRegistries.OSMINSTEM_LOGS)
-            .blockstate((context, provider) -> provider.models()
-                    .cubeAll(context.getName(), provider.blockTexture(STRIPPED_OSMINSTEM_LOG.get()))
-            )
+            .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
+                    .forAllStates(state -> ConfiguredModel.builder().modelFile(
+                            provider.models().cubeAll(context.getName(),
+                                    provider.blockTexture(STRIPPED_OSMINSTEM_LOG.get()))
+                            ).build()
+                    ))
             .item().tag(TagRegistries.OSMINSTEM_LOGS_ITEMS).build()
             .register();
 

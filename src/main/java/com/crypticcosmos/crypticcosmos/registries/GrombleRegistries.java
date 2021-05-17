@@ -18,6 +18,7 @@ import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.item.BoatItem;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 import static net.minecraft.block.material.Material.NETHER_WOOD;
@@ -82,9 +83,12 @@ public class GrombleRegistries {
             .properties(p -> GROMBLE_PROPERTIES)
             .tag(TagRegistries.GROMBLE_LOGS)
             .recipe((context, provider) -> woodFromLogs(provider, context.get(), GROMBLE_LOG.get()))
-            .blockstate((context, provider) -> provider.models()
-                    .cubeAll(context.getName(), provider.blockTexture(GROMBLE_LOG.get()))
-            )
+            .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
+                    .forAllStates(state -> ConfiguredModel.builder().modelFile(
+                            provider.models().cubeAll(context.getName(),
+                                    provider.blockTexture(GROMBLE_LOG.get()))
+                            ).build()
+                    ))
             .item().tag(TagRegistries.GROMBLE_LOGS_ITEMS).build()
             .register();
 
@@ -92,9 +96,12 @@ public class GrombleRegistries {
             .block(RotatedPillarBlock::new)
             .properties(p -> GROMBLE_PROPERTIES)
             .tag(TagRegistries.GROMBLE_LOGS)
-            .blockstate((context, provider) -> provider.models()
-                    .cubeAll(context.getName(), provider.blockTexture(STRIPPED_GROMBLE_LOG.get()))
-            )
+            .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
+                    .forAllStates(state -> ConfiguredModel.builder().modelFile(
+                            provider.models().cubeAll(context.getName(),
+                                    provider.blockTexture(STRIPPED_GROMBLE_LOG.get()))
+                            ).build()
+                    ))
             .item().tag(TagRegistries.GROMBLE_LOGS_ITEMS).build()
             .register();
 

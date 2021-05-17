@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.creatures.gromble_frog;
+package com.crypticcosmos.crypticcosmos.entities.creatures.gromble_frog;
 
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
