@@ -1,6 +1,6 @@
-package com.crypticcosmos.crypticcosmos.creatures.makrossa_rambler;
+package com.crypticcosmos.crypticcosmos.entities.creatures.makrossa_rambler;
 
-import com.crypticcosmos.crypticcosmos.creatures.gromble_frog.GrombleFrogEntity;
+import com.crypticcosmos.crypticcosmos.entities.creatures.gromble_frog.GrombleFrogEntity;
 import com.crypticcosmos.crypticcosmos.registries.SoundEventRegistries;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;

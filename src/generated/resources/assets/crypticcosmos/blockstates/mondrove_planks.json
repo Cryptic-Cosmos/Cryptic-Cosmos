@@ -4,10 +4,10 @@
       "model": "crypticcosmos:block/mondrove_planks"
     },
     "infection_level=1": {
-      "model": "crypticcosmos:block/mondrove_planks"
+      "model": "crypticcosmos:block/mondrove_planks1"
     },
     "infection_level=2": {
-      "model": "crypticcosmos:block/mondrove_planks"
+      "model": "crypticcosmos:block/mondrove_planks2"
     }
   }
 }

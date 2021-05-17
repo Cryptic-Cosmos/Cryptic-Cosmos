@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.creatures.gromble_frog;
+package com.crypticcosmos.crypticcosmos.entities.creatures.gromble_frog;
 
 import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.registries.MondroveRegistries;

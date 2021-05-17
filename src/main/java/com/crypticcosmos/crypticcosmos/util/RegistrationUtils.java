@@ -21,12 +21,12 @@ public class RegistrationUtils {
     public static ConfiguredModel[] infectableBlockModels(BlockState state,
                                                           DataGenContext<Block, ? extends Infectable> context,
                                                           RegistrateBlockstateProvider provider) {
-        String infectionLevel = state.getValue(Infectable.INFECTION_LEVEL) < 1 ? ""
+        String infectionLevel = state.getValue(Infectable.INFECTION_LEVEL) == 0 ? ""
                 : state.getValue(Infectable.INFECTION_LEVEL).toString();
-        final String id = context.getId().getPath();
+        final String name = context.getId().getPath() + infectionLevel;
 
         return ConfiguredModel.builder()
-                .modelFile(provider.models().cubeAll(id, blockTexture(context.get(), infectionLevel)))
+                .modelFile(provider.models().cubeAll(name, blockTexture(context.get(), infectionLevel)))
                 .build();
     }
 
@@ -34,12 +34,13 @@ public class RegistrationUtils {
                                                       DataGenContext<Block, MondroveLog> context,
                                                       RegistrateBlockstateProvider provider,
                                                       boolean isStripped) {
-        String infectionLevel = state.getValue(Infectable.INFECTION_LEVEL) < 1 ? ""
+        String infectionLevel = state.getValue(Infectable.INFECTION_LEVEL) == 0 ? ""
                 : state.getValue(Infectable.INFECTION_LEVEL).toString();
         Axis axis = getAxisFromBlockState(state);
-        final String id = context.getId().getPath();
+        final String name = context.getId().getPath() + infectionLevel;
 
-        return ConfiguredModel.builder().modelFile(provider.models().cubeColumn(id,
+        return ConfiguredModel.builder().modelFile(provider.models().cubeColumn(
+                name,
                 blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), !isStripped ? infectionLevel : ""),
                 blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), "_top")))
                 .rotationX(axis.equals(Axis.Z) || axis.equals(Axis.X) ? 90 : 0)
@@ -51,12 +52,12 @@ public class RegistrationUtils {
                                                        RegistrateBlockstateProvider provider,
                                                        boolean isStripped) {
         Axis axis = getAxisFromBlockState(state);
-        String infectionLevel = state.getValue(Infectable.INFECTION_LEVEL) < 1 ? ""
+        String infectionLevel = state.getValue(Infectable.INFECTION_LEVEL) == 0 ? ""
                 : state.getValue(Infectable.INFECTION_LEVEL).toString();
-        final String id = context.getId().getPath();
+        final String name = context.getId().getPath() + infectionLevel;
 
         return ConfiguredModel.builder().modelFile(provider.models().cubeAll(
-                id,
+                name,
                 blockTexture(isStripped ? "stripped_" : "",
                         MondroveRegistries.MONDROVE_LOG.get(),
                         !isStripped ? infectionLevel : ""

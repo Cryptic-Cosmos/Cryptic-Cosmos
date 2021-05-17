@@ -1,6 +1,6 @@
 package com.crypticcosmos.crypticcosmos.effects;
 
-import com.crypticcosmos.crypticcosmos.creatures.gromble_frog.GrombleFrogEntity;
+import com.crypticcosmos.crypticcosmos.entities.creatures.gromble_frog.GrombleFrogEntity;
 import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;

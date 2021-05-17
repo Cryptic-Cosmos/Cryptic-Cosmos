@@ -13,7 +13,8 @@ public interface Infectable {
         if (world.dimension() == CrypticCosmosDimensions.MAKROSSA_KEY) {
             BlockState infectedLogState = world.getBlockState(pos);
 
-            if (infectedLogState.getValue(INFECTION_LEVEL) < 2) {
+            if (infectedLogState.getBlock() instanceof Infectable &&
+                infectedLogState.getValue(INFECTION_LEVEL) < 2) {
                 world.setBlock(
                         pos,
                         infectedLogState.setValue(

@@ -217,6 +217,7 @@ public class MondroveRegistries {
 
     public static final ItemEntry<BoatItem> MONDROVE_BOAT = getRegistrate().object("mondrove_boat")
             .item(p -> new BoatItem(BoatEntity.Type.OAK, p))
+            .properties(p -> p.stacksTo(1))
             .tag(ItemTags.BOATS)
             .recipe((context, provider) ->
                     woodenBoat(provider, context.get(), MONDROVE_PLANKS.get())

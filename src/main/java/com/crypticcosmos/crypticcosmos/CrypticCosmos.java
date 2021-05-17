@@ -42,6 +42,7 @@ public class CrypticCosmos {
     public CrypticCosmos() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+
         modEventBus.addListener(this::setup);
 
         forgeBus.addListener(RiftBlock::riftSpawning);

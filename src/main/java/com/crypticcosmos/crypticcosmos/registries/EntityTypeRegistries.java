@@ -1,10 +1,10 @@
 package com.crypticcosmos.crypticcosmos.registries;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.creatures.gromble_frog.GrombleFrogEntity;
-import com.crypticcosmos.crypticcosmos.creatures.gromble_frog.GrombleFrogRender;
-import com.crypticcosmos.crypticcosmos.creatures.makrossa_rambler.MakrossaRamblerEntity;
-import com.crypticcosmos.crypticcosmos.creatures.makrossa_rambler.MakrossaRamblerRender;
+import com.crypticcosmos.crypticcosmos.entities.creatures.gromble_frog.GrombleFrogEntity;
+import com.crypticcosmos.crypticcosmos.entities.creatures.gromble_frog.GrombleFrogRender;
+import com.crypticcosmos.crypticcosmos.entities.creatures.makrossa_rambler.MakrossaRamblerEntity;
+import com.crypticcosmos.crypticcosmos.entities.creatures.makrossa_rambler.MakrossaRamblerRender;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry.PlacementType;
