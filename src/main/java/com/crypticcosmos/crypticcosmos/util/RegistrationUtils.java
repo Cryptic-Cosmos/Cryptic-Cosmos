@@ -17,6 +17,8 @@ import net.minecraft.util.Direction.Axis;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 
+import java.util.function.Supplier;
+
 public class RegistrationUtils {
     public static ConfiguredModel[] infectableBlockModels(BlockState state,
                                                           DataGenContext<Block, ? extends Infectable> context,
@@ -26,7 +28,7 @@ public class RegistrationUtils {
         final String name = context.getId().getPath() + infectionLevel;
 
         return ConfiguredModel.builder()
-                .modelFile(provider.models().cubeAll(name, blockTexture(context.get(), infectionLevel)))
+                .modelFile(provider.models().cubeAll(name, blockTexture(context, infectionLevel)))
                 .build();
     }
 
@@ -79,16 +81,16 @@ public class RegistrationUtils {
                     if (!isSnowy) {
                         builder.modelFile(provider.models().cubeBottomTop(
                                 id,
-                                blockTexture(context.get(), "_side"),
+                                blockTexture(context, "_side"),
                                 provider.blockTexture(LunonRegistries.LUNON.get()),
-                                blockTexture(context.get(), "_top")))
+                                blockTexture(context, "_top")))
                                 .rotationY(degree);
                     } else {
                         builder.modelFile(provider.models().cubeBottomTop(
                                 id,
-                                blockTexture(LunonRegistries.OVERGROWN_LUNON.get(), "_snow"),
+                                blockTexture(LunonRegistries.OVERGROWN_LUNON, "_snow"),
                                 provider.blockTexture(LunonRegistries.LUNON.get()),
-                                blockTexture(context.get(), "_top")));
+                                blockTexture(context, "_top")));
                     }
 
                     return builder.build();
@@ -115,16 +117,9 @@ public class RegistrationUtils {
     }
 
     public static void doorModel(DataGenContext<Block, ? extends DoorBlock> context, RegistrateBlockstateProvider provider) {
-        String id = context.getId().getPath();
-        ResourceLocation doorBottom = blockTexture(context.get(), "_bottom");
-        ResourceLocation doorTop = blockTexture(context.get(), "_top");
-
         provider.doorBlock(context.get(),
-                provider.models().doorBottomLeft(id, doorBottom, doorTop),
-                provider.models().doorBottomRight(id, doorBottom, doorTop),
-                provider.models().doorTopLeft(id, doorBottom, doorTop),
-                provider.models().doorTopRight(id, doorBottom, doorTop)
-        );
+                RegistrationUtils.blockTexture(context, "_bottom"),
+                RegistrationUtils.blockTexture(context, "_top"));
     }
 
     public static void buttonModel(DataGenContext<Block, ? extends AbstractButtonBlock> context, RegistrateBlockstateProvider provider, NonNullSupplier<? extends Block> planks) {
@@ -180,9 +175,9 @@ public class RegistrationUtils {
         return state.getValue(BlockStateProperties.AXIS);
     }
 
-    public static ResourceLocation blockTexture(Block block, String suffix) {
+    public static ResourceLocation blockTexture(Supplier<? extends Block> block, String suffix) {
         //noinspection ConstantConditions
-        return CrypticCosmos.id("block/" + block.getRegistryName().getPath() + suffix);
+        return CrypticCosmos.id("block/" + block.get().getRegistryName().getPath() + suffix);
     }
 
     public static ResourceLocation blockTexture(String prefix, Block block, String suffix) {

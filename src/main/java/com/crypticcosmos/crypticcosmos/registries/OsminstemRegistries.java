@@ -111,7 +111,7 @@ public class OsminstemRegistries {
             .blockstate((context, provider) -> provider.axisBlock(
                     context.get(),
                     provider.blockTexture(context.get()),
-                    RegistrationUtils.blockTexture(OSMINSTEM_LOG.get(), "_top")))
+                    RegistrationUtils.blockTexture(OSMINSTEM_LOG, "_top")))
             .item().tag(TagRegistries.OSMINSTEM_LOGS_ITEMS).build()
             .register();
 
