@@ -45,6 +45,7 @@ public class OsminstemRegistries {
             )
             .tag(ItemTags.SAPLINGS)
             .build()
+
             .register();
 
     public static final BlockEntry<Block> OSMINSTEM_CAP = getRegistrate().object("osminstem_cap")
@@ -52,7 +53,7 @@ public class OsminstemRegistries {
             .properties(p -> OSMINSTEM_PROPERTIES.strength(0.2f))
             .tag(BlockTags.LEAVES)
             .loot((lootTables, block) -> lootTables.add(block, BlockLootTables.createLeavesDrops(
-                    block, Blocks.BIRCH_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES
+                    block, STINKY_OSMIN.get(), NORMAL_LEAVES_SAPLING_CHANCES
             )))
             .item().tag(ItemTags.LEAVES).build()
             .register();

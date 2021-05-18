@@ -58,7 +58,7 @@ public class GrombleRegistries {
             .tag(BlockTags.LEAVES)
             .addLayer(() -> RenderType::cutout)
             .loot((lootTables, block) -> lootTables.add(block, BlockLootTables.createLeavesDrops(
-                    block, GrombleRegistries.GROMBLE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES
+                    block, GROMBLE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES
             )))
             .blockstate(RegistrationUtils::leavesModel)
             .item().tag(ItemTags.LEAVES).build()
