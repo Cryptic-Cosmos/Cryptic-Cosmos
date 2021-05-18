@@ -20,10 +20,12 @@ import net.minecraft.tags.ItemTags;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
+import static com.tterrag.registrate.util.DataIngredient.items;
 import static net.minecraft.block.material.Material.WOOD;
 import static net.minecraft.block.material.MaterialColor.TERRACOTTA_RED;
 import static net.minecraft.data.RecipeProvider.*;
 import static net.minecraft.data.loot.BlockLootTables.NORMAL_LEAVES_SAPLING_CHANCES;
+import static net.minecraft.data.loot.BlockLootTables.createDoorTable;
 
 public class OsminstemRegistries {
     public static final Properties OSMINSTEM_PROPERTIES = Properties.of(WOOD, TERRACOTTA_RED)
@@ -35,8 +37,8 @@ public class OsminstemRegistries {
     public static final BlockEntry<LunaraPlantableSapling> STINKY_OSMIN = getRegistrate().object("stinky_osmin")
             .block(p -> new LunaraPlantableSapling(new OsminstemTree(), p))
             .properties(p -> Properties.copy(Blocks.BIRCH_SAPLING))
-            .tag(BlockTags.SAPLINGS)
             .addLayer(() -> RenderType::cutout)
+            .tag(BlockTags.SAPLINGS)
             .blockstate(RegistrationUtils::crossModel)
 
             .item()
@@ -51,10 +53,10 @@ public class OsminstemRegistries {
     public static final BlockEntry<Block> OSMINSTEM_CAP = getRegistrate().object("osminstem_cap")
             .block(Block::new)
             .properties(p -> OSMINSTEM_PROPERTIES.strength(0.2f))
-            .tag(BlockTags.LEAVES)
             .loot((lootTables, block) -> lootTables.add(block, BlockLootTables.createLeavesDrops(
                     block, STINKY_OSMIN.get(), NORMAL_LEAVES_SAPLING_CHANCES
             )))
+            .tag(BlockTags.LEAVES)
             .item().tag(ItemTags.LEAVES).build()
             .register();
 
@@ -81,8 +83,8 @@ public class OsminstemRegistries {
     public static final BlockEntry<RotatedPillarBlock> OSMINSTEM_WOOD = getRegistrate().object("osminstem_wood")
             .block(RotatedPillarBlock::new)
             .properties(p -> OSMINSTEM_PROPERTIES)
-            .tag(TagRegistries.OSMINSTEM_LOGS)
             .recipe((context, provider) -> woodFromLogs(provider, context.get(), OSMINSTEM_LOG.get()))
+            .tag(TagRegistries.OSMINSTEM_LOGS)
             .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
                     .forAllStates(state -> ConfiguredModel.builder().modelFile(
                             provider.models().cubeAll(context.getName(),
@@ -118,17 +120,17 @@ public class OsminstemRegistries {
     public static final BlockEntry<Block> OSMINSTEM_PLANKS = getRegistrate().object("osminstem_planks")
             .block(Block::new)
             .properties(p -> OSMINSTEM_PROPERTIES)
-            .tag(BlockTags.PLANKS)
             .recipe((context, provider) -> provider.planks(DataIngredient.tag(TagRegistries.OSMINSTEM_LOGS_ITEMS), context))
+            .tag(BlockTags.PLANKS)
             .item().tag(ItemTags.PLANKS).build()
             .register();
 
     public static final BlockEntry<SlabBlock> OSMINSTEM_SLAB = getRegistrate().object("osminstem_slab")
             .block(SlabBlock::new)
             .properties(p -> OSMINSTEM_PROPERTIES)
-            .tag(BlockTags.WOODEN_SLABS)
             .loot((lootTables, block) -> lootTables.add(block, BlockLootTables.createSlabItemTable(block)))
-            .recipe((context, provider) -> provider.slab(DataIngredient.items(OSMINSTEM_PLANKS), context, "wooden_slab", false))
+            .recipe((context, provider) -> provider.slab(items(OSMINSTEM_PLANKS), context, "wooden_slab", false))
+            .tag(BlockTags.WOODEN_SLABS)
             .blockstate((context, provider) -> provider.slabBlock(
                     context.get(),
                     provider.blockTexture(OSMINSTEM_PLANKS.get()),
@@ -140,10 +142,10 @@ public class OsminstemRegistries {
     public static final BlockEntry<StairsBlock> OSMINSTEM_STAIRS = getRegistrate().object("osminstem_stairs")
             .block(p -> new StairsBlock(() -> OSMINSTEM_PLANKS.get().defaultBlockState(), p))
             .properties(p -> OSMINSTEM_PROPERTIES)
-            .tag(BlockTags.WOODEN_STAIRS)
             .recipe((context, provider) ->
-                    provider.stairs(DataIngredient.items(OSMINSTEM_PLANKS), context, "wooden_stairs", false)
+                    provider.stairs(items(OSMINSTEM_PLANKS), context, "wooden_stairs", false)
             )
+            .tag(BlockTags.WOODEN_STAIRS)
             .blockstate((context, provider) -> provider.stairsBlock(
                     context.get(),
                     provider.blockTexture(OSMINSTEM_PLANKS.get())
@@ -155,10 +157,8 @@ public class OsminstemRegistries {
             .block(DoorBlock::new)
             .properties(p -> OSMINSTEM_PROPERTIES.strength(3f).noOcclusion())
             .addLayer(() -> RenderType::cutout)
-            .loot((lootTables, block) ->
-                    lootTables.add(block, BlockLootTables.createDoorTable(block))
-            )
-            .recipe((context, provider) -> provider.door(DataIngredient.items(OSMINSTEM_PLANKS), context, "wooden_door"))
+            .loot((lootTables, block) -> lootTables.add(block, createDoorTable(block)))
+            .recipe((context, provider) -> provider.door(items(OSMINSTEM_PLANKS), context, "wooden_door"))
             .tag(BlockTags.WOODEN_DOORS)
             .blockstate(RegistrationUtils::doorModel)
 
@@ -172,7 +172,7 @@ public class OsminstemRegistries {
             .block(TrapDoorBlock::new)
             .properties(p -> Properties.copy(OSMINSTEM_DOOR.get()))
             .addLayer(() -> RenderType::cutout)
-            .recipe((context, provider) -> provider.trapDoor(DataIngredient.items(OSMINSTEM_PLANKS), context, "wooden_trapdoor"))
+            .recipe((context, provider) -> provider.trapDoor(items(OSMINSTEM_PLANKS), context, "wooden_trapdoor"))
             .tag(BlockTags.WOODEN_TRAPDOORS)
             .blockstate((context, provider) -> provider.trapdoorBlock(context.get(), provider.blockTexture(context.get()), true))
 
@@ -186,8 +186,8 @@ public class OsminstemRegistries {
     public static final BlockEntry<WoodButtonBlock> OSMINSTEM_BUTTON = getRegistrate().object("osminstem_button")
             .block(WoodButtonBlock::new)
             .properties(p -> OSMINSTEM_PROPERTIES)
-            .tag(BlockTags.WOODEN_BUTTONS)
             .recipe((context, provider) -> woodenButton(provider, context.get(), OSMINSTEM_PLANKS.get()))
+            .tag(BlockTags.WOODEN_BUTTONS)
             .blockstate((context, provider) -> RegistrationUtils.buttonModel(context, provider, OSMINSTEM_PLANKS))
 
             .item()
@@ -200,8 +200,8 @@ public class OsminstemRegistries {
     public static final BlockEntry<PressurePlateBlock> OSMINSTEM_PRESSURE_PLATE = getRegistrate().object("osminstem_pressure_plate")
             .block(p -> new PressurePlateBlock(Sensitivity.EVERYTHING, p))
             .properties(p -> OSMINSTEM_PROPERTIES)
-            .tag(BlockTags.WOODEN_PRESSURE_PLATES)
             .recipe((context, provider) -> woodenPressurePlate(provider, context.get(), OSMINSTEM_PLANKS.get()))
+            .tag(BlockTags.WOODEN_PRESSURE_PLATES)
             .blockstate((context, provider) -> RegistrationUtils.pressurePlateModels(context, provider, OSMINSTEM_PLANKS))
             .item().tag(ItemTags.WOODEN_PRESSURE_PLATES).build()
             .register();
@@ -209,8 +209,8 @@ public class OsminstemRegistries {
     public static final BlockEntry<FenceBlock> OSMINSTEM_FENCE = getRegistrate().object("osminstem_fence")
             .block(FenceBlock::new)
             .properties(p -> OSMINSTEM_PROPERTIES)
+            .recipe((context, provider) -> provider.fence(items(OSMINSTEM_PLANKS), context, "wooden_fence"))
             .tag(BlockTags.WOODEN_FENCES)
-            .recipe((context, provider) -> provider.fence(DataIngredient.items(OSMINSTEM_PLANKS), context, "wooden_fence"))
             .blockstate((context, provider) -> provider.fenceBlock(context.get(), provider.blockTexture(OSMINSTEM_PLANKS.get())))
 
             .item()
@@ -224,18 +224,18 @@ public class OsminstemRegistries {
     public static final BlockEntry<FenceGateBlock> OSMINSTEM_FENCE_GATE = getRegistrate().object("osminstem_fence_gate")
             .block(FenceGateBlock::new)
             .properties(p -> OSMINSTEM_PROPERTIES)
+            .recipe((context, provider) -> provider.fenceGate(items(OSMINSTEM_PLANKS), context, "wooden_fence_gate"))
             .tag(BlockTags.FENCE_GATES)
-            .recipe((context, provider) -> provider.fenceGate(DataIngredient.items(OSMINSTEM_PLANKS), context, "wooden_fence_gate"))
             .blockstate((context, provider) -> provider.fenceGateBlock(context.get(), provider.blockTexture(OSMINSTEM_PLANKS.get())))
             .simpleItem()
             .register();
 
     public static final ItemEntry<BoatItem> OSMINSTEM_BOAT = getRegistrate().object("osminstem_boat")
             .item(p -> new BoatItem(BoatEntity.Type.OAK, p))
-            .tag(ItemTags.BOATS)
             .recipe((context, provider) ->
                     woodenBoat(provider, context.get(), OSMINSTEM_PLANKS.get())
             )
+            .tag(ItemTags.BOATS)
             .register();
 
     public static void init() {

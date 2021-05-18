@@ -46,8 +46,8 @@ public class EntityTypeRegistries {
             .renderer(() -> GrombleFrogRender::new)
             .spawnPlacement(PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::checkAnimalSpawnRules)
             .properties(builder -> builder.sized(1f, 1f))
-            .spawnEgg(0xc26d7d, 0x9e427e).build()
             .loot((lootTables, entity) -> lootTables.add(entity, LootTable.lootTable()))
+            .spawnEgg(0xc26d7d, 0x9e427e).build()
             .register();
 
     public static void init() {
