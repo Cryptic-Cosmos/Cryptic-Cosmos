@@ -1,6 +1,6 @@
 package com.crypticcosmos.crypticcosmos.world.feature;
 
-import com.crypticcosmos.crypticcosmos.registries.FeatureRegistries;
+import com.crypticcosmos.crypticcosmos.register.FeatureRegistries;
 import net.minecraft.block.trees.Tree;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;

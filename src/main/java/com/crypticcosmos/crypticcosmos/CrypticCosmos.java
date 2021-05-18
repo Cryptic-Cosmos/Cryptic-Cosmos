@@ -1,8 +1,8 @@
 package com.crypticcosmos.crypticcosmos;
 
-import com.crypticcosmos.crypticcosmos.blocks.RiftBlock;
-import com.crypticcosmos.crypticcosmos.effects.CorruptionEffect.SpawnFrogOnCorruptionKill;
-import com.crypticcosmos.crypticcosmos.registries.*;
+import com.crypticcosmos.crypticcosmos.block.RiftBlock;
+import com.crypticcosmos.crypticcosmos.effect.CorruptionEffect.SpawnFrogOnCorruptionKill;
+import com.crypticcosmos.crypticcosmos.register.*;
 import com.crypticcosmos.crypticcosmos.util.BrewingRecipes;
 import com.crypticcosmos.crypticcosmos.util.LanguageGenerator;
 import com.crypticcosmos.crypticcosmos.world.structures.StructureConfig;

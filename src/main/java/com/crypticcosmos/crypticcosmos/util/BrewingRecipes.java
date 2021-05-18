@@ -1,7 +1,7 @@
 package com.crypticcosmos.crypticcosmos.util;
 
-import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
-import com.crypticcosmos.crypticcosmos.registries.PotionRegistries;
+import com.crypticcosmos.crypticcosmos.register.BlockRegistries;
+import com.crypticcosmos.crypticcosmos.register.PotionRegistries;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionBrewing;

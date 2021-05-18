@@ -1,11 +1,11 @@
 package com.crypticcosmos.crypticcosmos.util;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.blocks.Infectable;
-import com.crypticcosmos.crypticcosmos.blocks.MondroveLog;
-import com.crypticcosmos.crypticcosmos.blocks.OvergrownLunonBlock;
-import com.crypticcosmos.crypticcosmos.registries.LunonRegistries;
-import com.crypticcosmos.crypticcosmos.registries.MondroveRegistries;
+import com.crypticcosmos.crypticcosmos.block.Infectable;
+import com.crypticcosmos.crypticcosmos.block.MondroveLog;
+import com.crypticcosmos.crypticcosmos.block.OvergrownLunonBlock;
+import com.crypticcosmos.crypticcosmos.register.LunonRegistries;
+import com.crypticcosmos.crypticcosmos.register.MondroveRegistries;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;

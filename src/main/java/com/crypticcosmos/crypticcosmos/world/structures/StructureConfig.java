@@ -1,8 +1,8 @@
 package com.crypticcosmos.crypticcosmos.world.structures;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.registries.ConfiguredStructureRegistries;
-import com.crypticcosmos.crypticcosmos.registries.StructureRegistries;
+import com.crypticcosmos.crypticcosmos.register.ConfiguredStructureRegistries;
+import com.crypticcosmos.crypticcosmos.register.StructureRegistries;
 import com.mojang.serialization.Codec;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;

@@ -1,7 +1,7 @@
 package com.crypticcosmos.crypticcosmos.util;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.registries.EffectRegistries;
+import com.crypticcosmos.crypticcosmos.register.EffectRegistries;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.registrate;
 

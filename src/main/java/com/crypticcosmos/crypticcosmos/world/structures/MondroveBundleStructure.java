@@ -1,7 +1,7 @@
 package com.crypticcosmos.crypticcosmos.world.structures;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
+import com.crypticcosmos.crypticcosmos.register.EntityTypeRegistries;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;

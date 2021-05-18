@@ -1,8 +1,8 @@
 package com.crypticcosmos.crypticcosmos.world.biomes;
 
-import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
-import com.crypticcosmos.crypticcosmos.registries.FeatureRegistries;
-import com.crypticcosmos.crypticcosmos.registries.SoundEventRegistries;
+import com.crypticcosmos.crypticcosmos.register.EntityTypeRegistries;
+import com.crypticcosmos.crypticcosmos.register.FeatureRegistries;
+import com.crypticcosmos.crypticcosmos.register.SoundEventRegistries;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -20,8 +20,8 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
 import javax.annotation.Nonnull;
 
-import static com.crypticcosmos.crypticcosmos.registries.BlockRegistries.UMBRAL_DUNE;
-import static com.crypticcosmos.crypticcosmos.registries.LunonRegistries.*;
+import static com.crypticcosmos.crypticcosmos.register.BlockRegistries.UMBRAL_DUNE;
+import static com.crypticcosmos.crypticcosmos.register.LunonRegistries.*;
 import static com.crypticcosmos.crypticcosmos.world.biomes.BiomeHelper.*;
 
 @SuppressWarnings("SameParameterValue")
