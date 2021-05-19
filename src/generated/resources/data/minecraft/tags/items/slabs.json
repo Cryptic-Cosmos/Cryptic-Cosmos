@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "crypticcosmos:lunon_brick_slab",
-    "crypticcosmos:polished_lunon_slab"
+    "crypticcosmos:polished_lunon_slab",
+    "crypticcosmos:polished_cerant_brick_slab",
+    "crypticcosmos:polished_cerant_slab"
   ]
 }

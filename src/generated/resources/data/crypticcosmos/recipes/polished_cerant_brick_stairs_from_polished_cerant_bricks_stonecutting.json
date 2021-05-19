@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "crypticcosmos:polished_cerant_bricks"
+  },
+  "result": "crypticcosmos:polished_cerant_brick_stairs",
+  "count": 1
+}
