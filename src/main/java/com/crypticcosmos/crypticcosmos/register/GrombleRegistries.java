@@ -11,6 +11,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.*;
 import net.minecraft.block.PressurePlateBlock.Sensitivity;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.loot.BlockLootTables;
@@ -33,6 +34,12 @@ public class GrombleRegistries {
     public static final Properties GROMBLE_PROPERTIES = Properties.of(NETHER_WOOD, TERRACOTTA_LIGHT_BLUE)
             .strength(2F)
             .sound(SoundType.STEM);
+
+    public static final Properties GROMBLE_LEAVES_PROPERTIES = AbstractBlock.Properties.of(Material.LEAVES, TERRACOTTA_LIGHT_BLUE)
+            .strength(0.2F)
+            .randomTicks().
+                    sound(SoundType.GRASS)
+            .noOcclusion();
 
     //gromble blocks
     public static final BlockEntry<LunaraPlantableSapling> GROMBLE_SAPLING = getRegistrate().object("gromble_sapling")
@@ -60,7 +67,7 @@ public class GrombleRegistries {
 
     public static final BlockEntry<LeavesBlock> GROMBLE_LEAVES = getRegistrate().object("gromble_leaves")
             .block(LeavesBlock::new)
-            .properties(p -> Properties.copy(Blocks.OAK_LEAVES))
+            .properties(p -> GROMBLE_LEAVES_PROPERTIES)
             .addLayer(() -> RenderType::cutout)
             .loot((lootTables, block) -> lootTables.add(block, BlockLootTables.createLeavesDrops(
                     block, GROMBLE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES

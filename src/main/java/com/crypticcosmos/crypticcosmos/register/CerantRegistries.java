@@ -145,7 +145,7 @@ public class CerantRegistries {
 
     @Nonnull
     private static Properties cerantProperties(Properties p) {
-        return p.strength(2.0f, 10)
+        return p.strength(2.7f, 13)
                 .sound(SoundType.STONE)
                 .harvestLevel(0)
                 .harvestTool(ToolType.PICKAXE)
@@ -154,9 +154,9 @@ public class CerantRegistries {
 
     @Nonnull
     private static Properties phoralCerantProperties(Properties p) {
-        return p.strength(1.6f, 7)
+        return p.strength(2.0f, 9)
                 .sound(SoundType.STONE)
-                .harvestLevel(1)
+                .harvestLevel(0)
                 .harvestTool(ToolType.PICKAXE)
                 .requiresCorrectToolForDrops();
     }

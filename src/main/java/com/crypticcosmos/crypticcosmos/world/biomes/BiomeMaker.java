@@ -1,5 +1,6 @@
 package com.crypticcosmos.crypticcosmos.world.biomes;
 
+import com.crypticcosmos.crypticcosmos.register.CerantRegistries;
 import com.crypticcosmos.crypticcosmos.register.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.register.FeatureRegistries;
 import com.crypticcosmos.crypticcosmos.register.SoundEventRegistries;
@@ -163,9 +164,9 @@ public class BiomeMaker {
 
     public static Biome grombleGrove() {
         final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.NETHER_FOREST, new SurfaceBuilderConfig(
-                GLUM_LUNON.getDefaultState(),
-                LUNON.getDefaultState(),
-                LUNON_DUST.getDefaultState()
+                CerantRegistries.PHORAL_CERANT.getDefaultState(),
+                CerantRegistries.CERANT.getDefaultState(),
+                CerantRegistries.CERANT.getDefaultState()
         ));
 
         genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
