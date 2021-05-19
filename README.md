@@ -23,7 +23,9 @@ Join our [Discord server](https://discord.gg/6BbUpV8jSk)!
 
 - [*Haunted Chest*](https://github.com/hauntedchest13): Creator & owner.
 - [*TheOnlyTails*](https://theonlytails.com/): Programmer & co-owner.
-- [*LudoCrypt*](https://github.com/LudoCrypt): 
+- [*CircleFish*](): Artist, programmer & co-owner.
+- [*LudoCrypt*](https://youtube.com/c/LudoCrypt): [OST](https://ludocrypt.bandcamp.com/album/mundus-volume-alpha) composer.
+- [*Realz*](https://youtube.com/kingrealzyt): Programmer
 - [*Chadboi27*](https://discordapp.com/users/507514606529544194): Artist & modeler. 
 - [*Frogge*](https://discordapp.com/users/780808380310487101): Artist.
 
@@ -33,4 +35,4 @@ This mod supports Minecraft version **1.16.5**. All versions lower are not guara
 
 This mod was built for use with the [Forge](https://forums.minecraftforge.net) mod loader, and no other. We do not bear responsibility to support other ones, such as [Fabric](https://fabricmc.net/) or Rift.
 
-Some FAQ: https://github.com/Cryptic-Cosmos/Cryptic-Cosmos/wiki/FAQ
+Some FAQs: https://github.com/Cryptic-Cosmos/Cryptic-Cosmos/wiki/FAQ
