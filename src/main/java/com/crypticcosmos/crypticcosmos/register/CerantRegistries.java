@@ -17,6 +17,7 @@ import static com.tterrag.registrate.providers.RegistrateRecipeProvider.hasItem;
 import static com.tterrag.registrate.util.DataIngredient.items;
 import static net.minecraft.data.loot.BlockLootTables.createSlabItemTable;
 
+@SuppressWarnings("unused")
 public class CerantRegistries {
     public static final BlockEntry<Block> PHORAL_CERANT = getRegistrate().object("phoral_cerant")
             .block(Material.STONE, Block::new)

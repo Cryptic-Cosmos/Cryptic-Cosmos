@@ -28,6 +28,7 @@ import static net.minecraft.data.RecipeProvider.*;
 import static net.minecraft.data.loot.BlockLootTables.NORMAL_LEAVES_SAPLING_CHANCES;
 import static net.minecraft.data.loot.BlockLootTables.createDoorTable;
 
+@SuppressWarnings("unused")
 public class MondroveRegistries {
     public static final Properties MONDROVE_PROPERTIES = Properties.of(WOOD, TERRACOTTA_PURPLE)
             .strength(2.0F)
