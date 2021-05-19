@@ -131,6 +131,8 @@ shadowJar {
     relocate "com.tterrag.registrate", "com.crypticcosmos.crypticcosmos.repack.registrate"
 }
 
+build.dependsOn shadowJar
+
 repositories {
     maven { url("https://repo.repsy.io/mvn/gandiber/geckolib") }
     maven { // Registrate
