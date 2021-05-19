@@ -30,10 +30,11 @@ public class CerantRegistries {
             .block(Material.STONE, Block::new)
             .properties(CerantRegistries::cerantProperties)
             .tag(TagRegistries.LUNARA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
+            // .item().tag(ItemTags.STONE_CRAFTING_MATERIALS, ItemTags.STONE_TOOL_MATERIALS).build()
             .simpleItem()
             .register();
 
-    public static final BlockEntry<SlabBlock> CERANT_SLAB = getRegistrate().object("polished_cerant_brick_slab")
+    public static final BlockEntry<SlabBlock> CERANT_SLAB = getRegistrate().object("cerant_slab")
             .block(SlabBlock::new)
             .properties(p -> Properties.copy(CERANT.get()))
             .loot((lootTables, block) -> lootTables.add(block, createSlabItemTable(block)))

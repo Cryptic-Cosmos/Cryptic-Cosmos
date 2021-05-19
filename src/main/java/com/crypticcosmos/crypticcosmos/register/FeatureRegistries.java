@@ -22,8 +22,8 @@ import static com.crypticcosmos.crypticcosmos.register.OsminstemRegistries.OSMIN
 public class FeatureRegistries {
     public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> MONDROVE_TREE = registerFeature("mondrove",
             Feature.TREE.configured(new BaseTreeFeatureConfig.Builder(
-                    new SimpleBlockStateProvider(MONDROVE_LOG.get().defaultBlockState()),
-                    new SimpleBlockStateProvider(MONDROVE_LEAVES.get().defaultBlockState()),
+                    new SimpleBlockStateProvider(MONDROVE_LOG.getDefaultState()),
+                    new SimpleBlockStateProvider(MONDROVE_LEAVES.getDefaultState()),
                     new BlobFoliagePlacer(FeatureSpread.fixed(2),
                             FeatureSpread.fixed(0), 3),
                     new StraightTrunkPlacer(4, 2, 0),
