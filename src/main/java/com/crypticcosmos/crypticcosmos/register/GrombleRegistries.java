@@ -52,7 +52,10 @@ public class GrombleRegistries {
 
     public static final BlockEntry<LunaraPlantableBush> GIANT_GROMBLE_BERRY = getRegistrate().object("giant_gromble_berry")
             .block(LunaraPlantableBush::new)
-            .properties(p -> Properties.copy(Blocks.SHROOMLIGHT))
+            .properties(p -> p.strength(1.0F)
+                    .sound(SoundType.SHROOMLIGHT).lightLevel((p_235439_0_) -> {
+                return 15;
+                    }))
             .register();
 
     public static final BlockEntry<LeavesBlock> GROMBLE_LEAVES = getRegistrate().object("gromble_leaves")

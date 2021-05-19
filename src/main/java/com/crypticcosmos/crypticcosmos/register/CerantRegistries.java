@@ -30,7 +30,7 @@ public class CerantRegistries {
             .block(Material.STONE, Block::new)
             .properties(CerantRegistries::cerantProperties)
             .tag(TagRegistries.LUNARA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
-            // .item().tag(ItemTags.STONE_CRAFTING_MATERIALS, ItemTags.STONE_TOOL_MATERIALS).build()
+            .item().tag(ItemTags.STONE_CRAFTING_MATERIALS, ItemTags.STONE_TOOL_MATERIALS).build()
             .simpleItem()
             .register();
 
@@ -51,7 +51,7 @@ public class CerantRegistries {
             .block(Block::new)
             .properties(p -> Properties.copy(CERANT.get())
                     .strength(4.0f, 15)
-                    .harvestLevel(2))
+                    .harvestLevel(0))
             .recipe((context, provider) -> provider.square(items(CERANT), context, true))
             .recipe((context, provider) -> provider.stonecutting(items(CERANT), context))
             .tag(BlockTags.STONE_BRICKS)
