@@ -159,6 +159,6 @@ public class LunonRegistries {
     }
 
     public static void init() {
-        CrypticCosmos.LOGGER.info("BlockRegistries initialized");
+        CrypticCosmos.LOGGER.info("Lunon Registries initialized");
     }
 }

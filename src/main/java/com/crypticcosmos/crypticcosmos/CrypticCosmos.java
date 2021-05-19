@@ -53,6 +53,7 @@ public class CrypticCosmos {
         BlockRegistries.init();
         ItemRegistries.init();
         LunonRegistries.init();
+        CerantRegistries.init();
         MondroveRegistries.init();
         OsminstemRegistries.init();
         GrombleRegistries.init();
