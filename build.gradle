@@ -15,15 +15,20 @@ plugins {
     id "idea"
     id "maven-publish"
 }
- apply plugin: "net.minecraftforge.gradle"
+apply plugin: "net.minecraftforge.gradle"
 
-version = project.mod_version as Object
-group = project.maven_group as Object // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = project.base_name
+version = "$project.minecraft_version-$project.mod_version"
+group = project.maven_group as String // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
 
-println("Java: " + System.getProperty("java.version") + " JVM: " + System.getProperty("java.vm.version") + "(" + System.getProperty("java.vendor") + ") Arch: " + System.getProperty("os.arch"))
+println ("""
+Project: $project.version
+Java: ${System.getProperty("java.version")}
+JVM: ${System.getProperty("java.vm.version")}(${System.getProperty("java.vendor")})
+Arch: ${System.getProperty("os.arch")}
+""")
+
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
     // Channel:   Version:
