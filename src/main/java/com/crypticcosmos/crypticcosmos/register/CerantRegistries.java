@@ -32,6 +32,19 @@ public class CerantRegistries {
             .simpleItem()
             .register();
 
+    public static final BlockEntry<SlabBlock> CERANT_SLAB = getRegistrate().object("polished_cerant_brick_slab")
+            .block(SlabBlock::new)
+            .properties(p -> Properties.copy(CERANT.get()))
+            .loot((lootTables, block) -> lootTables.add(block, createSlabItemTable(block)))
+            .recipe((context, provider) -> provider.slab(items(CERANT), context, null, true))
+            .tag(BlockTags.SLABS)
+            .blockstate((context, provider) -> provider.slabBlock(context.get(),
+                    provider.blockTexture(CERANT.get()),
+                    provider.blockTexture(CERANT.get()))
+            )
+            .item().tag(ItemTags.SLABS).build()
+            .register();
+
     public static final BlockEntry<Block> POLISHED_CERANT_BRICKS = getRegistrate().object("polished_cerant_bricks")
             .block(Block::new)
             .properties(p -> Properties.copy(CERANT.get())
@@ -113,7 +126,7 @@ public class CerantRegistries {
             .properties(p -> Properties.copy(POLISHED_CERANT.get()))
             .recipe((context, provider) ->
                     ShapedRecipeBuilder.shaped(context.get())
-                            .define('#', POLISHED_CERANT_SLAB.get())
+                            .define('#', CERANT_SLAB.get())
                             .pattern("#")
                             .pattern("#")
                             .unlockedBy("has_polished_lunon", hasItem(Blocks.POLISHED_BLACKSTONE))
@@ -123,7 +136,7 @@ public class CerantRegistries {
                     provider.models().cubeColumn(
                             context.getName(),
                             provider.blockTexture(context.get()),
-                            provider.blockTexture(POLISHED_CERANT.get()))
+                            provider.blockTexture(CERANT.get()))
             ))
             .simpleItem()
             .register();
