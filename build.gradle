@@ -15,7 +15,7 @@ plugins {
     id "idea"
     id "maven-publish"
 }
-apply plugin: "net.minecraftforge.gradle"
+ apply plugin: "net.minecraftforge.gradle"
 
 version = project.mod_version as Object
 group = project.maven_group as Object // http://maven.apache.org/guides/mini/guide-naming-conventions.html
