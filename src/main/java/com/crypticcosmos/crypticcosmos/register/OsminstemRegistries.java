@@ -27,6 +27,7 @@ import static net.minecraft.data.RecipeProvider.*;
 import static net.minecraft.data.loot.BlockLootTables.NORMAL_LEAVES_SAPLING_CHANCES;
 import static net.minecraft.data.loot.BlockLootTables.createDoorTable;
 
+@SuppressWarnings("unused")
 public class OsminstemRegistries {
     public static final Properties OSMINSTEM_PROPERTIES = Properties.of(WOOD, TERRACOTTA_RED)
             .strength(2.0F)

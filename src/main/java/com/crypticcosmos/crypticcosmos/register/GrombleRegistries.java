@@ -28,6 +28,7 @@ import static net.minecraft.data.RecipeProvider.*;
 import static net.minecraft.data.loot.BlockLootTables.NORMAL_LEAVES_SAPLING_CHANCES;
 import static net.minecraft.data.loot.BlockLootTables.createDoorTable;
 
+@SuppressWarnings("unused")
 public class GrombleRegistries {
     public static final Properties GROMBLE_PROPERTIES = Properties.of(NETHER_WOOD, TERRACOTTA_LIGHT_BLUE)
             .strength(2F)

@@ -19,6 +19,7 @@ import javax.annotation.Nonnull;
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 import static com.tterrag.registrate.providers.RegistrateRecipeProvider.hasItem;
 
+@SuppressWarnings("unused")
 public class LunonRegistries {
     public static final BlockEntry<OvergrownLunonBlock> OVERGROWN_LUNON = getRegistrate().object("overgrown_lunon")
             .block(Material.STONE, OvergrownLunonBlock::new)
