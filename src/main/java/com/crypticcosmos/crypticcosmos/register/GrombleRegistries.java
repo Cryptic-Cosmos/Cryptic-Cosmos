@@ -74,12 +74,14 @@ public class GrombleRegistries {
                 return 15;
                     }))
             .tag(BlockTags.LEAVES)
+            .simpleItem()
             .register();
 
     public static final BlockEntry<Block> GIANT_ROTTEN_GROMBLE_BERRY = getRegistrate().object("giant_rotten_gromble_berry")
             .block(Material.LEAVES, Block::new)
             .properties(GrombleRegistries::rottenBerryProperties)
             .tag(BlockTags.LEAVES)
+            .simpleItem()
             .register();
 
     public static final BlockEntry<LeavesBlock> GROMBLE_LEAVES = getRegistrate().object("gromble_leaves")
