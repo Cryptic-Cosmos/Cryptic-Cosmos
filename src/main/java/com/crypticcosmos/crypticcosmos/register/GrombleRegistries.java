@@ -8,8 +8,8 @@ import com.crypticcosmos.crypticcosmos.world.feature.GrombleTree;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -20,10 +20,14 @@ import net.minecraft.item.BoatItem;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.common.ToolType;
+
+import javax.annotation.Nonnull;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 import static com.tterrag.registrate.util.DataIngredient.items;
 import static net.minecraft.block.material.Material.NETHER_WOOD;
+import static net.minecraft.block.material.MaterialColor.COLOR_BROWN;
 import static net.minecraft.block.material.MaterialColor.TERRACOTTA_LIGHT_BLUE;
 import static net.minecraft.data.RecipeProvider.*;
 import static net.minecraft.data.loot.BlockLootTables.NORMAL_LEAVES_SAPLING_CHANCES;
@@ -40,6 +44,12 @@ public class GrombleRegistries {
             .randomTicks().
                     sound(SoundType.GRASS)
             .noOcclusion();
+
+    public static final Properties ROTTEN_BERRY_PROPERTIES = Properties.of(Material.LEAVES, COLOR_BROWN)
+            .strength(0.25F)
+            .sound(SoundType.SHROOMLIGHT).lightLevel((p_235439_0_) -> {
+                return 7;
+            });
 
     //gromble blocks
     public static final BlockEntry<LunaraPlantableSapling> GROMBLE_SAPLING = getRegistrate().object("gromble_sapling")
@@ -63,6 +73,11 @@ public class GrombleRegistries {
                     .sound(SoundType.SHROOMLIGHT).lightLevel((p_235439_0_) -> {
                 return 15;
                     }))
+            .register();
+
+    public static final BlockEntry<Block> ROTTEN_GROMBLE_BERRY = getRegistrate().object("rotten_gromble_berry")
+            .block(Material.LEAVES, Block::new)
+            .properties(GrombleRegistries::rottenBerryProperties)
             .register();
 
     public static final BlockEntry<LeavesBlock> GROMBLE_LEAVES = getRegistrate().object("gromble_leaves")
@@ -236,6 +251,18 @@ public class GrombleRegistries {
             )
             .tag(ItemTags.BOATS)
             .register();
+
+    @Nonnull
+    private static Properties rottenBerryProperties(Properties p) {
+        return p.strength(0.25F)
+                .sound(SoundType.SHROOMLIGHT)
+                .lightLevel((p_235439_0_) -> {
+                    return 7;
+                })
+                .harvestLevel(0)
+                .harvestTool(ToolType.PICKAXE)
+                .requiresCorrectToolForDrops();
+    }
 
     public static void init() {
         CrypticCosmos.LOGGER.info("GrombleRegistries initialized");
