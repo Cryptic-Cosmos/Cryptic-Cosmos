@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "crypticcosmos:block/rotten_gromble_berry"
+    "all": "crypticcosmos:block/giant_rotten_gromble_berry"
   }
 }

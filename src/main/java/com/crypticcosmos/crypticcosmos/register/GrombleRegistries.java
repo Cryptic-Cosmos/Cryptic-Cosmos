@@ -73,11 +73,13 @@ public class GrombleRegistries {
                     .sound(SoundType.SHROOMLIGHT).lightLevel((p_235439_0_) -> {
                 return 15;
                     }))
+            .tag(BlockTags.LEAVES)
             .register();
 
-    public static final BlockEntry<Block> ROTTEN_GROMBLE_BERRY = getRegistrate().object("rotten_gromble_berry")
+    public static final BlockEntry<Block> GIANT_ROTTEN_GROMBLE_BERRY = getRegistrate().object("giant_rotten_gromble_berry")
             .block(Material.LEAVES, Block::new)
             .properties(GrombleRegistries::rottenBerryProperties)
+            .tag(BlockTags.LEAVES)
             .register();
 
     public static final BlockEntry<LeavesBlock> GROMBLE_LEAVES = getRegistrate().object("gromble_leaves")
