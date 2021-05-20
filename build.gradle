@@ -171,9 +171,9 @@ jar {
 // This is the preferred method to reobfuscate your jar file
 jar.finalizedBy("reobfJar")
 
-/* reobf {
+reobf {
     shadowJar {} // Tells FG to reobf the file produced by 'shadowJar' task
-} */
+}
 // However if you are in a multi-project build, dev time needs un-obfuscated jar files, so you can delay the obfuscation until publishing by doing
 //publish.dependsOn("reobfJar")
 
