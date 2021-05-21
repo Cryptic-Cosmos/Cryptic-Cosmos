@@ -4,6 +4,8 @@ import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.entity.boat.CCBoatEntity;
 import com.crypticcosmos.crypticcosmos.entity.creature.gromble_frog.GrombleFrogEntity;
 import com.crypticcosmos.crypticcosmos.entity.creature.gromble_frog.GrombleFrogRender;
+import com.crypticcosmos.crypticcosmos.entity.creature.gromble_snatcher.GrombleSnatcherEntity;
+import com.crypticcosmos.crypticcosmos.entity.creature.gromble_snatcher.GrombleSnatcherRender;
 import com.crypticcosmos.crypticcosmos.entity.creature.makrossa_rambler.MakrossaRamblerEntity;
 import com.crypticcosmos.crypticcosmos.entity.creature.makrossa_rambler.MakrossaRamblerRender;
 import com.tterrag.registrate.util.entry.EntityEntry;
@@ -67,6 +69,16 @@ public class EntityTypeRegistries {
             .renderer(() -> GrombleFrogRender::new)
             .spawnPlacement(PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::checkAnimalSpawnRules)
             .properties(builder -> builder.sized(1f, 1f))
+            .loot((lootTables, entity) -> lootTables.add(entity, LootTable.lootTable()))
+            .spawnEgg(0xc26d7d, 0x9e427e).build()
+            .register();
+
+    public static final EntityEntry<GrombleSnatcherEntity> GROMBLE_SNATCHER = getRegistrate().object("gromble_snatcher")
+            .entity(GrombleSnatcherEntity::new, EntityClassification.CREATURE)
+            .attributes(GrombleFrogEntity::setCustomAttributes)
+            .renderer(() -> GrombleSnatcherRender::new)
+            .spawnPlacement(PlacementType.IN_WATER, Heightmap.Type.OCEAN_FLOOR, AnimalEntity::checkMobSpawnRules)
+            .properties(builder -> builder.sized(1.7f, 1.7f))
             .loot((lootTables, entity) -> lootTables.add(entity, LootTable.lootTable()))
             .spawnEgg(0xc26d7d, 0x9e427e).build()
             .register();
