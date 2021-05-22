@@ -77,10 +77,10 @@ public class EntityTypeRegistries {
             .entity(GrombleSnatcherEntity::new, EntityClassification.CREATURE)
             .attributes(GrombleFrogEntity::setCustomAttributes)
             .renderer(() -> GrombleSnatcherRender::new)
-            .spawnPlacement(PlacementType.IN_WATER, Heightmap.Type.OCEAN_FLOOR, AnimalEntity::checkMobSpawnRules)
+            .spawnPlacement(PlacementType.IN_WATER, Heightmap.Type.WORLD_SURFACE, MonsterEntity::checkMonsterSpawnRules)
             .properties(builder -> builder.sized(1.7f, 1.7f))
             .loot((lootTables, entity) -> lootTables.add(entity, LootTable.lootTable()))
-            .spawnEgg(0xc26d7d, 0x9e427e).build()
+            .spawnEgg(0xa6427b, 0x91524c).build()
             .register();
 
     public static void init() {

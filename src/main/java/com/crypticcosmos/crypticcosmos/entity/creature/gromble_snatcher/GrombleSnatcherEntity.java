@@ -9,7 +9,6 @@ import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.DamageSource;
@@ -17,10 +16,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Lazy;
 import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
@@ -41,8 +37,8 @@ public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable 
 
     public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
         return createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 10f)
-                .add(Attributes.MOVEMENT_SPEED, 0.2f);
+                .add(Attributes.MAX_HEALTH, 40f)
+                .add(Attributes.MOVEMENT_SPEED, 0.03f);
     }
 
     @Override
@@ -62,18 +58,11 @@ public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable 
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 5, this::predicate));
     }
 
     @Override
     public AnimationFactory getFactory() {
         return this.factory;
-    }
-
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        AnimationController<?> controller = event.getController();
-        controller.setAnimation(event.isMoving() ? WALK_ANIM : IDLE_ANIM);
-        return PlayState.CONTINUE;
     }
 
     @Override
