@@ -75,7 +75,7 @@ public class EntityTypeRegistries {
 
     public static final EntityEntry<GrombleSnatcherEntity> GROMBLE_SNATCHER = getRegistrate().object("gromble_snatcher")
             .entity(GrombleSnatcherEntity::new, EntityClassification.CREATURE)
-            .attributes(GrombleFrogEntity::setCustomAttributes)
+            .attributes(GrombleSnatcherEntity::setCustomAttributes)
             .renderer(() -> GrombleSnatcherRender::new)
             .spawnPlacement(PlacementType.IN_WATER, Heightmap.Type.WORLD_SURFACE, MonsterEntity::checkMonsterSpawnRules)
             .properties(builder -> builder.sized(1.7f, 1.7f))
