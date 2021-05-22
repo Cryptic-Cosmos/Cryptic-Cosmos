@@ -22,6 +22,9 @@ import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import javax.annotation.Nullable;
+import java.util.function.Predicate;
+
 public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable {
 
     private static final Lazy<Ingredient> BREEDING_ITEM = Lazy.of(
@@ -93,19 +96,28 @@ public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable 
         return SoundEventRegistries.GROMBLE_FROG_DEATH.get();
     }
 
-    @Override
-    public void aiStep(){
-        CrypticCosmos.LOGGER.info("blah");
-        if(!this.level.getNearbyEntities(LivingEntity.class,
-                                        new EntityPredicate(),
-                              GrombleSnatcherEntity.this,
-                                        GrombleSnatcherEntity.this.getBoundingBox().inflate(12.0D, 12.0D, 12.0D)).isEmpty()){
-            CrypticCosmos.LOGGER.info("Player nearby!!!!");
-            Explosion.Mode explosion = Explosion.Mode.DESTROY;
-            float f = 2.0F;
-            float explosionRadius = 100.0F;
-            this.level.explode(this, this.getX(), this.getY(), this.getZ(), explosionRadius * f, explosion);
+    public class TruePredicate extends EntityPredicate {
+        @Override
+        public boolean test(@Nullable LivingEntity p_221015_1_, LivingEntity p_221015_2_) {
+            if (p_221015_1_ instanceof PlayerEntity || (p_221015_2_ instanceof PlayerEntity)) {
+                return true;
+            }
+            return false;
         }
-        super.aiStep();
+    }
+
+    @Override
+    public void tick(){
+        //
+        for(Entity ent: this.level.getNearbyEntities(LivingEntity.class,
+                                        new TruePredicate(),
+                              GrombleSnatcherEntity.this,
+                                        GrombleSnatcherEntity.this.getBoundingBox().inflate(2.0D, 2.0D, 2.0D))){
+            CrypticCosmos.LOGGER.info(ent.getClass().toString() + " Exploding!!!");
+            Explosion.Mode explosion = Explosion.Mode.NONE;
+            float explosionRadius = 10.0F;
+            this.level.explode(this, this.getX(), this.getY(), this.getZ(), explosionRadius, explosion);
+        }
+        super.tick();
     }
 }
