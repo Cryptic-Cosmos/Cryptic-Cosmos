@@ -44,7 +44,7 @@ public class MakrossaRamblerEntity extends MonsterEntity implements IAnimatable 
     @Nonnull
     public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
         return createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 50f)
+                .add(Attributes.MAX_HEALTH, 25.5f)
                 .add(Attributes.MOVEMENT_SPEED, 0.5f)
                 .add(Attributes.ATTACK_DAMAGE, 6f)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 4f);
