@@ -1,18 +1,20 @@
 package com.crypticcosmos.crypticcosmos.entity.creature.gromble_snatcher;
 
+import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.register.MondroveRegistries;
 import com.crypticcosmos.crypticcosmos.register.SoundEventRegistries;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.Pose;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Lazy;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -89,5 +91,21 @@ public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable 
     @Override
     protected SoundEvent getDeathSound() {
         return SoundEventRegistries.GROMBLE_FROG_DEATH.get();
+    }
+
+    @Override
+    public void aiStep(){
+        CrypticCosmos.LOGGER.info("blah");
+        if(!this.level.getNearbyEntities(LivingEntity.class,
+                                        new EntityPredicate(),
+                              GrombleSnatcherEntity.this,
+                                        GrombleSnatcherEntity.this.getBoundingBox().inflate(12.0D, 12.0D, 12.0D)).isEmpty()){
+            CrypticCosmos.LOGGER.info("Player nearby!!!!");
+            Explosion.Mode explosion = Explosion.Mode.DESTROY;
+            float f = 2.0F;
+            float explosionRadius = 100.0F;
+            this.level.explode(this, this.getX(), this.getY(), this.getZ(), explosionRadius * f, explosion);
+        }
+        super.aiStep();
     }
 }
