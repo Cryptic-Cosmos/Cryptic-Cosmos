@@ -7,13 +7,14 @@ import com.crypticcosmos.crypticcosmos.register.SoundEventRegistries;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.LookAtGoal;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -24,8 +25,6 @@ import javax.annotation.Nullable;
 import java.util.function.Predicate;
 
 public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable {
-
-
     private final AnimationFactory factory = new AnimationFactory(this);
 
     public GrombleSnatcherEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
@@ -38,8 +37,9 @@ public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable 
         return createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 50f)
                 .add(Attributes.MOVEMENT_SPEED, 0f)
-                .add(Attributes.ATTACK_DAMAGE, 0f)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 400000f);
+                .add(Attributes.ATTACK_DAMAGE, 1f)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 400000f)
+                .add(Attributes.FOLLOW_RANGE, 50D);
     }
 
     @Override
@@ -50,7 +50,11 @@ public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable 
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 6.0F));
+        this.goalSelector.addGoal(1, new LookAtGoal(this, PlayerEntity.class, 100.0F));
+        //this.goalSelector.addGoal(3, new SnatchGoal(this, 1.0D, 20, 21, 7.0F));
+        //this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(2, new SnatchGoal(this, 1.0D, true));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true, true));
     }
 
     @Override
@@ -88,28 +92,14 @@ public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable 
         return SoundEventRegistries.GROMBLE_FROG_DEATH.get();
     }
 
-    public class TruePredicate extends EntityPredicate {
-        @Override
-        public boolean test(@Nullable LivingEntity p_221015_1_, LivingEntity p_221015_2_) {
-            if (p_221015_1_ instanceof PlayerEntity || (p_221015_2_ instanceof PlayerEntity)) {
-                return true;
-            }
-            return false;
-        }
-    }
-
-    @Override
-    public void tick(){
-        //
-        for(Entity ent: this.level.getNearbyEntities(LivingEntity.class,
-                                        new TruePredicate(),
-                              GrombleSnatcherEntity.this,
-                                        GrombleSnatcherEntity.this.getBoundingBox().inflate(2.0D, 2.0D, 2.0D))){
-            CrypticCosmos.LOGGER.info(ent.getClass().toString() + " Exploding!!!");
-            Explosion.Mode explosion = Explosion.Mode.NONE;
-            float explosionRadius = 10.0F;
-            this.level.explode(this, this.getX(), this.getY(), this.getZ(), explosionRadius, explosion);
-        }
-        super.tick();
-    }
+    /*@Override
+    public void performRangedAttack(LivingEntity victim, float p_82196_2_) {
+        CrypticCosmos.LOGGER.info("checkAndPerformAttack");
+        double distanceToVictim = this.position().distanceToSqr(victim.position());
+        //pulling the victim
+        Vector3d delta = this.position().subtract(victim.position());
+        victim.push(delta.x(), delta.y(), delta.z());
+        //pushing the victim
+        victim.push(0, 5, 5);
+    }*/
 }
