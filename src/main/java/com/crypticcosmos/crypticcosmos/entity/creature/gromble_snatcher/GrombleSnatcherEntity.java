@@ -2,14 +2,12 @@ package com.crypticcosmos.crypticcosmos.entity.creature.gromble_snatcher;
 
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.register.MondroveRegistries;
 import com.crypticcosmos.crypticcosmos.register.SoundEventRegistries;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
@@ -22,7 +20,6 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import javax.annotation.Nullable;
-import java.util.function.Predicate;
 
 public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
