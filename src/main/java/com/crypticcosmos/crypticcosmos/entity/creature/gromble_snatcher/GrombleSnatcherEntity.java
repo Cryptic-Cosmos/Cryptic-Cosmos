@@ -50,8 +50,8 @@ public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable 
         this.goalSelector.addGoal(1, new LookAtGoal(this, PlayerEntity.class, 100.0F));
         //this.goalSelector.addGoal(3, new SnatchGoal(this, 1.0D, 20, 21, 7.0F));
         //this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
-        this.goalSelector.addGoal(2, new SnatchGoal(this, 1.0D, true));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true, true));
+        this.goalSelector.addGoal(3, new SnatchGoal(this, 1.0D, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true, true));
     }
 
     @Override

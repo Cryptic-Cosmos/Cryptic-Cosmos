@@ -6,6 +6,8 @@ import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.RangedAttackGoal;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 
 public class SnatchGoal extends MeleeAttackGoal
@@ -18,18 +20,20 @@ public class SnatchGoal extends MeleeAttackGoal
     }
 
     protected void checkAndPerformAttack(LivingEntity victim, double p_190102_2_) {
-        super.checkAndPerformAttack(victim, p_190102_2_);
+        //super.checkAndPerformAttack(victim, p_190102_2_);
         double distanceToVictim = this.mob.position().distanceToSqr(victim.position());
         //pulling the victim
-        if (distanceToVictim > 0 && distanceToVictim < 14 && this.getTicksUntilNextAttack() <= 0) {
-            victim.moveTo(this.mob.position());
+        if (distanceToVictim > 5 && distanceToVictim < 50) {
+            victim.push(this.mob.position().x() - victim.position().x(), 0, this.mob.position().z() - victim.position().z());
             CrypticCosmos.LOGGER.info("checkAndPerformAttack Pull, distance: " + Double.toString(distanceToVictim));
+            this.resetAttackCooldown();
         }
-        else if (this.getTicksUntilNextAttack() <= 0 && distanceToVictim < 2) {
-            //Vector3d currentPos = victim.position();
-            //victim.moveTo(currentPos.x(), currentPos.y() + 50, currentPos.z());
-            victim.push(0, 5.0, 5.0);
+        else if (distanceToVictim <= 5) {
+            Vector3d currentPos = victim.position();
+            //victim.moveTo(currentPos.x(), currentPos.y() + 50, currentPos.z() + 50);
+            victim.push(0, 100, 100);
             CrypticCosmos.LOGGER.info("checkAndPerformAttack Push, distance: " + Double.toString(distanceToVictim));
+            this.resetAttackCooldown();
         }
     }
 
