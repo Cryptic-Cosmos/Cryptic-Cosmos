@@ -26,6 +26,45 @@ public class CerantRegistries {
             .simpleItem()
             .register();
 
+    public static final BlockEntry<Block> POLISHED_PHORAL_CERANT = getRegistrate().object("polished_phoral_cerant")
+            .block(Block::new)
+            .properties(p -> Properties.copy(PHORAL_CERANT.get()))
+            .recipe((context, provider) -> provider.smelting(items(PHORAL_CERANT), context, .1f, 200))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> CUT_PHORAL_CERANT = getRegistrate().object("cut_phoral_cerant")
+            .block(Block::new)
+            .properties(p -> Properties.copy(PHORAL_CERANT.get()))
+            .recipe((context, provider) ->
+                    ShapedRecipeBuilder.shaped(context.get())
+                            .define('#', PHORAL_CERANT.get())
+                            .pattern("##")
+                            .pattern("##")
+                            .unlockedBy("has_polished_lunon", hasItem(Blocks.POLISHED_BLACKSTONE))
+                            .save(provider, provider.safeId(context.get()))
+            )
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> POLISHED_CUT_PHORAL_CERANT = getRegistrate().object("polished_cut_phoral_cerant")
+            .block(Block::new)
+            .properties(p -> Properties.copy(PHORAL_CERANT.get()))
+            .recipe((context, provider) -> provider.smelting(items(PHORAL_CERANT), context, .1f, 200))
+            .simpleItem()
+            .register();
+
+    public static final BlockEntry<Block> POLISHED_CUT_PHORAL_CERANT_BRICKS = getRegistrate().object("polished_cut_phoral_cerant_bricks")
+            .block(Block::new)
+            .properties(p -> Properties.copy(CUT_PHORAL_CERANT.get())
+                    .strength(4.0f, 15)
+                    .harvestLevel(0))
+            .recipe((context, provider) -> provider.square(items(CUT_PHORAL_CERANT), context, true))
+            .recipe((context, provider) -> provider.stonecutting(items(CUT_PHORAL_CERANT), context))
+            .tag(BlockTags.STONE_BRICKS)
+            .item().tag(ItemTags.STONE_BRICKS).build()
+            .register();
+
     public static final BlockEntry<Block> CERANT = getRegistrate().object("cerant")
             .block(Material.STONE, Block::new)
             .properties(CerantRegistries::cerantProperties)
