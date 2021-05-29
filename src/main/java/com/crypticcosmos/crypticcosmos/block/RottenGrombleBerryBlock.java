@@ -32,12 +32,13 @@ public class RottenGrombleBerryBlock extends Block {
     }
 
     @Override
-    public void randomTick(@Nonnull BlockState state, @Nonnull ServerWorld world, @Nonnull BlockPos position, @Nonnull Random rand) {
-        AxisAlignedBB range = new AxisAlignedBB(position.getX(), position.getY(), position.getZ(), position.getX() + 12.0D, position.getY() + 6.0D, position.getZ() + 12.0D);
+    public void tick(@Nonnull BlockState state, @Nonnull ServerWorld world, @Nonnull BlockPos position, @Nonnull Random rand) {
+        AxisAlignedBB range = new AxisAlignedBB(position.getX(), position.getY(), position.getZ(), position.getX() + 15.0D, position.getY() + 15.0D, position.getZ() + 15.0D);
         List<PlayerEntity> playerEntityList = world.getLevel().getNearbyEntities(PlayerEntity.class, new EntityPredicate(), null, range);
         if(!playerEntityList.isEmpty()){
             for (PlayerEntity playerEntity : playerEntityList){
-              playerEntity.addEffect(new EffectInstance(EffectRegistries.EFFLUVIUM.get(), 1200, 1));
+              playerEntity.addEffect(new EffectInstance(EffectRegistries.EFFLUVIUM.get(), 300));
+              CrypticCosmos.LOGGER.info("Effect added to the player!!!");
             }
             CrypticCosmos.LOGGER.info("Found player!!!");
             PlayerEntity p;

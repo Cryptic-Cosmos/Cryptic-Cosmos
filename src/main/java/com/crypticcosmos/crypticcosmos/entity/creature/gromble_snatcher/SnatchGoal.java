@@ -40,7 +40,7 @@ public class SnatchGoal extends MeleeAttackGoal
             victim.hurt(DamageSource.mobAttack(this.mob), 1);
             Vector3d currentPos = victim.position();
             //victim.moveTo(currentPos.x(), currentPos.y() + 50, currentPos.z() + 50);
-            victim.push(0, 100.0D, 100.0D);
+            victim.push(0, 0.5D, 0.5D);
             CrypticCosmos.LOGGER.info("checkAndPerformAttack Push, distance: " + Double.toString(distanceToVictim));
             this.resetAttackCooldown();
         }
