@@ -11,7 +11,7 @@ public class EffluviumEffect extends Effect {
     }
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
-        
+
 
     }
 
