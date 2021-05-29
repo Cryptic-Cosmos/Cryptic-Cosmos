@@ -2,6 +2,7 @@ package com.crypticcosmos.crypticcosmos.register;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.effect.CorruptionEffect;
+import com.crypticcosmos.crypticcosmos.effect.EffluviumEffect;
 import com.crypticcosmos.crypticcosmos.effect.PurificationEffect;
 import net.minecraft.potion.Effect;
 import net.minecraftforge.fml.RegistryObject;
@@ -16,4 +17,7 @@ public class EffectRegistries {
 
     public static final RegistryObject<Effect> PURIFICATION =
             EFFECTS.register("purification", PurificationEffect::new);
+
+    public static final RegistryObject<Effect> EFFLUVIUM =
+            EFFECTS.register("effluvium", EffluviumEffect::new);
 }
