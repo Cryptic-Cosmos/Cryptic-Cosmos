@@ -3,6 +3,7 @@ package com.crypticcosmos.crypticcosmos.register;
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.block.LunaraPlantableBush;
 import com.crypticcosmos.crypticcosmos.block.LunaraPlantableSapling;
+import com.crypticcosmos.crypticcosmos.block.RottenGrombleBerryBlock;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
 import com.crypticcosmos.crypticcosmos.world.feature.GrombleTree;
 import com.tterrag.registrate.util.DataIngredient;
@@ -77,8 +78,8 @@ public class GrombleRegistries {
             .simpleItem()
             .register();
 
-    public static final BlockEntry<Block> GIANT_ROTTEN_GROMBLE_BERRY = getRegistrate().object("giant_rotten_gromble_berry")
-            .block(Material.LEAVES, Block::new)
+    public static final BlockEntry<RottenGrombleBerryBlock> GIANT_ROTTEN_GROMBLE_BERRY = getRegistrate().object("giant_rotten_gromble_berry")
+            .block(Material.LEAVES, RottenGrombleBerryBlock::new)
             .properties(GrombleRegistries::rottenBerryProperties)
             .tag(BlockTags.LEAVES)
             .simpleItem()
