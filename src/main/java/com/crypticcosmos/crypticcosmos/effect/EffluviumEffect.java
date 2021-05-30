@@ -23,7 +23,8 @@ public class EffluviumEffect extends Effect {
 
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
-        AxisAlignedBB range = new AxisAlignedBB(entity.getX(), entity.getY(), entity.getZ(), entity.getX() + 15.0D, entity.getY() + 15.0D, entity.getZ() + 15.0D);
+        double radius = 15.0D;
+        AxisAlignedBB range = new AxisAlignedBB(entity.getX() - radius, entity.getY() - radius, entity.getZ() - radius, entity.getX() + radius, entity.getY() + radius, entity.getZ() + radius);
         List<LivingEntity> livingEntityList = entity.level.getNearbyEntities(MobEntity.class, new EntityPredicate(), null, range);
         if (!livingEntityList.isEmpty()) {
             for (LivingEntity livingEntity : livingEntityList) {
