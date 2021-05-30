@@ -39,6 +39,8 @@ public class EffluviumEffect extends Effect {
 
     @Override
     public boolean isDurationEffectTick(int duration, int amplifier) {
-        return true;
+        int j = 25 >> amplifier;
+        if (j > 0) return duration % j == 0;
+        else return true;
     }
 }

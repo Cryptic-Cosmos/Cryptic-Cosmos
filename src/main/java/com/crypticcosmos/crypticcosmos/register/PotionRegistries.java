@@ -27,6 +27,22 @@ public class PotionRegistries {
                     new EffectInstance(EffectRegistries.CORRUPTION.get(), 90 * 20, 1))
     );
 
+    // Corruption
+    public static final RegistryObject<Potion> EFFLUVIUM = POTIONS.register("effluvium", () ->
+            new Potion("effluvium",
+                    new EffectInstance(EffectRegistries.EFFLUVIUM.get(), 90 * 20))
+    );
+
+    public static final RegistryObject<Potion> LONG_EFFLUVIUM = POTIONS.register("long_effluvium", () ->
+            new Potion("effluvium",
+                    new EffectInstance(EffectRegistries.EFFLUVIUM.get(), 240 * 20))
+    );
+
+    public static final RegistryObject<Potion> STRONG_EFFLUVIUM = POTIONS.register("strong_effluvium", () ->
+            new Potion("effluvium",
+                    new EffectInstance(EffectRegistries.EFFLUVIUM.get(), 90 * 20, 1))
+    );
+
     // Purification
     public static final RegistryObject<Potion> PURIFICATION = POTIONS.register("purification", () ->
             new Potion("purification",
