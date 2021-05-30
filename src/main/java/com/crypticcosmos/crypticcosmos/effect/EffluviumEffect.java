@@ -1,18 +1,14 @@
 package com.crypticcosmos.crypticcosmos.effect;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.register.EffectRegistries;
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.entity.passive.CatEntity;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.EntityPredicate;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class EffluviumEffect extends Effect {
@@ -28,9 +24,11 @@ public class EffluviumEffect extends Effect {
         if (!livingEntityList.isEmpty()) {
             for (LivingEntity livingEntity : livingEntityList) {
                 if (livingEntity.getHealth() > 1.0F) {
-                    livingEntity.hurt(DamageSource.MAGIC, 1.0F);
+                    livingEntity.hurt(DamageSource.IN_WALL, 1.0F);
                     livingEntity.push(livingEntity.position().x() - entity.position().x() - 8.0D, 0.1D, livingEntity.position().z() - entity.position().z() - 8.0D);
                     CrypticCosmos.LOGGER.info("The smell is so bad...");
+                } else {
+                    livingEntity.hurt(DamageSource.IN_WALL, 1.0F);
                 }
                 CrypticCosmos.LOGGER.info("Entity running for their noses' lives!!!");
             }
