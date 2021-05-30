@@ -11,8 +11,10 @@ import net.minecraft.entity.passive.OcelotEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.pathfinding.Path;
 import net.minecraft.pathfinding.PathNavigator;
+import net.minecraft.entity.EntityPredicate;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityPredicates;
@@ -34,17 +36,6 @@ public class EffluviumEffect extends Effect {
     public void applyEffectTick(LivingEntity entity, int amplifier) {
         double radius = 15.0D;
         AxisAlignedBB range = new AxisAlignedBB(entity.getX() - radius, entity.getY() - radius, entity.getZ() - radius, entity.getX() + radius, entity.getY() + radius, entity.getZ() + radius);
-        /*List<LivingEntity> livingEntityList = entity.level.getNearbyEntities(MobEntity.class, new EntityPredicate(), null, range);
-        if (!livingEntityList.isEmpty()) {
-            for (LivingEntity livingEntity : livingEntityList) {
-                if (livingEntity.getHealth() > 1.0F) {
-                    livingEntity.hurt(DamageSource.MAGIC, 1.0F);
-                    livingEntity.push(livingEntity.position().x() - entity.position().x() - 8.0D, 0.1D, livingEntity.position().z() - entity.position().z() - 8.0D);
-                    CrypticCosmos.LOGGER.info("The smell is so bad...");
-                }
-                CrypticCosmos.LOGGER.info("Entity running for their noses' lives!!!");
-            }
-        }*/
         List<MobEntity> livingEntityList = entity.level.getNearbyEntities(MobEntity.class, new EntityPredicate(), null, range);
         if (!livingEntityList.isEmpty()) {
             for (MobEntity livingEntity : livingEntityList) {
@@ -65,6 +56,8 @@ public class EffluviumEffect extends Effect {
 
     @Override
     public boolean isDurationEffectTick(int duration, int amplifier) {
-        return true;
+        int j = 25 >> amplifier;
+        if (j > 0) return duration % j == 0;
+        else return true;
     }
 }

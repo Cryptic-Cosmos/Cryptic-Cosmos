@@ -31,7 +31,7 @@ public class CrypticCosmos {
         @Nonnull
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(LunonRegistries.OVERGROWN_LUNON.get());
+            return new ItemStack(CerantRegistries.CERANT.get());
         }
     };
 
