@@ -27,6 +27,7 @@ import javax.annotation.Nonnull;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 import static com.tterrag.registrate.util.DataIngredient.items;
+import static net.minecraft.block.material.Material.GRASS;
 import static net.minecraft.block.material.Material.NETHER_WOOD;
 import static net.minecraft.block.material.MaterialColor.COLOR_BROWN;
 import static net.minecraft.block.material.MaterialColor.TERRACOTTA_LIGHT_BLUE;
@@ -39,6 +40,11 @@ public class GrombleRegistries {
     public static final Properties GROMBLE_PROPERTIES = Properties.of(NETHER_WOOD, TERRACOTTA_LIGHT_BLUE)
             .strength(2F)
             .sound(SoundType.STEM);
+
+    public static final Properties GROMBLE_STEM_PROPERTIES = Properties.of(GRASS, TERRACOTTA_LIGHT_BLUE)
+            .strength(0.3F)
+            .noCollission()
+            .sound(SoundType.GRASS);
 
     public static final Properties GROMBLE_LEAVES_PROPERTIES = AbstractBlock.Properties.of(Material.LEAVES, TERRACOTTA_LIGHT_BLUE)
             .strength(0.2F)
@@ -83,6 +89,32 @@ public class GrombleRegistries {
             .properties(GrombleRegistries::rottenBerryProperties)
             .tag(BlockTags.LEAVES)
             .simpleItem()
+            .register();
+
+    public static final BlockEntry<RottenGrombleBerryBlock> GROMBLE_SPROUT = getRegistrate().object("gromble_sprout")
+            .block(Material.GRASS, RottenGrombleBerryBlock::new)
+            .properties(p -> GROMBLE_STEM_PROPERTIES)
+            .addLayer(() -> RenderType::cutout)
+            .blockstate(RegistrationUtils::crossModel)
+
+            .item()
+            .model((context, provider) -> provider.generated(context,
+                    provider.modLoc("block/" + provider.name(context)))
+            )
+            .build()
+            .register();
+
+    public static final BlockEntry<RottenGrombleBerryBlock> GROMBLE_STEM = getRegistrate().object("gromble_stem")
+            .block(Material.GRASS, RottenGrombleBerryBlock::new)
+            .properties(p -> GROMBLE_STEM_PROPERTIES)
+            .addLayer(() -> RenderType::cutout)
+            .blockstate(RegistrationUtils::crossModel)
+
+            .item()
+            .model((context, provider) -> provider.generated(context,
+                    provider.modLoc("block/" + provider.name(context)))
+            )
+            .build()
             .register();
 
     public static final BlockEntry<LeavesBlock> GROMBLE_LEAVES = getRegistrate().object("gromble_leaves")
