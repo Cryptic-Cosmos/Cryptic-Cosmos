@@ -42,9 +42,9 @@ public class RegistrationUtils {
         final String name = context.getId().getPath() + infectionLevel;
 
         return ConfiguredModel.builder().modelFile(provider.models().cubeColumn(
-                name,
-                blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), !isStripped ? infectionLevel : ""),
-                blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), "_top")))
+                        name,
+                        blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), !isStripped ? infectionLevel : ""),
+                        blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), "_top")))
                 .rotationX(axis.equals(Axis.Z) || axis.equals(Axis.X) ? 90 : 0)
                 .rotationY(axis.equals(Axis.X) ? 90 : 0).build();
     }
@@ -59,12 +59,12 @@ public class RegistrationUtils {
         final String name = context.getId().getPath() + infectionLevel;
 
         return ConfiguredModel.builder().modelFile(provider.models().cubeAll(
-                name,
-                blockTexture(isStripped ? "stripped_" : "",
-                        MondroveRegistries.MONDROVE_LOG.get(),
-                        !isStripped ? infectionLevel : ""
-                ))
-        ).rotationX(axis.equals(Axis.Z) || axis.equals(Axis.X) ? 90 : 0)
+                        name,
+                        blockTexture(isStripped ? "stripped_" : "",
+                                MondroveRegistries.MONDROVE_LOG.get(),
+                                !isStripped ? infectionLevel : ""
+                        ))
+                ).rotationX(axis.equals(Axis.Z) || axis.equals(Axis.X) ? 90 : 0)
                 .rotationY(axis.equals(Axis.X) ? 90 : 0).build();
     }
 
@@ -80,10 +80,10 @@ public class RegistrationUtils {
 
                     if (!isSnowy) {
                         builder.modelFile(provider.models().cubeBottomTop(
-                                id,
-                                blockTexture(context, "_side"),
-                                provider.blockTexture(LunonRegistries.LUNON.get()),
-                                blockTexture(context, "_top")))
+                                        id,
+                                        blockTexture(context, "_side"),
+                                        provider.blockTexture(LunonRegistries.LUNON.get()),
+                                        blockTexture(context, "_top")))
                                 .rotationY(degree);
                     } else {
                         builder.modelFile(provider.models().cubeBottomTop(
@@ -101,9 +101,9 @@ public class RegistrationUtils {
     public static void leavesModel(DataGenContext<Block, LeavesBlock> context, RegistrateBlockstateProvider provider) {
         provider.getVariantBuilder(context.get())
                 .forAllStates(state -> ConfiguredModel.builder().modelFile(
-                        provider.models()
-                                .withExistingParent(context.getId().getPath(), provider.mcLoc("leaves"))
-                                .texture("all", provider.blockTexture(context.get()))
+                                provider.models()
+                                        .withExistingParent(context.getId().getPath(), provider.mcLoc("leaves"))
+                                        .texture("all", provider.blockTexture(context.get()))
                         ).build()
                 );
     }

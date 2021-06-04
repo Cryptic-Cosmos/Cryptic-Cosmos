@@ -49,13 +49,6 @@ public class MondroveBundleStructure extends Structure<NoFeatureConfig> {
         return GenerationStage.Decoration.SURFACE_STRUCTURES;
     }
 
-    // @Override
-    // public List<MobSpawnInfo.Spawners> getDefaultSpawnList() {
-    //     return ImmutableList.of(
-    //             new MobSpawnInfo.Spawners(EntityTypeRegistries.MAKROSSA_RAMBLER.get(), 100, 4, 9)
-    //     );
-    // }
-
     @Override
     public List<MobSpawnInfo.Spawners> getDefaultCreatureSpawnList() {
         return ImmutableList.of(

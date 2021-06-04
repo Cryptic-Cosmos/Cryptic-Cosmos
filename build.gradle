@@ -22,7 +22,7 @@ group = project.maven_group as String // http://maven.apache.org/guides/mini/gui
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
 
-println ("""
+println("""
 Project: $project.version
 Java: ${System.getProperty("java.version")}
 JVM: ${System.getProperty("java.vm.version")}(${System.getProperty("java.vendor")})
@@ -190,9 +190,10 @@ publishing {
     }
 }
 
+
+import groovy.json.JsonOutput
 import groovy.json.JsonParserType
 import groovy.json.JsonSlurper
-import groovy.json.JsonOutput
 
 processResources {
     // Will allow gradle.properties version fill inside mods.toml file

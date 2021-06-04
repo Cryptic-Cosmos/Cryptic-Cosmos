@@ -7,11 +7,11 @@ import com.crypticcosmos.crypticcosmos.util.BrewingRecipes;
 import com.crypticcosmos.crypticcosmos.util.LanguageGenerator;
 import com.crypticcosmos.crypticcosmos.world.structures.StructureConfig;
 import com.tterrag.registrate.Registrate;
-import com.tterrag.registrate.util.NonNullLazyValue;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -25,7 +25,7 @@ import javax.annotation.Nonnull;
 
 @Mod(CrypticCosmos.MOD_ID)
 public class CrypticCosmos {
-    public static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger(CrypticCosmos.class);
     public static final String MOD_ID = "crypticcosmos";
     public static final ItemGroup CRYPTIC_COSMOS_ITEM_GROUP = new ItemGroup("cryptic_cosmos_tab") {
         @Nonnull
@@ -35,7 +35,7 @@ public class CrypticCosmos {
         }
     };
 
-    public static final NonNullLazyValue<Registrate> registrate = new NonNullLazyValue<>(() ->
+    public static final Lazy<Registrate> registrate = Lazy.of(() ->
             Registrate.create(MOD_ID).itemGroup(() -> CRYPTIC_COSMOS_ITEM_GROUP, "Cryptic Cosmos Materials")
     );
 
@@ -67,7 +67,7 @@ public class CrypticCosmos {
         PotionRegistries.POTIONS.register(modEventBus);
         MinecraftForge.EVENT_BUS.addListener(CommandRegistries::registerCommands);
 
-        forgeBus.addListener(EventPriority.NORMAL, StructureConfig::addDimensionalSpacing);
+        forgeBus.addListener(StructureConfig::addDimensionalSpacing);
 
         // The comments for BiomeLoadingEvent and StructureSpawnListGatherEvent says to do HIGH for additions.
         forgeBus.addListener(EventPriority.HIGH, StructureConfig::addCustomStructures);

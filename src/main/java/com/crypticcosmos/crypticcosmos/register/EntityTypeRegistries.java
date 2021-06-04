@@ -1,7 +1,6 @@
 package com.crypticcosmos.crypticcosmos.register;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.entity.boat.CCBoatEntity;
 import com.crypticcosmos.crypticcosmos.entity.creature.gromble_frog.GrombleFrogEntity;
 import com.crypticcosmos.crypticcosmos.entity.creature.gromble_frog.GrombleFrogRender;
 import com.crypticcosmos.crypticcosmos.entity.creature.gromble_snatcher.GrombleSnatcherEntity;
@@ -9,10 +8,8 @@ import com.crypticcosmos.crypticcosmos.entity.creature.gromble_snatcher.GrombleS
 import com.crypticcosmos.crypticcosmos.entity.creature.makrossa_rambler.MakrossaRamblerEntity;
 import com.crypticcosmos.crypticcosmos.entity.creature.makrossa_rambler.MakrossaRamblerRender;
 import com.tterrag.registrate.util.entry.EntityEntry;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry.PlacementType;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.loot.ConstantRange;
@@ -20,31 +17,12 @@ import net.minecraft.loot.ItemLootEntry;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.conditions.RandomChanceWithLooting;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.Heightmap;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 
 @SuppressWarnings("unused")
 public class EntityTypeRegistries {
-    @SuppressWarnings("deprecation")
-    //public static final EntityType<CCBoatEntity> BOAT = getRegistrate().object("boat",
-    // EntityType.Builder.<BYGBoatEntity>of(BYGBoatEntity::new, EntityClassification.MISC).sized(1.375F, 0.5625F).build(BYG.MOD_ID + ":boat"));
-
-    public static Set<EntityType<?>> entities = new HashSet<>();
-
-    public static final EntityType<CCBoatEntity> BOAT = createEntity("boat", EntityType.Builder.<CCBoatEntity>of(CCBoatEntity::new, EntityClassification.MISC).sized(1.375F, 0.5625F).build(CrypticCosmos.MOD_ID + ":boat"));
-
-    public static <E extends Entity, ET extends EntityType<E>> ET createEntity(String id, ET entityType) {
-//        Registry.register(Registry.ENTITY_TYPE, new ResourceLocation(BYG.MOD_ID, id), entityType);
-        entityType.setRegistryName(new ResourceLocation(CrypticCosmos.MOD_ID, id)); //Forge
-        entities.add(entityType);
-        return entityType;
-    }
-
     public static final EntityEntry<MakrossaRamblerEntity> MAKROSSA_RAMBLER = getRegistrate().object("makrossa_rambler")
             .entity(MakrossaRamblerEntity::new, EntityClassification.MONSTER)
             .attributes(MakrossaRamblerEntity::setCustomAttributes)
