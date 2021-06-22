@@ -97,6 +97,7 @@
   "death.attack.corruption": "s\u01DD\u0279ods \u01DD\u0265\u0287 p\u01DD\u05DF\u0250\u0265u\u0131 %1$s",
   "death.attack.corruption.player": "%2$s bu\u0131\u0287\u0265b\u0131\u025F \u0287s\u05DF\u0131\u0265\u028D s\u01DD\u0279ods \u01DD\u0265\u0287 p\u01DD\u05DF\u0250\u0265u\u0131 %1$s",
   "effect.crypticcosmos.corruption": "uo\u0131\u0287dn\u0279\u0279o\u0186",
+  "effect.crypticcosmos.effluvium": "\u026Fn\u0131\u028Cn\u05DF\u025F\u025F\u018E",
   "effect.crypticcosmos.purification": "uo\u0131\u0287\u0250\u0254\u0131\u025F\u0131\u0279n\u0500",
   "entity.crypticcosmos.gromble_frog": "bo\u0279\u2132 \u01DD\u05DFq\u026Fo\u0279\u2141",
   "entity.crypticcosmos.gromble_snatcher": "\u0279\u01DD\u0265\u0254\u0287\u0250uS \u01DD\u05DFq\u026Fo\u0279\u2141",
