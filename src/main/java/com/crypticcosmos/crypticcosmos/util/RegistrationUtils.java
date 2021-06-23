@@ -8,8 +8,21 @@ import com.crypticcosmos.crypticcosmos.register.LunonRegistries;
 import com.crypticcosmos.crypticcosmos.register.MondroveRegistries;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import net.minecraft.advancements.criterion.EnchantmentPredicate;
+import net.minecraft.advancements.criterion.ItemPredicate;
+import net.minecraft.advancements.criterion.MinMaxBounds;
 import net.minecraft.block.*;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.item.Item;
+import net.minecraft.loot.AlternativesLootEntry;
+import net.minecraft.loot.ItemLootEntry;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.conditions.MatchTool;
+import net.minecraft.loot.functions.ApplyBonus;
+import net.minecraft.loot.functions.ExplosionDecay;
 import net.minecraft.state.properties.AttachFace;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
@@ -42,9 +55,9 @@ public class RegistrationUtils {
         final String name = context.getId().getPath() + infectionLevel;
 
         return ConfiguredModel.builder().modelFile(provider.models().cubeColumn(
-                        name,
-                        blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), !isStripped ? infectionLevel : ""),
-                        blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), "_top")))
+                name,
+                blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), !isStripped ? infectionLevel : ""),
+                blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), "_top")))
                 .rotationX(axis.equals(Axis.Z) || axis.equals(Axis.X) ? 90 : 0)
                 .rotationY(axis.equals(Axis.X) ? 90 : 0).build();
     }
@@ -59,12 +72,12 @@ public class RegistrationUtils {
         final String name = context.getId().getPath() + infectionLevel;
 
         return ConfiguredModel.builder().modelFile(provider.models().cubeAll(
-                        name,
-                        blockTexture(isStripped ? "stripped_" : "",
-                                MondroveRegistries.MONDROVE_LOG.get(),
-                                !isStripped ? infectionLevel : ""
-                        ))
-                ).rotationX(axis.equals(Axis.Z) || axis.equals(Axis.X) ? 90 : 0)
+                name,
+                blockTexture(isStripped ? "stripped_" : "",
+                        MondroveRegistries.MONDROVE_LOG.get(),
+                        !isStripped ? infectionLevel : ""
+                ))
+        ).rotationX(axis.equals(Axis.Z) || axis.equals(Axis.X) ? 90 : 0)
                 .rotationY(axis.equals(Axis.X) ? 90 : 0).build();
     }
 
@@ -80,10 +93,10 @@ public class RegistrationUtils {
 
                     if (!isSnowy) {
                         builder.modelFile(provider.models().cubeBottomTop(
-                                        id,
-                                        blockTexture(context, "_side"),
-                                        provider.blockTexture(LunonRegistries.LUNON.get()),
-                                        blockTexture(context, "_top")))
+                                id,
+                                blockTexture(context, "_side"),
+                                provider.blockTexture(LunonRegistries.LUNON.get()),
+                                blockTexture(context, "_top")))
                                 .rotationY(degree);
                     } else {
                         builder.modelFile(provider.models().cubeBottomTop(
@@ -101,9 +114,9 @@ public class RegistrationUtils {
     public static void leavesModel(DataGenContext<Block, LeavesBlock> context, RegistrateBlockstateProvider provider) {
         provider.getVariantBuilder(context.get())
                 .forAllStates(state -> ConfiguredModel.builder().modelFile(
-                                provider.models()
-                                        .withExistingParent(context.getId().getPath(), provider.mcLoc("leaves"))
-                                        .texture("all", provider.blockTexture(context.get()))
+                        provider.models()
+                                .withExistingParent(context.getId().getPath(), provider.mcLoc("leaves"))
+                                .texture("all", provider.blockTexture(context.get()))
                         ).build()
                 );
     }
@@ -183,5 +196,24 @@ public class RegistrationUtils {
     public static ResourceLocation blockTexture(String prefix, Block block, String suffix) {
         //noinspection ConstantConditions
         return CrypticCosmos.id("block/" + prefix + block.getRegistryName().getPath() + suffix);
+    }
+
+    public static <BLOCK extends Block, ITEM extends NonNullSupplier<Item>> void silkTouchFortune(RegistrateBlockLootTables lootTables, BLOCK block, ITEM fortuneDrop) {
+        lootTables.add(block, LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .add(AlternativesLootEntry.alternatives(
+                                ItemLootEntry.lootTableItem(block)
+                                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item()
+                                                .hasEnchantment(new EnchantmentPredicate(
+                                                        Enchantments.SILK_TOUCH, MinMaxBounds.IntBound.atLeast(1))
+                                                )
+                                        )),
+
+                                ItemLootEntry.lootTableItem(fortuneDrop.get())
+                                        .apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
+                                        .apply(ExplosionDecay.explosionDecay())
+                        ))
+                )
+        );
     }
 }

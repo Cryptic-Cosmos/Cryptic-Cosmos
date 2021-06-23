@@ -9,8 +9,8 @@ import com.crypticcosmos.crypticcosmos.world.feature.GrombleTree;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import net.minecraft.block.*;
 import net.minecraft.block.AbstractBlock.Properties;
+import net.minecraft.block.*;
 import net.minecraft.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -26,10 +26,11 @@ import net.minecraftforge.common.ToolType;
 import javax.annotation.Nonnull;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
+import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.GROMBLE_BERRY;
+import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.ROTTEN_GROMBLE_BERRY;
 import static com.tterrag.registrate.util.DataIngredient.items;
 import static net.minecraft.block.material.Material.GRASS;
 import static net.minecraft.block.material.Material.NETHER_WOOD;
-import static net.minecraft.block.material.MaterialColor.COLOR_BROWN;
 import static net.minecraft.block.material.MaterialColor.TERRACOTTA_LIGHT_BLUE;
 import static net.minecraft.data.RecipeProvider.*;
 import static net.minecraft.data.loot.BlockLootTables.NORMAL_LEAVES_SAPLING_CHANCES;
@@ -40,23 +41,6 @@ public class GrombleRegistries {
     public static final Properties GROMBLE_PROPERTIES = Properties.of(NETHER_WOOD, TERRACOTTA_LIGHT_BLUE)
             .strength(2F)
             .sound(SoundType.STEM);
-
-    public static final Properties GROMBLE_STEM_PROPERTIES = Properties.of(GRASS, TERRACOTTA_LIGHT_BLUE)
-            .strength(0.3F)
-            .noCollission()
-            .sound(SoundType.GRASS);
-
-    public static final Properties GROMBLE_LEAVES_PROPERTIES = AbstractBlock.Properties.of(Material.LEAVES, TERRACOTTA_LIGHT_BLUE)
-            .strength(0.2F)
-            .randomTicks().
-                    sound(SoundType.GRASS)
-            .noOcclusion();
-
-    public static final Properties ROTTEN_BERRY_PROPERTIES = Properties.of(Material.LEAVES, COLOR_BROWN)
-            .strength(0.25F)
-            .sound(SoundType.SHROOMLIGHT).lightLevel((p_235439_0_) -> {
-                return 7;
-            });
 
     //gromble blocks
     public static final BlockEntry<LunaraPlantableSapling> GROMBLE_SAPLING = getRegistrate().object("gromble_sapling")
@@ -73,11 +57,16 @@ public class GrombleRegistries {
             .tag(ItemTags.SAPLINGS).build()
 
             .register();
-
     public static final BlockEntry<LunaraPlantableBush> GIANT_GROMBLE_BERRY = getRegistrate().object("giant_gromble_berry")
             .block(LunaraPlantableBush::new)
             .properties(p -> p.strength(1.0F)
-                    .sound(SoundType.SHROOMLIGHT).lightLevel(state -> 15))
+                    .sound(SoundType.SHROOMLIGHT)
+                    .lightLevel(state -> 15)
+                    .harvestTool(ToolType.HOE)
+                    .requiresCorrectToolForDrops()
+            )
+            .loot((lootTables, block) -> RegistrationUtils.silkTouchFortune(lootTables, block, GROMBLE_BERRY))
+            .recipe((context, provider) -> provider.square(DataIngredient.items(GROMBLE_BERRY), context, true))
             .tag(BlockTags.LEAVES)
             .simpleItem()
             .register();
@@ -85,13 +74,16 @@ public class GrombleRegistries {
     public static final BlockEntry<RottenGrombleBerryBlock> GIANT_ROTTEN_GROMBLE_BERRY = getRegistrate().object("giant_rotten_gromble_berry")
             .block(Material.LEAVES, RottenGrombleBerryBlock::new)
             .properties(GrombleRegistries::rottenBerryProperties)
+            .loot((lootTables, block) -> RegistrationUtils.silkTouchFortune(lootTables, block, ROTTEN_GROMBLE_BERRY))
+            .recipe((context, provider) -> provider.square(DataIngredient.items(ROTTEN_GROMBLE_BERRY), context, true))
             .tag(BlockTags.LEAVES)
             .simpleItem()
             .register();
 
     public static final BlockEntry<RottenGrombleBerryBlock> GROMBLE_SPROUT = getRegistrate().object("gromble_sprout")
             .block(Material.GRASS, RottenGrombleBerryBlock::new)
-            .properties(p -> GROMBLE_STEM_PROPERTIES)
+            .initialProperties(GRASS, TERRACOTTA_LIGHT_BLUE)
+            .properties(GrombleRegistries::grombleStemProperties)
             .addLayer(() -> RenderType::cutout)
             .blockstate(RegistrationUtils::crossModel)
 
@@ -104,7 +96,8 @@ public class GrombleRegistries {
 
     public static final BlockEntry<RottenGrombleBerryBlock> GROMBLE_STEM = getRegistrate().object("gromble_stem")
             .block(Material.GRASS, RottenGrombleBerryBlock::new)
-            .properties(p -> GROMBLE_STEM_PROPERTIES)
+            .initialProperties(GRASS, TERRACOTTA_LIGHT_BLUE)
+            .properties(GrombleRegistries::grombleStemProperties)
             .addLayer(() -> RenderType::cutout)
             .blockstate(RegistrationUtils::crossModel)
 
@@ -117,7 +110,8 @@ public class GrombleRegistries {
 
     public static final BlockEntry<LeavesBlock> GROMBLE_LEAVES = getRegistrate().object("gromble_leaves")
             .block(LeavesBlock::new)
-            .properties(p -> GROMBLE_LEAVES_PROPERTIES)
+            .initialProperties(Material.LEAVES, TERRACOTTA_LIGHT_BLUE)
+            .properties(GrombleRegistries::grombleLeavesProperties)
             .addLayer(() -> RenderType::cutout)
             .loot((lootTables, block) -> lootTables.add(block, BlockLootTables.createLeavesDrops(
                     block, GROMBLE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES
@@ -291,12 +285,26 @@ public class GrombleRegistries {
     private static Properties rottenBerryProperties(Properties p) {
         return p.strength(0.25F)
                 .sound(SoundType.SHROOMLIGHT)
-                .lightLevel((p_235439_0_) -> {
-                    return 7;
-                })
+                .lightLevel((p_235439_0_) -> 7)
                 .harvestLevel(0)
-                .harvestTool(ToolType.PICKAXE)
+                .harvestTool(ToolType.HOE)
                 .requiresCorrectToolForDrops();
+    }
+
+    @Nonnull
+    private static Properties grombleLeavesProperties(Properties p) {
+        return p
+                .strength(0.2F)
+                .randomTicks()
+                .sound(SoundType.GRASS)
+                .noOcclusion();
+    }
+
+    @Nonnull
+    private static Properties grombleStemProperties(Properties p) {
+        return p.strength(0.3F)
+                .noCollission()
+                .sound(SoundType.GRASS);
     }
 
     public static void init() {

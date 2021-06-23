@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:giant_rotten_gromble_berry"
+    ]
+  },
+  "criteria": {
+    "has_rotten_gromble_berry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:rotten_gromble_berry"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:giant_rotten_gromble_berry"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rotten_gromble_berry",
+      "has_the_recipe"
+    ]
+  ]
+}

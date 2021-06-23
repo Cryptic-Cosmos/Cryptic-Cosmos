@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "crypticcosmos:rotten_gromble_berry"
+    }
+  },
+  "result": {
+    "item": "crypticcosmos:giant_rotten_gromble_berry"
+  }
+}
