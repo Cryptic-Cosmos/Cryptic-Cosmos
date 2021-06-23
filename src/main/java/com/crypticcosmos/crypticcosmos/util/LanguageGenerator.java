@@ -36,6 +36,11 @@ public abstract class LanguageGenerator {
             getRegistrate().addRawLang("item.minecraft.splash_potion.effect.purification", "Splash Potion of Purification");
             getRegistrate().addRawLang("item.minecraft.lingering_potion.effect.purification", "Lingering Potion of Purification");
             getRegistrate().addRawLang("item.minecraft.tipped_arrow.effect.purification", "Tipped Arrow of Purification");
+
+            getRegistrate().addRawLang("item.minecraft.potion.effect.effluvium", "Potion of Effluvium");
+            getRegistrate().addRawLang("item.minecraft.splash_potion.effect.effluvium", "Splash Potion of Effluvium");
+            getRegistrate().addRawLang("item.minecraft.lingering_potion.effect.effluvium", "Lingering Potion of Effluvium");
+            getRegistrate().addRawLang("item.minecraft.tipped_arrow.effect.effluvium", "Tipped Arrow of Effluvium");
         }
     }
 }

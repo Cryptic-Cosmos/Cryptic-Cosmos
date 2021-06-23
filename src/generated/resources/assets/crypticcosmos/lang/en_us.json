@@ -113,12 +113,16 @@
   "item.crypticcosmos.osminstem_boat": "Osminstem Boat",
   "item.crypticcosmos.rotten_gromble_berry": "Rotten Gromble Berry",
   "item.minecraft.lingering_potion.effect.corruption": "Lingering Potion of Corruption",
+  "item.minecraft.lingering_potion.effect.effluvium": "Lingering Potion of Effluvium",
   "item.minecraft.lingering_potion.effect.purification": "Lingering Potion of Purification",
   "item.minecraft.potion.effect.corruption": "Potion of Corruption",
+  "item.minecraft.potion.effect.effluvium": "Potion of Effluvium",
   "item.minecraft.potion.effect.purification": "Potion of Purification",
   "item.minecraft.splash_potion.effect.corruption": "Splash Potion of Corruption",
+  "item.minecraft.splash_potion.effect.effluvium": "Splash Potion of Effluvium",
   "item.minecraft.splash_potion.effect.purification": "Splash Potion of Purification",
   "item.minecraft.tipped_arrow.effect.corruption": "Tipped Arrow of Corruption",
+  "item.minecraft.tipped_arrow.effect.effluvium": "Tipped Arrow of Effluvium",
   "item.minecraft.tipped_arrow.effect.purification": "Tipped Arrow of Purification",
   "itemGroup.cryptic_cosmos_tab": "Cryptic Cosmos Materials"
 }
