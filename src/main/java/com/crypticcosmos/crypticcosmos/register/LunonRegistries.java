@@ -21,32 +21,6 @@ import static com.tterrag.registrate.providers.RegistrateRecipeProvider.hasItem;
 
 @SuppressWarnings("unused")
 public class LunonRegistries {
-    public static final BlockEntry<OvergrownLunonBlock> OVERGROWN_LUNON = getRegistrate().object("overgrown_lunon")
-            .block(Material.STONE, OvergrownLunonBlock::new)
-            .properties(LunonRegistries::overgrownLunonProperties)
-            .tag(TagRegistries.LUNARA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
-            .blockstate(RegistrationUtils::overgrownLunonModels)
-            .simpleItem()
-            .register();
-
-    // Fungal lunon
-    public static final BlockEntry<OvergrownLunonBlock> FUNGAL_LUNON = getRegistrate().object("fungal_lunon")
-            .block(Material.STONE, OvergrownLunonBlock::new)
-            .properties(LunonRegistries::overgrownLunonProperties)
-            .tag(TagRegistries.LUNARA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
-            .blockstate(RegistrationUtils::overgrownLunonModels)
-            .simpleItem()
-            .register();
-
-    // Glum Lunon
-    public static final BlockEntry<OvergrownLunonBlock> GLUM_LUNON = getRegistrate().object("glum_lunon")
-            .block(OvergrownLunonBlock::new)
-            .properties(LunonRegistries::overgrownLunonProperties)
-            .tag(TagRegistries.LUNARA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
-            .blockstate(RegistrationUtils::overgrownLunonModels)
-            .simpleItem()
-            .register();
-
     // Lunon
     public static final BlockEntry<Block> LUNON = getRegistrate().object("lunon")
             .block(Material.STONE, Block::new)
@@ -55,7 +29,30 @@ public class LunonRegistries {
                     .harvestLevel(1)
                     .harvestTool(ToolType.PICKAXE)
                     .requiresCorrectToolForDrops())
-            .tag(TagRegistries.LUNARA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
+            .tag(TagRegistries.MAKROSSA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
+            .simpleItem()
+            .register();
+    public static final BlockEntry<OvergrownLunonBlock> OVERGROWN_LUNON = getRegistrate().object("overgrown_lunon")
+            .block(Material.STONE, OvergrownLunonBlock::new)
+            .properties(LunonRegistries::overgrownLunonProperties)
+            .tag(TagRegistries.MAKROSSA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
+            .blockstate(RegistrationUtils::overgrownLunonModels)
+            .simpleItem()
+            .register();
+    // Fungal lunon
+    public static final BlockEntry<OvergrownLunonBlock> FUNGAL_LUNON = getRegistrate().object("fungal_lunon")
+            .block(Material.STONE, OvergrownLunonBlock::new)
+            .properties(LunonRegistries::overgrownLunonProperties)
+            .tag(TagRegistries.MAKROSSA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
+            .blockstate(RegistrationUtils::overgrownLunonModels)
+            .simpleItem()
+            .register();
+    // Glum Lunon
+    public static final BlockEntry<OvergrownLunonBlock> GLUM_LUNON = getRegistrate().object("glum_lunon")
+            .block(OvergrownLunonBlock::new)
+            .properties(LunonRegistries::overgrownLunonProperties)
+            .tag(TagRegistries.MAKROSSA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
+            .blockstate(RegistrationUtils::overgrownLunonModels)
             .simpleItem()
             .register();
 

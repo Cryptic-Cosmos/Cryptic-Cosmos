@@ -1,7 +1,7 @@
 package com.crypticcosmos.crypticcosmos.register;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.block.LunaraPlantableSapling;
+import com.crypticcosmos.crypticcosmos.block.MakrossaPlantableSapling;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
 import com.crypticcosmos.crypticcosmos.world.feature.OsminstemTree;
 import com.tterrag.registrate.util.DataIngredient;
@@ -35,8 +35,8 @@ public class OsminstemRegistries {
 
     // osminstem blocks
     @SuppressWarnings("SpellCheckingInspection")
-    public static final BlockEntry<LunaraPlantableSapling> STINKY_OSMIN = getRegistrate().object("stinky_osmin")
-            .block(p -> new LunaraPlantableSapling(new OsminstemTree(), p))
+    public static final BlockEntry<MakrossaPlantableSapling> STINKY_OSMIN = getRegistrate().object("stinky_osmin")
+            .block(p -> new MakrossaPlantableSapling(new OsminstemTree(), p))
             .properties(p -> Properties.copy(Blocks.BIRCH_SAPLING))
             .addLayer(() -> RenderType::cutout)
             .tag(BlockTags.SAPLINGS)

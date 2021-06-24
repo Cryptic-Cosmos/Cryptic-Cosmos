@@ -22,7 +22,7 @@ public class CerantRegistries {
     public static final BlockEntry<Block> PHORAL_CERANT = getRegistrate().object("phoral_cerant")
             .block(Material.STONE, Block::new)
             .properties(CerantRegistries::phoralCerantProperties)
-            .tag(TagRegistries.LUNARA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
+            .tag(TagRegistries.MAKROSSA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
             .simpleItem()
             .register();
 
@@ -68,7 +68,7 @@ public class CerantRegistries {
     public static final BlockEntry<Block> CERANT = getRegistrate().object("cerant")
             .block(Material.STONE, Block::new)
             .properties(CerantRegistries::cerantProperties)
-            .tag(TagRegistries.LUNARA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
+            .tag(TagRegistries.MAKROSSA_PLANTABLE, TagRegistries.MONDROVE_FUNGUS_PLANTABLE)
             .item().tag(ItemTags.STONE_CRAFTING_MATERIALS, ItemTags.STONE_TOOL_MATERIALS).build()
             .simpleItem()
             .register();

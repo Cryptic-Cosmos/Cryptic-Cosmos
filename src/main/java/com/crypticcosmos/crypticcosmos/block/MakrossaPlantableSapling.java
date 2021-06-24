@@ -9,13 +9,13 @@ import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nonnull;
 
-public class LunaraPlantableSapling extends SaplingBlock {
-    public LunaraPlantableSapling(Tree tree, Properties properties) {
+public class MakrossaPlantableSapling extends SaplingBlock {
+    public MakrossaPlantableSapling(Tree tree, Properties properties) {
         super(tree, properties);
     }
 
     @Override
     public boolean mayPlaceOn(@Nonnull BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
-        return state.is(TagRegistries.LUNARA_PLANTABLE);
+        return state.is(TagRegistries.MAKROSSA_PLANTABLE);
     }
 }

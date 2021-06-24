@@ -8,7 +8,7 @@ import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 
 public class TagRegistries {
-    public static final ITag.INamedTag<Block> LUNARA_PLANTABLE = BlockTags.createOptional(CrypticCosmos.id("lunara_plantable"));
+    public static final ITag.INamedTag<Block> MAKROSSA_PLANTABLE = BlockTags.createOptional(CrypticCosmos.id("makrossa_plantable"));
     public static final ITag.INamedTag<Block> MONDROVE_FUNGUS_PLANTABLE = BlockTags.createOptional(CrypticCosmos.id("mondrove_fungus_plantable"));
 
     public static final ITag.INamedTag<Block> MONDROVE_LOGS = BlockTags.createOptional(CrypticCosmos.id("mondrove_logs"));

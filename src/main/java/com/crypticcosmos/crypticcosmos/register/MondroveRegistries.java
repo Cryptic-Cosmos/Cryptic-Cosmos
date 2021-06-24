@@ -2,7 +2,7 @@ package com.crypticcosmos.crypticcosmos.register;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.block.InfectableBlock;
-import com.crypticcosmos.crypticcosmos.block.LunaraPlantableSapling;
+import com.crypticcosmos.crypticcosmos.block.MakrossaPlantableSapling;
 import com.crypticcosmos.crypticcosmos.block.MondroveLog;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
 import com.crypticcosmos.crypticcosmos.world.feature.MondroveTree;
@@ -34,8 +34,8 @@ public class MondroveRegistries {
             .strength(2.0F)
             .sound(SoundType.WOOD);
 
-    public static final BlockEntry<LunaraPlantableSapling> MONDROVE_SAPLING = getRegistrate().object("mondrove_sapling")
-            .block(p -> new LunaraPlantableSapling(new MondroveTree(), p))
+    public static final BlockEntry<MakrossaPlantableSapling> MONDROVE_SAPLING = getRegistrate().object("mondrove_sapling")
+            .block(p -> new MakrossaPlantableSapling(new MondroveTree(), p))
             .properties(p -> Properties.copy(Blocks.BIRCH_SAPLING))
             .addLayer(() -> RenderType::cutout)
             .tag(BlockTags.SAPLINGS)

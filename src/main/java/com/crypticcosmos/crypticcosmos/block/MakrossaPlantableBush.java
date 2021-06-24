@@ -8,13 +8,13 @@ import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nonnull;
 
-public class LunaraPlantableBush extends BushBlock {
-    public LunaraPlantableBush(Properties properties) {
+public class MakrossaPlantableBush extends BushBlock {
+    public MakrossaPlantableBush(Properties properties) {
         super(properties);
     }
 
     @Override
     public boolean mayPlaceOn(BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
-        return state.is(TagRegistries.LUNARA_PLANTABLE);
+        return state.is(TagRegistries.MAKROSSA_PLANTABLE);
     }
 }
