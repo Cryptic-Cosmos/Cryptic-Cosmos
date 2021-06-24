@@ -16,13 +16,11 @@ import net.minecraft.advancements.criterion.MinMaxBounds;
 import net.minecraft.block.*;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
-import net.minecraft.loot.AlternativesLootEntry;
-import net.minecraft.loot.ItemLootEntry;
-import net.minecraft.loot.LootPool;
-import net.minecraft.loot.LootTable;
+import net.minecraft.loot.*;
 import net.minecraft.loot.conditions.MatchTool;
 import net.minecraft.loot.functions.ApplyBonus;
 import net.minecraft.loot.functions.ExplosionDecay;
+import net.minecraft.loot.functions.SetCount;
 import net.minecraft.state.properties.AttachFace;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
@@ -145,6 +143,7 @@ public class RegistrationUtils {
                 .withExistingParent(id + "_pressed", "button_pressed")
                 .texture("texture", provider.blockTexture(planks.get())));
 
+        //noinspection unused
         final ConfiguredModel.Builder<?> buttonInventoryModel = ConfiguredModel.builder().modelFile(provider.models()
                 .withExistingParent(id + "_inventory", "button_inventory")
                 .texture("texture", provider.blockTexture(planks.get())));
@@ -198,7 +197,13 @@ public class RegistrationUtils {
         return CrypticCosmos.id("block/" + prefix + block.getRegistryName().getPath() + suffix);
     }
 
-    public static <BLOCK extends Block, ITEM extends NonNullSupplier<Item>> void silkTouchFortune(RegistrateBlockLootTables lootTables, BLOCK block, ITEM fortuneDrop) {
+    public static <BLOCK extends Block, ITEM extends NonNullSupplier<Item>> void silkTouchFortune(
+            RegistrateBlockLootTables lootTables,
+            BLOCK block,
+            ITEM fortuneDrop,
+            int minDrop,
+            int maxDrop
+    ) {
         lootTables.add(block, LootTable.lootTable()
                 .withPool(LootPool.lootPool()
                         .add(AlternativesLootEntry.alternatives(
@@ -210,6 +215,10 @@ public class RegistrationUtils {
                                         )),
 
                                 ItemLootEntry.lootTableItem(fortuneDrop.get())
+                                        .apply(SetCount.setCount(minDrop != maxDrop
+                                                ? RandomValueRange.between(minDrop, maxDrop)
+                                                : ConstantRange.exactly(minDrop)
+                                        ))
                                         .apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
                                         .apply(ExplosionDecay.explosionDecay())
                         ))
