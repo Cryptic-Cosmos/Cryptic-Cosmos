@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1.0,
+      "rolls": 1,
       "entries": [
         {
           "type": "minecraft:alternatives",
@@ -29,6 +29,14 @@
             {
               "type": "minecraft:item",
               "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "min": 1.0,
+                    "max": 4.0,
+                    "type": "minecraft:uniform"
+                  }
+                },
                 {
                   "function": "minecraft:apply_bonus",
                   "enchantment": "minecraft:fortune",
