@@ -20,9 +20,10 @@ public class ItemRegistries {
             .properties(p -> p.food(
                     new Food.Builder()
                             // 10 seconds of Slow Falling 1
-                            .effect(() -> new EffectInstance(Effects.SLOW_FALLING, 150, 0), 1)
+                            .effect(() -> new EffectInstance(Effects.SLOW_FALLING, 10000, 0), 1)
                             .nutrition(2)
                             .saturationMod(0.1F)
+                            // .alwaysEat()
                             .build()
             ))
             .register();
@@ -32,9 +33,10 @@ public class ItemRegistries {
             .properties(p -> p.food(
                     new Food.Builder()
                             // 5 seconds of Effluvium 1
-                            .effect(() -> new EffectInstance(EffectRegistries.EFFLUVIUM.get(), 200, 0), 1)
+                            .effect(() -> new EffectInstance(EffectRegistries.EFFLUVIUM.get(), 5000, 0), 1)
                             .nutrition(2)
                             .saturationMod(0.1F)
+                            // .alwaysEat()
                             .build()
             ))
             .register();

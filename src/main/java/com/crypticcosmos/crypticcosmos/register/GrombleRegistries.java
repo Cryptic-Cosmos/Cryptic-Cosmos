@@ -1,8 +1,8 @@
 package com.crypticcosmos.crypticcosmos.register;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.block.LunaraPlantableBush;
-import com.crypticcosmos.crypticcosmos.block.LunaraPlantableSapling;
+import com.crypticcosmos.crypticcosmos.block.GiantGrombleBerry;
+import com.crypticcosmos.crypticcosmos.block.MakrossaPlantableSapling;
 import com.crypticcosmos.crypticcosmos.block.RottenGrombleBerryBlock;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
 import com.crypticcosmos.crypticcosmos.world.feature.GrombleTree;
@@ -43,8 +43,8 @@ public class GrombleRegistries {
             .sound(SoundType.STEM);
 
     //gromble blocks
-    public static final BlockEntry<LunaraPlantableSapling> GROMBLE_SAPLING = getRegistrate().object("gromble_sapling")
-            .block(p -> new LunaraPlantableSapling(new GrombleTree(), p))
+    public static final BlockEntry<MakrossaPlantableSapling> GROMBLE_SAPLING = getRegistrate().object("gromble_sapling")
+            .block(p -> new MakrossaPlantableSapling(new GrombleTree(), p))
             .properties(p -> Properties.copy(Blocks.BIRCH_SAPLING))
             .addLayer(() -> RenderType::cutout)
             .tag(BlockTags.SAPLINGS)
@@ -57,14 +57,8 @@ public class GrombleRegistries {
             .tag(ItemTags.SAPLINGS).build()
 
             .register();
-    public static final BlockEntry<LunaraPlantableBush> GIANT_GROMBLE_BERRY = getRegistrate().object("giant_gromble_berry")
-            .block(LunaraPlantableBush::new)
-            .properties(p -> p.strength(1.0F)
-                    .sound(SoundType.SHROOMLIGHT)
-                    .lightLevel(state -> 15)
-                    .harvestTool(ToolType.HOE)
-                    .requiresCorrectToolForDrops()
-            )
+    public static final BlockEntry<GiantGrombleBerry> GIANT_GROMBLE_BERRY = getRegistrate().object("giant_gromble_berry")
+            .block(GiantGrombleBerry::new)
             .loot((lootTables, block) -> RegistrationUtils.silkTouchFortune(lootTables, block, GROMBLE_BERRY, 2, 4))
             .recipe((context, provider) -> provider.square(DataIngredient.items(GROMBLE_BERRY), context, true))
             .tag(BlockTags.LEAVES)
