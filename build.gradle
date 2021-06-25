@@ -150,6 +150,9 @@ dependencies {
     def registrate = "com.tterrag.registrate:Registrate:MC${project.minecraft_version}-${project.registrate_version}"
     implementation fg.deobf(registrate)
     shade(registrate)
+
+
+    implementation group: "org.apache.commons", name: "commons-text", version: "latest.release"
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
