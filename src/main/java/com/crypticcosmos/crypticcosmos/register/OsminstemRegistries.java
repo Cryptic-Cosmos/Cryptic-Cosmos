@@ -2,6 +2,7 @@ package com.crypticcosmos.crypticcosmos.register;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.block.MakrossaPlantableSapling;
+import com.crypticcosmos.crypticcosmos.block.OsminstemLog;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
 import com.crypticcosmos.crypticcosmos.world.feature.OsminstemTree;
 import com.tterrag.registrate.util.DataIngredient;
@@ -67,31 +68,10 @@ public class OsminstemRegistries {
             .simpleItem()
             .register();
 
-    public static final BlockEntry<RotatedPillarBlock> OSMINSTEM_LOG = getRegistrate().object("osminstem_log")
-            .block(p -> Blocks.log(MaterialColor.CRIMSON_HYPHAE, MaterialColor.TERRACOTTA_BROWN))
-            .tag(BlockTags.LOGS, TagRegistries.OSMINSTEM_LOGS)
-            .blockstate((context, provider) -> provider.logBlock(context.get()))
-            .item().tag(ItemTags.LOGS, TagRegistries.OSMINSTEM_LOGS_ITEMS).build()
-            .register();
-
     public static final BlockEntry<RotatedPillarBlock> STRIPPED_OSMINSTEM_LOG = getRegistrate().object("stripped_osminstem_log")
             .block(p -> Blocks.log(MaterialColor.CRIMSON_HYPHAE, MaterialColor.CRIMSON_HYPHAE))
             .tag(TagRegistries.OSMINSTEM_LOGS)
             .blockstate((context, provider) -> provider.logBlock(context.get()))
-            .item().tag(TagRegistries.OSMINSTEM_LOGS_ITEMS).build()
-            .register();
-
-    public static final BlockEntry<RotatedPillarBlock> OSMINSTEM_WOOD = getRegistrate().object("osminstem_wood")
-            .block(RotatedPillarBlock::new)
-            .properties(p -> OSMINSTEM_PROPERTIES)
-            .recipe((context, provider) -> woodFromLogs(provider, context.get(), OSMINSTEM_LOG.get()))
-            .tag(TagRegistries.OSMINSTEM_LOGS)
-            .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
-                    .forAllStates(state -> ConfiguredModel.builder().modelFile(
-                            provider.models().cubeAll(context.getName(),
-                                    provider.blockTexture(OSMINSTEM_LOG.get()))
-                            ).build()
-                    ))
             .item().tag(TagRegistries.OSMINSTEM_LOGS_ITEMS).build()
             .register();
 
@@ -103,6 +83,27 @@ public class OsminstemRegistries {
                     .forAllStates(state -> ConfiguredModel.builder().modelFile(
                             provider.models().cubeAll(context.getName(),
                                     provider.blockTexture(STRIPPED_OSMINSTEM_LOG.get()))
+                            ).build()
+                    ))
+            .item().tag(TagRegistries.OSMINSTEM_LOGS_ITEMS).build()
+            .register();
+
+    public static final BlockEntry<OsminstemLog> OSMINSTEM_LOG = getRegistrate().object("osminstem_log")
+            .block(p -> new OsminstemLog(p, STRIPPED_OSMINSTEM_LOG))
+            .tag(BlockTags.LOGS, TagRegistries.OSMINSTEM_LOGS)
+            .blockstate((context, provider) -> provider.logBlock(context.get()))
+            .item().tag(ItemTags.LOGS, TagRegistries.OSMINSTEM_LOGS_ITEMS).build()
+            .register();
+
+    public static final BlockEntry<OsminstemLog> OSMINSTEM_WOOD = getRegistrate().object("osminstem_wood")
+            .block(p -> new OsminstemLog(p, STRIPPED_OSMINSTEM_WOOD))
+            .properties(p -> OSMINSTEM_PROPERTIES)
+            .recipe((context, provider) -> woodFromLogs(provider, context.get(), OSMINSTEM_LOG.get()))
+            .tag(TagRegistries.OSMINSTEM_LOGS)
+            .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
+                    .forAllStates(state -> ConfiguredModel.builder().modelFile(
+                            provider.models().cubeAll(context.getName(),
+                                    provider.blockTexture(OSMINSTEM_LOG.get()))
                             ).build()
                     ))
             .item().tag(TagRegistries.OSMINSTEM_LOGS_ITEMS).build()

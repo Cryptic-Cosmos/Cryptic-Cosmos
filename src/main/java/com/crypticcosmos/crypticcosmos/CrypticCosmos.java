@@ -48,7 +48,6 @@ public class CrypticCosmos {
         forgeBus.addListener(RiftBlock::riftSpawning);
         forgeBus.addListener(SpawnFrogOnCorruptionKill::spawnFrogOnCorruptionKill);
         forgeBus.addListener(EventPriority.HIGH, BiomeRegistries::biomeLoading);
-        forgeBus.addListener(EventPriority.HIGH, StrippingRegistries::onStripped);
 
         BlockRegistries.init();
         ItemRegistries.init();

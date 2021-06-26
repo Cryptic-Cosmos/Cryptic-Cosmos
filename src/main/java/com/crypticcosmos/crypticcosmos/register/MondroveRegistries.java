@@ -61,26 +61,6 @@ public class MondroveRegistries {
             .register();
 
     // Mondrove Wood set
-    public static final BlockEntry<MondroveLog> MONDROVE_LOG = getRegistrate().object("mondrove_log")
-            .block(MondroveLog::new)
-            .properties(p -> MONDROVE_PROPERTIES)
-            .tag(BlockTags.LOGS, TagRegistries.MONDROVE_LOGS)
-            .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
-                    .forAllStates(blockState -> mondroveLogModels(blockState, context, provider, false))
-            )
-            .item().tag(ItemTags.LOGS, TagRegistries.MONDROVE_LOGS_ITEMS).build()
-            .register();
-
-    public static final BlockEntry<MondroveLog> MONDROVE_WOOD = getRegistrate().object("mondrove_wood")
-            .block(MondroveLog::new)
-            .properties(p -> MONDROVE_PROPERTIES)
-            .recipe((context, provider) -> woodFromLogs(provider, context.get(), MONDROVE_LOG.get()))
-            .tag(TagRegistries.MONDROVE_LOGS)
-            .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
-                    .forAllStates(blockState -> mondroveWoodModels(blockState, context, provider, false)))
-            .item().tag(TagRegistries.MONDROVE_LOGS_ITEMS).build()
-            .register();
-
     public static final BlockEntry<MondroveLog> STRIPPED_MONDROVE_LOG = getRegistrate().object("stripped_mondrove_log")
             .block(MondroveLog::new)
             .properties(p -> MONDROVE_PROPERTIES)
@@ -97,6 +77,26 @@ public class MondroveRegistries {
             .tag(TagRegistries.MONDROVE_LOGS)
             .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
                     .forAllStates(blockState -> mondroveWoodModels(blockState, context, provider, true)))
+            .item().tag(TagRegistries.MONDROVE_LOGS_ITEMS).build()
+            .register();
+
+    public static final BlockEntry<MondroveLog> MONDROVE_LOG = getRegistrate().object("mondrove_log")
+            .block(p -> new MondroveLog(p, STRIPPED_MONDROVE_LOG))
+            .properties(p -> MONDROVE_PROPERTIES)
+            .tag(BlockTags.LOGS, TagRegistries.MONDROVE_LOGS)
+            .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
+                    .forAllStates(blockState -> mondroveLogModels(blockState, context, provider, false))
+            )
+            .item().tag(ItemTags.LOGS, TagRegistries.MONDROVE_LOGS_ITEMS).build()
+            .register();
+
+    public static final BlockEntry<MondroveLog> MONDROVE_WOOD = getRegistrate().object("mondrove_wood")
+            .block(p -> new MondroveLog(p, STRIPPED_MONDROVE_WOOD))
+            .properties(p -> MONDROVE_PROPERTIES)
+            .recipe((context, provider) -> woodFromLogs(provider, context.get(), MONDROVE_LOG.get()))
+            .tag(TagRegistries.MONDROVE_LOGS)
+            .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
+                    .forAllStates(blockState -> mondroveWoodModels(blockState, context, provider, false)))
             .item().tag(TagRegistries.MONDROVE_LOGS_ITEMS).build()
             .register();
 
