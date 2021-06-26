@@ -21,6 +21,9 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import java.util.HashMap;
 import java.util.Map;
 
+import static net.minecraft.world.biome.Biome.Category.NETHER;
+import static net.minecraft.world.biome.Biome.Category.THEEND;
+
 public class StructureConfig {
     public static void addCustomStructures(final BiomeLoadingEvent event) {
         /*
@@ -32,7 +35,13 @@ public class StructureConfig {
          * RegistryKey.getOrCreateKey(Registry.BIOME_KEY, event.getName()) to get the biome's
          * registrykey. Then that can be fed into the dictionary to get the biome's types.
          */
-        event.getGeneration().getStructures().add(() -> ConfiguredStructureRegistries.CONFIGURED_MONDROVE_BUNDLE);
+
+        /*
+         * Prevent spawning in the end or nether.
+         */
+        if (!(event.getCategory() == NETHER || event.getCategory() == THEEND)) {
+            event.getGeneration().getStructures().add(() -> ConfiguredStructureRegistries.CONFIGURED_MONDROVE_BUNDLE);
+        }
     }
 
     public static void addDimensionalSpacing(final WorldEvent.Load event) {
