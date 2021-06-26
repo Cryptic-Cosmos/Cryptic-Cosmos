@@ -33,6 +33,8 @@ Join our [Discord server](https://discord.gg/6BbUpV8jSk)!
 
 This mod supports Minecraft version **1.16.5**. All versions lower are not guaranteed to work, and we do not bear responsibility to support them.
 
+Minecraft 1.17 is not yet supported by the Forge Team; However, we will update Cryptic Cosmos to 1.17 once the Forge Team releases a compatible version of their API. Once the mod is updated to 1.17, all 1.16.x versions will be unsupported.
+
 This mod was built for use with the [Forge](https://forums.minecraftforge.net) mod loader, and no other. We do not bear responsibility to support other ones, such as [Fabric](https://fabricmc.net/) or Rift.
 
 Some FAQs: https://github.com/Cryptic-Cosmos/Cryptic-Cosmos/wiki/FAQ
