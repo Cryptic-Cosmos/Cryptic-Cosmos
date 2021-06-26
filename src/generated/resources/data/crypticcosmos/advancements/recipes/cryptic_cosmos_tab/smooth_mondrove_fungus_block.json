@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:smooth_mondrove_fungus_block"
+    ]
+  },
+  "criteria": {
+    "has_mondrove_fungus_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:mondrove_fungus_block"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:smooth_mondrove_fungus_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mondrove_fungus_block",
+      "has_the_recipe"
+    ]
+  ]
+}

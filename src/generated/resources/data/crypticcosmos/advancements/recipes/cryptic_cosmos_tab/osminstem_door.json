@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:osminstem_door"
+    ]
+  },
+  "criteria": {
+    "has_osminstem_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:osminstem_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:osminstem_door"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_osminstem_planks",
+      "has_the_recipe"
+    ]
+  ]
+}

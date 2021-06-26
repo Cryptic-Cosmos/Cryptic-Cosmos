@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:polished_lunon_from_lunon_smelting"
+    ]
+  },
+  "criteria": {
+    "has_lunon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:lunon"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:polished_lunon_from_lunon_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_lunon",
+      "has_the_recipe"
+    ]
+  ]
+}

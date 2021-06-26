@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "crypticcosmos:block/polished_vertical_cerant_bricks"
+  }
+}

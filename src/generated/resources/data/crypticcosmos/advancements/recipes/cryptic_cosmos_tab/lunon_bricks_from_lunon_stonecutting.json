@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:lunon_bricks_from_lunon_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_lunon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:lunon"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:lunon_bricks_from_lunon_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_lunon",
+      "has_the_recipe"
+    ]
+  ]
+}

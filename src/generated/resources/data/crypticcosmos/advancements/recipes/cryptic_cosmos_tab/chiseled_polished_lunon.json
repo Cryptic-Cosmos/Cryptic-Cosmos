@@ -6,12 +6,12 @@
     ]
   },
   "criteria": {
-    "has_polished_lunon_slab": {
+    "has_polished_lunon": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "crypticcosmos:polished_lunon_slab"
+            "item": "minecraft:polished_blackstone"
           }
         ]
       }
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_polished_lunon_slab",
+      "has_polished_lunon",
       "has_the_recipe"
     ]
   ]

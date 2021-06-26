@@ -1,9 +1,9 @@
 package com.crypticcosmos.crypticcosmos.world.biomes;
 
-import com.crypticcosmos.crypticcosmos.registries.BlockRegistries;
-import com.crypticcosmos.crypticcosmos.registries.EntityTypeRegistries;
-import com.crypticcosmos.crypticcosmos.registries.FeatureRegistries;
-import com.crypticcosmos.crypticcosmos.registries.SoundEventRegistries;
+import com.crypticcosmos.crypticcosmos.register.CerantRegistries;
+import com.crypticcosmos.crypticcosmos.register.EntityTypeRegistries;
+import com.crypticcosmos.crypticcosmos.register.FeatureRegistries;
+import com.crypticcosmos.crypticcosmos.register.SoundEventRegistries;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -21,31 +21,25 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
 import javax.annotation.Nonnull;
 
+import static com.crypticcosmos.crypticcosmos.register.BlockRegistries.UMBRAL_DUNE;
+import static com.crypticcosmos.crypticcosmos.register.LunonRegistries.*;
 import static com.crypticcosmos.crypticcosmos.world.biomes.BiomeHelper.*;
 
 @SuppressWarnings("SameParameterValue")
 public class BiomeMaker {
-    public static final SurfaceBuilderConfig LUNARA_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            BlockRegistries.OVERGROWN_LUNON.get().defaultBlockState(),
-            BlockRegistries.LUNON.get().defaultBlockState(),
-            BlockRegistries.LUNON_DUST.get().defaultBlockState()
-    );
-
-    public static final SurfaceBuilderConfig ABYSS_SURFACE_BUILDER_CONFIG = new SurfaceBuilderConfig(
-            BlockRegistries.UMBRAL_DUNE.get().defaultBlockState(),
-            BlockRegistries.UMBRAL_DUNE.get().defaultBlockState(),
-            BlockRegistries.UMBRAL_DUNE.get().defaultBlockState()
-    );
-
     public static Biome acerbicIsles() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, LUNARA_SURFACE_BUILDER_CONFIG);
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
+                LUNON.getDefaultState(),
+                LUNON.getDefaultState(),
+                LUNON_DUST.getDefaultState()
+        ));
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
-        addSpawn(spawnSettings, EntityClassification.CREATURE,
-                EntityTypeRegistries.MOON_BEAST.get(), 8, 1, 2);
+        addSpawn(spawnSettings, EntityClassification.MONSTER,
+                EntityTypeRegistries.MAKROSSA_RAMBLER.get(), 8, 1, 2);
 
-        addSpawn(spawnSettings, EntityClassification.CREATURE,
+        addSpawn(spawnSettings, EntityClassification.MONSTER,
                 EntityType.ENDERMAN, 4, 1, 4);
 
         final BiomeAmbience.Builder effects = effects(0xfffff5,
@@ -70,12 +64,22 @@ public class BiomeMaker {
         );
     }
 
-    public static Biome mondroveGroves() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, LUNARA_SURFACE_BUILDER_CONFIG);
+    public static Biome kafisnianForest() {
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
+                FUNGAL_LUNON.getDefaultState(),
+                LUNON.getDefaultState(),
+                LUNON_DUST.getDefaultState()
+        ));
 
         // Add mondrove fungus generation.
         genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
                 FeatureRegistries.MONDROVE_FUNGUS
+                        .decorated(Features.Placements.ADD_32)
+                        .decorated(Features.Placements.HEIGHTMAP_SQUARE)
+                        .count(2));
+
+        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+                FeatureRegistries.STINKY_OSMIN
                         .decorated(Features.Placements.ADD_32)
                         .decorated(Features.Placements.HEIGHTMAP_SQUARE)
                         .count(2));
@@ -87,10 +91,17 @@ public class BiomeMaker {
                         .decorated(Placement.COUNT_EXTRA
                                 .configured(new AtSurfaceWithExtraConfig(7, 0.1F, 1))));
 
+        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+                FeatureRegistries.OSMINSTEM_TREE
+                        .decorated(Features.Placements.HEIGHTMAP_SQUARE)
+                        .decorated(Placement.COUNT_EXTRA
+                                .configured(new AtSurfaceWithExtraConfig(14, 0.1F, 3))));
+
+
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
         addSpawn(spawnSettings, EntityClassification.CREATURE,
-                EntityType.ENDERMAN, 10, 1, 4);
+                EntityTypeRegistries.GROMBLE_FROG.get(), 8, 2, 5);
 
         final BiomeAmbience.Builder effects = effects(0xfffff5,
                 0xfffff5,
@@ -116,12 +127,16 @@ public class BiomeMaker {
 
     @Nonnull
     public static Biome lunaraPlains() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, LUNARA_SURFACE_BUILDER_CONFIG);
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
+                OVERGROWN_LUNON.getDefaultState(),
+                LUNON.getDefaultState(),
+                LUNON_DUST.getDefaultState()
+        ));
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
         addSpawn(spawnSettings, EntityClassification.CREATURE,
-                EntityTypeRegistries.MOON_BEAST.get(), 8, 1, 2);
+                EntityTypeRegistries.MAKROSSA_RAMBLER.get(), 8, 1, 2);
 
         addSpawn(spawnSettings, EntityClassification.CREATURE,
                 EntityType.ENDERMAN, 4, 1, 4);
@@ -147,8 +162,53 @@ public class BiomeMaker {
         );
     }
 
+    public static Biome grombleGrove() {
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.NETHER_FOREST, new SurfaceBuilderConfig(
+                CerantRegistries.PHORAL_CERANT.getDefaultState(),
+                CerantRegistries.CERANT.getDefaultState(),
+                CerantRegistries.CERANT.getDefaultState()
+        ));
+
+        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+                FeatureRegistries.GROMBLE_TREE
+                        .decorated(Features.Placements.HEIGHTMAP_SQUARE)
+                        .decorated(Placement.COUNT_EXTRA
+                                .configured(new AtSurfaceWithExtraConfig(10, 2F, 13))));
+
+
+        final MobSpawnInfo.Builder spawnSettings = spawnSettings();
+
+        addSpawn(spawnSettings, EntityClassification.CREATURE,
+                EntityTypeRegistries.GROMBLE_FROG.get(), 8, 2, 5);
+
+        final BiomeAmbience.Builder effects = effects(0xfffff5,
+                0xfffff5,
+                DEFAULT_GRASS_COLOR,
+                DEFAULT_FOLIAGE_COLOR,
+                0,
+                DEFAULT_SKY_FOG_COLOR,
+                SoundEventRegistries.MUSIC_MONDROVE_GROVES.get()
+        );
+
+        return biome(
+                RainType.RAIN,
+                Category.FOREST,
+                0.5f,
+                0.07f,
+                0f,
+                0.0001f,
+                effects,
+                genSettings,
+                spawnSettings.build()
+        );
+    }
+
     public static Biome umbralDunes() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, ABYSS_SURFACE_BUILDER_CONFIG);
+        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
+                UMBRAL_DUNE.getDefaultState(),
+                UMBRAL_DUNE.getDefaultState(),
+                UMBRAL_DUNE.getDefaultState()
+        ));
 
         final BiomeAmbience.Builder effects = effects(0x412,
                 0x412,

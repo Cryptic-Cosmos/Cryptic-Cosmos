@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "crypticcosmos:mondrove_door",
+    "crypticcosmos:osminstem_door",
+    "crypticcosmos:gromble_door"
+  ]
+}

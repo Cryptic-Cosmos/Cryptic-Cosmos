@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:polished_vertical_cerant_brick_slab_from_polished_cerant_bricks_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_polished_cerant_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:polished_cerant_bricks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:polished_vertical_cerant_brick_slab_from_polished_cerant_bricks_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_polished_cerant_bricks",
+      "has_the_recipe"
+    ]
+  ]
+}

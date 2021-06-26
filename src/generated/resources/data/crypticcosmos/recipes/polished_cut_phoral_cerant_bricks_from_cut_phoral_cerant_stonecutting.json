@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "crypticcosmos:cut_phoral_cerant"
+  },
+  "result": "crypticcosmos:polished_cut_phoral_cerant_bricks",
+  "count": 1
+}

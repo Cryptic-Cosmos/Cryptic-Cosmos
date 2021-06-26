@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "crypticcosmos:block/chiseled_polished_lunon",
+    "end": "crypticcosmos:block/polished_lunon"
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_bottom_top",
-  "textures": {
-    "bottom": "crypticcosmos:block/lunon",
-    "top": "crypticcosmos:block/overgrown_lunon_top",
-    "side": "crypticcosmos:block/overgrown_lunon_snow"
-  }
-}

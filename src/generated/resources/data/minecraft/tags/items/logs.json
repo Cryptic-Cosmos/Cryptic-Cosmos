@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "crypticcosmos:mondrove_log"
+    "crypticcosmos:mondrove_log",
+    "crypticcosmos:osminstem_log",
+    "crypticcosmos:gromble_log"
   ]
 }

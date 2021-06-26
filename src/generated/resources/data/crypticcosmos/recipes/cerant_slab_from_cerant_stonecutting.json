@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "crypticcosmos:cerant"
+  },
+  "result": "crypticcosmos:cerant_slab",
+  "count": 2
+}

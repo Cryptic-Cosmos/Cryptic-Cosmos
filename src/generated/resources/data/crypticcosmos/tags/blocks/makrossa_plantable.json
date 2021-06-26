@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "crypticcosmos:lunon",
+    "crypticcosmos:overgrown_lunon",
+    "crypticcosmos:fungal_lunon",
+    "crypticcosmos:glum_lunon",
+    "crypticcosmos:phoral_cerant",
+    "crypticcosmos:cerant"
+  ]
+}

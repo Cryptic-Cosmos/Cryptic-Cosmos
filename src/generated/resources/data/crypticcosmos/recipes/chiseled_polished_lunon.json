@@ -1,11 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "m",
-    "m"
+    "#",
+    "#"
   ],
   "key": {
-    "m": {
+    "#": {
       "item": "crypticcosmos:polished_lunon_slab"
     }
   },

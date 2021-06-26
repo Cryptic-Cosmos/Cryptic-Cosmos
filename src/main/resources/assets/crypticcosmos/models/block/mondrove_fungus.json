@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "crypticcosmos:block/mondrove_fungus"
-  }
-}

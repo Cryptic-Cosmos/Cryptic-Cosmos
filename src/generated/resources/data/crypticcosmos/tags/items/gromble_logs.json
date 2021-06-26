@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "crypticcosmos:gromble_log",
+    "crypticcosmos:stripped_gromble_log",
+    "crypticcosmos:gromble_wood",
+    "crypticcosmos:stripped_gromble_wood"
+  ]
+}

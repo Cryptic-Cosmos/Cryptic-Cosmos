@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab",
-  "textures": {
-    "bottom": "crypticcosmos:block/polished_lunon",
-    "top": "crypticcosmos:block/polished_lunon",
-    "side": "crypticcosmos:block/polished_lunon"
-  }
-}

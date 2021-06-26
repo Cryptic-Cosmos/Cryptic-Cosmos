@@ -6,27 +6,25 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crypticcosmos:lunon_brick_slab"
-        }
-      ],
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ],
-      "functions": [
-        {
-          "function": "minecraft:set_count",
-          "conditions": [
+          "functions": [
             {
-              "condition": "minecraft:block_state_property",
-              "block": "crypticcosmos:lunon_brick_slab",
-              "properties": {
-                "type": "double"
-              }
+              "function": "minecraft:set_count",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "crypticcosmos:lunon_brick_slab",
+                  "properties": {
+                    "type": "double"
+                  }
+                }
+              ],
+              "count": 2
+            },
+            {
+              "function": "minecraft:explosion_decay"
             }
           ],
-          "count": 2
+          "name": "crypticcosmos:lunon_brick_slab"
         }
       ]
     }

@@ -3,7 +3,7 @@
   "group": "planks",
   "ingredients": [
     {
-      "item": "crypticcosmos:mondrove_log"
+      "tag": "crypticcosmos:mondrove_logs"
     }
   ],
   "result": {

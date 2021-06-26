@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "crypticcosmos:block/osminstem_porous_log",
+    "end": "crypticcosmos:block/osminstem_log_top"
+  }
+}

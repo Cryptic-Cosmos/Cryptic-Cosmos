@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "crypticcosmos:block/gromble_wood"
+    },
+    "axis=y": {
+      "model": "crypticcosmos:block/gromble_wood"
+    },
+    "axis=z": {
+      "model": "crypticcosmos:block/gromble_wood"
+    }
+  }
+}

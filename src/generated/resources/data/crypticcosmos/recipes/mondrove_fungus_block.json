@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "crypticcosmos:mondrove_fungus"
+    }
+  },
+  "result": {
+    "item": "crypticcosmos:mondrove_fungus_block"
+  }
+}

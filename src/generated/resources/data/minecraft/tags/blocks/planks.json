@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "crypticcosmos:mondrove_planks"
+    "crypticcosmos:mondrove_planks",
+    "crypticcosmos:osminstem_planks",
+    "crypticcosmos:gromble_planks"
   ]
 }

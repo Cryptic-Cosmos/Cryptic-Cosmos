@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "crypticcosmos:block/polished_cerant_slab_top"
+    },
+    "type=bottom": {
+      "model": "crypticcosmos:block/polished_cerant_slab"
+    },
+    "type=double": {
+      "model": "crypticcosmos:block/polished_cerant"
+    }
+  }
+}

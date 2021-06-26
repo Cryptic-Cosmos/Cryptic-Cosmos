@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "crypticcosmos:block/osminstem_wood"
+    },
+    "axis=y": {
+      "model": "crypticcosmos:block/osminstem_wood"
+    },
+    "axis=z": {
+      "model": "crypticcosmos:block/osminstem_wood"
+    }
+  }
+}

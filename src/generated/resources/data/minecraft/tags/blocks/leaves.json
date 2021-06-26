@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "crypticcosmos:mondrove_leaves"
+    "crypticcosmos:mondrove_leaves",
+    "crypticcosmos:osminstem_cap",
+    "crypticcosmos:giant_gromble_berry",
+    "crypticcosmos:giant_rotten_gromble_berry",
+    "crypticcosmos:gromble_leaves"
   ]
 }

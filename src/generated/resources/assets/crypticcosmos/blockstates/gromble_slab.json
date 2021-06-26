@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "crypticcosmos:block/gromble_slab_top"
+    },
+    "type=bottom": {
+      "model": "crypticcosmos:block/gromble_slab"
+    },
+    "type=double": {
+      "model": "crypticcosmos:block/gromble_planks"
+    }
+  }
+}

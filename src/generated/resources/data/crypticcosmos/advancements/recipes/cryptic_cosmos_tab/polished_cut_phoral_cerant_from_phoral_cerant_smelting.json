@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:polished_cut_phoral_cerant_from_phoral_cerant_smelting"
+    ]
+  },
+  "criteria": {
+    "has_phoral_cerant": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:phoral_cerant"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:polished_cut_phoral_cerant_from_phoral_cerant_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_phoral_cerant",
+      "has_the_recipe"
+    ]
+  ]
+}

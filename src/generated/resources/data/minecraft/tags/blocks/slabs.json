@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "crypticcosmos:cerant_slab",
+    "crypticcosmos:polished_cerant_brick_slab",
+    "crypticcosmos:polished_vertical_cerant_brick_slab",
+    "crypticcosmos:polished_cerant_slab",
+    "crypticcosmos:mondrove_slab"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "crypticcosmos:gromble_logs"
+    }
+  ],
+  "result": {
+    "item": "crypticcosmos:gromble_planks",
+    "count": 4
+  }
+}

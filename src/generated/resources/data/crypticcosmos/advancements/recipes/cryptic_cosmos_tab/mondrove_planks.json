@@ -6,12 +6,12 @@
     ]
   },
   "criteria": {
-    "has_moon_log": {
+    "has_mondrove_logs": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "crypticcosmos:mondrove_log"
+            "tag": "crypticcosmos:mondrove_logs"
           }
         ]
       }
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_moon_log",
+      "has_mondrove_logs",
       "has_the_recipe"
     ]
   ]

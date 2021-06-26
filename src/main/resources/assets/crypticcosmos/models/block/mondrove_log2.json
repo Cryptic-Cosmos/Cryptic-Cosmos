@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "crypticcosmos:block/mondrove_log_top",
-    "side": "crypticcosmos:block/mondrove_log2"
-  }
-}

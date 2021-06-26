@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:chiseled_polished_vertical_cerant_bricks"
+    ]
+  },
+  "criteria": {
+    "has_polished_lunon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:polished_blackstone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:chiseled_polished_vertical_cerant_bricks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_polished_lunon",
+      "has_the_recipe"
+    ]
+  ]
+}

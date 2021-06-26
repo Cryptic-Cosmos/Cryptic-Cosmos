@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "crypticcosmos:mondrove_trapdoor",
+    "crypticcosmos:osminstem_trapdoor",
+    "crypticcosmos:gromble_trapdoor"
+  ]
+}

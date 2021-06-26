@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "crypticcosmos:stripped_mondrove_log",
+    "crypticcosmos:stripped_mondrove_wood",
+    "crypticcosmos:mondrove_log",
+    "crypticcosmos:mondrove_wood"
+  ]
+}

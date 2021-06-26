@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:cerant_slab_from_cerant_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_cerant": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:cerant"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:cerant_slab_from_cerant_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cerant",
+      "has_the_recipe"
+    ]
+  ]
+}

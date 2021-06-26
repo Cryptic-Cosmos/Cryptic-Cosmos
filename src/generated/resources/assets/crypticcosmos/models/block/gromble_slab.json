@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "side": "crypticcosmos:block/gromble_planks",
+    "bottom": "crypticcosmos:block/gromble_planks",
+    "top": "crypticcosmos:block/gromble_planks"
+  }
+}

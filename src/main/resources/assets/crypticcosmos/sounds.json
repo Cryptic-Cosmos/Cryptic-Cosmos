@@ -50,5 +50,49 @@
         "stream": true
       }
     ]
+  },
+  "entity.makrossa_rambler_living": {
+    "subtitle": "subtitles.entity.makrossa_rambler_living",
+    "sounds": [
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_living1",
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_living2",
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_living3"
+    ]
+  },
+  "entity.makrossa_rambler_hurt": {
+    "subtitle": "subtitles.entity.makrossa_rambler_hurt",
+    "sounds": [
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_hurt1",
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_hurt2",
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_hurt3"
+    ]
+  },
+  "entity.makrossa_rambler_death": {
+    "subtitle": "subtitles.entity.makrossa_rambler_death",
+    "sounds": [
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_death"
+    ]
+  },
+  "entity.gromble_frog_living": {
+    "subtitle": "subtitles.entity.gromble_frog_living",
+    "sounds": [
+      "crypticcosmos:gromble_frog/gromble_frog_ambient",
+      "crypticcosmos:gromble_frog/gromble_frog_ambient2",
+      "crypticcosmos:gromble_frog/gromble_frog_ambient3"
+    ]
+  },
+  "entity.gromble_frog_hurt": {
+    "subtitle": "subtitles.entity.gromble_frog_hurt",
+    "sounds": [
+      "crypticcosmos:gromble_frog/gromble_frog_hurt1",
+      "crypticcosmos:gromble_frog/gromble_frog_hurt2",
+      "crypticcosmos:gromble_frog/gromble_frog_hurt3"
+    ]
+  },
+  "entity.gromble_frog_death": {
+    "subtitle": "subtitles.entity.gromble_frog_death",
+    "sounds": [
+      "crypticcosmos:gromble_frog/gromble_frog_death"
+    ]
   }
 }

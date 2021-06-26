@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "crypticcosmos:block/polished_lunon_slab_top"
+    },
+    "type=bottom": {
+      "model": "crypticcosmos:block/polished_lunon_slab"
+    },
+    "type=double": {
+      "model": "crypticcosmos:block/polished_lunon"
+    }
+  }
+}

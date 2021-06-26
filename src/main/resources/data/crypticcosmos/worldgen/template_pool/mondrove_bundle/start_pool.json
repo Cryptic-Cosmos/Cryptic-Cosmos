@@ -1,0 +1,20 @@
+{
+  "name": "crypticcosmos:mondrove_bundle/start_pool",
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+
+      "weight": 1,
+      "element": {
+        "location": "crypticcosmos:mondrove_bundle",
+
+        "processors": "minecraft:empty",
+
+        "projection": "rigid",
+
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

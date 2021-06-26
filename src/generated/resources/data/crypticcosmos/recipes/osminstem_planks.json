@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "crypticcosmos:osminstem_logs"
+    }
+  ],
+  "result": {
+    "item": "crypticcosmos:osminstem_planks",
+    "count": 4
+  }
+}
