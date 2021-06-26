@@ -6,7 +6,7 @@
 [![Modrinth](https://img.shields.io/badge/modrinth-crypticcosmos-green.svg?style=flat-square)](https://modrinth.com/mod/crypticcosmos)
 
 # Cryptic Cosmos
-This is a Minecraft mod (1.16.5, 1.17 support planned) focused on exploring dimensions and discovering new biomes, blocks and creatures.
+Cryptic Cosmos is a Minecraft mod (1.16.5, 1.17 support planned) focused on exploring dimensions and discovering new biomes, blocks and creatures.
 
 There are 3 planned dimensions, but currently are only working on one - The Makrossa dimension. The Makrossa dimension is still very WIP, but it already has a lot of building blocks and decoration. There are 2 new mobs so far, with more to come!
 
