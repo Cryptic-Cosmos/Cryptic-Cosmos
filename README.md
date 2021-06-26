@@ -21,12 +21,13 @@ Join our [Discord server](https://discord.gg/6BbUpV8jSk)!
 
 ## Credits
 
-- [*Haunted Chest*](https://github.com/hauntedchest13): Creator & owner.
-- [*TheOnlyTails*](https://theonlytails.com/): Programmer & co-owner.
-- [*LudoCrypt*](https://youtube.com/c/LudoCrypt): [OST](https://ludocrypt.bandcamp.com/album/mundus-volume-alpha) composer.
-- [*Realz*](https://youtube.com/kingrealzyt): Programmer
-- [*Chadboi27*](https://discordapp.com/users/507514606529544194): Artist & modeler. 
-- [*Frogge*](https://discordapp.com/users/780808380310487101): Artist.
+- [*Haunted Chest*](https://github.com/hauntedchest13): Creator, designer and owner
+- [*TheOnlyTails*](https://theonlytails.com/): Lead Developer and co-owner
+- [*LudoCrypt*](https://youtube.com/c/LudoCrypt): [OST](https://ludocrypt.bandcamp.com/album/mundus-volume-alpha) composer
+- [*Realz*](https://youtube.com/kingrealzyt): Developer
+- [*Chadboi27*](https://discordapp.com/users/507514606529544194): Artist & Modeler
+- [*Frogge*](https://discordapp.com/users/780808380310487101): Artist
+- [*Goomy*](https://discordapp.com/users/503610778490765332): Artist, Concept Artist and designer
 
 ## Disclaimer
 
