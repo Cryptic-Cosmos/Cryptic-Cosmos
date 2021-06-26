@@ -71,16 +71,6 @@ public class FeatureRegistries {
             )
     );
 
-    public static final ConfiguredFeature<?, ?> GIANT_GROMBLE_BERRY_PATCH = registerFeature("giant_gromble_berry_patch",
-            Feature.FLOWER.configured(new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider()
-                    .add(GIANT_GROMBLE_BERRY.get().defaultBlockState(), 2),
-                    new SimpleBlockPlacer())
-                    .tries(64)
-                    .build()
-            )
-    );
-
-
     private static <T extends IFeatureConfig> ConfiguredFeature<T, ?> registerFeature(String path, ConfiguredFeature<T, ?> feature) {
         return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, CrypticCosmos.id(path), feature);
     }

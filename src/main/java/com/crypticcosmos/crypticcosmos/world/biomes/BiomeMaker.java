@@ -170,12 +170,6 @@ public class BiomeMaker {
         ));
 
         genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-                FeatureRegistries.GIANT_GROMBLE_BERRY_PATCH
-                        .decorated(Features.Placements.ADD_32)
-                        .decorated(Features.Placements.HEIGHTMAP_SQUARE)
-                        .count(5));
-
-        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
                 FeatureRegistries.GROMBLE_TREE
                         .decorated(Features.Placements.HEIGHTMAP_SQUARE)
                         .decorated(Placement.COUNT_EXTRA
