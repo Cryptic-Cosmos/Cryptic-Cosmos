@@ -23,7 +23,6 @@ Join our [Discord server](https://discord.gg/6BbUpV8jSk)!
 
 - [*Haunted Chest*](https://github.com/hauntedchest13): Creator & owner.
 - [*TheOnlyTails*](https://theonlytails.com/): Programmer & co-owner.
-- [*CircleFish*](): Artist, programmer & co-owner.
 - [*LudoCrypt*](https://youtube.com/c/LudoCrypt): [OST](https://ludocrypt.bandcamp.com/album/mundus-volume-alpha) composer.
 - [*Realz*](https://youtube.com/kingrealzyt): Programmer
 - [*Chadboi27*](https://discordapp.com/users/507514606529544194): Artist & modeler. 
