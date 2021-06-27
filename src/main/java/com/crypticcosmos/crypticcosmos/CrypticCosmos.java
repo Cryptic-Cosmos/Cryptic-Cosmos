@@ -4,7 +4,7 @@ import com.crypticcosmos.crypticcosmos.block.RiftBlock;
 import com.crypticcosmos.crypticcosmos.effect.CorruptionEffect.SpawnFrogOnCorruptionKill;
 import com.crypticcosmos.crypticcosmos.register.*;
 import com.crypticcosmos.crypticcosmos.util.BrewingRecipes;
-import com.crypticcosmos.crypticcosmos.util.LanguageGenerator;
+import com.crypticcosmos.crypticcosmos.util.ExtraAssetGenerator;
 import com.crypticcosmos.crypticcosmos.world.structures.StructureConfig;
 import com.tterrag.registrate.Registrate;
 import net.minecraft.item.ItemGroup;
@@ -71,7 +71,7 @@ public class CrypticCosmos {
         // The comments for BiomeLoadingEvent and StructureSpawnListGatherEvent says to do HIGH for additions.
         forgeBus.addListener(EventPriority.HIGH, StructureConfig::addCustomStructures);
         modEventBus.addListener(BrewingRecipes::registerBrewingRecipes);
-        LanguageGenerator.English.addTranslations();
+        ExtraAssetGenerator.English.addTranslations();
 
         GeckoLib.initialize();
     }

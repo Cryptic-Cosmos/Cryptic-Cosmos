@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "crypticcosmos:gromble_stem"
+          "name": "minecraft:air"
         }
       ],
       "conditions": [

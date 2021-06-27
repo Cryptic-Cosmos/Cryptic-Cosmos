@@ -5,8 +5,8 @@ import com.crypticcosmos.crypticcosmos.register.EffectRegistries;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 
-public abstract class LanguageGenerator {
-    public static class English extends LanguageGenerator {
+public abstract class ExtraAssetGenerator {
+    public static class English {
         public static void addTranslations() {
             // Biomes
             getRegistrate().addLang("biome", CrypticCosmos.id("umbral_dunes"), "Umbral Dunes");

@@ -11,16 +11,9 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.advancements.criterion.EnchantmentPredicate;
-import net.minecraft.advancements.criterion.ItemPredicate;
-import net.minecraft.advancements.criterion.MinMaxBounds;
 import net.minecraft.block.*;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
-import net.minecraft.loot.*;
-import net.minecraft.loot.conditions.MatchTool;
-import net.minecraft.loot.functions.ApplyBonus;
-import net.minecraft.loot.functions.ExplosionDecay;
-import net.minecraft.loot.functions.SetCount;
 import net.minecraft.state.properties.AttachFace;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
@@ -29,6 +22,20 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 
 import java.util.function.Supplier;
+
+import static net.minecraft.advancements.criterion.ItemPredicate.Builder.item;
+import static net.minecraft.advancements.criterion.MinMaxBounds.IntBound.atLeast;
+import static net.minecraft.enchantment.Enchantments.SILK_TOUCH;
+import static net.minecraft.loot.AlternativesLootEntry.alternatives;
+import static net.minecraft.loot.ConstantRange.exactly;
+import static net.minecraft.loot.ItemLootEntry.lootTableItem;
+import static net.minecraft.loot.LootPool.lootPool;
+import static net.minecraft.loot.LootTable.lootTable;
+import static net.minecraft.loot.RandomValueRange.between;
+import static net.minecraft.loot.conditions.MatchTool.toolMatches;
+import static net.minecraft.loot.functions.ApplyBonus.addOreBonusCount;
+import static net.minecraft.loot.functions.ExplosionDecay.explosionDecay;
+import static net.minecraft.loot.functions.SetCount.setCount;
 
 public class RegistrationUtils {
     public static ConfiguredModel[] infectableBlockModels(BlockState state,
@@ -204,23 +211,23 @@ public class RegistrationUtils {
             int minDrop,
             int maxDrop
     ) {
-        lootTables.add(block, LootTable.lootTable()
-                .withPool(LootPool.lootPool()
-                        .add(AlternativesLootEntry.alternatives(
-                                ItemLootEntry.lootTableItem(block)
-                                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item()
+        lootTables.add(block, lootTable()
+                .withPool(lootPool()
+                        .add(alternatives(
+                                lootTableItem(block)
+                                        .when(toolMatches(item()
                                                 .hasEnchantment(new EnchantmentPredicate(
-                                                        Enchantments.SILK_TOUCH, MinMaxBounds.IntBound.atLeast(1))
+                                                        SILK_TOUCH, atLeast(1))
                                                 )
                                         )),
 
-                                ItemLootEntry.lootTableItem(fortuneDrop.get())
-                                        .apply(SetCount.setCount(minDrop != maxDrop
-                                                ? RandomValueRange.between(minDrop, maxDrop)
-                                                : ConstantRange.exactly(minDrop)
+                                lootTableItem(fortuneDrop.get())
+                                        .apply(setCount(minDrop != maxDrop
+                                                ? between(minDrop, maxDrop)
+                                                : exactly(minDrop)
                                         ))
-                                        .apply(ApplyBonus.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
-                                        .apply(ExplosionDecay.explosionDecay())
+                                        .apply(addOreBonusCount(Enchantments.BLOCK_FORTUNE))
+                                        .apply(explosionDecay())
                         ))
                 )
         );

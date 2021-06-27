@@ -1,9 +1,9 @@
 package com.crypticcosmos.crypticcosmos.register;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.block.GiantGrombleBerry;
+import com.crypticcosmos.crypticcosmos.block.EffluviumBlock;
 import com.crypticcosmos.crypticcosmos.block.MakrossaPlantableSapling;
-import com.crypticcosmos.crypticcosmos.block.RottenGrombleBerryBlock;
+import com.crypticcosmos.crypticcosmos.block.Rottenable;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
 import com.crypticcosmos.crypticcosmos.world.feature.GrombleTree;
 import com.tterrag.registrate.util.DataIngredient;
@@ -28,6 +28,7 @@ import javax.annotation.Nonnull;
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.GROMBLE_BERRY;
 import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.ROTTEN_GROMBLE_BERRY;
+import static com.crypticcosmos.crypticcosmos.register.TagRegistries.GIANT_GROMBLE_BERRIES;
 import static com.tterrag.registrate.util.DataIngredient.items;
 import static net.minecraft.block.material.Material.GRASS;
 import static net.minecraft.block.material.Material.NETHER_WOOD;
@@ -57,39 +58,32 @@ public class GrombleRegistries {
             .tag(ItemTags.SAPLINGS).build()
 
             .register();
-    public static final BlockEntry<GiantGrombleBerry> GIANT_GROMBLE_BERRY = getRegistrate().object("giant_gromble_berry")
-            .block(GiantGrombleBerry::new)
+    public static final BlockEntry<Rottenable> GIANT_GROMBLE_BERRY = getRegistrate().object("giant_gromble_berry")
+            .block(Rottenable::new)
+            .initialProperties(Material.VEGETABLE)
+            .properties(p -> p.strength(1.0F)
+                    .sound(SoundType.SHROOMLIGHT)
+                    .lightLevel(state -> 15)
+                    .harvestTool(ToolType.HOE)
+                    .requiresCorrectToolForDrops()
+            )
             .loot((lootTables, block) -> RegistrationUtils.silkTouchFortune(lootTables, block, GROMBLE_BERRY, 2, 4))
             .recipe((context, provider) -> provider.square(DataIngredient.items(GROMBLE_BERRY), context, true))
-            .tag(BlockTags.LEAVES)
+            .tag(BlockTags.LEAVES, GIANT_GROMBLE_BERRIES)
             .simpleItem()
             .register();
 
-    public static final BlockEntry<RottenGrombleBerryBlock> GIANT_ROTTEN_GROMBLE_BERRY = getRegistrate().object("giant_rotten_gromble_berry")
-            .block(Material.LEAVES, RottenGrombleBerryBlock::new)
+    public static final BlockEntry<EffluviumBlock> GIANT_ROTTEN_GROMBLE_BERRY = getRegistrate().object("giant_rotten_gromble_berry")
+            .block(Material.LEAVES, EffluviumBlock::new)
             .properties(GrombleRegistries::rottenBerryProperties)
             .loot((lootTables, block) -> RegistrationUtils.silkTouchFortune(lootTables, block, ROTTEN_GROMBLE_BERRY, 1, 4))
             .recipe((context, provider) -> provider.square(DataIngredient.items(ROTTEN_GROMBLE_BERRY), context, true))
-            .tag(BlockTags.LEAVES)
+            .tag(BlockTags.LEAVES, GIANT_GROMBLE_BERRIES)
             .simpleItem()
             .register();
 
-    public static final BlockEntry<RottenGrombleBerryBlock> GROMBLE_SPROUT = getRegistrate().object("gromble_sprout")
-            .block(Material.GRASS, RottenGrombleBerryBlock::new)
-            .initialProperties(GRASS, TERRACOTTA_LIGHT_BLUE)
-            .properties(GrombleRegistries::grombleStemProperties)
-            .addLayer(() -> RenderType::cutout)
-            .blockstate(RegistrationUtils::crossModel)
-
-            .item()
-            .model((context, provider) -> provider.generated(context,
-                    provider.modLoc("block/" + provider.name(context)))
-            )
-            .build()
-            .register();
-
-    public static final BlockEntry<RottenGrombleBerryBlock> GROMBLE_STEM = getRegistrate().object("gromble_stem")
-            .block(Material.GRASS, RottenGrombleBerryBlock::new)
+    public static final BlockEntry<EffluviumBlock> GROMBLE_SPROUT = getRegistrate().object("gromble_sprout")
+            .block(Material.GRASS, EffluviumBlock::new)
             .initialProperties(GRASS, TERRACOTTA_LIGHT_BLUE)
             .properties(GrombleRegistries::grombleStemProperties)
             .addLayer(() -> RenderType::cutout)

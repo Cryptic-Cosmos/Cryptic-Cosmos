@@ -1,6 +1,8 @@
 package com.crypticcosmos.crypticcosmos.register;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
+import com.crypticcosmos.crypticcosmos.block.GrombleStalk;
+import com.crypticcosmos.crypticcosmos.block.GrombleStalkTop;
 import com.crypticcosmos.crypticcosmos.block.MondroveFungus;
 import com.crypticcosmos.crypticcosmos.block.RiftBlock;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
@@ -12,9 +14,14 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.SandBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.tags.BlockTags;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
+import static com.crypticcosmos.crypticcosmos.register.TagRegistries.GIANT_GROMBLE_BERRIES;
+import static com.crypticcosmos.crypticcosmos.util.RegistrationUtils.blockTexture;
 
 @SuppressWarnings("unused")
 public class BlockRegistries {
@@ -78,6 +85,39 @@ public class BlockRegistries {
             .block(Block::new)
             .properties(p -> Properties.copy(MONDROVE_FUNGUS_BLOCK.get()))
             .simpleItem()
+            .register();
+
+    public static final BlockEntry<GrombleStalk> GROMBLE_STALK_PLANT = getRegistrate().object("gromble_stalk_plant")
+            .block(GrombleStalk::new)
+            .addLayer(() -> RenderType::cutout)
+            .initialProperties(Material.PLANT, MaterialColor.COLOR_CYAN)
+            .properties(p -> p.noCollission().instabreak().sound(SoundType.WEEPING_VINES))
+            .tag(BlockTags.CLIMBABLE)
+            .blockstate((context, provider) -> provider.getVariantBuilder(context.get()).forAllStates(state ->
+                    ConfiguredModel.builder().modelFile(
+                            provider.models().cross(context.getName(), provider.blockTexture(context.get()))
+                    ).build()
+            ))
+            .register();
+
+    public static final BlockEntry<GrombleStalkTop> GROMBLE_STALK = getRegistrate().object("gromble_stalk")
+            .block(GrombleStalkTop::new)
+            .addLayer(() -> RenderType::cutout)
+            .initialProperties(Material.PLANT, MaterialColor.COLOR_CYAN)
+            .properties(p -> p.noCollission().instabreak().sound(SoundType.WEEPING_VINES))
+            // this will add the loot table to both blocks
+            .tag(GIANT_GROMBLE_BERRIES)
+            .loot((lootTables, block) -> lootTables.addNetherVinesDropTable(block, GROMBLE_STALK_PLANT.get()))
+            .blockstate((context, provider) -> provider.getVariantBuilder(context.get()).forAllStates(state ->
+                    ConfiguredModel.builder().modelFile(
+                            provider.models().cross(context.getName(), provider.blockTexture(context.get()))
+                    ).build()
+            ))
+
+            .item()
+            .model((context, provider) -> provider.generated(context, blockTexture(() -> context.get().getBlock(), "")))
+            .build()
+
             .register();
 
     public static void init() {
