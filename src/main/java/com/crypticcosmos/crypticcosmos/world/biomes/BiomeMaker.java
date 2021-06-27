@@ -178,7 +178,7 @@ public class BiomeMaker {
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
-        addSpawn(spawnSettings, EntityClassification.CREATURE,
+        addSpawn(spawnSettings, EntityClassification.AMBIENT,
                 EntityTypeRegistries.GROMBLE_FROG.get(), 8, 2, 5);
 
         final BiomeAmbience.Builder effects = effects(0xfffff5,

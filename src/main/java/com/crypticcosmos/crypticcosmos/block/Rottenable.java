@@ -28,7 +28,7 @@ public class Rottenable extends Block {
         super.randomTick(state, world, pos, random);
 
         // higher == rarer
-        final int rottingChance = 20000;
+        final int rottingChance = 60000;
 
         if (random.nextInt(rottingChance) > 10)
             world.setBlockAndUpdate(pos,
