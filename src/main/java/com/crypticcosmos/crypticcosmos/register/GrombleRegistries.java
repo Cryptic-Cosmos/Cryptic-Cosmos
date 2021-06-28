@@ -76,7 +76,7 @@ public class GrombleRegistries {
             .block(Material.LEAVES, EffluviumBlock::new)
             .properties(p -> p.strength(0.25f)
                     .sound(SoundType.SHROOMLIGHT)
-                    .lightLevel(state -> 7)
+                    .lightLevel(state -> 12)
                     .harvestTool(ToolType.HOE)
             )
             .loot((lootTables, block) -> RegistrationUtils.silkTouchFortune(lootTables, block, ROTTEN_GROMBLE_BERRY, 1, 4))
