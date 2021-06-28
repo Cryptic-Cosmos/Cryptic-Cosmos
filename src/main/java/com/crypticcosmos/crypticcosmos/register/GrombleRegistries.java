@@ -23,8 +23,6 @@ import net.minecraft.tags.ItemTags;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.ToolType;
 
-import javax.annotation.Nonnull;
-
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.GROMBLE_BERRY;
 import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.ROTTEN_GROMBLE_BERRY;
@@ -88,7 +86,10 @@ public class GrombleRegistries {
     public static final BlockEntry<EffluviumBlock> GROMBLE_SPROUT = getRegistrate().object("gromble_sprout")
             .block(Material.GRASS, EffluviumBlock::new)
             .initialProperties(GRASS, TERRACOTTA_LIGHT_BLUE)
-            .properties(GrombleRegistries::grombleStemProperties)
+            .properties(p -> p.strength(0.3F)
+                    .noCollission()
+                    .sound(SoundType.GRASS)
+            )
             .addLayer(() -> RenderType::cutout)
             .blockstate(RegistrationUtils::crossModel)
 
@@ -102,7 +103,11 @@ public class GrombleRegistries {
     public static final BlockEntry<LeavesBlock> GROMBLE_LEAVES = getRegistrate().object("gromble_leaves")
             .block(LeavesBlock::new)
             .initialProperties(Material.LEAVES, TERRACOTTA_LIGHT_BLUE)
-            .properties(GrombleRegistries::grombleLeavesProperties)
+            .properties(p -> p.strength(0.2F)
+                    .randomTicks()
+                    .sound(SoundType.GRASS)
+                    .noOcclusion()
+            )
             .addLayer(() -> RenderType::cutout)
             .loot((lootTables, block) -> lootTables.add(block, BlockLootTables.createLeavesDrops(
                     block, GROMBLE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES
@@ -271,32 +276,6 @@ public class GrombleRegistries {
             )
             .tag(ItemTags.BOATS)
             .register();
-
-    @Nonnull
-    private static Properties rottenBerryProperties(Properties p) {
-        return p.strength(0.25F)
-                .sound(SoundType.SHROOMLIGHT)
-                .lightLevel((p_235439_0_) -> 7)
-                .harvestLevel(0)
-                .harvestTool(ToolType.HOE)
-                .requiresCorrectToolForDrops();
-    }
-
-    @Nonnull
-    private static Properties grombleLeavesProperties(Properties p) {
-        return p
-                .strength(0.2F)
-                .randomTicks()
-                .sound(SoundType.GRASS)
-                .noOcclusion();
-    }
-
-    @Nonnull
-    private static Properties grombleStemProperties(Properties p) {
-        return p.strength(0.3F)
-                .noCollission()
-                .sound(SoundType.GRASS);
-    }
 
     public static void init() {
         CrypticCosmos.LOGGER.info("GrombleRegistries initialized");
