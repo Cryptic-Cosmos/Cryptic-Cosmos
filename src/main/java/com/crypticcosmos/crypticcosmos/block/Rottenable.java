@@ -9,6 +9,8 @@ import net.minecraft.world.server.ServerWorld;
 import javax.annotation.Nonnull;
 import java.util.Random;
 
+import static com.crypticcosmos.crypticcosmos.register.BlockRegistries.GROMBLE_STALK;
+
 public class Rottenable extends Block {
     public Rottenable(Properties properties) {
         super(properties);
@@ -30,7 +32,9 @@ public class Rottenable extends Block {
         // higher == rarer
         final int rottingChance = 60000;
 
-        if (random.nextInt(rottingChance) > 10)
+        final boolean isOnStalk = world.getBlockState(pos.below()).getBlock().is(GROMBLE_STALK.get());
+
+        if (random.nextInt(rottingChance) > 10 && !isOnStalk)
             world.setBlockAndUpdate(pos,
                     GrombleRegistries.GIANT_ROTTEN_GROMBLE_BERRY.get().defaultBlockState());
     }
