@@ -2,7 +2,6 @@ package com.crypticcosmos.crypticcosmos.world.biomes;
 
 import com.crypticcosmos.crypticcosmos.register.CerantRegistries;
 import com.crypticcosmos.crypticcosmos.register.EntityTypeRegistries;
-import com.crypticcosmos.crypticcosmos.register.FeatureRegistries;
 import com.crypticcosmos.crypticcosmos.register.SoundEventRegistries;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -12,10 +11,6 @@ import net.minecraft.world.biome.Biome.RainType;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
-import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.Features;
-import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
-import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
@@ -70,33 +65,6 @@ public class BiomeMaker {
                 LUNON.getDefaultState(),
                 LUNON_DUST.getDefaultState()
         ));
-
-        // Add mondrove fungus generation.
-        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-                FeatureRegistries.MONDROVE_FUNGUS
-                        .decorated(Features.Placements.ADD_32)
-                        .decorated(Features.Placements.HEIGHTMAP_SQUARE)
-                        .count(2));
-
-        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-                FeatureRegistries.STINKY_OSMIN
-                        .decorated(Features.Placements.ADD_32)
-                        .decorated(Features.Placements.HEIGHTMAP_SQUARE)
-                        .count(2));
-
-        // Add mondrove tree generation.
-        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-                FeatureRegistries.MONDROVE_TREE
-                        .decorated(Features.Placements.HEIGHTMAP_SQUARE)
-                        .decorated(Placement.COUNT_EXTRA
-                                .configured(new AtSurfaceWithExtraConfig(7, 0.1F, 1))));
-
-        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-                FeatureRegistries.OSMINSTEM_TREE
-                        .decorated(Features.Placements.HEIGHTMAP_SQUARE)
-                        .decorated(Placement.COUNT_EXTRA
-                                .configured(new AtSurfaceWithExtraConfig(14, 0.1F, 3))));
-
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 
@@ -168,13 +136,6 @@ public class BiomeMaker {
                 CerantRegistries.CERANT.getDefaultState(),
                 CerantRegistries.CERANT.getDefaultState()
         ));
-
-        genSettings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-                FeatureRegistries.GROMBLE_TREE
-                        .decorated(Features.Placements.HEIGHTMAP_SQUARE)
-                        .decorated(Placement.COUNT_EXTRA
-                                .configured(new AtSurfaceWithExtraConfig(10, 2F, 13))));
-
 
         final MobSpawnInfo.Builder spawnSettings = spawnSettings();
 

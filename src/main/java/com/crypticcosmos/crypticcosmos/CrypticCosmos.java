@@ -5,6 +5,8 @@ import com.crypticcosmos.crypticcosmos.effect.CorruptionEffect.SpawnFrogOnCorrup
 import com.crypticcosmos.crypticcosmos.register.*;
 import com.crypticcosmos.crypticcosmos.util.BrewingRecipes;
 import com.crypticcosmos.crypticcosmos.util.ExtraAssetGenerator;
+import com.crypticcosmos.crypticcosmos.world.feature.ConfiguredFeatureRegistries;
+import com.crypticcosmos.crypticcosmos.world.feature.FeatureRegistries;
 import com.crypticcosmos.crypticcosmos.world.structures.StructureConfig;
 import com.tterrag.registrate.Registrate;
 import net.minecraft.item.ItemGroup;
@@ -65,10 +67,12 @@ public class CrypticCosmos {
         SoundEventRegistries.SOUND_EVENTS.register(modEventBus);
         PotionRegistries.POTIONS.register(modEventBus);
         MinecraftForge.EVENT_BUS.addListener(CommandRegistries::registerCommands);
+        FeatureRegistries.FEATURES.register(modEventBus);
 
         forgeBus.addListener(StructureConfig::addDimensionalSpacing);
 
         // The comments for BiomeLoadingEvent and StructureSpawnListGatherEvent says to do HIGH for additions.
+        forgeBus.addListener(EventPriority.HIGH, ConfiguredFeatureRegistries::addFeaturesToBiomes);
         forgeBus.addListener(EventPriority.HIGH, StructureConfig::addCustomStructures);
         modEventBus.addListener(BrewingRecipes::registerBrewingRecipes);
         ExtraAssetGenerator.English.addTranslations();
@@ -87,6 +91,7 @@ public class CrypticCosmos {
 
     public void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            ConfiguredFeatureRegistries.registerFeatures();
             StructureRegistries.setupStructures();
             ConfiguredStructureRegistries.registerConfiguredStructures();
         });
