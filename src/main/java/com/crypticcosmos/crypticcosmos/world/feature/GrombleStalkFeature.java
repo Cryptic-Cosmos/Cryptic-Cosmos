@@ -2,6 +2,7 @@ package com.crypticcosmos.crypticcosmos.world.feature;
 
 import com.crypticcosmos.crypticcosmos.block.GrombleStalkTop;
 import com.crypticcosmos.crypticcosmos.register.BlockRegistries;
+import com.crypticcosmos.crypticcosmos.register.GrombleRegistries;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.Direction;
@@ -16,7 +17,9 @@ import java.util.Random;
 
 public class GrombleStalkFeature extends Feature<ProbabilityConfig> {
     private static final BlockState STALK_TRUNK = BlockRegistries.GROMBLE_STALK_PLANT.get().defaultBlockState();
-    private static final BlockState TOP_STALK = BlockRegistries.GROMBLE_STALK.get().defaultBlockState().setValue(GrombleStalkTop.AGE, 1);
+    private static final BlockState TOP_STALK = BlockRegistries.GROMBLE_STALK.get().defaultBlockState().setValue(GrombleStalkTop.AGE, 25);
+    private static final BlockState TOP_BERRY = GrombleRegistries.GIANT_GROMBLE_BERRY.get().defaultBlockState();
+    private static final BlockState TOP_BERRY_ROTTEN = GrombleRegistries.GIANT_ROTTEN_GROMBLE_BERRY.get().defaultBlockState();
 
     public GrombleStalkFeature(Codec<ProbabilityConfig> codec) {
         super(codec);
@@ -27,6 +30,9 @@ public class GrombleStalkFeature extends Feature<ProbabilityConfig> {
                          @Nonnull Random random,
                          @Nonnull BlockPos pos,
                          @Nonnull ProbabilityConfig probabilityConfig) {
+        // A number between 0 and 1, higher = more rotten berries
+        final float rottenBerryChance = 0.1f;
+
         int i = 0;
         BlockPos.Mutable firstPos = pos.mutable();
         if (seedReader.isEmptyBlock(firstPos)) {
@@ -39,8 +45,11 @@ public class GrombleStalkFeature extends Feature<ProbabilityConfig> {
                 }
 
                 if (firstPos.getY() - pos.getY() >= 3) {
-                    // seedReader.setBlock(firstPos, STALK_TRUNK, 2);
                     seedReader.setBlock(firstPos.move(Direction.DOWN, 1), TOP_STALK, 1);
+                    if (seedReader.isEmptyBlock(firstPos.above())) {
+                        seedReader.setBlock(firstPos.move(Direction.UP, 1),
+                                random.nextInt() > rottenBerryChance ? TOP_BERRY : TOP_BERRY_ROTTEN, 1);
+                    }
                 }
             }
 
