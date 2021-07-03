@@ -31,7 +31,7 @@ public class GrombleStalkFeature extends Feature<ProbabilityConfig> {
                          @Nonnull BlockPos pos,
                          @Nonnull ProbabilityConfig probabilityConfig) {
         // A number between 0 and 1, higher = more rotten berries
-        final float rottenBerryChance = 0.1f;
+        final float rottenBerryChance = 0f;
 
         int i = 0;
         BlockPos.Mutable firstPos = pos.mutable();
