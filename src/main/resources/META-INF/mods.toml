@@ -7,7 +7,7 @@ issueTrackerURL = "https://github.com/Team-Cryptic-Cosmos/Cryptic-Cosmos/issues"
 [[mods]]
 modId = "crypticcosmos"
 displayName = "Cryptic Cosmos"
-version = "1.16.5-1.3.16-beta"
+version = "1.4.3-beta"
 description = """
 This mod shows a creative 3 new dimensions with all sorts of bizzare blocks, mobs, and features! Giving you amazing new realms to explore :D
 """
