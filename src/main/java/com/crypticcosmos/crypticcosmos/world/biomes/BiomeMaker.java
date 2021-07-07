@@ -146,8 +146,8 @@ public class BiomeMaker {
                 0xfffff5,
                 DEFAULT_GRASS_COLOR,
                 DEFAULT_FOLIAGE_COLOR,
-                0,
-                DEFAULT_SKY_FOG_COLOR,
+                5,
+                GROMBLE_SKY_FOG_COLOR,
                 SoundEventRegistries.MUSIC_MONDROVE_GROVES.get()
         );
 

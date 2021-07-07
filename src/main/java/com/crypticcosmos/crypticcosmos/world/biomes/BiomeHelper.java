@@ -21,6 +21,8 @@ public class BiomeHelper {
     public static final int DEFAULT_FOLIAGE_COLOR = 0x77ab2f;
     public static final int DEFAULT_SKY_FOG_COLOR = 12638463;
 
+    public static final int GROMBLE_SKY_FOG_COLOR = 0x10557E;
+
     /**
      * Base biome function Sky color is not generated
      */
