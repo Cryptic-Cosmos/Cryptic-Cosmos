@@ -232,4 +232,14 @@ public class RegistrationUtils {
                 )
         );
     }
+    public static void standingSignModel(DataGenContext<Block, StandingSignBlock> context, RegistrateBlockstateProvider provider) {
+        provider.getVariantBuilder(context.get())
+                .forAllStates(state -> ConfiguredModel.builder().modelFile(
+                        provider.models()
+                                .withExistingParent(context.getId().getPath(), provider.mcLoc("sign"))
+                                .texture("all", provider.blockTexture(context.get()))
+                        ).build()
+                );
+    }
+
 }

@@ -20,14 +20,20 @@ import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.item.BoatItem;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.registry.Registry;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.ToolType;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.GROMBLE_BERRY;
 import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.ROTTEN_GROMBLE_BERRY;
 import static com.crypticcosmos.crypticcosmos.register.TagRegistries.GIANT_GROMBLE_BERRIES;
 import static com.tterrag.registrate.util.DataIngredient.items;
+import static net.minecraft.block.Blocks.OAK_SIGN;
 import static net.minecraft.block.material.Material.GRASS;
 import static net.minecraft.block.material.Material.NETHER_WOOD;
 import static net.minecraft.block.material.MaterialColor.TERRACOTTA_LIGHT_BLUE;
@@ -37,6 +43,7 @@ import static net.minecraft.data.loot.BlockLootTables.createDoorTable;
 
 @SuppressWarnings("unused")
 public class GrombleRegistries {
+    public static final DeferredRegister<Block> BLK = DeferredRegister.create(ForgeRegistries.BLOCKS,CrypticCosmos.MOD_ID);
     public static final Properties GROMBLE_PROPERTIES = Properties.of(NETHER_WOOD, TERRACOTTA_LIGHT_BLUE)
             .strength(2F)
             .sound(SoundType.STEM);
@@ -278,6 +285,7 @@ public class GrombleRegistries {
             .register();
 
     public static void init() {
+        BLK.register(FMLJavaModLoadingContext.get().getModEventBus());
         CrypticCosmos.LOGGER.info("GrombleRegistries initialized");
     }
 }

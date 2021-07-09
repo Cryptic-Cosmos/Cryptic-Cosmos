@@ -80,8 +80,7 @@ public class CrypticCosmos {
         GeckoLib.initialize();
     }
 
-    public static @Nonnull
-    ResourceLocation id(String path) {
+    public static @Nonnull ResourceLocation id(String path) {
         return new ResourceLocation(MOD_ID, path);
     }
 
