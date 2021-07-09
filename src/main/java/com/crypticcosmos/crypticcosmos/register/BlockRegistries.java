@@ -1,10 +1,8 @@
 package com.crypticcosmos.crypticcosmos.register;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.block.GrombleStalk;
-import com.crypticcosmos.crypticcosmos.block.GrombleStalkTop;
-import com.crypticcosmos.crypticcosmos.block.MondroveFungus;
-import com.crypticcosmos.crypticcosmos.block.RiftBlock;
+import com.crypticcosmos.crypticcosmos.block.*;
+import com.crypticcosmos.crypticcosmos.item.GrombleStalkItem;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -20,8 +18,10 @@ import net.minecraft.tags.BlockTags;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
-import static com.crypticcosmos.crypticcosmos.register.TagRegistries.GIANT_GROMBLE_BERRIES;
+import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.GROMBLE_STALK_FIBER;
 import static com.crypticcosmos.crypticcosmos.util.RegistrationUtils.blockTexture;
+import static net.minecraft.advancements.criterion.InventoryChangeTrigger.Instance.hasItems;
+import static net.minecraft.data.ShapedRecipeBuilder.shaped;
 
 @SuppressWarnings("unused")
 public class BlockRegistries {
@@ -105,8 +105,8 @@ public class BlockRegistries {
             .addLayer(() -> RenderType::cutout)
             .initialProperties(Material.PLANT, MaterialColor.COLOR_CYAN)
             .properties(p -> p.noCollission().instabreak().sound(SoundType.WEEPING_VINES))
+            .tag(BlockTags.CLIMBABLE)
             // this will add the loot table to both blocks
-            .tag(GIANT_GROMBLE_BERRIES)
             .loot((lootTables, block) -> lootTables.addNetherVinesDropTable(block, GROMBLE_STALK_PLANT.get()))
             .blockstate((context, provider) -> provider.getVariantBuilder(context.get()).forAllStates(state ->
                     ConfiguredModel.builder().modelFile(
@@ -114,8 +114,49 @@ public class BlockRegistries {
                     ).build()
             ))
 
-            .item()
-            .model((context, provider) -> provider.generated(context, blockTexture(() -> context.get().getBlock(), "")))
+            .item((block, p) -> new GrombleStalkItem(p, false))
+            .model((context, provider) -> provider.generated(context, blockTexture(() -> GROMBLE_STALK_PLANT.get().getBlock(), "")))
+            .build()
+
+            .register();
+
+    public static final BlockEntry<ArtificialGrombleStalk> ARTIFICIAL_GROMBLE_STALK_PLANT = getRegistrate().object("artificial_gromble_stalk_plant")
+            .block(ArtificialGrombleStalk::new)
+            .addLayer(() -> RenderType::cutout)
+            .initialProperties(Material.PLANT, MaterialColor.COLOR_CYAN)
+            .properties(p -> p.noCollission().instabreak().sound(SoundType.WEEPING_VINES))
+            .tag(BlockTags.CLIMBABLE)
+            .blockstate((context, provider) -> provider.getVariantBuilder(context.get()).forAllStates(state ->
+                    ConfiguredModel.builder().modelFile(
+                            provider.models().cross(context.getName(), provider.blockTexture(context.get()))
+                    ).build()
+            ))
+            .register();
+
+    public static final BlockEntry<ArtificialGrombleStalkTop> ARTIFICIAL_GROMBLE_STALK = getRegistrate().object("artificial_gromble_stalk")
+            .block(ArtificialGrombleStalkTop::new)
+            .addLayer(() -> RenderType::cutout)
+            .initialProperties(Material.PLANT, MaterialColor.COLOR_CYAN)
+            .properties(p -> p.noCollission().instabreak().sound(SoundType.WEEPING_VINES))
+            // this will add the loot table to both blocks
+            .tag(BlockTags.CLIMBABLE)
+            .loot((lootTables, block) -> lootTables.addNetherVinesDropTable(block, ARTIFICIAL_GROMBLE_STALK_PLANT.get()))
+            .blockstate((context, provider) -> provider.getVariantBuilder(context.get()).forAllStates(state ->
+                    ConfiguredModel.builder().modelFile(
+                            provider.models().cross(context.getName(), provider.blockTexture(context.get()))
+                    ).build()
+            ))
+
+            .item((block, p) -> new GrombleStalkItem(p, true))
+            .model((context, provider) -> provider.generated(context, blockTexture(() -> ARTIFICIAL_GROMBLE_STALK_PLANT.get().getBlock(), "")))
+            .recipe((context, provider) -> shaped(context.get())
+                    .pattern("s")
+                    .pattern("s")
+                    .pattern("s")
+                    .define('s', GROMBLE_STALK_FIBER.get())
+                    .unlockedBy("has_gromble_stalk_fiber", hasItems(GROMBLE_STALK_FIBER.get()))
+                    .save(provider)
+            )
             .build()
 
             .register();

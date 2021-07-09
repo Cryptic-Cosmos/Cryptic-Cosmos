@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "crypticcosmos:gromble_stalk"
+  },
+  "result": "crypticcosmos:gromble_stalk_fiber",
+  "experience": 0.15,
+  "cookingtime": 3000
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "crypticcosmos:gromble_stalk_fiber_from_gromble_stalk_smelting"
+    ]
+  },
+  "criteria": {
+    "has_gromble_stalk": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "crypticcosmos:gromble_stalk"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "crypticcosmos:gromble_stalk_fiber_from_gromble_stalk_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_gromble_stalk",
+      "has_the_recipe"
+    ]
+  ]
+}

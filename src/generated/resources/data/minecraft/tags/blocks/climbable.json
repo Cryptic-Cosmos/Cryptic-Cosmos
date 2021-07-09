@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "crypticcosmos:gromble_stalk_plant"
+    "crypticcosmos:gromble_stalk_plant",
+    "crypticcosmos:gromble_stalk",
+    "crypticcosmos:artificial_gromble_stalk_plant",
+    "crypticcosmos:artificial_gromble_stalk"
   ]
 }

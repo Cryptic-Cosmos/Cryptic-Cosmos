@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "crypticcosmos:block/artificial_gromble_stalk"
+  }
+}

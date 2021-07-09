@@ -35,7 +35,7 @@
                   ]
                 }
               ],
-              "name": "crypticcosmos:gromble_stalk"
+              "name": "crypticcosmos:artificial_gromble_stalk"
             },
             {
               "type": "minecraft:item",
@@ -51,7 +51,7 @@
                   ]
                 }
               ],
-              "name": "crypticcosmos:gromble_stalk"
+              "name": "crypticcosmos:artificial_gromble_stalk"
             }
           ]
         }
