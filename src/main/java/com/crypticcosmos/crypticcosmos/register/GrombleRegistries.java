@@ -20,6 +20,7 @@ import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.item.BoatItem;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.registry.Registry;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
@@ -283,7 +284,6 @@ public class GrombleRegistries {
             .tag(ItemTags.BOATS)
             .register();
 
-    //public static final RegistryObject<Block> SIGN = BLK.register("gromble_sign",)
     public static void init() {
         BLK.register(FMLJavaModLoadingContext.get().getModEventBus());
         CrypticCosmos.LOGGER.info("GrombleRegistries initialized");
