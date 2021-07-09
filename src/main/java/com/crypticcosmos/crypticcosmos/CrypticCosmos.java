@@ -52,6 +52,7 @@ public class CrypticCosmos {
         forgeBus.addListener(EventPriority.HIGH, BiomeRegistries::biomeLoading);
 
         BlockRegistries.init();
+        SignRegistry.init();
         ItemRegistries.init();
         AlloyniumRegistries.init();
         LunonRegistries.init();
