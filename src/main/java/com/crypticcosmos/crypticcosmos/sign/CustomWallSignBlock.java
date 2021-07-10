@@ -3,6 +3,8 @@ package com.crypticcosmos.crypticcosmos.sign;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.WallSignBlock;
 import net.minecraft.block.WoodType;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockReader;
 
 public class CustomWallSignBlock extends WallSignBlock {
 
@@ -17,9 +19,9 @@ public class CustomWallSignBlock extends WallSignBlock {
             return true;
         }
 
-       /* @Override
+        @Override
         public TileEntity newBlockEntity(IBlockReader worldIn)
         {
             return new CustomSignTileEntity();
-        } */
+        }
 }
