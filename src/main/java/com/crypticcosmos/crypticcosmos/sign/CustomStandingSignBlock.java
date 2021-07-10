@@ -6,21 +6,22 @@ import net.minecraft.block.WoodType;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockReader;
 
-public class CustomStandingSignBlock extends StandingSignBlock {
-        public CustomStandingSignBlock(Properties propertiesIn, WoodType woodTypeIn)
-        {
-            super(propertiesIn, woodTypeIn);
-        }
+import javax.annotation.Nonnull;
 
-        @Override
-        public boolean hasTileEntity(BlockState stateIn)
-        {
+import static com.crypticcosmos.crypticcosmos.register.SignRegistry.GROMBLE_SIGN;
+
+public class CustomStandingSignBlock extends StandingSignBlock {
+    public CustomStandingSignBlock(Properties propertiesIn, WoodType woodTypeIn) {
+        super(propertiesIn, woodTypeIn);
+    }
+
+    @Override
+    public boolean hasTileEntity(BlockState stateIn) {
             return true;
         }
 
-        @Override
-        public TileEntity newBlockEntity(IBlockReader worldIn)
-        {
-            return new CustomSignTileEntity();
-        }
+    @Override
+    public TileEntity newBlockEntity(@Nonnull IBlockReader worldIn) {
+        return new CustomSignTileEntity(GROMBLE_SIGN.get());
+    }
     }

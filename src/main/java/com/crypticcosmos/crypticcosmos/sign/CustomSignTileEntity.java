@@ -1,11 +1,20 @@
 package com.crypticcosmos.crypticcosmos.sign;
 
 import net.minecraft.tileentity.SignTileEntity;
+import net.minecraft.tileentity.TileEntityType;
+
+import javax.annotation.Nonnull;
 
 public class CustomSignTileEntity extends SignTileEntity {
-    /*@Override
-    public TileEntityType<CustomSignTileEntity> getType()
-    {
-        return CUSTOM_SIGN.get();
-    }*/
+    private final TileEntityType<CustomSignTileEntity> tileEntityType;
+
+    public CustomSignTileEntity(TileEntityType<CustomSignTileEntity> type) {
+        this.tileEntityType = type;
+    }
+
+    @Nonnull
+    @Override
+    public TileEntityType<?> getType() {
+        return tileEntityType;
+    }
 }
