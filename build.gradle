@@ -128,7 +128,6 @@ configurations {
 }
 shadowJar {
     configurations = [project.configurations.shade]
-    relocate "com.tterrag.registrate", "com.crypticcosmos.crypticcosmos.repack.registrate"
 }
 
 build.dependsOn shadowJar
