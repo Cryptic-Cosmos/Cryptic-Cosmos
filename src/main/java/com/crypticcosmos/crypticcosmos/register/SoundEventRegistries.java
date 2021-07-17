@@ -17,11 +17,11 @@ public class SoundEventRegistries {
     public static final RegistryObject<SoundEvent> MUSIC_ABYSS = registerSoundEvent("abyss");
 
     // entity noises
-    public static final RegistryObject<SoundEvent> MAKROSSA_RAMBLER_AMBIENCE = registerSoundEvent("entity.makrossa_rambler_living");
+    public static final RegistryObject<SoundEvent> MAKROSSA_RAMBLER_AMBIENT = registerSoundEvent("entity.makrossa_rambler_ambient");
     public static final RegistryObject<SoundEvent> MAKROSSA_RAMBLER_HURT = registerSoundEvent("entity.makrossa_rambler_hurt");
     public static final RegistryObject<SoundEvent> MAKROSSA_RAMBLER_DEATH = registerSoundEvent("entity.makrossa_rambler_death");
 
-    public static final RegistryObject<SoundEvent> GROMBLE_FROG_AMBIENCE = registerSoundEvent("entity.gromble_frog_living");
+    public static final RegistryObject<SoundEvent> GROMBLE_FROG_AMBIENT = registerSoundEvent("entity.gromble_frog_ambient");
     public static final RegistryObject<SoundEvent> GROMBLE_FROG_HURT = registerSoundEvent("entity.gromble_frog_hurt");
     public static final RegistryObject<SoundEvent> GROMBLE_FROG_DEATH = registerSoundEvent("entity.gromble_frog_death");
 

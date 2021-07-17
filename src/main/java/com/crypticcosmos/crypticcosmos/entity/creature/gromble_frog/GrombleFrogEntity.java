@@ -107,7 +107,7 @@ public class GrombleFrogEntity extends AnimalEntity implements IAnimatable {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEventRegistries.GROMBLE_FROG_AMBIENCE.get();
+        return SoundEventRegistries.GROMBLE_FROG_AMBIENT.get();
     }
 
     @Override

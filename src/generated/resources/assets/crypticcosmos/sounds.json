@@ -33,36 +33,24 @@
   },
   "abyss": {
     "sounds": [
-      {
-        "name": "crypticcosmos:abyss/altum",
-        "stream": true
-      },
-      {
-        "name": "crypticcosmos:abyss/styx",
-        "stream": true
-      },
-      {
-        "name": "crypticcosmos:abyss/ourea",
-        "stream": true
-      },
-      {
-        "name": "crypticcosmos:abyss/cocytus",
-        "stream": true
-      }
+      "crypticcosmos:abyss/altum",
+      "crypticcosmos:abyss/styx",
+      "crypticcosmos:abyss/ourea",
+      "crypticcosmos:abyss/cocytus"
     ]
   },
-  "entity.makrossa_rambler_living": {
-    "subtitle": "subtitles.entity.makrossa_rambler_living",
+  "entity.makrossa_rambler_ambient": {
+    "subtitle": "subtitles.entity.makrossa_rambler_ambient",
     "sounds": [
-      "crypticcosmos:makrossa_rambler/makrossa_rambler_living1",
-      "crypticcosmos:makrossa_rambler/makrossa_rambler_living2",
-      "crypticcosmos:makrossa_rambler/makrossa_rambler_living3"
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_ambient",
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_ambient2",
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_ambient3"
     ]
   },
   "entity.makrossa_rambler_hurt": {
     "subtitle": "subtitles.entity.makrossa_rambler_hurt",
     "sounds": [
-      "crypticcosmos:makrossa_rambler/makrossa_rambler_hurt1",
+      "crypticcosmos:makrossa_rambler/makrossa_rambler_hurt",
       "crypticcosmos:makrossa_rambler/makrossa_rambler_hurt2",
       "crypticcosmos:makrossa_rambler/makrossa_rambler_hurt3"
     ]
@@ -73,8 +61,8 @@
       "crypticcosmos:makrossa_rambler/makrossa_rambler_death"
     ]
   },
-  "entity.gromble_frog_living": {
-    "subtitle": "subtitles.entity.gromble_frog_living",
+  "entity.gromble_frog_ambient": {
+    "subtitle": "subtitles.entity.gromble_frog_ambient",
     "sounds": [
       "crypticcosmos:gromble_frog/gromble_frog_ambient",
       "crypticcosmos:gromble_frog/gromble_frog_ambient2",
@@ -84,7 +72,7 @@
   "entity.gromble_frog_hurt": {
     "subtitle": "subtitles.entity.gromble_frog_hurt",
     "sounds": [
-      "crypticcosmos:gromble_frog/gromble_frog_hurt1",
+      "crypticcosmos:gromble_frog/gromble_frog_hurt",
       "crypticcosmos:gromble_frog/gromble_frog_hurt2",
       "crypticcosmos:gromble_frog/gromble_frog_hurt3"
     ]

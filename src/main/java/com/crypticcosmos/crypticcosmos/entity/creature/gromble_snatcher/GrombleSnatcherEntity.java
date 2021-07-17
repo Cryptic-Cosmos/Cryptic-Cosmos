@@ -1,25 +1,22 @@
 package com.crypticcosmos.crypticcosmos.entity.creature.gromble_snatcher;
 
 
-import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.register.SoundEventRegistries;
-import net.minecraft.entity.*;
+import net.minecraft.entity.EntitySize;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.Pose;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.goal.LookAtGoal;
+import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
-
-import javax.annotation.Nullable;
 
 public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
@@ -76,7 +73,7 @@ public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable 
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEventRegistries.GROMBLE_FROG_AMBIENCE.get();
+        return SoundEventRegistries.GROMBLE_FROG_AMBIENT.get();
     }
 
     @Override

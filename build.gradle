@@ -111,6 +111,8 @@ minecraft {
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args("--mod", "crypticcosmos", "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources/"))
 
+            environment("assetDirectory", "{assets_root}")
+
             mods {
                 crypticcosmos {
                     source sourceSets.main
@@ -149,7 +151,6 @@ dependencies {
     def registrate = "com.tterrag.registrate:Registrate:MC${project.minecraft_version}-${project.registrate_version}"
     implementation fg.deobf(registrate)
     shade(registrate)
-
 
     implementation group: "org.apache.commons", name: "commons-text", version: "latest.release"
 }
@@ -191,7 +192,6 @@ publishing {
         }
     }
 }
-
 
 import groovy.json.JsonOutput
 import groovy.json.JsonParserType

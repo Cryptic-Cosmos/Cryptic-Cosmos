@@ -14,6 +14,7 @@ import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.block.*;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
+import net.minecraft.loot.LootTable;
 import net.minecraft.state.properties.AttachFace;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
@@ -25,6 +26,7 @@ import java.util.function.Supplier;
 
 import static net.minecraft.advancements.criterion.ItemPredicate.Builder.item;
 import static net.minecraft.advancements.criterion.MinMaxBounds.IntBound.atLeast;
+import static net.minecraft.enchantment.Enchantments.BLOCK_FORTUNE;
 import static net.minecraft.enchantment.Enchantments.SILK_TOUCH;
 import static net.minecraft.loot.AlternativesLootEntry.alternatives;
 import static net.minecraft.loot.ConstantRange.exactly;
@@ -32,10 +34,13 @@ import static net.minecraft.loot.ItemLootEntry.lootTableItem;
 import static net.minecraft.loot.LootPool.lootPool;
 import static net.minecraft.loot.LootTable.lootTable;
 import static net.minecraft.loot.RandomValueRange.between;
+import static net.minecraft.loot.conditions.Alternative.alternative;
 import static net.minecraft.loot.conditions.MatchTool.toolMatches;
+import static net.minecraft.loot.conditions.TableBonus.bonusLevelFlatChance;
 import static net.minecraft.loot.functions.ApplyBonus.addOreBonusCount;
 import static net.minecraft.loot.functions.ExplosionDecay.explosionDecay;
 import static net.minecraft.loot.functions.SetCount.setCount;
+import static net.minecraftforge.common.Tags.Items.SHEARS;
 
 public class RegistrationUtils {
     public static ConfiguredModel[] infectableBlockModels(BlockState state,
@@ -232,6 +237,7 @@ public class RegistrationUtils {
                 )
         );
     }
+
     public static void standingSignModel(DataGenContext<Block, StandingSignBlock> context, RegistrateBlockstateProvider provider) {
         provider.getVariantBuilder(context.get())
                 .forAllStates(state -> ConfiguredModel.builder().modelFile(
@@ -242,4 +248,23 @@ public class RegistrationUtils {
                 );
     }
 
+    public static <TOP extends Block, BODY extends Block> void vinesLootTable(RegistrateBlockLootTables lootTables, TOP topVine, BODY bodyVine) {
+        final LootTable.Builder lootTable = lootTable()
+                .withPool(lootPool()
+                        .add(lootTableItem(topVine)
+                                .when(alternative(
+                                        toolMatches(item().of(SHEARS)),
+                                        toolMatches(item().hasEnchantment(
+                                                new EnchantmentPredicate(SILK_TOUCH, atLeast(1)))
+                                        )
+                                ))
+                                .otherwise(lootTableItem(topVine)
+                                        .when(bonusLevelFlatChance(BLOCK_FORTUNE, 0.33f, 0.55f, 0.77f, 1.0f))
+                                )
+                        )
+                );
+
+        lootTables.add(topVine, lootTable);
+        lootTables.add(bodyVine, lootTable);
+    }
 }

@@ -100,7 +100,7 @@ public class MakrossaRamblerEntity extends MonsterEntity implements IAnimatable 
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEventRegistries.MAKROSSA_RAMBLER_AMBIENCE.get();
+        return SoundEventRegistries.MAKROSSA_RAMBLER_AMBIENT.get();
     }
 
     @Override

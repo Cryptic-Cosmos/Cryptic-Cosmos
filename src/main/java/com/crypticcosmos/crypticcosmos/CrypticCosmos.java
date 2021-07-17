@@ -5,19 +5,23 @@ import com.crypticcosmos.crypticcosmos.effect.CorruptionEffect.SpawnFrogOnCorrup
 import com.crypticcosmos.crypticcosmos.register.*;
 import com.crypticcosmos.crypticcosmos.util.BrewingRecipes;
 import com.crypticcosmos.crypticcosmos.util.ExtraAssetGenerator;
+import com.crypticcosmos.crypticcosmos.util.SoundsGenerator;
 import com.crypticcosmos.crypticcosmos.world.feature.ConfiguredFeatureRegistries;
 import com.crypticcosmos.crypticcosmos.world.feature.FeatureRegistries;
 import com.crypticcosmos.crypticcosmos.world.structures.StructureConfig;
 import com.tterrag.registrate.Registrate;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -46,6 +50,7 @@ public class CrypticCosmos {
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 
         modEventBus.addListener(this::setup);
+        modEventBus.addListener(this::datagen);
 
         forgeBus.addListener(RiftBlock::riftSpawning);
         forgeBus.addListener(SpawnFrogOnCorruptionKill::spawnFrogOnCorruptionKill);
@@ -95,5 +100,14 @@ public class CrypticCosmos {
             StructureRegistries.setupStructures();
             ConfiguredStructureRegistries.registerConfiguredStructures();
         });
+    }
+
+    public void datagen(final GatherDataEvent event) {
+        final DataGenerator generator = event.getGenerator();
+        final ExistingFileHelper helper = event.getExistingFileHelper();
+
+        if (event.includeClient()) {
+            generator.addProvider(new SoundsGenerator(generator, helper));
+        }
     }
 }

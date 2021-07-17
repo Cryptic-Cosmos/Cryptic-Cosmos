@@ -20,6 +20,7 @@ import net.minecraftforge.client.model.generators.ConfiguredModel;
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.GROMBLE_STALK_FIBER;
 import static com.crypticcosmos.crypticcosmos.util.RegistrationUtils.blockTexture;
+import static com.crypticcosmos.crypticcosmos.util.RegistrationUtils.vinesLootTable;
 import static net.minecraft.advancements.criterion.InventoryChangeTrigger.Instance.hasItems;
 import static net.minecraft.data.ShapedRecipeBuilder.shaped;
 
@@ -107,7 +108,7 @@ public class BlockRegistries {
             .properties(p -> p.noCollission().instabreak().sound(SoundType.WEEPING_VINES))
             .tag(BlockTags.CLIMBABLE)
             // this will add the loot table to both blocks
-            .loot((lootTables, block) -> lootTables.addNetherVinesDropTable(block, GROMBLE_STALK_PLANT.get()))
+            .loot((lootTables, block) -> vinesLootTable(lootTables, block, GROMBLE_STALK_PLANT.get()))
             .blockstate((context, provider) -> provider.getVariantBuilder(context.get()).forAllStates(state ->
                     ConfiguredModel.builder().modelFile(
                             provider.models().cross(context.getName(), provider.blockTexture(context.get()))
@@ -140,7 +141,7 @@ public class BlockRegistries {
             .properties(p -> p.noCollission().instabreak().sound(SoundType.WEEPING_VINES))
             // this will add the loot table to both blocks
             .tag(BlockTags.CLIMBABLE)
-            .loot((lootTables, block) -> lootTables.addNetherVinesDropTable(block, ARTIFICIAL_GROMBLE_STALK_PLANT.get()))
+            .loot((lootTables, block) -> vinesLootTable(lootTables, block, ARTIFICIAL_GROMBLE_STALK_PLANT.get()))
             .blockstate((context, provider) -> provider.getVariantBuilder(context.get()).forAllStates(state ->
                     ConfiguredModel.builder().modelFile(
                             provider.models().cross(context.getName(), provider.blockTexture(context.get()))
