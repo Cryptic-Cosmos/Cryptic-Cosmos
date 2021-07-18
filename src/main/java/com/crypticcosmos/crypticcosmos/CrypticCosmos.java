@@ -10,6 +10,9 @@ import com.crypticcosmos.crypticcosmos.world.feature.ConfiguredFeatureRegistries
 import com.crypticcosmos.crypticcosmos.world.feature.FeatureRegistries;
 import com.crypticcosmos.crypticcosmos.world.structures.StructureConfig;
 import com.tterrag.registrate.Registrate;
+import net.minecraft.block.WoodType;
+import net.minecraft.client.renderer.Atlases;
+import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -19,7 +22,9 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -51,6 +56,7 @@ public class CrypticCosmos {
 
         modEventBus.addListener(this::setup);
         modEventBus.addListener(this::datagen);
+        modEventBus.addListener(this::clientSetup);
 
         forgeBus.addListener(RiftBlock::riftSpawning);
         forgeBus.addListener(SpawnFrogOnCorruptionKill::spawnFrogOnCorruptionKill);
@@ -89,6 +95,13 @@ public class CrypticCosmos {
     public static @Nonnull ResourceLocation id(String path) {
         return new ResourceLocation(MOD_ID, path);
     }
+    private void clientSetup(final FMLClientSetupEvent event)
+    {
+        ClientRegistry.bindTileEntityRenderer(SignRegistry.GROMBLE_SIGN.get(), SignTileEntityRenderer::new);
+        event.enqueueWork(() -> {
+            Atlases.addWoodType(SignRegistry.GROMBLE_WOOD_TYPE);
+        });
+    }
 
     public static Registrate getRegistrate() {
         return registrate.get();
@@ -96,6 +109,7 @@ public class CrypticCosmos {
 
     public void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            WoodType.register(SignRegistry.GROMBLE_WOOD_TYPE);
             ConfiguredFeatureRegistries.registerFeatures();
             StructureRegistries.setupStructures();
             ConfiguredStructureRegistries.registerConfiguredStructures();
