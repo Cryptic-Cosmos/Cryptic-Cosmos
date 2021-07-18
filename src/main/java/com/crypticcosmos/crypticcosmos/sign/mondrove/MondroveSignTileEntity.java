@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.sign.gromble;
+package com.crypticcosmos.crypticcosmos.sign.mondrove;
 
 import com.crypticcosmos.crypticcosmos.register.SignRegistry;
 import net.minecraft.tileentity.SignTileEntity;
@@ -6,10 +6,10 @@ import net.minecraft.tileentity.TileEntityType;
 
 import javax.annotation.Nonnull;
 
-public class GrombleSignTileEntity extends SignTileEntity {
+public class MondroveSignTileEntity extends SignTileEntity {
     @Nonnull
     @Override
-    public TileEntityType<GrombleSignTileEntity> getType() {
-        return SignRegistry.GROMBLE_SIGN.get();
+    public TileEntityType<MondroveSignTileEntity> getType() {
+        return SignRegistry.MONDROVE_SIGN.get();
     }
 }

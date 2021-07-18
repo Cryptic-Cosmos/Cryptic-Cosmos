@@ -1,5 +1,6 @@
-package com.crypticcosmos.crypticcosmos.sign.gromble;
+package com.crypticcosmos.crypticcosmos.sign.mondrove;
 
+import com.crypticcosmos.crypticcosmos.sign.gromble.GrombleSignTileEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.WallSignBlock;
 import net.minecraft.tileentity.TileEntity;
@@ -7,11 +8,11 @@ import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nonnull;
 
-import static com.crypticcosmos.crypticcosmos.register.SignRegistry.GROMBLE_WOOD_TYPE;
+import static com.crypticcosmos.crypticcosmos.register.SignRegistry.MONDROVE_WOOD_TYPE;
 
-public class GrombleWallSignBlock extends WallSignBlock {
-    public GrombleWallSignBlock(Properties propertiesIn) {
-        super(propertiesIn, GROMBLE_WOOD_TYPE);
+public class MondroveWallSignBlock extends WallSignBlock {
+    public MondroveWallSignBlock(Properties propertiesIn) {
+        super(propertiesIn, MONDROVE_WOOD_TYPE);
     }
 
     @Override

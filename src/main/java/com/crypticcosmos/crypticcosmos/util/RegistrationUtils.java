@@ -40,6 +40,7 @@ import static net.minecraft.loot.conditions.TableBonus.bonusLevelFlatChance;
 import static net.minecraft.loot.functions.ApplyBonus.addOreBonusCount;
 import static net.minecraft.loot.functions.ExplosionDecay.explosionDecay;
 import static net.minecraft.loot.functions.SetCount.setCount;
+import static net.minecraftforge.client.model.generators.ConfiguredModel.builder;
 import static net.minecraftforge.common.Tags.Items.SHEARS;
 
 public class RegistrationUtils {
@@ -50,7 +51,7 @@ public class RegistrationUtils {
                 : state.getValue(Infectable.INFECTION_LEVEL).toString();
         final String name = context.getId().getPath() + infectionLevel;
 
-        return ConfiguredModel.builder()
+        return builder()
                 .modelFile(provider.models().cubeAll(name, blockTexture(context, infectionLevel)))
                 .build();
     }
@@ -64,7 +65,7 @@ public class RegistrationUtils {
         Axis axis = getAxisFromBlockState(state);
         final String name = context.getId().getPath() + infectionLevel;
 
-        return ConfiguredModel.builder().modelFile(provider.models().cubeColumn(
+        return builder().modelFile(provider.models().cubeColumn(
                 name,
                 blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), !isStripped ? infectionLevel : ""),
                 blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), "_top")))
@@ -81,7 +82,7 @@ public class RegistrationUtils {
                 : state.getValue(Infectable.INFECTION_LEVEL).toString();
         final String name = context.getId().getPath() + infectionLevel;
 
-        return ConfiguredModel.builder().modelFile(provider.models().cubeAll(
+        return builder().modelFile(provider.models().cubeAll(
                 name,
                 blockTexture(isStripped ? "stripped_" : "",
                         MondroveRegistries.MONDROVE_LOG.get(),
@@ -96,7 +97,7 @@ public class RegistrationUtils {
                 blockState -> {
                     boolean isSnowy = blockState.getValue(OvergrownLunonBlock.SNOWY);
                     Direction axis = blockState.getValue(OvergrownLunonBlock.FACING);
-                    final ConfiguredModel.Builder<?> builder = ConfiguredModel.builder();
+                    final ConfiguredModel.Builder<?> builder = builder();
                     final String id = context.getId().getPath();
 
                     int degree = (int) axis.toYRot();
@@ -123,7 +124,7 @@ public class RegistrationUtils {
 
     public static void leavesModel(DataGenContext<Block, LeavesBlock> context, RegistrateBlockstateProvider provider) {
         provider.getVariantBuilder(context.get())
-                .forAllStates(state -> ConfiguredModel.builder().modelFile(
+                .forAllStates(state -> builder().modelFile(
                         provider.models()
                                 .withExistingParent(context.getId().getPath(), provider.mcLoc("leaves"))
                                 .texture("all", provider.blockTexture(context.get()))
@@ -134,7 +135,7 @@ public class RegistrationUtils {
     public static void crossModel(DataGenContext<Block, ? extends Block> context, RegistrateBlockstateProvider provider) {
         final String name = context.getId().getPath();
         provider.getVariantBuilder(context.get())
-                .forAllStates(state -> ConfiguredModel.builder().modelFile(
+                .forAllStates(state -> builder().modelFile(
                         provider.models().cross(name, provider.blockTexture(context.get()))).build()
                 );
     }
@@ -147,16 +148,16 @@ public class RegistrationUtils {
 
     public static void buttonModel(DataGenContext<Block, ? extends AbstractButtonBlock> context, RegistrateBlockstateProvider provider, NonNullSupplier<? extends Block> planks) {
         final String id = context.getId().getPath();
-        final ConfiguredModel.Builder<?> buttonModel = ConfiguredModel.builder().modelFile(provider.models()
+        final ConfiguredModel.Builder<?> buttonModel = builder().modelFile(provider.models()
                 .withExistingParent(id, "button")
                 .texture("texture", provider.blockTexture(planks.get())));
 
-        final ConfiguredModel.Builder<?> buttonPressedModel = ConfiguredModel.builder().modelFile(provider.models()
+        final ConfiguredModel.Builder<?> buttonPressedModel = builder().modelFile(provider.models()
                 .withExistingParent(id + "_pressed", "button_pressed")
                 .texture("texture", provider.blockTexture(planks.get())));
 
         //noinspection unused
-        final ConfiguredModel.Builder<?> buttonInventoryModel = ConfiguredModel.builder().modelFile(provider.models()
+        final ConfiguredModel.Builder<?> buttonInventoryModel = builder().modelFile(provider.models()
                 .withExistingParent(id + "_inventory", "button_inventory")
                 .texture("texture", provider.blockTexture(planks.get())));
 
@@ -189,7 +190,7 @@ public class RegistrationUtils {
                     final String parentSuffix = state.getValue(PressurePlateBlock.POWERED) ? "_down" : "_up";
                     final String idSuffix = state.getValue(PressurePlateBlock.POWERED) ? "_down" : "";
 
-                    return ConfiguredModel.builder().modelFile(provider.models()
+                    return builder().modelFile(provider.models()
                             .withExistingParent(id + idSuffix, "pressure_plate" + parentSuffix)
                             .texture("texture", provider.blockTexture(planks.get()))).build();
                 });
@@ -240,7 +241,7 @@ public class RegistrationUtils {
 
     public static void standingSignModel(DataGenContext<Block, StandingSignBlock> context, RegistrateBlockstateProvider provider) {
         provider.getVariantBuilder(context.get())
-                .forAllStates(state -> ConfiguredModel.builder().modelFile(
+                .forAllStates(state -> builder().modelFile(
                         provider.models()
                                 .withExistingParent(context.getId().getPath(), provider.mcLoc("sign"))
                                 .texture("all", provider.blockTexture(context.get()))
