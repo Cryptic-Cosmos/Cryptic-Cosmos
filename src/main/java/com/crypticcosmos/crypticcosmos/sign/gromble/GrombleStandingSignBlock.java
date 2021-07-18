@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.sign;
+package com.crypticcosmos.crypticcosmos.sign.gromble;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.StandingSignBlock;
@@ -8,8 +8,8 @@ import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nonnull;
 
-public class CustomStandingSignBlock extends StandingSignBlock {
-    public CustomStandingSignBlock(Properties propertiesIn, WoodType woodTypeIn) {
+public class GrombleStandingSignBlock extends StandingSignBlock {
+    public GrombleStandingSignBlock(Properties propertiesIn, WoodType woodTypeIn) {
         super(propertiesIn, woodTypeIn);
     }
 
@@ -20,6 +20,6 @@ public class CustomStandingSignBlock extends StandingSignBlock {
 
      @Override
      public TileEntity newBlockEntity(@Nonnull IBlockReader worldIn) {
-         return new CustomSignTileEntity();
+         return new GrombleSignTileEntity();
      }
 }

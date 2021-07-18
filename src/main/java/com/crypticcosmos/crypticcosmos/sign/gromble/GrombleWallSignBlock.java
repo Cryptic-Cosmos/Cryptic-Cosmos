@@ -1,4 +1,4 @@
-package com.crypticcosmos.crypticcosmos.sign;
+package com.crypticcosmos.crypticcosmos.sign.gromble;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.WallSignBlock;
@@ -8,9 +8,9 @@ import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nonnull;
 
-public class CustomWallSignBlock extends WallSignBlock {
+public class GrombleWallSignBlock extends WallSignBlock {
 
-    public CustomWallSignBlock(Properties propertiesIn, WoodType woodTypeIn) {
+    public GrombleWallSignBlock(Properties propertiesIn, WoodType woodTypeIn) {
         super(propertiesIn, woodTypeIn);
     }
 
@@ -21,6 +21,6 @@ public class CustomWallSignBlock extends WallSignBlock {
 
      @Override
      public TileEntity newBlockEntity(@Nonnull IBlockReader worldIn) {
-         return new CustomSignTileEntity();
+         return new GrombleSignTileEntity();
      }
 }
