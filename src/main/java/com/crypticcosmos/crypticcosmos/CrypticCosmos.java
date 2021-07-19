@@ -98,8 +98,12 @@ public class CrypticCosmos {
     private void clientSetup(final FMLClientSetupEvent event)
     {
         ClientRegistry.bindTileEntityRenderer(SignRegistry.GROMBLE_SIGN.get(), SignTileEntityRenderer::new);
+        ClientRegistry.bindTileEntityRenderer(SignRegistry.OSMINSTEM_SIGN.get(), SignTileEntityRenderer::new);
+        ClientRegistry.bindTileEntityRenderer(SignRegistry.MONDROVE_SIGN.get(), SignTileEntityRenderer::new);
         event.enqueueWork(() -> {
             Atlases.addWoodType(SignRegistry.GROMBLE_WOOD_TYPE);
+            Atlases.addWoodType(SignRegistry.OSMINSTEM_WOOD_TYPE);
+            Atlases.addWoodType(SignRegistry.MONDROVE_WOOD_TYPE);
         });
     }
 
@@ -110,6 +114,8 @@ public class CrypticCosmos {
     public void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             WoodType.register(SignRegistry.GROMBLE_WOOD_TYPE);
+            WoodType.register(SignRegistry.OSMINSTEM_WOOD_TYPE);
+            WoodType.register(SignRegistry.MONDROVE_WOOD_TYPE);
             ConfiguredFeatureRegistries.registerFeatures();
             StructureRegistries.setupStructures();
             ConfiguredStructureRegistries.registerConfiguredStructures();

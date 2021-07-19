@@ -22,6 +22,6 @@ public class OsminstemWallSignBlock extends WallSignBlock {
 
     @Override
     public TileEntity newBlockEntity(@Nonnull IBlockReader worldIn) {
-        return new GrombleSignTileEntity();
+        return new OsminstemSignTileEntity();
     }
 }

@@ -22,6 +22,6 @@ public class MondroveStandingSignBlock extends StandingSignBlock {
 
     @Override
     public TileEntity newBlockEntity(@Nonnull IBlockReader worldIn) {
-        return new GrombleSignTileEntity();
+        return new MondroveSignTileEntity();
     }
 }

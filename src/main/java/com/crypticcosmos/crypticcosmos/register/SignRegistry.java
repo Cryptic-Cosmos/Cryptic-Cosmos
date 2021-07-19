@@ -17,13 +17,14 @@ import net.minecraft.block.WoodType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraft.item.SignItem;
+import net.minecraft.util.ResourceLocation;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 
 public class SignRegistry {
-    public static final WoodType MONDROVE_WOOD_TYPE = WoodType.create("mondrove");
-    public static final WoodType OSMINSTEM_WOOD_TYPE = WoodType.create("osminstem");
-    public static final WoodType GROMBLE_WOOD_TYPE = WoodType.create("gromble");
+    public static final WoodType MONDROVE_WOOD_TYPE = WoodType.create(new ResourceLocation(CrypticCosmos.MOD_ID, "mondrove").toString());
+    public static final WoodType OSMINSTEM_WOOD_TYPE = WoodType.create(new ResourceLocation(CrypticCosmos.MOD_ID, "osminstem").toString());
+    public static final WoodType GROMBLE_WOOD_TYPE = WoodType.create(new ResourceLocation(CrypticCosmos.MOD_ID, "gromble").toString());
 
     //Register the sign (Wall & Standing)
     public static final BlockEntry<GrombleStandingSignBlock> STANDING_GROMBLE_SIGN = getRegistrate().object("gromble_sign")
