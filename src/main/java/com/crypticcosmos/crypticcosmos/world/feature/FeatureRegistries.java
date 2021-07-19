@@ -9,7 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class FeatureRegistries {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, CrypticCosmos.MOD_ID);
-
+    //just words
     public static final RegistryObject<GrombleStalkFeature> GROMBLE_STALK_FEATURE = FEATURES.register("gromble_stalk", () ->
             new GrombleStalkFeature(ProbabilityConfig.CODEC)
     );
