@@ -3,7 +3,6 @@ package com.crypticcosmos.crypticcosmos.register;
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.block.EffluviumBlock;
 import com.crypticcosmos.crypticcosmos.block.MakrossaPlantableSapling;
-import com.crypticcosmos.crypticcosmos.block.Rottenable;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
 import com.crypticcosmos.crypticcosmos.world.feature.GrombleTree;
 import com.tterrag.registrate.util.DataIngredient;
@@ -20,10 +19,8 @@ import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.item.BoatItem;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.registry.Registry;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.ToolType;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -33,7 +30,6 @@ import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.GROMBLE_BE
 import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.ROTTEN_GROMBLE_BERRY;
 import static com.crypticcosmos.crypticcosmos.register.TagRegistries.GIANT_GROMBLE_BERRIES;
 import static com.tterrag.registrate.util.DataIngredient.items;
-import static net.minecraft.block.Blocks.OAK_SIGN;
 import static net.minecraft.block.material.Material.GRASS;
 import static net.minecraft.block.material.Material.NETHER_WOOD;
 import static net.minecraft.block.material.MaterialColor.TERRACOTTA_LIGHT_BLUE;
@@ -63,8 +59,8 @@ public class GrombleRegistries {
             .tag(ItemTags.SAPLINGS).build()
 
             .register();
-    public static final BlockEntry<Rottenable> GIANT_GROMBLE_BERRY = getRegistrate().object("giant_gromble_berry")
-            .block(Rottenable::new)
+    public static final BlockEntry<Block> GIANT_GROMBLE_BERRY = getRegistrate().object("giant_gromble_berry")
+            .block(Block::new)
             .initialProperties(Material.VEGETABLE)
             .properties(p -> p.strength(1.0F)
                     .sound(SoundType.SHROOMLIGHT)

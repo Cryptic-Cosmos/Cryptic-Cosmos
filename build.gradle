@@ -134,7 +134,7 @@ shadowJar {
 build.dependsOn shadowJar
 
 repositories {
-    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+    maven { url("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/") }
     maven { // Registrate
         url "https://maven.tterrag.com/"
     }
