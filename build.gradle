@@ -5,12 +5,12 @@ buildscript {
     }
 
     dependencies {
-        classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "4.1.+", changing: true
+        classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "5.+", changing: true
     }
 }
 
 plugins {
-    id "com.github.johnrengelman.shadow" version "5.2.0"
+    id "com.github.johnrengelman.shadow" version "5.+"
     id "eclipse"
     id "idea"
     id "maven-publish"
@@ -128,12 +128,13 @@ configurations {
 }
 shadowJar {
     configurations = [project.configurations.shade]
+    relocate 'com.tterrag.registrate', 'com.crypticcosmos.crypticcosmos.repack.registrate'
 }
 
 build.dependsOn shadowJar
 
 repositories {
-    maven { url("https://repo.repsy.io/mvn/gandiber/geckolib") }
+    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
     maven { // Registrate
         url "https://maven.tterrag.com/"
     }
@@ -148,7 +149,7 @@ dependencies {
 
     def registrate = "com.tterrag.registrate:Registrate:MC${project.minecraft_version}-${project.registrate_version}"
     implementation fg.deobf(registrate)
-    shade(registrate)
+    shade registrate
 
     implementation group: "org.apache.commons", name: "commons-text", version: "latest.release"
 }
