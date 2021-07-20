@@ -28,7 +28,7 @@ body:
   - type: input
     id: mod-version
     attributes:
-      label: LootTables Version
+      label: Cryptic Cosmos Version
       description: What version of Cryptic Cosmos are you running?
       placeholder: e.g. v1.3.17-beta
     validations:
@@ -37,7 +37,7 @@ body:
     attributes:
       label: Forge Version
       description: What version of Forge are you using?
-      placeholder: e.g. v36.1.32
+      placeholder: e.g. v36.1.65
     validations:
       required: true
   - type: dropdown
