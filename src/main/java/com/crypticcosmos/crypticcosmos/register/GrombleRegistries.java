@@ -21,7 +21,6 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.ToolType;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -281,7 +280,6 @@ public class GrombleRegistries {
             .register();
 
     public static void init() {
-        BLK.register(FMLJavaModLoadingContext.get().getModEventBus());
         CrypticCosmos.LOGGER.info("GrombleRegistries initialized");
     }
 }

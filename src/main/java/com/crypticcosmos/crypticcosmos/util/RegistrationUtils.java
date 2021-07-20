@@ -268,4 +268,14 @@ public class RegistrationUtils {
         lootTables.add(topVine, lootTable);
         lootTables.add(bodyVine, lootTable);
     }
+
+    public static <BLOCK extends NonNullSupplier<? extends Block>> void particleModel(
+            DataGenContext<Block, ? extends Block> context,
+            RegistrateBlockstateProvider provider,
+            BLOCK block
+    ) {
+        provider.getVariantBuilder(context.get()).forAllStates($ -> ConfiguredModel.builder().modelFile(provider.models()
+                .getBuilder("block").texture("particle", provider.blockTexture(block.get()))
+        ).build());
+    }
 }

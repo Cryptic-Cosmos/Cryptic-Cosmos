@@ -1,6 +1,6 @@
 package com.crypticcosmos.crypticcosmos.sign.mondrove;
 
-import com.crypticcosmos.crypticcosmos.register.SignRegistry;
+import com.crypticcosmos.crypticcosmos.register.SignRegistries;
 import net.minecraft.tileentity.SignTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 
@@ -10,6 +10,6 @@ public class MondroveSignTileEntity extends SignTileEntity {
     @Nonnull
     @Override
     public TileEntityType<MondroveSignTileEntity> getType() {
-        return SignRegistry.MONDROVE_SIGN.get();
+        return SignRegistries.MONDROVE_SIGN.get();
     }
 }

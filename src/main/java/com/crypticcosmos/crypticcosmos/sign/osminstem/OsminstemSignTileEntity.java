@@ -1,6 +1,6 @@
 package com.crypticcosmos.crypticcosmos.sign.osminstem;
 
-import com.crypticcosmos.crypticcosmos.register.SignRegistry;
+import com.crypticcosmos.crypticcosmos.register.SignRegistries;
 import net.minecraft.tileentity.SignTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 
@@ -10,6 +10,6 @@ public class OsminstemSignTileEntity extends SignTileEntity {
     @Nonnull
     @Override
     public TileEntityType<OsminstemSignTileEntity> getType() {
-        return SignRegistry.OSMINSTEM_SIGN.get();
+        return SignRegistries.OSMINSTEM_SIGN.get();
     }
 }

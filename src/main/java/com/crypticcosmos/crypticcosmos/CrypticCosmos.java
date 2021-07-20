@@ -12,7 +12,6 @@ import com.crypticcosmos.crypticcosmos.world.structures.StructureConfig;
 import com.tterrag.registrate.Registrate;
 import net.minecraft.block.WoodType;
 import net.minecraft.client.renderer.Atlases;
-import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -22,7 +21,6 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -33,6 +31,8 @@ import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
 
 import javax.annotation.Nonnull;
+
+import static com.crypticcosmos.crypticcosmos.register.SignRegistries.*;
 
 @Mod(CrypticCosmos.MOD_ID)
 public class CrypticCosmos {
@@ -63,7 +63,7 @@ public class CrypticCosmos {
         forgeBus.addListener(EventPriority.HIGH, BiomeRegistries::biomeLoading);
 
         BlockRegistries.init();
-        SignRegistry.init();
+        SignRegistries.init();
         ItemRegistries.init();
         AlloyniumRegistries.init();
         LunonRegistries.init();
@@ -78,7 +78,7 @@ public class CrypticCosmos {
         EffectRegistries.EFFECTS.register(modEventBus);
         SoundEventRegistries.SOUND_EVENTS.register(modEventBus);
         PotionRegistries.POTIONS.register(modEventBus);
-        MinecraftForge.EVENT_BUS.addListener(CommandRegistries::registerCommands);
+        forgeBus.addListener(CommandRegistries::registerCommands);
         FeatureRegistries.FEATURES.register(modEventBus);
 
         forgeBus.addListener(StructureConfig::addDimensionalSpacing);
@@ -97,13 +97,10 @@ public class CrypticCosmos {
     }
     private void clientSetup(final FMLClientSetupEvent event)
     {
-        ClientRegistry.bindTileEntityRenderer(SignRegistry.GROMBLE_SIGN.get(), SignTileEntityRenderer::new);
-        ClientRegistry.bindTileEntityRenderer(SignRegistry.OSMINSTEM_SIGN.get(), SignTileEntityRenderer::new);
-        ClientRegistry.bindTileEntityRenderer(SignRegistry.MONDROVE_SIGN.get(), SignTileEntityRenderer::new);
         event.enqueueWork(() -> {
-            Atlases.addWoodType(SignRegistry.GROMBLE_WOOD_TYPE);
-            Atlases.addWoodType(SignRegistry.OSMINSTEM_WOOD_TYPE);
-            Atlases.addWoodType(SignRegistry.MONDROVE_WOOD_TYPE);
+            Atlases.addWoodType(MONDROVE_WOOD_TYPE);
+            Atlases.addWoodType(GROMBLE_WOOD_TYPE);
+            Atlases.addWoodType(OSMINSTEM_WOOD_TYPE);
         });
     }
 
@@ -113,9 +110,9 @@ public class CrypticCosmos {
 
     public void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            WoodType.register(SignRegistry.GROMBLE_WOOD_TYPE);
-            WoodType.register(SignRegistry.OSMINSTEM_WOOD_TYPE);
-            WoodType.register(SignRegistry.MONDROVE_WOOD_TYPE);
+            WoodType.register(MONDROVE_WOOD_TYPE);
+            WoodType.register(GROMBLE_WOOD_TYPE);
+            WoodType.register(OSMINSTEM_WOOD_TYPE);
             ConfiguredFeatureRegistries.registerFeatures();
             StructureRegistries.setupStructures();
             ConfiguredStructureRegistries.registerConfiguredStructures();

@@ -7,7 +7,7 @@ import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nonnull;
 
-import static com.crypticcosmos.crypticcosmos.register.SignRegistry.GROMBLE_WOOD_TYPE;
+import static com.crypticcosmos.crypticcosmos.register.SignRegistries.GROMBLE_WOOD_TYPE;
 
 public class GrombleStandingSignBlock extends StandingSignBlock {
     public GrombleStandingSignBlock(Properties propertiesIn) {

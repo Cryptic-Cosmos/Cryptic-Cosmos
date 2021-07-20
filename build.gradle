@@ -197,6 +197,8 @@ import groovy.json.JsonParserType
 import groovy.json.JsonSlurper
 
 processResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
     // Will allow gradle.properties version fill inside mods.toml file
     // This will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
