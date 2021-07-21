@@ -11,8 +11,6 @@ import com.crypticcosmos.crypticcosmos.sign.osminstem.OsminstemSignTileEntity;
 import com.crypticcosmos.crypticcosmos.sign.osminstem.OsminstemStandingSignBlock;
 import com.crypticcosmos.crypticcosmos.sign.osminstem.OsminstemWallSignBlock;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import com.tterrag.registrate.util.entry.ItemEntry;
-import com.tterrag.registrate.util.entry.TileEntityEntry;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.WoodType;
 import net.minecraft.block.material.Material;
@@ -25,6 +23,8 @@ import static com.crypticcosmos.crypticcosmos.register.GrombleRegistries.GROMBLE
 import static com.crypticcosmos.crypticcosmos.register.MondroveRegistries.MONDROVE_PLANKS;
 import static com.crypticcosmos.crypticcosmos.register.OsminstemRegistries.OSMINSTEM_PLANKS;
 import static com.crypticcosmos.crypticcosmos.util.RegistrationUtils.particleModel;
+import static com.tterrag.registrate.providers.ProviderType.LANG;
+import static com.tterrag.registrate.util.nullness.NonNullBiConsumer.noop;
 
 @SuppressWarnings("deprecation")
 public class SignRegistries {
@@ -40,9 +40,10 @@ public class SignRegistries {
                     .strength(1f)
                     .sound(SoundType.WOOD))
             .blockstate((context, provider) -> particleModel(context, provider, GROMBLE_PLANKS))
+            .setData(LANG, noop())
             .register();
 
-    public static final BlockEntry<GrombleStandingSignBlock> STANDING_GROMBLE_SIGN = getRegistrate().object("gromble_sign")
+    public static final BlockEntry<GrombleStandingSignBlock> GROMBLE_SIGN = getRegistrate().object("gromble_sign")
             .block(GrombleStandingSignBlock::new)
             .initialProperties(Material.WOOD)
             .properties(p -> p.noCollission()
@@ -50,18 +51,23 @@ public class SignRegistries {
                     .sound(SoundType.WOOD))
             .blockstate((context, provider) -> particleModel(context, provider, GROMBLE_PLANKS))
 
-            // .item((currentBlock, p) -> new SignItem(p, currentBlock, GROMBLE_WALL_SIGN.get()))
-            // .model((context, provider) -> provider.generated(context))
-            // .properties(p -> p.stacksTo(16))
-            // .build()
-
-            .register();
-
-    public static final ItemEntry<SignItem> GROMBLE_SIGN_ITEM = getRegistrate().object("gromble_sign")
-            .item((p) -> new SignItem(p, STANDING_GROMBLE_SIGN.get(), GROMBLE_WALL_SIGN.get()))
+            .item((currentBlock, p) -> new SignItem(p, currentBlock, GROMBLE_WALL_SIGN.get()))
             .model((context, provider) -> provider.generated(context))
             .properties(p -> p.stacksTo(16))
+            .build()
+
+            .tileEntity(GrombleSignTileEntity::new)
+            .validBlocks(GROMBLE_WALL_SIGN)
+            .renderer(() -> SignTileEntityRenderer::new)
+            .build()
+
             .register();
+
+    // public static final ItemEntry<SignItem> GROMBLE_SIGN_ITEM = getRegistrate().object("gromble_sign")
+    //         .item((p) -> new SignItem(p, GROMBLE_SIGN.get(), GROMBLE_WALL_SIGN.get()))
+    //         .model((context, provider) -> provider.generated(context))
+    //         .properties(p -> p.stacksTo(16))
+    //         .register();
 
     public static final BlockEntry<MondroveWallSignBlock> MONDROVE_WALL_SIGN = getRegistrate().object("mondrove_wall_sign")
             .block(MondroveWallSignBlock::new)
@@ -70,22 +76,32 @@ public class SignRegistries {
                     .strength(1f)
                     .sound(SoundType.WOOD))
             .blockstate((context, provider) -> particleModel(context, provider, MONDROVE_PLANKS))
+            .setData(LANG, noop())
             .register();
 
-    public static final BlockEntry<MondroveStandingSignBlock> STANDING_MONDROVE_SIGN = getRegistrate().object("mondrove_sign")
+    public static final BlockEntry<MondroveStandingSignBlock> MONDROVE_SIGN = getRegistrate().object("mondrove_sign")
             .block(MondroveStandingSignBlock::new)
             .initialProperties(Material.WOOD)
             .properties(p -> p.noCollission()
                     .strength(1.0F)
                     .sound(SoundType.WOOD))
             .blockstate((context, provider) -> particleModel(context, provider, MONDROVE_PLANKS))
-            .register();
 
-    public static final ItemEntry<SignItem> MONDROVE_SIGN_ITEM = getRegistrate().object("mondrove_sign")
-            .item((p) -> new SignItem(p, STANDING_MONDROVE_SIGN.get(), MONDROVE_WALL_SIGN.get()))
+            .item((currentBlock, p) -> new SignItem(p, currentBlock, MONDROVE_WALL_SIGN.get()))
             .model((context, provider) -> provider.generated(context))
             .properties(p -> p.stacksTo(16))
+            .build()
+
+            .tileEntity(MondroveSignTileEntity::new)
+            .validBlocks(MONDROVE_WALL_SIGN)
+            .renderer(() -> SignTileEntityRenderer::new)
+            .build()
+
             .register();
+
+    // public static final ItemEntry<SignItem> MONDROVE_SIGN_ITEM = getRegistrate().object("mondrove_sign")
+    //
+    //         .register();
 
     public static final BlockEntry<OsminstemWallSignBlock> OSMINSTEM_WALL_SIGN = getRegistrate().object("osminstem_wall_sign")
             .block(OsminstemWallSignBlock::new)
@@ -94,9 +110,10 @@ public class SignRegistries {
                     .strength(1f)
                     .sound(SoundType.WOOD))
             .blockstate((context, provider) -> particleModel(context, provider, OSMINSTEM_PLANKS))
+            .setData(LANG, noop())
             .register();
 
-    public static final BlockEntry<OsminstemStandingSignBlock> STANDING_OSMINSTEM_SIGN = getRegistrate().object("osminstem_sign")
+    public static final BlockEntry<OsminstemStandingSignBlock> OSMINSTEM_SIGN = getRegistrate().object("osminstem_sign")
             .block(OsminstemStandingSignBlock::new)
             .initialProperties(Material.WOOD)
             .properties(p -> p.noCollission()
@@ -104,37 +121,36 @@ public class SignRegistries {
                     .sound(SoundType.WOOD))
             .blockstate((context, provider) -> particleModel(context, provider, OSMINSTEM_PLANKS))
 
-            // .item((currentBlock, p) -> new SignItem(p, currentBlock, OSMINSTEM_WALL_SIGN.get()))
-            // .model((context, provider) -> provider.generated(context))
-            // .properties(p -> p.stacksTo(16))
-            // .build()
-
-            .register();
-
-    public static final ItemEntry<SignItem> OSMINSTEM_SIGN_ITEM = getRegistrate().object("osminstem_sign")
-            .item((p) -> new SignItem(p, STANDING_OSMINSTEM_SIGN.get(), OSMINSTEM_WALL_SIGN.get()))
+            .item((currentBlock, p) -> new SignItem(p, currentBlock, OSMINSTEM_WALL_SIGN.get()))
             .model((context, provider) -> provider.generated(context))
             .properties(p -> p.stacksTo(16))
+            .build()
+
+            .tileEntity(OsminstemSignTileEntity::new)
+            .validBlocks(OSMINSTEM_WALL_SIGN)
+            .renderer(() -> SignTileEntityRenderer::new)
+            .build()
+
             .register();
+
+    // public static final ItemEntry<SignItem> OSMINSTEM_SIGN_ITEM = getRegistrate().object("osminstem_sign")
+    //         .item((p) -> new SignItem(p, OSMINSTEM_SIGN.get(), OSMINSTEM_WALL_SIGN.get()))
+    //         .model((context, provider) -> provider.generated(context))
+    //         .properties(p -> p.stacksTo(16))
+    //         .register();
 
     //Register the Tile Entity(Block Entity)
-    public static final TileEntityEntry<MondroveSignTileEntity> MONDROVE_SIGN = getRegistrate().object("mondrove_sign")
-            .tileEntity(MondroveSignTileEntity::new)
-            .validBlocks(MONDROVE_WALL_SIGN, STANDING_MONDROVE_SIGN)
-            .renderer(() -> SignTileEntityRenderer::new)
-            .register();
+    // public static final TileEntityEntry<MondroveSignTileEntity> MONDROVE_SIGN_BLOCK_ENTITY = getRegistrate().object("mondrove_sign")
+    //
+    //         .register();
 
-    public static final TileEntityEntry<OsminstemSignTileEntity> OSMINSTEM_SIGN = getRegistrate().object("osminstem_sign")
-            .tileEntity(OsminstemSignTileEntity::new)
-            .validBlocks(OSMINSTEM_WALL_SIGN, STANDING_OSMINSTEM_SIGN)
-            .renderer(() -> SignTileEntityRenderer::new)
-            .register();
+    // public static final TileEntityEntry<OsminstemSignTileEntity> OSMINSTEM_SIGN_BLOCK_ENTITY = getRegistrate().object("osminstem_sign")
+    //
+    //         .register();
 
-    public static final TileEntityEntry<GrombleSignTileEntity> GROMBLE_SIGN = getRegistrate().object("gromble_sign")
-            .tileEntity(GrombleSignTileEntity::new)
-            .validBlocks(GROMBLE_WALL_SIGN, STANDING_GROMBLE_SIGN)
-            .renderer(() -> SignTileEntityRenderer::new)
-            .register();
+    // public static final TileEntityEntry<GrombleSignTileEntity> GROMBLE_SIGN_BLOCK_ENTITY = getRegistrate().object("gromble_sign")
+    //
+    //         .register();
 
     public static void init() {
         CrypticCosmos.LOGGER.info("SignRegistries initialized");

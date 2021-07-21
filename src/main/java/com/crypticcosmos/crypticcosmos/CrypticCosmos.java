@@ -92,11 +92,12 @@ public class CrypticCosmos {
         GeckoLib.initialize();
     }
 
-    public static @Nonnull ResourceLocation id(String path) {
+    public static @Nonnull
+    ResourceLocation id(String path) {
         return new ResourceLocation(MOD_ID, path);
     }
-    private void clientSetup(final FMLClientSetupEvent event)
-    {
+
+    private void clientSetup(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             Atlases.addWoodType(MONDROVE_WOOD_TYPE);
             Atlases.addWoodType(GROMBLE_WOOD_TYPE);

@@ -1,6 +1,5 @@
 package com.crypticcosmos.crypticcosmos.util;
 
-import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.block.Infectable;
 import com.crypticcosmos.crypticcosmos.block.MondroveLog;
 import com.crypticcosmos.crypticcosmos.block.OvergrownLunonBlock;
@@ -24,6 +23,7 @@ import net.minecraftforge.client.model.generators.ConfiguredModel;
 
 import java.util.function.Supplier;
 
+import static com.crypticcosmos.crypticcosmos.CrypticCosmos.id;
 import static net.minecraft.advancements.criterion.ItemPredicate.Builder.item;
 import static net.minecraft.advancements.criterion.MinMaxBounds.IntBound.atLeast;
 import static net.minecraft.enchantment.Enchantments.BLOCK_FORTUNE;
@@ -49,10 +49,11 @@ public class RegistrationUtils {
                                                           RegistrateBlockstateProvider provider) {
         String infectionLevel = state.getValue(Infectable.INFECTION_LEVEL) == 0 ? ""
                 : state.getValue(Infectable.INFECTION_LEVEL).toString();
-        final String name = context.getId().getPath() + infectionLevel;
 
         return builder()
-                .modelFile(provider.models().cubeAll(name, blockTexture(context, infectionLevel)))
+                .modelFile(provider.models().cubeAll(context.getName() + infectionLevel,
+                        blockTexture(context, infectionLevel)
+                ))
                 .build();
     }
 
@@ -63,10 +64,9 @@ public class RegistrationUtils {
         String infectionLevel = state.getValue(Infectable.INFECTION_LEVEL) == 0 ? ""
                 : state.getValue(Infectable.INFECTION_LEVEL).toString();
         Axis axis = getAxisFromBlockState(state);
-        final String name = context.getId().getPath() + infectionLevel;
 
         return builder().modelFile(provider.models().cubeColumn(
-                name,
+                context.getName() + infectionLevel,
                 blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), !isStripped ? infectionLevel : ""),
                 blockTexture(isStripped ? "stripped_" : "", MondroveRegistries.MONDROVE_LOG.get(), "_top")))
                 .rotationX(axis.equals(Axis.Z) || axis.equals(Axis.X) ? 90 : 0)
@@ -80,10 +80,9 @@ public class RegistrationUtils {
         Axis axis = getAxisFromBlockState(state);
         String infectionLevel = state.getValue(Infectable.INFECTION_LEVEL) == 0 ? ""
                 : state.getValue(Infectable.INFECTION_LEVEL).toString();
-        final String name = context.getId().getPath() + infectionLevel;
 
         return builder().modelFile(provider.models().cubeAll(
-                name,
+                context.getName() + infectionLevel,
                 blockTexture(isStripped ? "stripped_" : "",
                         MondroveRegistries.MONDROVE_LOG.get(),
                         !isStripped ? infectionLevel : ""
@@ -98,20 +97,19 @@ public class RegistrationUtils {
                     boolean isSnowy = blockState.getValue(OvergrownLunonBlock.SNOWY);
                     Direction axis = blockState.getValue(OvergrownLunonBlock.FACING);
                     final ConfiguredModel.Builder<?> builder = builder();
-                    final String id = context.getId().getPath();
 
                     int degree = (int) axis.toYRot();
 
                     if (!isSnowy) {
                         builder.modelFile(provider.models().cubeBottomTop(
-                                id,
+                                context.getName(),
                                 blockTexture(context, "_side"),
                                 provider.blockTexture(LunonRegistries.LUNON.get()),
                                 blockTexture(context, "_top")))
                                 .rotationY(degree);
                     } else {
                         builder.modelFile(provider.models().cubeBottomTop(
-                                id,
+                                context.getName(),
                                 blockTexture(LunonRegistries.OVERGROWN_LUNON, "_snow"),
                                 provider.blockTexture(LunonRegistries.LUNON.get()),
                                 blockTexture(context, "_top")));
@@ -126,17 +124,16 @@ public class RegistrationUtils {
         provider.getVariantBuilder(context.get())
                 .forAllStates(state -> builder().modelFile(
                         provider.models()
-                                .withExistingParent(context.getId().getPath(), provider.mcLoc("leaves"))
+                                .withExistingParent(context.getName(), provider.mcLoc("leaves"))
                                 .texture("all", provider.blockTexture(context.get()))
                         ).build()
                 );
     }
 
     public static void crossModel(DataGenContext<Block, ? extends Block> context, RegistrateBlockstateProvider provider) {
-        final String name = context.getId().getPath();
         provider.getVariantBuilder(context.get())
                 .forAllStates(state -> builder().modelFile(
-                        provider.models().cross(name, provider.blockTexture(context.get()))).build()
+                        provider.models().cross(context.getName(), provider.blockTexture(context.get()))).build()
                 );
     }
 
@@ -147,18 +144,17 @@ public class RegistrationUtils {
     }
 
     public static void buttonModel(DataGenContext<Block, ? extends AbstractButtonBlock> context, RegistrateBlockstateProvider provider, NonNullSupplier<? extends Block> planks) {
-        final String id = context.getId().getPath();
         final ConfiguredModel.Builder<?> buttonModel = builder().modelFile(provider.models()
-                .withExistingParent(id, "button")
+                .withExistingParent(context.getName(), "button")
                 .texture("texture", provider.blockTexture(planks.get())));
 
         final ConfiguredModel.Builder<?> buttonPressedModel = builder().modelFile(provider.models()
-                .withExistingParent(id + "_pressed", "button_pressed")
+                .withExistingParent(context.getName() + "_pressed", "button_pressed")
                 .texture("texture", provider.blockTexture(planks.get())));
 
         //noinspection unused
         final ConfiguredModel.Builder<?> buttonInventoryModel = builder().modelFile(provider.models()
-                .withExistingParent(id + "_inventory", "button_inventory")
+                .withExistingParent(context.getName() + "_inventory", "button_inventory")
                 .texture("texture", provider.blockTexture(planks.get())));
 
         provider.getVariantBuilder(context.get())
@@ -184,14 +180,13 @@ public class RegistrationUtils {
     public static void pressurePlateModels(DataGenContext<Block, ? extends PressurePlateBlock> context,
                                            RegistrateBlockstateProvider provider,
                                            NonNullSupplier<? extends Block> planks) {
-        final String id = context.getId().getPath();
         provider.getVariantBuilder(context.get())
                 .forAllStates(state -> {
                     final String parentSuffix = state.getValue(PressurePlateBlock.POWERED) ? "_down" : "_up";
                     final String idSuffix = state.getValue(PressurePlateBlock.POWERED) ? "_down" : "";
 
                     return builder().modelFile(provider.models()
-                            .withExistingParent(id + idSuffix, "pressure_plate" + parentSuffix)
+                            .withExistingParent(context.getName() + idSuffix, "pressure_plate" + parentSuffix)
                             .texture("texture", provider.blockTexture(planks.get()))).build();
                 });
     }
@@ -202,12 +197,12 @@ public class RegistrationUtils {
 
     public static ResourceLocation blockTexture(Supplier<? extends Block> block, String suffix) {
         //noinspection ConstantConditions
-        return CrypticCosmos.id("block/" + block.get().getRegistryName().getPath() + suffix);
+        return id("block/" + block.get().getRegistryName().getPath() + suffix);
     }
 
     public static ResourceLocation blockTexture(String prefix, Block block, String suffix) {
         //noinspection ConstantConditions
-        return CrypticCosmos.id("block/" + prefix + block.getRegistryName().getPath() + suffix);
+        return id("block/" + prefix + block.getRegistryName().getPath() + suffix);
     }
 
     public static <BLOCK extends Block, ITEM extends NonNullSupplier<Item>> void silkTouchFortune(
@@ -239,16 +234,6 @@ public class RegistrationUtils {
         );
     }
 
-    public static void standingSignModel(DataGenContext<Block, StandingSignBlock> context, RegistrateBlockstateProvider provider) {
-        provider.getVariantBuilder(context.get())
-                .forAllStates(state -> builder().modelFile(
-                        provider.models()
-                                .withExistingParent(context.getId().getPath(), provider.mcLoc("sign"))
-                                .texture("all", provider.blockTexture(context.get()))
-                        ).build()
-                );
-    }
-
     public static <TOP extends Block, BODY extends Block> void vinesLootTable(RegistrateBlockLootTables lootTables, TOP topVine, BODY bodyVine) {
         final LootTable.Builder lootTable = lootTable()
                 .withPool(lootPool()
@@ -275,7 +260,7 @@ public class RegistrationUtils {
             BLOCK block
     ) {
         provider.getVariantBuilder(context.get()).forAllStates($ -> ConfiguredModel.builder().modelFile(provider.models()
-                .getBuilder("block").texture("particle", provider.blockTexture(block.get()))
+                .getBuilder(context.getName()).texture("particle", provider.blockTexture(block.get()))
         ).build());
     }
 }
