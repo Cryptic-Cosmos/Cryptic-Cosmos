@@ -63,12 +63,6 @@ public class SignRegistries {
 
             .register();
 
-    // public static final ItemEntry<SignItem> GROMBLE_SIGN_ITEM = getRegistrate().object("gromble_sign")
-    //         .item((p) -> new SignItem(p, GROMBLE_SIGN.get(), GROMBLE_WALL_SIGN.get()))
-    //         .model((context, provider) -> provider.generated(context))
-    //         .properties(p -> p.stacksTo(16))
-    //         .register();
-
     public static final BlockEntry<MondroveWallSignBlock> MONDROVE_WALL_SIGN = getRegistrate().object("mondrove_wall_sign")
             .block(MondroveWallSignBlock::new)
             .initialProperties(Material.WOOD)
@@ -99,10 +93,6 @@ public class SignRegistries {
 
             .register();
 
-    // public static final ItemEntry<SignItem> MONDROVE_SIGN_ITEM = getRegistrate().object("mondrove_sign")
-    //
-    //         .register();
-
     public static final BlockEntry<OsminstemWallSignBlock> OSMINSTEM_WALL_SIGN = getRegistrate().object("osminstem_wall_sign")
             .block(OsminstemWallSignBlock::new)
             .initialProperties(Material.WOOD)
@@ -132,25 +122,6 @@ public class SignRegistries {
             .build()
 
             .register();
-
-    // public static final ItemEntry<SignItem> OSMINSTEM_SIGN_ITEM = getRegistrate().object("osminstem_sign")
-    //         .item((p) -> new SignItem(p, OSMINSTEM_SIGN.get(), OSMINSTEM_WALL_SIGN.get()))
-    //         .model((context, provider) -> provider.generated(context))
-    //         .properties(p -> p.stacksTo(16))
-    //         .register();
-
-    //Register the Tile Entity(Block Entity)
-    // public static final TileEntityEntry<MondroveSignTileEntity> MONDROVE_SIGN_BLOCK_ENTITY = getRegistrate().object("mondrove_sign")
-    //
-    //         .register();
-
-    // public static final TileEntityEntry<OsminstemSignTileEntity> OSMINSTEM_SIGN_BLOCK_ENTITY = getRegistrate().object("osminstem_sign")
-    //
-    //         .register();
-
-    // public static final TileEntityEntry<GrombleSignTileEntity> GROMBLE_SIGN_BLOCK_ENTITY = getRegistrate().object("gromble_sign")
-    //
-    //         .register();
 
     public static void init() {
         CrypticCosmos.LOGGER.info("SignRegistries initialized");
