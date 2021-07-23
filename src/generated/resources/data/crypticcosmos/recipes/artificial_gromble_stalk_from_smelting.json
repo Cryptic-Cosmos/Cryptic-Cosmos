@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "crypticcosmos:gromble_stalk"
   },
-  "result": "crypticcosmos:gromble_stalk_fiber",
+  "result": "crypticcosmos:artificial_gromble_stalk",
   "experience": 0.15,
   "cookingtime": 3000
 }

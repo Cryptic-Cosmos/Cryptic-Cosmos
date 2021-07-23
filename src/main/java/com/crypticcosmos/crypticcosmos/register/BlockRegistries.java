@@ -18,11 +18,9 @@ import net.minecraft.tags.BlockTags;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
-import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.GROMBLE_STALK_FIBER;
 import static com.crypticcosmos.crypticcosmos.util.RegistrationUtils.blockTexture;
 import static com.crypticcosmos.crypticcosmos.util.RegistrationUtils.vinesLootTable;
-import static net.minecraft.advancements.criterion.InventoryChangeTrigger.Instance.hasItems;
-import static net.minecraft.data.ShapedRecipeBuilder.shaped;
+import static com.tterrag.registrate.util.DataIngredient.items;
 
 @SuppressWarnings("unused")
 public class BlockRegistries {
@@ -150,14 +148,7 @@ public class BlockRegistries {
 
             .item((block, p) -> new GrombleStalkItem(p, true))
             .model((context, provider) -> provider.generated(context, blockTexture(() -> ARTIFICIAL_GROMBLE_STALK_PLANT.get().getBlock(), "")))
-            .recipe((context, provider) -> shaped(context.get())
-                    .pattern("s")
-                    .pattern("s")
-                    .pattern("s")
-                    .define('s', GROMBLE_STALK_FIBER.get())
-                    .unlockedBy("has_gromble_stalk_fiber", hasItems(GROMBLE_STALK_FIBER.get()))
-                    .save(provider)
-            )
+            .recipe((context, provider) -> provider.smelting(items(BlockRegistries.GROMBLE_STALK), context, 0.15f, 3000))
             .build()
 
             .register();

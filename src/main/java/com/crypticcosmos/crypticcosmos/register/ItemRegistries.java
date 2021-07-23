@@ -8,7 +8,6 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
-import static com.tterrag.registrate.util.DataIngredient.items;
 
 @SuppressWarnings("unused")
 public class ItemRegistries {
@@ -42,10 +41,6 @@ public class ItemRegistries {
             ))
             .register();
 
-    public static final ItemEntry<Item> GROMBLE_STALK_FIBER = getRegistrate().object("gromble_stalk_fiber")
-            .item(Item::new)
-            .recipe((context, provider) -> provider.smelting(items(BlockRegistries.GROMBLE_STALK), context, 0.15f, 3000))
-            .register();
 
     public static void init() {
         CrypticCosmos.LOGGER.info("ItemRegistries initialized");
