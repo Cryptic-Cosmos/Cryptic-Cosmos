@@ -1,18 +1,18 @@
 package com.crypticcosmos.crypticcosmos.effect;
 
 import com.crypticcosmos.crypticcosmos.register.EffectRegistries;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.potion.EffectType;
-import net.minecraft.potion.InstantEffect;
+import net.minecraft.world.effect.InstantenousMobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.awt.*;
 
-public class PurificationEffect extends InstantEffect {
+public class PurificationEffect extends InstantenousMobEffect {
     public PurificationEffect() {
-        super(EffectType.BENEFICIAL, Color.WHITE.getRGB());
+        super(MobEffectCategory.BENEFICIAL, Color.WHITE.getRGB());
     }
 
     @Override

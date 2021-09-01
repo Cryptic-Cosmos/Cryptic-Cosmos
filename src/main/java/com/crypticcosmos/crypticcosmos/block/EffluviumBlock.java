@@ -1,17 +1,16 @@
 package com.crypticcosmos.crypticcosmos.block;
 
 import com.crypticcosmos.crypticcosmos.register.EffectRegistries;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityPredicate;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 
 import javax.annotation.Nonnull;
-import java.util.List;
 import java.util.Random;
 
 public class EffluviumBlock extends Block {
@@ -26,14 +25,15 @@ public class EffluviumBlock extends Block {
 
     @SuppressWarnings("deprecation")
     @Override
-    public void tick(@Nonnull BlockState state, @Nonnull ServerWorld world, @Nonnull BlockPos position, @Nonnull Random rand) {
-        AxisAlignedBB range = new AxisAlignedBB(position.getX(), position.getY(), position.getZ(), position.getX() + 15.0D, position.getY() + 15.0D, position.getZ() + 15.0D);
-        List<PlayerEntity> playerEntityList = world.getLevel().getNearbyEntities(PlayerEntity.class, new EntityPredicate(), null, range);
+    public void tick(@Nonnull BlockState state, @Nonnull ServerLevel world, @Nonnull BlockPos position, @Nonnull Random rand) {
+        var range = new AABB(position.getX(), position.getY(), position.getZ(), position.getX() + 15.0D, position.getY() + 15.0D, position.getZ() + 15.0D);
+        var playerEntityList = world.getLevel().getNearbyEntities(Player.class, TargetingConditions.DEFAULT, null, range);
+
         if (!playerEntityList.isEmpty()) {
-            for (PlayerEntity playerEntity : playerEntityList) {
-                playerEntity.addEffect(new EffectInstance(EffectRegistries.EFFLUVIUM.get(), 300));
+            for (var player : playerEntityList) {
+                player.addEffect(new MobEffectInstance(EffectRegistries.EFFLUVIUM.get(), 300));
             }
-            PlayerEntity p;
+            Player p;
             //p.addEffect(EffluviumEffect::new);
         }
     }

@@ -1,21 +1,21 @@
 package com.crypticcosmos.crypticcosmos.register;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import com.crypticcosmos.crypticcosmos.sign.gromble.GrombleSignTileEntity;
+import com.crypticcosmos.crypticcosmos.sign.gromble.GrombleSignBlockEntity;
 import com.crypticcosmos.crypticcosmos.sign.gromble.GrombleStandingSignBlock;
 import com.crypticcosmos.crypticcosmos.sign.gromble.GrombleWallSignBlock;
-import com.crypticcosmos.crypticcosmos.sign.mondrove.MondroveSignTileEntity;
+import com.crypticcosmos.crypticcosmos.sign.mondrove.MondroveSignBlockEntity;
 import com.crypticcosmos.crypticcosmos.sign.mondrove.MondroveStandingSignBlock;
 import com.crypticcosmos.crypticcosmos.sign.mondrove.MondroveWallSignBlock;
-import com.crypticcosmos.crypticcosmos.sign.osminstem.OsminstemSignTileEntity;
+import com.crypticcosmos.crypticcosmos.sign.osminstem.OsminstemSignBlockEntity;
 import com.crypticcosmos.crypticcosmos.sign.osminstem.OsminstemStandingSignBlock;
 import com.crypticcosmos.crypticcosmos.sign.osminstem.OsminstemWallSignBlock;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.WoodType;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.tileentity.SignTileEntityRenderer;
-import net.minecraft.item.SignItem;
+import net.minecraft.world.item.SignItem;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.Material;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.id;
@@ -25,6 +25,7 @@ import static com.crypticcosmos.crypticcosmos.register.OsminstemRegistries.OSMIN
 import static com.crypticcosmos.crypticcosmos.util.RegistrationUtils.particleModel;
 import static com.tterrag.registrate.providers.ProviderType.LANG;
 import static com.tterrag.registrate.util.nullness.NonNullBiConsumer.noop;
+import static net.minecraft.data.recipes.RecipeProvider.signBuilder;
 
 @SuppressWarnings("deprecation")
 public class SignRegistries {
@@ -49,6 +50,7 @@ public class SignRegistries {
             .properties(p -> p.noCollission()
                     .strength(1.0F)
                     .sound(SoundType.WOOD))
+            .recipe((context, provider) -> signBuilder(context.get(), Ingredient.of(GROMBLE_PLANKS.get())))
             .blockstate((context, provider) -> particleModel(context, provider, GROMBLE_PLANKS))
 
             .item((currentBlock, p) -> new SignItem(p, currentBlock, GROMBLE_WALL_SIGN.get()))
@@ -56,9 +58,9 @@ public class SignRegistries {
             .properties(p -> p.stacksTo(16))
             .build()
 
-            .tileEntity(GrombleSignTileEntity::new)
+            .tileEntity(GrombleSignBlockEntity::new)
             .validBlocks(GROMBLE_WALL_SIGN)
-            .renderer(() -> SignTileEntityRenderer::new)
+            // .renderer(() -> SignRenderer::new)
             .build()
 
             .register();
@@ -79,6 +81,7 @@ public class SignRegistries {
             .properties(p -> p.noCollission()
                     .strength(1.0F)
                     .sound(SoundType.WOOD))
+            .recipe((context, provider) -> signBuilder(context.get(), Ingredient.of(MONDROVE_PLANKS.get())))
             .blockstate((context, provider) -> particleModel(context, provider, MONDROVE_PLANKS))
 
             .item((currentBlock, p) -> new SignItem(p, currentBlock, MONDROVE_WALL_SIGN.get()))
@@ -86,9 +89,9 @@ public class SignRegistries {
             .properties(p -> p.stacksTo(16))
             .build()
 
-            .tileEntity(MondroveSignTileEntity::new)
+            .tileEntity(MondroveSignBlockEntity::new)
             .validBlocks(MONDROVE_WALL_SIGN)
-            .renderer(() -> SignTileEntityRenderer::new)
+            // .renderer(() -> SignRenderer::new)
             .build()
 
             .register();
@@ -109,6 +112,7 @@ public class SignRegistries {
             .properties(p -> p.noCollission()
                     .strength(1.0F)
                     .sound(SoundType.WOOD))
+            .recipe((context, provider) -> signBuilder(context.get(), Ingredient.of(OSMINSTEM_PLANKS.get())))
             .blockstate((context, provider) -> particleModel(context, provider, OSMINSTEM_PLANKS))
 
             .item((currentBlock, p) -> new SignItem(p, currentBlock, OSMINSTEM_WALL_SIGN.get()))
@@ -116,9 +120,9 @@ public class SignRegistries {
             .properties(p -> p.stacksTo(16))
             .build()
 
-            .tileEntity(OsminstemSignTileEntity::new)
+            .tileEntity(OsminstemSignBlockEntity::new)
             .validBlocks(OSMINSTEM_WALL_SIGN)
-            .renderer(() -> SignTileEntityRenderer::new)
+            // .renderer(() -> SignRenderer::new)
             .build()
 
             .register();

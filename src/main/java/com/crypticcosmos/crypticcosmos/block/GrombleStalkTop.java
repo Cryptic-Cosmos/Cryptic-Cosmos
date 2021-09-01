@@ -1,21 +1,21 @@
 package com.crypticcosmos.crypticcosmos.block;
 
 import com.crypticcosmos.crypticcosmos.register.BlockRegistries;
-import net.minecraft.block.AbstractTopPlantBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.PlantBlockHelper;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.level.block.NetherVines;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
 
 import static com.crypticcosmos.crypticcosmos.register.GrombleRegistries.GIANT_GROMBLE_BERRY;
 
-public class GrombleStalkTop extends AbstractTopPlantBlock {
+public class GrombleStalkTop extends GrowingPlantHeadBlock {
     public static final VoxelShape SHAPE = box(4.0D, 0.0D, 4.0D, 12.0D, 15.0D, 12.0D);
 
     public GrombleStalkTop(Properties p) {
@@ -23,7 +23,7 @@ public class GrombleStalkTop extends AbstractTopPlantBlock {
     }
 
     public int getBlocksToGrowWhenBonemealed(@Nonnull Random random) {
-        return PlantBlockHelper.getBlocksToGrowWhenBonemealed(random);
+        return NetherVines.getBlocksToGrowWhenBonemealed(random);
     }
 
     @Nonnull
@@ -32,7 +32,7 @@ public class GrombleStalkTop extends AbstractTopPlantBlock {
     }
 
     protected boolean canGrowInto(@Nonnull BlockState state) {
-        return PlantBlockHelper.isValidGrowthState(state);
+        return NetherVines.isValidGrowthState(state);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class GrombleStalkTop extends AbstractTopPlantBlock {
 
     @Override
     public void randomTick(@Nonnull BlockState state,
-                           @Nonnull ServerWorld world,
+                           @Nonnull ServerLevel world,
                            @Nonnull BlockPos pos,
                            @Nonnull Random random) {
         super.randomTick(state, world, pos, random);

@@ -1,0 +1,31 @@
+package com.crypticcosmos.crypticcosmos.sign.gromble;
+
+import com.crypticcosmos.crypticcosmos.register.SignRegistries;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.SignBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.registries.ForgeRegistries;
+
+import javax.annotation.Nonnull;
+
+public class GrombleSignBlockEntity extends SignBlockEntity {
+    private final BlockEntityType<? extends BlockEntity> type;
+
+    public GrombleSignBlockEntity(BlockPos pos, BlockState state, BlockEntityType<? extends BlockEntity> type) {
+        super(pos, state);
+        this.type = type;
+    }
+
+    public GrombleSignBlockEntity(BlockPos pos, BlockState state) {
+        super(pos, state);
+        this.type = SignRegistries.GROMBLE_SIGN.getSibling(ForgeRegistries.BLOCK_ENTITIES).get();
+    }
+
+    @Nonnull
+    @Override
+    public BlockEntityType<? extends BlockEntity> getType() {
+        return type;
+    }
+}

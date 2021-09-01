@@ -1,8 +1,9 @@
 package com.crypticcosmos.crypticcosmos.item;
 
 import com.crypticcosmos.crypticcosmos.register.BlockRegistries;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
 
 public class GrombleStalkItem extends BlockItem {
     public GrombleStalkItem(Properties properties, boolean artificial) {
@@ -13,7 +14,7 @@ public class GrombleStalkItem extends BlockItem {
     }
 
     @Override
-    public int getBurnTime(ItemStack itemStack) {
+    public int getBurnTime(ItemStack itemStack, RecipeType<?> type) {
         return 50;
     }
 }

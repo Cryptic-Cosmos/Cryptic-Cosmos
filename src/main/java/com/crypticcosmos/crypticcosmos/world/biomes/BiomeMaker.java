@@ -3,16 +3,14 @@ package com.crypticcosmos.crypticcosmos.world.biomes;
 import com.crypticcosmos.crypticcosmos.register.CerantRegistries;
 import com.crypticcosmos.crypticcosmos.register.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.register.SoundEventRegistries;
-import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntityType;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.Category;
-import net.minecraft.world.biome.Biome.RainType;
-import net.minecraft.world.biome.BiomeAmbience;
-import net.minecraft.world.biome.BiomeGenerationSettings;
-import net.minecraft.world.biome.MobSpawnInfo;
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biome.BiomeCategory;
+import net.minecraft.world.level.biome.Biome.Precipitation;
+import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilder;
+import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilderBaseConfiguration;
 
 import javax.annotation.Nonnull;
 
@@ -23,21 +21,21 @@ import static com.crypticcosmos.crypticcosmos.world.biomes.BiomeHelper.*;
 @SuppressWarnings("SameParameterValue")
 public class BiomeMaker {
     public static Biome acerbicIsles() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
-                LUNON.getDefaultState(),
-                LUNON.getDefaultState(),
-                LUNON_DUST.getDefaultState()
+        final var genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderBaseConfiguration(
+                LUNON.get().defaultBlockState(),
+                LUNON.get().defaultBlockState(),
+                LUNON_DUST.get().defaultBlockState()
         ));
 
-        final MobSpawnInfo.Builder spawnSettings = spawnSettings();
+        final var spawnSettings = spawnSettings();
 
-        addSpawn(spawnSettings, EntityClassification.MONSTER,
+        addSpawn(spawnSettings, MobCategory.MONSTER,
                 EntityTypeRegistries.MAKROSSA_RAMBLER.get(), 8, 1, 2);
 
-        addSpawn(spawnSettings, EntityClassification.MONSTER,
+        addSpawn(spawnSettings, MobCategory.MONSTER,
                 EntityType.ENDERMAN, 4, 1, 4);
 
-        final BiomeAmbience.Builder effects = effects(0xfffff5,
+        final var effects = effects(0xfffff5,
                 0xfffff5,
                 DEFAULT_GRASS_COLOR,
                 DEFAULT_FOLIAGE_COLOR,
@@ -47,8 +45,8 @@ public class BiomeMaker {
         );
 
         return biome(
-                RainType.RAIN,
-                Category.EXTREME_HILLS,
+                Precipitation.RAIN,
+                BiomeCategory.EXTREME_HILLS,
                 0.125f,
                 1,
                 0f,
@@ -60,18 +58,18 @@ public class BiomeMaker {
     }
 
     public static Biome kafisnianForest() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
-                FUNGAL_LUNON.getDefaultState(),
-                LUNON.getDefaultState(),
-                LUNON_DUST.getDefaultState()
+        final var genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderBaseConfiguration(
+                FUNGAL_LUNON.get().defaultBlockState(),
+                LUNON.get().defaultBlockState(),
+                LUNON_DUST.get().defaultBlockState()
         ));
 
-        final MobSpawnInfo.Builder spawnSettings = spawnSettings();
+        final var spawnSettings = spawnSettings();
 
-        addSpawn(spawnSettings, EntityClassification.CREATURE,
+        addSpawn(spawnSettings, MobCategory.CREATURE,
                 EntityTypeRegistries.GROMBLE_FROG.get(), 8, 2, 5);
 
-        final BiomeAmbience.Builder effects = effects(0xfffff5,
+        final var effects = effects(0xfffff5,
                 0xfffff5,
                 DEFAULT_GRASS_COLOR,
                 DEFAULT_FOLIAGE_COLOR,
@@ -81,8 +79,8 @@ public class BiomeMaker {
         );
 
         return biome(
-                RainType.RAIN,
-                Category.FOREST,
+                Precipitation.RAIN,
+                BiomeCategory.FOREST,
                 0.125f,
                 0.07f,
                 0f,
@@ -95,21 +93,21 @@ public class BiomeMaker {
 
     @Nonnull
     public static Biome lunaraPlains() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
-                OVERGROWN_LUNON.getDefaultState(),
-                LUNON.getDefaultState(),
-                LUNON_DUST.getDefaultState()
+        final var genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderBaseConfiguration(
+                OVERGROWN_LUNON.get().defaultBlockState(),
+                LUNON.get().defaultBlockState(),
+                LUNON_DUST.get().defaultBlockState()
         ));
 
-        final MobSpawnInfo.Builder spawnSettings = spawnSettings();
+        final var spawnSettings = spawnSettings();
 
-        addSpawn(spawnSettings, EntityClassification.CREATURE,
+        addSpawn(spawnSettings, MobCategory.CREATURE,
                 EntityTypeRegistries.MAKROSSA_RAMBLER.get(), 8, 1, 2);
 
-        addSpawn(spawnSettings, EntityClassification.CREATURE,
+        addSpawn(spawnSettings, MobCategory.CREATURE,
                 EntityType.ENDERMAN, 4, 1, 4);
 
-        final BiomeAmbience.Builder effects = effects(0xfffff5,
+        final var effects = effects(0xfffff5,
                 0xfffff5,
                 DEFAULT_GRASS_COLOR,
                 DEFAULT_FOLIAGE_COLOR,
@@ -118,8 +116,8 @@ public class BiomeMaker {
                 SoundEventRegistries.MUSIC_LUNARA.get());
 
         return biome(
-                RainType.RAIN,
-                Category.PLAINS,
+                Precipitation.RAIN,
+                BiomeCategory.PLAINS,
                 0.125f,
                 0.1f,
                 0f,
@@ -131,18 +129,18 @@ public class BiomeMaker {
     }
 
     public static Biome grombleGrove() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.NETHER_FOREST, new SurfaceBuilderConfig(
-                CerantRegistries.PHORAL_CERANT.getDefaultState(),
-                CerantRegistries.CERANT.getDefaultState(),
-                CerantRegistries.CERANT.getDefaultState()
+        final var genSettings = genSettings(SurfaceBuilder.NETHER_FOREST, new SurfaceBuilderBaseConfiguration(
+                CerantRegistries.PHORAL_CERANT.get().defaultBlockState(),
+                CerantRegistries.CERANT.get().defaultBlockState(),
+                CerantRegistries.CERANT.get().defaultBlockState()
         ));
 
-        final MobSpawnInfo.Builder spawnSettings = spawnSettings();
+        final var spawnSettings = spawnSettings();
 
-        addSpawn(spawnSettings, EntityClassification.AMBIENT,
+        addSpawn(spawnSettings, MobCategory.AMBIENT,
                 EntityTypeRegistries.GROMBLE_FROG.get(), 8, 2, 5);
 
-        final BiomeAmbience.Builder effects = effects(0xfffff5,
+        final var effects = effects(0xfffff5,
                 0xfffff5,
                 DEFAULT_GRASS_COLOR,
                 DEFAULT_FOLIAGE_COLOR,
@@ -152,8 +150,8 @@ public class BiomeMaker {
         );
 
         return biome(
-                RainType.RAIN,
-                Category.FOREST,
+                Precipitation.RAIN,
+                BiomeCategory.FOREST,
                 0.5f,
                 0.07f,
                 0f,
@@ -165,13 +163,13 @@ public class BiomeMaker {
     }
 
     public static Biome umbralDunes() {
-        final BiomeGenerationSettings.Builder genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(
-                UMBRAL_DUNE.getDefaultState(),
-                UMBRAL_DUNE.getDefaultState(),
-                UMBRAL_DUNE.getDefaultState()
+        final var genSettings = genSettings(SurfaceBuilder.DEFAULT, new SurfaceBuilderBaseConfiguration(
+                UMBRAL_DUNE.get().defaultBlockState(),
+                UMBRAL_DUNE.get().defaultBlockState(),
+                UMBRAL_DUNE.get().defaultBlockState()
         ));
 
-        final BiomeAmbience.Builder effects = effects(0x412,
+        final var effects = effects(0x412,
                 0x412,
                 DEFAULT_GRASS_COLOR,
                 DEFAULT_FOLIAGE_COLOR,
@@ -180,15 +178,15 @@ public class BiomeMaker {
                 SoundEventRegistries.MUSIC_ABYSS.get());
 
         return biome(
-                RainType.RAIN,
-                Category.PLAINS,
+                Precipitation.RAIN,
+                BiomeCategory.PLAINS,
                 -0.5f,
                 1f,
                 3f,
                 0,
                 effects,
                 genSettings,
-                MobSpawnInfo.EMPTY
+                MobSpawnSettings.EMPTY
         );
     }
 }

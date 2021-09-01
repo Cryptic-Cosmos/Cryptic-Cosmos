@@ -2,18 +2,18 @@ package com.crypticcosmos.crypticcosmos.block;
 
 import com.crypticcosmos.crypticcosmos.util.Strippable;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.RotatedPillarBlock;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.StateContainer;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.phys.BlockHitResult;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
@@ -36,12 +36,12 @@ public class MondroveLog extends RotatedPillarBlock implements Infectable, Strip
     @SuppressWarnings("deprecation")
     @Nonnull
     @Override
-    public ActionResultType use(@Nonnull BlockState state,
-                                @Nonnull World world,
-                                @Nonnull BlockPos pos,
-                                @Nonnull PlayerEntity player,
-                                @Nonnull Hand hand,
-                                @Nonnull BlockRayTraceResult rayTraceResult) {
+    public InteractionResult use(@Nonnull BlockState state,
+                                 @Nonnull Level world,
+                                 @Nonnull BlockPos pos,
+                                 @Nonnull Player player,
+                                 @Nonnull InteractionHand hand,
+                                 @Nonnull BlockHitResult rayTraceResult) {
         return strip(strippedBlock,
                 player.getItemInHand(hand),
                 world, pos, state, player, hand);
@@ -49,18 +49,18 @@ public class MondroveLog extends RotatedPillarBlock implements Infectable, Strip
 
     @SuppressWarnings("deprecation")
     @Override
-    public void randomTick(@Nonnull BlockState state, @Nonnull ServerWorld world, @Nonnull BlockPos pos, @Nonnull Random rand) {
+    public void randomTick(@Nonnull BlockState state, @Nonnull ServerLevel world, @Nonnull BlockPos pos, @Nonnull Random rand) {
         this.infect(world, pos);
     }
 
     @Override
-    protected void createBlockStateDefinition(@Nonnull StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(@Nonnull StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(INFECTION_LEVEL);
     }
 
     @Override
-    public BlockState getStateForPlacement(@Nonnull BlockItemUseContext context) {
+    public BlockState getStateForPlacement(@Nonnull BlockPlaceContext context) {
         //noinspection ConstantConditions
         return super.getStateForPlacement(context).setValue(INFECTION_LEVEL, 0);
     }

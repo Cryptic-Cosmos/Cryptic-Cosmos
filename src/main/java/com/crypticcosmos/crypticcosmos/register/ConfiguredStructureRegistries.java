@@ -1,18 +1,18 @@
 package com.crypticcosmos.crypticcosmos.register;
 
-import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.WorldGenRegistries;
-import net.minecraft.world.gen.FlatGenerationSettings;
-import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.feature.StructureFeature;
+import net.minecraft.core.Registry;
+import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings;
+
+import static com.crypticcosmos.crypticcosmos.CrypticCosmos.id;
 
 public class ConfiguredStructureRegistries {
     /*
      * Static instance of our structure so we can reference it and add it to biomes easily.
      */
-    public static StructureFeature<?, ?> CONFIGURED_MONDROVE_BUNDLE = StructureRegistries.MONDROVE_BUNDLE.get().configured(IFeatureConfig.NONE);
+    public static ConfiguredStructureFeature<?, ?> CONFIGURED_MONDROVE_BUNDLE = StructureRegistries.MONDROVE_BUNDLE.get().configured(FeatureConfiguration.NONE);
 
     /*
      * Registers the configured structure which is what gets added to the biomes.
@@ -22,8 +22,8 @@ public class ConfiguredStructureRegistries {
      * But the best time to register configured features by code is honestly to do it in FMLCommonSetupEvent.
      */
     public static void registerConfiguredStructures() {
-        Registry<StructureFeature<?, ?>> registry = WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE;
-        Registry.register(registry, new ResourceLocation(CrypticCosmos.MOD_ID, "configured_mondrove_bundle"), CONFIGURED_MONDROVE_BUNDLE);
+        Registry.register(BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE,
+                id("configured_mondrove_bundle"), CONFIGURED_MONDROVE_BUNDLE);
 
         /* Ok so, this part may be hard to grasp but basically, just add your structure to this to
          * prevent any sort of crash or issue with other mod's custom ChunkGenerators. If they use
@@ -40,6 +40,6 @@ public class ConfiguredStructureRegistries {
          *
          * Requires AccessTransformer ( see resources/META-INF/accesstransformer.cfg )
          */
-        FlatGenerationSettings.STRUCTURE_FEATURES.put(StructureRegistries.MONDROVE_BUNDLE.get(), CONFIGURED_MONDROVE_BUNDLE);
+        FlatLevelGeneratorSettings.STRUCTURE_FEATURES.put(StructureRegistries.MONDROVE_BUNDLE.get(), CONFIGURED_MONDROVE_BUNDLE);
     }
 }

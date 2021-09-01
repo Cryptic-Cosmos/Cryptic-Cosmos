@@ -1,36 +1,35 @@
 package com.crypticcosmos.crypticcosmos.entity.creature.gromble_snatcher;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.damagesource.EntityDamageSource;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 
 public class SnatchGoal extends MeleeAttackGoal {
-    protected final CreatureEntity creatureEntity;
+    protected final PathfinderMob pathfinderMob;
 
-    public SnatchGoal(CreatureEntity creatureEntity, double p_i1636_2_, boolean p_i1636_4_) {
-        super(creatureEntity, p_i1636_2_, p_i1636_4_);
-        this.creatureEntity = creatureEntity;
+    public SnatchGoal(PathfinderMob pathfinderMob, double p_i1636_2_, boolean p_i1636_4_) {
+        super(pathfinderMob, p_i1636_2_, p_i1636_4_);
+        this.pathfinderMob = pathfinderMob;
     }
 
-    protected void checkAndPerformAttack(LivingEntity victim, double p_190102_2_) {
-        //super.checkAndPerformAttack(victim, p_190102_2_);
-        double distanceToVictim = this.creatureEntity.position().distanceToSqr(victim.position());
+    protected void checkAndPerformAttack(LivingEntity target, double p_190102_2_) {
+        //super.checkAndPerformAttack(target, p_190102_2_);
+        double distanceToVictim = this.pathfinderMob.position().distanceToSqr(target.position());
 
-        //pulling the victim
+        //pulling the target
         if (distanceToVictim > 5 && distanceToVictim < 50) {
-            victim.hurt(DamageSource.mobAttack(this.creatureEntity), 1);
-            victim.push(this.creatureEntity.position().x() - victim.position().x(), 0.1, this.creatureEntity.position().z() - victim.position().z());
-            //victim.push(1.0D, 1.0D, 1.0D);
+            target.hurt(EntityDamageSource.mobAttack(this.pathfinderMob), 1);
+            target.push(this.pathfinderMob.position().x() - target.position().x(), 0.1, this.pathfinderMob.position().z() - target.position().z());
+            //target.push(1.0D, 1.0D, 1.0D);
             CrypticCosmos.LOGGER.info("checkAndPerformAttack Pull, distance: " + distanceToVictim);
             this.resetAttackCooldown();
         } else if (distanceToVictim <= 5) {
-            victim.hurt(DamageSource.mobAttack(this.creatureEntity), 1);
-            Vector3d currentPos = victim.position();
-            //victim.moveTo(currentPos.x(), currentPos.y() + 50, currentPos.z() + 50);
-            victim.push(0, 0.5D, 0.5D);
+            target.hurt(EntityDamageSource.mobAttack(this.pathfinderMob), 1);
+            var currentPos = target.position();
+            //target.moveTo(currentPos.x(), currentPos.y() + 50, currentPos.z() + 50);
+            target.push(0, 0.5D, 0.5D);
             CrypticCosmos.LOGGER.info("checkAndPerformAttack Push, distance: " + distanceToVictim);
             this.resetAttackCooldown();
         }

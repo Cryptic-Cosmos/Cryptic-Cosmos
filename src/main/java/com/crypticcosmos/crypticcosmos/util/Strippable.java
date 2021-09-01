@@ -1,25 +1,25 @@
 package com.crypticcosmos.crypticcosmos.util;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.RotatedPillarBlock;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nonnull;
 
 public interface Strippable {
-    default ActionResultType strip(Block strippedBlock, @Nonnull ItemStack stack, World world, BlockPos pos, BlockState state, PlayerEntity playerEntity, Hand hand) {
+    default InteractionResult strip(Block strippedBlock, @Nonnull ItemStack stack, Level world, BlockPos pos, BlockState state, Player playerEntity, InteractionHand hand) {
         if (stack.getItem() instanceof AxeItem || stack.getItem() instanceof PickaxeItem) {
-            world.playSound(playerEntity, pos, SoundEvents.AXE_STRIP, SoundCategory.BLOCKS, 1f, 1f);
+            world.playSound(playerEntity, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1f, 1f);
 
             if (!world.isClientSide) {
                 world.setBlock(pos, strippedBlock.defaultBlockState()
@@ -28,9 +28,9 @@ public interface Strippable {
                 stack.hurtAndBreak(1, playerEntity, player -> player.broadcastBreakEvent(hand));
             }
 
-            return ActionResultType.SUCCESS;
+            return InteractionResult.SUCCESS;
         }
 
-        return ActionResultType.PASS;
+        return InteractionResult.PASS;
     }
 }

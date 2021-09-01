@@ -1,11 +1,11 @@
 package com.crypticcosmos.crypticcosmos.entity.creature.gromble_frog;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
-public class GrombleFrogRender extends GeoEntityRenderer<GrombleFrogEntity> {
-    public GrombleFrogRender(EntityRendererManager renderManager) {
-        super(renderManager, new GrombleFrogModel());
+public class GrombleFrogRender extends GeoEntityRenderer<GrombleFrog> {
+    public GrombleFrogRender(EntityRendererProvider.Context context) {
+        super(context, new GrombleFrogModel());
         this.shadowRadius = 0.4F;
     }
 }

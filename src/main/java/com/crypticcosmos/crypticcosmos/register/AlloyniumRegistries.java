@@ -3,11 +3,11 @@ package com.crypticcosmos.crypticcosmos.register;
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.item.Item;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
@@ -26,7 +26,7 @@ public class AlloyniumRegistries {
             .register();
 
     @Nonnull
-    private static AbstractBlock.Properties alloyniumProperties(AbstractBlock.Properties p) {
+    private static BlockBehaviour.Properties alloyniumProperties(BlockBehaviour.Properties p) {
         return p.strength(3.0F, 3.0F)
                 .sound(SoundType.STONE)
                 .harvestLevel(1)

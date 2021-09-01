@@ -1,21 +1,21 @@
 package com.crypticcosmos.crypticcosmos.block;
 
 import com.crypticcosmos.crypticcosmos.register.TagRegistries;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SaplingBlock;
-import net.minecraft.block.trees.Tree;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nonnull;
 
 public class MakrossaPlantableSapling extends SaplingBlock {
-    public MakrossaPlantableSapling(Tree tree, Properties properties) {
+    public MakrossaPlantableSapling(AbstractTreeGrower tree, Properties properties) {
         super(tree, properties);
     }
 
     @Override
-    public boolean mayPlaceOn(@Nonnull BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos) {
+    public boolean mayPlaceOn(@Nonnull BlockState state, @Nonnull BlockGetter worldIn, @Nonnull BlockPos pos) {
         return state.is(TagRegistries.MAKROSSA_PLANTABLE);
     }
 }

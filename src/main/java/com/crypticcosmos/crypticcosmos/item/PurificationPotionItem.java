@@ -3,21 +3,16 @@ package com.crypticcosmos.crypticcosmos.item;
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.register.EffectRegistries;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.UseAction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.DrinkHelper;
-import net.minecraft.util.Hand;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -34,19 +29,18 @@ public class PurificationPotionItem extends Item {
 
     @Nonnull
     @Override
-    public ItemStack finishUsingItem(@Nonnull ItemStack stack, @Nonnull World world, @Nonnull LivingEntity entity) {
+    public ItemStack finishUsingItem(@Nonnull ItemStack stack, @Nonnull Level world, @Nonnull LivingEntity entity) {
         // removes the effect
         if (!world.isClientSide) entity.removeEffect(EffectRegistries.CORRUPTION.get());
 
-        if (entity instanceof ServerPlayerEntity) {
-            ServerPlayerEntity serverPlayer = (ServerPlayerEntity) entity;
+        if (entity instanceof ServerPlayer serverPlayer) {
             // Triggers advancement criteria
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
             // Awards the use stat.
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        if (entity instanceof PlayerEntity && !((PlayerEntity) entity).abilities.instabuild) {
+        if (entity instanceof Player player && !player.getAbilities().instabuild) {
             // Removes the item itself.
             stack.shrink(1);
         }
@@ -62,22 +56,22 @@ public class PurificationPotionItem extends Item {
 
     @Nonnull
     @Override
-    public UseAction getUseAnimation(@Nonnull ItemStack stack) {
-        return UseAction.DRINK;
+    public UseAnim getUseAnimation(@Nonnull ItemStack stack) {
+        return UseAnim.DRINK;
     }
 
     @Nonnull
     @Override
-    public ActionResult<ItemStack> use(@Nonnull World world, @Nonnull PlayerEntity player, @Nonnull Hand hand) {
-        return DrinkHelper.useDrink(world, player, hand);
+    public InteractionResultHolder<ItemStack> use(@Nonnull Level world, @Nonnull Player player, @Nonnull InteractionHand hand) {
+        return ItemUtils.startUsingInstantly(world, player, hand);
     }
 
     @Override
     public void appendHoverText(@Nonnull ItemStack stack,
-                                @Nullable World world,
-                                @Nonnull List<ITextComponent> components,
-                                @Nonnull ITooltipFlag tooltipFlag) {
-        components.add(new TranslationTextComponent(
+                                @Nullable Level world,
+                                @Nonnull List<Component> components,
+                                @Nonnull TooltipFlag tooltipFlag) {
+        components.add(new TranslatableComponent(
                 String.format("tooltip.%s.potion_of_purification", CrypticCosmos.MOD_ID)
         ));
     }

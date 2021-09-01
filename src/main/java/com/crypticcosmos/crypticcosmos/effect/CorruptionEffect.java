@@ -1,30 +1,29 @@
 package com.crypticcosmos.crypticcosmos.effect;
 
-import com.crypticcosmos.crypticcosmos.entity.creature.gromble_frog.GrombleFrogEntity;
+import com.crypticcosmos.crypticcosmos.entity.creature.gromble_frog.GrombleFrog;
 import com.crypticcosmos.crypticcosmos.register.EntityTypeRegistries;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectType;
-import net.minecraft.util.DamageSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
 import javax.annotation.Nonnull;
 
-public class CorruptionEffect extends Effect {
+public class CorruptionEffect extends MobEffect {
     public static final DamageSource CORRUPTION_DAMAGE_SOURCE = new DamageSource("corruption")
             .setMagic()
             .bypassArmor();
 
     public CorruptionEffect() {
-        super(EffectType.HARMFUL, 0x584033);
+        super(MobEffectCategory.HARMFUL, 0x584033);
     }
 
     @Override
     public void applyEffectTick(@Nonnull LivingEntity entity, int amplifier) {
-        if (entity instanceof PlayerEntity) {
-            PlayerEntity player = (PlayerEntity) entity;
+        if (entity instanceof Player player) {
             float exhaustionMultiplier = 2f;
             player.causeFoodExhaustion(exhaustionMultiplier * (float) (amplifier + 1));
         }
@@ -51,15 +50,15 @@ public class CorruptionEffect extends Effect {
             if (event.getSource().equals(CORRUPTION_DAMAGE_SOURCE)) {
                 LivingEntity killedEntity = event.getEntityLiving();
 
-                GrombleFrogEntity gorbleFrog = new GrombleFrogEntity(EntityTypeRegistries.GROMBLE_FROG.get(), event.getEntity().level);
-                gorbleFrog.moveTo(killedEntity.blockPosition(),
-                        killedEntity.yRot,
-                        killedEntity.xRot);
+                GrombleFrog grombleFrog = new GrombleFrog(EntityTypeRegistries.GROMBLE_FROG.get(), event.getEntity().level);
+                grombleFrog.moveTo(killedEntity.blockPosition(),
+                        killedEntity.getYRot(),
+                        killedEntity.getXRot());
 
                 //noinspection ConstantConditions
-                gorbleFrog.finalizeSpawn(killedEntity.getServer().overworld(),
-                        killedEntity.level.getCurrentDifficultyAt(gorbleFrog.blockPosition()),
-                        SpawnReason.MOB_SUMMONED,
+                grombleFrog.finalizeSpawn(killedEntity.getServer().overworld(),
+                        killedEntity.level.getCurrentDifficultyAt(grombleFrog.blockPosition()),
+                        MobSpawnType.MOB_SUMMONED,
                         null,
                         null);
             }

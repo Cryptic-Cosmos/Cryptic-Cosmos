@@ -4,36 +4,36 @@ package com.crypticcosmos.crypticcosmos.entity.creature.makrossa_rambler;// Made
 
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
-public class MakrossaRamblerModel extends AnimatedGeoModel<MakrossaRamblerEntity> {
+public class MakrossaRamblerModel extends AnimatedGeoModel<MakrossaRambler> {
     @Override
-    public ResourceLocation getModelLocation(MakrossaRamblerEntity makrossaRamblerEntity) {
+    public ResourceLocation getModelLocation(MakrossaRambler makrossaRambler) {
         return new ResourceLocation(CrypticCosmos.MOD_ID, "geo/makrossa_rambler.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(MakrossaRamblerEntity makrossaRamblerEntity) {
+    public ResourceLocation getTextureLocation(MakrossaRambler makrossaRambler) {
         return new ResourceLocation(CrypticCosmos.MOD_ID, "textures/entity/makrossa_rambler.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(MakrossaRamblerEntity makrossaRamblerEntity) {
+    public ResourceLocation getAnimationFileLocation(MakrossaRambler makrossaRambler) {
         return new ResourceLocation(CrypticCosmos.MOD_ID, "animations/makrossa_rambler.json");
     }
 
     @Override
-    public void setLivingAnimations(MakrossaRamblerEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+    public void setLivingAnimations(MakrossaRambler entity, Integer uniqueID, AnimationEvent customPredicate) {
         super.setLivingAnimations(entity, uniqueID, customPredicate);
         EntityModelData data = (EntityModelData) customPredicate.getExtraData().get(0);
         // Apply head look to model
         IBone head = this.getAnimationProcessor().getBone("head_skull");
-        head.setRotationY((float) Math.toRadians(MathHelper.clamp(data.netHeadYaw, -45, 45)));
+        head.setRotationY((float) Math.toRadians(Mth.clamp(data.netHeadYaw, -45, 45)));
         head.setRotationX(-(float) Math.toRadians(data.headPitch));
     }
 }

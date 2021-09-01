@@ -8,17 +8,19 @@ import com.crypticcosmos.crypticcosmos.world.feature.GrombleTree;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import net.minecraft.block.AbstractBlock.Properties;
-import net.minecraft.block.*;
-import net.minecraft.block.PressurePlateBlock.Sensitivity;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.data.loot.BlockLootTables;
-import net.minecraft.entity.item.BoatEntity;
-import net.minecraft.item.BoatItem;
+import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.item.BoatItem;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.PressurePlateBlock.Sensitivity;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -29,16 +31,17 @@ import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.GROMBLE_BE
 import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.ROTTEN_GROMBLE_BERRY;
 import static com.crypticcosmos.crypticcosmos.register.TagRegistries.GIANT_GROMBLE_BERRIES;
 import static com.tterrag.registrate.util.DataIngredient.items;
-import static net.minecraft.block.material.Material.GRASS;
-import static net.minecraft.block.material.Material.NETHER_WOOD;
-import static net.minecraft.block.material.MaterialColor.TERRACOTTA_LIGHT_BLUE;
-import static net.minecraft.data.RecipeProvider.*;
-import static net.minecraft.data.loot.BlockLootTables.NORMAL_LEAVES_SAPLING_CHANCES;
-import static net.minecraft.data.loot.BlockLootTables.createDoorTable;
+import static net.minecraft.data.loot.BlockLoot.NORMAL_LEAVES_SAPLING_CHANCES;
+import static net.minecraft.data.loot.BlockLoot.createDoorTable;
+import static net.minecraft.data.recipes.RecipeProvider.*;
+import static net.minecraft.world.level.block.Blocks.leaves;
+import static net.minecraft.world.level.material.Material.GRASS;
+import static net.minecraft.world.level.material.Material.NETHER_WOOD;
+import static net.minecraft.world.level.material.MaterialColor.TERRACOTTA_LIGHT_BLUE;
 
 @SuppressWarnings("unused")
 public class GrombleRegistries {
-    public static final DeferredRegister<Block> BLK = DeferredRegister.create(ForgeRegistries.BLOCKS,CrypticCosmos.MOD_ID);
+    public static final DeferredRegister<Block> BLK = DeferredRegister.create(ForgeRegistries.BLOCKS, CrypticCosmos.MOD_ID);
     public static final Properties GROMBLE_PROPERTIES = Properties.of(NETHER_WOOD, TERRACOTTA_LIGHT_BLUE)
             .strength(2F)
             .sound(SoundType.STEM);
@@ -58,6 +61,7 @@ public class GrombleRegistries {
             .tag(ItemTags.SAPLINGS).build()
 
             .register();
+
     public static final BlockEntry<Block> GIANT_GROMBLE_BERRY = getRegistrate().object("giant_gromble_berry")
             .block(Block::new)
             .initialProperties(Material.VEGETABLE)
@@ -67,7 +71,7 @@ public class GrombleRegistries {
                     .harvestTool(ToolType.HOE)
             )
             .loot((lootTables, block) -> RegistrationUtils.silkTouchFortune(lootTables, block, GROMBLE_BERRY, 2, 4))
-            .recipe((context, provider) -> provider.square(DataIngredient.items(GROMBLE_BERRY), context, true))
+            .recipe((context, provider) -> provider.square(items(GROMBLE_BERRY), context, true))
             .tag(BlockTags.LEAVES, GIANT_GROMBLE_BERRIES)
             .simpleItem()
             .register();
@@ -80,13 +84,13 @@ public class GrombleRegistries {
                     .harvestTool(ToolType.HOE)
             )
             .loot((lootTables, block) -> RegistrationUtils.silkTouchFortune(lootTables, block, ROTTEN_GROMBLE_BERRY, 1, 4))
-            .recipe((context, provider) -> provider.square(DataIngredient.items(ROTTEN_GROMBLE_BERRY), context, true))
+            .recipe((context, provider) -> provider.square(items(ROTTEN_GROMBLE_BERRY), context, true))
             .tag(BlockTags.LEAVES, GIANT_GROMBLE_BERRIES)
             .simpleItem()
             .register();
 
     public static final BlockEntry<EffluviumBlock> GROMBLE_SPROUT = getRegistrate().object("gromble_sprout")
-            .block(Material.GRASS, EffluviumBlock::new)
+            .block(EffluviumBlock::new)
             .initialProperties(GRASS, TERRACOTTA_LIGHT_BLUE)
             .properties(p -> p.strength(0.3F)
                     .noCollission()
@@ -103,7 +107,7 @@ public class GrombleRegistries {
             .register();
 
     public static final BlockEntry<LeavesBlock> GROMBLE_LEAVES = getRegistrate().object("gromble_leaves")
-            .block(LeavesBlock::new)
+            .block(p -> leaves(SoundType.GRASS))
             .initialProperties(Material.LEAVES, TERRACOTTA_LIGHT_BLUE)
             .properties(p -> p.strength(0.2F)
                     .randomTicks()
@@ -111,7 +115,7 @@ public class GrombleRegistries {
                     .noOcclusion()
             )
             .addLayer(() -> RenderType::cutout)
-            .loot((lootTables, block) -> lootTables.add(block, BlockLootTables.createLeavesDrops(
+            .loot((lootTables, block) -> lootTables.add(block, BlockLoot.createLeavesDrops(
                     block, GROMBLE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES
             )))
             .tag(BlockTags.LEAVES)
@@ -120,14 +124,14 @@ public class GrombleRegistries {
             .register();
 
     public static final BlockEntry<RotatedPillarBlock> GROMBLE_LOG = getRegistrate().object("gromble_log")
-            .block(p -> Blocks.log(MaterialColor.TERRACOTTA_LIGHT_BLUE, MaterialColor.PODZOL))
+            .block(p -> Blocks.log(TERRACOTTA_LIGHT_BLUE, MaterialColor.PODZOL))
             .tag(BlockTags.LOGS, TagRegistries.GROMBLE_LOGS)
             .blockstate((context, provider) -> provider.logBlock(context.get()))
             .item().tag(ItemTags.LOGS, TagRegistries.GROMBLE_LOGS_ITEMS).build()
             .register();
 
     public static final BlockEntry<RotatedPillarBlock> STRIPPED_GROMBLE_LOG = getRegistrate().object("stripped_gromble_log")
-            .block(p -> Blocks.log(MaterialColor.TERRACOTTA_LIGHT_BLUE, MaterialColor.TERRACOTTA_LIGHT_BLUE))
+            .block(p -> Blocks.log(TERRACOTTA_LIGHT_BLUE, TERRACOTTA_LIGHT_BLUE))
             .tag(TagRegistries.GROMBLE_LOGS)
             .blockstate((context, provider) -> provider.logBlock(context.get()))
             .item().tag(TagRegistries.GROMBLE_LOGS_ITEMS).build()
@@ -140,8 +144,8 @@ public class GrombleRegistries {
             .tag(TagRegistries.GROMBLE_LOGS)
             .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
                     .forAllStates(state -> ConfiguredModel.builder().modelFile(
-                            provider.models().cubeAll(context.getName(),
-                                    provider.blockTexture(GROMBLE_LOG.get()))
+                                    provider.models().cubeAll(context.getName(),
+                                            provider.blockTexture(GROMBLE_LOG.get()))
                             ).build()
                     ))
             .item().tag(TagRegistries.GROMBLE_LOGS_ITEMS).build()
@@ -153,8 +157,8 @@ public class GrombleRegistries {
             .tag(TagRegistries.GROMBLE_LOGS)
             .blockstate((context, provider) -> provider.getVariantBuilder(context.get())
                     .forAllStates(state -> ConfiguredModel.builder().modelFile(
-                            provider.models().cubeAll(context.getName(),
-                                    provider.blockTexture(STRIPPED_GROMBLE_LOG.get()))
+                                    provider.models().cubeAll(context.getName(),
+                                            provider.blockTexture(STRIPPED_GROMBLE_LOG.get()))
                             ).build()
                     ))
             .item().tag(TagRegistries.GROMBLE_LOGS_ITEMS).build()
@@ -171,7 +175,7 @@ public class GrombleRegistries {
     public static final BlockEntry<SlabBlock> GROMBLE_SLAB = getRegistrate().object("gromble_slab")
             .block(SlabBlock::new)
             .properties(p -> GROMBLE_PROPERTIES)
-            .loot((lootTables, block) -> lootTables.add(block, BlockLootTables.createSlabItemTable(block)))
+            .loot((lootTables, block) -> lootTables.add(block, BlockLoot.createSlabItemTable(block)))
             .recipe((context, provider) -> provider.slab(items(GROMBLE_PLANKS), context, "wooden_slab", false))
             .tag(BlockTags.WOODEN_SLABS)
             .blockstate((context, provider) -> provider.slabBlock(
@@ -182,8 +186,8 @@ public class GrombleRegistries {
             .item().tag(ItemTags.WOODEN_SLABS).build()
             .register();
 
-    public static final BlockEntry<StairsBlock> GROMBLE_STAIRS = getRegistrate().object("gromble_stairs")
-            .block(p -> new StairsBlock(() -> GROMBLE_PLANKS.get().defaultBlockState(), p))
+    public static final BlockEntry<StairBlock> GROMBLE_STAIRS = getRegistrate().object("gromble_stairs")
+            .block(p -> new StairBlock(() -> GROMBLE_PLANKS.get().defaultBlockState(), p))
             .properties(p -> GROMBLE_PROPERTIES)
             .recipe((context, provider) ->
                     provider.stairs(items(GROMBLE_PLANKS), context, "wooden_stairs", false)
@@ -229,7 +233,7 @@ public class GrombleRegistries {
             .block(WoodButtonBlock::new)
             .properties(p -> GROMBLE_PROPERTIES)
             .tag(BlockTags.WOODEN_BUTTONS)
-            .recipe((context, provider) -> woodenButton(provider, context.get(), GROMBLE_PLANKS.get()))
+            .recipe((context, provider) -> RecipeProvider.buttonBuilder(context.get(), Ingredient.of(GROMBLE_PLANKS.get())))
             .blockstate((context, provider) -> RegistrationUtils.buttonModel(context, provider, GROMBLE_PLANKS))
 
             .item()
@@ -242,7 +246,7 @@ public class GrombleRegistries {
     public static final BlockEntry<PressurePlateBlock> GROMBLE_PRESSURE_PLATE = getRegistrate().object("gromble_pressure_plate")
             .block(p -> new PressurePlateBlock(Sensitivity.EVERYTHING, p))
             .properties(p -> GROMBLE_PROPERTIES)
-            .recipe((context, provider) -> woodenPressurePlate(provider, context.get(), GROMBLE_PLANKS.get()))
+            .recipe((context, provider) -> pressurePlateBuilder(context.get(), Ingredient.of(GROMBLE_PLANKS.get())))
             .tag(BlockTags.WOODEN_PRESSURE_PLATES)
             .blockstate((context, provider) -> RegistrationUtils.pressurePlateModels(context, provider, GROMBLE_PLANKS))
             .item().tag(ItemTags.WOODEN_PRESSURE_PLATES).build()
@@ -272,7 +276,7 @@ public class GrombleRegistries {
             .register();
 
     public static final ItemEntry<BoatItem> GROMBLE_BOAT = getRegistrate().object("gromble_boat")
-            .item(p -> new BoatItem(BoatEntity.Type.OAK, p))
+            .item(p -> new BoatItem(Boat.Type.OAK, p))
             .recipe((context, provider) ->
                     woodenBoat(provider, context.get(), GROMBLE_PLANKS.get())
             )

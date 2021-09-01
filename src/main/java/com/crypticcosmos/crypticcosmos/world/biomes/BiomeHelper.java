@@ -1,16 +1,18 @@
 package com.crypticcosmos.crypticcosmos.world.biomes;
 
-import net.minecraft.client.audio.BackgroundMusicTracks;
-import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntityType;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeAmbience;
-import net.minecraft.world.biome.BiomeGenerationSettings;
-import net.minecraft.world.biome.MobSpawnInfo;
-import net.minecraft.world.gen.surfacebuilders.ISurfaceBuilderConfig;
-import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
+import net.minecraft.sounds.Musics;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biome.BiomeBuilder;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.BiomeSpecialEffects;
+import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.biome.MobSpawnSettings.SpawnerData;
+import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilder;
+import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilderConfiguration;
 
 public class BiomeHelper {
     @SuppressWarnings("unused")
@@ -27,17 +29,17 @@ public class BiomeHelper {
      * Base biome function Sky color is not generated
      */
     public static Biome biome(
-            Biome.RainType precipitation,
-            Biome.Category category,
+            Biome.Precipitation precipitation,
+            Biome.BiomeCategory category,
             float depth,
             float scale,
             float temperature,
             float downfall,
-            BiomeAmbience.Builder effects,
+            BiomeSpecialEffects.Builder effects,
             BiomeGenerationSettings.Builder genSettings,
-            MobSpawnInfo spawnSettings
+            MobSpawnSettings spawnSettings
     ) {
-        return new Biome.Builder()
+        return new BiomeBuilder()
                 .precipitation(precipitation)
                 .biomeCategory(category)
                 .depth(depth)
@@ -53,53 +55,54 @@ public class BiomeHelper {
     /**
      * Shortcut function and enforces surface builder
      */
-    public static <C extends ISurfaceBuilderConfig> BiomeGenerationSettings.Builder genSettings(SurfaceBuilder<C> surfaceBuilder, C config) {
+    public static <C extends SurfaceBuilderConfiguration> BiomeGenerationSettings.Builder genSettings(SurfaceBuilder<C> surfaceBuilder, C config) {
         return new BiomeGenerationSettings.Builder().surfaceBuilder(surfaceBuilder.configured(config));
     }
 
     /**
      * Shortcut function
      */
-    public static MobSpawnInfo.Builder spawnSettings() {
-        return new MobSpawnInfo.Builder();
+    public static MobSpawnSettings.Builder spawnSettings() {
+        return new MobSpawnSettings.Builder();
     }
 
     /**
      * Shortcut function
      */
     public static void addSpawn(
-            MobSpawnInfo.Builder spawnSettings,
-            EntityClassification classification,
+            MobSpawnSettings.Builder spawnSettings,
+            MobCategory classification,
             EntityType<?> entityType,
             int weight,
             int min,
             int max) {
         spawnSettings.addSpawn(classification,
-                new MobSpawnInfo.Spawners(entityType, weight, min, max));
+                new SpawnerData(entityType, weight, min, max)
+        );
     }
 
     /**
      * Biome ambience add default parameters and enforced the required ones. Should prevent slip ups on my part :)
      */
-    public static BiomeAmbience.Builder effects(int waterColor,
-                                                int waterFogColor,
-                                                int grassColor,
-                                                int foliageColor,
-                                                float temperature,
-                                                int skyFogColor,
-                                                SoundEvent music) {
-        return new BiomeAmbience.Builder()
+    public static BiomeSpecialEffects.Builder effects(int waterColor,
+                                                      int waterFogColor,
+                                                      int grassColor,
+                                                      int foliageColor,
+                                                      float temperature,
+                                                      int skyFogColor,
+                                                      SoundEvent music) {
+        return new BiomeSpecialEffects.Builder()
                 .waterColor(waterColor)
                 .waterFogColor(waterFogColor)
                 .grassColorOverride(grassColor)
                 .foliageColorOverride(foliageColor)
                 .skyColor(getSkyForTemp(temperature))
                 .fogColor(skyFogColor)
-                .backgroundMusic(BackgroundMusicTracks.createGameMusic(music));
+                .backgroundMusic(Musics.createGameMusic(music));
     }
 
     public static int getSkyForTemp(float temperature) {
-        final float a = MathHelper.clamp(temperature / 3.0f, -1.0f, 1.0f);
-        return MathHelper.hsvToRgb(0.62222224f - a * 0.05f, 0.5f + a * 0.1f, 1.0f);
+        final float a = Mth.clamp(temperature / 3.0f, -1.0f, 1.0f);
+        return Mth.hsvToRgb(0.62222224f - a * 0.05f, 0.5f + a * 0.1f, 1.0f);
     }
 }

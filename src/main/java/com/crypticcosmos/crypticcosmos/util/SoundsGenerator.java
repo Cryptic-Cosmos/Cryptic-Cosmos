@@ -1,7 +1,7 @@
 package com.crypticcosmos.crypticcosmos.util;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.SoundDefinition;
 import net.minecraftforge.common.data.SoundDefinitionsProvider;

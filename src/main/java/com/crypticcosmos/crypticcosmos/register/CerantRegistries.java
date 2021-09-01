@@ -2,20 +2,22 @@ package com.crypticcosmos.crypticcosmos.register;
 
 import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import net.minecraft.block.AbstractBlock.Properties;
-import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
-import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
-import static com.tterrag.registrate.providers.RegistrateRecipeProvider.hasItem;
 import static com.tterrag.registrate.util.DataIngredient.items;
-import static net.minecraft.data.loot.BlockLootTables.createSlabItemTable;
+import static net.minecraft.data.loot.BlockLoot.createSlabItemTable;
+import static net.minecraft.data.recipes.RecipeProvider.chiseled;
 
 @SuppressWarnings("unused")
 public class CerantRegistries {
@@ -36,14 +38,7 @@ public class CerantRegistries {
     public static final BlockEntry<Block> CUT_PHORAL_CERANT = getRegistrate().object("cut_phoral_cerant")
             .block(Block::new)
             .properties(p -> Properties.copy(PHORAL_CERANT.get()))
-            .recipe((context, provider) ->
-                    ShapedRecipeBuilder.shaped(context.get())
-                            .define('#', PHORAL_CERANT.get())
-                            .pattern("##")
-                            .pattern("##")
-                            .unlockedBy("has_polished_lunon", hasItem(Blocks.POLISHED_BLACKSTONE))
-                            .save(provider, provider.safeId(context.get()))
-            )
+            .recipe((context, provider) -> provider.square(items(PHORAL_CERANT), context, true))
             .simpleItem()
             .register();
 
@@ -110,8 +105,8 @@ public class CerantRegistries {
             .item().tag(ItemTags.SLABS).build()
             .register();
 
-    public static final BlockEntry<StairsBlock> POLISHED_CERANT_BRICK_STAIRS = getRegistrate().object("polished_cerant_brick_stairs")
-            .block(p -> new StairsBlock(() -> POLISHED_CERANT_BRICKS.get().defaultBlockState(), p))
+    public static final BlockEntry<StairBlock> POLISHED_CERANT_BRICK_STAIRS = getRegistrate().object("polished_cerant_brick_stairs")
+            .block(p -> new StairBlock(() -> POLISHED_CERANT_BRICKS.get().defaultBlockState(), p))
             .properties(p -> Properties.copy(POLISHED_CERANT_BRICKS.get()))
             .recipe((context, provider) -> provider.stairs(items(POLISHED_CERANT_BRICKS), context, null, true))
             .blockstate((context, provider) -> provider.stairsBlock(context.get(), provider.blockTexture(POLISHED_CERANT_BRICKS.get())))
@@ -143,8 +138,8 @@ public class CerantRegistries {
             .item().tag(ItemTags.SLABS).build()
             .register();
 
-    public static final BlockEntry<StairsBlock> POLISHED_VERTICAL_CERANT_BRICK_STAIRS = getRegistrate().object("polished_vertical_cerant_brick_stairs")
-            .block(p -> new StairsBlock(() -> POLISHED_CERANT_BRICKS.get().defaultBlockState(), p))
+    public static final BlockEntry<StairBlock> POLISHED_VERTICAL_CERANT_BRICK_STAIRS = getRegistrate().object("polished_vertical_cerant_brick_stairs")
+            .block(p -> new StairBlock(() -> POLISHED_CERANT_BRICKS.get().defaultBlockState(), p))
             .properties(p -> Properties.copy(POLISHED_CERANT_BRICKS.get()))
             .recipe((context, provider) -> provider.stairs(items(POLISHED_CERANT_BRICKS), context, null, true))
             .blockstate((context, provider) -> provider.stairsBlock(context.get(), provider.blockTexture(POLISHED_CERANT_BRICKS.get())))
@@ -178,14 +173,7 @@ public class CerantRegistries {
     public static final BlockEntry<Block> CHISELED_POLISHED_CERANT = getRegistrate().object("chiseled_polished_cerant")
             .block(Block::new)
             .properties(p -> Properties.copy(POLISHED_CERANT.get()))
-            .recipe((context, provider) ->
-                    ShapedRecipeBuilder.shaped(context.get())
-                            .define('#', POLISHED_CERANT_SLAB.get())
-                            .pattern("#")
-                            .pattern("#")
-                            .unlockedBy("has_polished_lunon", hasItem(Blocks.POLISHED_BLACKSTONE))
-                            .save(provider, provider.safeId(context.get()))
-            )
+            .recipe((context, provider) -> chiseled(provider, context.get(), POLISHED_CERANT_SLAB.get()))
             .blockstate((context, provider) -> provider.simpleBlock(context.get(),
                     provider.models().cubeColumn(
                             context.getName(),
@@ -198,14 +186,7 @@ public class CerantRegistries {
     public static final BlockEntry<Block> CHISELED_POLISHED_CERANT_BRICKS = getRegistrate().object("chiseled_polished_cerant_bricks")
             .block(Block::new)
             .properties(p -> Properties.copy(POLISHED_CERANT.get()))
-            .recipe((context, provider) ->
-                    ShapedRecipeBuilder.shaped(context.get())
-                            .define('#', POLISHED_CERANT_BRICK_SLAB.get())
-                            .pattern("#")
-                            .pattern("#")
-                            .unlockedBy("has_polished_lunon", hasItem(Blocks.POLISHED_BLACKSTONE))
-                            .save(provider, provider.safeId(context.get()))
-            )
+            .recipe((context, provider) -> chiseled(provider, context.get(), POLISHED_CERANT_BRICK_SLAB.get()))
             .blockstate((context, provider) -> provider.simpleBlock(context.get(),
                     provider.models().cubeColumn(
                             context.getName(),
@@ -218,14 +199,7 @@ public class CerantRegistries {
     public static final BlockEntry<Block> CHISELED_VERTICAL_POLISHED_CERANT_BRICKS = getRegistrate().object("chiseled_polished_vertical_cerant_bricks")
             .block(Block::new)
             .properties(p -> Properties.copy(POLISHED_CERANT.get()))
-            .recipe((context, provider) ->
-                    ShapedRecipeBuilder.shaped(context.get())
-                            .define('#', POLISHED_VERTICAL_CERANT_BRICK_SLAB.get())
-                            .pattern("#")
-                            .pattern("#")
-                            .unlockedBy("has_polished_lunon", hasItem(Blocks.POLISHED_BLACKSTONE))
-                            .save(provider, provider.safeId(context.get()))
-            )
+            .recipe((context, provider) -> chiseled(provider, context.get(), POLISHED_VERTICAL_CERANT_BRICK_SLAB.get()))
             .blockstate((context, provider) -> provider.simpleBlock(context.get(),
                     provider.models().cubeColumn(
                             context.getName(),
@@ -238,14 +212,7 @@ public class CerantRegistries {
     public static final BlockEntry<Block> CHISELED_CERANT = getRegistrate().object("chiseled_cerant")
             .block(Block::new)
             .properties(p -> Properties.copy(POLISHED_CERANT.get()))
-            .recipe((context, provider) ->
-                    ShapedRecipeBuilder.shaped(context.get())
-                            .define('#', CERANT_SLAB.get())
-                            .pattern("#")
-                            .pattern("#")
-                            .unlockedBy("has_polished_lunon", hasItem(Blocks.POLISHED_BLACKSTONE))
-                            .save(provider, provider.safeId(context.get()))
-            )
+            .recipe((context, provider) -> chiseled(provider, context.get(), CERANT_SLAB.get()))
             .blockstate((context, provider) -> provider.simpleBlock(context.get(),
                     provider.models().cubeColumn(
                             context.getName(),

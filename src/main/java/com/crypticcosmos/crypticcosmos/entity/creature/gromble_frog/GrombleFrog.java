@@ -3,21 +3,21 @@ package com.crypticcosmos.crypticcosmos.entity.creature.gromble_frog;
 import com.crypticcosmos.crypticcosmos.register.EntityTypeRegistries;
 import com.crypticcosmos.crypticcosmos.register.MondroveRegistries;
 import com.crypticcosmos.crypticcosmos.register.SoundEventRegistries;
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.Lazy;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -30,7 +30,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import javax.annotation.Nullable;
 
 @SuppressWarnings("NullableProblems")
-public class GrombleFrogEntity extends AnimalEntity implements IAnimatable {
+public class GrombleFrog extends Animal implements IAnimatable {
     private static final Lazy<Ingredient> BREEDING_ITEM = Lazy.of(
             () -> Ingredient.of(MondroveRegistries.MONDROVE_SAPLING.get())
     );
@@ -38,13 +38,13 @@ public class GrombleFrogEntity extends AnimalEntity implements IAnimatable {
     public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("Walk");
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    public GrombleFrogEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
+    public GrombleFrog(EntityType<? extends Animal> type, Level worldIn) {
         super(type, worldIn);
 
         this.noCulling = true;
     }
 
-    public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
+    public static AttributeSupplier.Builder setCustomAttributes() {
         return createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 10f)
                 .add(Attributes.MOVEMENT_SPEED, 0.2f);
@@ -57,14 +57,14 @@ public class GrombleFrogEntity extends AnimalEntity implements IAnimatable {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new SwimGoal(this));
+        this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.0D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, BREEDING_ITEM.get(), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
-        this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-        this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 6.0F));
-        this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
     }
 
     @Override
@@ -84,7 +84,7 @@ public class GrombleFrogEntity extends AnimalEntity implements IAnimatable {
     }
 
     @Override
-    protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
+    protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn) {
         return this.isBaby() ? sizeIn.height * 0.95F : 1.3F;
     }
 
@@ -101,7 +101,7 @@ public class GrombleFrogEntity extends AnimalEntity implements IAnimatable {
 
     @Nullable
     @Override
-    public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity mate) {
+    public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob mate) {
         return EntityTypeRegistries.GROMBLE_FROG.get().create(this.getCommandSenderWorld());
     }
 

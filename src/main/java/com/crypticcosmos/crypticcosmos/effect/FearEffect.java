@@ -1,17 +1,16 @@
 package com.crypticcosmos.crypticcosmos.effect;
 
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectType;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 
-public class FearEffect extends Effect {
-    AvoidEntityGoal goal;
-    CreatureEntity entity;
+public class FearEffect extends MobEffect {
+    AvoidEntityGoal<?> goal;
+    PathfinderMob entity;
 
-    public FearEffect(AvoidEntityGoal goal, CreatureEntity entity) {
-        super(EffectType.NEUTRAL, 0x8DBA36);
+    public FearEffect(AvoidEntityGoal<?> goal, PathfinderMob entity) {
+        super(MobEffectCategory.NEUTRAL, 0x8DBA36);
         this.goal = goal;
         entity.goalSelector.addGoal(1, goal);
     }
@@ -28,13 +27,6 @@ public class FearEffect extends Effect {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-
-        if (obj.getClass() != this.getClass()) {
-            return false;
-        }
-        return true;
+        return obj != null && obj.getClass() == this.getClass();
     }
 }

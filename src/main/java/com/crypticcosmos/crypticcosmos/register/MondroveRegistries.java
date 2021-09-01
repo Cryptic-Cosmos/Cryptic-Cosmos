@@ -9,24 +9,24 @@ import com.crypticcosmos.crypticcosmos.world.feature.MondroveTree;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import net.minecraft.block.AbstractBlock.Properties;
-import net.minecraft.block.*;
-import net.minecraft.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.data.loot.BlockLootTables;
-import net.minecraft.entity.item.BoatEntity;
-import net.minecraft.item.BoatItem;
+import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.item.BoatItem;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.PressurePlateBlock.Sensitivity;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
 import static com.crypticcosmos.crypticcosmos.util.RegistrationUtils.*;
 import static com.tterrag.registrate.util.DataIngredient.items;
-import static net.minecraft.block.material.Material.WOOD;
-import static net.minecraft.block.material.MaterialColor.TERRACOTTA_PURPLE;
-import static net.minecraft.data.RecipeProvider.*;
-import static net.minecraft.data.loot.BlockLootTables.NORMAL_LEAVES_SAPLING_CHANCES;
-import static net.minecraft.data.loot.BlockLootTables.createDoorTable;
+import static net.minecraft.data.loot.BlockLoot.*;
+import static net.minecraft.data.recipes.RecipeProvider.*;
+import static net.minecraft.world.level.material.Material.WOOD;
+import static net.minecraft.world.level.material.MaterialColor.TERRACOTTA_PURPLE;
 
 @SuppressWarnings("unused")
 public class MondroveRegistries {
@@ -50,9 +50,9 @@ public class MondroveRegistries {
             .register();
 
     public static final BlockEntry<LeavesBlock> MONDROVE_LEAVES = getRegistrate().object("mondrove_leaves")
-            .block(p -> Blocks.leaves())
+            .block(p -> Blocks.leaves(SoundType.GRASS))
             .addLayer(() -> RenderType::cutout)
-            .loot((lootTables, block) -> lootTables.add(block, BlockLootTables.createLeavesDrops(
+            .loot((lootTables, block) -> lootTables.add(block, createLeavesDrops(
                     block, MONDROVE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES
             )))
             .tag(BlockTags.LEAVES)
@@ -115,7 +115,7 @@ public class MondroveRegistries {
             .block(SlabBlock::new)
             .properties(p -> MONDROVE_PROPERTIES)
             .loot((lootTables, block) ->
-                    lootTables.add(block, BlockLootTables.createSlabItemTable(block))
+                    lootTables.add(block, BlockLoot.createSlabItemTable(block))
             )
             .recipe((context, provider) ->
                     provider.slab(items(MONDROVE_PLANKS), context, "wooden_slab", false)
@@ -125,8 +125,8 @@ public class MondroveRegistries {
             .item().tag(ItemTags.WOODEN_SLABS).build()
             .register();
 
-    public static final BlockEntry<StairsBlock> MONDROVE_STAIRS = getRegistrate().object("mondrove_stairs")
-            .block(p -> new StairsBlock(() -> MONDROVE_PLANKS.get().defaultBlockState(), p))
+    public static final BlockEntry<StairBlock> MONDROVE_STAIRS = getRegistrate().object("mondrove_stairs")
+            .block(p -> new StairBlock(() -> MONDROVE_PLANKS.get().defaultBlockState(), p))
             .properties(p -> MONDROVE_PROPERTIES)
             .recipe((context, provider) ->
                     provider.stairs(items(MONDROVE_PLANKS), context, "wooden_stairs", false)
@@ -155,9 +155,7 @@ public class MondroveRegistries {
             .block(TrapDoorBlock::new)
             .properties(p -> Properties.copy(MONDROVE_DOOR.get()))
             .addLayer(() -> RenderType::cutout)
-            .recipe((context, provider) ->
-                    provider.trapDoor(items(MONDROVE_PLANKS.get()), context, "wooden_trapdoor")
-            )
+            .recipe((context, provider) -> provider.trapDoor(items(MONDROVE_PLANKS.get()), context, "wooden_trapdoor"))
             .tag(BlockTags.WOODEN_TRAPDOORS)
             .blockstate((context, provider) -> provider.trapdoorBlock(context.get(), provider.blockTexture(context.get()), true))
 
@@ -171,7 +169,7 @@ public class MondroveRegistries {
     public static final BlockEntry<WoodButtonBlock> MONDROVE_BUTTON = getRegistrate().object("mondrove_button")
             .block(WoodButtonBlock::new)
             .properties(p -> MONDROVE_PROPERTIES)
-            .recipe((context, provider) -> woodenButton(provider, context.get(), MONDROVE_PLANKS.get()))
+            .recipe((context, provider) -> buttonBuilder(context.get(), Ingredient.of(MONDROVE_PLANKS.get())))
             .tag(BlockTags.WOODEN_BUTTONS)
             .blockstate((context, provider) -> RegistrationUtils.buttonModel(context, provider, MONDROVE_PLANKS))
 
@@ -185,7 +183,7 @@ public class MondroveRegistries {
     public static final BlockEntry<PressurePlateBlock> MONDROVE_PRESSURE_PLATE = getRegistrate().object("mondrove_pressure_plate")
             .block(p -> new PressurePlateBlock(Sensitivity.EVERYTHING, p))
             .properties(p -> MONDROVE_PROPERTIES)
-            .recipe((context, provider) -> woodenPressurePlate(provider, context.get(), MONDROVE_PLANKS.get()))
+            .recipe((context, provider) -> pressurePlateBuilder(context.get(), Ingredient.of(MONDROVE_PLANKS.get())))
             .tag(BlockTags.WOODEN_PRESSURE_PLATES)
             .blockstate((context, provider) -> RegistrationUtils.pressurePlateModels(context, provider, MONDROVE_PLANKS))
             .item().tag(ItemTags.WOODEN_PRESSURE_PLATES).build()
@@ -215,7 +213,7 @@ public class MondroveRegistries {
             .register();
 
     public static final ItemEntry<BoatItem> MONDROVE_BOAT = getRegistrate().object("mondrove_boat")
-            .item(p -> new BoatItem(BoatEntity.Type.OAK, p))
+            .item(p -> new BoatItem(Boat.Type.OAK, p))
             .properties(p -> p.stacksTo(1))
             .recipe((context, provider) ->
                     woodenBoat(provider, context.get(), MONDROVE_PLANKS.get())

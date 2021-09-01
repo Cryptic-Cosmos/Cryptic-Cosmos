@@ -4,25 +4,20 @@ import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.register.ConfiguredStructureRegistries;
 import com.crypticcosmos.crypticcosmos.register.StructureRegistries;
 import com.mojang.serialization.Codec;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.FlatChunkGenerator;
-import net.minecraft.world.gen.feature.structure.Structure;
-import net.minecraft.world.gen.settings.DimensionStructuresSettings;
-import net.minecraft.world.gen.settings.StructureSeparationSettings;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.Registry;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.FlatLevelSource;
+import net.minecraft.world.level.levelgen.StructureSettings;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.world.WorldEvent;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
 import java.util.HashMap;
-import java.util.Map;
 
-import static net.minecraft.world.biome.Biome.Category.NETHER;
-import static net.minecraft.world.biome.Biome.Category.THEEND;
+import static net.minecraft.world.level.biome.Biome.BiomeCategory.NETHER;
+import static net.minecraft.world.level.biome.Biome.BiomeCategory.THEEND;
 
 public class StructureConfig {
     public static void addCustomStructures(final BiomeLoadingEvent event) {
@@ -45,9 +40,8 @@ public class StructureConfig {
     }
 
     public static void addDimensionalSpacing(final WorldEvent.Load event) {
-        IWorld world = event.getWorld();
-        if (world instanceof ServerWorld) {
-            ServerWorld serverWorld = (ServerWorld) world;
+        var world = event.getWorld();
+        if (world instanceof ServerLevel serverWorld) {
             /*
              * Skip Terraforged's chunk generator as they are a special case of a mod locking down their chunk generator.
              * They will handle your structure spacing for your if you add to WorldGenRegistries.NOISE_GENERATOR_SETTINGS in your structure's registration.
@@ -60,9 +54,9 @@ public class StructureConfig {
 
                 if (codec instanceof Codec) {
                     //noinspection unchecked
-                    final Codec<? extends ChunkGenerator> chunkGeneratorCodec = (Codec<? extends ChunkGenerator>) codec;
+                    final var chunkGeneratorCodec = (Codec<? extends ChunkGenerator>) codec;
 
-                    ResourceLocation chunkGeneratorKey = Registry.CHUNK_GENERATOR.getKey(chunkGeneratorCodec);
+                    var chunkGeneratorKey = Registry.CHUNK_GENERATOR.getKey(chunkGeneratorCodec);
                     if (chunkGeneratorKey != null && chunkGeneratorKey.getNamespace().equals("terraforged")) return;
                 }
             } catch (Exception e) {
@@ -74,8 +68,8 @@ public class StructureConfig {
              * people seem to want their superflat worlds free of modded structures.
              * Also that vanilla superflat is really tricky and buggy to work with in my experience.
              */
-            if (serverWorld.getChunkSource().getGenerator() instanceof FlatChunkGenerator &&
-                serverWorld.dimension().equals(World.OVERWORLD)) return;
+            if (serverWorld.getChunkSource().getGenerator() instanceof FlatLevelSource &&
+                serverWorld.dimension().equals(Level.OVERWORLD)) return;
 
             /*
              * putIfAbsent so people can override the spacing with dimension data packs themselves if they wish to customize spacing more precisely per dimension.
@@ -84,9 +78,10 @@ public class StructureConfig {
              * already added your default structure spacing to some dimensions. You would need to override the spacing with .put(...)
              * And if you want to do dimension blacklisting, you need to remove the spacing entry entirely from the map below to prevent generation safely.
              */
-            Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
-            tempMap.putIfAbsent(StructureRegistries.MONDROVE_BUNDLE.get(), DimensionStructuresSettings.DEFAULTS.get(StructureRegistries.MONDROVE_BUNDLE.get()));
-            serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
+            var tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
+            tempMap.putIfAbsent(StructureRegistries.MONDROVE_BUNDLE.get(), StructureSettings.DEFAULTS.get(StructureRegistries.MONDROVE_BUNDLE.get()));
+            serverWorld.getChunkSource().generator.getSettings().structureConfig().clear();
+            serverWorld.getChunkSource().generator.getSettings().structureConfig().putAll(tempMap);
         }
     }
 }

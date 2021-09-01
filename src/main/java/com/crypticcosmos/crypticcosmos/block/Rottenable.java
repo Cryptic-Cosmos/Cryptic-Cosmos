@@ -1,10 +1,10 @@
 package com.crypticcosmos.crypticcosmos.block;
 
 import com.crypticcosmos.crypticcosmos.register.GrombleRegistries;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
@@ -24,7 +24,7 @@ public class Rottenable extends Block {
     @SuppressWarnings("deprecation")
     @Override
     public void randomTick(@Nonnull BlockState state,
-                           @Nonnull ServerWorld world,
+                           @Nonnull ServerLevel world,
                            @Nonnull BlockPos pos,
                            @Nonnull Random random) {
         super.randomTick(state, world, pos, random);
@@ -32,7 +32,7 @@ public class Rottenable extends Block {
         // higher == rarer
         final int rottingChance = 60000;
 
-        final boolean isOnStalk = world.getBlockState(pos.below()).getBlock().is(GROMBLE_STALK.get());
+        final boolean isOnStalk = world.getBlockState(pos.below()).is(GROMBLE_STALK.get());
 
         if (random.nextInt(rottingChance) > 10 && !isOnStalk)
             world.setBlockAndUpdate(pos,

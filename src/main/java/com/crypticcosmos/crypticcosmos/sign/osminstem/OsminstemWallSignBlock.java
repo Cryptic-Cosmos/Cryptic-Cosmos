@@ -1,9 +1,9 @@
 package com.crypticcosmos.crypticcosmos.sign.osminstem;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.WallSignBlock;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.WallSignBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nonnull;
 
@@ -15,12 +15,7 @@ public class OsminstemWallSignBlock extends WallSignBlock {
     }
 
     @Override
-    public boolean hasTileEntity(BlockState stateIn) {
-        return true;
-    }
-
-    @Override
-    public TileEntity newBlockEntity(@Nonnull IBlockReader worldIn) {
-        return new OsminstemSignTileEntity();
+    public BlockEntity newBlockEntity(@Nonnull BlockPos pos, @Nonnull BlockState state) {
+        return new OsminstemSignBlockEntity(pos, state);
     }
 }

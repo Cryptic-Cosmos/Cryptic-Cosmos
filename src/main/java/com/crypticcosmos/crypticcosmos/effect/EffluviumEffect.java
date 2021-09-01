@@ -1,53 +1,42 @@
 package com.crypticcosmos.crypticcosmos.effect;
 
-import com.crypticcosmos.crypticcosmos.CrypticCosmos;
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.EffectType;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.AABB;
 
-import java.util.List;
+import java.util.stream.Collectors;
 
-public class EffluviumEffect extends Effect {
+public class EffluviumEffect extends MobEffect {
     public EffluviumEffect() {
-        super(EffectType.NEUTRAL, 0x8DBA36);
+        super(MobEffectCategory.NEUTRAL, 0x8DBA36);
     }
 
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
-        double radius = 15.0D;
-        AxisAlignedBB range = new AxisAlignedBB(entity.getX() - radius, entity.getY() - radius, entity.getZ() - radius, entity.getX() + radius, entity.getY() + radius, entity.getZ() + radius);
-        List<MobEntity> livingEntityList = entity.level.getNearbyEntities(MobEntity.class, new EntityPredicate(), null, range);
-        List<PlayerEntity> playerEntityList = entity.level.getNearbyEntities(PlayerEntity.class, new EntityPredicate(), null, range);
-        if (!playerEntityList.isEmpty()) {
-            for (PlayerEntity playerEntity : playerEntityList) {
-                playerEntity.addEffect(new EffectInstance(Effects.CONFUSION, 100, 4));
-                if (playerEntity.getHealth() > 1.0f) {
-                    playerEntity.hurt(DamageSource.MAGIC, 1.0F);
-                }
-            }
-        }
-        if (!livingEntityList.isEmpty()) {
-            for (MobEntity livingEntity : livingEntityList) {
-                livingEntity.addEffect(new EffectInstance(Effects.CONFUSION));
-                if (livingEntity.getHealth() > 1.0F) {
-                    livingEntity.hurt(DamageSource.MAGIC, 1.0F);
-                    if (livingEntity instanceof CreatureEntity) {
-                        CreatureEntity cent = (CreatureEntity) livingEntity;
-                        AvoidEntityGoal goal = new AvoidEntityGoal<>(cent, PlayerEntity.class, 16.0F, 1.6D, 1.4D, (p_213497_1_) -> {
-                            return p_213497_1_ == entity;
-                        });
-                        cent.addEffect(new EffectInstance(new FearEffect(goal, cent), 10));
-                    }
-                }
-                CrypticCosmos.LOGGER.info("Entity running for their noses' lives!!!");
-            }
-        }
+        final var alignedAxis = new AABB(entity.blockPosition());
+
+        final var nearbyEntities = entity.level.getNearbyEntities(PathfinderMob.class,
+                TargetingConditions.DEFAULT,
+                entity,
+                alignedAxis);
+
+        final var nearbyMonsters = nearbyEntities.stream()
+                .filter(Monster.class::isInstance)
+                .map(Monster.class::cast)
+                .collect(Collectors.toList());
+
+        // make all non-hostile entities run away from you
+        nearbyEntities.stream()
+                .filter(it -> !nearbyMonsters.contains(it))
+                .forEach(creature -> creature.goalSelector.addGoal(0, new AvoidEntityGoal<>(creature,
+                        Player.class, 6.0F, 1.0D, 1.2D)
+                ));
     }
 
     @Override

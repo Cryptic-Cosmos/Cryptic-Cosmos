@@ -4,17 +4,16 @@ import com.crypticcosmos.crypticcosmos.CrypticCosmos;
 import com.crypticcosmos.crypticcosmos.block.*;
 import com.crypticcosmos.crypticcosmos.item.GrombleStalkItem;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
-import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import net.minecraft.block.AbstractBlock.Properties;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SandBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SandBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
@@ -75,7 +74,7 @@ public class BlockRegistries {
             .block(Block::new)
             .properties(p -> Properties.copy(MONDROVE_FUNGUS_BLOCK.get()))
             .recipe((context, provider) ->
-                    provider.square(DataIngredient.items(MONDROVE_FUNGUS_BLOCK), context, true)
+                    provider.square(items(MONDROVE_FUNGUS_BLOCK), context, true)
             )
             .simpleItem()
             .register();
@@ -114,7 +113,7 @@ public class BlockRegistries {
             ))
 
             .item((block, p) -> new GrombleStalkItem(p, false))
-            .model((context, provider) -> provider.generated(context, blockTexture(() -> GROMBLE_STALK_PLANT.get().getBlock(), "")))
+            .model((context, provider) -> provider.generated(context, blockTexture(GROMBLE_STALK_PLANT, "")))
             .build()
 
             .register();
@@ -147,7 +146,7 @@ public class BlockRegistries {
             ))
 
             .item((block, p) -> new GrombleStalkItem(p, true))
-            .model((context, provider) -> provider.generated(context, blockTexture(() -> ARTIFICIAL_GROMBLE_STALK_PLANT.get().getBlock(), "")))
+            .model((context, provider) -> provider.generated(context, blockTexture(ARTIFICIAL_GROMBLE_STALK_PLANT, "")))
             .recipe((context, provider) -> provider.smelting(items(BlockRegistries.GROMBLE_STALK), context, 0.15f, 3000))
             .build()
 

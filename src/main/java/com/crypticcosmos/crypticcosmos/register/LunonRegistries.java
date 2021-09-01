@@ -5,19 +5,19 @@ import com.crypticcosmos.crypticcosmos.block.OvergrownLunonBlock;
 import com.crypticcosmos.crypticcosmos.util.RegistrationUtils;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import net.minecraft.block.AbstractBlock.Properties;
-import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
-import net.minecraft.data.ShapedRecipeBuilder;
-import net.minecraft.data.ShapelessRecipeBuilder;
-import net.minecraft.data.loot.BlockLootTables;
+import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
 
 import static com.crypticcosmos.crypticcosmos.CrypticCosmos.getRegistrate;
-import static com.tterrag.registrate.providers.RegistrateRecipeProvider.hasItem;
+import static net.minecraft.advancements.critereon.InventoryChangeTrigger.TriggerInstance.hasItems;
+import static net.minecraft.data.recipes.ShapedRecipeBuilder.shaped;
+import static net.minecraft.data.recipes.ShapelessRecipeBuilder.shapeless;
 
 @SuppressWarnings("unused")
 public class LunonRegistries {
@@ -72,7 +72,7 @@ public class LunonRegistries {
             .block(SlabBlock::new)
             .properties(p -> Properties.copy(LUNON_BRICKS.get()))
             .loot((lootTables, block) ->
-                    lootTables.add(block, BlockLootTables.createSlabItemTable(block))
+                    lootTables.add(block, BlockLoot.createSlabItemTable(block))
             )
             .recipe((context, provider) -> provider.slab(DataIngredient.items(LUNON_BRICKS), context, null, true))
             .blockstate((context, provider) -> provider.slabBlock(context.get(), provider.blockTexture(LUNON_BRICKS.get()), provider.blockTexture(LUNON_BRICKS.get())))
@@ -80,8 +80,8 @@ public class LunonRegistries {
             .register();
 
     // Lunon brick stairs
-    public static final BlockEntry<StairsBlock> LUNON_BRICK_STAIRS = getRegistrate().object("lunon_brick_stairs")
-            .block(p -> new StairsBlock(() -> LUNON_BRICKS.get().defaultBlockState(), p))
+    public static final BlockEntry<StairBlock> LUNON_BRICK_STAIRS = getRegistrate().object("lunon_brick_stairs")
+            .block(p -> new StairBlock(() -> LUNON_BRICKS.get().defaultBlockState(), p))
             .properties(p -> Properties.copy(LUNON_BRICKS.get()))
             .recipe((context, provider) -> provider.stairs(DataIngredient.items(LUNON_BRICKS), context, null, true))
             .blockstate((context, provider) -> provider.stairsBlock(context.get(), provider.blockTexture(LUNON_BRICKS.get())))
@@ -99,7 +99,7 @@ public class LunonRegistries {
             .block(SlabBlock::new)
             .properties(p -> Properties.copy(POLISHED_LUNON.get()))
             .loot((lootTables, block) ->
-                    lootTables.add(block, BlockLootTables.createSlabItemTable(block))
+                    lootTables.add(block, BlockLoot.createSlabItemTable(block))
             )
             .recipe((context, provider) -> provider.slab(DataIngredient.items(POLISHED_LUNON), context, null, true))
             .blockstate((context, provider) -> provider.slabBlock(context.get(), POLISHED_LUNON.getId(), provider.blockTexture(POLISHED_LUNON.get())))
@@ -111,11 +111,11 @@ public class LunonRegistries {
             .block(Block::new)
             .properties(p -> Properties.copy(POLISHED_LUNON.get()))
             .recipe((context, provider) ->
-                    ShapedRecipeBuilder.shaped(context.get())
+                    shaped(context.get())
                             .define('#', POLISHED_LUNON_SLAB.get())
                             .pattern("#")
                             .pattern("#")
-                            .unlockedBy("has_polished_lunon", hasItem(Blocks.POLISHED_BLACKSTONE))
+                            .unlockedBy("has_polished_lunon", hasItems(Blocks.POLISHED_BLACKSTONE))
                             .save(provider, provider.safeId(context.get()))
             )
             .blockstate((context, provider) -> provider.simpleBlock(context.get(),
@@ -130,10 +130,10 @@ public class LunonRegistries {
     public static final BlockEntry<Block> MOSSY_LUNON = getRegistrate().object("mossy_lunon")
             .block(Block::new)
             .properties(p -> Properties.copy(OVERGROWN_LUNON.get()))
-            .recipe((context, provider) -> ShapelessRecipeBuilder.shapeless(context.get())
+            .recipe((context, provider) -> shapeless(context.get())
                     .requires(LUNON.get())
                     .requires(Blocks.VINE)
-                    .unlockedBy("has_vine", hasItem(context.get()))
+                    .unlockedBy("has_vine", hasItems(context.get()))
                     .save(provider)
             )
             .simpleItem()

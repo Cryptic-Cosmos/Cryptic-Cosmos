@@ -1,18 +1,17 @@
 package com.crypticcosmos.crypticcosmos.block;
 
-import net.minecraft.block.*;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.DirectionProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 
 import javax.annotation.Nonnull;
 
 @SuppressWarnings("deprecation")
 public class OvergrownLunonBlock extends SnowyDirtBlock {
-    public static final DirectionProperty FACING = HorizontalBlock.FACING;
+    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
     public OvergrownLunonBlock(Properties properties) {
         super(properties);
@@ -22,11 +21,11 @@ public class OvergrownLunonBlock extends SnowyDirtBlock {
                 .setValue(SNOWY, false));
     }
 
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
-        Block block = context.getLevel().getBlockState(context.getClickedPos().above()).getBlock();
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        var blockState = context.getLevel().getBlockState(context.getClickedPos().above());
         return this.defaultBlockState()
                 .setValue(FACING, context.getHorizontalDirection().getOpposite())
-                .setValue(SNOWY, block.is(Blocks.SNOW_BLOCK) || block.is(Blocks.SNOW));
+                .setValue(SNOWY, blockState.is(Blocks.SNOW_BLOCK) || blockState.is(Blocks.SNOW));
     }
 
     @Override
@@ -42,7 +41,7 @@ public class OvergrownLunonBlock extends SnowyDirtBlock {
     }
 
     @Override
-    public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, SNOWY);
     }
 }

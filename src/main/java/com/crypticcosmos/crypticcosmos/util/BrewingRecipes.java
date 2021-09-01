@@ -2,14 +2,14 @@ package com.crypticcosmos.crypticcosmos.util;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionBrewing;
-import net.minecraft.potion.Potions;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionBrewing;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fmllegacy.RegistryObject;
 
 import javax.annotation.Nonnull;
 
@@ -17,7 +17,7 @@ import static com.crypticcosmos.crypticcosmos.register.BlockRegistries.MONDROVE_
 import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.GROMBLE_BERRY;
 import static com.crypticcosmos.crypticcosmos.register.ItemRegistries.ROTTEN_GROMBLE_BERRY;
 import static com.crypticcosmos.crypticcosmos.register.PotionRegistries.*;
-import static net.minecraft.potion.Potions.SLOW_FALLING;
+import static net.minecraft.world.item.alchemy.Potions.SLOW_FALLING;
 
 @SuppressWarnings("SameParameterValue")
 public class BrewingRecipes {

@@ -1,16 +1,18 @@
 package com.crypticcosmos.crypticcosmos.entity.creature.makrossa_rambler;
 
-import com.crypticcosmos.crypticcosmos.entity.creature.gromble_frog.GrombleFrogEntity;
+import com.crypticcosmos.crypticcosmos.entity.creature.gromble_frog.GrombleFrog;
 import com.crypticcosmos.crypticcosmos.register.SoundEventRegistries;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.monster.*;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.world.World;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -21,14 +23,14 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import javax.annotation.Nonnull;
 
-public class MakrossaRamblerEntity extends MonsterEntity implements IAnimatable {
+public class MakrossaRambler extends Monster implements IAnimatable {
     public static AnimationBuilder IDLE_ANIM = new AnimationBuilder().addAnimation("idle");
     public static AnimationBuilder WALK_ANIM = new AnimationBuilder().addAnimation("walk");
     public static AnimationBuilder RUN_ANIM = new AnimationBuilder().addAnimation("run");
 
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    public MakrossaRamblerEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
+    public MakrossaRambler(EntityType<? extends Monster> type, Level worldIn) {
         super(type, worldIn);
     }
 
@@ -36,13 +38,13 @@ public class MakrossaRamblerEntity extends MonsterEntity implements IAnimatable 
     protected void registerGoals() {
         super.registerGoals();
 
-        this.goalSelector.addGoal(8, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
         this.applyEntityAI();
     }
 
     @Nonnull
-    public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
+    public static AttributeSupplier.Builder setCustomAttributes() {
         return createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 25.5f)
                 .add(Attributes.MOVEMENT_SPEED, 0.5f)
@@ -51,20 +53,20 @@ public class MakrossaRamblerEntity extends MonsterEntity implements IAnimatable 
     }
 
     protected void applyEntityAI() {
-        this.goalSelector.addGoal(4, new SwimGoal(this));
+        this.goalSelector.addGoal(4, new FloatGoal(this));
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.0D, false));
-        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
-        this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, EndermanEntity.class, true));
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, HuskEntity.class, true));
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, ZombieEntity.class, true));
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, DrownedEntity.class, true));
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, GrombleFrogEntity.class, true));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
+        this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, EnderMan.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Husk.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Zombie.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Drowned.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, GrombleFrog.class, true));
     }
 
     @Override
-    protected int getExperienceReward(@Nonnull PlayerEntity player) {
+    protected int getExperienceReward(@Nonnull Player player) {
         if (this.isBaby()) this.xpReward = (int) ((float) this.xpReward * 4f);
 
         return super.getExperienceReward(player);

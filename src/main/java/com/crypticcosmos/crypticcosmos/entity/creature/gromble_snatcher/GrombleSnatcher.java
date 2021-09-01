@@ -2,32 +2,34 @@ package com.crypticcosmos.crypticcosmos.entity.creature.gromble_snatcher;
 
 
 import com.crypticcosmos.crypticcosmos.register.SoundEventRegistries;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.world.World;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable {
+import javax.annotation.Nonnull;
+
+public class GrombleSnatcher extends Monster implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    public GrombleSnatcherEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
+    public GrombleSnatcher(EntityType<? extends Monster> type, Level worldIn) {
         super(type, worldIn);
 
         this.noCulling = true;
     }
 
-    public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
+    public static AttributeSupplier.Builder setCustomAttributes() {
         return createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 50f)
                 .add(Attributes.MOVEMENT_SPEED, 0f)
@@ -44,11 +46,11 @@ public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable 
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new LookAtGoal(this, PlayerEntity.class, 100.0F));
+        this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 100.0F));
         //this.goalSelector.addGoal(3, new SnatchGoal(this, 1.0D, 20, 21, 7.0F));
         //this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
         this.goalSelector.addGoal(3, new SnatchGoal(this, 1.0D, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true, true));
     }
 
     @Override
@@ -61,7 +63,7 @@ public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable 
     }
 
     @Override
-    protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
+    protected float getStandingEyeHeight(@Nonnull Pose poseIn, @Nonnull EntityDimensions sizeIn) {
         return this.isBaby() ? sizeIn.height * 0.95F : 1.3F;
     }
 
@@ -77,7 +79,7 @@ public class GrombleSnatcherEntity extends MonsterEntity implements IAnimatable 
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource damageSource) {
+    protected SoundEvent getHurtSound(@Nonnull DamageSource damageSource) {
         return SoundEventRegistries.GROMBLE_FROG_HURT.get();
     }
 
